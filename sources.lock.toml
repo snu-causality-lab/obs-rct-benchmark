@@ -1,0 +1,161 @@
+schema_version = 1
+checked_at = "2026-10-18"
+scope = "Public primary sources for mathematical DGP translations and an optional external method adapter. No third-party code or datasets are vendored."
+
+# This is a provenance lock, not a complete Python or R environment lock.
+# An omitted license is never interpreted as permission to redistribute code.
+
+[[source]]
+id = "cornet_paper"
+kind = "paper"
+title = "Combining Observational and Randomized Data for Estimating Heterogeneous Treatment Effects"
+authors = ["Tobias Hatt", "Jeroen Berrevoets", "Alicia Curth", "Stefan Feuerriegel", "Mihaela van der Schaar"]
+year = 2022
+url = "https://arxiv.org/abs/2202.12891v1"
+arxiv = "2202.12891v1"
+variants = ["cornet_official_n_conf"]
+use = "Mathematical mechanism reference; not vendored."
+
+[[source]]
+id = "cornet_official"
+kind = "git-reference"
+url = "https://github.com/tobhatt/CorNet.git"
+revision = "38b9c37d5a86bc87950945d6ddb1ceb5354a45ba"
+license_status = "No license file found at the pinned reference."
+reference_files = ["simulation_studies/simdata.py", "simulation_studies/sim_n_conf.py", "model/models.py"]
+simulation_generator_sha256 = "07576aabc15e490fa60595b1cdf3c3631eb60dd5344c14a5d3cbde06a9fa4541"
+simulation_setup_sha256 = "9d99f06ae92650114dc8ad314a93446703491b4d4502d4af8922eba993e581c3"
+use = "Equation and architecture reference only; upstream code not vendored."
+
+[[source]]
+id = "experimental_grounding_paper"
+kind = "paper"
+title = "Removing Hidden Confounding by Experimental Grounding"
+authors = ["Nathan Kallus", "Aahlad Manas Puli", "Uri Shalit"]
+year = 2018
+url = "https://arxiv.org/abs/1810.11646v1"
+arxiv = "1810.11646v1"
+variants = ["experimental_grounding_kps"]
+use = "Mathematical mechanism reference; not vendored."
+
+[[source]]
+id = "experimental_grounding_official"
+kind = "git-reference"
+url = "https://github.com/CausalML/RemovingHiddenConfounding.git"
+revision = "a25cf3d2524a01c8a8d821f25cdeeb312c34a9cd"
+license_status = "No license file found at the pinned reference."
+reference_files = ["simulation.ipynb", "lin_eta_gaussianU.py"]
+simulation_notebook_sha256 = "e4b9fbcc2df9351749ece47eccf1c2388cad61cbdb9ab816ecf11dac901396af"
+support_file_sha256 = "34140043f0fd9bb2e1947a91fd321590de0a22d880b3640da9fcba0a920e4d68"
+use = "Equation reference only; upstream code not vendored."
+
+[[source]]
+id = "integrative_r_learner_paper"
+kind = "paper"
+title = "Integrative R-learner of heterogeneous treatment effects combining experimental and observational studies"
+authors = ["Lili Wu", "Shu Yang"]
+year = 2022
+url = "https://proceedings.mlr.press/v177/wu22a.html"
+pdf_url = "https://proceedings.mlr.press/v177/wu22a/wu22a.pdf"
+venue = "Proceedings of Machine Learning Research 177:904–926"
+variants = ["integrative_r_learner_kps_code", "integrative_r_learner_multivariate_paper"]
+benchmark_extensions = ["integrative_r_learner_kps_normal_target_extension"]
+target_law_note = "Section 6.1.1, printed p. 10, and the released code both use Uniform[-1,1] test X. The Gaussian target is an explicit benchmark extension."
+use = "Mathematical mechanism reference; not vendored."
+
+[[source]]
+id = "integrative_r_learner_official"
+kind = "git-reference"
+url = "https://github.com/lwu9/intRlearner.git"
+revision = "a46ce2c1cc814865898b863d6a8e130bbc2c802b"
+license_status = "No license file found; DESCRIPTION contains a placeholder license field."
+reference_files = ["R/intRlearner.R", "R/utils.R", "DESCRIPTION"]
+generator_file_sha256 = "98563e2423f41153fcbb2548f3b54ac779c72bcb8d154608bf51f778086fdce8"
+support_file_sha256 = "2b85e2e56db83e33427f6f43aa1b59d995bafb6d46bfc1aec8e5f2e6a215525b"
+description_sha256 = "fa2885ec2a8aef1c1502ab3984647f0ae25815c26494e2444dfd296c8bec4810"
+use = "Equation reference only; upstream code not vendored."
+
+[[source]]
+id = "elastic_integrative_paper"
+kind = "paper"
+title = "Elastic Integrative Analysis of Randomized Trial and Real-World Data for Treatment Heterogeneity Estimation"
+authors = ["Shu Yang", "Chenyin Gao", "Donglin Zeng", "Xiaofei Wang"]
+year = 2022
+url = "https://arxiv.org/abs/2005.10579v3"
+arxiv = "2005.10579v3"
+variants = ["elastic_integrative_gen_data_overlap"]
+use = "Mathematical mechanism reference; not vendored."
+
+[[source]]
+id = "elastic_integrative_official"
+kind = "git-reference"
+url = "https://github.com/Gaochenyin/ElasticIntegrative.git"
+revision = "a8c9a06371485c25caca5cc8396ea5ba47f381b6"
+license = "MIT"
+license_file = "LICENSE.md"
+license_sha256 = "3b5363fa20d6265032021838c6ad9c564ecd2ea2df97be224152f8ee67a403ca"
+reference_files = ["R/GenData.R", "DESCRIPTION"]
+simulation_generator_sha256 = "24804577733ac1f77883d251a7d51c0a6177da93cb0a7eb35687d9e07d0897ab"
+use = "Equation reference only; upstream code not vendored."
+
+[[source]]
+id = "power_likelihood_paper"
+kind = "paper"
+title = "Combining experimental and observational data through a power likelihood"
+authors = ["Xi Lin", "Jens Magelund Tarp", "Robin J. Evans"]
+year = 2025
+url = "https://academic.oup.com/biometrics/article/81/1/ujaf008/8016472"
+doi = "10.1093/biomtc/ujaf008"
+preprint_url = "https://arxiv.org/abs/2304.02339v2"
+variants = ["power_likelihood_paper_text", "power_likelihood_supplement_code"]
+use = "Published Section 5 mathematical mechanism reference; not vendored."
+
+[[source]]
+id = "power_likelihood_supplement"
+kind = "archive-reference"
+url = "https://oup.silverchair-cdn.com/oup/backfile/Content_public/Journal/biometrics/81/1/10.1093_biomtc_ujaf008/5/ujaf008_supplemental_files.zip"
+retrieval_page = "https://academic.oup.com/biometrics/article/81/1/ujaf008/8016472"
+sha256 = "1a1690fcd9e23af9e7a6c2fee8690dac8207870e1f33d9bb0ee233c2e7490c1a"
+code_archive_member = "sec_5_code.zip"
+code_archive_sha256 = "fc98b911fd0cf8eebd1405138d93cbe5668dc792565b1a8ab6a347e4c6bfab08"
+reference_files = ["sec_5_code/run_simulations.R", "sec_5_code/functions.R"]
+run_simulations_sha256 = "7777b5d3de512699a4bfd25c4bbcfdb4c25c2eada05c5182cb72fcae62eed3d4"
+functions_sha256 = "1f9143056a718b949844cc344c43aafa03c49662b581b2b3e589077797028b47"
+license_status = "No code license file found in the inspected supplement."
+environment_status = "The supplement does not pin its causl Git revision or a complete R environment."
+use = "Equation reference only; archive and source code not vendored."
+
+[[source]]
+id = "cvci_paper"
+kind = "paper"
+title = "Cross-Validated Causal Inference: a Modern Method to Combine Experimental and Observational Data"
+authors = ["Xuelin Yang", "Licong Lin", "Susan Athey", "Michael I. Jordan", "Guido W. Imbens"]
+year = 2025
+url = "https://arxiv.org/abs/2511.00727v1"
+arxiv = "2511.00727v1"
+variants = ["cvci_official_linear_bias"]
+use = "Mathematical mechanism reference; not vendored."
+
+[[source]]
+id = "cvci_official"
+kind = "git-reference"
+url = "https://github.com/xyang23/cross_validated_causal.git"
+revision = "d74cb7c928938fd1a2978481f9aab6ac654c7d08"
+license_status = "No license file found at the pinned reference."
+reference_files = ["linear_eps.py", "causal_sim.py"]
+support_file_sha256 = "7ca01d84accab6e732f57b28fe0c00ad11a7ebcd148943be3ad3b8678c938849"
+use = "Equation reference only; upstream code not vendored."
+
+[[source]]
+id = "datafusion_ppi_official"
+kind = "optional-external-dependency"
+url = "https://github.com/CausalDataScience/DataFusionPPI.git"
+revision = "04c7f3447b02fa09f875e68e8c47100a7207d546"
+distribution = "dfppi"
+version = "0.1.0"
+license = "MIT"
+license_file = "LICENSE"
+license_sha256 = "9781ebab30b6e0f0389b7facd2f3d35a092074850519bc9a84f574f2b9e6ac1d"
+entrypoint = "dfppi/api.py"
+entrypoint_sha256 = "87d7add83dde597be18fc4cd2968e08e67032d21248e8c3969a3dcf61aa48965"
+use = "Optional adapter calls the separately installed official package; no upstream code vendored."

@@ -1,0 +1,317 @@
+schema_version = 1
+
+[run]
+seeds = [0, 1]
+methods = ["rct_t_ridge", "obs_t_ridge", "naive_pooled_t_ridge", "rct_dr_ridge"]
+reference_method = "rct_t_ridge"
+scope = "smoke/development-inspected; all 31 DGPs at two seeds, no method-ranking claim"
+
+[[scenarios]]
+kind = "structural"
+id = "M0"
+[scenarios.parameters]
+n_obs = 120
+n_rct_train = 60
+n_rct_tune = 30
+n_rct_test = 30
+n_eval = 128
+
+[[scenarios]]
+kind = "structural"
+id = "M1"
+[scenarios.parameters]
+n_obs = 120
+n_rct_train = 60
+n_rct_tune = 30
+n_rct_test = 30
+n_eval = 128
+
+[[scenarios]]
+kind = "structural"
+id = "M2"
+[scenarios.parameters]
+n_obs = 120
+n_rct_train = 60
+n_rct_tune = 30
+n_rct_test = 30
+n_eval = 128
+
+[[scenarios]]
+kind = "structural"
+id = "M3"
+[scenarios.parameters]
+n_obs = 120
+n_rct_train = 60
+n_rct_tune = 30
+n_rct_test = 30
+n_eval = 128
+
+[[scenarios]]
+kind = "structural"
+id = "M4"
+[scenarios.parameters]
+n_obs = 120
+n_rct_train = 60
+n_rct_tune = 30
+n_rct_test = 30
+n_eval = 128
+
+[[scenarios]]
+kind = "structural"
+id = "M5"
+[scenarios.parameters]
+n_obs = 120
+n_rct_train = 60
+n_rct_tune = 30
+n_rct_test = 30
+n_eval = 128
+
+[[scenarios]]
+kind = "structural"
+id = "M6"
+[scenarios.parameters]
+n_obs = 120
+n_rct_train = 60
+n_rct_tune = 30
+n_rct_test = 30
+n_eval = 128
+
+[[scenarios]]
+kind = "structural"
+id = "M7"
+[scenarios.parameters]
+n_obs = 120
+n_rct_train = 60
+n_rct_tune = 30
+n_rct_test = 30
+n_eval = 128
+
+[[scenarios]]
+kind = "structural"
+id = "M8"
+[scenarios.parameters]
+n_obs = 120
+n_rct_train = 60
+n_rct_tune = 30
+n_rct_test = 30
+n_eval = 128
+
+[[scenarios]]
+kind = "structural"
+id = "M9"
+[scenarios.parameters]
+n_obs = 120
+n_rct_train = 60
+n_rct_tune = 30
+n_rct_test = 30
+n_eval = 128
+
+[[scenarios]]
+kind = "structural"
+id = "M10"
+[scenarios.parameters]
+n_obs = 120
+n_rct_train = 60
+n_rct_tune = 30
+n_rct_test = 30
+n_eval = 128
+
+[[scenarios]]
+kind = "structural"
+id = "M11"
+[scenarios.parameters]
+n_obs = 120
+n_rct_train = 60
+n_rct_tune = 30
+n_rct_test = 30
+n_eval = 128
+
+[[scenarios]]
+kind = "addendum"
+id = "C01"
+[scenarios.parameters]
+n_obs = 120
+n_rct_train = 60
+n_rct_tune = 30
+n_rct_test = 30
+n_eval = 128
+
+[[scenarios]]
+kind = "addendum"
+id = "C02"
+[scenarios.parameters]
+n_obs = 120
+n_rct_train = 60
+n_rct_tune = 30
+n_rct_test = 30
+n_eval = 128
+
+[[scenarios]]
+kind = "addendum"
+id = "C03"
+[scenarios.parameters]
+n_obs = 120
+n_rct_train = 60
+n_rct_tune = 30
+n_rct_test = 30
+n_eval = 128
+
+[[scenarios]]
+kind = "addendum"
+id = "C04"
+[scenarios.parameters]
+n_obs = 120
+n_rct_train = 60
+n_rct_tune = 30
+n_rct_test = 30
+n_eval = 128
+
+[[scenarios]]
+kind = "addendum"
+id = "C05"
+[scenarios.parameters]
+n_obs = 120
+n_rct_train = 60
+n_rct_tune = 30
+n_rct_test = 30
+n_eval = 128
+
+[[scenarios]]
+kind = "addendum"
+id = "C06"
+[scenarios.parameters]
+n_obs = 120
+n_rct_train = 60
+n_rct_tune = 30
+n_rct_test = 30
+n_eval = 128
+
+[[scenarios]]
+kind = "addendum"
+id = "C07"
+[scenarios.parameters]
+n_obs = 120
+n_rct_train = 60
+n_rct_tune = 30
+n_rct_test = 30
+n_eval = 128
+
+[[scenarios]]
+kind = "addendum"
+id = "C08"
+[scenarios.parameters]
+n_obs = 120
+n_rct_train = 60
+n_rct_tune = 30
+n_rct_test = 30
+n_eval = 128
+
+[[scenarios]]
+kind = "addendum"
+id = "C09"
+[scenarios.parameters]
+n_obs = 120
+n_rct_train = 60
+n_rct_tune = 30
+n_rct_test = 30
+n_eval = 128
+
+[[scenarios]]
+kind = "addendum"
+id = "C10"
+[scenarios.parameters]
+n_obs = 120
+n_rct_train = 60
+n_rct_tune = 30
+n_rct_test = 30
+n_eval = 128
+
+[[scenarios]]
+kind = "paper"
+id = "cornet_official_n_conf"
+[scenarios.parameters]
+n_obs = 120
+n_rct_train = 60
+n_rct_tune = 30
+n_rct_test = 30
+n_eval = 128
+
+[[scenarios]]
+kind = "paper"
+id = "experimental_grounding_kps"
+[scenarios.parameters]
+n_obs = 120
+n_rct_train = 60
+n_rct_tune = 30
+n_rct_test = 30
+n_eval = 128
+
+[[scenarios]]
+kind = "paper"
+id = "integrative_r_learner_kps_normal_target_extension"
+[scenarios.parameters]
+n_obs = 120
+n_rct_train = 60
+n_rct_tune = 30
+n_rct_test = 30
+n_eval = 128
+
+[[scenarios]]
+kind = "paper"
+id = "integrative_r_learner_kps_code"
+[scenarios.parameters]
+n_obs = 120
+n_rct_train = 60
+n_rct_tune = 30
+n_rct_test = 30
+n_eval = 128
+
+[[scenarios]]
+kind = "paper"
+id = "integrative_r_learner_multivariate_paper"
+[scenarios.parameters]
+n_obs = 120
+n_rct_train = 60
+n_rct_tune = 30
+n_rct_test = 30
+n_eval = 128
+
+[[scenarios]]
+kind = "paper"
+id = "elastic_integrative_gen_data_overlap"
+[scenarios.parameters]
+n_obs = 120
+n_rct_train = 60
+n_rct_tune = 30
+n_rct_test = 30
+n_eval = 128
+
+[[scenarios]]
+kind = "paper"
+id = "power_likelihood_paper_text"
+[scenarios.parameters]
+n_obs = 120
+n_rct_train = 60
+n_rct_tune = 30
+n_rct_test = 30
+n_eval = 128
+
+[[scenarios]]
+kind = "paper"
+id = "power_likelihood_supplement_code"
+[scenarios.parameters]
+n_obs = 120
+n_rct_train = 60
+n_rct_tune = 30
+n_rct_test = 30
+n_eval = 128
+
+[[scenarios]]
+kind = "paper"
+id = "cvci_official_linear_bias"
+[scenarios.parameters]
+n_obs = 120
+n_rct_train = 60
+n_rct_tune = 30
+n_rct_test = 30
+n_eval = 128

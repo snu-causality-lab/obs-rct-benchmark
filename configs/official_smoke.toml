@@ -1,0 +1,32 @@
+schema_version = 1
+
+[run]
+seeds = [0, 1]
+methods = ["rct_t_ridge", "datafusionppi", "cornet_official"]
+reference_method = "rct_t_ridge"
+scope = "smoke/development-inspected; reduced CorNet optimization (5+5 epochs), no scientific ranking"
+
+[method_options.cornet_official]
+source_epochs = 5
+correction_epochs = 5
+width = 8
+
+[[scenarios]]
+kind = "structural"
+id = "M0"
+[scenarios.parameters]
+n_obs = 120
+n_rct_train = 60
+n_rct_tune = 30
+n_rct_test = 30
+n_eval = 128
+
+[[scenarios]]
+kind = "paper"
+id = "experimental_grounding_kps"
+[scenarios.parameters]
+n_obs = 120
+n_rct_train = 60
+n_rct_tune = 30
+n_rct_test = 30
+n_eval = 128

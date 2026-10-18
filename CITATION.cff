@@ -1,0 +1,77 @@
+cff-version: 1.2.0
+message: "Please cite this software and the primary papers for any DGP variants you use. See docs/PAPER_DGPS.md for translation details."
+type: software
+title: "OBS–RCT Benchmark"
+version: 0.1.0a0
+abstract: "An unreleased benchmark candidate for comparing treatment-effect estimators using observational and randomized data, with structural mechanisms and documented translations of published simulation mechanisms."
+authors:
+  - family-names: Lee
+    given-names: Sanghack
+license: MIT
+keywords:
+  - causal inference
+  - treatment effect heterogeneity
+  - observational data
+  - randomized trials
+  - simulation benchmark
+references:
+  - type: article
+    title: "Combining Observational and Randomized Data for Estimating Heterogeneous Treatment Effects"
+    authors:
+      - {family-names: Hatt, given-names: Tobias}
+      - {family-names: Berrevoets, given-names: Jeroen}
+      - {family-names: Curth, given-names: Alicia}
+      - {family-names: Feuerriegel, given-names: Stefan}
+      - {family-names: van der Schaar, given-names: Mihaela}
+    year: 2022
+    url: "https://arxiv.org/abs/2202.12891v1"
+  - type: conference-paper
+    title: "Removing Hidden Confounding by Experimental Grounding"
+    authors:
+      - {family-names: Kallus, given-names: Nathan}
+      - {family-names: Puli, given-names: Aahlad Manas}
+      - {family-names: Shalit, given-names: Uri}
+    year: 2018
+    url: "https://arxiv.org/abs/1810.11646v1"
+  - type: conference-paper
+    title: "Integrative R-learner of heterogeneous treatment effects combining experimental and observational studies"
+    authors:
+      - {family-names: Wu, given-names: Lili}
+      - {family-names: Yang, given-names: Shu}
+    year: 2022
+    collection-title: "Proceedings of Machine Learning Research"
+    volume: 177
+    start: 904
+    end: 926
+    url: "https://proceedings.mlr.press/v177/wu22a.html"
+  - type: article
+    title: "Elastic Integrative Analysis of Randomized Trial and Real-World Data for Treatment Heterogeneity Estimation"
+    authors:
+      - {family-names: Yang, given-names: Shu}
+      - {family-names: Gao, given-names: Chenyin}
+      - {family-names: Zeng, given-names: Donglin}
+      - {family-names: Wang, given-names: Xiaofei}
+    year: 2022
+    url: "https://arxiv.org/abs/2005.10579v3"
+  - type: article
+    title: "Combining experimental and observational data through a power likelihood"
+    authors:
+      - {family-names: Lin, given-names: Xi}
+      - {family-names: Tarp, given-names: Jens Magelund}
+      - {family-names: Evans, given-names: Robin J.}
+    year: 2025
+    journal: Biometrics
+    volume: 81
+    issue: 1
+    doi: "10.1093/biomtc/ujaf008"
+    url: "https://academic.oup.com/biometrics/article/81/1/ujaf008/8016472"
+  - type: article
+    title: "Cross-Validated Causal Inference: a Modern Method to Combine Experimental and Observational Data"
+    authors:
+      - {family-names: Yang, given-names: Xuelin}
+      - {family-names: Lin, given-names: Licong}
+      - {family-names: Athey, given-names: Susan}
+      - {family-names: Jordan, given-names: Michael I.}
+      - {family-names: Imbens, given-names: Guido W.}
+    year: 2025
+    url: "https://arxiv.org/abs/2511.00727v1"

@@ -1,0 +1,446 @@
+{
+  "config_hash": "c9ee40ae91500a3c2b2b24e34ffe294aec01e76f15ae23f34d4de9a2f204d239",
+  "coverage": {
+    "expected": 16,
+    "failed": 0,
+    "missing": 0,
+    "recorded": 16,
+    "successful": 16
+  },
+  "methods": {
+    "naive_pooled_t_ridge": {
+      "complete_coverage": true,
+      "expected": 4,
+      "failed": 0,
+      "mean_cate_mse": 0.7304427074222545,
+      "mean_root_pehe": 0.7457654359568066,
+      "mean_scope": "successful cells only; descriptive when coverage is incomplete",
+      "missing": 0,
+      "root_mean_mse": 0.8546594101876224,
+      "successful": 4
+    },
+    "obs_t_ridge": {
+      "complete_coverage": true,
+      "expected": 4,
+      "failed": 0,
+      "mean_cate_mse": 1.136116216302247,
+      "mean_root_pehe": 1.0160884828694736,
+      "mean_scope": "successful cells only; descriptive when coverage is incomplete",
+      "missing": 0,
+      "root_mean_mse": 1.065887525164943,
+      "successful": 4
+    },
+    "rct_dr_ridge": {
+      "complete_coverage": true,
+      "expected": 4,
+      "failed": 0,
+      "mean_cate_mse": 0.6488916307815383,
+      "mean_root_pehe": 0.7913130298280195,
+      "mean_scope": "successful cells only; descriptive when coverage is incomplete",
+      "missing": 0,
+      "root_mean_mse": 0.8055381001427172,
+      "successful": 4
+    },
+    "rct_t_ridge": {
+      "complete_coverage": true,
+      "expected": 4,
+      "failed": 0,
+      "mean_cate_mse": 0.575451623565352,
+      "mean_root_pehe": 0.7458628632420735,
+      "mean_scope": "successful cells only; descriptive when coverage is incomplete",
+      "missing": 0,
+      "root_mean_mse": 0.7585852777146099,
+      "successful": 4
+    }
+  },
+  "metric_definitions": {
+    "cate_mse": "mean((predicted_cate - true_cate)**2) over evaluation rows",
+    "mean_root_pehe": "arithmetic mean of per-replicate root_pehe",
+    "root_mean_mse": "sqrt(arithmetic mean of per-replicate cate_mse)",
+    "root_pehe": "sqrt(cate_mse) for one replicate"
+  },
+  "paired_comparisons": {
+    "naive_pooled_t_ridge": {
+      "by_scenario": {
+        "paper:experimental_grounding_kps": {
+          "complete_coverage": true,
+          "complete_seed_blocks": 2,
+          "difference": "method minus reference; negative favors method",
+          "eligible_for_comparison": true,
+          "expected_seed_blocks": 2,
+          "metrics": {
+            "cate_mse": {
+              "ci95": [
+                -8.260519324615144,
+                9.802479097256677
+              ],
+              "ci_method": "student_t_conservative_table",
+              "mean": 0.7709798863207666,
+              "n_seed_blocks": 2,
+              "standard_error": 0.7107944030732477
+            },
+            "root_pehe": {
+              "ci95": [
+                -3.568040213874019,
+                4.27969905932702
+              ],
+              "ci_method": "student_t_conservative_table",
+              "mean": 0.3558294227265004,
+              "n_seed_blocks": 2,
+              "standard_error": 0.30881523775228054
+            }
+          },
+          "withheld_reason": null
+        },
+        "structural:M0": {
+          "complete_coverage": true,
+          "complete_seed_blocks": 2,
+          "difference": "method minus reference; negative favors method",
+          "eligible_for_comparison": true,
+          "expected_seed_blocks": 2,
+          "metrics": {
+            "cate_mse": {
+              "ci95": [
+                -3.1224979578421115,
+                2.200502520628188
+              ],
+              "ci_method": "student_t_conservative_table",
+              "mean": -0.4609977186069617,
+              "n_seed_blocks": 2,
+              "standard_error": 0.20946461153822257
+            },
+            "root_pehe": {
+              "ci95": [
+                -1.6993803906838156,
+                0.9873318360897471
+              ],
+              "ci_method": "student_t_conservative_table",
+              "mean": -0.35602427729703423,
+              "n_seed_blocks": 2,
+              "standard_error": 0.10572441899495075
+            }
+          },
+          "withheld_reason": null
+        }
+      },
+      "overall": {
+        "complete_coverage": true,
+        "complete_seed_blocks": 2,
+        "difference": "method minus reference; negative favors method",
+        "eligible_for_comparison": true,
+        "expected_seed_blocks": 2,
+        "metrics": {
+          "cate_mse": {
+            "ci95": [
+              -5.691508641228627,
+              6.001490808942433
+            ],
+            "ci_method": "student_t_conservative_table",
+            "mean": 0.15499108385690247,
+            "n_seed_blocks": 2,
+            "standard_error": 0.4601295073057351
+          },
+          "root_pehe": {
+            "ci95": [
+              -2.6337103022789172,
+              2.6335154477083833
+            ],
+            "ci_method": "student_t_conservative_table",
+            "mean": -9.742728526691835e-05,
+            "n_seed_blocks": 2,
+            "standard_error": 0.20726982837361566
+          }
+        },
+        "withheld_reason": null
+      }
+    },
+    "obs_t_ridge": {
+      "by_scenario": {
+        "paper:experimental_grounding_kps": {
+          "complete_coverage": true,
+          "complete_seed_blocks": 2,
+          "difference": "method minus reference; negative favors method",
+          "eligible_for_comparison": true,
+          "expected_seed_blocks": 2,
+          "metrics": {
+            "cate_mse": {
+              "ci95": [
+                -6.638699760801552,
+                9.010780586608709
+              ],
+              "ci_method": "student_t_conservative_table",
+              "mean": 1.1860404129035778,
+              "n_seed_blocks": 2,
+              "standard_error": 0.615820407118836
+            },
+            "root_pehe": {
+              "ci95": [
+                -2.059090253171297,
+                3.188707524279003
+              ],
+              "ci_method": "student_t_conservative_table",
+              "mean": 0.5648086355538529,
+              "n_seed_blocks": 2,
+              "standard_error": 0.2065053210742273
+            }
+          },
+          "withheld_reason": null
+        },
+        "structural:M0": {
+          "complete_coverage": true,
+          "complete_seed_blocks": 2,
+          "difference": "method minus reference; negative favors method",
+          "eligible_for_comparison": true,
+          "expected_seed_blocks": 2,
+          "metrics": {
+            "cate_mse": {
+              "ci95": [
+                -3.766239114020741,
+                3.636816659161166
+              ],
+              "ci_method": "student_t_conservative_table",
+              "mean": -0.06471122742978763,
+              "n_seed_blocks": 2,
+              "standard_error": 0.2913165625284654
+            },
+            "root_pehe": {
+              "ci95": [
+                -2.3682035195010265,
+                2.3194887269029216
+              ],
+              "ci_method": "student_t_conservative_table",
+              "mean": -0.024357396299052647,
+              "n_seed_blocks": 2,
+              "standard_error": 0.1844646904269895
+            }
+          },
+          "withheld_reason": null
+        }
+      },
+      "overall": {
+        "complete_coverage": true,
+        "complete_seed_blocks": 2,
+        "difference": "method minus reference; negative favors method",
+        "eligible_for_comparison": true,
+        "expected_seed_blocks": 2,
+        "metrics": {
+          "cate_mse": {
+            "ci95": [
+              -5.202469437411147,
+              6.323798622884937
+            ],
+            "ci_method": "student_t_conservative_table",
+            "mean": 0.560664592736895,
+            "n_seed_blocks": 2,
+            "standard_error": 0.4535684848236507
+          },
+          "root_pehe": {
+            "ci95": [
+              -2.2136468863361616,
+              2.7540981255909616
+            ],
+            "ci_method": "student_t_conservative_table",
+            "mean": 0.2702256196274001,
+            "n_seed_blocks": 2,
+            "standard_error": 0.1954850057506084
+          }
+        },
+        "withheld_reason": null
+      }
+    },
+    "rct_dr_ridge": {
+      "by_scenario": {
+        "paper:experimental_grounding_kps": {
+          "complete_coverage": true,
+          "complete_seed_blocks": 2,
+          "difference": "method minus reference; negative favors method",
+          "eligible_for_comparison": true,
+          "expected_seed_blocks": 2,
+          "metrics": {
+            "cate_mse": {
+              "ci95": [
+                -0.9226013536103361,
+                0.9086954754770524
+              ],
+              "ci_method": "student_t_conservative_table",
+              "mean": -0.0069529390666419055,
+              "n_seed_blocks": 2,
+              "standard_error": 0.07206309307456676
+            },
+            "root_pehe": {
+              "ci95": [
+                -0.702070346945667,
+                0.6748235535646202
+              ],
+              "ci_method": "student_t_conservative_table",
+              "mean": -0.01362339669052337,
+              "n_seed_blocks": 2,
+              "standard_error": 0.054181950042322284
+            }
+          },
+          "withheld_reason": null
+        },
+        "structural:M0": {
+          "complete_coverage": true,
+          "complete_seed_blocks": 2,
+          "difference": "method minus reference; negative favors method",
+          "eligible_for_comparison": true,
+          "expected_seed_blocks": 2,
+          "metrics": {
+            "cate_mse": {
+              "ci95": [
+                -4.671406295924057,
+                4.979072202922086
+              ],
+              "ci_method": "student_t_conservative_table",
+              "mean": 0.15383295349901477,
+              "n_seed_blocks": 2,
+              "standard_error": 0.3797545647600031
+            },
+            "root_pehe": {
+              "ci95": [
+                -2.8296393414129835,
+                3.038686801137814
+              ],
+              "ci_method": "student_t_conservative_table",
+              "mean": 0.10452372986241543,
+              "n_seed_blocks": 2,
+              "standard_error": 0.23092364180704394
+            }
+          },
+          "withheld_reason": null
+        }
+      },
+      "overall": {
+        "complete_coverage": true,
+        "complete_seed_blocks": 2,
+        "difference": "method minus reference; negative favors method",
+        "eligible_for_comparison": true,
+        "expected_seed_blocks": 2,
+        "metrics": {
+          "cate_mse": {
+            "ci95": [
+              -2.7970038247671964,
+              2.9438838391995694
+            ],
+            "ci_method": "student_t_conservative_table",
+            "mean": 0.07344000721618643,
+            "n_seed_blocks": 2,
+            "standard_error": 0.22590882891728492
+          },
+          "root_pehe": {
+            "ci95": [
+              -1.7658548441793251,
+              1.8567551773512174
+            ],
+            "ci_method": "student_t_conservative_table",
+            "mean": 0.04545016658594603,
+            "n_seed_blocks": 2,
+            "standard_error": 0.14255279592468312
+          }
+        },
+        "withheld_reason": null
+      }
+    }
+  },
+  "reference_method": "rct_t_ridge",
+  "run_id": "c9ee40ae91500a3c",
+  "scenarios": {
+    "paper:experimental_grounding_kps": {
+      "naive_pooled_t_ridge": {
+        "complete_coverage": true,
+        "expected": 2,
+        "failed": 0,
+        "mean_cate_mse": 1.2671261997453063,
+        "mean_root_pehe": 1.055309494156155,
+        "mean_scope": "successful cells only; descriptive when coverage is incomplete",
+        "missing": 0,
+        "root_mean_mse": 1.1256670021570794,
+        "successful": 2
+      },
+      "obs_t_ridge": {
+        "complete_coverage": true,
+        "expected": 2,
+        "failed": 0,
+        "mean_cate_mse": 1.6821867263281172,
+        "mean_root_pehe": 1.2642887069835074,
+        "mean_scope": "successful cells only; descriptive when coverage is incomplete",
+        "missing": 0,
+        "root_mean_mse": 1.2969914133594398,
+        "successful": 2
+      },
+      "rct_dr_ridge": {
+        "complete_coverage": true,
+        "expected": 2,
+        "failed": 0,
+        "mean_cate_mse": 0.4891933743578976,
+        "mean_root_pehe": 0.6858566747391313,
+        "mean_scope": "successful cells only; descriptive when coverage is incomplete",
+        "missing": 0,
+        "root_mean_mse": 0.699423601516204,
+        "successful": 2
+      },
+      "rct_t_ridge": {
+        "complete_coverage": true,
+        "expected": 2,
+        "failed": 0,
+        "mean_cate_mse": 0.4961463134245395,
+        "mean_root_pehe": 0.6994800714296545,
+        "mean_scope": "successful cells only; descriptive when coverage is incomplete",
+        "missing": 0,
+        "root_mean_mse": 0.704376542358233,
+        "successful": 2
+      }
+    },
+    "structural:M0": {
+      "naive_pooled_t_ridge": {
+        "complete_coverage": true,
+        "expected": 2,
+        "failed": 0,
+        "mean_cate_mse": 0.19375921509920258,
+        "mean_root_pehe": 0.4362213777574582,
+        "mean_scope": "successful cells only; descriptive when coverage is incomplete",
+        "missing": 0,
+        "root_mean_mse": 0.44018088906630487,
+        "successful": 2
+      },
+      "obs_t_ridge": {
+        "complete_coverage": true,
+        "expected": 2,
+        "failed": 0,
+        "mean_cate_mse": 0.5900457062763766,
+        "mean_root_pehe": 0.7678882587554398,
+        "mean_scope": "successful cells only; descriptive when coverage is incomplete",
+        "missing": 0,
+        "root_mean_mse": 0.7681443264624016,
+        "successful": 2
+      },
+      "rct_dr_ridge": {
+        "complete_coverage": true,
+        "expected": 2,
+        "failed": 0,
+        "mean_cate_mse": 0.8085898872051791,
+        "mean_root_pehe": 0.8967693849169078,
+        "mean_scope": "successful cells only; descriptive when coverage is incomplete",
+        "missing": 0,
+        "root_mean_mse": 0.8992162627561732,
+        "successful": 2
+      },
+      "rct_t_ridge": {
+        "complete_coverage": true,
+        "expected": 2,
+        "failed": 0,
+        "mean_cate_mse": 0.6547569337061643,
+        "mean_root_pehe": 0.7922456550544924,
+        "mean_scope": "successful cells only; descriptive when coverage is incomplete",
+        "missing": 0,
+        "root_mean_mse": 0.8091705220200278,
+        "successful": 2
+      }
+    }
+  },
+  "scope": "smoke/development-inspected; two-seed quickstart, no method-ranking claim",
+  "source_fingerprint": "26dbaa4afbbfa92ad57a86bc6f74d0a6a635d9ece0795d1f623f2f73ff30cc77",
+  "status": "complete",
+  "uncertainty_unit": "independent seed block; scenarios averaged within each seed"
+}

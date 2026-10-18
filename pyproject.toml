@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=77", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "obs-rct-benchmark"
+version = "0.1.0a0"
+description = "Role-separated simulation benchmark for observational and randomized CATE learning"
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+dependencies = ["numpy>=1.24,<3"]
+
+[project.optional-dependencies]
+baselines = ["scikit-learn>=1.3,<2"]
+cornet = ["torch>=2,<3", "scikit-learn>=1.3,<2"]
+datafusionppi = ["dfppi @ git+https://github.com/CausalDataScience/DataFusionPPI.git@04c7f3447b02fa09f875e68e8c47100a7207d546"]
+test = ["pytest>=8,<10", "scikit-learn>=1.3,<2"]
+
+[project.scripts]
+obs-rct-benchmark = "obs_rct_benchmark.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"

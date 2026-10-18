@@ -1,0 +1,212 @@
+{
+  "config": {
+    "method_options": {
+      "cornet_official": {
+        "correction_epochs": 5,
+        "source_epochs": 5,
+        "width": 8
+      }
+    },
+    "run": {
+      "methods": [
+        "rct_t_ridge",
+        "datafusionppi",
+        "cornet_official"
+      ],
+      "reference_method": "rct_t_ridge",
+      "scope": "smoke/development-inspected; reduced CorNet optimization (5+5 epochs), no scientific ranking",
+      "seeds": [
+        0,
+        1
+      ]
+    },
+    "scenarios": [
+      {
+        "id": "M0",
+        "kind": "structural",
+        "parameters": {
+          "n_eval": 128,
+          "n_obs": 120,
+          "n_rct_test": 30,
+          "n_rct_train": 60,
+          "n_rct_tune": 30
+        }
+      },
+      {
+        "id": "experimental_grounding_kps",
+        "kind": "paper",
+        "parameters": {
+          "n_eval": 128,
+          "n_obs": 120,
+          "n_rct_test": 30,
+          "n_rct_train": 60,
+          "n_rct_tune": 30
+        }
+      }
+    ],
+    "schema_version": 1
+  },
+  "config_hash": "20e889f2638883539deba52efa692ba530b75ed1a88a3141c2ee142a51568672",
+  "created_utc": "2026-10-18T04:22:01.397210+00:00",
+  "custom_methods": {},
+  "custom_provenance_policy": "author-supplied identifiers; custom source is not automatically verified",
+  "environment": {
+    "implementation": "CPython",
+    "machine": "x86_64",
+    "packages": {
+      "dfppi": "0.1.0",
+      "numpy": "1.26.4",
+      "obs-rct-benchmark": "0.1.0a0",
+      "scikit-learn": "1.5.2",
+      "scipy": "1.14.1",
+      "torch": "2.2.2"
+    },
+    "python": "3.11.16",
+    "system": "Linux"
+  },
+  "external_methods": {
+    "cornet_official": {
+      "availability": "available",
+      "declared_git_revision": "38b9c37d5a86bc87950945d6ddb1ceb5354a45ba",
+      "expected_revision": "38b9c37d5a86bc87950945d6ddb1ceb5354a45ba",
+      "extra_import_files": [],
+      "package_file_sha256": {
+        "model/functions.py": "5eda20f55c31c69968f6dc40a8ad2973482421c16b61ca0b1b47efcf49e5685e",
+        "model/helper.py": "f18e6e7eed78cd25896e9344a470f8c35be888a14eb3831a3bbf6acb307000ac",
+        "model/models.py": "31ff1086ca97fe729cff320338da3e3dd619bb879668e46de94c5bea4366826a",
+        "simulation_studies/simdata.py": "07576aabc15e490fa60595b1cdf3c3631eb60dd5344c14a5d3cbde06a9fa4541"
+      },
+      "tracked_changes": false,
+      "verified": true
+    },
+    "datafusionppi": {
+      "availability": "installed",
+      "declared_git_revision": "04c7f3447b02fa09f875e68e8c47100a7207d546",
+      "expected_revision": "04c7f3447b02fa09f875e68e8c47100a7207d546",
+      "import_resolution": "verified_distribution",
+      "installed_version": "0.1.0",
+      "matches_pinned_source": true,
+      "package_file_sha256": {
+        "__init__.py": "bd8c261da5b96a34d49509049428f8907a98f52901010c9c66548b3592ac9aec",
+        "__main__.py": "13a1a5b340cdcfc1902b62be90e508c7c71886000d5bf087e7854aadf09fb35e",
+        "aipwf.py": "0f86537af38af6c3c3f62b43cee3b7f7ea4fec160423cdd221e93e6dc1924c55",
+        "api.py": "87d7add83dde597be18fc4cd2968e08e67032d21248e8c3969a3dcf61aa48965",
+        "cli.py": "be1e3246ab9a4f34223a08c2e0e6dc16b7133b111c2bf3a21709ecf7f83404d3",
+        "crossfit.py": "42fd6e1b863f2bbaab25b52ec1f82a513829d2e44e9d1d08d3d7291ce334415f",
+        "drf.py": "af6655a43c5b825d928d64344ae8d081871b21851701aefb94eb0128e7336e05",
+        "method.py": "9606ccb2e0581beb5c573d2b774635da04481a801b9430fb4a2abb96683c7e4e",
+        "rf.py": "9588f094cf2475e71496f4a2aa485d2ffeb0c98919d35d807b25c73b2db0b0ac"
+      }
+    }
+  },
+  "interpretation": "development smoke example; not a method-ranking study",
+  "resolved_scenarios": {
+    "paper:experimental_grounding_kps": {
+      "config": {
+        "cornet_delta_rms": 2.0,
+        "cornet_outcome_norm": 10.0,
+        "cornet_sparse_ratio": 0.666,
+        "cvci_obs_propensity": 0.2,
+        "cvci_te_bias": 0.3,
+        "cvci_true_te": 0.5,
+        "d": 1,
+        "elastic_mean_x": 1.0,
+        "elastic_rct_selection_intercept": -4.5,
+        "elastic_tlocalpar": 2.0,
+        "int_r_cf": 0.75,
+        "int_r_confounding_strength": 2.5,
+        "int_r_rct_selection_intercept": 7.0,
+        "int_r_zero_cate_coefficients": 1,
+        "kps_kappa": 0.5,
+        "kps_nu0": -0.25,
+        "kps_nu1": 0.25,
+        "mechanism_seed": 2025,
+        "n_eval": 128,
+        "n_obs": 120,
+        "n_rct_test": 30,
+        "n_rct_train": 60,
+        "n_rct_tune": 30,
+        "name": "paper:experimental_grounding_kps",
+        "noise_std": 0.5,
+        "paper_id": "experimental_grounding_kps",
+        "power_copula_intercept": 1.0,
+        "power_copula_treatment_coef": 2.5,
+        "power_omega": 0.5,
+        "power_u_distribution": "binary",
+        "quadrature_order": 31
+      },
+      "generator_version": "2.0.0"
+    },
+    "structural:M0": {
+      "config": {
+        "bias_geometry": "constant",
+        "bias_min": 1.0,
+        "cate_alignment": "orthogonal",
+        "cate_geometry": "smooth",
+        "cate_scale": 1.0,
+        "clean_fraction": 0.5,
+        "confounding_coordinate_offset": 0,
+        "confounding_outcome_0": 1.0,
+        "confounding_outcome_1": 1.0,
+        "confounding_treatment": 0.0,
+        "covariate_marginals": "gaussian",
+        "covariate_rho": 0.0,
+        "d": 5,
+        "hidden_distribution": "normal",
+        "hidden_outcome_correlation": 1.0,
+        "mechanism": "M0",
+        "n_eval": 128,
+        "n_obs": 120,
+        "n_rct_test": 30,
+        "n_rct_train": 60,
+        "n_rct_tune": 30,
+        "n_target_reference": 0,
+        "name": "structural:M0",
+        "noise_distribution": "normal",
+        "noise_heteroskedasticity": 0.0,
+        "noise_std": 1.0,
+        "obs_baseline_shift": 0.0,
+        "obs_cate_shift": 0.0,
+        "obs_covariate_shift": 0.0,
+        "obs_selection_strength": 0.0,
+        "outcome_geometry": "smooth",
+        "participation_outcome_loading_0": 0.0,
+        "participation_outcome_loading_1": 0.0,
+        "propensity_floor": 0.01,
+        "quadrature_order": 21,
+        "rct_covariate_shift": 0.0,
+        "rct_hidden_selection_strength": 0.0,
+        "rct_propensity": 0.5,
+        "rct_selection_strength": 0.0,
+        "resolvability": 1.0,
+        "signal_basis": "axis_aligned",
+        "signal_seed": 2025,
+        "source_shift_geometry": "smooth",
+        "treatment_linear_scale": 1.0,
+        "treatment_nonlinearity": 0.0,
+        "u_predictability": 0.0
+      },
+      "generator_version": "2.0.0"
+    }
+  },
+  "run_id": "20e889f263888353",
+  "schema_version": 1,
+  "scope": "smoke/development-inspected; reduced CorNet optimization (5+5 epochs), no scientific ranking",
+  "source": {
+    "aggregate_sha256": "27ca3aeb09fffd173e6c3a794bd4ab5d8a12a769a92cfccb90741aeb33aba6d0",
+    "distribution": "obs-rct-benchmark",
+    "package_file_sha256": {
+      "__init__.py": "8f034963ef6fe43e5f71461b0da8a0f1b2df6dd9c82518a5b46793eeceda3eea",
+      "cli.py": "11fe631d02aa9d519f26d510a8b6d14e37a821df6dc23d57d077a36f8e0eada2",
+      "cornet.py": "3ccd76509d2965ea8451da9e279a7f3c8780873c5c24625f380d3c9b719b83bf",
+      "data.py": "616958669558c6ed274709b17d683f06c18b0f0606d7fcbc8a5485919f744573",
+      "evaluation.py": "b66a7c0dabdb0a31aa20ef70a1744c29da6007fea438ffba33e52e35796faca9",
+      "methods.py": "e32db3213bba4ece5429f0358eed3a402e84674a8bf53378648bec0319fe97bb",
+      "paper_dgp.py": "77bb899367e6ce8d12ee127b4ff6deb833215e90a707bb0f35c9aacf55f6a3f2",
+      "runner.py": "08d50000ebcc81c5afa64aebfba6fbefda5535c698d27d2bdc97ccd6dd86d4d3",
+      "structural_dgp.py": "49c94e6e5c6725d942a15a122344b03a3bd8174a131cbee0304f3a5e5994bdf4"
+    },
+    "version": "0.1.0a0"
+  },
+  "source_fingerprint": "4f50842ba6c04680c6ddbc0d03ba9fda96c260785d362cc85d8d2a26453bc803"
+}
