@@ -26,8 +26,10 @@ The file-adapter recipe uses entirely invented records in IHDP/ACIC-compatible f
 
 ## Reproduce and interpret
 
+The five [notebook tutorials](../notebooks/README.md) were additionally executed on 2026-10-18 in separate fresh kernels: **47 code cells and 11 figures**, without cell errors. Execution took 15 seconds after dependency installation, with one CPU worker/thread and no GPU. The 126 core tests also passed with the notebook dependencies installed. All figures were visually inspected. [Execution evidence](../notebooks/execution.json) binds source-cell hashes and records counts/times; the optional real-data branches remain disabled and unverified by this run.
+
 Install the extras and external checkout described in the main README. Run `python -m pytest`, `python scripts/check_release.py`, and each configuration or example above into a fresh output directory. Add `--resume` to a completed configured run to check record reuse. The synthetic-file example checks its own completed-run resume. Optional CorNet execution is skipped by its integration test if the external checkout is absent; the reference run included it.
 
-The GitHub Actions workflow covers core tests, the fixed catalog, Gamma profiles and synthetic-file integration. Its external actions are pinned to commits. Optional official integration additionally requires the dependencies and checkout documented in the README.
+The GitHub Actions workflow covers core tests, the fixed catalog, Gamma profiles, synthetic-file integration and execution of every default notebook. Its external actions are pinned to commits. Optional official integration additionally requires the dependencies and checkout documented in the README.
 
 Tests combine broad consistency checks and independent analytic examples. They do not independently verify every custom quadrature, mixture, selection or user callback. Extreme settings can fail explicit numerical or sampling constraints. These designs provide controlled mechanisms; they do not empirically validate assumptions in a real population.

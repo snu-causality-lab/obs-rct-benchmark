@@ -1,0 +1,35 @@
+{
+  "scope": "default synthetic tutorial cells; optional external data disabled",
+  "notebooks": {
+    "01_first_comparison.ipynb": {
+      "code_cells": 7,
+      "png_figures": 3,
+      "source_cell_sha256": "fff61be80929732e87c81bad9b12ed7f37763245e5a71dcbf83ad6591f76c5c9",
+      "elapsed_seconds": 4.534
+    },
+    "02_gamma_and_assumptions.ipynb": {
+      "code_cells": 10,
+      "png_figures": 3,
+      "source_cell_sha256": "adcf6cc775a869a468de23d9c313a09e041bb099fcb9ebad7e41a922ff555bfe",
+      "elapsed_seconds": 2.044
+    },
+    "03_empirical_covariates.ipynb": {
+      "code_cells": 11,
+      "png_figures": 2,
+      "source_cell_sha256": "9af38cfd0bc919c6e1cc22e4a5f87b4aa05fa72c7fe26364723c1ee583430655",
+      "elapsed_seconds": 1.732
+    },
+    "04_custom_method_and_reproducibility.ipynb": {
+      "code_cells": 13,
+      "png_figures": 2,
+      "source_cell_sha256": "0fb526e31bb95c97c8b88c86368b96b860706b3b7c7f24a8e895b2b498848fd0",
+      "elapsed_seconds": 2.504
+    },
+    "05_multisource_identification.ipynb": {
+      "code_cells": 6,
+      "png_figures": 1,
+      "source_cell_sha256": "3994aa27efb05bc175a7c91d8e31e2a37dd2e1cc82c6e73e1c2402df1cf890b5",
+      "elapsed_seconds": 1.563
+    }
+  }
+}

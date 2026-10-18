@@ -38,6 +38,18 @@ For empirical benchmark provenance, see Hill (2011), [Bayesian Nonparametric Mod
 
 For benchmark-design background, Curth and van der Schaar (2021), [Doing Great at Estimating CATE? On the Neglected Assumptions in Benchmark Comparisons of Treatment Effect Estimators](https://arxiv.org/abs/2107.13346v1), examines how IHDP/ACIC2016 data-generation assumptions interact with estimator comparisons.
 
+## Learn with notebooks
+
+Start with the [executed notebook tutorials](notebooks/README.md). They combine editable controls, explanations, plots and small checks:
+
+1. [First comparison](notebooks/01_first_comparison.ipynb): generate OBS/RCT samples, compare fixed baselines and interpret CATE/region errors.
+2. [Gamma and assumptions](notebooks/02_gamma_and_assumptions.ipynb): separate hidden treatment selection, outcome loadings and source shifts.
+3. [Empirical covariates](notebooks/03_empirical_covariates.ipynb): understand masking, coarsening and displayed-X targets; optionally connect your IHDP/ACIC files.
+4. [Custom methods and reproducibility](notebooks/04_custom_method_and_reproducibility.ipynb): add an estimator, read paired comparisons, preserve failures and resume runs.
+5. [Multi-source identification](notebooks/05_multisource_identification.ipynb): enumerate a counterexample where complementary RCT covariates do not identify joint CATE. This is a mathematical tutorial; the package's current source contract is unchanged.
+
+Install `python -m pip install -e '.[baselines,notebooks]'` for JupyterLab and execution dependencies. The default notebooks use synthetic data and include stored outputs; no external dataset or official method checkout is needed. Their small runs are teaching examples, not method-ranking evidence.
+
 ## Quick start
 
 Python 3.11 or newer is required. The core generators use NumPy; the baseline extra adds scikit-learn.

@@ -16,7 +16,7 @@ import sys
 ROOT = Path(__file__).resolve().parents[1]
 ALLOWED_ROOTS = {
     ".github", ".gitignore", "src", "tests", "docs", "configs", "examples",
-    "scripts", "results", "README.md", "LICENSE", "CONTRIBUTING.md",
+    "scripts", "results", "notebooks", "README.md", "LICENSE", "CONTRIBUTING.md",
     "CITATION.cff", "THIRD_PARTY_NOTICES.md", "sources.lock.toml",
     "pyproject.toml", "MANIFEST.in",
 }
@@ -28,7 +28,7 @@ PATH_PATTERNS = [
     re.compile(r"AKIA[0-9A-Z]{16}"),
     re.compile(r"-----BEGIN (?:[A-Z]+ )?PRIVATE KEY-----"),
 ]
-PUBLIC_EXTERNAL_IMPORTS = {"numpy", "scipy", "sklearn", "torch", "dfppi", "pytest"}
+PUBLIC_EXTERNAL_IMPORTS = {"numpy", "scipy", "sklearn", "torch", "dfppi", "pytest", "nbclient", "nbformat", "jupyter_client"}
 
 
 def candidate_files():

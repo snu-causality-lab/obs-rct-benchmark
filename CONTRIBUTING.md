@@ -9,3 +9,5 @@ A method receives only the observed training view. Use fixed declared settings o
 Result contributions need the executed configuration, source version, package versions, expected and completed IDs, failures and an explicit metric definition. Preserve paired replicate IDs. Report missingness before ranking methods. Keep datasets, model checkpoints and large output arrays outside Git.
 
 Before submitting a change, run `python -m pytest` and `python scripts/check_release.py`. Optional upstream integrations have separate dependency requirements described in the README. Test the smallest relevant path first; schedule substantial experiments on appropriate compute resources.
+
+For tutorial changes, install the `notebooks` extra and run `python scripts/execute_notebooks.py --output-dir outputs/executed-notebooks`. Review the newly executed outputs before replacing the committed notebooks. Keep default cells self-contained and small, mark evaluator-only truth, and leave external datasets disabled by default. The [tutorial guide](notebooks/README.md) explains the learning paths and execution evidence.
