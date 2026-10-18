@@ -4384,7 +4384,7 @@
     }
   },
   "scope": "smoke/development-inspected; all 31 DGPs at two seeds, no method-ranking claim",
-  "source_fingerprint": "ca48c7b87575f4777418176d7561ad0943e7ecccc8b54c0486e49b06f3b15b4d",
+  "source_fingerprint": "6f44c1f1ef87d5a79038e8f2f4f4f12dc431d1de701cd38151db55459b7f41bb",
   "status": "complete",
   "uncertainty_unit": "independent seed block; scenarios averaged within each seed"
 }

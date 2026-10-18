@@ -313,7 +313,7 @@
     }
   },
   "scope": "smoke/development-inspected; reduced CorNet optimization (5+5 epochs), no scientific ranking",
-  "source_fingerprint": "4f50842ba6c04680c6ddbc0d03ba9fda96c260785d362cc85d8d2a26453bc803",
+  "source_fingerprint": "617191e75a8fd8ae6c6f4c1c68401dc04532357562219cb2da049d324741a70a",
   "status": "complete",
   "uncertainty_unit": "independent seed block; scenarios averaged within each seed"
 }

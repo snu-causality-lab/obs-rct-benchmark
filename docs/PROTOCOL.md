@@ -11,8 +11,8 @@ Each replicate generates independent role draws from a fixed mechanism. A `Sourc
 | `obs_train` | Yes | Observational fitting data |
 | `rct_train` | Yes | Trial fitting data with known randomization probability |
 | `rct_tune` | Yes | Independent trial data for declared tuning rules |
-| `target_reference` | Optional, covariates only | Independent target-law covariates when explicitly requested by a structural configuration |
-| `rct_test` | No | Held-out factual diagnostics; never estimator or hyperparameter selection |
+| `target_reference` | Optional, covariates only | Independent target-law covariates when `n_target_reference>0` in a supporting structural, Gamma or empirical configuration; absent by default |
+| `rct_test` | No | Reserved for held-out factual diagnostics; unused by the current CATE score and never estimator or hyperparameter selection |
 | `eval_X` | Covariates passed for prediction | Independent target-law evaluation rows |
 | `eval_tau`, `SimulationTruth` | No | Evaluator-only CATE and mechanism truth |
 

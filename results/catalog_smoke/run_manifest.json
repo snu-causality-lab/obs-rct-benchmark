@@ -361,16 +361,17 @@
     "schema_version": 1
   },
   "config_hash": "9c4f34f6200dc15e0af5ad448daa4ce3f362aa1c2ddc26254bfdf0090042393b",
-  "created_utc": "2026-10-18T04:21:57.839655+00:00",
+  "created_utc": "2026-10-18T04:49:19.299234+00:00",
   "custom_methods": {},
   "custom_provenance_policy": "author-supplied identifiers; custom source is not automatically verified",
+  "empirical_inputs": {},
   "environment": {
     "implementation": "CPython",
     "machine": "x86_64",
     "packages": {
       "dfppi": "0.1.0",
       "numpy": "1.26.4",
-      "obs-rct-benchmark": "0.1.0a0",
+      "obs-rct-benchmark": "0.1.0a1",
       "scikit-learn": "1.5.2",
       "scipy": "1.14.1",
       "torch": "2.2.2"
@@ -1832,20 +1833,23 @@
   "schema_version": 1,
   "scope": "smoke/development-inspected; all 31 DGPs at two seeds, no method-ranking claim",
   "source": {
-    "aggregate_sha256": "27ca3aeb09fffd173e6c3a794bd4ab5d8a12a769a92cfccb90741aeb33aba6d0",
+    "aggregate_sha256": "3f4948b414f0d1a13fcb99e861040f4f53f5fa90cc47d3f370970f2c944c95ac",
     "distribution": "obs-rct-benchmark",
     "package_file_sha256": {
-      "__init__.py": "8f034963ef6fe43e5f71461b0da8a0f1b2df6dd9c82518a5b46793eeceda3eea",
+      "__init__.py": "064ee1c986600e477d8fc2819a4d8438a3dec0d354cb84387a524693648cc9c6",
       "cli.py": "11fe631d02aa9d519f26d510a8b6d14e37a821df6dc23d57d077a36f8e0eada2",
       "cornet.py": "3ccd76509d2965ea8451da9e279a7f3c8780873c5c24625f380d3c9b719b83bf",
       "data.py": "616958669558c6ed274709b17d683f06c18b0f0606d7fcbc8a5485919f744573",
+      "datasets.py": "c05090977b6513bfced49baafad77340c113f631af15ea062b4f7f035496825a",
       "evaluation.py": "b66a7c0dabdb0a31aa20ef70a1744c29da6007fea438ffba33e52e35796faca9",
+      "inputs.py": "be3d6e327cc092c33f465c1e14baae74fc9d5e2077e2511a4b293af3f899c0db",
       "methods.py": "e32db3213bba4ece5429f0358eed3a402e84674a8bf53378648bec0319fe97bb",
       "paper_dgp.py": "77bb899367e6ce8d12ee127b4ff6deb833215e90a707bb0f35c9aacf55f6a3f2",
-      "runner.py": "08d50000ebcc81c5afa64aebfba6fbefda5535c698d27d2bdc97ccd6dd86d4d3",
+      "runner.py": "97c4f783935a773a3326efa6de9d8683eae5299429aab9b9281c4ad00399a593",
+      "sensitivity.py": "f684b08c65a129d43df6a1acfba36e43d71ee072e92e2fcfdaaf27de8a6e134f",
       "structural_dgp.py": "49c94e6e5c6725d942a15a122344b03a3bd8174a131cbee0304f3a5e5994bdf4"
     },
-    "version": "0.1.0a0"
+    "version": "0.1.0a1"
   },
-  "source_fingerprint": "ca48c7b87575f4777418176d7561ad0943e7ecccc8b54c0486e49b06f3b15b4d"
+  "source_fingerprint": "6f44c1f1ef87d5a79038e8f2f4f4f12dc431d1de701cd38151db55459b7f41bb"
 }

@@ -29,3 +29,5 @@ jobs:
       - run: python scripts/check_release.py
       - run: python -m pytest
       - run: obs-rct-benchmark run --config configs/smoke.toml --output outputs/ci-smoke
+      - run: obs-rct-benchmark run --config configs/gamma_smoke.toml --output outputs/ci-gamma
+      - run: python examples/run_synthetic_file_smoke.py --output outputs/ci-file-fixtures

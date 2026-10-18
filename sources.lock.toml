@@ -1,6 +1,6 @@
 schema_version = 1
 checked_at = "2026-10-18"
-scope = "Public primary sources for mathematical DGP translations and an optional external method adapter. No third-party code or datasets are vendored."
+scope = "Public primary sources for mathematical DGP translations, sensitivity-model definitions, optional external method adapters, and user-supplied dataset provenance. No third-party code or datasets are vendored."
 
 # This is a provenance lock, not a complete Python or R environment lock.
 # An omitted license is never interpreted as permission to redistribute code.
@@ -147,6 +147,20 @@ support_file_sha256 = "7ca01d84accab6e732f57b28fe0c00ad11a7ebcd148943be3ad3b8678
 use = "Equation reference only; upstream code not vendored."
 
 [[source]]
+id = "datafusion_ppi_paper"
+kind = "paper"
+title = "Prediction-Powered Data Fusion for Treatment Effect Estimation"
+authors = ["Yonghan Jung", "Shu Yang"]
+year = 2026
+date = "2026-10-08"
+url = "https://arxiv.org/abs/2610.12332v1"
+arxiv = "2610.12332v1"
+pdf_url = "https://yonghanjung.me/assets/pdf/R_22.pdf"
+pdf_sha256 = "4ec7b007dc55c8084cb14300e4f09c2bbf0ba19c4afb944588a03a90ca9c6fb8"
+pdf_retrieved_at = "2026-10-18"
+use = "Primary reference for the optional official DataFusionPPI adapter; no DGP translation or PDF vendored."
+
+[[source]]
 id = "datafusion_ppi_official"
 kind = "optional-external-dependency"
 url = "https://github.com/CausalDataScience/DataFusionPPI.git"
@@ -159,3 +173,121 @@ license_sha256 = "9781ebab30b6e0f0389b7facd2f3d35a092074850519bc9a84f574f2b9e6ac
 entrypoint = "dfppi/api.py"
 entrypoint_sha256 = "87d7add83dde597be18fc4cd2968e08e67032d21248e8c3969a3dcf61aa48965"
 use = "Optional adapter calls the separately installed official package; no upstream code vendored."
+
+[[source]]
+id = "ihdp_hill_paper"
+kind = "paper"
+title = "Bayesian Nonparametric Modeling for Causal Inference"
+authors = ["Jennifer L. Hill"]
+year = 2011
+url = "https://www.tandfonline.com/doi/abs/10.1198/jcgs.2010.08162"
+doi = "10.1198/jcgs.2010.08162"
+venue = "Journal of Computational and Graphical Statistics 20(1):217–240"
+use = "Semi-synthetic IHDP benchmark provenance; paper and data not vendored."
+
+[[source]]
+id = "ihdp_original_archive"
+kind = "dataset-reference"
+title = "Infant Health and Development Program (IHDP): Enhancing the Outcomes of Low Birth Weight, Premature Infants in the United States, 1985-1988"
+authors = ["Ruth T. Gross"]
+distributor = "Inter-university Consortium for Political and Social Research"
+version = "2"
+date = "2024-02-14"
+doi = "10.3886/ICPSR09795.v2"
+url = "https://www.icpsr.umich.edu/web/HMCA/studies/9795/versions/V2"
+terms_url = "https://www.icpsr.umich.edu/sites/icpsr/about/policies/terms-of-use"
+redistribution_policy_url = "https://www.icpsr.umich.edu/sites/icpsr/about/policies/redistribution"
+license_status = "Public-use access under ICPSR terms; redistribution requires written agreement apart from specified institutional-representative and authorized-collaborator exceptions."
+use = "Original-study provenance only; no original records downloaded or redistributed."
+
+[[source]]
+id = "ihdp_cfrnet_npz"
+kind = "dataset-reference"
+url = "https://www.fredjo.com/"
+retrieval_page = "https://github.com/clinicalml/cfrnet#examples"
+reference_distributions = ["ihdp_npci_1-100.train.npz", "ihdp_npci_1-100.test.npz", "ihdp_npci_1-1000.train.npz.zip", "ihdp_npci_1-1000.test.npz.zip"]
+license_status = "No data-specific redistribution grant found on the inspected author download page or CFRNet README. CFRNet's MIT software license does not establish rights over separately hosted NPZ data."
+use = "User-supplied file-format reference only; no data downloaded or redistributed."
+
+[[source]]
+id = "ihdp_cevae_csv"
+kind = "dataset-reference"
+url = "https://github.com/AMLab-Amsterdam/CEVAE.git"
+revision = "9081f863e24ce21bd34c8d6a41bf0edc7d1b65dd"
+reference_files = ["README.md", "datasets.py", "datasets/IHDP/columns.txt"]
+license_status = "No license file or data-specific redistribution grant found at the inspected revision."
+use = "User-supplied file-format reference only; no data downloaded or redistributed."
+
+[[source]]
+id = "ihdp_npci_examples"
+kind = "dataset-reference"
+url = "https://github.com/vdorie/npci.git"
+revision = "ba08244f35575831d81990c505e70f4fc2e69d80"
+package_version = "0.1-0"
+package_license = "GPL-2.0-or-later"
+license_declaration = "DESCRIPTION"
+description_sha256 = "bbe15957e22c71674bfc04a0182915cddf014d92a0a221bce751e94cc17d2240"
+buildignore_sha256 = "1da0ebbaa977f5e278180a6a8a36d57493b378b8c0e54529d26d07afc97d4b86"
+reference_files = ["DESCRIPTION", ".Rbuildignore", "examples/ihdp_sim/README"]
+license_status = "Package declares GPL (>= 2); examples containing IHDP data are excluded from the built package. No separate grant for those data or underlying-archive permission found in inspected metadata."
+use = "Provenance and license-scope reference only; no data downloaded or redistributed."
+
+[[source]]
+id = "acic2016_dorie_paper"
+kind = "paper"
+title = "Automated versus Do-It-Yourself Methods for Causal Inference: Lessons Learned from a Data Analysis Competition"
+authors = ["Vincent Dorie", "Jennifer Hill", "Uri Shalit", "Marc Scott", "Dan Cervone"]
+year = 2019
+url = "https://doi.org/10.1214/18-STS667"
+doi = "10.1214/18-STS667"
+venue = "Statistical Science 34(1):43–68"
+preprint_url = "https://arxiv.org/abs/1707.02641v5"
+use = "ACIC2016 benchmark provenance; paper and data not vendored."
+
+[[source]]
+id = "acic2016_official_package"
+kind = "dataset-and-generator-reference"
+url = "https://github.com/vdorie/aciccomp.git"
+revision = "282d26659b2d3d6fd060dde6d32feeb8f1e8ab5a"
+subdirectory = "2016"
+distribution = "aciccomp2016"
+version = "0.1-0"
+license = "GPL-2.0-or-later"
+license_declaration = "2016/DESCRIPTION"
+description_sha256 = "7f655b5f61a921624a417b71d255eee55fbe1bd3d6f16cb70f5c4a958ef08d5f"
+readme_sha256 = "b3f1ec82378ea22ca5b864d8bdcfbec9f6f12d2acf155b28c731df9901fe3308"
+input_documentation_sha256 = "15a0496d2ba7dcb4fee46e8df0152cc5581d1abcaa13698881bd8add239ca8af"
+reference_files = ["2016/DESCRIPTION", "2016/README.md", "2016/.Rbuildignore", "2016/man/input_2016.Rd", "2016/man/dgp_2016.Rd"]
+license_status = "Organizer package explicitly declares GPL (>= 2), contains input_2016 data and simulator, and has no separate data-license exception in inspected package metadata. This declaration is not treated as terms for every external ACIC2016 mirror."
+original_covariate_source = "https://www.archives.gov/research/electronic-records/nih.html"
+use = "User-supplied file-format and provenance reference only; no package code or data downloaded or redistributed."
+
+[[source]]
+id = "acic2016_official_archive_page"
+kind = "dataset-reference"
+url = "https://jenniferhill7.wixsite.com/acic-2016/competition"
+release_date = "2017-05-22"
+license_status = "Organizer page links a full Google Drive data archive but states no redistribution license. Archive not downloaded; any internal terms remain unverified."
+use = "Distribution-scope reference only; no archive or data downloaded or redistributed."
+
+[[source]]
+id = "marginal_sensitivity_definition"
+kind = "paper"
+title = "Sensitivity Analysis for Inverse Probability Weighting Estimators via the Percentile Bootstrap"
+authors = ["Qingyuan Zhao", "Dylan S. Small", "Bhaswar B. Bhattacharya"]
+year = 2019
+url = "https://academic.oup.com/jrsssb/article/81/4/735/7048357"
+doi = "10.1111/rssb.12327"
+venue = "Journal of the Royal Statistical Society Series B: Statistical Methodology 81(4):735–761"
+use = "Marginal sensitivity model definition and attribution; the benchmark's fair-binary-hidden DGP construction is original and no source code or paper is vendored."
+
+[[source]]
+id = "cate_benchmark_design_background"
+kind = "paper"
+title = "Doing Great at Estimating CATE? On the Neglected Assumptions in Benchmark Comparisons of Treatment Effect Estimators"
+authors = ["Alicia Curth", "Mihaela van der Schaar"]
+year = 2021
+url = "https://arxiv.org/abs/2107.13346v1"
+arxiv = "2107.13346v1"
+venue = "Workshop on the Neglected Assumptions in Causal Inference at ICML 2021"
+use = "Benchmark-design background on IHDP/ACIC2016 assumptions and estimator comparisons; not an additional translated DGP or method adapter."

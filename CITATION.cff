@@ -1,8 +1,8 @@
 cff-version: 1.2.0
-message: "Please cite this software and the primary papers for any DGP variants you use. See docs/PAPER_DGPS.md for translation details."
+message: "Please cite this software and the primary papers for the designs, methods and datasets you use. See README.md and docs/DATASETS.md for references."
 type: software
 title: "OBS–RCT Benchmark"
-version: 0.1.0a0
+version: 0.1.0a1
 abstract: "An unreleased benchmark candidate for comparing treatment-effect estimators using observational and randomized data, with structural mechanisms and documented translations of published simulation mechanisms."
 authors:
   - family-names: Lee
@@ -75,3 +75,60 @@ references:
       - {family-names: Imbens, given-names: Guido W.}
     year: 2025
     url: "https://arxiv.org/abs/2511.00727v1"
+  - type: article
+    title: "Prediction-Powered Data Fusion for Treatment Effect Estimation"
+    authors:
+      - {family-names: Jung, given-names: Yonghan}
+      - {family-names: Yang, given-names: Shu}
+    year: 2026
+    url: "https://arxiv.org/abs/2610.12332v1"
+  - type: article
+    title: "Bayesian Nonparametric Modeling for Causal Inference"
+    authors:
+      - {family-names: Hill, given-names: Jennifer L.}
+    year: 2011
+    journal: "Journal of Computational and Graphical Statistics"
+    volume: 20
+    issue: 1
+    start: 217
+    end: 240
+    doi: "10.1198/jcgs.2010.08162"
+    url: "https://www.tandfonline.com/doi/abs/10.1198/jcgs.2010.08162"
+  - type: article
+    title: "Automated versus Do-It-Yourself Methods for Causal Inference: Lessons Learned from a Data Analysis Competition"
+    authors:
+      - {family-names: Dorie, given-names: Vincent}
+      - {family-names: Hill, given-names: Jennifer}
+      - {family-names: Shalit, given-names: Uri}
+      - {family-names: Scott, given-names: Marc}
+      - {family-names: Cervone, given-names: Dan}
+    year: 2019
+    journal: "Statistical Science"
+    volume: 34
+    issue: 1
+    start: 43
+    end: 68
+    doi: "10.1214/18-STS667"
+    url: "https://doi.org/10.1214/18-STS667"
+  - type: article
+    title: "Sensitivity Analysis for Inverse Probability Weighting Estimators via the Percentile Bootstrap"
+    authors:
+      - {family-names: Zhao, given-names: Qingyuan}
+      - {family-names: Small, given-names: Dylan S.}
+      - {family-names: Bhattacharya, given-names: Bhaswar B.}
+    year: 2019
+    journal: "Journal of the Royal Statistical Society Series B: Statistical Methodology"
+    volume: 81
+    issue: 4
+    start: 735
+    end: 761
+    doi: "10.1111/rssb.12327"
+    url: "https://academic.oup.com/jrsssb/article/81/4/735/7048357"
+  - type: conference-paper
+    title: "Doing Great at Estimating CATE? On the Neglected Assumptions in Benchmark Comparisons of Treatment Effect Estimators"
+    authors:
+      - {family-names: Curth, given-names: Alicia}
+      - {family-names: van der Schaar, given-names: Mihaela}
+    year: 2021
+    collection-title: "Workshop on the Neglected Assumptions in Causal Inference at ICML"
+    url: "https://arxiv.org/abs/2107.13346v1"

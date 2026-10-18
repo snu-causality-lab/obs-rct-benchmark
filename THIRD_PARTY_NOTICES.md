@@ -18,4 +18,6 @@ The DGP implementations express mathematical mechanisms in the benchmark's data 
 
 Python runtime dependencies are installed separately under their own licenses. Installing the optional DataFusionPPI dependency obtains its source from its public upstream. Its license notice must accompany any later redistribution of that package or substantial portions of its source. No permission to bundle an upstream paper or dataset follows from this inventory.
 
+IHDP and ACIC adapters load separately obtained files without redistributing them. Their exact distributions and different license/redistribution evidence are documented in [DATASETS.md](docs/DATASETS.md). That table distinguishes access to IHDP data, linked semi-synthetic files and the GPL-licensed ACIC2016 package distribution.
+
 Any contribution that copies third-party code or bundles data must add its origin, exact version, applicable license, required notices, and distribution permission before inclusion. If permission cannot be established, retain a citation and write an equation translation or provide an external installation step.

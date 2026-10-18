@@ -1,0 +1,162 @@
+{
+  "config": {
+    "method_options": {},
+    "run": {
+      "methods": [
+        "rct_t_ridge",
+        "obs_t_ridge",
+        "naive_pooled_t_ridge",
+        "rct_dr_ridge"
+      ],
+      "reference_method": "rct_t_ridge",
+      "scope": "smoke/development-inspected; two Gamma profiles, no method-ranking claim",
+      "seeds": [
+        0,
+        1
+      ]
+    },
+    "scenarios": [
+      {
+        "id": "constant",
+        "kind": "gamma",
+        "parameters": {
+          "gamma": 3.0,
+          "hidden_loading0": 0.4,
+          "hidden_loading1": 1.0,
+          "n_eval": 128,
+          "n_obs": 120,
+          "n_rct_test": 30,
+          "n_rct_train": 60,
+          "n_rct_tune": 30
+        }
+      },
+      {
+        "id": "logistic",
+        "kind": "gamma",
+        "parameters": {
+          "bias_direction": -1,
+          "cate_complexity": "interaction",
+          "gamma": 5.0,
+          "gamma_min": 1.0,
+          "gamma_slope": 1.5,
+          "hidden_loading0": 0.4,
+          "hidden_loading1": 1.0,
+          "n_eval": 128,
+          "n_obs": 120,
+          "n_rct_test": 30,
+          "n_rct_train": 60,
+          "n_rct_tune": 30
+        }
+      }
+    ],
+    "schema_version": 1
+  },
+  "config_hash": "a07767025bfb9bc6118609e0a49fcc696a2ed57eb462a1254e125216f34d8db3",
+  "created_utc": "2026-10-18T04:49:26.388047+00:00",
+  "custom_methods": {},
+  "custom_provenance_policy": "author-supplied identifiers; custom source is not automatically verified",
+  "empirical_inputs": {},
+  "environment": {
+    "implementation": "CPython",
+    "machine": "x86_64",
+    "packages": {
+      "dfppi": "0.1.0",
+      "numpy": "1.26.4",
+      "obs-rct-benchmark": "0.1.0a1",
+      "scikit-learn": "1.5.2",
+      "scipy": "1.14.1",
+      "torch": "2.2.2"
+    },
+    "python": "3.11.16",
+    "system": "Linux"
+  },
+  "external_methods": {},
+  "interpretation": "development smoke example; not a method-ranking study",
+  "resolved_scenarios": {
+    "gamma:constant": {
+      "config": {
+        "bias_direction": 1,
+        "cate_complexity": "smooth",
+        "cate_scale": 1.0,
+        "d": 5,
+        "gamma": 3.0,
+        "gamma_intercept": 0.0,
+        "gamma_min": 1.0,
+        "gamma_profile": "constant",
+        "gamma_slope": 1.0,
+        "hidden_loading0": 0.4,
+        "hidden_loading1": 1.0,
+        "n_eval": 128,
+        "n_obs": 120,
+        "n_rct_test": 30,
+        "n_rct_train": 60,
+        "n_rct_tune": 30,
+        "n_target_reference": 0,
+        "name": "gamma:constant",
+        "noise_std": 1.0,
+        "obs_baseline_shift": 0.0,
+        "obs_cate_shift": 0.0,
+        "obs_covariate_shift": 0.0,
+        "observed_overlap": 0.5,
+        "propensity_floor": 0.02,
+        "rct_covariate_shift": 0.0,
+        "rct_propensity": 0.5
+      },
+      "generator_version": "1.0.0"
+    },
+    "gamma:logistic": {
+      "config": {
+        "bias_direction": -1,
+        "cate_complexity": "interaction",
+        "cate_scale": 1.0,
+        "d": 5,
+        "gamma": 5.0,
+        "gamma_intercept": 0.0,
+        "gamma_min": 1.0,
+        "gamma_profile": "logistic",
+        "gamma_slope": 1.5,
+        "hidden_loading0": 0.4,
+        "hidden_loading1": 1.0,
+        "n_eval": 128,
+        "n_obs": 120,
+        "n_rct_test": 30,
+        "n_rct_train": 60,
+        "n_rct_tune": 30,
+        "n_target_reference": 0,
+        "name": "gamma:logistic",
+        "noise_std": 1.0,
+        "obs_baseline_shift": 0.0,
+        "obs_cate_shift": 0.0,
+        "obs_covariate_shift": 0.0,
+        "observed_overlap": 0.5,
+        "propensity_floor": 0.02,
+        "rct_covariate_shift": 0.0,
+        "rct_propensity": 0.5
+      },
+      "generator_version": "1.0.0"
+    }
+  },
+  "run_id": "a07767025bfb9bc6",
+  "schema_version": 1,
+  "scope": "smoke/development-inspected; two Gamma profiles, no method-ranking claim",
+  "source": {
+    "aggregate_sha256": "3f4948b414f0d1a13fcb99e861040f4f53f5fa90cc47d3f370970f2c944c95ac",
+    "distribution": "obs-rct-benchmark",
+    "package_file_sha256": {
+      "__init__.py": "064ee1c986600e477d8fc2819a4d8438a3dec0d354cb84387a524693648cc9c6",
+      "cli.py": "11fe631d02aa9d519f26d510a8b6d14e37a821df6dc23d57d077a36f8e0eada2",
+      "cornet.py": "3ccd76509d2965ea8451da9e279a7f3c8780873c5c24625f380d3c9b719b83bf",
+      "data.py": "616958669558c6ed274709b17d683f06c18b0f0606d7fcbc8a5485919f744573",
+      "datasets.py": "c05090977b6513bfced49baafad77340c113f631af15ea062b4f7f035496825a",
+      "evaluation.py": "b66a7c0dabdb0a31aa20ef70a1744c29da6007fea438ffba33e52e35796faca9",
+      "inputs.py": "be3d6e327cc092c33f465c1e14baae74fc9d5e2077e2511a4b293af3f899c0db",
+      "methods.py": "e32db3213bba4ece5429f0358eed3a402e84674a8bf53378648bec0319fe97bb",
+      "paper_dgp.py": "77bb899367e6ce8d12ee127b4ff6deb833215e90a707bb0f35c9aacf55f6a3f2",
+      "runner.py": "97c4f783935a773a3326efa6de9d8683eae5299429aab9b9281c4ad00399a593",
+      "sensitivity.py": "f684b08c65a129d43df6a1acfba36e43d71ee072e92e2fcfdaaf27de8a6e134f",
+      "structural_dgp.py": "49c94e6e5c6725d942a15a122344b03a3bd8174a131cbee0304f3a5e5994bdf4"
+    },
+    "version": "0.1.0a1"
+  },
+  "source_fingerprint": "73d6927fa91583ad035b1d78b8738305debdaf918123918a65622c2c212ae889"
+}

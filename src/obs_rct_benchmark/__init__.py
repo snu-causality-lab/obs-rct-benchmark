@@ -23,8 +23,16 @@ from .structural_dgp import (
     make_structural_config,
     structural_truth_at,
 )
+from .sensitivity import (
+    GammaDGPConfig, construct_msm_propensities, gamma_truth_at,
+    generate_gamma_problem, msm_truth_at, sample_msm_source,
+)
+from .datasets import (
+    EmpiricalDGPConfig, EmpiricalPopulation, generate_empirical_problem,
+    load_acic2016, load_ihdp_csv, load_ihdp_npz,
+)
 
-__version__ = "0.1.0a0"
+__version__ = "0.1.0a1"
 
 __all__ = [
     "SimulationProblem",
@@ -44,4 +52,16 @@ __all__ = [
     "make_structural_addendum_config",
     "generate_structural_problem",
     "structural_truth_at",
+    "GammaDGPConfig",
+    "construct_msm_propensities",
+    "gamma_truth_at",
+    "generate_gamma_problem",
+    "msm_truth_at",
+    "sample_msm_source",
+    "EmpiricalDGPConfig",
+    "EmpiricalPopulation",
+    "generate_empirical_problem",
+    "load_acic2016",
+    "load_ihdp_csv",
+    "load_ihdp_npz",
 ]

@@ -2,7 +2,7 @@
 
 A benchmark for estimating conditional average treatment effects (CATE) from a large observational sample and a smaller randomized trial. It provides source-documented data generators, a common observed-data interface, public-method adapters and reproducible evaluation.
 
-This is an unreleased alpha. The initial scope is binary treatment and tabular covariates. The catalog covers multiple borrowing assumptions and failure mechanisms; it does not claim to cover every OBS–RCT setting.
+This is a research alpha. The initial scope is binary treatment and tabular covariates. The catalog covers multiple borrowing assumptions and failure mechanisms; it does not claim to cover every OBS–RCT setting.
 
 ## What is included
 
@@ -11,10 +11,32 @@ This is an unreleased alpha. The initial scope is binary treatment and tabular c
 | Paper-related designs | 8 translations and 1 explicit extension from 6 research sources | Make source assumptions and adaptations explicit |
 | Structural mechanisms | M0–M11 | Vary hidden treatment selection, bias geometry, effect complexity, study participation and source shift |
 | Paired structural comparisons | C01–C10 | Change a stated mechanism while retaining the comparison's shared components |
+| Empirical covariates | User-supplied IHDP NPZ/CSV and ACIC2016 CSV files | Hide selected covariates and generate new OBS/RCT samples with exact finite-population targets |
+| Marginal sensitivity model | Constant Γ and user-defined Γ(X) | Control hidden treatment selection separately from outcomes and source shifts |
 
 The six paper sources are CorNet, Experimental Grounding, Integrative R-learner, Elastic Integrative, power likelihood and CVCI. The Integrative R-learner normal-target extension deliberately evaluates outside the Uniform[-1,1] trial support; its original paper and code use a Uniform[-1,1] test population. Variants of one source are not counted as independent papers. See the [paper cards](docs/PAPER_DGPS.md), [coverage](docs/COVERAGE.md) and [extraction notes](docs/DGP_EXTRACTION.md).
 
 Generic baselines include RCT-only, OBS-only and naive pooled T-learners, plus an RCT DR-learner. Optional adapters call pinned official DataFusionPPI and CorNet implementations. Baseline settings and adaptations are explicit; the included recipes are not tuned reproductions of every source paper's results.
+
+The [empirical-data interface](docs/DATASETS.md#local-file-adapters) reads separately obtained files and defines new semi-synthetic OBS/RCT problems; it does not preserve the source experiment's treatment assignments or noisy outcomes. The [Γ/Γ(X) factory](docs/SENSITIVITY.md) preserves a specified marginal propensity and checks the sensitivity bound at evaluated covariates. Configuration files support constant and logistic Γ profiles; the Python API accepts pointwise callbacks. The factory implements one configurable construction within the marginal sensitivity model.
+
+## References
+
+These seven research sources have different roles in the benchmark. A translated DGP does not imply that the paper's estimator is implemented.
+
+| Paper | DGP translation | Method adapter |
+| --- | --- | --- |
+| Hatt et al. (2022), [Combining Observational and Randomized Data for Estimating Heterogeneous Treatment Effects](https://arxiv.org/abs/2202.12891v1) | CorNet simulation | Optional official CorNet |
+| Kallus, Puli and Shalit (2018), [Removing Hidden Confounding by Experimental Grounding](https://arxiv.org/abs/1810.11646v1) | Experimental Grounding simulation | Not included |
+| Wu and Yang (2022), [Integrative R-learner of heterogeneous treatment effects combining experimental and observational studies](https://proceedings.mlr.press/v177/wu22a.html) | Two translations and an explicit target extension | Not included |
+| Yang et al. (2022), [Elastic Integrative Analysis of Randomized Trial and Real-World Data for Treatment Heterogeneity Estimation](https://arxiv.org/abs/2005.10579v3) | Elastic Integrative simulation | Not included |
+| Lin, Tarp and Evans (2025), [Combining experimental and observational data through a power likelihood](https://academic.oup.com/biometrics/article/81/1/ujaf008/8016472) | Paper and supplement variants | Not included |
+| Yang et al. (2025), [Cross-Validated Causal Inference: a Modern Method to Combine Experimental and Observational Data](https://arxiv.org/abs/2511.00727v1) | CVCI linear simulation | Not included |
+| Jung and Yang (2026), [Prediction-Powered Data Fusion for Treatment Effect Estimation](https://arxiv.org/abs/2610.12332v1) | Not included | Optional official DataFusionPPI |
+
+For empirical benchmark provenance, see Hill (2011), [Bayesian Nonparametric Modeling for Causal Inference](https://doi.org/10.1198/jcgs.2010.08162), and Dorie et al. (2019), [Automated versus Do-It-Yourself Methods for Causal Inference: Lessons Learned from a Data Analysis Competition](https://doi.org/10.1214/18-STS667). [Dataset sources and terms](docs/DATASETS.md) distinguish the original IHDP archive, semi-synthetic IHDP releases and the ACIC2016 package. No dataset is bundled with this repository.
+
+For benchmark-design background, Curth and van der Schaar (2021), [Doing Great at Estimating CATE? On the Neglected Assumptions in Benchmark Comparisons of Treatment Effect Estimators](https://arxiv.org/abs/2107.13346v1), examines how IHDP/ACIC2016 data-generation assumptions interact with estimator comparisons.
 
 ## Quick start
 
@@ -66,9 +88,11 @@ The benchmark's MIT license covers its original code. External sources retain th
 
 A method receives `TrainingView`: OBS training data, RCT training data, RCT tuning data and any permitted outcome-free target covariates. Query `eval_X` is for prediction only: fit preprocessing, density models and adaptation using training data or the separate permitted `target_reference`. Latent confounders, evaluation outcomes and effect truth stay with the evaluator. This interface helps prevent accidental leakage; it is not a security sandbox.
 
+Supported generators provide an independent target-covariate sample when `n_target_reference>0`; the default is no such sample. The separate `rct_test` is evaluator-owned and reserved for factual diagnostics. The current runner scores predictions against `eval_tau` at `eval_X`, without using RCT test outcomes. All methods within one scenario/seed receive the same realized samples. The [protocol](docs/PROTOCOL.md) and [extension guide](docs/EXTENDING.md) specify prediction shape, registration and failure handling.
+
 The primary metric is CATE MSE, `mean((prediction - target_cate)**2)`. Root-PEHE is its square root and is reported separately. Paired comparisons use the same independent replicate seeds, with failed and missing cases counted explicitly. Student t intervals from very few seeds should not be interpreted as reliable inferential evidence. The [protocol](docs/PROTOCOL.md) defines targets, sample roles, budgets and aggregation.
 
-Paper translations, constructed stress mechanisms and empirical-covariate benchmarks answer different questions. The initial release contains synthetic generators. A common IHDP/ACIC variable-hiding interface and an arbitrary Γ/Γ(X) sensitivity-model factory are planned extensions. Existing hidden-confounding parameters do not constitute that general factory, and the same treatment-selection bound need not imply the same outcome bias.
+Paper translations, constructed stress mechanisms and empirical-covariate benchmarks answer different questions. Empirical targets condition on the covariates actually displayed after any explicit coarsening; dropping a covariate alone need not create residual confounding under a finite empirical distribution. The same Γ treatment-selection bound can coexist with different outcome loadings, source shifts and outcome bias. See the [dataset contract](docs/DATASETS.md#local-file-adapters) and [sensitivity-model definition](docs/SENSITIVITY.md).
 
 ## Add a method or DGP
 

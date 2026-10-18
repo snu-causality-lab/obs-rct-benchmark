@@ -440,7 +440,7 @@
     }
   },
   "scope": "smoke/development-inspected; two-seed quickstart, no method-ranking claim",
-  "source_fingerprint": "26dbaa4afbbfa92ad57a86bc6f74d0a6a635d9ece0795d1f623f2f73ff30cc77",
+  "source_fingerprint": "ed2c3fcc3bc0db5b72450d737734f1f81a48f24928e4499b6e9306a0104eea5c",
   "status": "complete",
   "uncertainty_unit": "independent seed block; scenarios averaged within each seed"
 }

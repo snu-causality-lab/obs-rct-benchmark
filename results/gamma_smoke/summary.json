@@ -1,0 +1,446 @@
+{
+  "config_hash": "a07767025bfb9bc6118609e0a49fcc696a2ed57eb462a1254e125216f34d8db3",
+  "coverage": {
+    "expected": 16,
+    "failed": 0,
+    "missing": 0,
+    "recorded": 16,
+    "successful": 16
+  },
+  "methods": {
+    "naive_pooled_t_ridge": {
+      "complete_coverage": true,
+      "expected": 4,
+      "failed": 0,
+      "mean_cate_mse": 0.4508340614987797,
+      "mean_root_pehe": 0.6676373684209338,
+      "mean_scope": "successful cells only; descriptive when coverage is incomplete",
+      "missing": 0,
+      "root_mean_mse": 0.6714417781898738,
+      "successful": 4
+    },
+    "obs_t_ridge": {
+      "complete_coverage": true,
+      "expected": 4,
+      "failed": 0,
+      "mean_cate_mse": 0.7300224794294405,
+      "mean_root_pehe": 0.8534080692560452,
+      "mean_scope": "successful cells only; descriptive when coverage is incomplete",
+      "missing": 0,
+      "root_mean_mse": 0.8544135295215313,
+      "successful": 4
+    },
+    "rct_dr_ridge": {
+      "complete_coverage": true,
+      "expected": 4,
+      "failed": 0,
+      "mean_cate_mse": 0.7034743607253848,
+      "mean_root_pehe": 0.8253135011357251,
+      "mean_scope": "successful cells only; descriptive when coverage is incomplete",
+      "missing": 0,
+      "root_mean_mse": 0.8387337841802873,
+      "successful": 4
+    },
+    "rct_t_ridge": {
+      "complete_coverage": true,
+      "expected": 4,
+      "failed": 0,
+      "mean_cate_mse": 0.5692277491648787,
+      "mean_root_pehe": 0.7537141027955413,
+      "mean_scope": "successful cells only; descriptive when coverage is incomplete",
+      "missing": 0,
+      "root_mean_mse": 0.7544718345736167,
+      "successful": 4
+    }
+  },
+  "metric_definitions": {
+    "cate_mse": "mean((predicted_cate - true_cate)**2) over evaluation rows",
+    "mean_root_pehe": "arithmetic mean of per-replicate root_pehe",
+    "root_mean_mse": "sqrt(arithmetic mean of per-replicate cate_mse)",
+    "root_pehe": "sqrt(cate_mse) for one replicate"
+  },
+  "paired_comparisons": {
+    "naive_pooled_t_ridge": {
+      "by_scenario": {
+        "gamma:constant": {
+          "complete_coverage": true,
+          "complete_seed_blocks": 2,
+          "difference": "method minus reference; negative favors method",
+          "eligible_for_comparison": true,
+          "expected_seed_blocks": 2,
+          "metrics": {
+            "cate_mse": {
+              "ci95": [
+                -0.9004553967139264,
+                0.8559928499378273
+              ],
+              "ci_method": "student_t_conservative_table",
+              "mean": -0.022231273388049477,
+              "n_seed_blocks": 2,
+              "standard_error": 0.06911773747907518
+            },
+            "root_pehe": {
+              "ci95": [
+                -0.6457753407685809,
+                0.6075984684762725
+              ],
+              "ci_method": "student_t_conservative_table",
+              "mean": -0.019088436146154242,
+              "n_seed_blocks": 2,
+              "standard_error": 0.04932132903754732
+            }
+          },
+          "withheld_reason": null
+        },
+        "gamma:logistic": {
+          "complete_coverage": true,
+          "complete_seed_blocks": 2,
+          "difference": "method minus reference; negative favors method",
+          "eligible_for_comparison": true,
+          "expected_seed_blocks": 2,
+          "metrics": {
+            "cate_mse": {
+              "ci95": [
+                -0.467216173648768,
+                0.038103969760470924
+              ],
+              "ci_method": "student_t_conservative_table",
+              "mean": -0.21455610194414854,
+              "n_seed_blocks": 2,
+              "standard_error": 0.019884778889231458
+            },
+            "root_pehe": {
+              "ci95": [
+                -0.29274764719790214,
+                -0.01338241800821896
+              ],
+              "ci_method": "student_t_conservative_table",
+              "mean": -0.15306503260306054,
+              "n_seed_blocks": 2,
+              "standard_error": 0.01099326018214447
+            }
+          },
+          "withheld_reason": null
+        }
+      },
+      "overall": {
+        "complete_coverage": true,
+        "complete_seed_blocks": 2,
+        "difference": "method minus reference; negative favors method",
+        "eligible_for_comparison": true,
+        "expected_seed_blocks": 2,
+        "metrics": {
+          "cate_mse": {
+            "ci95": [
+              -0.6838357851813472,
+              0.4470484098491492
+            ],
+            "ci_method": "student_t_conservative_table",
+            "mean": -0.118393687666099,
+            "n_seed_blocks": 2,
+            "standard_error": 0.04450125818415332
+          },
+          "root_pehe": {
+            "ci95": [
+              -0.46926149398324146,
+              0.2971080252340267
+            ],
+            "ci_method": "student_t_conservative_table",
+            "mean": -0.08607673437460739,
+            "n_seed_blocks": 2,
+            "standard_error": 0.030157294609845894
+          }
+        },
+        "withheld_reason": null
+      }
+    },
+    "obs_t_ridge": {
+      "by_scenario": {
+        "gamma:constant": {
+          "complete_coverage": true,
+          "complete_seed_blocks": 2,
+          "difference": "method minus reference; negative favors method",
+          "eligible_for_comparison": true,
+          "expected_seed_blocks": 2,
+          "metrics": {
+            "cate_mse": {
+              "ci95": [
+                -0.1650479231275378,
+                0.46381507967781355
+              ],
+              "ci_method": "student_t_conservative_table",
+              "mean": 0.14938357827513787,
+              "n_seed_blocks": 2,
+              "standard_error": 0.024746295839379207
+            },
+            "root_pehe": {
+              "ci95": [
+                -0.05198738338949341,
+                0.24276198830653564
+              ],
+              "ci_method": "student_t_conservative_table",
+              "mean": 0.09538730245852112,
+              "n_seed_blocks": 2,
+              "standard_error": 0.011598639318775028
+            }
+          },
+          "withheld_reason": null
+        },
+        "gamma:logistic": {
+          "complete_coverage": true,
+          "complete_seed_blocks": 2,
+          "difference": "method minus reference; negative favors method",
+          "eligible_for_comparison": true,
+          "expected_seed_blocks": 2,
+          "metrics": {
+            "cate_mse": {
+              "ci95": [
+                -0.624519942549409,
+                0.9689317070573811
+              ],
+              "ci_method": "student_t_conservative_table",
+              "mean": 0.17220588225398598,
+              "n_seed_blocks": 2,
+              "standard_error": 0.06270368228216731
+            },
+            "root_pehe": {
+              "ci95": [
+                -0.3788157834737903,
+                0.5868170443987637
+              ],
+              "ci_method": "student_t_conservative_table",
+              "mean": 0.1040006304624867,
+              "n_seed_blocks": 2,
+              "standard_error": 0.03799847585905274
+            }
+          },
+          "withheld_reason": null
+        }
+      },
+      "overall": {
+        "complete_coverage": true,
+        "complete_seed_blocks": 2,
+        "difference": "method minus reference; negative favors method",
+        "eligible_for_comparison": true,
+        "expected_seed_blocks": 2,
+        "metrics": {
+          "cate_mse": {
+            "ci95": [
+              -0.3947839328384736,
+              0.7163733933675974
+            ],
+            "ci_method": "student_t_conservative_table",
+            "mean": 0.16079473026456192,
+            "n_seed_blocks": 2,
+            "standard_error": 0.04372498906077327
+          },
+          "root_pehe": {
+            "ci95": [
+              -0.21540158343164187,
+              0.4147895163526497
+            ],
+            "ci_method": "student_t_conservative_table",
+            "mean": 0.09969396646050391,
+            "n_seed_blocks": 2,
+            "standard_error": 0.024798557588913885
+          }
+        },
+        "withheld_reason": null
+      }
+    },
+    "rct_dr_ridge": {
+      "by_scenario": {
+        "gamma:constant": {
+          "complete_coverage": true,
+          "complete_seed_blocks": 2,
+          "difference": "method minus reference; negative favors method",
+          "eligible_for_comparison": true,
+          "expected_seed_blocks": 2,
+          "metrics": {
+            "cate_mse": {
+              "ci95": [
+                -4.410743081331047,
+                4.771722304875961
+              ],
+              "ci_method": "student_t_conservative_table",
+              "mean": 0.1804896117724577,
+              "n_seed_blocks": 2,
+              "standard_error": 0.3613378493698285
+            },
+            "root_pehe": {
+              "ci95": [
+                -2.7362347732138828,
+                2.9213901112892104
+              ],
+              "ci_method": "student_t_conservative_table",
+              "mean": 0.0925776690376639,
+              "n_seed_blocks": 2,
+              "standard_error": 0.2226323674879666
+            }
+          },
+          "withheld_reason": null
+        },
+        "gamma:logistic": {
+          "complete_coverage": true,
+          "complete_seed_blocks": 2,
+          "difference": "method minus reference; negative favors method",
+          "eligible_for_comparison": true,
+          "expected_seed_blocks": 2,
+          "metrics": {
+            "cate_mse": {
+              "ci95": [
+                -2.099723765374227,
+                2.275730988071337
+              ],
+              "ci_method": "student_t_conservative_table",
+              "mean": 0.08800361134855483,
+              "n_seed_blocks": 2,
+              "standard_error": 0.1721778786119751
+            },
+            "root_pehe": {
+              "ci95": [
+                -1.2878294261584946,
+                1.3890716814439021
+              ],
+              "ci_method": "student_t_conservative_table",
+              "mean": 0.05062112764270377,
+              "n_seed_blocks": 2,
+              "standard_error": 0.10533834308264234
+            }
+          },
+          "withheld_reason": null
+        }
+      },
+      "overall": {
+        "complete_coverage": true,
+        "complete_seed_blocks": 2,
+        "difference": "method minus reference; negative favors method",
+        "eligible_for_comparison": true,
+        "expected_seed_blocks": 2,
+        "metrics": {
+          "cate_mse": {
+            "ci95": [
+              -1.067506046629855,
+              1.3359992697508676
+            ],
+            "ci_method": "student_t_conservative_table",
+            "mean": 0.13424661156050627,
+            "n_seed_blocks": 2,
+            "standard_error": 0.0945799853789267
+          },
+          "root_pehe": {
+            "ci95": [
+              -0.6735815458849904,
+              0.816780342565358
+            ],
+            "ci_method": "student_t_conservative_table",
+            "mean": 0.07159939834018383,
+            "n_seed_blocks": 2,
+            "standard_error": 0.058647012202662135
+          }
+        },
+        "withheld_reason": null
+      }
+    }
+  },
+  "reference_method": "rct_t_ridge",
+  "run_id": "a07767025bfb9bc6",
+  "scenarios": {
+    "gamma:constant": {
+      "naive_pooled_t_ridge": {
+        "complete_coverage": true,
+        "expected": 2,
+        "failed": 0,
+        "mean_cate_mse": 0.5131081192644793,
+        "mean_root_pehe": 0.711996784628972,
+        "mean_scope": "successful cells only; descriptive when coverage is incomplete",
+        "missing": 0,
+        "root_mean_mse": 0.7163156561631745,
+        "successful": 2
+      },
+      "obs_t_ridge": {
+        "complete_coverage": true,
+        "expected": 2,
+        "failed": 0,
+        "mean_cate_mse": 0.6847229709276667,
+        "mean_root_pehe": 0.8264725232336474,
+        "mean_scope": "successful cells only; descriptive when coverage is incomplete",
+        "missing": 0,
+        "root_mean_mse": 0.8274798915548743,
+        "successful": 2
+      },
+      "rct_dr_ridge": {
+        "complete_coverage": true,
+        "expected": 2,
+        "failed": 0,
+        "mean_cate_mse": 0.7158290044249864,
+        "mean_root_pehe": 0.8236628898127901,
+        "mean_scope": "successful cells only; descriptive when coverage is incomplete",
+        "missing": 0,
+        "root_mean_mse": 0.8460667848491551,
+        "successful": 2
+      },
+      "rct_t_ridge": {
+        "complete_coverage": true,
+        "expected": 2,
+        "failed": 0,
+        "mean_cate_mse": 0.5353393926525287,
+        "mean_root_pehe": 0.7310852207751262,
+        "mean_scope": "successful cells only; descriptive when coverage is incomplete",
+        "missing": 0,
+        "root_mean_mse": 0.7316689091744494,
+        "successful": 2
+      }
+    },
+    "gamma:logistic": {
+      "naive_pooled_t_ridge": {
+        "complete_coverage": true,
+        "expected": 2,
+        "failed": 0,
+        "mean_cate_mse": 0.3885600037330801,
+        "mean_root_pehe": 0.6232779522128957,
+        "mean_scope": "successful cells only; descriptive when coverage is incomplete",
+        "missing": 0,
+        "root_mean_mse": 0.6233458139211975,
+        "successful": 2
+      },
+      "obs_t_ridge": {
+        "complete_coverage": true,
+        "expected": 2,
+        "failed": 0,
+        "mean_cate_mse": 0.7753219879312145,
+        "mean_root_pehe": 0.880343615278443,
+        "mean_scope": "successful cells only; descriptive when coverage is incomplete",
+        "missing": 0,
+        "root_mean_mse": 0.8805237009480293,
+        "successful": 2
+      },
+      "rct_dr_ridge": {
+        "complete_coverage": true,
+        "expected": 2,
+        "failed": 0,
+        "mean_cate_mse": 0.6911197170257835,
+        "mean_root_pehe": 0.82696411245866,
+        "mean_scope": "successful cells only; descriptive when coverage is incomplete",
+        "missing": 0,
+        "root_mean_mse": 0.8313361035259947,
+        "successful": 2
+      },
+      "rct_t_ridge": {
+        "complete_coverage": true,
+        "expected": 2,
+        "failed": 0,
+        "mean_cate_mse": 0.6031161056772286,
+        "mean_root_pehe": 0.7763429848159562,
+        "mean_scope": "successful cells only; descriptive when coverage is incomplete",
+        "missing": 0,
+        "root_mean_mse": 0.7766055019617287,
+        "successful": 2
+      }
+    }
+  },
+  "scope": "smoke/development-inspected; two Gamma profiles, no method-ranking claim",
+  "source_fingerprint": "73d6927fa91583ad035b1d78b8738305debdaf918123918a65622c2c212ae889",
+  "status": "complete",
+  "uncertainty_unit": "independent seed block; scenarios averaged within each seed"
+}

@@ -1,0 +1,37 @@
+schema_version = 1
+
+[run]
+seeds = [0, 1]
+methods = ["rct_t_ridge", "obs_t_ridge", "naive_pooled_t_ridge", "rct_dr_ridge"]
+reference_method = "rct_t_ridge"
+scope = "smoke/development-inspected; two Gamma profiles, no method-ranking claim"
+
+[[scenarios]]
+kind = "gamma"
+id = "constant"
+[scenarios.parameters]
+gamma = 3.0
+hidden_loading0 = 0.4
+hidden_loading1 = 1.0
+n_obs = 120
+n_rct_train = 60
+n_rct_tune = 30
+n_rct_test = 30
+n_eval = 128
+
+[[scenarios]]
+kind = "gamma"
+id = "logistic"
+[scenarios.parameters]
+gamma = 5.0
+gamma_min = 1.0
+gamma_slope = 1.5
+bias_direction = -1
+cate_complexity = "interaction"
+hidden_loading0 = 0.4
+hidden_loading1 = 1.0
+n_obs = 120
+n_rct_train = 60
+n_rct_tune = 30
+n_rct_test = 30
+n_eval = 128

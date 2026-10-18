@@ -44,13 +44,13 @@ class ScenarioConfig:
         return f"{self.kind}:{self.id}"
 
     def __post_init__(self) -> None:
-        if self.kind not in {"structural", "addendum", "paper"}:
-            raise ValueError("scenario kind must be structural, addendum, or paper")
+        if self.kind not in {"structural", "addendum", "paper", "gamma", "empirical"}:
+            raise ValueError("scenario kind must be structural, addendum, paper, gamma, or empirical")
         if not self.id or not self.id.replace("_", "").isalnum():
             raise ValueError("scenario id must contain letters, digits, or underscores")
         if not isinstance(self.parameters, Mapping):
             raise ValueError("scenario parameters must be a mapping")
-        if {"name", "mechanism", "cell", "paper_id"} & self.parameters.keys():
+        if {"name", "mechanism", "cell", "paper_id", "gamma_profile", "dataset_id"} & self.parameters.keys():
             raise ValueError("scenario identity must not be overridden in parameters")
         _validate_public_values(dict(self.parameters))
         # Validate the full DGP config before creating output artifacts.
@@ -89,14 +89,14 @@ class BenchmarkConfig:
             make_method(name, **dict(self.method_options.get(name, {})))
 
     def payload(self) -> dict[str, Any]:
-        return {
+        return json.loads(_json({
             "schema_version": SCHEMA_VERSION,
             "run": {"seeds": list(self.seeds), "methods": list(self.methods),
                     "reference_method": self.reference_method, "scope": self.scope},
             "scenarios": [asdict(scenario) for scenario in self.scenarios],
             "method_options": {name: dict(options)
                                for name, options in sorted(self.method_options.items())},
-        }
+        }))
 
     @property
     def config_hash(self) -> str:
@@ -147,6 +147,18 @@ def load_config(path: str | Path) -> BenchmarkConfig:
 
 def build_dgp_config(scenario: ScenarioConfig) -> Any:
     parameters = dict(scenario.parameters)
+    if scenario.kind == "gamma":
+        from .sensitivity import GammaDGPConfig
+
+        if scenario.id not in {"constant", "logistic"}:
+            raise ValueError("gamma scenario must be constant or logistic")
+        return GammaDGPConfig(name=scenario.key, gamma_profile=scenario.id, **parameters)
+    if scenario.kind == "empirical":
+        from .datasets import EmpiricalDGPConfig
+
+        if scenario.id not in {"ihdp", "acic2016"}:
+            raise ValueError("empirical scenario must be ihdp or acic2016")
+        return EmpiricalDGPConfig(name=scenario.key, dataset_id=scenario.id, **parameters)
     if scenario.kind == "paper":
         return make_paper_config(name=scenario.key, paper_id=scenario.id, **parameters)
     if scenario.kind == "addendum":
@@ -157,6 +169,15 @@ def build_dgp_config(scenario: ScenarioConfig) -> Any:
 
 def _generate(scenario: ScenarioConfig, seed: int) -> Any:
     cfg = build_dgp_config(scenario)
+    if scenario.kind == "gamma":
+        from .sensitivity import generate_gamma_problem
+
+        return generate_gamma_problem(cfg, seed)
+    if scenario.kind == "empirical":
+        from .datasets import generate_empirical_problem
+        from .inputs import load_empirical_from_environment
+
+        return generate_empirical_problem(load_empirical_from_environment(cfg), cfg, seed)
     if scenario.kind == "paper":
         return generate_paper_problem(cfg, seed)
     return generate_structural_problem(cfg, seed)
@@ -193,9 +214,10 @@ def run_benchmark(config: BenchmarkConfig, output: str | Path, *,
         environment = environment_provenance()
         external = external_method_provenance(config.methods)
         resolved = resolved_scenarios(config)
+        inputs = scenario_input_provenance(config)
         fingerprint = _hash({"source": source, "custom_methods": custom,
                              "environment": environment, "external_methods": external,
-                             "resolved_scenarios": resolved})
+                             "resolved_scenarios": resolved, "empirical_inputs": inputs})
         if resume:
             if not manifest_path.exists():
                 raise ValueError("resume requires an existing run_manifest.json")
@@ -213,6 +235,7 @@ def run_benchmark(config: BenchmarkConfig, output: str | Path, *,
                 "custom_provenance_policy": "author-supplied identifiers; custom source is not automatically verified",
                 "external_methods": external, "environment": environment,
                 "resolved_scenarios": resolved,
+                "empirical_inputs": inputs,
                 "created_utc": datetime.now(timezone.utc).isoformat(),
                 "scope": config.scope,
                 "interpretation": "development smoke example; not a method-ranking study",
@@ -233,6 +256,8 @@ def run_benchmark(config: BenchmarkConfig, output: str | Path, *,
                     continue
                 try:
                     problem = _generate(scenario, seed)
+                    if scenario.kind == "empirical":
+                        _verify_empirical_input_binding(problem, inputs[scenario.id])
                     training = problem.training_view()
                 except Exception as exc:
                     for method in pending:
@@ -247,6 +272,14 @@ def run_benchmark(config: BenchmarkConfig, output: str | Path, *,
                     mechanism_hash = problem.metadata.get("mechanism_sha256")
                     if mechanism_hash is not None:
                         row["mechanism_sha256"] = mechanism_hash
+                    if scenario.kind == "empirical":
+                        row["generator_diagnostics"] = dict(problem.metadata["diagnostics"])
+                        row["dataset_provenance"] = dict(problem.metadata["dataset_provenance"])
+                    elif scenario.kind == "gamma":
+                        row["generator_diagnostics"] = {
+                            "gamma_global_upper": problem.metadata.get("gamma_global_upper"),
+                            "gamma_global_upper_is_bound": problem.metadata.get("gamma_global_upper_is_bound"),
+                        }
                     try:
                         estimator = make_method(method, **dict(config.method_options.get(method, {})))
                         prediction = estimator.fit_predict(training, problem.eval_X,
@@ -310,13 +343,33 @@ def source_provenance() -> dict[str, Any]:
 
 def resolved_scenarios(config: BenchmarkConfig) -> dict[str, Any]:
     """Record the complete generator controls, including default mechanism seeds."""
+    from .datasets import EMPIRICAL_DGP_VERSION
+    from .sensitivity import GAMMA_DGP_VERSION
+
     versions = {"paper": PAPER_DGP_VERSION, "structural": STRUCTURAL_DGP_VERSION,
-                "addendum": STRUCTURAL_ADDENDUM_VERSION}
+                "addendum": STRUCTURAL_ADDENDUM_VERSION, "gamma": GAMMA_DGP_VERSION,
+                "empirical": EMPIRICAL_DGP_VERSION}
     return {
         scenario.key: {"generator_version": versions[scenario.kind],
                        "config": asdict(build_dgp_config(scenario))}
         for scenario in config.scenarios
     }
+
+
+def scenario_input_provenance(config: BenchmarkConfig) -> dict[str, Any]:
+    from .inputs import empirical_input_provenance
+
+    return {dataset: empirical_input_provenance(dataset) for dataset in sorted({
+        scenario.id for scenario in config.scenarios if scenario.kind == "empirical"
+    })}
+
+
+def _verify_empirical_input_binding(problem: Any, snapshot: Mapping[str, Any]) -> None:
+    expected = {role: item["sha256"] for role, item in snapshot["files"].items()}
+    actual = {("ihdp_train" if item["role"] == "ihdp_csv" else item["role"]): item["sha256"]
+              for item in problem.metadata["dataset_provenance"]["files"]}
+    if snapshot["availability"] != "available" or actual != expected:
+        raise ValueError("empirical input identity changed during this run")
 
 
 def _version(name: str) -> str:

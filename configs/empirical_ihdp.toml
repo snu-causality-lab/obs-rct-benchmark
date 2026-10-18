@@ -1,0 +1,23 @@
+schema_version = 1
+
+# Separately obtained local files are selected through OBSRCT_IHDP_TRAIN/TEST.
+# This deliberately coarsened target is an adaptation, not the original IHDP score.
+[run]
+seeds = [0, 1]
+methods = ["rct_t_ridge", "obs_t_ridge", "naive_pooled_t_ridge", "rct_dr_ridge"]
+reference_method = "rct_t_ridge"
+scope = "empirical adaptation example; separately obtained data; fixed masking and coarsening"
+
+[[scenarios]]
+kind = "empirical"
+id = "ihdp"
+[scenarios.parameters]
+replication = 0
+hidden_columns = ["x2", "x3", "x4", "x5", "x6", "x7", "x8", "x9", "x10", "x11", "x12", "x13", "x14", "x15", "x16", "x17", "x18", "x19", "x20", "x21", "x22", "x23", "x24", "x25"]
+visible_binning = [["x1", 2]]
+gamma = 3.0
+n_obs = 120
+n_rct_train = 60
+n_rct_tune = 30
+n_rct_test = 30
+n_eval = 128
