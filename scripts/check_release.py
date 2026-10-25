@@ -28,7 +28,7 @@ PATH_PATTERNS = [
     re.compile(r"AKIA[0-9A-Z]{16}"),
     re.compile(r"-----BEGIN (?:[A-Z]+ )?PRIVATE KEY-----"),
 ]
-PUBLIC_EXTERNAL_IMPORTS = {"numpy", "scipy", "sklearn", "torch", "dfppi", "pytest", "nbclient", "nbformat", "jupyter_client"}
+PUBLIC_EXTERNAL_IMPORTS = {"numpy", "scipy", "sklearn", "torch", "dfppi", "pytest", "nbclient", "nbformat", "jupyter_client", "matplotlib"}
 
 
 def candidate_files():

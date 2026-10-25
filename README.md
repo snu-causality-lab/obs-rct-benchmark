@@ -4,6 +4,13 @@ A benchmark for estimating conditional average treatment effects (CATE) from a l
 
 This is a research alpha. The initial scope is binary treatment and tabular covariates. The catalog covers multiple borrowing assumptions and failure mechanisms; it does not claim to cover every OBS–RCT setting.
 
+## Choose an evaluation track
+
+- **Static estimation:** compare fixed observed-data recipes across named conditions and OBS/RCT sample budgets. Optional condition labels let one DGP appear at several budgets without changing its sampling seed. Reports show each condition's scores, paired differences, intervals and failures. See the [protocol](docs/PROTOCOL.md) and [budget-grid example](docs/EXTENDING.md).
+- **Sequential recruitment:** reveal a common pilot, choose additional trial subjects from an outcome-hidden candidate pool, then fit at fixed outcome budgets. Every acquired outcome is charged. Uniform, geometry and outcome-assisted reference policies are included. See the [adaptive protocol](docs/ADAPTIVE.md).
+
+The [static reference study](docs/REFERENCE_STUDY.md) specifies 3,072 full-recipe fits across 16 conditions and 32 independent seeds, including nonlinear RCT controls and official fusion adapters. The [adaptive reference configuration](configs/adaptive_reference.toml) specifies 1,152 policy/estimator/budget cells. Their compact [reference results](results/README.md) are separate from the original two-seed execution examples. These studies evaluate declared, development-inspected mechanisms; they do not establish unseen-mechanism generalization.
+
 ## What is included
 
 | Track | Available designs | Purpose |

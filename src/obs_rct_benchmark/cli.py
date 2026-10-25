@@ -18,12 +18,22 @@ def main(argv: list[str] | None = None) -> int:
     run.add_argument("--config", required=True)
     run.add_argument("--output", required=True)
     run.add_argument("--resume", action="store_true")
+    adaptive = commands.add_parser("adaptive", help="run a costed sequential recruitment configuration")
+    adaptive.add_argument("--config", required=True)
+    adaptive.add_argument("--output", required=True)
+    adaptive.add_argument("--resume", action="store_true")
     args = parser.parse_args(argv)
     if args.command == "list-methods":
         print("\n".join(method_names()))
         return 0
     try:
-        summary = run_benchmark(load_config(args.config), args.output, resume=args.resume)
+        if args.command == "adaptive":
+            from .adaptive_runner import load_adaptive_config, run_adaptive_benchmark
+
+            summary = run_adaptive_benchmark(load_adaptive_config(args.config), args.output,
+                                             resume=args.resume)
+        else:
+            summary = run_benchmark(load_config(args.config), args.output, resume=args.resume)
     except (ValueError, TypeError, OSError, KeyError) as exc:
         # Exception strings can include local paths; expose only their type.
         print(f"benchmark setup/resume failed ({type(exc).__name__})", file=sys.stderr)

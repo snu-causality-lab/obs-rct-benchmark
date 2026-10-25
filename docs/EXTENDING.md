@@ -21,6 +21,45 @@ Use fixed options or a disclosed observed-data tuning rule. Seed every stochasti
 
 An official implementation should be a separately installed dependency pinned to a public revision, with provenance checked before import where feasible. A translation must be labeled as a translation and must not claim official implementation equivalence without evidence. Add tests of the data boundary, malformed predictions, unsupported settings, deterministic behavior within the supported environment, and the adapter's call to the intended public API.
 
+## Comparing settings of the same generator
+
+Use an optional scenario `label` to compare several settings of one preset in a single TOML configuration. The label identifies the run cell; `kind` and `id` still select the generator. For example:
+
+```toml
+schema_version = 1
+
+[run]
+seeds = [0, 1]
+purpose = "smoke"
+scope = "two-budget execution check; no method-ranking claim"
+
+[[scenarios]]
+kind = "structural"
+id = "M0"
+label = "rct64"
+[scenarios.parameters]
+n_obs = 120
+n_rct_train = 64
+n_rct_tune = 32
+n_rct_test = 32
+n_eval = 128
+
+[[scenarios]]
+kind = "structural"
+id = "M0"
+label = "rct128"
+[scenarios.parameters]
+n_obs = 120
+n_rct_train = 128
+n_rct_tune = 32
+n_rct_test = 32
+n_eval = 128
+```
+
+The keys are `structural:M0@rct64` and `structural:M0@rct128`. Labels must be unique within a preset and contain only ASCII letters, digits or underscores. Unlabelled configurations retain their existing keys and hashes. Labels do not reseed the generator or method; repeated labels with different parameters are rejected. Separate conditions are not independent simulation replicates, and matched seeds do not guarantee nested observations after a sample-size change.
+
+The Markdown report lists the available RCT train-plus-tune budget, condition-specific errors and paired CATE-MSE differences with seed coverage. For a substantive study, set `purpose = "reference"`, choose replication and analysis rules before inspecting results, and describe them in the scope and study protocol. The purpose changes output interpretation, not the strength of the evidence. See the [evaluation protocol](PROTOCOL.md#repeated-settings-and-sample-budgets) for roles, pairing and limits.
+
 ## A structural configuration
 
 For existing equations, instantiate `StructuralDGPConfig(name="custom_setting", mechanism="custom", ...)` or use a preset factory with explicit overrides. This already permits configurable hidden confounding. Save the full resolved configuration and give the setting its own descriptive name. Do not present an overridden M/C preset as the unchanged canonical contrast.

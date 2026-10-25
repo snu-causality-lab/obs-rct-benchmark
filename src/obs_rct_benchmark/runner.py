@@ -38,16 +38,22 @@ class ScenarioConfig:
     kind: str
     id: str
     parameters: Mapping[str, Any] = field(default_factory=dict)
+    label: str | None = None
 
     @property
     def key(self) -> str:
-        return f"{self.kind}:{self.id}"
+        preset = f"{self.kind}:{self.id}"
+        return preset if self.label is None else f"{preset}@{self.label}"
 
     def __post_init__(self) -> None:
         if self.kind not in {"structural", "addendum", "paper", "gamma", "empirical"}:
             raise ValueError("scenario kind must be structural, addendum, paper, gamma, or empirical")
         if not self.id or not self.id.replace("_", "").isalnum():
             raise ValueError("scenario id must contain letters, digits, or underscores")
+        if self.label is not None and (
+                not isinstance(self.label, str) or not self.label
+                or not self.label.isascii() or not self.label.replace("_", "").isalnum()):
+            raise ValueError("scenario label must contain ASCII letters, digits, or underscores")
         if not isinstance(self.parameters, Mapping):
             raise ValueError("scenario parameters must be a mapping")
         if {"name", "mechanism", "cell", "paper_id", "gamma_profile", "dataset_id"} & self.parameters.keys():
@@ -65,10 +71,11 @@ class BenchmarkConfig:
     reference_method: str = "rct_t_ridge"
     method_options: Mapping[str, Mapping[str, Any]] = field(default_factory=dict)
     scope: str = "smoke/development-inspected"
+    purpose: str = "smoke"
 
     def __post_init__(self) -> None:
         if not self.scenarios or len({s.key for s in self.scenarios}) != len(self.scenarios):
-            raise ValueError("scenarios must be nonempty with unique kind/id pairs")
+            raise ValueError("scenarios must be nonempty with unique kind/id/label keys")
         if (not self.seeds or len(set(self.seeds)) != len(self.seeds)
                 or any(isinstance(seed, bool) or not isinstance(seed, int)
                        or seed < 0 or seed >= 2**32 for seed in self.seeds)):
@@ -84,16 +91,27 @@ class BenchmarkConfig:
         if not self.scope or "\n" in self.scope:
             raise ValueError("scope must be a nonempty one-line description")
         _validate_public_values(self.scope)
+        if self.purpose not in ("smoke", "reference"):
+            raise ValueError("purpose must be smoke or reference")
         for name in self.methods:
             # Constructors are lightweight and must not import optional packages.
             make_method(name, **dict(self.method_options.get(name, {})))
 
     def payload(self) -> dict[str, Any]:
+        run = {"seeds": list(self.seeds), "methods": list(self.methods),
+               "reference_method": self.reference_method, "scope": self.scope}
+        if self.purpose != "smoke":
+            run["purpose"] = self.purpose
+        scenarios = []
+        for scenario in self.scenarios:
+            entry = asdict(scenario)
+            if scenario.label is None:
+                entry.pop("label")
+            scenarios.append(entry)
         return json.loads(_json({
             "schema_version": SCHEMA_VERSION,
-            "run": {"seeds": list(self.seeds), "methods": list(self.methods),
-                    "reference_method": self.reference_method, "scope": self.scope},
-            "scenarios": [asdict(scenario) for scenario in self.scenarios],
+            "run": run,
+            "scenarios": scenarios,
             "method_options": {name: dict(options)
                                for name, options in sorted(self.method_options.items())},
         }))
@@ -130,11 +148,11 @@ def load_config(path: str | Path) -> BenchmarkConfig:
     if raw.get("schema_version") != SCHEMA_VERSION:
         raise ValueError("unsupported or missing schema_version")
     run = raw.get("run", {})
-    if set(run) - {"seeds", "methods", "reference_method", "scope"}:
+    if set(run) - {"seeds", "methods", "reference_method", "scope", "purpose"}:
         raise ValueError("unknown run field")
     scenarios = []
     for entry in raw.get("scenarios", []):
-        if set(entry) - {"kind", "id", "parameters"}:
+        if set(entry) - {"kind", "id", "parameters", "label"}:
             raise ValueError("unknown scenario field")
         scenarios.append(ScenarioConfig(**entry))
     converted = dict(run)
@@ -185,7 +203,17 @@ def _generate(scenario: ScenarioConfig, seed: int) -> Any:
 
 def method_seed(scenario: str, seed: int, method: str) -> int:
     """Stable method RNG stream, separate from data and other method streams."""
-    return int(_hash(["method_seed_v1", scenario, seed, method])[:8], 16)
+    # A label distinguishes run cells, not their randomization. Matched budget
+    # variants retain the same method stream as the unlabelled preset.
+    preset = scenario.split("@", 1)[0]
+    return int(_hash(["method_seed_v1", preset, seed, method])[:8], 16)
+
+
+def _run_interpretation(purpose: str) -> str:
+    if purpose == "smoke":
+        return "development smoke example; not a method-ranking study"
+    return ("reference comparison under the declared protocol; scientific conclusions "
+            "require adequate precision and a justified design")
 
 
 def record_id(config: BenchmarkConfig, scenario: str, seed: int, method: str) -> str:
@@ -238,7 +266,8 @@ def run_benchmark(config: BenchmarkConfig, output: str | Path, *,
                 "empirical_inputs": inputs,
                 "created_utc": datetime.now(timezone.utc).isoformat(),
                 "scope": config.scope,
-                "interpretation": "development smoke example; not a method-ranking study",
+                "purpose": config.purpose,
+                "interpretation": _run_interpretation(config.purpose),
             }
             _write_json(manifest_path, manifest)
         records_path = output / "records.jsonl"
@@ -296,7 +325,19 @@ def run_benchmark(config: BenchmarkConfig, output: str | Path, *,
             reference_method=config.reference_method,
         )
         summary.update(config_hash=config.config_hash, run_id=manifest["run_id"],
-                       scope=config.scope, source_fingerprint=fingerprint)
+                       scope=config.scope, purpose=config.purpose,
+                       source_fingerprint=fingerprint,
+                       scenario_definitions={
+                           scenario.key: {
+                               "kind": scenario.kind, "id": scenario.id,
+                               "label": scenario.label,
+                               "sample_sizes": {
+                                   name: value for name, value in
+                                   resolved[scenario.key]["config"].items()
+                                   if name.startswith("n_")
+                               },
+                           } for scenario in config.scenarios
+                       })
         _write_json(output / "summary.json", summary)
         _write_text(output / "README.md", _result_readme(summary))
         return summary
@@ -490,9 +531,66 @@ def _result_readme(summary: Mapping[str, Any]) -> str:
         table.append(f"| `{method}` | {mse_text} | {root_text} | "
                      f"{description['successful']} / {description['expected']} |")
     result_table = "\n".join(table) + "\n\n"
+    scenario_table = [
+        "| Scenario | Method | Mean CATE MSE | Mean root-PEHE | Successful / expected | Failed | Missing |",
+        "| --- | --- | ---: | ---: | ---: | ---: | ---: |",
+    ]
+    for scenario, methods in summary["scenarios"].items():
+        for method, description in methods.items():
+            mse = _report_number(description["mean_cate_mse"])
+            root = _report_number(description["mean_root_pehe"])
+            scenario_table.append(
+                f"| `{scenario}` | `{method}` | {mse} | {root} | "
+                f"{description['successful']} / {description['expected']} | "
+                f"{description['failed']} | {description['missing']} |"
+            )
+    pair_table = [
+        "| Scenario | Method | Mean CATE MSE difference | 95% interval | Complete / expected seeds | Comparison |",
+        "| --- | --- | ---: | --- | ---: | --- |",
+    ]
+    for method, comparisons in summary["paired_comparisons"].items():
+        for scenario, comparison in comparisons["by_scenario"].items():
+            metric = comparison["metrics"]["cate_mse"]
+            interval = metric["ci95"]
+            interval_text = ("unavailable" if interval is None else
+                             f"[{interval[0]:.6g}, {interval[1]:.6g}]")
+            state = ("complete" if comparison["eligible_for_comparison"] else
+                     f"withheld: {comparison['withheld_reason']}")
+            pair_table.append(
+                f"| `{scenario}` | `{method}` | {_report_number(metric['mean'])} | "
+                f"{interval_text} | {comparison['complete_seed_blocks']} / "
+                f"{comparison['expected_seed_blocks']} | {state} |"
+            )
+    budget_table = [
+        "| Scenario | OBS train | RCT train | RCT tune | RCT train + tune | RCT test | Target reference | Evaluation |",
+        "| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |",
+    ]
+    for scenario, definition in summary.get("scenario_definitions", {}).items():
+        sizes = definition["sample_sizes"]
+        train, tune = sizes.get("n_rct_train"), sizes.get("n_rct_tune")
+        available = None if train is None or tune is None else train + tune
+        values = [sizes.get("n_obs"), train, tune, available,
+                  sizes.get("n_rct_test"), sizes.get("n_target_reference", 0),
+                  sizes.get("n_eval")]
+        budget_table.append(f"| `{scenario}` | " + " | ".join(
+            "unavailable" if value is None else str(value) for value in values
+        ) + " |")
+    details = ""
+    if len(budget_table) > 2:
+        details += ("## Sample budgets\n\n" + "\n".join(budget_table) + "\n\n"
+                    "RCT train + tune is the outcome budget made available to methods; "
+                    "individual recipes may leave tuning data unused. RCT test is "
+                    "evaluator-owned and is not included in that budget.\n\n")
+    details += "## Results by scenario\n\n" + "\n".join(scenario_table) + "\n\n"
+    if len(pair_table) > 2:
+        details += (f"## Paired comparisons by scenario\n\nReference: "
+                    f"`{summary['reference_method']}`. Differences are method minus "
+                    "reference; negative favors the method. Intervals are pointwise, "
+                    "without multiplicity adjustment.\n\n" + "\n".join(pair_table) + "\n\n")
     return (
         "# Benchmark run\n\n"
-        f"Scope: {summary['scope']}. This is a development example, not a method-ranking study.\n\n"
+        f"Purpose: {summary.get('purpose', 'smoke')}. Scope: {summary['scope']}. "
+        f"Interpretation: {_run_interpretation(summary.get('purpose', 'smoke'))}.\n\n"
         f"Status: {summary['status']}. Successful cells: {coverage['successful']}/"
         f"{coverage['expected']}; failed: {coverage['failed']}; missing: {coverage['missing']}.\n\n"
         "`records.jsonl` stores one terminal record per scenario/seed/method. "
@@ -500,7 +598,11 @@ def _result_readme(summary: Mapping[str, Any]) -> str:
         "Requested official adapters also record external implementation hashes; custom "
         "method provenance strings are author-supplied identifiers, not automatic source checks. "
         "`summary.json` stores coverage, descriptive metrics, and paired comparisons.\n\n"
-        + result_table +
+        + details +
+        "## Aggregate across requested scenarios\n\n"
+        "These are descriptive averages on each scenario's original outcome scale. "
+        "Large-scale scenarios can dominate this summary; inspect the scenario "
+        "results before interpreting an aggregate difference.\n\n" + result_table +
         "Table means describe successful cells only. Incomplete coverage prevents "
         "inferential comparisons and can make descriptive means misleading.\n\n"
         "CATE MSE is the mean squared CATE error over evaluation rows. Root-PEHE is "
@@ -517,3 +619,7 @@ def _result_readme(summary: Mapping[str, Any]) -> str:
         "After a hard process kill, inspect the output and confirm no writer remains "
         "before manually removing a stale `.run.lock`.\n"
     )
+
+
+def _report_number(value: Any) -> str:
+    return "unavailable" if value is None else f"{value:.6g}"

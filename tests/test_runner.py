@@ -1,7 +1,9 @@
 """Output coverage, interruption/resume invariants, and estimator isolation."""
 
+import hashlib
 import json
 from pathlib import Path
+from types import SimpleNamespace
 
 import numpy as np
 import pytest
@@ -148,3 +150,159 @@ def test_all_shipped_configs_validate_and_smoke_covers_all_31_assets():
     smoke = load_config(root / "configs" / "smoke.toml")
     assert len(smoke.scenarios) == 31
     assert len(set(scenario.key for scenario in smoke.scenarios)) == 31
+
+
+def test_default_payload_preserves_legacy_config_identity():
+    original = config()
+    legacy = {
+        "schema_version": 1,
+        "run": {"seeds": [3, 5], "methods": ["rct_t_ridge", "obs_t_ridge"],
+                "reference_method": "rct_t_ridge", "scope": "smoke/development-inspected"},
+        "scenarios": [{"kind": "structural", "id": "M0", "parameters": {
+            "n_obs": 24, "n_rct_train": 20, "n_rct_tune": 10,
+            "n_rct_test": 10, "n_eval": 16,
+        }}],
+        "method_options": {},
+    }
+    expected_hash = hashlib.sha256(json.dumps(
+        legacy, ensure_ascii=False, sort_keys=True, allow_nan=False,
+        separators=(",", ":"),
+    ).encode()).hexdigest()
+    assert original.payload() == legacy
+    assert original.config_hash == expected_hash
+    assert original.scenarios[0].key == "structural:M0"
+    explicit_smoke = BenchmarkConfig(
+        scenarios=original.scenarios, seeds=original.seeds, methods=original.methods,
+        purpose="smoke",
+    )
+    assert explicit_smoke.config_hash == original.config_hash
+
+
+def test_labelled_budget_grid_loads_runs_and_resumes(tmp_path, monkeypatch):
+    path = tmp_path / "grid.toml"
+    path.write_text('''schema_version = 1
+[run]
+seeds = [3, 5]
+methods = ["rct_t_ridge", "obs_t_ridge"]
+reference_method = "rct_t_ridge"
+purpose = "reference"
+scope = "fixed budget grid for testing"
+[[scenarios]]
+kind = "structural"
+id = "M0"
+label = "rct20"
+[scenarios.parameters]
+n_obs = 24
+n_rct_train = 20
+n_rct_tune = 10
+n_rct_test = 10
+n_eval = 16
+[[scenarios]]
+kind = "structural"
+id = "M0"
+label = "rct40"
+[scenarios.parameters]
+n_obs = 24
+n_rct_train = 40
+n_rct_tune = 10
+n_rct_test = 10
+n_eval = 16
+''')
+    loaded = load_config(path)
+    assert [s.key for s in loaded.scenarios] == [
+        "structural:M0@rct20", "structural:M0@rct40"]
+    assert loaded.payload()["run"]["purpose"] == "reference"
+    monkeypatch.setattr(runner, "make_method", lambda *a, **kw: SpyMethod())
+    output = tmp_path / "grid"
+    result = run_benchmark(loaded, output)
+    assert result["coverage"] == {
+        "expected": 8, "recorded": 8, "successful": 8, "failed": 0, "missing": 0}
+    assert result["scenario_definitions"]["structural:M0@rct40"]["sample_sizes"]["n_rct_train"] == 40
+    assert len({row["record_id"] for row in records(output)}) == 8
+    previous = (output / "records.jsonl").read_bytes()
+    run_benchmark(loaded, output, resume=True)
+    assert (output / "records.jsonl").read_bytes() == previous
+    manifest = json.loads((output / "run_manifest.json").read_text())
+    assert manifest["purpose"] == "reference"
+    assert "development smoke" not in manifest["interpretation"]
+    report = (output / "README.md").read_text()
+    assert "Purpose: reference" in report
+    assert "development example" not in report
+    assert "structural:M0@rct20" in report and "structural:M0@rct40" in report
+    assert "RCT train + tune" in report
+    assert "| `structural:M0@rct20` | 24 | 20 | 10 | 30 |" in report
+    assert "| `structural:M0@rct40` | 24 | 40 | 10 | 50 |" in report
+
+
+def test_labels_do_not_change_samples_or_method_randomization():
+    original = config().scenarios[0]
+    labelled = ScenarioConfig(original.kind, original.id, original.parameters,
+                              label="same_setting")
+    plain_problem = runner._generate(original, 3)
+    labelled_problem = runner._generate(labelled, 3)
+    for role in ("obs_train", "rct_train", "rct_tune", "rct_test"):
+        plain, named = getattr(plain_problem, role), getattr(labelled_problem, role)
+        for field in ("X", "T", "Y"):
+            np.testing.assert_array_equal(getattr(plain, field), getattr(named, field))
+    np.testing.assert_array_equal(plain_problem.eval_X, labelled_problem.eval_X)
+    np.testing.assert_array_equal(plain_problem.eval_tau, labelled_problem.eval_tau)
+    assert runner.method_seed(original.key, 3, "rct_t_ridge") == runner.method_seed(
+        labelled.key, 3, "rct_t_ridge")
+
+
+@pytest.mark.parametrize("label", ["", "has space", "has@sign", "a/b", "a|b", "한글", 7])
+def test_invalid_scenario_labels_are_rejected(label):
+    with pytest.raises(ValueError, match="scenario label"):
+        ScenarioConfig("structural", "M0", label=label)
+
+
+def test_duplicate_grid_keys_and_invalid_run_purpose_are_rejected():
+    first = ScenarioConfig("structural", "M0", label="same")
+    changed_budget = ScenarioConfig("structural", "M0", {"n_rct_train": 80}, label="same")
+    with pytest.raises(ValueError, match="unique"):
+        BenchmarkConfig(scenarios=(first, changed_budget))
+    with pytest.raises(ValueError, match="purpose"):
+        BenchmarkConfig(scenarios=(first,), purpose="confirmed_winner")
+    original = config()
+    reference = BenchmarkConfig(
+        scenarios=original.scenarios, seeds=original.seeds, methods=original.methods,
+        purpose="reference",
+    )
+    assert reference.config_hash != original.config_hash
+
+
+def test_scenario_report_exposes_paired_effects_and_withholds_failed_pairs(tmp_path, monkeypatch):
+    monkeypatch.setattr(runner, "_generate", lambda *args: SimpleNamespace(
+        training_view=lambda: None, eval_X=np.zeros((4, 3)),
+        eval_tau=np.zeros(4), metadata={},
+    ))
+
+    class Constant:
+        def __init__(self, value):
+            self.value = value
+        def fit_predict(self, training, eval_X, *, seed):
+            return np.full(len(eval_X), self.value)
+
+    monkeypatch.setattr(runner, "make_method", lambda name, **kw: Constant(
+        1 if name == "rct_t_ridge" else 2))
+    completed = tmp_path / "complete"
+    run_benchmark(config(), completed)
+    report = (completed / "README.md").read_text()
+    # Independent hand calculation: 2^2 - 1^2 = 3 for each seed.
+    assert "| `structural:M0` | `obs_t_ridge` | 3 | [3, 3] | 2 / 2 | complete |" in report
+    assert "## Results by scenario" in report
+    assert "## Aggregate across requested scenarios" in report
+    assert "original outcome scale" in report
+    assert "without multiplicity adjustment" in report
+
+    class Failure:
+        def fit_predict(self, *args, **kwargs):
+            raise RuntimeError("test failure")
+
+    monkeypatch.setattr(runner, "make_method", lambda name, **kw: (
+        Constant(1) if name == "rct_t_ridge" else Failure()))
+    failed = tmp_path / "failed"
+    run_benchmark(config(), failed)
+    report = (failed / "README.md").read_text()
+    assert "| `structural:M0` | `obs_t_ridge` | unavailable | unavailable | 0 / 2 | 2 | 0 |" in report
+    assert "unavailable | unavailable | 0 / 2 | withheld: failed or missing requested cells" in report

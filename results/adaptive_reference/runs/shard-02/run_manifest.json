@@ -1,0 +1,258 @@
+{
+  "config": {
+    "method_options": {},
+    "run": {
+      "budgets": [
+        128,
+        512
+      ],
+      "estimators": [
+        "rct_t_extra_trees",
+        "naive_pooled_t_extra_trees"
+      ],
+      "pilot_size": 32,
+      "policies": [
+        "uniform",
+        "geometry",
+        "outcome_residual"
+      ],
+      "pool_size": 2048,
+      "purpose": "reference",
+      "scope": "Frozen two-stage fixed-pool comparison; 32 sampling replicates on three development-inspected mechanisms; no superiority claim",
+      "seeds": [
+        3102,
+        3110,
+        3118,
+        3126
+      ],
+      "tune_size": 16
+    },
+    "scenarios": [
+      {
+        "id": "M0",
+        "kind": "structural",
+        "parameters": {
+          "n_eval": 2048,
+          "n_obs": 2000
+        }
+      },
+      {
+        "id": "M3",
+        "kind": "structural",
+        "parameters": {
+          "n_eval": 2048,
+          "n_obs": 2000
+        }
+      },
+      {
+        "id": "M9",
+        "kind": "structural",
+        "parameters": {
+          "n_eval": 2048,
+          "n_obs": 2000
+        }
+      }
+    ],
+    "schema_version": 1,
+    "track": "adaptive_fixed_pool_v1"
+  },
+  "config_hash": "f82989affea3b4764c5916b0bd661443cc20083db419cbb0d4706241b0b108ca",
+  "created_utc": "2026-10-25T13:02:24.866193+00:00",
+  "custom_methods": {},
+  "environment": {
+    "implementation": "CPython",
+    "machine": "x86_64",
+    "packages": {
+      "dfppi": "0.1.0",
+      "numpy": "1.26.4",
+      "obs-rct-benchmark": "0.2.0a1",
+      "scikit-learn": "1.5.2",
+      "scipy": "1.15.3",
+      "torch": "2.2.2+cpu"
+    },
+    "python": "3.12.3",
+    "system": "Linux"
+  },
+  "external_methods": {},
+  "information_contract": "fixed-pool two-stage recruitment; one outcome per queried row",
+  "interpretation": "Declared reference comparison; development-inspected mechanisms; no automatic confirmatory claim",
+  "purpose": "reference",
+  "resolved_pools": {
+    "structural:M0": {
+      "config": {
+        "bias_geometry": "constant",
+        "bias_min": 1.0,
+        "cate_alignment": "orthogonal",
+        "cate_geometry": "smooth",
+        "cate_scale": 1.0,
+        "clean_fraction": 0.5,
+        "confounding_coordinate_offset": 0,
+        "confounding_outcome_0": 1.0,
+        "confounding_outcome_1": 1.0,
+        "confounding_treatment": 0.0,
+        "covariate_marginals": "gaussian",
+        "covariate_rho": 0.0,
+        "d": 5,
+        "hidden_distribution": "normal",
+        "hidden_outcome_correlation": 1.0,
+        "mechanism": "M0",
+        "n_eval": 2048,
+        "n_obs": 2000,
+        "n_rct_test": 4,
+        "n_rct_train": 2048,
+        "n_rct_tune": 4,
+        "n_target_reference": 0,
+        "name": "structural:M0",
+        "noise_distribution": "normal",
+        "noise_heteroskedasticity": 0.0,
+        "noise_std": 1.0,
+        "obs_baseline_shift": 0.0,
+        "obs_cate_shift": 0.0,
+        "obs_covariate_shift": 0.0,
+        "obs_selection_strength": 0.0,
+        "outcome_geometry": "smooth",
+        "participation_outcome_loading_0": 0.0,
+        "participation_outcome_loading_1": 0.0,
+        "propensity_floor": 0.01,
+        "quadrature_order": 21,
+        "rct_covariate_shift": 0.0,
+        "rct_hidden_selection_strength": 0.0,
+        "rct_propensity": 0.5,
+        "rct_selection_strength": 0.0,
+        "resolvability": 1.0,
+        "signal_basis": "axis_aligned",
+        "signal_seed": 2025,
+        "source_shift_geometry": "smooth",
+        "treatment_linear_scale": 1.0,
+        "treatment_nonlinearity": 0.0,
+        "u_predictability": 0.0
+      },
+      "generator_version": "2.0.0"
+    },
+    "structural:M3": {
+      "config": {
+        "bias_geometry": "localized",
+        "bias_min": 0.0,
+        "cate_alignment": "orthogonal",
+        "cate_geometry": "smooth",
+        "cate_scale": 1.0,
+        "clean_fraction": 0.75,
+        "confounding_coordinate_offset": 0,
+        "confounding_outcome_0": 2.0,
+        "confounding_outcome_1": 2.0,
+        "confounding_treatment": 2.0,
+        "covariate_marginals": "gaussian",
+        "covariate_rho": 0.0,
+        "d": 5,
+        "hidden_distribution": "normal",
+        "hidden_outcome_correlation": 1.0,
+        "mechanism": "M3",
+        "n_eval": 2048,
+        "n_obs": 2000,
+        "n_rct_test": 4,
+        "n_rct_train": 2048,
+        "n_rct_tune": 4,
+        "n_target_reference": 0,
+        "name": "structural:M3",
+        "noise_distribution": "normal",
+        "noise_heteroskedasticity": 0.0,
+        "noise_std": 1.0,
+        "obs_baseline_shift": 0.0,
+        "obs_cate_shift": 0.0,
+        "obs_covariate_shift": 0.0,
+        "obs_selection_strength": 0.0,
+        "outcome_geometry": "smooth",
+        "participation_outcome_loading_0": 0.0,
+        "participation_outcome_loading_1": 0.0,
+        "propensity_floor": 0.01,
+        "quadrature_order": 21,
+        "rct_covariate_shift": 0.0,
+        "rct_hidden_selection_strength": 0.0,
+        "rct_propensity": 0.5,
+        "rct_selection_strength": 0.0,
+        "resolvability": 1.0,
+        "signal_basis": "axis_aligned",
+        "signal_seed": 2025,
+        "source_shift_geometry": "smooth",
+        "treatment_linear_scale": 1.0,
+        "treatment_nonlinearity": 0.0,
+        "u_predictability": 0.0
+      },
+      "generator_version": "2.0.0"
+    },
+    "structural:M9": {
+      "config": {
+        "bias_geometry": "localized",
+        "bias_min": 0.1,
+        "cate_alignment": "aligned",
+        "cate_geometry": "rare",
+        "cate_scale": 1.0,
+        "clean_fraction": 0.7,
+        "confounding_coordinate_offset": 0,
+        "confounding_outcome_0": 1.5,
+        "confounding_outcome_1": 1.5,
+        "confounding_treatment": 1.5,
+        "covariate_marginals": "gaussian",
+        "covariate_rho": 0.0,
+        "d": 5,
+        "hidden_distribution": "normal",
+        "hidden_outcome_correlation": 1.0,
+        "mechanism": "M9",
+        "n_eval": 2048,
+        "n_obs": 2000,
+        "n_rct_test": 4,
+        "n_rct_train": 2048,
+        "n_rct_tune": 4,
+        "n_target_reference": 0,
+        "name": "structural:M9",
+        "noise_distribution": "normal",
+        "noise_heteroskedasticity": 0.0,
+        "noise_std": 1.0,
+        "obs_baseline_shift": 0.0,
+        "obs_cate_shift": 0.0,
+        "obs_covariate_shift": 0.0,
+        "obs_selection_strength": 0.0,
+        "outcome_geometry": "smooth",
+        "participation_outcome_loading_0": 0.0,
+        "participation_outcome_loading_1": 0.0,
+        "propensity_floor": 0.01,
+        "quadrature_order": 21,
+        "rct_covariate_shift": 0.0,
+        "rct_hidden_selection_strength": 0.0,
+        "rct_propensity": 0.5,
+        "rct_selection_strength": -2.0,
+        "resolvability": 1.0,
+        "signal_basis": "axis_aligned",
+        "signal_seed": 2025,
+        "source_shift_geometry": "smooth",
+        "treatment_linear_scale": 1.0,
+        "treatment_nonlinearity": 0.0,
+        "u_predictability": 0.0
+      },
+      "generator_version": "2.0.0"
+    }
+  },
+  "scope": "Frozen two-stage fixed-pool comparison; 32 sampling replicates on three development-inspected mechanisms; no superiority claim",
+  "source": {
+    "aggregate_sha256": "56d2f7075fa128a6831f4969d332fccb135608a15c2408da7eaea71ab5a8d3a1",
+    "distribution": "obs-rct-benchmark",
+    "package_file_sha256": {
+      "__init__.py": "7ecfc3d0af8177e83b635635e02533a99c063d0e60005eac67b3105e3dde3c2a",
+      "adaptive.py": "e1e961a45e508684f75c546ec1d3adf92e2aff424e008e7b0486aa7113959005",
+      "adaptive_runner.py": "afecb6c75ab4f9e8c07a58b65edbacc22fac95bd59ff25c08c61b60a296302b9",
+      "cli.py": "39f14951a56b3a752f87081ceaec5cbf93228d5cb6b80a65e94904c8296c22ef",
+      "cornet.py": "3ccd76509d2965ea8451da9e279a7f3c8780873c5c24625f380d3c9b719b83bf",
+      "data.py": "616958669558c6ed274709b17d683f06c18b0f0606d7fcbc8a5485919f744573",
+      "datasets.py": "c05090977b6513bfced49baafad77340c113f631af15ea062b4f7f035496825a",
+      "evaluation.py": "b66a7c0dabdb0a31aa20ef70a1744c29da6007fea438ffba33e52e35796faca9",
+      "inputs.py": "be3d6e327cc092c33f465c1e14baae74fc9d5e2077e2511a4b293af3f899c0db",
+      "methods.py": "e32db3213bba4ece5429f0358eed3a402e84674a8bf53378648bec0319fe97bb",
+      "paper_dgp.py": "77bb899367e6ce8d12ee127b4ff6deb833215e90a707bb0f35c9aacf55f6a3f2",
+      "runner.py": "612be57cb8c26588aea0bdff4723f668edaaf8452838ecd3de9c78c7ed82eab8",
+      "sensitivity.py": "f684b08c65a129d43df6a1acfba36e43d71ee072e92e2fcfdaaf27de8a6e134f",
+      "structural_dgp.py": "49c94e6e5c6725d942a15a122344b03a3bd8174a131cbee0304f3a5e5994bdf4"
+    },
+    "version": "0.2.0a1"
+  },
+  "source_fingerprint": "8524d273e2dcc624a746f6f1268750824ea50450a5e66173ad9a99f438a855cd"
+}

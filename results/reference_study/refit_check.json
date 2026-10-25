@@ -1,0 +1,592 @@
+{
+  "checker_source_sha256": "c101484a87fd9ff2e87a7b11a5a1dfef58b7e9624fef8bd051f974b672ddaef0",
+  "checks": [
+    {
+      "absolute_difference": 5.551115123125783e-17,
+      "method": "rct_t_extra_trees",
+      "scenario": "structural:M2@clean_o512_r128",
+      "seed": 10000
+    },
+    {
+      "absolute_difference": 5.551115123125783e-17,
+      "method": "rct_dr_extra_trees",
+      "scenario": "structural:M2@clean_o512_r128",
+      "seed": 10000
+    },
+    {
+      "absolute_difference": 0.0,
+      "method": "obs_t_extra_trees",
+      "scenario": "structural:M2@clean_o512_r128",
+      "seed": 10000
+    },
+    {
+      "absolute_difference": 0.0,
+      "method": "naive_pooled_t_extra_trees",
+      "scenario": "structural:M2@clean_o512_r128",
+      "seed": 10000
+    },
+    {
+      "absolute_difference": 0.0,
+      "method": "cornet_official",
+      "scenario": "structural:M2@clean_o512_r128",
+      "seed": 10000
+    },
+    {
+      "absolute_difference": 5.551115123125783e-17,
+      "method": "datafusionppi",
+      "scenario": "structural:M2@clean_o512_r128",
+      "seed": 10000
+    },
+    {
+      "absolute_difference": 0.0,
+      "method": "rct_t_extra_trees",
+      "scenario": "structural:M2@clean_o512_r512",
+      "seed": 10000
+    },
+    {
+      "absolute_difference": 1.1102230246251565e-16,
+      "method": "rct_dr_extra_trees",
+      "scenario": "structural:M2@clean_o512_r512",
+      "seed": 10000
+    },
+    {
+      "absolute_difference": 0.0,
+      "method": "obs_t_extra_trees",
+      "scenario": "structural:M2@clean_o512_r512",
+      "seed": 10000
+    },
+    {
+      "absolute_difference": 0.0,
+      "method": "naive_pooled_t_extra_trees",
+      "scenario": "structural:M2@clean_o512_r512",
+      "seed": 10000
+    },
+    {
+      "absolute_difference": 0.0,
+      "method": "cornet_official",
+      "scenario": "structural:M2@clean_o512_r512",
+      "seed": 10000
+    },
+    {
+      "absolute_difference": 5.551115123125783e-17,
+      "method": "datafusionppi",
+      "scenario": "structural:M2@clean_o512_r512",
+      "seed": 10000
+    },
+    {
+      "absolute_difference": 5.551115123125783e-17,
+      "method": "rct_t_extra_trees",
+      "scenario": "structural:M2@clean_o2048_r128",
+      "seed": 10000
+    },
+    {
+      "absolute_difference": 5.551115123125783e-17,
+      "method": "rct_dr_extra_trees",
+      "scenario": "structural:M2@clean_o2048_r128",
+      "seed": 10000
+    },
+    {
+      "absolute_difference": 0.0,
+      "method": "obs_t_extra_trees",
+      "scenario": "structural:M2@clean_o2048_r128",
+      "seed": 10000
+    },
+    {
+      "absolute_difference": 0.0,
+      "method": "naive_pooled_t_extra_trees",
+      "scenario": "structural:M2@clean_o2048_r128",
+      "seed": 10000
+    },
+    {
+      "absolute_difference": 0.0,
+      "method": "cornet_official",
+      "scenario": "structural:M2@clean_o2048_r128",
+      "seed": 10000
+    },
+    {
+      "absolute_difference": 5.551115123125783e-17,
+      "method": "datafusionppi",
+      "scenario": "structural:M2@clean_o2048_r128",
+      "seed": 10000
+    },
+    {
+      "absolute_difference": 0.0,
+      "method": "rct_t_extra_trees",
+      "scenario": "structural:M2@clean_o2048_r512",
+      "seed": 10000
+    },
+    {
+      "absolute_difference": 1.1102230246251565e-16,
+      "method": "rct_dr_extra_trees",
+      "scenario": "structural:M2@clean_o2048_r512",
+      "seed": 10000
+    },
+    {
+      "absolute_difference": 0.0,
+      "method": "obs_t_extra_trees",
+      "scenario": "structural:M2@clean_o2048_r512",
+      "seed": 10000
+    },
+    {
+      "absolute_difference": 0.0,
+      "method": "naive_pooled_t_extra_trees",
+      "scenario": "structural:M2@clean_o2048_r512",
+      "seed": 10000
+    },
+    {
+      "absolute_difference": 0.0,
+      "method": "cornet_official",
+      "scenario": "structural:M2@clean_o2048_r512",
+      "seed": 10000
+    },
+    {
+      "absolute_difference": 0.0,
+      "method": "datafusionppi",
+      "scenario": "structural:M2@clean_o2048_r512",
+      "seed": 10000
+    },
+    {
+      "absolute_difference": 5.551115123125783e-17,
+      "method": "rct_t_extra_trees",
+      "scenario": "structural:M2@confounded_o512_r128",
+      "seed": 10000
+    },
+    {
+      "absolute_difference": 5.551115123125783e-17,
+      "method": "rct_dr_extra_trees",
+      "scenario": "structural:M2@confounded_o512_r128",
+      "seed": 10000
+    },
+    {
+      "absolute_difference": 1.1102230246251565e-16,
+      "method": "obs_t_extra_trees",
+      "scenario": "structural:M2@confounded_o512_r128",
+      "seed": 10000
+    },
+    {
+      "absolute_difference": 1.1102230246251565e-16,
+      "method": "naive_pooled_t_extra_trees",
+      "scenario": "structural:M2@confounded_o512_r128",
+      "seed": 10000
+    },
+    {
+      "absolute_difference": 0.0,
+      "method": "cornet_official",
+      "scenario": "structural:M2@confounded_o512_r128",
+      "seed": 10000
+    },
+    {
+      "absolute_difference": 0.0,
+      "method": "datafusionppi",
+      "scenario": "structural:M2@confounded_o512_r128",
+      "seed": 10000
+    },
+    {
+      "absolute_difference": 0.0,
+      "method": "rct_t_extra_trees",
+      "scenario": "structural:M2@confounded_o512_r512",
+      "seed": 10000
+    },
+    {
+      "absolute_difference": 1.1102230246251565e-16,
+      "method": "rct_dr_extra_trees",
+      "scenario": "structural:M2@confounded_o512_r512",
+      "seed": 10000
+    },
+    {
+      "absolute_difference": 1.1102230246251565e-16,
+      "method": "obs_t_extra_trees",
+      "scenario": "structural:M2@confounded_o512_r512",
+      "seed": 10000
+    },
+    {
+      "absolute_difference": 0.0,
+      "method": "naive_pooled_t_extra_trees",
+      "scenario": "structural:M2@confounded_o512_r512",
+      "seed": 10000
+    },
+    {
+      "absolute_difference": 0.0,
+      "method": "cornet_official",
+      "scenario": "structural:M2@confounded_o512_r512",
+      "seed": 10000
+    },
+    {
+      "absolute_difference": 1.1102230246251565e-16,
+      "method": "datafusionppi",
+      "scenario": "structural:M2@confounded_o512_r512",
+      "seed": 10000
+    },
+    {
+      "absolute_difference": 5.551115123125783e-17,
+      "method": "rct_t_extra_trees",
+      "scenario": "structural:M2@confounded_o2048_r128",
+      "seed": 10000
+    },
+    {
+      "absolute_difference": 5.551115123125783e-17,
+      "method": "rct_dr_extra_trees",
+      "scenario": "structural:M2@confounded_o2048_r128",
+      "seed": 10000
+    },
+    {
+      "absolute_difference": 1.1102230246251565e-16,
+      "method": "obs_t_extra_trees",
+      "scenario": "structural:M2@confounded_o2048_r128",
+      "seed": 10000
+    },
+    {
+      "absolute_difference": 0.0,
+      "method": "naive_pooled_t_extra_trees",
+      "scenario": "structural:M2@confounded_o2048_r128",
+      "seed": 10000
+    },
+    {
+      "absolute_difference": 1.3877787807814457e-17,
+      "method": "cornet_official",
+      "scenario": "structural:M2@confounded_o2048_r128",
+      "seed": 10000
+    },
+    {
+      "absolute_difference": 5.551115123125783e-17,
+      "method": "datafusionppi",
+      "scenario": "structural:M2@confounded_o2048_r128",
+      "seed": 10000
+    },
+    {
+      "absolute_difference": 0.0,
+      "method": "rct_t_extra_trees",
+      "scenario": "structural:M2@confounded_o2048_r512",
+      "seed": 10000
+    },
+    {
+      "absolute_difference": 1.1102230246251565e-16,
+      "method": "rct_dr_extra_trees",
+      "scenario": "structural:M2@confounded_o2048_r512",
+      "seed": 10000
+    },
+    {
+      "absolute_difference": 1.1102230246251565e-16,
+      "method": "obs_t_extra_trees",
+      "scenario": "structural:M2@confounded_o2048_r512",
+      "seed": 10000
+    },
+    {
+      "absolute_difference": 0.0,
+      "method": "naive_pooled_t_extra_trees",
+      "scenario": "structural:M2@confounded_o2048_r512",
+      "seed": 10000
+    },
+    {
+      "absolute_difference": 0.0,
+      "method": "cornet_official",
+      "scenario": "structural:M2@confounded_o2048_r512",
+      "seed": 10000
+    },
+    {
+      "absolute_difference": 0.0,
+      "method": "datafusionppi",
+      "scenario": "structural:M2@confounded_o2048_r512",
+      "seed": 10000
+    },
+    {
+      "absolute_difference": 5.551115123125783e-17,
+      "method": "rct_t_extra_trees",
+      "scenario": "structural:M2@shift_o512_r128",
+      "seed": 10000
+    },
+    {
+      "absolute_difference": 5.551115123125783e-17,
+      "method": "rct_dr_extra_trees",
+      "scenario": "structural:M2@shift_o512_r128",
+      "seed": 10000
+    },
+    {
+      "absolute_difference": 0.0,
+      "method": "obs_t_extra_trees",
+      "scenario": "structural:M2@shift_o512_r128",
+      "seed": 10000
+    },
+    {
+      "absolute_difference": 5.551115123125783e-17,
+      "method": "naive_pooled_t_extra_trees",
+      "scenario": "structural:M2@shift_o512_r128",
+      "seed": 10000
+    },
+    {
+      "absolute_difference": 1.3877787807814457e-17,
+      "method": "cornet_official",
+      "scenario": "structural:M2@shift_o512_r128",
+      "seed": 10000
+    },
+    {
+      "absolute_difference": 1.1102230246251565e-16,
+      "method": "datafusionppi",
+      "scenario": "structural:M2@shift_o512_r128",
+      "seed": 10000
+    },
+    {
+      "absolute_difference": 0.0,
+      "method": "rct_t_extra_trees",
+      "scenario": "structural:M2@shift_o512_r512",
+      "seed": 10000
+    },
+    {
+      "absolute_difference": 1.1102230246251565e-16,
+      "method": "rct_dr_extra_trees",
+      "scenario": "structural:M2@shift_o512_r512",
+      "seed": 10000
+    },
+    {
+      "absolute_difference": 0.0,
+      "method": "obs_t_extra_trees",
+      "scenario": "structural:M2@shift_o512_r512",
+      "seed": 10000
+    },
+    {
+      "absolute_difference": 2.7755575615628914e-17,
+      "method": "naive_pooled_t_extra_trees",
+      "scenario": "structural:M2@shift_o512_r512",
+      "seed": 10000
+    },
+    {
+      "absolute_difference": 0.0,
+      "method": "cornet_official",
+      "scenario": "structural:M2@shift_o512_r512",
+      "seed": 10000
+    },
+    {
+      "absolute_difference": 5.551115123125783e-17,
+      "method": "datafusionppi",
+      "scenario": "structural:M2@shift_o512_r512",
+      "seed": 10000
+    },
+    {
+      "absolute_difference": 5.551115123125783e-17,
+      "method": "rct_t_extra_trees",
+      "scenario": "structural:M2@shift_o2048_r128",
+      "seed": 10000
+    },
+    {
+      "absolute_difference": 5.551115123125783e-17,
+      "method": "rct_dr_extra_trees",
+      "scenario": "structural:M2@shift_o2048_r128",
+      "seed": 10000
+    },
+    {
+      "absolute_difference": 0.0,
+      "method": "obs_t_extra_trees",
+      "scenario": "structural:M2@shift_o2048_r128",
+      "seed": 10000
+    },
+    {
+      "absolute_difference": 5.551115123125783e-17,
+      "method": "naive_pooled_t_extra_trees",
+      "scenario": "structural:M2@shift_o2048_r128",
+      "seed": 10000
+    },
+    {
+      "absolute_difference": 2.7755575615628914e-17,
+      "method": "cornet_official",
+      "scenario": "structural:M2@shift_o2048_r128",
+      "seed": 10000
+    },
+    {
+      "absolute_difference": 5.551115123125783e-17,
+      "method": "datafusionppi",
+      "scenario": "structural:M2@shift_o2048_r128",
+      "seed": 10000
+    },
+    {
+      "absolute_difference": 0.0,
+      "method": "rct_t_extra_trees",
+      "scenario": "structural:M2@shift_o2048_r512",
+      "seed": 10000
+    },
+    {
+      "absolute_difference": 1.1102230246251565e-16,
+      "method": "rct_dr_extra_trees",
+      "scenario": "structural:M2@shift_o2048_r512",
+      "seed": 10000
+    },
+    {
+      "absolute_difference": 0.0,
+      "method": "obs_t_extra_trees",
+      "scenario": "structural:M2@shift_o2048_r512",
+      "seed": 10000
+    },
+    {
+      "absolute_difference": 5.551115123125783e-17,
+      "method": "naive_pooled_t_extra_trees",
+      "scenario": "structural:M2@shift_o2048_r512",
+      "seed": 10000
+    },
+    {
+      "absolute_difference": 1.3877787807814457e-17,
+      "method": "cornet_official",
+      "scenario": "structural:M2@shift_o2048_r512",
+      "seed": 10000
+    },
+    {
+      "absolute_difference": 0.0,
+      "method": "datafusionppi",
+      "scenario": "structural:M2@shift_o2048_r512",
+      "seed": 10000
+    },
+    {
+      "absolute_difference": 5.551115123125783e-17,
+      "method": "rct_t_extra_trees",
+      "scenario": "structural:M2@both_o512_r128",
+      "seed": 10000
+    },
+    {
+      "absolute_difference": 5.551115123125783e-17,
+      "method": "rct_dr_extra_trees",
+      "scenario": "structural:M2@both_o512_r128",
+      "seed": 10000
+    },
+    {
+      "absolute_difference": 0.0,
+      "method": "obs_t_extra_trees",
+      "scenario": "structural:M2@both_o512_r128",
+      "seed": 10000
+    },
+    {
+      "absolute_difference": 0.0,
+      "method": "naive_pooled_t_extra_trees",
+      "scenario": "structural:M2@both_o512_r128",
+      "seed": 10000
+    },
+    {
+      "absolute_difference": 2.7755575615628914e-17,
+      "method": "cornet_official",
+      "scenario": "structural:M2@both_o512_r128",
+      "seed": 10000
+    },
+    {
+      "absolute_difference": 5.551115123125783e-17,
+      "method": "datafusionppi",
+      "scenario": "structural:M2@both_o512_r128",
+      "seed": 10000
+    },
+    {
+      "absolute_difference": 0.0,
+      "method": "rct_t_extra_trees",
+      "scenario": "structural:M2@both_o512_r512",
+      "seed": 10000
+    },
+    {
+      "absolute_difference": 1.1102230246251565e-16,
+      "method": "rct_dr_extra_trees",
+      "scenario": "structural:M2@both_o512_r512",
+      "seed": 10000
+    },
+    {
+      "absolute_difference": 0.0,
+      "method": "obs_t_extra_trees",
+      "scenario": "structural:M2@both_o512_r512",
+      "seed": 10000
+    },
+    {
+      "absolute_difference": 0.0,
+      "method": "naive_pooled_t_extra_trees",
+      "scenario": "structural:M2@both_o512_r512",
+      "seed": 10000
+    },
+    {
+      "absolute_difference": 0.0,
+      "method": "cornet_official",
+      "scenario": "structural:M2@both_o512_r512",
+      "seed": 10000
+    },
+    {
+      "absolute_difference": 0.0,
+      "method": "datafusionppi",
+      "scenario": "structural:M2@both_o512_r512",
+      "seed": 10000
+    },
+    {
+      "absolute_difference": 5.551115123125783e-17,
+      "method": "rct_t_extra_trees",
+      "scenario": "structural:M2@both_o2048_r128",
+      "seed": 10000
+    },
+    {
+      "absolute_difference": 5.551115123125783e-17,
+      "method": "rct_dr_extra_trees",
+      "scenario": "structural:M2@both_o2048_r128",
+      "seed": 10000
+    },
+    {
+      "absolute_difference": 2.220446049250313e-16,
+      "method": "obs_t_extra_trees",
+      "scenario": "structural:M2@both_o2048_r128",
+      "seed": 10000
+    },
+    {
+      "absolute_difference": 0.0,
+      "method": "naive_pooled_t_extra_trees",
+      "scenario": "structural:M2@both_o2048_r128",
+      "seed": 10000
+    },
+    {
+      "absolute_difference": 0.0,
+      "method": "cornet_official",
+      "scenario": "structural:M2@both_o2048_r128",
+      "seed": 10000
+    },
+    {
+      "absolute_difference": 0.0,
+      "method": "datafusionppi",
+      "scenario": "structural:M2@both_o2048_r128",
+      "seed": 10000
+    },
+    {
+      "absolute_difference": 0.0,
+      "method": "rct_t_extra_trees",
+      "scenario": "structural:M2@both_o2048_r512",
+      "seed": 10000
+    },
+    {
+      "absolute_difference": 1.1102230246251565e-16,
+      "method": "rct_dr_extra_trees",
+      "scenario": "structural:M2@both_o2048_r512",
+      "seed": 10000
+    },
+    {
+      "absolute_difference": 2.220446049250313e-16,
+      "method": "obs_t_extra_trees",
+      "scenario": "structural:M2@both_o2048_r512",
+      "seed": 10000
+    },
+    {
+      "absolute_difference": 0.0,
+      "method": "naive_pooled_t_extra_trees",
+      "scenario": "structural:M2@both_o2048_r512",
+      "seed": 10000
+    },
+    {
+      "absolute_difference": 0.0,
+      "method": "cornet_official",
+      "scenario": "structural:M2@both_o2048_r512",
+      "seed": 10000
+    },
+    {
+      "absolute_difference": 0.0,
+      "method": "datafusionppi",
+      "scenario": "structural:M2@both_o2048_r512",
+      "seed": 10000
+    }
+  ],
+  "config_hash": "01333b7983ab78fb6ce5469a9471bcf66a0238703edb847325773a55354d0035",
+  "manifest_sha256": "ef99cae8f8884e393887f54c935a3d3c80c77616adb5f1d2901e05397355c9f3",
+  "max_absolute_metric_difference": 2.220446049250313e-16,
+  "records_checked": 96,
+  "records_sha256": "3bd154af3a6b6e4830b5cf273553dbb038ffac00f24cd6f56956b3fb8f7942ec",
+  "scope": "all cells of the supplied shard; deterministic refit, not a new replication",
+  "source_fingerprint": "1d9b9bd23cd660f8cda58215f6f0945ac36a9782e16c0ee19a6c05302ab604d0",
+  "tolerance": {
+    "absolute": 1e-12,
+    "relative": 1e-12
+  }
+}

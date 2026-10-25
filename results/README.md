@@ -1,4 +1,15 @@
-# Example results
+# Reference studies and execution examples
+
+Version `0.2.0a1` adds two fixed reference studies, executed on 2026-10-25. All requested cells completed; original alpha examples remain unchanged below.
+
+| Study | Coverage | Question and readout |
+| --- | ---: | --- |
+| [Static reference comparison](reference_study/SCIENTIFIC_RESULT.md) | 3,072 / 3,072 | Four matched M2 variants × four OBS/RCT budget pairs × six public recipes × 32 seeds; full official training, nonlinear RCT controls, all 64 primary contrasts with Holm adjustment |
+| [Adaptive recruitment comparison](adaptive_reference/SCIENTIFIC_RESULT.md) | 1,152 / 1,152 | Three mechanisms × two outcome budgets × three recruitment policies × two final estimators × 32 seeds; same-estimator policy contrasts, exact acquisition costs and complete deterministic replay |
+
+These studies give sampling replications conditional on development-inspected mechanisms. They do not establish unseen-mechanism generalization or validate identification assumptions in a real population. Pointwise intervals in the adaptive study are descriptive and have no multiplicity adjustment. See the frozen [static](../docs/REFERENCE_STUDY.md) and [adaptive](../docs/ADAPTIVE.md) protocols and [verification](../docs/VERIFICATION.md).
+
+## Original alpha execution examples
 
 Compact results from public methods only, executed with package `0.1.0a1`. These small-sample, two-seed examples check execution; they are not a scientific method-ranking study.
 

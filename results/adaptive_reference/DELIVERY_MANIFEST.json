@@ -1,0 +1,42 @@
+{
+  "omitted_regenerable_manuscript_assets": {
+    "adaptive_budget_curves.pdf": "8b9f558b9c26401bcc5f794bc6afaead92c871cdee59230d6393d5286e04bf2e",
+    "adaptive_policy_contrasts.pdf": "da589d75b9c87bf1471a80998c8fbbfcb85695e83df83ff5b43b69e65276c661"
+  },
+  "output_sha256": {
+    "README.md": "7f6574d886f10601b9f54832aaa10147d3c4c1295df2f34c94d82ff00cacda61",
+    "SCIENTIFIC_RESULT.md": "aad1480bc688db616788a4e1ef65a0dd692742bc1ff9dcbcdccb5cdf205e39fc",
+    "adaptive_budget_curves.svg": "dadecc8e569a60f3e3ed77b54726b57e00073f56ae6392b48cb732d5bc05d44c",
+    "adaptive_policy_contrasts.svg": "ff0c28025c362074f3e02660437b6f60de5943abf908f90fcfea595b4e53b1c3",
+    "policy_contrasts.csv": "cf9db3c96e907698fd8cf809ae81e5474b6e56e453f1e4d87f2b8506800f65c0",
+    "runs/shard-00/records.jsonl": "395c54bba0b6dd058bdbaa6ccedd91c6609806d09d343d1ce13de5a68b01d1a5",
+    "runs/shard-00/replay.json": "b458e2366c21df68ea8d3b1b1e9817424467eae927e9750c0001c4c53fca5c88",
+    "runs/shard-00/run_manifest.json": "b56fcf52e1b39c587031e2e93bf8b405c5516bf8e71efa7cf8c666804b8d0154",
+    "runs/shard-01/records.jsonl": "47a35f1ffb6ded76eda16b4ee89fadc594ed1d307017c20cbd860030d4c0bf8e",
+    "runs/shard-01/replay.json": "b458e2366c21df68ea8d3b1b1e9817424467eae927e9750c0001c4c53fca5c88",
+    "runs/shard-01/run_manifest.json": "2bd46068b14a51c93d33d846aa6a9aca385be3ad871e2aa110e6eac41f57d48f",
+    "runs/shard-02/records.jsonl": "8e2c4c7d59c585fbe6bff308628db69d0d8ac752d12362a195612cf2d9e508b6",
+    "runs/shard-02/replay.json": "b458e2366c21df68ea8d3b1b1e9817424467eae927e9750c0001c4c53fca5c88",
+    "runs/shard-02/run_manifest.json": "28ca7562690608cf0e1758239313806ac5150369471d15d7ec7301848934aab5",
+    "runs/shard-03/records.jsonl": "fe9725e0c728b5bfced8b905901d91ed574a0e8fa17e42c4ecc6aa4221cfeb5b",
+    "runs/shard-03/replay.json": "b458e2366c21df68ea8d3b1b1e9817424467eae927e9750c0001c4c53fca5c88",
+    "runs/shard-03/run_manifest.json": "73a9209a28b8b3c46ab43e7feaab491d2192ee4c616d6bc06636d6e629fff042",
+    "runs/shard-04/records.jsonl": "fc6742f6dd743189a399ea3191cf901b128c723b932a2792c009ad8b8572cd06",
+    "runs/shard-04/replay.json": "b458e2366c21df68ea8d3b1b1e9817424467eae927e9750c0001c4c53fca5c88",
+    "runs/shard-04/run_manifest.json": "427257afb2695b48221d22aa4f7d62b00d75f1ad495a1e73459e4b6a1c761bdc",
+    "runs/shard-05/records.jsonl": "af7523d96cd3b34d25797f7357e8857169e1b3d7e6e19da31227481b0096dbc7",
+    "runs/shard-05/replay.json": "b458e2366c21df68ea8d3b1b1e9817424467eae927e9750c0001c4c53fca5c88",
+    "runs/shard-05/run_manifest.json": "2c11b308c029b399b7cfa557f72dfc907558fdb71ac131b0f228f66fdd290cbd",
+    "runs/shard-06/records.jsonl": "ebb6b5553d58385ea9377014b7f7632dc9248fde71d9ec60af8cb01822128c47",
+    "runs/shard-06/replay.json": "b458e2366c21df68ea8d3b1b1e9817424467eae927e9750c0001c4c53fca5c88",
+    "runs/shard-06/run_manifest.json": "28a7ace8765c747d0b587d73b1d328d9b4df895ee29836562e77a4fbc1cb2b75",
+    "runs/shard-07/records.jsonl": "569b1cfa65265e0d9763e0ead6a19ae5318f4ecd7fb673ae816a0c98afa0a9f6",
+    "runs/shard-07/replay.json": "b458e2366c21df68ea8d3b1b1e9817424467eae927e9750c0001c4c53fca5c88",
+    "runs/shard-07/run_manifest.json": "fb4cf9eb3115c0ab4db9fa9f2d81c195f8b968d77bdbcd3b8e954fd5e92fc424",
+    "scores.csv": "773d6dcc619bee0802189c0ca8dd05db0e5bfe52305cd80fc672747703ecc981",
+    "summary.json": "83cbd8549cf60b8ac990193f92e60e78c2fd7a7f2fa743f3ed6875cb0d9c87bd"
+  },
+  "scope": "Selected compact public analysis and per-replicate records. Vector manuscript PDFs are omitted and regenerate with --paper-assets; no external datasets/models/environments/full operational logs are bundled.",
+  "source_analysis_artifact": "summary.json",
+  "source_analysis_sha256": "83cbd8549cf60b8ac990193f92e60e78c2fd7a7f2fa743f3ed6875cb0d9c87bd"
+}

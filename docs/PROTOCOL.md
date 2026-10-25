@@ -22,6 +22,14 @@ Query `eval_X` is prediction-only. Do not fit preprocessing, estimate target den
 
 Use fixed declared defaults, an internal split of training data, or a disclosed tuning rule based on observed training/tuning data. A trial factual prediction loss can tune outcome models, but it is not an oracle CATE loss. Keep each method's data use visible: the optional official DataFusionPPI adapter uses `rct_train` and `obs_train`, and the upstream method makes its own internal splits; it does not consume `rct_tune`.
 
+## Repeated settings and sample budgets
+
+A scenario's `kind` and `id` choose its generator preset. Its optional `label` names a particular setting, allowing the same preset to appear at several sample sizes or parameter values in one run. Labels contain ASCII letters, digits and underscores; the resulting key is `kind:id@label`. An unlabelled scenario retains its original `kind:id` key and configuration representation. Every key within a run must be unique. See the [configuration example](EXTENDING.md#comparing-settings-of-the-same-generator).
+
+Changing a label alone does not change the generated observations, mechanism seed or method seed. Changing sample sizes or parameters does change the experiment. Matching sample seeds pairs the random streams across settings; it does not guarantee that every smaller sample is an exact prefix of a larger one. Labels are conditions, not independent replicates, so repeated copies of one setting must not increase the reported number of seed blocks.
+
+The report shows sample sizes separately for OBS training, RCT training, RCT tuning, evaluator-only RCT test, target reference and evaluation. It also shows `RCT train + tune`, the randomized-outcome budget made available to methods. This is an access budget: a fixed recipe may leave tuning data unused. Neither unused tuning data nor evaluator-only test data silently becomes additional fitting data.
+
 ## Confounding and source outcome shift
 
 For arm `a`, let `m_obs,a(x)=E[Y|T=a,X=x,OBS]`, `mu_obs,a(x)=E[Y(a)|X=x,OBS]`, and `mu_target,a(x)=E_target[Y(a)|X=x]`. The evaluator distinguishes:
@@ -55,6 +63,8 @@ All methods in a scenario/seed receive the same generated samples and evaluation
 
 The summary reports a mean and approximate two-sided Student `t` interval across independent seed blocks. The implementation uses a conservative critical-value table; a single seed block has no uncertainty interval. Evaluation rows, scenarios, and methods are not treated as independent replicate blocks. The interval describes simulation-seed variability conditional on the selected mechanisms and settings; it does not account for how those scenarios were selected.
 
+The generated Markdown report shows each scenario's scores, failed/missing cells, and paired CATE-MSE differences against the declared reference. These intervals are pointwise and have no multiplicity adjustment. An aggregate table remains available as a descriptive equal-cell average on the original outcome scales; large-scale scenarios can dominate it. Use the condition-specific results to interpret failures and borrowing benefits rather than treating the raw-scale aggregate as a universal ranking. `summary.json` additionally contains paired root-PEHE comparisons and the overall seed-block summaries.
+
 Each requested `(scenario, seed, method)` cell must have one success or failure record. Missing and failed cells are counted explicitly, never scored as zero. Descriptive means of successful cells carry an incomplete-coverage label. Paired inferential comparisons are withheld unless both methods cover the entire requested grid. Duplicate or unrequested records are rejected.
 
 ## Reproducibility and interpretation
@@ -62,5 +72,7 @@ Each requested `(scenario, seed, method)` cell must have one success or failure 
 Declare sample budgets separately for each role, the number of mechanisms and sample seeds, each method's tuning budget, and compute resources before a substantive comparison. Record CPU/thread use, memory and time limits, and any upstream internal splits. Comparable observed data access does not imply equal optimization cost. The runner records outcomes and provenance; external job controls remain responsible for enforcing compute limits.
 
 Record the complete configuration, mechanism seed, sample seeds, package and source versions, method options, optional-method provenance, and command. Mechanism seeds fix random coefficients or representations; sample seeds change draws conditional on that mechanism. Changing both answers a broader question and should be reported as such. Same-seed reproducibility applies to this package version and its numerical environment, not to an upstream experiment's RNG stream.
+
+Set `[run].purpose` to `"smoke"` for execution checks or `"reference"` for a declared comparison study. The default is `"smoke"`; omitting it preserves the original configuration hash. A reference purpose is recorded in the manifest and report without automatically asserting adequate Monte Carlo precision, confirmatory design or scientific validity. State those choices and limitations in `[run].scope` and the study protocol before inspecting its results. Changing the purpose changes run identity; resume still requires the exact configuration and source/environment fingerprint.
 
 Report results by scenario and distinguish published translations from structural mechanisms. The default collection is a chosen set of stressors, not a sampled population of all causal problems. A smoke run checks the software path; it does not establish scientific performance, reliable uncertainty, or universal method superiority. Prespecify the comparison grid and reference method before running a substantive study.

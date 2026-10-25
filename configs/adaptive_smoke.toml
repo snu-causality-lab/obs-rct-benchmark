@@ -1,0 +1,19 @@
+schema_version = 1
+
+[run]
+purpose = "smoke"
+scope = "Two-seed adaptive execution check; no method-ranking claim"
+seeds = [0, 1]
+policies = ["uniform", "geometry", "outcome_residual"]
+estimators = ["rct_t_extra_trees", "naive_pooled_t_extra_trees"]
+budgets = [32, 64]
+pilot_size = 16
+tune_size = 4
+pool_size = 128
+
+[[scenarios]]
+kind = "structural"
+id = "M0"
+[scenarios.parameters]
+n_obs = 128
+n_eval = 64

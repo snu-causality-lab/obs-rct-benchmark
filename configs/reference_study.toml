@@ -1,0 +1,273 @@
+schema_version = 1
+
+[run]
+purpose = "reference"
+seeds = [10000, 10001, 10002, 10003, 10004, 10005, 10006, 10007, 10008, 10009, 10010, 10011, 10012, 10013, 10014, 10015, 10016, 10017, 10018, 10019, 10020, 10021, 10022, 10023, 10024, 10025, 10026, 10027, 10028, 10029, 10030, 10031]
+methods = ["rct_t_extra_trees", "rct_dr_extra_trees", "obs_t_extra_trees", "naive_pooled_t_extra_trees", "cornet_official", "datafusionppi"]
+reference_method = "rct_dr_extra_trees"
+scope = "prespecified static reference study; 4 matched OBS mechanisms, 4 sample-budget pairs, 32 independent seeds; fixed recipes, development-inspected mechanisms"
+
+[method_options.cornet_official]
+source_epochs = 500
+correction_epochs = 200
+width = 25
+standardize = true
+learning_rate = 0.1
+outcome_penalty = 0.1
+correction_penalty = 0.0
+
+[[scenarios]]
+kind = "structural"
+id = "M2"
+label = "clean_o512_r128"
+[scenarios.parameters]
+n_obs = 512
+n_rct_train = 128
+n_rct_tune = 32
+n_rct_test = 64
+n_eval = 2048
+n_target_reference = 0
+d = 5
+signal_seed = 2025
+confounding_treatment = 0.0
+obs_cate_shift = 0.0
+
+[[scenarios]]
+kind = "structural"
+id = "M2"
+label = "clean_o512_r512"
+[scenarios.parameters]
+n_obs = 512
+n_rct_train = 512
+n_rct_tune = 32
+n_rct_test = 64
+n_eval = 2048
+n_target_reference = 0
+d = 5
+signal_seed = 2025
+confounding_treatment = 0.0
+obs_cate_shift = 0.0
+
+[[scenarios]]
+kind = "structural"
+id = "M2"
+label = "clean_o2048_r128"
+[scenarios.parameters]
+n_obs = 2048
+n_rct_train = 128
+n_rct_tune = 32
+n_rct_test = 64
+n_eval = 2048
+n_target_reference = 0
+d = 5
+signal_seed = 2025
+confounding_treatment = 0.0
+obs_cate_shift = 0.0
+
+[[scenarios]]
+kind = "structural"
+id = "M2"
+label = "clean_o2048_r512"
+[scenarios.parameters]
+n_obs = 2048
+n_rct_train = 512
+n_rct_tune = 32
+n_rct_test = 64
+n_eval = 2048
+n_target_reference = 0
+d = 5
+signal_seed = 2025
+confounding_treatment = 0.0
+obs_cate_shift = 0.0
+
+[[scenarios]]
+kind = "structural"
+id = "M2"
+label = "confounded_o512_r128"
+[scenarios.parameters]
+n_obs = 512
+n_rct_train = 128
+n_rct_tune = 32
+n_rct_test = 64
+n_eval = 2048
+n_target_reference = 0
+d = 5
+signal_seed = 2025
+confounding_treatment = 1.5
+obs_cate_shift = 0.0
+
+[[scenarios]]
+kind = "structural"
+id = "M2"
+label = "confounded_o512_r512"
+[scenarios.parameters]
+n_obs = 512
+n_rct_train = 512
+n_rct_tune = 32
+n_rct_test = 64
+n_eval = 2048
+n_target_reference = 0
+d = 5
+signal_seed = 2025
+confounding_treatment = 1.5
+obs_cate_shift = 0.0
+
+[[scenarios]]
+kind = "structural"
+id = "M2"
+label = "confounded_o2048_r128"
+[scenarios.parameters]
+n_obs = 2048
+n_rct_train = 128
+n_rct_tune = 32
+n_rct_test = 64
+n_eval = 2048
+n_target_reference = 0
+d = 5
+signal_seed = 2025
+confounding_treatment = 1.5
+obs_cate_shift = 0.0
+
+[[scenarios]]
+kind = "structural"
+id = "M2"
+label = "confounded_o2048_r512"
+[scenarios.parameters]
+n_obs = 2048
+n_rct_train = 512
+n_rct_tune = 32
+n_rct_test = 64
+n_eval = 2048
+n_target_reference = 0
+d = 5
+signal_seed = 2025
+confounding_treatment = 1.5
+obs_cate_shift = 0.0
+
+[[scenarios]]
+kind = "structural"
+id = "M2"
+label = "shift_o512_r128"
+[scenarios.parameters]
+n_obs = 512
+n_rct_train = 128
+n_rct_tune = 32
+n_rct_test = 64
+n_eval = 2048
+n_target_reference = 0
+d = 5
+signal_seed = 2025
+confounding_treatment = 0.0
+obs_cate_shift = 1.0
+
+[[scenarios]]
+kind = "structural"
+id = "M2"
+label = "shift_o512_r512"
+[scenarios.parameters]
+n_obs = 512
+n_rct_train = 512
+n_rct_tune = 32
+n_rct_test = 64
+n_eval = 2048
+n_target_reference = 0
+d = 5
+signal_seed = 2025
+confounding_treatment = 0.0
+obs_cate_shift = 1.0
+
+[[scenarios]]
+kind = "structural"
+id = "M2"
+label = "shift_o2048_r128"
+[scenarios.parameters]
+n_obs = 2048
+n_rct_train = 128
+n_rct_tune = 32
+n_rct_test = 64
+n_eval = 2048
+n_target_reference = 0
+d = 5
+signal_seed = 2025
+confounding_treatment = 0.0
+obs_cate_shift = 1.0
+
+[[scenarios]]
+kind = "structural"
+id = "M2"
+label = "shift_o2048_r512"
+[scenarios.parameters]
+n_obs = 2048
+n_rct_train = 512
+n_rct_tune = 32
+n_rct_test = 64
+n_eval = 2048
+n_target_reference = 0
+d = 5
+signal_seed = 2025
+confounding_treatment = 0.0
+obs_cate_shift = 1.0
+
+[[scenarios]]
+kind = "structural"
+id = "M2"
+label = "both_o512_r128"
+[scenarios.parameters]
+n_obs = 512
+n_rct_train = 128
+n_rct_tune = 32
+n_rct_test = 64
+n_eval = 2048
+n_target_reference = 0
+d = 5
+signal_seed = 2025
+confounding_treatment = 1.5
+obs_cate_shift = 1.0
+
+[[scenarios]]
+kind = "structural"
+id = "M2"
+label = "both_o512_r512"
+[scenarios.parameters]
+n_obs = 512
+n_rct_train = 512
+n_rct_tune = 32
+n_rct_test = 64
+n_eval = 2048
+n_target_reference = 0
+d = 5
+signal_seed = 2025
+confounding_treatment = 1.5
+obs_cate_shift = 1.0
+
+[[scenarios]]
+kind = "structural"
+id = "M2"
+label = "both_o2048_r128"
+[scenarios.parameters]
+n_obs = 2048
+n_rct_train = 128
+n_rct_tune = 32
+n_rct_test = 64
+n_eval = 2048
+n_target_reference = 0
+d = 5
+signal_seed = 2025
+confounding_treatment = 1.5
+obs_cate_shift = 1.0
+
+[[scenarios]]
+kind = "structural"
+id = "M2"
+label = "both_o2048_r512"
+[scenarios.parameters]
+n_obs = 2048
+n_rct_train = 512
+n_rct_tune = 32
+n_rct_test = 64
+n_eval = 2048
+n_target_reference = 0
+d = 5
+signal_seed = 2025
+confounding_treatment = 1.5
+obs_cate_shift = 1.0
