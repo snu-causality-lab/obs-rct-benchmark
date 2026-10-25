@@ -1,0 +1,3450 @@
+{
+  "analysis_source_sha256": "3cf5e365e6ef1a45a3c9b4b2c66a916e7f9f1b27e52f1fe9ba51a336d35dabdb",
+  "coverage": {
+    "descriptive_heavy_tail_contrasts": 16,
+    "expected": 79104,
+    "failed": 21,
+    "mean_t_family_complete": false,
+    "mean_t_family_size": 472,
+    "missing": 0,
+    "nominal_cells": 79360,
+    "nominal_primary_contrasts": 496,
+    "not_applicable_cells": 256,
+    "not_applicable_primary_contrasts": 8,
+    "recorded": 79104,
+    "successful": 79083,
+    "supported_primary_contrasts": 488
+  },
+  "design_validator_sha256": "76a154d4c6cb99eb9b5d125a01e9b4dec40819cb17813775a3a36b88bd609de0",
+  "inputs": [
+    {
+      "config_hash": "cb0b2daf12b059c72fda611aa2beaa7b1250b8991fa3a5885ae2392861feb5a0",
+      "input_ordinal": 0,
+      "manifest_sha256": "9296765a40044c606a1ed20528db5ec7b7d32b4ac13089ca5beb4169a6ff5342",
+      "methods": [
+        "rct_t_ridge",
+        "obs_t_ridge",
+        "naive_pooled_t_ridge",
+        "rct_t_extra_trees",
+        "obs_t_extra_trees",
+        "naive_pooled_t_extra_trees",
+        "rct_dr_ridge",
+        "rct_dr_extra_trees",
+        "datafusionppi",
+        "cornet_official"
+      ],
+      "recorded_cells": 1200,
+      "records_sha256": "463cb53a4dc646fe03822f85ad5891bfb405a24184d6fb953f03d6b8cb50a461",
+      "requested_cells": 1200,
+      "run_name": "group-common-seed-20000",
+      "sample_seeds": [
+        20000
+      ],
+      "scenario_count": 120,
+      "source_fingerprint": "32b49416fa48e33750c6ed8d7bfebb149c570f56f4af00d9a315a75ac67ff6e7"
+    },
+    {
+      "config_hash": "9d7535a7a87623cea5ccf08226edcd1dde2f22719f919964b258249f1d25b2a9",
+      "input_ordinal": 1,
+      "manifest_sha256": "e16a1d2d62ad25ffac9715c06187c17a8f32f2d47456d5c539786df90afde0b1",
+      "methods": [
+        "rct_t_ridge",
+        "obs_t_ridge",
+        "naive_pooled_t_ridge",
+        "rct_t_extra_trees",
+        "obs_t_extra_trees",
+        "naive_pooled_t_extra_trees",
+        "rct_dr_ridge",
+        "rct_dr_extra_trees",
+        "datafusionppi",
+        "cornet_official"
+      ],
+      "recorded_cells": 1200,
+      "records_sha256": "5c98be49ff76da4f0771d66d76c7ec20540ee837d0b9518fe6864fc5323e9e89",
+      "requested_cells": 1200,
+      "run_name": "group-common-seed-20001",
+      "sample_seeds": [
+        20001
+      ],
+      "scenario_count": 120,
+      "source_fingerprint": "32b49416fa48e33750c6ed8d7bfebb149c570f56f4af00d9a315a75ac67ff6e7"
+    },
+    {
+      "config_hash": "46154a438e6dcabd79e244e0ee40e7aff54a5e9b577f0474098ee5c622688397",
+      "input_ordinal": 2,
+      "manifest_sha256": "b42d668031c3c3617a74a1e7ac97ab6c86ade2e7d20d103c4dd6678eebbf20ec",
+      "methods": [
+        "rct_t_ridge",
+        "obs_t_ridge",
+        "naive_pooled_t_ridge",
+        "rct_t_extra_trees",
+        "obs_t_extra_trees",
+        "naive_pooled_t_extra_trees",
+        "rct_dr_ridge",
+        "rct_dr_extra_trees",
+        "datafusionppi",
+        "cornet_official"
+      ],
+      "recorded_cells": 1200,
+      "records_sha256": "02751170ac29e583e1e5a16d8d5eaddd99b0db9d021cd30bc715c1aae1e824fb",
+      "requested_cells": 1200,
+      "run_name": "group-common-seed-20002",
+      "sample_seeds": [
+        20002
+      ],
+      "scenario_count": 120,
+      "source_fingerprint": "32b49416fa48e33750c6ed8d7bfebb149c570f56f4af00d9a315a75ac67ff6e7"
+    },
+    {
+      "config_hash": "3b530cbcd0a35647fee2d8a4972bfd35232b09f23b124c2ab704bff24c23e298",
+      "input_ordinal": 3,
+      "manifest_sha256": "53a2051a936fd2d3a99561d7b59d5de0c1fda0c7fc057f7d590c01e407b05f57",
+      "methods": [
+        "rct_t_ridge",
+        "obs_t_ridge",
+        "naive_pooled_t_ridge",
+        "rct_t_extra_trees",
+        "obs_t_extra_trees",
+        "naive_pooled_t_extra_trees",
+        "rct_dr_ridge",
+        "rct_dr_extra_trees",
+        "datafusionppi",
+        "cornet_official"
+      ],
+      "recorded_cells": 1200,
+      "records_sha256": "41c7aa0136e98e73098c94266aae46ccfd5d9a2a4b1c677020f6aaa5b70e5840",
+      "requested_cells": 1200,
+      "run_name": "group-common-seed-20003",
+      "sample_seeds": [
+        20003
+      ],
+      "scenario_count": 120,
+      "source_fingerprint": "32b49416fa48e33750c6ed8d7bfebb149c570f56f4af00d9a315a75ac67ff6e7"
+    },
+    {
+      "config_hash": "5d119ba30cc695cb327b6b1f9ef1cd5f19a914364d7f50fbc44cf0d9dc502f10",
+      "input_ordinal": 4,
+      "manifest_sha256": "823d1f1506bff8c827b482ad3fd3e08ff0868050250a7c19c4eaafab88f842c6",
+      "methods": [
+        "rct_t_ridge",
+        "obs_t_ridge",
+        "naive_pooled_t_ridge",
+        "rct_t_extra_trees",
+        "obs_t_extra_trees",
+        "naive_pooled_t_extra_trees",
+        "rct_dr_ridge",
+        "rct_dr_extra_trees",
+        "datafusionppi",
+        "cornet_official"
+      ],
+      "recorded_cells": 1200,
+      "records_sha256": "fac236d1c40e5aec209f333e8fcc00defbdd381d7d029217beb2a07bfa3af378",
+      "requested_cells": 1200,
+      "run_name": "group-common-seed-20004",
+      "sample_seeds": [
+        20004
+      ],
+      "scenario_count": 120,
+      "source_fingerprint": "32b49416fa48e33750c6ed8d7bfebb149c570f56f4af00d9a315a75ac67ff6e7"
+    },
+    {
+      "config_hash": "1ec6101ba9245491dc38886c76bb44f499e31f70a780eece83e2bafec13afbbe",
+      "input_ordinal": 5,
+      "manifest_sha256": "8404ca001b4c3ef1ad36c4aa004ff325fd88373994b18ef0eee83628fd717eae",
+      "methods": [
+        "rct_t_ridge",
+        "obs_t_ridge",
+        "naive_pooled_t_ridge",
+        "rct_t_extra_trees",
+        "obs_t_extra_trees",
+        "naive_pooled_t_extra_trees",
+        "rct_dr_ridge",
+        "rct_dr_extra_trees",
+        "datafusionppi",
+        "cornet_official"
+      ],
+      "recorded_cells": 1200,
+      "records_sha256": "e7923685f67364d8f9acbaf1bd468b20f4e5a5ac9e639a98b812fb68a37ffa26",
+      "requested_cells": 1200,
+      "run_name": "group-common-seed-20005",
+      "sample_seeds": [
+        20005
+      ],
+      "scenario_count": 120,
+      "source_fingerprint": "32b49416fa48e33750c6ed8d7bfebb149c570f56f4af00d9a315a75ac67ff6e7"
+    },
+    {
+      "config_hash": "b1fc9647f7d8cd0eb577c91952ad4464e1c4e6e8379328a18ebba1675df0c93a",
+      "input_ordinal": 6,
+      "manifest_sha256": "54bf6feefd515483b3a22a88922dcdaadd70d5934d37fb3e7df72e0bc7d5e90a",
+      "methods": [
+        "rct_t_ridge",
+        "obs_t_ridge",
+        "naive_pooled_t_ridge",
+        "rct_t_extra_trees",
+        "obs_t_extra_trees",
+        "naive_pooled_t_extra_trees",
+        "rct_dr_ridge",
+        "rct_dr_extra_trees",
+        "datafusionppi",
+        "cornet_official"
+      ],
+      "recorded_cells": 1200,
+      "records_sha256": "6b026603e75f6c1420b3df929fad1dac6ed9b9cdbe90fff9910877a273fee01a",
+      "requested_cells": 1200,
+      "run_name": "group-common-seed-20006",
+      "sample_seeds": [
+        20006
+      ],
+      "scenario_count": 120,
+      "source_fingerprint": "32b49416fa48e33750c6ed8d7bfebb149c570f56f4af00d9a315a75ac67ff6e7"
+    },
+    {
+      "config_hash": "ed458c8e057b5e69af746479fae2cdb93ee8efc2279b59ab215d19394fe4c155",
+      "input_ordinal": 7,
+      "manifest_sha256": "b2f5238209ebd31940d32946be66e3312c7e807127f88e65ff4a5109b3b405a2",
+      "methods": [
+        "rct_t_ridge",
+        "obs_t_ridge",
+        "naive_pooled_t_ridge",
+        "rct_t_extra_trees",
+        "obs_t_extra_trees",
+        "naive_pooled_t_extra_trees",
+        "rct_dr_ridge",
+        "rct_dr_extra_trees",
+        "datafusionppi",
+        "cornet_official"
+      ],
+      "recorded_cells": 1200,
+      "records_sha256": "62c1a5d9182368bf415fd438666f49a23b65f3257d2eddf5e0fbefdcad438d88",
+      "requested_cells": 1200,
+      "run_name": "group-common-seed-20007",
+      "sample_seeds": [
+        20007
+      ],
+      "scenario_count": 120,
+      "source_fingerprint": "32b49416fa48e33750c6ed8d7bfebb149c570f56f4af00d9a315a75ac67ff6e7"
+    },
+    {
+      "config_hash": "a5552edfa0a2b171cc6a8ee00ab027bdb0c04089fb3e6cdfa43ba0cfbabe08f4",
+      "input_ordinal": 8,
+      "manifest_sha256": "e78ffaa22dacc27acb328d31597a15a92b0f72bd3d1e3d2af682c38cc7341398",
+      "methods": [
+        "rct_t_ridge",
+        "obs_t_ridge",
+        "naive_pooled_t_ridge",
+        "rct_t_extra_trees",
+        "obs_t_extra_trees",
+        "naive_pooled_t_extra_trees",
+        "rct_dr_ridge",
+        "rct_dr_extra_trees",
+        "datafusionppi",
+        "cornet_official"
+      ],
+      "recorded_cells": 1200,
+      "records_sha256": "f8d8e0c704f1f1aeace702bbf7306a6c33cd39db27eca23cd8af36affb64177a",
+      "requested_cells": 1200,
+      "run_name": "group-common-seed-20008",
+      "sample_seeds": [
+        20008
+      ],
+      "scenario_count": 120,
+      "source_fingerprint": "32b49416fa48e33750c6ed8d7bfebb149c570f56f4af00d9a315a75ac67ff6e7"
+    },
+    {
+      "config_hash": "7300e6811b4b19281b65d2608dc512afa0822349b7acbf585d74879a19dd8715",
+      "input_ordinal": 9,
+      "manifest_sha256": "4ae51067f3acc59e2d674555eb7c07c67dbf59741c27d3fab279a78edbb0bc04",
+      "methods": [
+        "rct_t_ridge",
+        "obs_t_ridge",
+        "naive_pooled_t_ridge",
+        "rct_t_extra_trees",
+        "obs_t_extra_trees",
+        "naive_pooled_t_extra_trees",
+        "rct_dr_ridge",
+        "rct_dr_extra_trees",
+        "datafusionppi",
+        "cornet_official"
+      ],
+      "recorded_cells": 1200,
+      "records_sha256": "d28dec6a482e7be97f5aa765563ca8cc039940d15d9584c24cbfd1cd4fba3acf",
+      "requested_cells": 1200,
+      "run_name": "group-common-seed-20009",
+      "sample_seeds": [
+        20009
+      ],
+      "scenario_count": 120,
+      "source_fingerprint": "32b49416fa48e33750c6ed8d7bfebb149c570f56f4af00d9a315a75ac67ff6e7"
+    },
+    {
+      "config_hash": "52b56750187838202ba6f05badb71e591f66b98c6b84207bb8dfb132dd445f0c",
+      "input_ordinal": 10,
+      "manifest_sha256": "14879d5736f332061c1d254919195f522976e9585b67063321d660241fa90d35",
+      "methods": [
+        "rct_t_ridge",
+        "obs_t_ridge",
+        "naive_pooled_t_ridge",
+        "rct_t_extra_trees",
+        "obs_t_extra_trees",
+        "naive_pooled_t_extra_trees",
+        "rct_dr_ridge",
+        "rct_dr_extra_trees",
+        "datafusionppi",
+        "cornet_official"
+      ],
+      "recorded_cells": 1200,
+      "records_sha256": "9530af2d1382120c38fbdc1704cb777b821bd6355b89cdc519a93364c1f2446a",
+      "requested_cells": 1200,
+      "run_name": "group-common-seed-20010",
+      "sample_seeds": [
+        20010
+      ],
+      "scenario_count": 120,
+      "source_fingerprint": "32b49416fa48e33750c6ed8d7bfebb149c570f56f4af00d9a315a75ac67ff6e7"
+    },
+    {
+      "config_hash": "f8e051013f07f552f660caa4600ac11c325c148d2724f95ecbadad967930b448",
+      "input_ordinal": 11,
+      "manifest_sha256": "5c58b0f93760766377ea4ff7f6066107f3f52932c430b7fb1bf3b136b0cb686c",
+      "methods": [
+        "rct_t_ridge",
+        "obs_t_ridge",
+        "naive_pooled_t_ridge",
+        "rct_t_extra_trees",
+        "obs_t_extra_trees",
+        "naive_pooled_t_extra_trees",
+        "rct_dr_ridge",
+        "rct_dr_extra_trees",
+        "datafusionppi",
+        "cornet_official"
+      ],
+      "recorded_cells": 1200,
+      "records_sha256": "369532de5cebe682662d7d36a9c8908fc835377ac927e6dbcae9ab846bca7e6c",
+      "requested_cells": 1200,
+      "run_name": "group-common-seed-20011",
+      "sample_seeds": [
+        20011
+      ],
+      "scenario_count": 120,
+      "source_fingerprint": "32b49416fa48e33750c6ed8d7bfebb149c570f56f4af00d9a315a75ac67ff6e7"
+    },
+    {
+      "config_hash": "61659a6402ed310937e42b675129a4f12418e9abb1c6fed37d04efa5562b52a8",
+      "input_ordinal": 12,
+      "manifest_sha256": "529aedae96445bda1e0457ff75d66bd640173b0a8db3cb8bb5c46db1715bd7ca",
+      "methods": [
+        "rct_t_ridge",
+        "obs_t_ridge",
+        "naive_pooled_t_ridge",
+        "rct_t_extra_trees",
+        "obs_t_extra_trees",
+        "naive_pooled_t_extra_trees",
+        "rct_dr_ridge",
+        "rct_dr_extra_trees",
+        "datafusionppi",
+        "cornet_official"
+      ],
+      "recorded_cells": 1200,
+      "records_sha256": "7fd720684c8cc40aa091044006c9e241fe495708fd3a1388a9c9ecaeca939146",
+      "requested_cells": 1200,
+      "run_name": "group-common-seed-20012",
+      "sample_seeds": [
+        20012
+      ],
+      "scenario_count": 120,
+      "source_fingerprint": "32b49416fa48e33750c6ed8d7bfebb149c570f56f4af00d9a315a75ac67ff6e7"
+    },
+    {
+      "config_hash": "ec724346a7c25fdb9f62f5fcc35fe99225bb5b6c7ce20ab50acdd2fdffcb22df",
+      "input_ordinal": 13,
+      "manifest_sha256": "8ce98e5f302685b9917f20874678b069490da9f95b7f7c1064d5b11816053558",
+      "methods": [
+        "rct_t_ridge",
+        "obs_t_ridge",
+        "naive_pooled_t_ridge",
+        "rct_t_extra_trees",
+        "obs_t_extra_trees",
+        "naive_pooled_t_extra_trees",
+        "rct_dr_ridge",
+        "rct_dr_extra_trees",
+        "datafusionppi",
+        "cornet_official"
+      ],
+      "recorded_cells": 1200,
+      "records_sha256": "8bf32b1928a7d0d4df8c803969fd80ab06ea95d0ae0b559b65fd667ef2dab9ff",
+      "requested_cells": 1200,
+      "run_name": "group-common-seed-20013",
+      "sample_seeds": [
+        20013
+      ],
+      "scenario_count": 120,
+      "source_fingerprint": "32b49416fa48e33750c6ed8d7bfebb149c570f56f4af00d9a315a75ac67ff6e7"
+    },
+    {
+      "config_hash": "ae6897d3b21caaaeab30066161893e056a710b36fc78461ea5d825d146fe7d91",
+      "input_ordinal": 14,
+      "manifest_sha256": "35276c42be9af5da80112a9fb8e2ea128dff628258a071f021ae776330d2882b",
+      "methods": [
+        "rct_t_ridge",
+        "obs_t_ridge",
+        "naive_pooled_t_ridge",
+        "rct_t_extra_trees",
+        "obs_t_extra_trees",
+        "naive_pooled_t_extra_trees",
+        "rct_dr_ridge",
+        "rct_dr_extra_trees",
+        "datafusionppi",
+        "cornet_official"
+      ],
+      "recorded_cells": 1200,
+      "records_sha256": "fc3cd01b578a85e83d246bc7c266dff57ab7f81a8f8877ab03048f729c027541",
+      "requested_cells": 1200,
+      "run_name": "group-common-seed-20014",
+      "sample_seeds": [
+        20014
+      ],
+      "scenario_count": 120,
+      "source_fingerprint": "32b49416fa48e33750c6ed8d7bfebb149c570f56f4af00d9a315a75ac67ff6e7"
+    },
+    {
+      "config_hash": "19553a2366e1a58ce8990d3655b990b5620b33fb15f342f3aae8d9439e5c0392",
+      "input_ordinal": 15,
+      "manifest_sha256": "608d62ec59b548ccc4cf135d6d3605dac4640cae4dd080ff07a9a2fa3df1ccaf",
+      "methods": [
+        "rct_t_ridge",
+        "obs_t_ridge",
+        "naive_pooled_t_ridge",
+        "rct_t_extra_trees",
+        "obs_t_extra_trees",
+        "naive_pooled_t_extra_trees",
+        "rct_dr_ridge",
+        "rct_dr_extra_trees",
+        "datafusionppi",
+        "cornet_official"
+      ],
+      "recorded_cells": 1200,
+      "records_sha256": "93388ff215ff88c61d7989ffae199d0eabe466430806e16367462ec98621f8d5",
+      "requested_cells": 1200,
+      "run_name": "group-common-seed-20015",
+      "sample_seeds": [
+        20015
+      ],
+      "scenario_count": 120,
+      "source_fingerprint": "32b49416fa48e33750c6ed8d7bfebb149c570f56f4af00d9a315a75ac67ff6e7"
+    },
+    {
+      "config_hash": "031dfa1df77028b2739d412dcbd053010aff85b65a8d91a41f29fbdf1e07a7a9",
+      "input_ordinal": 16,
+      "manifest_sha256": "e9555266b79e24987a58997420f62f8700ab2a300efbe816b995222c95e7c238",
+      "methods": [
+        "rct_t_ridge",
+        "obs_t_ridge",
+        "naive_pooled_t_ridge",
+        "rct_t_extra_trees",
+        "obs_t_extra_trees",
+        "naive_pooled_t_extra_trees",
+        "rct_dr_ridge",
+        "rct_dr_extra_trees",
+        "datafusionppi",
+        "cornet_official"
+      ],
+      "recorded_cells": 1200,
+      "records_sha256": "33bb64ff13e0d1a19c20397d1b7321e1489db633df25514e3266586f433a342e",
+      "requested_cells": 1200,
+      "run_name": "group-common-seed-20016",
+      "sample_seeds": [
+        20016
+      ],
+      "scenario_count": 120,
+      "source_fingerprint": "32b49416fa48e33750c6ed8d7bfebb149c570f56f4af00d9a315a75ac67ff6e7"
+    },
+    {
+      "config_hash": "3d2f19430386e500f5f94f1e9dcc6dcb0ea7d220a360814fbf455d7a07ae0bbf",
+      "input_ordinal": 17,
+      "manifest_sha256": "1cb431f617347a8344aab00a7a8f6fadc9db48888a23bfa329d399ab525399fd",
+      "methods": [
+        "rct_t_ridge",
+        "obs_t_ridge",
+        "naive_pooled_t_ridge",
+        "rct_t_extra_trees",
+        "obs_t_extra_trees",
+        "naive_pooled_t_extra_trees",
+        "rct_dr_ridge",
+        "rct_dr_extra_trees",
+        "datafusionppi",
+        "cornet_official"
+      ],
+      "recorded_cells": 1200,
+      "records_sha256": "075a3de25bcfcb0ca2448cc221e52d0837a55282c09f3f79153f400d61b7b5df",
+      "requested_cells": 1200,
+      "run_name": "group-common-seed-20017",
+      "sample_seeds": [
+        20017
+      ],
+      "scenario_count": 120,
+      "source_fingerprint": "32b49416fa48e33750c6ed8d7bfebb149c570f56f4af00d9a315a75ac67ff6e7"
+    },
+    {
+      "config_hash": "f0a333a8ee608af2c637074dd03c40d723b21779c6a954c52ee44d13b5ac2e4d",
+      "input_ordinal": 18,
+      "manifest_sha256": "6dfe4bc16eb56af7fdafd1e4e1ce25aae888b7b43b1b5fb222b97bfdbd8f1880",
+      "methods": [
+        "rct_t_ridge",
+        "obs_t_ridge",
+        "naive_pooled_t_ridge",
+        "rct_t_extra_trees",
+        "obs_t_extra_trees",
+        "naive_pooled_t_extra_trees",
+        "rct_dr_ridge",
+        "rct_dr_extra_trees",
+        "datafusionppi",
+        "cornet_official"
+      ],
+      "recorded_cells": 1200,
+      "records_sha256": "511c188aecb5094da379237b576d149cd38c8fc30dce9d000eed7f4782fc1587",
+      "requested_cells": 1200,
+      "run_name": "group-common-seed-20018",
+      "sample_seeds": [
+        20018
+      ],
+      "scenario_count": 120,
+      "source_fingerprint": "32b49416fa48e33750c6ed8d7bfebb149c570f56f4af00d9a315a75ac67ff6e7"
+    },
+    {
+      "config_hash": "ff083e0a33c605ce2361a9fcf111daa20f2603427e49be7a52e81b4f4ba8c8c7",
+      "input_ordinal": 19,
+      "manifest_sha256": "79e909133912e1b77395512e12429481eadd6b07d4b3cc762a90cadf2992f5f6",
+      "methods": [
+        "rct_t_ridge",
+        "obs_t_ridge",
+        "naive_pooled_t_ridge",
+        "rct_t_extra_trees",
+        "obs_t_extra_trees",
+        "naive_pooled_t_extra_trees",
+        "rct_dr_ridge",
+        "rct_dr_extra_trees",
+        "datafusionppi",
+        "cornet_official"
+      ],
+      "recorded_cells": 1200,
+      "records_sha256": "27d33172e04d96bb9fdbb394befcb7dcb04e53964306f11236cb2a2aa2b0c2b5",
+      "requested_cells": 1200,
+      "run_name": "group-common-seed-20019",
+      "sample_seeds": [
+        20019
+      ],
+      "scenario_count": 120,
+      "source_fingerprint": "32b49416fa48e33750c6ed8d7bfebb149c570f56f4af00d9a315a75ac67ff6e7"
+    },
+    {
+      "config_hash": "936fc07b2eb63bc0760bbcc9e88fc611318d8715e45aa70425359b36fd60fc0f",
+      "input_ordinal": 20,
+      "manifest_sha256": "dbc1cf640a9bd6f0c978c3438aa6f9ce2dd11db677c7e43d05327a4187ae40ba",
+      "methods": [
+        "rct_t_ridge",
+        "obs_t_ridge",
+        "naive_pooled_t_ridge",
+        "rct_t_extra_trees",
+        "obs_t_extra_trees",
+        "naive_pooled_t_extra_trees",
+        "rct_dr_ridge",
+        "rct_dr_extra_trees",
+        "datafusionppi",
+        "cornet_official"
+      ],
+      "recorded_cells": 1200,
+      "records_sha256": "ca5ea290620011aa020d9c8a12cdf6d84c7f9525f9c7d6d361d8ad296b17d3c9",
+      "requested_cells": 1200,
+      "run_name": "group-common-seed-20020",
+      "sample_seeds": [
+        20020
+      ],
+      "scenario_count": 120,
+      "source_fingerprint": "32b49416fa48e33750c6ed8d7bfebb149c570f56f4af00d9a315a75ac67ff6e7"
+    },
+    {
+      "config_hash": "1aaf1dd81ca9f59e959d63255a13b9925e0fffb92cf8e19ba9e784c752592736",
+      "input_ordinal": 21,
+      "manifest_sha256": "af59c1252e594d8384bc5b346ae866e7a51e4b157a530674d0aef0401fc61cc0",
+      "methods": [
+        "rct_t_ridge",
+        "obs_t_ridge",
+        "naive_pooled_t_ridge",
+        "rct_t_extra_trees",
+        "obs_t_extra_trees",
+        "naive_pooled_t_extra_trees",
+        "rct_dr_ridge",
+        "rct_dr_extra_trees",
+        "datafusionppi",
+        "cornet_official"
+      ],
+      "recorded_cells": 1200,
+      "records_sha256": "2fca5751b45d8e173e01470c97a722cbd1870473c9245e71684d2910f963f5d2",
+      "requested_cells": 1200,
+      "run_name": "group-common-seed-20021",
+      "sample_seeds": [
+        20021
+      ],
+      "scenario_count": 120,
+      "source_fingerprint": "32b49416fa48e33750c6ed8d7bfebb149c570f56f4af00d9a315a75ac67ff6e7"
+    },
+    {
+      "config_hash": "5ec343f48aac44cf1f4308956b040963340409a88ded8adf1eaab560edab6632",
+      "input_ordinal": 22,
+      "manifest_sha256": "6743e424fa33f4ebd2fdc6f0b6bf6ab726367fe6399d7fc5b339e2a6b445a18c",
+      "methods": [
+        "rct_t_ridge",
+        "obs_t_ridge",
+        "naive_pooled_t_ridge",
+        "rct_t_extra_trees",
+        "obs_t_extra_trees",
+        "naive_pooled_t_extra_trees",
+        "rct_dr_ridge",
+        "rct_dr_extra_trees",
+        "datafusionppi",
+        "cornet_official"
+      ],
+      "recorded_cells": 1200,
+      "records_sha256": "7ed1c2a88dfadd1a88946e87f085353d830c0c950fa2402f13c3c6890116d9b8",
+      "requested_cells": 1200,
+      "run_name": "group-common-seed-20022",
+      "sample_seeds": [
+        20022
+      ],
+      "scenario_count": 120,
+      "source_fingerprint": "32b49416fa48e33750c6ed8d7bfebb149c570f56f4af00d9a315a75ac67ff6e7"
+    },
+    {
+      "config_hash": "c43415dca1f55b835959866b8744ff42a7b710bc88641a47ccfaf0af97de23aa",
+      "input_ordinal": 23,
+      "manifest_sha256": "376a44df1877a2665446b32b7ee3589935158c82307b5dfcd6204bc014755816",
+      "methods": [
+        "rct_t_ridge",
+        "obs_t_ridge",
+        "naive_pooled_t_ridge",
+        "rct_t_extra_trees",
+        "obs_t_extra_trees",
+        "naive_pooled_t_extra_trees",
+        "rct_dr_ridge",
+        "rct_dr_extra_trees",
+        "datafusionppi",
+        "cornet_official"
+      ],
+      "recorded_cells": 1200,
+      "records_sha256": "720f934ccf5555ce14de95011a400c9ff95fc2feda3321a80866ea37448979e2",
+      "requested_cells": 1200,
+      "run_name": "group-common-seed-20023",
+      "sample_seeds": [
+        20023
+      ],
+      "scenario_count": 120,
+      "source_fingerprint": "32b49416fa48e33750c6ed8d7bfebb149c570f56f4af00d9a315a75ac67ff6e7"
+    },
+    {
+      "config_hash": "897e4efe83c656c09f32746e3589684f139623911525c36f59b3f02f11d456cb",
+      "input_ordinal": 24,
+      "manifest_sha256": "61090942e7381eb7a550836d504aa693f9cb8ece133f9d056f88c37e56cb47e7",
+      "methods": [
+        "rct_t_ridge",
+        "obs_t_ridge",
+        "naive_pooled_t_ridge",
+        "rct_t_extra_trees",
+        "obs_t_extra_trees",
+        "naive_pooled_t_extra_trees",
+        "rct_dr_ridge",
+        "rct_dr_extra_trees",
+        "datafusionppi",
+        "cornet_official"
+      ],
+      "recorded_cells": 1200,
+      "records_sha256": "96b3963243c4583f6cc2fecf7a351b1fb1a1b215d979a8a86f5a1959a0a7345e",
+      "requested_cells": 1200,
+      "run_name": "group-common-seed-20024",
+      "sample_seeds": [
+        20024
+      ],
+      "scenario_count": 120,
+      "source_fingerprint": "32b49416fa48e33750c6ed8d7bfebb149c570f56f4af00d9a315a75ac67ff6e7"
+    },
+    {
+      "config_hash": "d6b2d7b8eca80c87c271eaad3d7857c9a004a4e8453088eb97dd1e0a89fd12f2",
+      "input_ordinal": 25,
+      "manifest_sha256": "7294a876aa842895aad81f30f82da7fc50c0a9954e67787b5068842badd3def1",
+      "methods": [
+        "rct_t_ridge",
+        "obs_t_ridge",
+        "naive_pooled_t_ridge",
+        "rct_t_extra_trees",
+        "obs_t_extra_trees",
+        "naive_pooled_t_extra_trees",
+        "rct_dr_ridge",
+        "rct_dr_extra_trees",
+        "datafusionppi",
+        "cornet_official"
+      ],
+      "recorded_cells": 1200,
+      "records_sha256": "fee6d61f6de9cb78383601d8eacafb2bf6577909a374251b4e3a3d5cc4068377",
+      "requested_cells": 1200,
+      "run_name": "group-common-seed-20025",
+      "sample_seeds": [
+        20025
+      ],
+      "scenario_count": 120,
+      "source_fingerprint": "32b49416fa48e33750c6ed8d7bfebb149c570f56f4af00d9a315a75ac67ff6e7"
+    },
+    {
+      "config_hash": "7694e8ee10a192d33d1396492104313339cf327e47e25905c35218f231aacbd8",
+      "input_ordinal": 26,
+      "manifest_sha256": "0cdaa5988172d1777f1c0b004195a678f25f1a0479d3b63639bdd522b0273ea8",
+      "methods": [
+        "rct_t_ridge",
+        "obs_t_ridge",
+        "naive_pooled_t_ridge",
+        "rct_t_extra_trees",
+        "obs_t_extra_trees",
+        "naive_pooled_t_extra_trees",
+        "rct_dr_ridge",
+        "rct_dr_extra_trees",
+        "datafusionppi",
+        "cornet_official"
+      ],
+      "recorded_cells": 1200,
+      "records_sha256": "8bd11645019371441e1a5c0aeaf970a2b5a8c5ec4254d8bd62ae62cbc59d6681",
+      "requested_cells": 1200,
+      "run_name": "group-common-seed-20026",
+      "sample_seeds": [
+        20026
+      ],
+      "scenario_count": 120,
+      "source_fingerprint": "32b49416fa48e33750c6ed8d7bfebb149c570f56f4af00d9a315a75ac67ff6e7"
+    },
+    {
+      "config_hash": "d8005af4dd5857e385640ae92d8a6d45383df9279abb29107d5dc60ce2c81c5e",
+      "input_ordinal": 27,
+      "manifest_sha256": "1e8962f673ba890cc09aab2367dd902af4254baac132d17f436d6e2b25753940",
+      "methods": [
+        "rct_t_ridge",
+        "obs_t_ridge",
+        "naive_pooled_t_ridge",
+        "rct_t_extra_trees",
+        "obs_t_extra_trees",
+        "naive_pooled_t_extra_trees",
+        "rct_dr_ridge",
+        "rct_dr_extra_trees",
+        "datafusionppi",
+        "cornet_official"
+      ],
+      "recorded_cells": 1200,
+      "records_sha256": "c3723a333ffdb071e43280d9519dcabf5d2f13b811bc4b8852054c656f90dcbf",
+      "requested_cells": 1200,
+      "run_name": "group-common-seed-20027",
+      "sample_seeds": [
+        20027
+      ],
+      "scenario_count": 120,
+      "source_fingerprint": "32b49416fa48e33750c6ed8d7bfebb149c570f56f4af00d9a315a75ac67ff6e7"
+    },
+    {
+      "config_hash": "8459314bf72090cb9e94ce4600c19b6fd3036d9601ca64220023b0f85881f1e3",
+      "input_ordinal": 28,
+      "manifest_sha256": "d4bc0c29a1e578f1476d033a28f25d9fe42a67c9c10e0370b6b26dac97e7a9d7",
+      "methods": [
+        "rct_t_ridge",
+        "obs_t_ridge",
+        "naive_pooled_t_ridge",
+        "rct_t_extra_trees",
+        "obs_t_extra_trees",
+        "naive_pooled_t_extra_trees",
+        "rct_dr_ridge",
+        "rct_dr_extra_trees",
+        "datafusionppi",
+        "cornet_official"
+      ],
+      "recorded_cells": 1200,
+      "records_sha256": "e3ee9c5dd60556afa6c04236aae5b785ea78770d6154b7662ef72d4ec57dd0a2",
+      "requested_cells": 1200,
+      "run_name": "group-common-seed-20028",
+      "sample_seeds": [
+        20028
+      ],
+      "scenario_count": 120,
+      "source_fingerprint": "32b49416fa48e33750c6ed8d7bfebb149c570f56f4af00d9a315a75ac67ff6e7"
+    },
+    {
+      "config_hash": "7ed91de2112a61ea17ba084b0d93ad8eb69f5cd5e41b26767201afb9413f44e1",
+      "input_ordinal": 29,
+      "manifest_sha256": "9141a7d5f808ea3589e7b30ac5421c21bc76387c4d2f9bb2a09650454f6f1a52",
+      "methods": [
+        "rct_t_ridge",
+        "obs_t_ridge",
+        "naive_pooled_t_ridge",
+        "rct_t_extra_trees",
+        "obs_t_extra_trees",
+        "naive_pooled_t_extra_trees",
+        "rct_dr_ridge",
+        "rct_dr_extra_trees",
+        "datafusionppi",
+        "cornet_official"
+      ],
+      "recorded_cells": 1200,
+      "records_sha256": "06349fb46d6a3fc54280a696ae939991c794fda0c65dfe190b055383776d5ee8",
+      "requested_cells": 1200,
+      "run_name": "group-common-seed-20029",
+      "sample_seeds": [
+        20029
+      ],
+      "scenario_count": 120,
+      "source_fingerprint": "32b49416fa48e33750c6ed8d7bfebb149c570f56f4af00d9a315a75ac67ff6e7"
+    },
+    {
+      "config_hash": "7950f1ed54f5116aabc92ca883d340408c83e67bf531d2f25529f1dc2e97dedd",
+      "input_ordinal": 30,
+      "manifest_sha256": "95ea3a2d26416b9765e097c9047af6fe500b51b3be3dbe02073ced8502af549e",
+      "methods": [
+        "rct_t_ridge",
+        "obs_t_ridge",
+        "naive_pooled_t_ridge",
+        "rct_t_extra_trees",
+        "obs_t_extra_trees",
+        "naive_pooled_t_extra_trees",
+        "rct_dr_ridge",
+        "rct_dr_extra_trees",
+        "datafusionppi",
+        "cornet_official"
+      ],
+      "recorded_cells": 1200,
+      "records_sha256": "a1e5b5bc9f0bb7f84397936423bdd0fedb633a877d5c4a88d9b5475c4a88b4af",
+      "requested_cells": 1200,
+      "run_name": "group-common-seed-20030",
+      "sample_seeds": [
+        20030
+      ],
+      "scenario_count": 120,
+      "source_fingerprint": "32b49416fa48e33750c6ed8d7bfebb149c570f56f4af00d9a315a75ac67ff6e7"
+    },
+    {
+      "config_hash": "192912eed04a491d972905c8fb265a63c4d117c71ca9d70c94ad56047ce54d1a",
+      "input_ordinal": 31,
+      "manifest_sha256": "614382b6e97f20d864f41f29d4aca95c8b2652d7677f03b22bac94b32f8d2019",
+      "methods": [
+        "rct_t_ridge",
+        "obs_t_ridge",
+        "naive_pooled_t_ridge",
+        "rct_t_extra_trees",
+        "obs_t_extra_trees",
+        "naive_pooled_t_extra_trees",
+        "rct_dr_ridge",
+        "rct_dr_extra_trees",
+        "datafusionppi",
+        "cornet_official"
+      ],
+      "recorded_cells": 1200,
+      "records_sha256": "ccadabda67d7445aac9954091332f23911ad332e16317171c739136991201a39",
+      "requested_cells": 1200,
+      "run_name": "group-common-seed-20031",
+      "sample_seeds": [
+        20031
+      ],
+      "scenario_count": 120,
+      "source_fingerprint": "32b49416fa48e33750c6ed8d7bfebb149c570f56f4af00d9a315a75ac67ff6e7"
+    },
+    {
+      "config_hash": "f18f43fcd6ee193667c5c30534b1b0d95e3f3c39d239ac41c076e655893bcbf4",
+      "input_ordinal": 32,
+      "manifest_sha256": "c5ac8ef20cf922983a0ff5f9c7df185cb43915dfcd8eed131adf3972ee402ff9",
+      "methods": [
+        "rct_t_ridge",
+        "obs_t_ridge",
+        "naive_pooled_t_ridge",
+        "rct_t_extra_trees",
+        "obs_t_extra_trees",
+        "naive_pooled_t_extra_trees",
+        "rct_dr_ridge",
+        "rct_dr_extra_trees",
+        "datafusionppi",
+        "cornet_official"
+      ],
+      "recorded_cells": 1200,
+      "records_sha256": "84b135c07683b40451ed9be439fb4fcf223268414d4b583e321d2936bea8eb2a",
+      "requested_cells": 1200,
+      "run_name": "group-common-seed-20032",
+      "sample_seeds": [
+        20032
+      ],
+      "scenario_count": 120,
+      "source_fingerprint": "32b49416fa48e33750c6ed8d7bfebb149c570f56f4af00d9a315a75ac67ff6e7"
+    },
+    {
+      "config_hash": "d85a160283dd17a1974ad8aec149b0ba4fe093cb8c7ea37347be8c176e5a3b73",
+      "input_ordinal": 33,
+      "manifest_sha256": "76c3e3d540ee3b57e5624bef7115d67ebba2a40d02784999a799a0e86c079ee5",
+      "methods": [
+        "rct_t_ridge",
+        "obs_t_ridge",
+        "naive_pooled_t_ridge",
+        "rct_t_extra_trees",
+        "obs_t_extra_trees",
+        "naive_pooled_t_extra_trees",
+        "rct_dr_ridge",
+        "rct_dr_extra_trees",
+        "datafusionppi",
+        "cornet_official"
+      ],
+      "recorded_cells": 1200,
+      "records_sha256": "cf3b5a8a357a720bf7bd7d57b8bd7604e08192d290b7e70aad1160d6580f3c7f",
+      "requested_cells": 1200,
+      "run_name": "group-common-seed-20033",
+      "sample_seeds": [
+        20033
+      ],
+      "scenario_count": 120,
+      "source_fingerprint": "32b49416fa48e33750c6ed8d7bfebb149c570f56f4af00d9a315a75ac67ff6e7"
+    },
+    {
+      "config_hash": "7cc7c63121d2a47743b1542e52f36e8bb3dfad8d744aa2f373e2a5c80ca5b243",
+      "input_ordinal": 34,
+      "manifest_sha256": "4830be8f8a21b2b61ffe91ef365151a3c06fcde41226529db5a452f6ac1c6c5e",
+      "methods": [
+        "rct_t_ridge",
+        "obs_t_ridge",
+        "naive_pooled_t_ridge",
+        "rct_t_extra_trees",
+        "obs_t_extra_trees",
+        "naive_pooled_t_extra_trees",
+        "rct_dr_ridge",
+        "rct_dr_extra_trees",
+        "datafusionppi",
+        "cornet_official"
+      ],
+      "recorded_cells": 1200,
+      "records_sha256": "0807a134047e191decd3b34c042918f143ccb1141341e65de46994a68c184ffe",
+      "requested_cells": 1200,
+      "run_name": "group-common-seed-20034",
+      "sample_seeds": [
+        20034
+      ],
+      "scenario_count": 120,
+      "source_fingerprint": "32b49416fa48e33750c6ed8d7bfebb149c570f56f4af00d9a315a75ac67ff6e7"
+    },
+    {
+      "config_hash": "d0b598cd017b194e6fad2801f1126cfbfb29b969567f9e0a75c42b7b3692272e",
+      "input_ordinal": 35,
+      "manifest_sha256": "8a203ccd18c28e18c70ef425d1904d25aa0e825a3595684b2f94fd092145a14a",
+      "methods": [
+        "rct_t_ridge",
+        "obs_t_ridge",
+        "naive_pooled_t_ridge",
+        "rct_t_extra_trees",
+        "obs_t_extra_trees",
+        "naive_pooled_t_extra_trees",
+        "rct_dr_ridge",
+        "rct_dr_extra_trees",
+        "datafusionppi",
+        "cornet_official"
+      ],
+      "recorded_cells": 1200,
+      "records_sha256": "04b5302f18f6a709c2e5443762306c4e0992a163d65cf5d6ab3524a9f47785f2",
+      "requested_cells": 1200,
+      "run_name": "group-common-seed-20035",
+      "sample_seeds": [
+        20035
+      ],
+      "scenario_count": 120,
+      "source_fingerprint": "32b49416fa48e33750c6ed8d7bfebb149c570f56f4af00d9a315a75ac67ff6e7"
+    },
+    {
+      "config_hash": "a966809b1a0f29631e70cd746fbe34c3c7143e4323838841dea9eae24c34148d",
+      "input_ordinal": 36,
+      "manifest_sha256": "72b1c719cbbe3403a574f042306254d87540682c07745b8ce7ee3b43ed1ad9e6",
+      "methods": [
+        "rct_t_ridge",
+        "obs_t_ridge",
+        "naive_pooled_t_ridge",
+        "rct_t_extra_trees",
+        "obs_t_extra_trees",
+        "naive_pooled_t_extra_trees",
+        "rct_dr_ridge",
+        "rct_dr_extra_trees",
+        "datafusionppi",
+        "cornet_official"
+      ],
+      "recorded_cells": 1200,
+      "records_sha256": "a206251dbfca14896754acd1ddb965b4bcfcaa7f00f1fffe4bba39a89a22967a",
+      "requested_cells": 1200,
+      "run_name": "group-common-seed-20036",
+      "sample_seeds": [
+        20036
+      ],
+      "scenario_count": 120,
+      "source_fingerprint": "32b49416fa48e33750c6ed8d7bfebb149c570f56f4af00d9a315a75ac67ff6e7"
+    },
+    {
+      "config_hash": "6f465d31a64f96471c2183cefd834ac95c379542d19ad067a6355c7a28089d4b",
+      "input_ordinal": 37,
+      "manifest_sha256": "e91fc95dd4bed1ea02612c5029c378024aa805ac02ade59e2b9d8f0bba42ddda",
+      "methods": [
+        "rct_t_ridge",
+        "obs_t_ridge",
+        "naive_pooled_t_ridge",
+        "rct_t_extra_trees",
+        "obs_t_extra_trees",
+        "naive_pooled_t_extra_trees",
+        "rct_dr_ridge",
+        "rct_dr_extra_trees",
+        "datafusionppi",
+        "cornet_official"
+      ],
+      "recorded_cells": 1200,
+      "records_sha256": "b975a6fb2cca306c05fc79ffb96b28766a81d2ca310d6d1d813bff20073c84ee",
+      "requested_cells": 1200,
+      "run_name": "group-common-seed-20037",
+      "sample_seeds": [
+        20037
+      ],
+      "scenario_count": 120,
+      "source_fingerprint": "32b49416fa48e33750c6ed8d7bfebb149c570f56f4af00d9a315a75ac67ff6e7"
+    },
+    {
+      "config_hash": "e02c6ecfeefb1f15868ce62dab434dabf12c46ca329a54b70fcacb246fe21546",
+      "input_ordinal": 38,
+      "manifest_sha256": "7b08ccb306af282e874ad8ced226aee28c03275598b9e960963af42771ef86d5",
+      "methods": [
+        "rct_t_ridge",
+        "obs_t_ridge",
+        "naive_pooled_t_ridge",
+        "rct_t_extra_trees",
+        "obs_t_extra_trees",
+        "naive_pooled_t_extra_trees",
+        "rct_dr_ridge",
+        "rct_dr_extra_trees",
+        "datafusionppi",
+        "cornet_official"
+      ],
+      "recorded_cells": 1200,
+      "records_sha256": "f67d4bf1f2d26f8046f6bddd229d77b6c1d751dd6540b735750ddbb1379a4df5",
+      "requested_cells": 1200,
+      "run_name": "group-common-seed-20038",
+      "sample_seeds": [
+        20038
+      ],
+      "scenario_count": 120,
+      "source_fingerprint": "32b49416fa48e33750c6ed8d7bfebb149c570f56f4af00d9a315a75ac67ff6e7"
+    },
+    {
+      "config_hash": "86f7e480d82c26e0a13abda373620cd4673664c57813f89b9d6243c2f8ccae72",
+      "input_ordinal": 39,
+      "manifest_sha256": "0c645a6b6eddb0b51df92bdd375ea839dff533005e9df7e4dbd89460036d2037",
+      "methods": [
+        "rct_t_ridge",
+        "obs_t_ridge",
+        "naive_pooled_t_ridge",
+        "rct_t_extra_trees",
+        "obs_t_extra_trees",
+        "naive_pooled_t_extra_trees",
+        "rct_dr_ridge",
+        "rct_dr_extra_trees",
+        "datafusionppi",
+        "cornet_official"
+      ],
+      "recorded_cells": 1200,
+      "records_sha256": "d5757fa33189a434b9b10e6b367582c20d6f1cb29a9ed8f9d80e64d57051bb43",
+      "requested_cells": 1200,
+      "run_name": "group-common-seed-20039",
+      "sample_seeds": [
+        20039
+      ],
+      "scenario_count": 120,
+      "source_fingerprint": "32b49416fa48e33750c6ed8d7bfebb149c570f56f4af00d9a315a75ac67ff6e7"
+    },
+    {
+      "config_hash": "a562a6229bb2fa07eacd10ea8a898b701c71d55ba93602709b952f1b6b2b9afa",
+      "input_ordinal": 40,
+      "manifest_sha256": "a4d68566ac1f5bdf88a937ab8223936bd13c1d1e7642e0b97d58df2ab59f81bd",
+      "methods": [
+        "rct_t_ridge",
+        "obs_t_ridge",
+        "naive_pooled_t_ridge",
+        "rct_t_extra_trees",
+        "obs_t_extra_trees",
+        "naive_pooled_t_extra_trees",
+        "rct_dr_ridge",
+        "rct_dr_extra_trees",
+        "datafusionppi",
+        "cornet_official"
+      ],
+      "recorded_cells": 1200,
+      "records_sha256": "babe828dcd512cfc6ba0e70b90db3c28d25ada9b48268b9171f9f2c41e6712f8",
+      "requested_cells": 1200,
+      "run_name": "group-common-seed-20040",
+      "sample_seeds": [
+        20040
+      ],
+      "scenario_count": 120,
+      "source_fingerprint": "32b49416fa48e33750c6ed8d7bfebb149c570f56f4af00d9a315a75ac67ff6e7"
+    },
+    {
+      "config_hash": "b71ff4d25ebf7ebf8dfb384e0fe7019e0cbfa196b01a5a3fe751654951cc65d8",
+      "input_ordinal": 41,
+      "manifest_sha256": "37f4eff3364ee3f5aadb9fbdb692814c9b84425913b10d695188232a4deffa34",
+      "methods": [
+        "rct_t_ridge",
+        "obs_t_ridge",
+        "naive_pooled_t_ridge",
+        "rct_t_extra_trees",
+        "obs_t_extra_trees",
+        "naive_pooled_t_extra_trees",
+        "rct_dr_ridge",
+        "rct_dr_extra_trees",
+        "datafusionppi",
+        "cornet_official"
+      ],
+      "recorded_cells": 1200,
+      "records_sha256": "7b7cd707eb3a0a881c898883b0c194f93f70ee5ac7e83d267d0403ba1ba00b80",
+      "requested_cells": 1200,
+      "run_name": "group-common-seed-20041",
+      "sample_seeds": [
+        20041
+      ],
+      "scenario_count": 120,
+      "source_fingerprint": "32b49416fa48e33750c6ed8d7bfebb149c570f56f4af00d9a315a75ac67ff6e7"
+    },
+    {
+      "config_hash": "1af2dc11a5bab99cab560602f242f4fbe553e11e05415a2abf0c6f7f61e819aa",
+      "input_ordinal": 42,
+      "manifest_sha256": "3f060bcedd3c54a8bf8d9c0ef71b004558e6eb2582e140dcecebd062e4e4025b",
+      "methods": [
+        "rct_t_ridge",
+        "obs_t_ridge",
+        "naive_pooled_t_ridge",
+        "rct_t_extra_trees",
+        "obs_t_extra_trees",
+        "naive_pooled_t_extra_trees",
+        "rct_dr_ridge",
+        "rct_dr_extra_trees",
+        "datafusionppi",
+        "cornet_official"
+      ],
+      "recorded_cells": 1200,
+      "records_sha256": "02fa09bd515892016e92611dcf8d6c20c7ca1c50fd769c02991dd9f42be4eadc",
+      "requested_cells": 1200,
+      "run_name": "group-common-seed-20042",
+      "sample_seeds": [
+        20042
+      ],
+      "scenario_count": 120,
+      "source_fingerprint": "32b49416fa48e33750c6ed8d7bfebb149c570f56f4af00d9a315a75ac67ff6e7"
+    },
+    {
+      "config_hash": "55097eeaf36ae3e713b2f552f6cfd24b89ebad4f80248f3703c6f602e3816199",
+      "input_ordinal": 43,
+      "manifest_sha256": "7c23ccc96598969b712a7798a2454c7dad825d97d40e3bc3b5bc59f8cc34afe8",
+      "methods": [
+        "rct_t_ridge",
+        "obs_t_ridge",
+        "naive_pooled_t_ridge",
+        "rct_t_extra_trees",
+        "obs_t_extra_trees",
+        "naive_pooled_t_extra_trees",
+        "rct_dr_ridge",
+        "rct_dr_extra_trees",
+        "datafusionppi",
+        "cornet_official"
+      ],
+      "recorded_cells": 1200,
+      "records_sha256": "c5fabb8044eaefbfb83a60d41fc68e321c160d5a396ac37025006d5515029e1e",
+      "requested_cells": 1200,
+      "run_name": "group-common-seed-20043",
+      "sample_seeds": [
+        20043
+      ],
+      "scenario_count": 120,
+      "source_fingerprint": "32b49416fa48e33750c6ed8d7bfebb149c570f56f4af00d9a315a75ac67ff6e7"
+    },
+    {
+      "config_hash": "5c62cae4ae31f8a401863e633ab5f1b323a52aef34a56fe805777b730a14bba6",
+      "input_ordinal": 44,
+      "manifest_sha256": "0baa28ba4f0f30dae1f6a09a9ce12fd781ed16e9fd7ee7bbe317635cc314fa85",
+      "methods": [
+        "rct_t_ridge",
+        "obs_t_ridge",
+        "naive_pooled_t_ridge",
+        "rct_t_extra_trees",
+        "obs_t_extra_trees",
+        "naive_pooled_t_extra_trees",
+        "rct_dr_ridge",
+        "rct_dr_extra_trees",
+        "datafusionppi",
+        "cornet_official"
+      ],
+      "recorded_cells": 1200,
+      "records_sha256": "5a43241452c51590604558e45fdc9038439bc71d5218da62e739939d551b2e77",
+      "requested_cells": 1200,
+      "run_name": "group-common-seed-20044",
+      "sample_seeds": [
+        20044
+      ],
+      "scenario_count": 120,
+      "source_fingerprint": "32b49416fa48e33750c6ed8d7bfebb149c570f56f4af00d9a315a75ac67ff6e7"
+    },
+    {
+      "config_hash": "87ffd56d26940e713c1c3d70ea8d7dff511f69f224c889e6ff5989665df33339",
+      "input_ordinal": 45,
+      "manifest_sha256": "176cdda766162fe3031705b57020e73465124242fb006bb5bc6140e2e5b43eb3",
+      "methods": [
+        "rct_t_ridge",
+        "obs_t_ridge",
+        "naive_pooled_t_ridge",
+        "rct_t_extra_trees",
+        "obs_t_extra_trees",
+        "naive_pooled_t_extra_trees",
+        "rct_dr_ridge",
+        "rct_dr_extra_trees",
+        "datafusionppi",
+        "cornet_official"
+      ],
+      "recorded_cells": 1200,
+      "records_sha256": "2d0c01a63c6360c9ddeef0eee88ea40f237e4e3b666e07081091be56b55b1f5d",
+      "requested_cells": 1200,
+      "run_name": "group-common-seed-20045",
+      "sample_seeds": [
+        20045
+      ],
+      "scenario_count": 120,
+      "source_fingerprint": "32b49416fa48e33750c6ed8d7bfebb149c570f56f4af00d9a315a75ac67ff6e7"
+    },
+    {
+      "config_hash": "6c845d6f61ae45fd37034f9ef6f18813d51328c6f1d11fffc52242cbd16e9d0b",
+      "input_ordinal": 46,
+      "manifest_sha256": "d43c5a6f6998fd192b423b25853cc9fc11f267aa3ae0e23fa3e32d9fd4fcc492",
+      "methods": [
+        "rct_t_ridge",
+        "obs_t_ridge",
+        "naive_pooled_t_ridge",
+        "rct_t_extra_trees",
+        "obs_t_extra_trees",
+        "naive_pooled_t_extra_trees",
+        "rct_dr_ridge",
+        "rct_dr_extra_trees",
+        "datafusionppi",
+        "cornet_official"
+      ],
+      "recorded_cells": 1200,
+      "records_sha256": "78486a22687f87726d03ad4654871dbb950bb7d4c1678a6b349e6023b0bc0bc9",
+      "requested_cells": 1200,
+      "run_name": "group-common-seed-20046",
+      "sample_seeds": [
+        20046
+      ],
+      "scenario_count": 120,
+      "source_fingerprint": "32b49416fa48e33750c6ed8d7bfebb149c570f56f4af00d9a315a75ac67ff6e7"
+    },
+    {
+      "config_hash": "9b66a0c506b154c9e20c9b765e761782d44ffa7eae305a7a7d87748875b99420",
+      "input_ordinal": 47,
+      "manifest_sha256": "e1d51b5679f1337adc2eac824c0dfc99d1410e32c204006ca51960bee441b594",
+      "methods": [
+        "rct_t_ridge",
+        "obs_t_ridge",
+        "naive_pooled_t_ridge",
+        "rct_t_extra_trees",
+        "obs_t_extra_trees",
+        "naive_pooled_t_extra_trees",
+        "rct_dr_ridge",
+        "rct_dr_extra_trees",
+        "datafusionppi",
+        "cornet_official"
+      ],
+      "recorded_cells": 1200,
+      "records_sha256": "1f6a78b18565ee246a1f89c864b923b311798dd74959e17c95e603cfb95a31c5",
+      "requested_cells": 1200,
+      "run_name": "group-common-seed-20047",
+      "sample_seeds": [
+        20047
+      ],
+      "scenario_count": 120,
+      "source_fingerprint": "32b49416fa48e33750c6ed8d7bfebb149c570f56f4af00d9a315a75ac67ff6e7"
+    },
+    {
+      "config_hash": "4607fcd935b70e83dc1f018fb11cf29289becf563a93a136a52257ea8a075bcf",
+      "input_ordinal": 48,
+      "manifest_sha256": "f0b89bddb0a8ff9349b7cc5ee4f96edaaf34255ff0a806ca36fd7a1f2602ae78",
+      "methods": [
+        "rct_t_ridge",
+        "obs_t_ridge",
+        "naive_pooled_t_ridge",
+        "rct_t_extra_trees",
+        "obs_t_extra_trees",
+        "naive_pooled_t_extra_trees",
+        "rct_dr_ridge",
+        "rct_dr_extra_trees",
+        "datafusionppi",
+        "cornet_official"
+      ],
+      "recorded_cells": 1200,
+      "records_sha256": "d7960fbcfdfee6d2b96398d72d2e9be3706678355073cb4549f3ad3b53656d2d",
+      "requested_cells": 1200,
+      "run_name": "group-common-seed-20048",
+      "sample_seeds": [
+        20048
+      ],
+      "scenario_count": 120,
+      "source_fingerprint": "32b49416fa48e33750c6ed8d7bfebb149c570f56f4af00d9a315a75ac67ff6e7"
+    },
+    {
+      "config_hash": "ed59835a8deabd415ea49a6b685c028c1e4027b34a883b12ada433cc4563a54b",
+      "input_ordinal": 49,
+      "manifest_sha256": "002f6152680da166e4e41cb3d34c15c64f8757648e8a0c07ac40381d18e5219a",
+      "methods": [
+        "rct_t_ridge",
+        "obs_t_ridge",
+        "naive_pooled_t_ridge",
+        "rct_t_extra_trees",
+        "obs_t_extra_trees",
+        "naive_pooled_t_extra_trees",
+        "rct_dr_ridge",
+        "rct_dr_extra_trees",
+        "datafusionppi",
+        "cornet_official"
+      ],
+      "recorded_cells": 1200,
+      "records_sha256": "b59ab7fd253ddef979066eeb714a9a86a7ade379047e20ac55c28218ad269db2",
+      "requested_cells": 1200,
+      "run_name": "group-common-seed-20049",
+      "sample_seeds": [
+        20049
+      ],
+      "scenario_count": 120,
+      "source_fingerprint": "32b49416fa48e33750c6ed8d7bfebb149c570f56f4af00d9a315a75ac67ff6e7"
+    },
+    {
+      "config_hash": "da136433ee56525dca73804848bb811857018dbbe8a4e24032997ff0d440acd9",
+      "input_ordinal": 50,
+      "manifest_sha256": "4f3ace52e6e93c9fc8b16a14fb1855cf41d5676c5250d72042632bfe5ce4a8b4",
+      "methods": [
+        "rct_t_ridge",
+        "obs_t_ridge",
+        "naive_pooled_t_ridge",
+        "rct_t_extra_trees",
+        "obs_t_extra_trees",
+        "naive_pooled_t_extra_trees",
+        "rct_dr_ridge",
+        "rct_dr_extra_trees",
+        "datafusionppi",
+        "cornet_official"
+      ],
+      "recorded_cells": 1200,
+      "records_sha256": "25a7c1b5138d30624c4421c6acfdfd9ef7125ef067d3166ab71508db62994072",
+      "requested_cells": 1200,
+      "run_name": "group-common-seed-20050",
+      "sample_seeds": [
+        20050
+      ],
+      "scenario_count": 120,
+      "source_fingerprint": "32b49416fa48e33750c6ed8d7bfebb149c570f56f4af00d9a315a75ac67ff6e7"
+    },
+    {
+      "config_hash": "005fda507462de1bc325d1abeb7a20857a988fdf943bee7e51330bd95727ca78",
+      "input_ordinal": 51,
+      "manifest_sha256": "54e500f1ab2e3c09340d9662a1162fa940de8a2e3ef927b5e4f43d83094ed23b",
+      "methods": [
+        "rct_t_ridge",
+        "obs_t_ridge",
+        "naive_pooled_t_ridge",
+        "rct_t_extra_trees",
+        "obs_t_extra_trees",
+        "naive_pooled_t_extra_trees",
+        "rct_dr_ridge",
+        "rct_dr_extra_trees",
+        "datafusionppi",
+        "cornet_official"
+      ],
+      "recorded_cells": 1200,
+      "records_sha256": "b7e65cbccbac087a060c65635c0cad18d22fcc3a8ed4944535f7a0a5f0f17742",
+      "requested_cells": 1200,
+      "run_name": "group-common-seed-20051",
+      "sample_seeds": [
+        20051
+      ],
+      "scenario_count": 120,
+      "source_fingerprint": "32b49416fa48e33750c6ed8d7bfebb149c570f56f4af00d9a315a75ac67ff6e7"
+    },
+    {
+      "config_hash": "a8d5230b25bbe900944f420d6b1f05c9b25b72a329aad6b91a61025f75ee4def",
+      "input_ordinal": 52,
+      "manifest_sha256": "664ae188aa15f99e2bc95e30acd2eb5bcbed2942945d0e9bf8f354429e769669",
+      "methods": [
+        "rct_t_ridge",
+        "obs_t_ridge",
+        "naive_pooled_t_ridge",
+        "rct_t_extra_trees",
+        "obs_t_extra_trees",
+        "naive_pooled_t_extra_trees",
+        "rct_dr_ridge",
+        "rct_dr_extra_trees",
+        "datafusionppi",
+        "cornet_official"
+      ],
+      "recorded_cells": 1200,
+      "records_sha256": "55c6c940fe22020229e16d5a2f854654cacd08a91da79357ded77a46aa446d9d",
+      "requested_cells": 1200,
+      "run_name": "group-common-seed-20052",
+      "sample_seeds": [
+        20052
+      ],
+      "scenario_count": 120,
+      "source_fingerprint": "32b49416fa48e33750c6ed8d7bfebb149c570f56f4af00d9a315a75ac67ff6e7"
+    },
+    {
+      "config_hash": "6069ed6874b82229f9d6fd1e64335002008a0984796886ce91a01bd599a59ee1",
+      "input_ordinal": 53,
+      "manifest_sha256": "1727e76f5b84f76e1206c86eeb61f7fad4eaca1da5209fbc975de7822fa3db21",
+      "methods": [
+        "rct_t_ridge",
+        "obs_t_ridge",
+        "naive_pooled_t_ridge",
+        "rct_t_extra_trees",
+        "obs_t_extra_trees",
+        "naive_pooled_t_extra_trees",
+        "rct_dr_ridge",
+        "rct_dr_extra_trees",
+        "datafusionppi",
+        "cornet_official"
+      ],
+      "recorded_cells": 1200,
+      "records_sha256": "e33146e12298f9b1b7faaf0be576cdd64b99ff47ca91ce4b408c3bfc0b7bd42c",
+      "requested_cells": 1200,
+      "run_name": "group-common-seed-20053",
+      "sample_seeds": [
+        20053
+      ],
+      "scenario_count": 120,
+      "source_fingerprint": "32b49416fa48e33750c6ed8d7bfebb149c570f56f4af00d9a315a75ac67ff6e7"
+    },
+    {
+      "config_hash": "937dceca24e2c7720e609336a2d7f9b94191dcc67dd2c08ba7c5d61410e201f5",
+      "input_ordinal": 54,
+      "manifest_sha256": "21f5fbecc71058c902b832b671ae2d6a857be979815c6318167ac7c058494b96",
+      "methods": [
+        "rct_t_ridge",
+        "obs_t_ridge",
+        "naive_pooled_t_ridge",
+        "rct_t_extra_trees",
+        "obs_t_extra_trees",
+        "naive_pooled_t_extra_trees",
+        "rct_dr_ridge",
+        "rct_dr_extra_trees",
+        "datafusionppi",
+        "cornet_official"
+      ],
+      "recorded_cells": 1200,
+      "records_sha256": "0941179cf77ec454f989cd41f69782b582fb4c22b43442e4d7ca07fbf639e71a",
+      "requested_cells": 1200,
+      "run_name": "group-common-seed-20054",
+      "sample_seeds": [
+        20054
+      ],
+      "scenario_count": 120,
+      "source_fingerprint": "32b49416fa48e33750c6ed8d7bfebb149c570f56f4af00d9a315a75ac67ff6e7"
+    },
+    {
+      "config_hash": "41659964025c984671163bde8dac074520cb645ac148c8e6995a54977f4c4c1d",
+      "input_ordinal": 55,
+      "manifest_sha256": "0ed2f53743d15a8b4e100136085b1b7c52dd3f88d9cdb1ea3e1e150e231bff3f",
+      "methods": [
+        "rct_t_ridge",
+        "obs_t_ridge",
+        "naive_pooled_t_ridge",
+        "rct_t_extra_trees",
+        "obs_t_extra_trees",
+        "naive_pooled_t_extra_trees",
+        "rct_dr_ridge",
+        "rct_dr_extra_trees",
+        "datafusionppi",
+        "cornet_official"
+      ],
+      "recorded_cells": 1200,
+      "records_sha256": "eebad2af800d1075f87aa29491faed5d14eb5ee544d0c75bc8370de72791a6bb",
+      "requested_cells": 1200,
+      "run_name": "group-common-seed-20055",
+      "sample_seeds": [
+        20055
+      ],
+      "scenario_count": 120,
+      "source_fingerprint": "32b49416fa48e33750c6ed8d7bfebb149c570f56f4af00d9a315a75ac67ff6e7"
+    },
+    {
+      "config_hash": "c87a1af4cec97068d698f36965ff7a6a6b0bc62863875e303f558fe242d22fdd",
+      "input_ordinal": 56,
+      "manifest_sha256": "46059bf39d9b72a81c2688988c5cccf08166036a967ded128487ea18479860c1",
+      "methods": [
+        "rct_t_ridge",
+        "obs_t_ridge",
+        "naive_pooled_t_ridge",
+        "rct_t_extra_trees",
+        "obs_t_extra_trees",
+        "naive_pooled_t_extra_trees",
+        "rct_dr_ridge",
+        "rct_dr_extra_trees",
+        "datafusionppi",
+        "cornet_official"
+      ],
+      "recorded_cells": 1200,
+      "records_sha256": "9c623ca2e4915a545bc0acc3ff475ec76bb358ac035dc61d2115f01f4832f879",
+      "requested_cells": 1200,
+      "run_name": "group-common-seed-20056",
+      "sample_seeds": [
+        20056
+      ],
+      "scenario_count": 120,
+      "source_fingerprint": "32b49416fa48e33750c6ed8d7bfebb149c570f56f4af00d9a315a75ac67ff6e7"
+    },
+    {
+      "config_hash": "49beb993298000237c80b758691b537b0e5f6f62d63582bae34f58f5810d78f0",
+      "input_ordinal": 57,
+      "manifest_sha256": "3c70dad99b827b213f6a7a7fabcfa8ee32db669fdd5ad4196355fb385e87c005",
+      "methods": [
+        "rct_t_ridge",
+        "obs_t_ridge",
+        "naive_pooled_t_ridge",
+        "rct_t_extra_trees",
+        "obs_t_extra_trees",
+        "naive_pooled_t_extra_trees",
+        "rct_dr_ridge",
+        "rct_dr_extra_trees",
+        "datafusionppi",
+        "cornet_official"
+      ],
+      "recorded_cells": 1200,
+      "records_sha256": "838310d2493d00de7f5cfd4f7c6ebf2cc19a8313f19e2874e32c1b39d9a35e27",
+      "requested_cells": 1200,
+      "run_name": "group-common-seed-20057",
+      "sample_seeds": [
+        20057
+      ],
+      "scenario_count": 120,
+      "source_fingerprint": "32b49416fa48e33750c6ed8d7bfebb149c570f56f4af00d9a315a75ac67ff6e7"
+    },
+    {
+      "config_hash": "73c6d638abad465b39897dc60db881725b7515d2461df5ef3c10c54c7ed002a5",
+      "input_ordinal": 58,
+      "manifest_sha256": "5b20ae3c4d81bc84b43a709f718178d59aab72714a0738461107ba255d057cd1",
+      "methods": [
+        "rct_t_ridge",
+        "obs_t_ridge",
+        "naive_pooled_t_ridge",
+        "rct_t_extra_trees",
+        "obs_t_extra_trees",
+        "naive_pooled_t_extra_trees",
+        "rct_dr_ridge",
+        "rct_dr_extra_trees",
+        "datafusionppi",
+        "cornet_official"
+      ],
+      "recorded_cells": 1200,
+      "records_sha256": "a5819a18fcdd6e6cd1298c4f343f188fefe6fc243032568f7afef15ab48f9a0a",
+      "requested_cells": 1200,
+      "run_name": "group-common-seed-20058",
+      "sample_seeds": [
+        20058
+      ],
+      "scenario_count": 120,
+      "source_fingerprint": "32b49416fa48e33750c6ed8d7bfebb149c570f56f4af00d9a315a75ac67ff6e7"
+    },
+    {
+      "config_hash": "9165214c752167e8061d59b6dcd33f77cfebc94f3d1f8e9085cfb93bebb01d4a",
+      "input_ordinal": 59,
+      "manifest_sha256": "24327216dcf08c9ddd99677f98404b1bb74ec36b3eb001dd1a948aa2a1bf6e96",
+      "methods": [
+        "rct_t_ridge",
+        "obs_t_ridge",
+        "naive_pooled_t_ridge",
+        "rct_t_extra_trees",
+        "obs_t_extra_trees",
+        "naive_pooled_t_extra_trees",
+        "rct_dr_ridge",
+        "rct_dr_extra_trees",
+        "datafusionppi",
+        "cornet_official"
+      ],
+      "recorded_cells": 1200,
+      "records_sha256": "61ffc2b28dce86d7a74b58036743924182ee5afb334e8625773efc95a5c70b74",
+      "requested_cells": 1200,
+      "run_name": "group-common-seed-20059",
+      "sample_seeds": [
+        20059
+      ],
+      "scenario_count": 120,
+      "source_fingerprint": "32b49416fa48e33750c6ed8d7bfebb149c570f56f4af00d9a315a75ac67ff6e7"
+    },
+    {
+      "config_hash": "1882063256e6ff55f50279bb0a1119b4131856a82bfee19c5d434725ef4c2447",
+      "input_ordinal": 60,
+      "manifest_sha256": "1794bf8ece36f3197d1f358edfdd432b2e92d8b6e0fe4d726757ef97506e1c98",
+      "methods": [
+        "rct_t_ridge",
+        "obs_t_ridge",
+        "naive_pooled_t_ridge",
+        "rct_t_extra_trees",
+        "obs_t_extra_trees",
+        "naive_pooled_t_extra_trees",
+        "rct_dr_ridge",
+        "rct_dr_extra_trees",
+        "datafusionppi",
+        "cornet_official"
+      ],
+      "recorded_cells": 1200,
+      "records_sha256": "269642aca4098817c0ad3de3c33b0628c182b3e9efb310d3f8f9d25ee632bf55",
+      "requested_cells": 1200,
+      "run_name": "group-common-seed-20060",
+      "sample_seeds": [
+        20060
+      ],
+      "scenario_count": 120,
+      "source_fingerprint": "32b49416fa48e33750c6ed8d7bfebb149c570f56f4af00d9a315a75ac67ff6e7"
+    },
+    {
+      "config_hash": "e541cf44819bc78fe4ddff9e1aa382b4cc442dabcf8f15f4d7eccadf5d68c37f",
+      "input_ordinal": 61,
+      "manifest_sha256": "da5c4b00a8ae92c56a9168bb3f972ef37139c4a368a751e3470fea44d11f188c",
+      "methods": [
+        "rct_t_ridge",
+        "obs_t_ridge",
+        "naive_pooled_t_ridge",
+        "rct_t_extra_trees",
+        "obs_t_extra_trees",
+        "naive_pooled_t_extra_trees",
+        "rct_dr_ridge",
+        "rct_dr_extra_trees",
+        "datafusionppi",
+        "cornet_official"
+      ],
+      "recorded_cells": 1200,
+      "records_sha256": "938e0533c0567dcea9baa65dc3128dbf9db26226bc7e9192eedbf31bc540cbeb",
+      "requested_cells": 1200,
+      "run_name": "group-common-seed-20061",
+      "sample_seeds": [
+        20061
+      ],
+      "scenario_count": 120,
+      "source_fingerprint": "32b49416fa48e33750c6ed8d7bfebb149c570f56f4af00d9a315a75ac67ff6e7"
+    },
+    {
+      "config_hash": "c5480de9f0d0342957a25b7f20c0e1f2abf051ce9f8811a6710542528db6f779",
+      "input_ordinal": 62,
+      "manifest_sha256": "3d32c98affe96b452cb42477ce5a60d2c535b5c830964d33d455b8140d2d0ea8",
+      "methods": [
+        "rct_t_ridge",
+        "obs_t_ridge",
+        "naive_pooled_t_ridge",
+        "rct_t_extra_trees",
+        "obs_t_extra_trees",
+        "naive_pooled_t_extra_trees",
+        "rct_dr_ridge",
+        "rct_dr_extra_trees",
+        "datafusionppi",
+        "cornet_official"
+      ],
+      "recorded_cells": 1200,
+      "records_sha256": "b21add1ca27b3948af84c98df194da320be308679b42dfcc13c53f9e011fa7e0",
+      "requested_cells": 1200,
+      "run_name": "group-common-seed-20062",
+      "sample_seeds": [
+        20062
+      ],
+      "scenario_count": 120,
+      "source_fingerprint": "32b49416fa48e33750c6ed8d7bfebb149c570f56f4af00d9a315a75ac67ff6e7"
+    },
+    {
+      "config_hash": "e858a2c7d763a77a36d858c5e650669cdb1400add650da8ea20489cabc3b72c1",
+      "input_ordinal": 63,
+      "manifest_sha256": "adef6126d14183d91efc65d0f2e9ad347a08f0da5c293bd843fb685b921d7e32",
+      "methods": [
+        "rct_t_ridge",
+        "obs_t_ridge",
+        "naive_pooled_t_ridge",
+        "rct_t_extra_trees",
+        "obs_t_extra_trees",
+        "naive_pooled_t_extra_trees",
+        "rct_dr_ridge",
+        "rct_dr_extra_trees",
+        "datafusionppi",
+        "cornet_official"
+      ],
+      "recorded_cells": 1200,
+      "records_sha256": "d08f020873fd78bfa38464682e8ff12c5ec0f3740e84b39cc912f6529e59d661",
+      "requested_cells": 1200,
+      "run_name": "group-common-seed-20063",
+      "sample_seeds": [
+        20063
+      ],
+      "scenario_count": 120,
+      "source_fingerprint": "32b49416fa48e33750c6ed8d7bfebb149c570f56f4af00d9a315a75ac67ff6e7"
+    },
+    {
+      "config_hash": "fcd5c19787436e4a47a8c292a6823274c33b2139e7981f467e965decd6991fc3",
+      "input_ordinal": 64,
+      "manifest_sha256": "232635cd48fd6b4a0901ac2bbdf93ce74e2c5fe4bcbbab57ced607fc210314cb",
+      "methods": [
+        "rct_t_ridge",
+        "obs_t_ridge",
+        "naive_pooled_t_ridge",
+        "rct_t_extra_trees",
+        "obs_t_extra_trees",
+        "naive_pooled_t_extra_trees",
+        "rct_dr_ridge",
+        "rct_dr_extra_trees",
+        "cornet_official"
+      ],
+      "recorded_cells": 36,
+      "records_sha256": "03b1d12f839777914a2475445cee14ded4a0d6052ff29fea23d98918d03ddf01",
+      "requested_cells": 36,
+      "run_name": "group-variable_propensity-seed-20000",
+      "sample_seeds": [
+        20000
+      ],
+      "scenario_count": 4,
+      "source_fingerprint": "859d60e4369e08a0b457e3a8e341d88310a3fcbf932fc1cec354c71349d8e61f"
+    },
+    {
+      "config_hash": "6bcde68109b006e311636fd66a0d84d0e53f3a6173ed3c66d60edd855135193e",
+      "input_ordinal": 65,
+      "manifest_sha256": "f329c0424bfb30feeeae82405fd71ebff46cf87c20de324908e49cb3dd699480",
+      "methods": [
+        "rct_t_ridge",
+        "obs_t_ridge",
+        "naive_pooled_t_ridge",
+        "rct_t_extra_trees",
+        "obs_t_extra_trees",
+        "naive_pooled_t_extra_trees",
+        "rct_dr_ridge",
+        "rct_dr_extra_trees",
+        "cornet_official"
+      ],
+      "recorded_cells": 36,
+      "records_sha256": "9eef88121723963a2f6f109a1a98de93d13d189690c5818a073bc5df3dd51568",
+      "requested_cells": 36,
+      "run_name": "group-variable_propensity-seed-20001",
+      "sample_seeds": [
+        20001
+      ],
+      "scenario_count": 4,
+      "source_fingerprint": "859d60e4369e08a0b457e3a8e341d88310a3fcbf932fc1cec354c71349d8e61f"
+    },
+    {
+      "config_hash": "2adee97a8aad0e22ef4f3df0483ab0f05a9e92c372e71f8446c2da55abf46e80",
+      "input_ordinal": 66,
+      "manifest_sha256": "1627fcd435cb0f864c783cd423ffbb92c9ccabef6215229f1c03325687f01e17",
+      "methods": [
+        "rct_t_ridge",
+        "obs_t_ridge",
+        "naive_pooled_t_ridge",
+        "rct_t_extra_trees",
+        "obs_t_extra_trees",
+        "naive_pooled_t_extra_trees",
+        "rct_dr_ridge",
+        "rct_dr_extra_trees",
+        "cornet_official"
+      ],
+      "recorded_cells": 36,
+      "records_sha256": "636dc5194b46bf0c67a5bb7c4034dfaaf3939de1793d12c8f3582b4fd5911537",
+      "requested_cells": 36,
+      "run_name": "group-variable_propensity-seed-20002",
+      "sample_seeds": [
+        20002
+      ],
+      "scenario_count": 4,
+      "source_fingerprint": "859d60e4369e08a0b457e3a8e341d88310a3fcbf932fc1cec354c71349d8e61f"
+    },
+    {
+      "config_hash": "9d0ec7cc47f7cfacf060b174625dd1f57dfe8fbf2ba2b3c84aa7e085b11a806a",
+      "input_ordinal": 67,
+      "manifest_sha256": "bf9c159825ab97475d662e22c1b86881769cac2e5867ef38b77ad230af614e12",
+      "methods": [
+        "rct_t_ridge",
+        "obs_t_ridge",
+        "naive_pooled_t_ridge",
+        "rct_t_extra_trees",
+        "obs_t_extra_trees",
+        "naive_pooled_t_extra_trees",
+        "rct_dr_ridge",
+        "rct_dr_extra_trees",
+        "cornet_official"
+      ],
+      "recorded_cells": 36,
+      "records_sha256": "eeca198d7546cc49e373aed09948e011dcf986f38d48fbb53b535c14ea81bba9",
+      "requested_cells": 36,
+      "run_name": "group-variable_propensity-seed-20003",
+      "sample_seeds": [
+        20003
+      ],
+      "scenario_count": 4,
+      "source_fingerprint": "859d60e4369e08a0b457e3a8e341d88310a3fcbf932fc1cec354c71349d8e61f"
+    },
+    {
+      "config_hash": "51d77fe679ab826b2ba0dcae0c369da42863e125d5a1374b7758ad21d4d8b9d2",
+      "input_ordinal": 68,
+      "manifest_sha256": "83fd5eacdb3cb10d89e6168ea7c71749076d2ba3bb9476fac10d454ac875c5f1",
+      "methods": [
+        "rct_t_ridge",
+        "obs_t_ridge",
+        "naive_pooled_t_ridge",
+        "rct_t_extra_trees",
+        "obs_t_extra_trees",
+        "naive_pooled_t_extra_trees",
+        "rct_dr_ridge",
+        "rct_dr_extra_trees",
+        "cornet_official"
+      ],
+      "recorded_cells": 36,
+      "records_sha256": "f6d3f9ae4c331ca499e1598c6a2e6adc6e793e8c5f5a6a9cae981f3f261183b5",
+      "requested_cells": 36,
+      "run_name": "group-variable_propensity-seed-20004",
+      "sample_seeds": [
+        20004
+      ],
+      "scenario_count": 4,
+      "source_fingerprint": "859d60e4369e08a0b457e3a8e341d88310a3fcbf932fc1cec354c71349d8e61f"
+    },
+    {
+      "config_hash": "f40e2ad0cd1d00d109d131aa76a67f01863d9826a4e3f0b2ce558fbeb91aad8e",
+      "input_ordinal": 69,
+      "manifest_sha256": "72354cb078a27718a9475b804414558a056501c24b0717032aac5d0659f5cce1",
+      "methods": [
+        "rct_t_ridge",
+        "obs_t_ridge",
+        "naive_pooled_t_ridge",
+        "rct_t_extra_trees",
+        "obs_t_extra_trees",
+        "naive_pooled_t_extra_trees",
+        "rct_dr_ridge",
+        "rct_dr_extra_trees",
+        "cornet_official"
+      ],
+      "recorded_cells": 36,
+      "records_sha256": "c0eba9c9caff95f44a15246fd4ed4f96a1d00834628b7d51f9d82aad9faec920",
+      "requested_cells": 36,
+      "run_name": "group-variable_propensity-seed-20005",
+      "sample_seeds": [
+        20005
+      ],
+      "scenario_count": 4,
+      "source_fingerprint": "859d60e4369e08a0b457e3a8e341d88310a3fcbf932fc1cec354c71349d8e61f"
+    },
+    {
+      "config_hash": "43ff37faa371ad2ca8a971bbbbca3b4c755823f0818eeb37dfc37837de420fad",
+      "input_ordinal": 70,
+      "manifest_sha256": "48e8d8b93056bfed9203a2fe48a280246892ba65670d19c9c160535f90e616e4",
+      "methods": [
+        "rct_t_ridge",
+        "obs_t_ridge",
+        "naive_pooled_t_ridge",
+        "rct_t_extra_trees",
+        "obs_t_extra_trees",
+        "naive_pooled_t_extra_trees",
+        "rct_dr_ridge",
+        "rct_dr_extra_trees",
+        "cornet_official"
+      ],
+      "recorded_cells": 36,
+      "records_sha256": "ecb1bbe4724a7d152e4ac66c05726d99e30e9e3a336f26c5139c5c564b383533",
+      "requested_cells": 36,
+      "run_name": "group-variable_propensity-seed-20006",
+      "sample_seeds": [
+        20006
+      ],
+      "scenario_count": 4,
+      "source_fingerprint": "859d60e4369e08a0b457e3a8e341d88310a3fcbf932fc1cec354c71349d8e61f"
+    },
+    {
+      "config_hash": "583853107f524e055ae01a92e4400c426276d3400683230982c879ce387dea1c",
+      "input_ordinal": 71,
+      "manifest_sha256": "c7001125911913fad8c7d7fca3acc7e30eb105307ef89fafee5a190f7122f8a0",
+      "methods": [
+        "rct_t_ridge",
+        "obs_t_ridge",
+        "naive_pooled_t_ridge",
+        "rct_t_extra_trees",
+        "obs_t_extra_trees",
+        "naive_pooled_t_extra_trees",
+        "rct_dr_ridge",
+        "rct_dr_extra_trees",
+        "cornet_official"
+      ],
+      "recorded_cells": 36,
+      "records_sha256": "c76cd1efb1e6368dbd3c118ab7d5c5d9adcd8d7f9ae890ab9083519ae268dcc5",
+      "requested_cells": 36,
+      "run_name": "group-variable_propensity-seed-20007",
+      "sample_seeds": [
+        20007
+      ],
+      "scenario_count": 4,
+      "source_fingerprint": "859d60e4369e08a0b457e3a8e341d88310a3fcbf932fc1cec354c71349d8e61f"
+    },
+    {
+      "config_hash": "79bc101456e835324fc7b85386d4abd209f43eb8362a869decf0aa9ac4085f7c",
+      "input_ordinal": 72,
+      "manifest_sha256": "7845589a22f0ee809a71470fe88df5abac01af4a3e8055bc2a93ff01ba2d0c8b",
+      "methods": [
+        "rct_t_ridge",
+        "obs_t_ridge",
+        "naive_pooled_t_ridge",
+        "rct_t_extra_trees",
+        "obs_t_extra_trees",
+        "naive_pooled_t_extra_trees",
+        "rct_dr_ridge",
+        "rct_dr_extra_trees",
+        "cornet_official"
+      ],
+      "recorded_cells": 36,
+      "records_sha256": "5b3ccd99a79755c1dd7804b0c83c057b6a3400855100300ec2cecf8003db1744",
+      "requested_cells": 36,
+      "run_name": "group-variable_propensity-seed-20008",
+      "sample_seeds": [
+        20008
+      ],
+      "scenario_count": 4,
+      "source_fingerprint": "859d60e4369e08a0b457e3a8e341d88310a3fcbf932fc1cec354c71349d8e61f"
+    },
+    {
+      "config_hash": "8312e17d86d542b8199bd21fadc0907f83727229ac5d51e59f4826e16f7be098",
+      "input_ordinal": 73,
+      "manifest_sha256": "abada0a7a9394b575d095ba40e5816901d2196098bed043845766c2c78555af9",
+      "methods": [
+        "rct_t_ridge",
+        "obs_t_ridge",
+        "naive_pooled_t_ridge",
+        "rct_t_extra_trees",
+        "obs_t_extra_trees",
+        "naive_pooled_t_extra_trees",
+        "rct_dr_ridge",
+        "rct_dr_extra_trees",
+        "cornet_official"
+      ],
+      "recorded_cells": 36,
+      "records_sha256": "27f8dd11103122609490c3a81aa6daa857bd82e7667cadede6a96ee75f0b77ce",
+      "requested_cells": 36,
+      "run_name": "group-variable_propensity-seed-20009",
+      "sample_seeds": [
+        20009
+      ],
+      "scenario_count": 4,
+      "source_fingerprint": "859d60e4369e08a0b457e3a8e341d88310a3fcbf932fc1cec354c71349d8e61f"
+    },
+    {
+      "config_hash": "729d5d52b1b47340d31cb2cb826d82c7fde2ca8d8d4324c544aacd4b20377c4e",
+      "input_ordinal": 74,
+      "manifest_sha256": "91309e9e9a97ac45c0216edc4b72ee738815a3b24c2271159cecc09bf9f1d1e9",
+      "methods": [
+        "rct_t_ridge",
+        "obs_t_ridge",
+        "naive_pooled_t_ridge",
+        "rct_t_extra_trees",
+        "obs_t_extra_trees",
+        "naive_pooled_t_extra_trees",
+        "rct_dr_ridge",
+        "rct_dr_extra_trees",
+        "cornet_official"
+      ],
+      "recorded_cells": 36,
+      "records_sha256": "34287d5cfeec1a465a36f6b5158d604a35451fea7023732834b69da3c511b87e",
+      "requested_cells": 36,
+      "run_name": "group-variable_propensity-seed-20010",
+      "sample_seeds": [
+        20010
+      ],
+      "scenario_count": 4,
+      "source_fingerprint": "859d60e4369e08a0b457e3a8e341d88310a3fcbf932fc1cec354c71349d8e61f"
+    },
+    {
+      "config_hash": "c7f81e16796846c78b4535dd63e7da9c4e7eefeea63e12e201fc5e8095bb3f35",
+      "input_ordinal": 75,
+      "manifest_sha256": "2e8eeba1f843fd5541c028946aef77828fa821dca45329249cee394fa3f2cd51",
+      "methods": [
+        "rct_t_ridge",
+        "obs_t_ridge",
+        "naive_pooled_t_ridge",
+        "rct_t_extra_trees",
+        "obs_t_extra_trees",
+        "naive_pooled_t_extra_trees",
+        "rct_dr_ridge",
+        "rct_dr_extra_trees",
+        "cornet_official"
+      ],
+      "recorded_cells": 36,
+      "records_sha256": "7f82dfc77da0e9ca1db51658184cfbee6e750243fa97a59c26d3361c171d27b1",
+      "requested_cells": 36,
+      "run_name": "group-variable_propensity-seed-20011",
+      "sample_seeds": [
+        20011
+      ],
+      "scenario_count": 4,
+      "source_fingerprint": "859d60e4369e08a0b457e3a8e341d88310a3fcbf932fc1cec354c71349d8e61f"
+    },
+    {
+      "config_hash": "8342542b66503050c91f3b65317bd2f95388d82158fece2d0ad68bb19b3c5acb",
+      "input_ordinal": 76,
+      "manifest_sha256": "918c102ae8ff6855d2b7e22d49e745f432edaca75b23f6dda88942e625ee1d64",
+      "methods": [
+        "rct_t_ridge",
+        "obs_t_ridge",
+        "naive_pooled_t_ridge",
+        "rct_t_extra_trees",
+        "obs_t_extra_trees",
+        "naive_pooled_t_extra_trees",
+        "rct_dr_ridge",
+        "rct_dr_extra_trees",
+        "cornet_official"
+      ],
+      "recorded_cells": 36,
+      "records_sha256": "7554faa7c403711a162d6e22c3fb181d37676bad456169057cc0ba9d212f6b93",
+      "requested_cells": 36,
+      "run_name": "group-variable_propensity-seed-20012",
+      "sample_seeds": [
+        20012
+      ],
+      "scenario_count": 4,
+      "source_fingerprint": "859d60e4369e08a0b457e3a8e341d88310a3fcbf932fc1cec354c71349d8e61f"
+    },
+    {
+      "config_hash": "5aa3997e707ee3e7a04335ba6170b4a7f869d9805cd5853c2a802a40d0068b6d",
+      "input_ordinal": 77,
+      "manifest_sha256": "2287bbed0ea22a545147c8032167fb0f75f467b7213d897a4d092af5962a60a8",
+      "methods": [
+        "rct_t_ridge",
+        "obs_t_ridge",
+        "naive_pooled_t_ridge",
+        "rct_t_extra_trees",
+        "obs_t_extra_trees",
+        "naive_pooled_t_extra_trees",
+        "rct_dr_ridge",
+        "rct_dr_extra_trees",
+        "cornet_official"
+      ],
+      "recorded_cells": 36,
+      "records_sha256": "79966a4b7050f30e0376b1d9e33ed884c34cf94190e3982ad8be69f386983d6f",
+      "requested_cells": 36,
+      "run_name": "group-variable_propensity-seed-20013",
+      "sample_seeds": [
+        20013
+      ],
+      "scenario_count": 4,
+      "source_fingerprint": "859d60e4369e08a0b457e3a8e341d88310a3fcbf932fc1cec354c71349d8e61f"
+    },
+    {
+      "config_hash": "1b7000cbc350f0b5f3484aa895111d06e0a05dcf565842857257598fb5f7b2b2",
+      "input_ordinal": 78,
+      "manifest_sha256": "eb227e6f296f7e69c98bdc5230a47d84e43693bf79713e496629c7deab2d0cb7",
+      "methods": [
+        "rct_t_ridge",
+        "obs_t_ridge",
+        "naive_pooled_t_ridge",
+        "rct_t_extra_trees",
+        "obs_t_extra_trees",
+        "naive_pooled_t_extra_trees",
+        "rct_dr_ridge",
+        "rct_dr_extra_trees",
+        "cornet_official"
+      ],
+      "recorded_cells": 36,
+      "records_sha256": "4aaa2c929b1315481b4c0f3f6ca040dfbdd61f1b38c1e07b1e20ecab21f6008b",
+      "requested_cells": 36,
+      "run_name": "group-variable_propensity-seed-20014",
+      "sample_seeds": [
+        20014
+      ],
+      "scenario_count": 4,
+      "source_fingerprint": "859d60e4369e08a0b457e3a8e341d88310a3fcbf932fc1cec354c71349d8e61f"
+    },
+    {
+      "config_hash": "bdde1a1e440f48bde9b98a176abd931e981a647062ac98c61c3f0befe49d3a02",
+      "input_ordinal": 79,
+      "manifest_sha256": "4776109387229ebce4838b0c05f7eefe1ee8bcb8081812c2511c1b4832ef4095",
+      "methods": [
+        "rct_t_ridge",
+        "obs_t_ridge",
+        "naive_pooled_t_ridge",
+        "rct_t_extra_trees",
+        "obs_t_extra_trees",
+        "naive_pooled_t_extra_trees",
+        "rct_dr_ridge",
+        "rct_dr_extra_trees",
+        "cornet_official"
+      ],
+      "recorded_cells": 36,
+      "records_sha256": "04d2b3486d9c45486bc3c014f0c5b2d35fdf0abfa841dc491f34e0b8f3c87fb2",
+      "requested_cells": 36,
+      "run_name": "group-variable_propensity-seed-20015",
+      "sample_seeds": [
+        20015
+      ],
+      "scenario_count": 4,
+      "source_fingerprint": "859d60e4369e08a0b457e3a8e341d88310a3fcbf932fc1cec354c71349d8e61f"
+    },
+    {
+      "config_hash": "63604223ed45b7e2399c21b0c4f242e7eb09e002626db1507bba984715a3682f",
+      "input_ordinal": 80,
+      "manifest_sha256": "63b0681fdbdd891805b4e92e5a879c7dcc03e442cba84cc4653ccd95db48f2d2",
+      "methods": [
+        "rct_t_ridge",
+        "obs_t_ridge",
+        "naive_pooled_t_ridge",
+        "rct_t_extra_trees",
+        "obs_t_extra_trees",
+        "naive_pooled_t_extra_trees",
+        "rct_dr_ridge",
+        "rct_dr_extra_trees",
+        "cornet_official"
+      ],
+      "recorded_cells": 36,
+      "records_sha256": "ecf99539d5a9ec05ebb545d008aaf941940adcccc78b3c67ac2776f78e28434d",
+      "requested_cells": 36,
+      "run_name": "group-variable_propensity-seed-20016",
+      "sample_seeds": [
+        20016
+      ],
+      "scenario_count": 4,
+      "source_fingerprint": "859d60e4369e08a0b457e3a8e341d88310a3fcbf932fc1cec354c71349d8e61f"
+    },
+    {
+      "config_hash": "5bf9294cbf4f3a02dcbcee583b9ac6fb06a7ff08d6977e83ba53cec4813b75fa",
+      "input_ordinal": 81,
+      "manifest_sha256": "ba922bd012645f4b5ebd06ca95b14434f96c9d03686663ea6f2ea6dbfbbc56bd",
+      "methods": [
+        "rct_t_ridge",
+        "obs_t_ridge",
+        "naive_pooled_t_ridge",
+        "rct_t_extra_trees",
+        "obs_t_extra_trees",
+        "naive_pooled_t_extra_trees",
+        "rct_dr_ridge",
+        "rct_dr_extra_trees",
+        "cornet_official"
+      ],
+      "recorded_cells": 36,
+      "records_sha256": "729bc42fd46218aa465623489edd0c81df307293703ad302499a0d04b63d61f7",
+      "requested_cells": 36,
+      "run_name": "group-variable_propensity-seed-20017",
+      "sample_seeds": [
+        20017
+      ],
+      "scenario_count": 4,
+      "source_fingerprint": "859d60e4369e08a0b457e3a8e341d88310a3fcbf932fc1cec354c71349d8e61f"
+    },
+    {
+      "config_hash": "7e121645d14d2ca7a9ffe7315baffeda881510b2659f1e914645f2df504ae5e6",
+      "input_ordinal": 82,
+      "manifest_sha256": "8b3ba1452a8da6da5e84a5e3b6c291b31f56cbe3400c9b9579f938082b03a070",
+      "methods": [
+        "rct_t_ridge",
+        "obs_t_ridge",
+        "naive_pooled_t_ridge",
+        "rct_t_extra_trees",
+        "obs_t_extra_trees",
+        "naive_pooled_t_extra_trees",
+        "rct_dr_ridge",
+        "rct_dr_extra_trees",
+        "cornet_official"
+      ],
+      "recorded_cells": 36,
+      "records_sha256": "bbebd40fd78ccefe57a15574348467a31461a58220b5a6f119c7c01332429379",
+      "requested_cells": 36,
+      "run_name": "group-variable_propensity-seed-20018",
+      "sample_seeds": [
+        20018
+      ],
+      "scenario_count": 4,
+      "source_fingerprint": "859d60e4369e08a0b457e3a8e341d88310a3fcbf932fc1cec354c71349d8e61f"
+    },
+    {
+      "config_hash": "1375ca6f463284a89aacb4e6bfbb6079da46137ed8de8568670082a9bfde36d4",
+      "input_ordinal": 83,
+      "manifest_sha256": "5e8ddf25f3a0932fa754aab70c6ede021e4b21a9184f0c8b281a364d3b1182f4",
+      "methods": [
+        "rct_t_ridge",
+        "obs_t_ridge",
+        "naive_pooled_t_ridge",
+        "rct_t_extra_trees",
+        "obs_t_extra_trees",
+        "naive_pooled_t_extra_trees",
+        "rct_dr_ridge",
+        "rct_dr_extra_trees",
+        "cornet_official"
+      ],
+      "recorded_cells": 36,
+      "records_sha256": "c384556d0746c4aa128bd5faf336ce4a472f9fe25bd5f51505fafae148af32fb",
+      "requested_cells": 36,
+      "run_name": "group-variable_propensity-seed-20019",
+      "sample_seeds": [
+        20019
+      ],
+      "scenario_count": 4,
+      "source_fingerprint": "859d60e4369e08a0b457e3a8e341d88310a3fcbf932fc1cec354c71349d8e61f"
+    },
+    {
+      "config_hash": "d43f06da28942b8f1e9e35eb060bf77064673c12edb2272dd9b3b7aa9feb150c",
+      "input_ordinal": 84,
+      "manifest_sha256": "8f006f1e74a92e320fcbb596291530a56d5e7cd1121bdd6865d6791c7c82637b",
+      "methods": [
+        "rct_t_ridge",
+        "obs_t_ridge",
+        "naive_pooled_t_ridge",
+        "rct_t_extra_trees",
+        "obs_t_extra_trees",
+        "naive_pooled_t_extra_trees",
+        "rct_dr_ridge",
+        "rct_dr_extra_trees",
+        "cornet_official"
+      ],
+      "recorded_cells": 36,
+      "records_sha256": "ec151e1a3dcdf39a7f039b129483236d35d44753d7a7d1674fcbfab7db1b9269",
+      "requested_cells": 36,
+      "run_name": "group-variable_propensity-seed-20020",
+      "sample_seeds": [
+        20020
+      ],
+      "scenario_count": 4,
+      "source_fingerprint": "859d60e4369e08a0b457e3a8e341d88310a3fcbf932fc1cec354c71349d8e61f"
+    },
+    {
+      "config_hash": "34ba3f977fa33cc71cdce63dca0ac5dc2a3d0deb2d95dc85a2af809b175a87b6",
+      "input_ordinal": 85,
+      "manifest_sha256": "134a30e947ca8dc73005d1d060138ff5715100ad5eba396f2aa17d4ddf5e9a48",
+      "methods": [
+        "rct_t_ridge",
+        "obs_t_ridge",
+        "naive_pooled_t_ridge",
+        "rct_t_extra_trees",
+        "obs_t_extra_trees",
+        "naive_pooled_t_extra_trees",
+        "rct_dr_ridge",
+        "rct_dr_extra_trees",
+        "cornet_official"
+      ],
+      "recorded_cells": 36,
+      "records_sha256": "ea458e2dd62be7d536bf14ad404c36feffe1442675f1c4046ad7e1f3cb6baf04",
+      "requested_cells": 36,
+      "run_name": "group-variable_propensity-seed-20021",
+      "sample_seeds": [
+        20021
+      ],
+      "scenario_count": 4,
+      "source_fingerprint": "859d60e4369e08a0b457e3a8e341d88310a3fcbf932fc1cec354c71349d8e61f"
+    },
+    {
+      "config_hash": "f72f8677d699c6bba5fdb38d177556970ec109a917adaa7eaa571622c5c76351",
+      "input_ordinal": 86,
+      "manifest_sha256": "b1790f15ce9c309131824df7032b3ed82b5313675e17f5d907e1a7d7c1856ed8",
+      "methods": [
+        "rct_t_ridge",
+        "obs_t_ridge",
+        "naive_pooled_t_ridge",
+        "rct_t_extra_trees",
+        "obs_t_extra_trees",
+        "naive_pooled_t_extra_trees",
+        "rct_dr_ridge",
+        "rct_dr_extra_trees",
+        "cornet_official"
+      ],
+      "recorded_cells": 36,
+      "records_sha256": "afb0352f572791479ca39be2537ec58a3ee90b58f328bba9464b59ad76d44608",
+      "requested_cells": 36,
+      "run_name": "group-variable_propensity-seed-20022",
+      "sample_seeds": [
+        20022
+      ],
+      "scenario_count": 4,
+      "source_fingerprint": "859d60e4369e08a0b457e3a8e341d88310a3fcbf932fc1cec354c71349d8e61f"
+    },
+    {
+      "config_hash": "f71892c8af8306ee38d65f03f2adc5b9b6efd8dfd1a2bd89850cc4ce423a89c6",
+      "input_ordinal": 87,
+      "manifest_sha256": "cc6496dd678c562d2139c1902548081db8fd65ddf05d81883a70cff7dda45761",
+      "methods": [
+        "rct_t_ridge",
+        "obs_t_ridge",
+        "naive_pooled_t_ridge",
+        "rct_t_extra_trees",
+        "obs_t_extra_trees",
+        "naive_pooled_t_extra_trees",
+        "rct_dr_ridge",
+        "rct_dr_extra_trees",
+        "cornet_official"
+      ],
+      "recorded_cells": 36,
+      "records_sha256": "d16a00db6aa193649612fa4a09109cc536d51a479e824aaea0fed3746cfcec9c",
+      "requested_cells": 36,
+      "run_name": "group-variable_propensity-seed-20023",
+      "sample_seeds": [
+        20023
+      ],
+      "scenario_count": 4,
+      "source_fingerprint": "859d60e4369e08a0b457e3a8e341d88310a3fcbf932fc1cec354c71349d8e61f"
+    },
+    {
+      "config_hash": "668f678b386b7157fc5387be52bad117214e082d17c5d266c05503309c5a0ecc",
+      "input_ordinal": 88,
+      "manifest_sha256": "dbc9a06f92371c10c7e3a1d854d006d5d93ff0ba1d35d368701e047a9480f15b",
+      "methods": [
+        "rct_t_ridge",
+        "obs_t_ridge",
+        "naive_pooled_t_ridge",
+        "rct_t_extra_trees",
+        "obs_t_extra_trees",
+        "naive_pooled_t_extra_trees",
+        "rct_dr_ridge",
+        "rct_dr_extra_trees",
+        "cornet_official"
+      ],
+      "recorded_cells": 36,
+      "records_sha256": "f4933c02ad02155620a9b22f67448ab743868cf8cb898f0be36f1a62c52db1f3",
+      "requested_cells": 36,
+      "run_name": "group-variable_propensity-seed-20024",
+      "sample_seeds": [
+        20024
+      ],
+      "scenario_count": 4,
+      "source_fingerprint": "859d60e4369e08a0b457e3a8e341d88310a3fcbf932fc1cec354c71349d8e61f"
+    },
+    {
+      "config_hash": "2e31277b7b92226a5e784664d0ab5337813428b9a7b83958f5d6dfce52b33da3",
+      "input_ordinal": 89,
+      "manifest_sha256": "09147a4b991b194487899ddcbbfc46faa42021f4de8d69fc146336d6f3e808ce",
+      "methods": [
+        "rct_t_ridge",
+        "obs_t_ridge",
+        "naive_pooled_t_ridge",
+        "rct_t_extra_trees",
+        "obs_t_extra_trees",
+        "naive_pooled_t_extra_trees",
+        "rct_dr_ridge",
+        "rct_dr_extra_trees",
+        "cornet_official"
+      ],
+      "recorded_cells": 36,
+      "records_sha256": "a3a87fe4935c00afdd0dce8cf6707a5fa6782301584f439016a05e08fa21282c",
+      "requested_cells": 36,
+      "run_name": "group-variable_propensity-seed-20025",
+      "sample_seeds": [
+        20025
+      ],
+      "scenario_count": 4,
+      "source_fingerprint": "859d60e4369e08a0b457e3a8e341d88310a3fcbf932fc1cec354c71349d8e61f"
+    },
+    {
+      "config_hash": "09fe948cf6906aa4a3be86a2c41ffded456ee93bc0056561d029c6a2497c18dc",
+      "input_ordinal": 90,
+      "manifest_sha256": "bad2cb52148d33dd6127ee6fe736ca35ac22f712ea6e13d3bfb5f60881ed9eb8",
+      "methods": [
+        "rct_t_ridge",
+        "obs_t_ridge",
+        "naive_pooled_t_ridge",
+        "rct_t_extra_trees",
+        "obs_t_extra_trees",
+        "naive_pooled_t_extra_trees",
+        "rct_dr_ridge",
+        "rct_dr_extra_trees",
+        "cornet_official"
+      ],
+      "recorded_cells": 36,
+      "records_sha256": "0ad12ee38dadf77ae604863c0eade0f70a44ff5645cd09cc07b8ea62eda12dc5",
+      "requested_cells": 36,
+      "run_name": "group-variable_propensity-seed-20026",
+      "sample_seeds": [
+        20026
+      ],
+      "scenario_count": 4,
+      "source_fingerprint": "859d60e4369e08a0b457e3a8e341d88310a3fcbf932fc1cec354c71349d8e61f"
+    },
+    {
+      "config_hash": "172c008b07529cd8dd7809e5eb7d9e6af1d8b60934f1f7e537ffbd715fdbc875",
+      "input_ordinal": 91,
+      "manifest_sha256": "c10efa475af9bddbba6a3e1680b9aa1e3401111db07ac66ff4f8eb2d7ae1fc12",
+      "methods": [
+        "rct_t_ridge",
+        "obs_t_ridge",
+        "naive_pooled_t_ridge",
+        "rct_t_extra_trees",
+        "obs_t_extra_trees",
+        "naive_pooled_t_extra_trees",
+        "rct_dr_ridge",
+        "rct_dr_extra_trees",
+        "cornet_official"
+      ],
+      "recorded_cells": 36,
+      "records_sha256": "a2ade341ed1be8d47fdc3fa0b0d595836173040e866202bdc6ddc5d67606ed19",
+      "requested_cells": 36,
+      "run_name": "group-variable_propensity-seed-20027",
+      "sample_seeds": [
+        20027
+      ],
+      "scenario_count": 4,
+      "source_fingerprint": "859d60e4369e08a0b457e3a8e341d88310a3fcbf932fc1cec354c71349d8e61f"
+    },
+    {
+      "config_hash": "42180b4a62af58cfbfc705b8f022ac31c8ad8fa451df328690a37105d5512ffe",
+      "input_ordinal": 92,
+      "manifest_sha256": "d6a095fb54da23d340b88e46c973232a34fbdb1f0984014aa3c9cbaf53156113",
+      "methods": [
+        "rct_t_ridge",
+        "obs_t_ridge",
+        "naive_pooled_t_ridge",
+        "rct_t_extra_trees",
+        "obs_t_extra_trees",
+        "naive_pooled_t_extra_trees",
+        "rct_dr_ridge",
+        "rct_dr_extra_trees",
+        "cornet_official"
+      ],
+      "recorded_cells": 36,
+      "records_sha256": "e6ab249c3bda7a5654f10b2c27d5cbdaa0c44231e000c04095088b270ebd8b81",
+      "requested_cells": 36,
+      "run_name": "group-variable_propensity-seed-20028",
+      "sample_seeds": [
+        20028
+      ],
+      "scenario_count": 4,
+      "source_fingerprint": "859d60e4369e08a0b457e3a8e341d88310a3fcbf932fc1cec354c71349d8e61f"
+    },
+    {
+      "config_hash": "02a2981618d9395f96b280abac4bef970e7e1710175c10e39654e69b35d9e402",
+      "input_ordinal": 93,
+      "manifest_sha256": "7c2082bf43bb92a5adcfc36b1a49debaf2a721efef9fdf2bbe4203e74fe94cd6",
+      "methods": [
+        "rct_t_ridge",
+        "obs_t_ridge",
+        "naive_pooled_t_ridge",
+        "rct_t_extra_trees",
+        "obs_t_extra_trees",
+        "naive_pooled_t_extra_trees",
+        "rct_dr_ridge",
+        "rct_dr_extra_trees",
+        "cornet_official"
+      ],
+      "recorded_cells": 36,
+      "records_sha256": "44f5e9ea3a81b24b82733059e8e97ebac0efaff53a0ede4eae23e05517331db1",
+      "requested_cells": 36,
+      "run_name": "group-variable_propensity-seed-20029",
+      "sample_seeds": [
+        20029
+      ],
+      "scenario_count": 4,
+      "source_fingerprint": "859d60e4369e08a0b457e3a8e341d88310a3fcbf932fc1cec354c71349d8e61f"
+    },
+    {
+      "config_hash": "d1f931d29bc2f9bec528a47c42b22fb4eccf591c456fd011e06eac01355c8278",
+      "input_ordinal": 94,
+      "manifest_sha256": "1eacd1537a87a246eed1b0eea6077bd9de790849ee207d9b420d07494b15a228",
+      "methods": [
+        "rct_t_ridge",
+        "obs_t_ridge",
+        "naive_pooled_t_ridge",
+        "rct_t_extra_trees",
+        "obs_t_extra_trees",
+        "naive_pooled_t_extra_trees",
+        "rct_dr_ridge",
+        "rct_dr_extra_trees",
+        "cornet_official"
+      ],
+      "recorded_cells": 36,
+      "records_sha256": "99543dcbbed3e5d83c5dcec71489f5c394d5dc18c5cad4f858e99bf30bab0d6f",
+      "requested_cells": 36,
+      "run_name": "group-variable_propensity-seed-20030",
+      "sample_seeds": [
+        20030
+      ],
+      "scenario_count": 4,
+      "source_fingerprint": "859d60e4369e08a0b457e3a8e341d88310a3fcbf932fc1cec354c71349d8e61f"
+    },
+    {
+      "config_hash": "5ee8eb9091aa94fa2a6849e55d456f76c01e22fde9a8840e12bcca217850b246",
+      "input_ordinal": 95,
+      "manifest_sha256": "1406653bf1a6deaeb1f9500cc27a86bf753f03fbf58f337c9971a5e1b1b9a0d0",
+      "methods": [
+        "rct_t_ridge",
+        "obs_t_ridge",
+        "naive_pooled_t_ridge",
+        "rct_t_extra_trees",
+        "obs_t_extra_trees",
+        "naive_pooled_t_extra_trees",
+        "rct_dr_ridge",
+        "rct_dr_extra_trees",
+        "cornet_official"
+      ],
+      "recorded_cells": 36,
+      "records_sha256": "7ca96e1ce13ade7af03e6c054e9b2c9d266eecbde90a9d94655b8c2678de58c6",
+      "requested_cells": 36,
+      "run_name": "group-variable_propensity-seed-20031",
+      "sample_seeds": [
+        20031
+      ],
+      "scenario_count": 4,
+      "source_fingerprint": "859d60e4369e08a0b457e3a8e341d88310a3fcbf932fc1cec354c71349d8e61f"
+    },
+    {
+      "config_hash": "da205ee5ee500ef09cc921c39a0e9885565a4cde8c80aadf5d3614eac87a0943",
+      "input_ordinal": 96,
+      "manifest_sha256": "9fbc130bd92d2accc8ca50645840ca7b268098777ac1355b1152dda2ae8ced0e",
+      "methods": [
+        "rct_t_ridge",
+        "obs_t_ridge",
+        "naive_pooled_t_ridge",
+        "rct_t_extra_trees",
+        "obs_t_extra_trees",
+        "naive_pooled_t_extra_trees",
+        "rct_dr_ridge",
+        "rct_dr_extra_trees",
+        "cornet_official"
+      ],
+      "recorded_cells": 36,
+      "records_sha256": "2deef2f88371fe6a1b026daa31b04019cb5580499eb0e1020d0c8dccca3236fa",
+      "requested_cells": 36,
+      "run_name": "group-variable_propensity-seed-20032",
+      "sample_seeds": [
+        20032
+      ],
+      "scenario_count": 4,
+      "source_fingerprint": "859d60e4369e08a0b457e3a8e341d88310a3fcbf932fc1cec354c71349d8e61f"
+    },
+    {
+      "config_hash": "ef2200d3038097ce573c62d17df6fb92b9ef61c55ad5bd4af3901f5e6bb1a125",
+      "input_ordinal": 97,
+      "manifest_sha256": "4d3a33eb6a5313cb0ae971cd95078ac48c11688a133dcc384cca46f2a2cc70d5",
+      "methods": [
+        "rct_t_ridge",
+        "obs_t_ridge",
+        "naive_pooled_t_ridge",
+        "rct_t_extra_trees",
+        "obs_t_extra_trees",
+        "naive_pooled_t_extra_trees",
+        "rct_dr_ridge",
+        "rct_dr_extra_trees",
+        "cornet_official"
+      ],
+      "recorded_cells": 36,
+      "records_sha256": "aa214aa13c771e4de60783fc3381104e01f993f2c4716841c198a3106857fe0b",
+      "requested_cells": 36,
+      "run_name": "group-variable_propensity-seed-20033",
+      "sample_seeds": [
+        20033
+      ],
+      "scenario_count": 4,
+      "source_fingerprint": "859d60e4369e08a0b457e3a8e341d88310a3fcbf932fc1cec354c71349d8e61f"
+    },
+    {
+      "config_hash": "dd333b062f6b4d40b537873cb8ea351f604f4835f49ea0867fa8823b8fd57188",
+      "input_ordinal": 98,
+      "manifest_sha256": "776457ff92bd31d005491514e00b97d23cd0be62fa33440fdfd5b85f73e893e3",
+      "methods": [
+        "rct_t_ridge",
+        "obs_t_ridge",
+        "naive_pooled_t_ridge",
+        "rct_t_extra_trees",
+        "obs_t_extra_trees",
+        "naive_pooled_t_extra_trees",
+        "rct_dr_ridge",
+        "rct_dr_extra_trees",
+        "cornet_official"
+      ],
+      "recorded_cells": 36,
+      "records_sha256": "55a2cb77d761a6c08ca2a7f39cea78a88b163b8fbffbf5df573ab09eb9589efd",
+      "requested_cells": 36,
+      "run_name": "group-variable_propensity-seed-20034",
+      "sample_seeds": [
+        20034
+      ],
+      "scenario_count": 4,
+      "source_fingerprint": "859d60e4369e08a0b457e3a8e341d88310a3fcbf932fc1cec354c71349d8e61f"
+    },
+    {
+      "config_hash": "eaa2f98db1c4be6224f7558d0945209371e885e3648f1b560494aa5ffec636d5",
+      "input_ordinal": 99,
+      "manifest_sha256": "fb950a5b84508bdead6333660e8ded1bdef860605ef568911d282a33dfd8901d",
+      "methods": [
+        "rct_t_ridge",
+        "obs_t_ridge",
+        "naive_pooled_t_ridge",
+        "rct_t_extra_trees",
+        "obs_t_extra_trees",
+        "naive_pooled_t_extra_trees",
+        "rct_dr_ridge",
+        "rct_dr_extra_trees",
+        "cornet_official"
+      ],
+      "recorded_cells": 36,
+      "records_sha256": "95895d2113e38619c56f8bde0a73d1732e71899f5b759f7ec309f030a8d44285",
+      "requested_cells": 36,
+      "run_name": "group-variable_propensity-seed-20035",
+      "sample_seeds": [
+        20035
+      ],
+      "scenario_count": 4,
+      "source_fingerprint": "859d60e4369e08a0b457e3a8e341d88310a3fcbf932fc1cec354c71349d8e61f"
+    },
+    {
+      "config_hash": "7a3e3c4644d2801114c0adb36a2cde374af67bc1502bab0f8dfe270d488e1c80",
+      "input_ordinal": 100,
+      "manifest_sha256": "ec944daf5adc661b40512c023078569de3a783c018803774ebe4fb84896b2663",
+      "methods": [
+        "rct_t_ridge",
+        "obs_t_ridge",
+        "naive_pooled_t_ridge",
+        "rct_t_extra_trees",
+        "obs_t_extra_trees",
+        "naive_pooled_t_extra_trees",
+        "rct_dr_ridge",
+        "rct_dr_extra_trees",
+        "cornet_official"
+      ],
+      "recorded_cells": 36,
+      "records_sha256": "e3fb161d3a1c9a354d0d1f0d46a559450ac54e82c4e010011f1a484f563f6f41",
+      "requested_cells": 36,
+      "run_name": "group-variable_propensity-seed-20036",
+      "sample_seeds": [
+        20036
+      ],
+      "scenario_count": 4,
+      "source_fingerprint": "859d60e4369e08a0b457e3a8e341d88310a3fcbf932fc1cec354c71349d8e61f"
+    },
+    {
+      "config_hash": "3bbd78a142607d2327cd1b29c030090e63c3c749e255fb1e1173de3613e02e44",
+      "input_ordinal": 101,
+      "manifest_sha256": "9cccacc6f5a2812c4c517f89d0a199546de10205cccd5b532fe3a42fa1d562d8",
+      "methods": [
+        "rct_t_ridge",
+        "obs_t_ridge",
+        "naive_pooled_t_ridge",
+        "rct_t_extra_trees",
+        "obs_t_extra_trees",
+        "naive_pooled_t_extra_trees",
+        "rct_dr_ridge",
+        "rct_dr_extra_trees",
+        "cornet_official"
+      ],
+      "recorded_cells": 36,
+      "records_sha256": "1bbcce5dfe40595e9d6bc0bbed826cafd7259cbbe968975e28c0d694207ea18c",
+      "requested_cells": 36,
+      "run_name": "group-variable_propensity-seed-20037",
+      "sample_seeds": [
+        20037
+      ],
+      "scenario_count": 4,
+      "source_fingerprint": "859d60e4369e08a0b457e3a8e341d88310a3fcbf932fc1cec354c71349d8e61f"
+    },
+    {
+      "config_hash": "a106672b5c7a2c932e68d6e0d20dcf4d6ed7f97bc9d8234d8b0172450e2cdb05",
+      "input_ordinal": 102,
+      "manifest_sha256": "aa750b4e9c38b7e91c98a544d5a8b7c8c368668f557d69475e3ab65333855e33",
+      "methods": [
+        "rct_t_ridge",
+        "obs_t_ridge",
+        "naive_pooled_t_ridge",
+        "rct_t_extra_trees",
+        "obs_t_extra_trees",
+        "naive_pooled_t_extra_trees",
+        "rct_dr_ridge",
+        "rct_dr_extra_trees",
+        "cornet_official"
+      ],
+      "recorded_cells": 36,
+      "records_sha256": "cb0c55f64ed518638dce3952c88ee2e1c165388efcfbb8bc21c227ba66a42839",
+      "requested_cells": 36,
+      "run_name": "group-variable_propensity-seed-20038",
+      "sample_seeds": [
+        20038
+      ],
+      "scenario_count": 4,
+      "source_fingerprint": "859d60e4369e08a0b457e3a8e341d88310a3fcbf932fc1cec354c71349d8e61f"
+    },
+    {
+      "config_hash": "4b7f8874e62e930fe23b09d235b214c73eb4e884e0004ae2d5b85b88f928e131",
+      "input_ordinal": 103,
+      "manifest_sha256": "a0788683ea8786d03328948285ae1afb27a13cf3564e6a4c66d720dd17138e4c",
+      "methods": [
+        "rct_t_ridge",
+        "obs_t_ridge",
+        "naive_pooled_t_ridge",
+        "rct_t_extra_trees",
+        "obs_t_extra_trees",
+        "naive_pooled_t_extra_trees",
+        "rct_dr_ridge",
+        "rct_dr_extra_trees",
+        "cornet_official"
+      ],
+      "recorded_cells": 36,
+      "records_sha256": "8692c5ea75a7c957d0ea6505ae6759bb92d37c4bc2de031d9171788559bececa",
+      "requested_cells": 36,
+      "run_name": "group-variable_propensity-seed-20039",
+      "sample_seeds": [
+        20039
+      ],
+      "scenario_count": 4,
+      "source_fingerprint": "859d60e4369e08a0b457e3a8e341d88310a3fcbf932fc1cec354c71349d8e61f"
+    },
+    {
+      "config_hash": "b8f67994ecb08426df79b5685c58740ebd38dba1f0062b24a5f5c5f227f5a26b",
+      "input_ordinal": 104,
+      "manifest_sha256": "431931ee82dbd18ef3e1e6cb97288ded03194067ac1b99c6e985b8aed01395a8",
+      "methods": [
+        "rct_t_ridge",
+        "obs_t_ridge",
+        "naive_pooled_t_ridge",
+        "rct_t_extra_trees",
+        "obs_t_extra_trees",
+        "naive_pooled_t_extra_trees",
+        "rct_dr_ridge",
+        "rct_dr_extra_trees",
+        "cornet_official"
+      ],
+      "recorded_cells": 36,
+      "records_sha256": "e602147bbd26eb5e644c438a770636f4f39f54d3a704a6ddc897640967980016",
+      "requested_cells": 36,
+      "run_name": "group-variable_propensity-seed-20040",
+      "sample_seeds": [
+        20040
+      ],
+      "scenario_count": 4,
+      "source_fingerprint": "859d60e4369e08a0b457e3a8e341d88310a3fcbf932fc1cec354c71349d8e61f"
+    },
+    {
+      "config_hash": "54184ca5e65722501d2a0bda872e6df076d110f9490cfd4c3cf2110d4af445ee",
+      "input_ordinal": 105,
+      "manifest_sha256": "7d9fa781d5f71db5263266019f0a4edae5a408a45fc883bbdd945f5e74cbee22",
+      "methods": [
+        "rct_t_ridge",
+        "obs_t_ridge",
+        "naive_pooled_t_ridge",
+        "rct_t_extra_trees",
+        "obs_t_extra_trees",
+        "naive_pooled_t_extra_trees",
+        "rct_dr_ridge",
+        "rct_dr_extra_trees",
+        "cornet_official"
+      ],
+      "recorded_cells": 36,
+      "records_sha256": "0eb8ae724f87bcd5f600b6e67a191465b0e7540547159bf3b4cda7c325cd9ca3",
+      "requested_cells": 36,
+      "run_name": "group-variable_propensity-seed-20041",
+      "sample_seeds": [
+        20041
+      ],
+      "scenario_count": 4,
+      "source_fingerprint": "859d60e4369e08a0b457e3a8e341d88310a3fcbf932fc1cec354c71349d8e61f"
+    },
+    {
+      "config_hash": "1f698f35df6a04b0be67b91d4ba4e9dbe31af9d01a3d72a589a8827f90bc3cd3",
+      "input_ordinal": 106,
+      "manifest_sha256": "9283feced2cd249a015d937ebd7b0f48dd021739a8041660a3abd2062c615856",
+      "methods": [
+        "rct_t_ridge",
+        "obs_t_ridge",
+        "naive_pooled_t_ridge",
+        "rct_t_extra_trees",
+        "obs_t_extra_trees",
+        "naive_pooled_t_extra_trees",
+        "rct_dr_ridge",
+        "rct_dr_extra_trees",
+        "cornet_official"
+      ],
+      "recorded_cells": 36,
+      "records_sha256": "91c4526b33540f71cd44704c52ca397a7f3c3a75191a1169d1a324cf67edc05c",
+      "requested_cells": 36,
+      "run_name": "group-variable_propensity-seed-20042",
+      "sample_seeds": [
+        20042
+      ],
+      "scenario_count": 4,
+      "source_fingerprint": "859d60e4369e08a0b457e3a8e341d88310a3fcbf932fc1cec354c71349d8e61f"
+    },
+    {
+      "config_hash": "9d86040c71da21edfaec5ecd573cb6309f58190653326e900596e105033528b9",
+      "input_ordinal": 107,
+      "manifest_sha256": "1ddbef24388924280ae76188c763c9e969cf12cd7ce2782d4ae30850a208dcbe",
+      "methods": [
+        "rct_t_ridge",
+        "obs_t_ridge",
+        "naive_pooled_t_ridge",
+        "rct_t_extra_trees",
+        "obs_t_extra_trees",
+        "naive_pooled_t_extra_trees",
+        "rct_dr_ridge",
+        "rct_dr_extra_trees",
+        "cornet_official"
+      ],
+      "recorded_cells": 36,
+      "records_sha256": "bd2969e98bfea3bbd8b465968a3b00db18b018f6a73aedb06fbd6fddf0d83c4c",
+      "requested_cells": 36,
+      "run_name": "group-variable_propensity-seed-20043",
+      "sample_seeds": [
+        20043
+      ],
+      "scenario_count": 4,
+      "source_fingerprint": "859d60e4369e08a0b457e3a8e341d88310a3fcbf932fc1cec354c71349d8e61f"
+    },
+    {
+      "config_hash": "e1fd06da93f90c541078d8bf030168de373b845d533e7d6f62c99859ee7fb996",
+      "input_ordinal": 108,
+      "manifest_sha256": "75a880df3174807b9296851afa8b5bbf3a1a61d750b0145c3015d52822027a1b",
+      "methods": [
+        "rct_t_ridge",
+        "obs_t_ridge",
+        "naive_pooled_t_ridge",
+        "rct_t_extra_trees",
+        "obs_t_extra_trees",
+        "naive_pooled_t_extra_trees",
+        "rct_dr_ridge",
+        "rct_dr_extra_trees",
+        "cornet_official"
+      ],
+      "recorded_cells": 36,
+      "records_sha256": "838e28f2eeab356ba8c49d8add8cd2df70043db812bcc1a6c777142ae186c53f",
+      "requested_cells": 36,
+      "run_name": "group-variable_propensity-seed-20044",
+      "sample_seeds": [
+        20044
+      ],
+      "scenario_count": 4,
+      "source_fingerprint": "859d60e4369e08a0b457e3a8e341d88310a3fcbf932fc1cec354c71349d8e61f"
+    },
+    {
+      "config_hash": "c3562df25d31a4b935d2b2ab16b6a09dd3baece6a2a77b1ad5683e92589c01ae",
+      "input_ordinal": 109,
+      "manifest_sha256": "144b6862188b2d1dd2b491aedc600eccf7bffa7ba60f601b74ed879d43e371f6",
+      "methods": [
+        "rct_t_ridge",
+        "obs_t_ridge",
+        "naive_pooled_t_ridge",
+        "rct_t_extra_trees",
+        "obs_t_extra_trees",
+        "naive_pooled_t_extra_trees",
+        "rct_dr_ridge",
+        "rct_dr_extra_trees",
+        "cornet_official"
+      ],
+      "recorded_cells": 36,
+      "records_sha256": "ef935750506ac1122e6ac06b26b759cbeb826e6b2383e07e5848cb08fa087b8e",
+      "requested_cells": 36,
+      "run_name": "group-variable_propensity-seed-20045",
+      "sample_seeds": [
+        20045
+      ],
+      "scenario_count": 4,
+      "source_fingerprint": "859d60e4369e08a0b457e3a8e341d88310a3fcbf932fc1cec354c71349d8e61f"
+    },
+    {
+      "config_hash": "7d94337e5a54591a1b7c294350c99021624207cbf1e5ec398abd12a93b099dcc",
+      "input_ordinal": 110,
+      "manifest_sha256": "26832175695455e1f7bff4a9709f429d44a9da388f84e2fd9d2578a67d676ccf",
+      "methods": [
+        "rct_t_ridge",
+        "obs_t_ridge",
+        "naive_pooled_t_ridge",
+        "rct_t_extra_trees",
+        "obs_t_extra_trees",
+        "naive_pooled_t_extra_trees",
+        "rct_dr_ridge",
+        "rct_dr_extra_trees",
+        "cornet_official"
+      ],
+      "recorded_cells": 36,
+      "records_sha256": "cd8a57c4a566bf8d30765e34a0a05f521e64363fa1facfcdf3b0826659b69358",
+      "requested_cells": 36,
+      "run_name": "group-variable_propensity-seed-20046",
+      "sample_seeds": [
+        20046
+      ],
+      "scenario_count": 4,
+      "source_fingerprint": "859d60e4369e08a0b457e3a8e341d88310a3fcbf932fc1cec354c71349d8e61f"
+    },
+    {
+      "config_hash": "0d0b2e26f13d265e1891b8b3b9c292db37da835cade02a20ec604be6f6e48363",
+      "input_ordinal": 111,
+      "manifest_sha256": "9e8bb07cd17a282fba229d31bc731feb9206113d801604f744c5d84e736c0e0f",
+      "methods": [
+        "rct_t_ridge",
+        "obs_t_ridge",
+        "naive_pooled_t_ridge",
+        "rct_t_extra_trees",
+        "obs_t_extra_trees",
+        "naive_pooled_t_extra_trees",
+        "rct_dr_ridge",
+        "rct_dr_extra_trees",
+        "cornet_official"
+      ],
+      "recorded_cells": 36,
+      "records_sha256": "a2b48c35dcf93571c8a8b53b8be9649bd82d0edffab224e77dc4fcb085cccc75",
+      "requested_cells": 36,
+      "run_name": "group-variable_propensity-seed-20047",
+      "sample_seeds": [
+        20047
+      ],
+      "scenario_count": 4,
+      "source_fingerprint": "859d60e4369e08a0b457e3a8e341d88310a3fcbf932fc1cec354c71349d8e61f"
+    },
+    {
+      "config_hash": "4b84b456f726b50a177e8b96bc5b3320f342abf041c52ac184c53b5baf3b3933",
+      "input_ordinal": 112,
+      "manifest_sha256": "e6511501fcd20dc6a5c77cca76ed0b3fdaf8b4392b447120e466a89020ca8440",
+      "methods": [
+        "rct_t_ridge",
+        "obs_t_ridge",
+        "naive_pooled_t_ridge",
+        "rct_t_extra_trees",
+        "obs_t_extra_trees",
+        "naive_pooled_t_extra_trees",
+        "rct_dr_ridge",
+        "rct_dr_extra_trees",
+        "cornet_official"
+      ],
+      "recorded_cells": 36,
+      "records_sha256": "c5636a3b6817087cfc36455d990a64042d4c030d9bc4f16b4ec024fd973bc3dd",
+      "requested_cells": 36,
+      "run_name": "group-variable_propensity-seed-20048",
+      "sample_seeds": [
+        20048
+      ],
+      "scenario_count": 4,
+      "source_fingerprint": "859d60e4369e08a0b457e3a8e341d88310a3fcbf932fc1cec354c71349d8e61f"
+    },
+    {
+      "config_hash": "b670319a36e7400084001b4ce46d806afd3455da4d341b3a026f3da3e1de0414",
+      "input_ordinal": 113,
+      "manifest_sha256": "b91f893a032f1a5be422d92bcf182b660e2c6a8632bafb4b8306a9a12eec7484",
+      "methods": [
+        "rct_t_ridge",
+        "obs_t_ridge",
+        "naive_pooled_t_ridge",
+        "rct_t_extra_trees",
+        "obs_t_extra_trees",
+        "naive_pooled_t_extra_trees",
+        "rct_dr_ridge",
+        "rct_dr_extra_trees",
+        "cornet_official"
+      ],
+      "recorded_cells": 36,
+      "records_sha256": "62d1e89989c64bafd13dee940a6381bc8c0d6b7a437423a4f0d254e7ceaccd76",
+      "requested_cells": 36,
+      "run_name": "group-variable_propensity-seed-20049",
+      "sample_seeds": [
+        20049
+      ],
+      "scenario_count": 4,
+      "source_fingerprint": "859d60e4369e08a0b457e3a8e341d88310a3fcbf932fc1cec354c71349d8e61f"
+    },
+    {
+      "config_hash": "3a8081bbe6ffcda297ecb872e96f0ec5534513bda10806c01b22dae63e92e01d",
+      "input_ordinal": 114,
+      "manifest_sha256": "79abdb4caa6cc2c9a4ce5cf752e0df88b6a40fa193df6a36f211b896809a3517",
+      "methods": [
+        "rct_t_ridge",
+        "obs_t_ridge",
+        "naive_pooled_t_ridge",
+        "rct_t_extra_trees",
+        "obs_t_extra_trees",
+        "naive_pooled_t_extra_trees",
+        "rct_dr_ridge",
+        "rct_dr_extra_trees",
+        "cornet_official"
+      ],
+      "recorded_cells": 36,
+      "records_sha256": "90e6af325ef88b26e8eab89f7b7bb9a39f7b671de899e193b15d4d088de730d0",
+      "requested_cells": 36,
+      "run_name": "group-variable_propensity-seed-20050",
+      "sample_seeds": [
+        20050
+      ],
+      "scenario_count": 4,
+      "source_fingerprint": "859d60e4369e08a0b457e3a8e341d88310a3fcbf932fc1cec354c71349d8e61f"
+    },
+    {
+      "config_hash": "96488585d9c7157c669c194ed9855ee4e22166e4648f18fe73f6d49a062daa0a",
+      "input_ordinal": 115,
+      "manifest_sha256": "959b04393b09b7810b8e1f63af441e319b8e2c9b36d329d0550c1ccf550617c1",
+      "methods": [
+        "rct_t_ridge",
+        "obs_t_ridge",
+        "naive_pooled_t_ridge",
+        "rct_t_extra_trees",
+        "obs_t_extra_trees",
+        "naive_pooled_t_extra_trees",
+        "rct_dr_ridge",
+        "rct_dr_extra_trees",
+        "cornet_official"
+      ],
+      "recorded_cells": 36,
+      "records_sha256": "c6139f4859435a6ba16fa828e8514aab91379c59ab8eb98262e3e147fdcb0405",
+      "requested_cells": 36,
+      "run_name": "group-variable_propensity-seed-20051",
+      "sample_seeds": [
+        20051
+      ],
+      "scenario_count": 4,
+      "source_fingerprint": "859d60e4369e08a0b457e3a8e341d88310a3fcbf932fc1cec354c71349d8e61f"
+    },
+    {
+      "config_hash": "888bb85b7c928c9687c882a136b021170a11d225e4cf9dd2468a8c92cbd35be8",
+      "input_ordinal": 116,
+      "manifest_sha256": "6aec226c244261398c7aba9b64d3ee6487094362b397f90c92a87761e5ec7387",
+      "methods": [
+        "rct_t_ridge",
+        "obs_t_ridge",
+        "naive_pooled_t_ridge",
+        "rct_t_extra_trees",
+        "obs_t_extra_trees",
+        "naive_pooled_t_extra_trees",
+        "rct_dr_ridge",
+        "rct_dr_extra_trees",
+        "cornet_official"
+      ],
+      "recorded_cells": 36,
+      "records_sha256": "01bcb25339f9f011cbf9c4ea8a1d85b7e84523d5bc635bb125adf365052cb9de",
+      "requested_cells": 36,
+      "run_name": "group-variable_propensity-seed-20052",
+      "sample_seeds": [
+        20052
+      ],
+      "scenario_count": 4,
+      "source_fingerprint": "859d60e4369e08a0b457e3a8e341d88310a3fcbf932fc1cec354c71349d8e61f"
+    },
+    {
+      "config_hash": "675777c33b84a6dd9e3c0493117ff360937cd577cd1ade25421f9280d55fdd92",
+      "input_ordinal": 117,
+      "manifest_sha256": "e1515a0944103526f7f51642bd1fa05d40884c232dd7620be12b70b9fd4b3ca3",
+      "methods": [
+        "rct_t_ridge",
+        "obs_t_ridge",
+        "naive_pooled_t_ridge",
+        "rct_t_extra_trees",
+        "obs_t_extra_trees",
+        "naive_pooled_t_extra_trees",
+        "rct_dr_ridge",
+        "rct_dr_extra_trees",
+        "cornet_official"
+      ],
+      "recorded_cells": 36,
+      "records_sha256": "8c6aa7d300f3745b3cda73698779653846bb93a1b48239613bd51e8f9b68c886",
+      "requested_cells": 36,
+      "run_name": "group-variable_propensity-seed-20053",
+      "sample_seeds": [
+        20053
+      ],
+      "scenario_count": 4,
+      "source_fingerprint": "859d60e4369e08a0b457e3a8e341d88310a3fcbf932fc1cec354c71349d8e61f"
+    },
+    {
+      "config_hash": "a8478591f2eb5a808b8dfe5e70572b3737302b3c67d09aace911b70c2a18a0c8",
+      "input_ordinal": 118,
+      "manifest_sha256": "bcfe6e5464c52edf39fc14009a5be4a618e6c878f1a781d0078619af8fc69f2e",
+      "methods": [
+        "rct_t_ridge",
+        "obs_t_ridge",
+        "naive_pooled_t_ridge",
+        "rct_t_extra_trees",
+        "obs_t_extra_trees",
+        "naive_pooled_t_extra_trees",
+        "rct_dr_ridge",
+        "rct_dr_extra_trees",
+        "cornet_official"
+      ],
+      "recorded_cells": 36,
+      "records_sha256": "e143379a7d178d02216202f39abaece03e2d6713f2f09efd6baf457f7e99f804",
+      "requested_cells": 36,
+      "run_name": "group-variable_propensity-seed-20054",
+      "sample_seeds": [
+        20054
+      ],
+      "scenario_count": 4,
+      "source_fingerprint": "859d60e4369e08a0b457e3a8e341d88310a3fcbf932fc1cec354c71349d8e61f"
+    },
+    {
+      "config_hash": "cbb9ef577cfb7a55d890d220665f93f1dc0419f87f2c28f15bd7643bf529532f",
+      "input_ordinal": 119,
+      "manifest_sha256": "931e7a4bff5b9048fe024602a7fa4cd72ed4f7746055004c06e82d323f6f1a54",
+      "methods": [
+        "rct_t_ridge",
+        "obs_t_ridge",
+        "naive_pooled_t_ridge",
+        "rct_t_extra_trees",
+        "obs_t_extra_trees",
+        "naive_pooled_t_extra_trees",
+        "rct_dr_ridge",
+        "rct_dr_extra_trees",
+        "cornet_official"
+      ],
+      "recorded_cells": 36,
+      "records_sha256": "f2bc73f0db3aa5b8ce1947ae7697ab1dd395331d734eb416ca2d45b0c2c23b74",
+      "requested_cells": 36,
+      "run_name": "group-variable_propensity-seed-20055",
+      "sample_seeds": [
+        20055
+      ],
+      "scenario_count": 4,
+      "source_fingerprint": "859d60e4369e08a0b457e3a8e341d88310a3fcbf932fc1cec354c71349d8e61f"
+    },
+    {
+      "config_hash": "8c580bdb912d321cbb6002400b234ee6b65d6c9101c953c79113b38f34b182a6",
+      "input_ordinal": 120,
+      "manifest_sha256": "bd3a237b3100a2a001daf97f55e60704cfb31bf2d557ce4393fd5a5ba010f93c",
+      "methods": [
+        "rct_t_ridge",
+        "obs_t_ridge",
+        "naive_pooled_t_ridge",
+        "rct_t_extra_trees",
+        "obs_t_extra_trees",
+        "naive_pooled_t_extra_trees",
+        "rct_dr_ridge",
+        "rct_dr_extra_trees",
+        "cornet_official"
+      ],
+      "recorded_cells": 36,
+      "records_sha256": "ee85d5dcd28ba404786d4c4fe474c9fa482fb272144190e48579f693ded82dd2",
+      "requested_cells": 36,
+      "run_name": "group-variable_propensity-seed-20056",
+      "sample_seeds": [
+        20056
+      ],
+      "scenario_count": 4,
+      "source_fingerprint": "859d60e4369e08a0b457e3a8e341d88310a3fcbf932fc1cec354c71349d8e61f"
+    },
+    {
+      "config_hash": "76c765f009d1b6112ec5d953cb042fce5a17f70f05eb41a69edd6c0c2ed5c104",
+      "input_ordinal": 121,
+      "manifest_sha256": "6ec655834e0c091965423757f5efa0de218cf9e011659ee3ee9e4a282924ce7b",
+      "methods": [
+        "rct_t_ridge",
+        "obs_t_ridge",
+        "naive_pooled_t_ridge",
+        "rct_t_extra_trees",
+        "obs_t_extra_trees",
+        "naive_pooled_t_extra_trees",
+        "rct_dr_ridge",
+        "rct_dr_extra_trees",
+        "cornet_official"
+      ],
+      "recorded_cells": 36,
+      "records_sha256": "69d70392b37c373bc568e4ab0d27e8eddccb863c47cd058a46b40caf0e37e262",
+      "requested_cells": 36,
+      "run_name": "group-variable_propensity-seed-20057",
+      "sample_seeds": [
+        20057
+      ],
+      "scenario_count": 4,
+      "source_fingerprint": "859d60e4369e08a0b457e3a8e341d88310a3fcbf932fc1cec354c71349d8e61f"
+    },
+    {
+      "config_hash": "8e40a708d76eb19e85a2e78b30d91c91f97cf9debfb531ef9f6940a9131dfee6",
+      "input_ordinal": 122,
+      "manifest_sha256": "076f6873b3981183faa8d86c847d7bbcc94cf5b8d40feb1c42e4c49aa5be9744",
+      "methods": [
+        "rct_t_ridge",
+        "obs_t_ridge",
+        "naive_pooled_t_ridge",
+        "rct_t_extra_trees",
+        "obs_t_extra_trees",
+        "naive_pooled_t_extra_trees",
+        "rct_dr_ridge",
+        "rct_dr_extra_trees",
+        "cornet_official"
+      ],
+      "recorded_cells": 36,
+      "records_sha256": "69b32fd96bcfe433109f61edc50a571b44b905e9f3f497bf41ac4110e98f4cb2",
+      "requested_cells": 36,
+      "run_name": "group-variable_propensity-seed-20058",
+      "sample_seeds": [
+        20058
+      ],
+      "scenario_count": 4,
+      "source_fingerprint": "859d60e4369e08a0b457e3a8e341d88310a3fcbf932fc1cec354c71349d8e61f"
+    },
+    {
+      "config_hash": "4938ff77683e8682a84162ac20d6cc02f8db5583cdba657ce4b3c709df945e09",
+      "input_ordinal": 123,
+      "manifest_sha256": "0321bb97352c568d2e2f66ed3fbc04f0cbb87d9e6a4b2e229292536a4e2cde1d",
+      "methods": [
+        "rct_t_ridge",
+        "obs_t_ridge",
+        "naive_pooled_t_ridge",
+        "rct_t_extra_trees",
+        "obs_t_extra_trees",
+        "naive_pooled_t_extra_trees",
+        "rct_dr_ridge",
+        "rct_dr_extra_trees",
+        "cornet_official"
+      ],
+      "recorded_cells": 36,
+      "records_sha256": "fb135dbc3bdd679f3d7acd135638b535169381b908eb9ea83da6650178794214",
+      "requested_cells": 36,
+      "run_name": "group-variable_propensity-seed-20059",
+      "sample_seeds": [
+        20059
+      ],
+      "scenario_count": 4,
+      "source_fingerprint": "859d60e4369e08a0b457e3a8e341d88310a3fcbf932fc1cec354c71349d8e61f"
+    },
+    {
+      "config_hash": "04eca28a0d23b5a6ed58ad8c8decfad33c01ccf96189f9e3decb506f584bb367",
+      "input_ordinal": 124,
+      "manifest_sha256": "242bd05e401f8a8b3db457a383178f024be3e8e2f86e318c3be8b8a3e601ea68",
+      "methods": [
+        "rct_t_ridge",
+        "obs_t_ridge",
+        "naive_pooled_t_ridge",
+        "rct_t_extra_trees",
+        "obs_t_extra_trees",
+        "naive_pooled_t_extra_trees",
+        "rct_dr_ridge",
+        "rct_dr_extra_trees",
+        "cornet_official"
+      ],
+      "recorded_cells": 36,
+      "records_sha256": "538ddd45c5888859bb330424ae65dfb36968be215ac12780fdd3d97f2ddbf9b5",
+      "requested_cells": 36,
+      "run_name": "group-variable_propensity-seed-20060",
+      "sample_seeds": [
+        20060
+      ],
+      "scenario_count": 4,
+      "source_fingerprint": "859d60e4369e08a0b457e3a8e341d88310a3fcbf932fc1cec354c71349d8e61f"
+    },
+    {
+      "config_hash": "2dcc49da298a6f3749710d0bc1d34a542d6bad23c93e58e3d439647ce30c7006",
+      "input_ordinal": 125,
+      "manifest_sha256": "910e1e85bbf5e351947f6ea69846f272e9533692f6f62a6c8e725be2cb60006d",
+      "methods": [
+        "rct_t_ridge",
+        "obs_t_ridge",
+        "naive_pooled_t_ridge",
+        "rct_t_extra_trees",
+        "obs_t_extra_trees",
+        "naive_pooled_t_extra_trees",
+        "rct_dr_ridge",
+        "rct_dr_extra_trees",
+        "cornet_official"
+      ],
+      "recorded_cells": 36,
+      "records_sha256": "fd8fe3ae7aa419c1be121f52e9ec3b015af53a81e3df038fbd276b7ad521eed5",
+      "requested_cells": 36,
+      "run_name": "group-variable_propensity-seed-20061",
+      "sample_seeds": [
+        20061
+      ],
+      "scenario_count": 4,
+      "source_fingerprint": "859d60e4369e08a0b457e3a8e341d88310a3fcbf932fc1cec354c71349d8e61f"
+    },
+    {
+      "config_hash": "42c8e0d81b2c77d3bdcf542336f2e36fc9fc9f08eacb1ee99a5bee14e4a67a18",
+      "input_ordinal": 126,
+      "manifest_sha256": "a767d417d8b0fcf7e3c600c479e76a029d2bf7963dc122322bda07b53b3dec4e",
+      "methods": [
+        "rct_t_ridge",
+        "obs_t_ridge",
+        "naive_pooled_t_ridge",
+        "rct_t_extra_trees",
+        "obs_t_extra_trees",
+        "naive_pooled_t_extra_trees",
+        "rct_dr_ridge",
+        "rct_dr_extra_trees",
+        "cornet_official"
+      ],
+      "recorded_cells": 36,
+      "records_sha256": "788c2ab77bf11d10cb96cc56f1598368505d1161d6e7071e3da70c3fa6791fbd",
+      "requested_cells": 36,
+      "run_name": "group-variable_propensity-seed-20062",
+      "sample_seeds": [
+        20062
+      ],
+      "scenario_count": 4,
+      "source_fingerprint": "859d60e4369e08a0b457e3a8e341d88310a3fcbf932fc1cec354c71349d8e61f"
+    },
+    {
+      "config_hash": "2b5533c81e654d2643097c7f9ab04f419d48ac86174b5f7988b0fe1a269949d7",
+      "input_ordinal": 127,
+      "manifest_sha256": "e20ac0f1916f8d5a7d6857fbaa0b6d5056a43b6b09abcd86b965f0f1f25753d3",
+      "methods": [
+        "rct_t_ridge",
+        "obs_t_ridge",
+        "naive_pooled_t_ridge",
+        "rct_t_extra_trees",
+        "obs_t_extra_trees",
+        "naive_pooled_t_extra_trees",
+        "rct_dr_ridge",
+        "rct_dr_extra_trees",
+        "cornet_official"
+      ],
+      "recorded_cells": 36,
+      "records_sha256": "a931b2b9017ea5cb7dc132a4202d09102515d12944abfd81ad8ea9d06018ec27",
+      "requested_cells": 36,
+      "run_name": "group-variable_propensity-seed-20063",
+      "sample_seeds": [
+        20063
+      ],
+      "scenario_count": 4,
+      "source_fingerprint": "859d60e4369e08a0b457e3a8e341d88310a3fcbf932fc1cec354c71349d8e61f"
+    }
+  ],
+  "normalized_config_sha256": "6d5e6d364fef1553b1d5dac0bf085d5130a6c19e7843381ce829fc25e8def96e",
+  "output_sha256": {
+    "README.md": "cde6d9b039fb17d0a9786975434269a4baa4f069c7519c51520223be5b698bc8",
+    "condition_scores.csv": "4267b27069e110ec6eafd32d6283734e58df14993c7326ac7dbdafadc87cec4a",
+    "designs/addendum__C01/README.md": "825929ef16762442bdb1bfd96df148955bcff55e0468456b7999715fd5bea345",
+    "designs/addendum__C01/budget_curves.pdf": "bf8ffdadb3f84181542267600252a63a1d8a0753c7f667958220575ecc15271b",
+    "designs/addendum__C01/budget_curves.svg": "11bc6ed827de40c57c38706cecc253e871bc6cb057d28fda1ca58704ca5dce1d",
+    "designs/addendum__C01/replicate_scores.csv": "687f788fd9d1acc2e2abf415e91b9a7082a42855674f037a2cfd2fb0e6f4dc11",
+    "designs/addendum__C01/summary.json": "8831822892c26b763263395c9bcc896421bd3c28a38ffbd4563b6b2c8992cf63",
+    "designs/addendum__C02/README.md": "ada4a2034c9183ad54ece0294a4d6fda9eb3fce4aba3cd2a052305f9b6ffafc3",
+    "designs/addendum__C02/budget_curves.pdf": "f079176b42e0c92aec5770cee5b8a26ea20b1d2773f83a297368ddc32e10199a",
+    "designs/addendum__C02/budget_curves.svg": "5ae19e0e6362807297f0b6e9ef3785c49942c88d40a5f830ebe07ab7fed12bf2",
+    "designs/addendum__C02/replicate_scores.csv": "4bb3d12d2e4ca4e7a00075ffc78d640e5d5a5861f77f742ef470834a3d068dea",
+    "designs/addendum__C02/summary.json": "2ff2efbadb205a7bb55096a784c22fdb0238ec742b7f7b1ec5ef0bfbc008d001",
+    "designs/addendum__C03/README.md": "cae111a00307d400dcfbed5b0bc5bee7823dd8e00352db4e46de48c2f78f5c00",
+    "designs/addendum__C03/budget_curves.pdf": "0b02b3f15c90319afea1d73e15498bc5d327122f43cd52d5b5ae76a2009b9511",
+    "designs/addendum__C03/budget_curves.svg": "23e03c5700fe1e41ea6642011e551e2e041e211870a32f3946604e49e4a5b37b",
+    "designs/addendum__C03/replicate_scores.csv": "b2ad5e4137c09828dabac2061edcc80649894daa14610c7ead16c53dbed12797",
+    "designs/addendum__C03/summary.json": "4f3d6b1e5282db618745183f7b87bc9cf1a4d7eab2343a1f251f5745598c8819",
+    "designs/addendum__C04/README.md": "e388b1032c0061b35531bbad7c26abaff99029041d5972490500d51b7965038d",
+    "designs/addendum__C04/budget_curves.pdf": "de4c1817d2113a81fbd816bbc3bccd18960c119aa640e143ae622e7b9ee559d4",
+    "designs/addendum__C04/budget_curves.svg": "60205c1cb6c5096f860be1e944a7b741b1c72af8760250ffac33d971c8c1ba4f",
+    "designs/addendum__C04/replicate_scores.csv": "560d3ce001696f37b7c4d642b425856b882da0d873d5b853d925e8f04ecdf77f",
+    "designs/addendum__C04/summary.json": "83740c82f52ef7a68e74fc4a2db0412f6c3dbe48305a57444f3371e7f24fbf9b",
+    "designs/addendum__C05/README.md": "43800d3654814b3f8a91e19e8eefef40dccf144b4b95737e95f84fc2cff17bb0",
+    "designs/addendum__C05/budget_curves.pdf": "7b810c41a99c86bbc4c1fe3a0b12b70b0f9bbedeab7c34ea0173aaedc2e28f41",
+    "designs/addendum__C05/budget_curves.svg": "7d454f2559b8d93a70bc12ccc1c0243a8e62d3cdb50afa1b7a0b09429aa286fb",
+    "designs/addendum__C05/replicate_scores.csv": "0376a8a7c26cbd94cbe371c1e5638726e86bffefae8a2917648f8ad3e93ab84a",
+    "designs/addendum__C05/summary.json": "7d3254fc11b7f691aad1697bf7d4c0e163605a30423cdadb02818df911739c82",
+    "designs/addendum__C06/README.md": "3311b03e575c081a12626876b27108ad2d5feb5085eced97d3a1f2289b37fc56",
+    "designs/addendum__C06/budget_curves.pdf": "7b323a23a1e14be4f962b6c692db0aae7f9fb9bc6c1c1d7a2761c0b5b3165c9c",
+    "designs/addendum__C06/budget_curves.svg": "3b21666a8f710b5c42626594fa9cc69f7035f766d0779409d72d7edb86d10563",
+    "designs/addendum__C06/replicate_scores.csv": "02d6b6b0eae4ca4d6fde5aea3151f6cbb4d56bd220905b50e8e81067b41220ab",
+    "designs/addendum__C06/summary.json": "0973e1ab386eb2b95765173ff091341c072ff6f3379e1a9181fc812e8d89efa9",
+    "designs/addendum__C07/README.md": "c66b4d4829cc7266e9c08b0196090fbde95639d1e91892e547ebcc20e3885940",
+    "designs/addendum__C07/budget_curves.pdf": "01cf5cef4d2376fb421524f596bbb4d6c3bb37061c69368e4389e019312b4805",
+    "designs/addendum__C07/budget_curves.svg": "b9c514fd63cc95520a14609cb385eb9fac3794f9c8bf0194351d054b8f293cc4",
+    "designs/addendum__C07/replicate_scores.csv": "d611726abb56c17d6f505038a523b7f41fe167d0211501b1060fbf150f9e378a",
+    "designs/addendum__C07/summary.json": "e392b18c3da72e2d507b1debd152330af6310bd9d9ada6b91ca258cf19bd7996",
+    "designs/addendum__C08/README.md": "be40ab987f2a8cec9a283e5c1a33442b336c855955fe75eedff72690a94c0f30",
+    "designs/addendum__C08/budget_curves.pdf": "ce2aa36eea37b5e3ae72bb8a3ddd0cd741405ac5d2629fe082707f4f77bcc04a",
+    "designs/addendum__C08/budget_curves.svg": "9cee619062c980ea70ed7c9d31791185668694b21f15208a2ce560a501335335",
+    "designs/addendum__C08/replicate_scores.csv": "1d6ea1ed430f4e81b594ea5962c017b069307f5bddf7e1da53d789ac539b5693",
+    "designs/addendum__C08/summary.json": "a0b86a24047f9d32823e298924796ac6c4ea5d1b8e7a60e38f3fd5a00117d62c",
+    "designs/addendum__C09/README.md": "9adb464dc5bf2e077e446a2d245aa5d32c6a1651a1cfb30bdf1618f49a47497d",
+    "designs/addendum__C09/budget_curves.pdf": "87f264628091efe3a024e00fbc4db1db5525a85e7c5d5642f18eb3cfe625ee9b",
+    "designs/addendum__C09/budget_curves.svg": "a36fb298c96e56df3b12d22f6503c5c52a5e20755bd375247f473979b5fe01e0",
+    "designs/addendum__C09/replicate_scores.csv": "df821a03233f3ea9f97362e4888d9009dc408d126a82e7bce0a8ed6b7bb85e62",
+    "designs/addendum__C09/summary.json": "d82df885d78f1db9d633df0096dd62289af93f008b2bd1927cca44f0d237bcb8",
+    "designs/addendum__C10/README.md": "93ce208340dcd5bccaa3702a225276a0fa260f0802f136a0bfe92094b811deb2",
+    "designs/addendum__C10/budget_curves.pdf": "4ac26823fec18c436f8a2a23faa980bd5dad85ea147c884e0a427d3a528d303f",
+    "designs/addendum__C10/budget_curves.svg": "19616f430fd3f2959c795a94e88f2e8eed7cb80f72e9370c8522f9ecd4be5835",
+    "designs/addendum__C10/replicate_scores.csv": "81887e1ed56ffe34884e53b9c4967d914377a92739d6f1af8a93f6bc69c4545f",
+    "designs/addendum__C10/summary.json": "8c5ae2f82a2b7bd9f8bac2c52823b56bfb7c1b198eac2418dfee395468e7afc4",
+    "designs/paper__cornet_official_n_conf/README.md": "aae3fa77b6972e3274621762f90c7faeed487271893a113db33995b545347976",
+    "designs/paper__cornet_official_n_conf/budget_curves.pdf": "87b9c175df2e66d85e0c5d07d31e4a7fd5ccfca9566b504520c1f5e8d25f1714",
+    "designs/paper__cornet_official_n_conf/budget_curves.svg": "6b2ec59844828242ff8e714a982524ff3d42d4c2eefa8f0d426e74c781642055",
+    "designs/paper__cornet_official_n_conf/replicate_scores.csv": "b5ac26293aef122c0c6cd271b0a9e34050e798788a2bb69aadc043ed344902d3",
+    "designs/paper__cornet_official_n_conf/summary.json": "cfbe628a4dff672eb1ca39111d949fa35a6f680daa1f7f6bde0c184df76362de",
+    "designs/paper__cvci_official_linear_bias/README.md": "546048657728b93b1f145360c02742ae8553ac5672072b9e7e7f5818ac52df68",
+    "designs/paper__cvci_official_linear_bias/budget_curves.pdf": "eb82800372fc1efb8149dc6e3a339ea14eddc0a857dc1c08501a87893c83e7da",
+    "designs/paper__cvci_official_linear_bias/budget_curves.svg": "6bf0bdb810e8dbba7d240a97ad65289145334a912b11e4b000f79507909eea15",
+    "designs/paper__cvci_official_linear_bias/replicate_scores.csv": "de314c090978cc81549501fa6625758c6b50c2e04e2144e29fc1dc57944375ef",
+    "designs/paper__cvci_official_linear_bias/summary.json": "d6eda59502e14a09faf849bced70ea24c7ded9b3a39d2c15c414c0db1f471626",
+    "designs/paper__elastic_integrative_gen_data_overlap/README.md": "51580c80ef049450f008274ab2ac41b43422e420a6131510229ed4bb6639fa68",
+    "designs/paper__elastic_integrative_gen_data_overlap/budget_curves.pdf": "bdc149c1cbbd479ddc08960804d7a5f65058fcac855501f4324df3fa851ee0a1",
+    "designs/paper__elastic_integrative_gen_data_overlap/budget_curves.svg": "a36dcc245923e82fa9c54fa0f19b7b1348d378f1be7bb15997e09d86efbe66eb",
+    "designs/paper__elastic_integrative_gen_data_overlap/replicate_scores.csv": "bdafea039c49bb26d80595e7ae3c73b9f4d6ae98e46ffc47e8bcd6704b992591",
+    "designs/paper__elastic_integrative_gen_data_overlap/summary.json": "7af44400bbe163d0ac48d9836f4f5a3f363addb3fb71ef3f24b61233be0e96f7",
+    "designs/paper__experimental_grounding_kps/README.md": "66ae72d8bbab6ff8dc09a995a5aa1a81a697a9f41eb90aa223394b2cc1bea1b0",
+    "designs/paper__experimental_grounding_kps/budget_curves.pdf": "c5fb997f254ebd372f86cb1025a54af80529d4b8e4fbd55812e5cdd7cd8a80f5",
+    "designs/paper__experimental_grounding_kps/budget_curves.svg": "7200714a0a838d6407043634c3bbbac787d0e86e40099dc66e20c917c020d25e",
+    "designs/paper__experimental_grounding_kps/replicate_scores.csv": "df673bbf56342eff541e9ce5e100bb14a7d81edd4dfd5263b3a80ace2d004af0",
+    "designs/paper__experimental_grounding_kps/summary.json": "e496232ea180982df6b03d3203cd057e1660b6403727411a6d709d76e4f83743",
+    "designs/paper__integrative_r_learner_kps_code/README.md": "7d040364f543e10b89736c2bd7194b19c456deb8bc70c9a495f3193a89598f81",
+    "designs/paper__integrative_r_learner_kps_code/budget_curves.pdf": "dd9499a4c933a267f53e73abd2433bf1561e24cf4f47c1932f7cefcc4d5495bb",
+    "designs/paper__integrative_r_learner_kps_code/budget_curves.svg": "0d75aed590d39f8bf10c0bb4b7a1574309fb51dcbd5368208fd57a4c4c34e3e8",
+    "designs/paper__integrative_r_learner_kps_code/replicate_scores.csv": "230f279da1810cb68f2159e5e75c047fa74f68573fde11535a7775e1144e2ebb",
+    "designs/paper__integrative_r_learner_kps_code/summary.json": "ab2bdd575647ddc59eab6f636fa6774cf58a70d86413cad45053db9c11700d16",
+    "designs/paper__integrative_r_learner_kps_normal_target_extension/README.md": "9b9650aaf0440a75b794e7efa5a48d3a2e10df1cb2fe5878da1bcfa14183b16f",
+    "designs/paper__integrative_r_learner_kps_normal_target_extension/budget_curves.pdf": "394310fa9c4a1475c063d7504b33c3d5bf0773e34b652657c9c614001809a290",
+    "designs/paper__integrative_r_learner_kps_normal_target_extension/budget_curves.svg": "d4b78e59b19dc0f7cdcf627cd6f6e7877c17d944c531c58471e956feb20153dd",
+    "designs/paper__integrative_r_learner_kps_normal_target_extension/replicate_scores.csv": "90ee3282982df698ff1a2d7f31296451d7f1f685686dfa2bc2bc5ef64a1bd10e",
+    "designs/paper__integrative_r_learner_kps_normal_target_extension/summary.json": "e960b46368d8741b55dfa0fa45870a3dd0004916b6291b26f0019259a6149462",
+    "designs/paper__integrative_r_learner_multivariate_paper/README.md": "68577bd10ad59828b68a99e54b264f041fd0e59fffdd82207e2635e40b1301ba",
+    "designs/paper__integrative_r_learner_multivariate_paper/budget_curves.pdf": "0e8cd709fba06cad497f209869bf07e92b92c6b7cdfabc344b7bcff3932168ab",
+    "designs/paper__integrative_r_learner_multivariate_paper/budget_curves.svg": "ebcaae57a25ab89d1fe15dec2cddb5569aa0684179e5703f97770f31e71965d1",
+    "designs/paper__integrative_r_learner_multivariate_paper/replicate_scores.csv": "ddf91685c21d5775cdd3c81d4d5bf008be6fb3c46b797c588a5f49a16d030884",
+    "designs/paper__integrative_r_learner_multivariate_paper/summary.json": "3b97972876480fb9a22ac8e0d395eb11f83cf423a729c7144fa49171500601d4",
+    "designs/paper__power_likelihood_paper_text/README.md": "d3201d4bb109abebf99fa45b41e88a23a57cf1bb1d9d40b6a8ba53be562ae515",
+    "designs/paper__power_likelihood_paper_text/budget_curves.pdf": "55b2fd87262c461a9f62dd4b258959a7430703ee8db8708f942e9d8134e4658c",
+    "designs/paper__power_likelihood_paper_text/budget_curves.svg": "65ab60a15a3a55199975ef87893b7453e3010f36265f31512a9e6e46a4b2277d",
+    "designs/paper__power_likelihood_paper_text/replicate_scores.csv": "066c7f884fdd945b6ee1922a097384dec154a67a95145aef65cffe05b7eef937",
+    "designs/paper__power_likelihood_paper_text/summary.json": "9eb3026bbf16691f65bb71c4fc4a430451921084fa785f97bca5e4566c9df2ea",
+    "designs/paper__power_likelihood_supplement_code/README.md": "21578c3d38b4349c9115d7b23469201daa115c79fcc62cab9a143aaf6c571b42",
+    "designs/paper__power_likelihood_supplement_code/budget_curves.pdf": "3aef1545a8ff1c744e8709469fe8408f65a1544c96164c0b38c87e691d3cc388",
+    "designs/paper__power_likelihood_supplement_code/budget_curves.svg": "4b109a4dff66f0b6855afffde62831ce0ab4729a1ba7ac0fd05ca138cc1b637c",
+    "designs/paper__power_likelihood_supplement_code/replicate_scores.csv": "275b5ad2a9aa7a369f4ff82e3b88570b6aa3dfc2d6edd81fcc0ead001bd74ae1",
+    "designs/paper__power_likelihood_supplement_code/summary.json": "87a44eecf3a83ef75d81ca49fd41b5462661eec08d5bf63ceb16cecb2bf53f86",
+    "designs/structural__M0/README.md": "53d975b02a457f3d7c3e5844acfcd8c52d3fb095091df54c6f38626683845794",
+    "designs/structural__M0/budget_curves.pdf": "1bcf5e8f5aa9bf91b5272ffb1039f70f71abcb7d3418a988e6c65a69d58c71b3",
+    "designs/structural__M0/budget_curves.svg": "4538fbb94af2a35c97aec8de92b783ff7c45f2ca8ed3215e1ecc0b869e02088d",
+    "designs/structural__M0/replicate_scores.csv": "f4d634e5a17f804f7171f264f878ee153ead05275d0558f67c0e65356d22ae61",
+    "designs/structural__M0/summary.json": "97a76f8d8034ebee65b4bccb94726805674c84a34a9dd768e54982636f1a0399",
+    "designs/structural__M1/README.md": "c407e46feef25e7ee3489d291fd2a849aa11e2f8130ae55c08a36c095c5fb7ab",
+    "designs/structural__M1/budget_curves.pdf": "25efacd830d963249dc54fab21c13b30a724b085f94025bca055c061dadd839a",
+    "designs/structural__M1/budget_curves.svg": "8a9d33dbff75c03b2b6f5b0823abc4a9466a22fbab9c691cc96a7e156e3344e7",
+    "designs/structural__M1/replicate_scores.csv": "769a1bb519d3ad31eeaeca457fe2ef8f3281da470265d1f1ecdf427a00cf3bf6",
+    "designs/structural__M1/summary.json": "5cadc320ff5ed4027bdf24a8174adfb25fee28f77841d16a3e127fea904eb089",
+    "designs/structural__M10/README.md": "89969bc883fe557c4aed6262a4738360ef6ea6629ba5ec46487175861e18e319",
+    "designs/structural__M10/budget_curves.pdf": "f59a6ee3d85a013c4f6de4291db13fa82c7333932d1156c8b4fcd1c1e1512497",
+    "designs/structural__M10/budget_curves.svg": "ba55c6b51c03d6b28a3a8a6c55807981ef7fac273664b7c4be528f7184a72344",
+    "designs/structural__M10/replicate_scores.csv": "4a1ca1b244b22d87ece82b1f6f2d287c370660306bbb296465f070d30cd168e8",
+    "designs/structural__M10/summary.json": "8747ac3eb46f3ff4ec6d209480e78921fb6cf17603cb0af1ac7d7dbba00c6a89",
+    "designs/structural__M11/README.md": "af497f4634bc72532ad929efeb229e5751a2456916333071c4d86660713d6910",
+    "designs/structural__M11/budget_curves.pdf": "f560f46b413a55b8a47b51276c687825c185d5113ba61b3cdd658b3fed25d4a8",
+    "designs/structural__M11/budget_curves.svg": "822a6bdb39d60502a41f0c0a069622078cbf3f25bca2c28c3d62fa6883fe9c19",
+    "designs/structural__M11/replicate_scores.csv": "357f167777d0a3a5a73f988d5c1bf950622b883069d208f665455419e21eb0f1",
+    "designs/structural__M11/summary.json": "28a7cbcd1bc1ceba9760539e925efc9c57ac627e633b986d45911b9a0369ac36",
+    "designs/structural__M2/README.md": "c2516676244a8bcf7153e9cd1fa328df05b4ee0b0fa924da693c5facfd3219a6",
+    "designs/structural__M2/budget_curves.pdf": "0a57f7ee713e4e6f7558d9531fe352e822cccfe0c22c4d3e12f2bc295079b423",
+    "designs/structural__M2/budget_curves.svg": "a8bf36f5efce72df15ad652fbcf20963aefa8ddf85db99e40fffa9b7ed6aef28",
+    "designs/structural__M2/replicate_scores.csv": "ce955a43027febd6307e28f83006cfda4ac5078c96651e4a22e0250948d8af95",
+    "designs/structural__M2/summary.json": "3b9e0b23b835f0648140c4e498c7af1024efaa2dd7ac8d46c43116edab2be405",
+    "designs/structural__M3/README.md": "cb44606622395e95fa85bfa3508c9699ca32c1f29840b5efd9f630d0ffc7427e",
+    "designs/structural__M3/budget_curves.pdf": "5f9c3b37c9172ed36b5b5f3bb97f872981efd87a762b3f686c4149d8c30ce64c",
+    "designs/structural__M3/budget_curves.svg": "d738fc849359e3a10d1cf555c8862182521a6a4ece8160d92c638b81f3561a73",
+    "designs/structural__M3/replicate_scores.csv": "af0fc06f8aecc92d081f3a0b8ef274092c4121f620901eded7465b01c28ce675",
+    "designs/structural__M3/summary.json": "552f0dcedf47246b47345298b954744b445b1621b9ee7b9a481e723bd41f46c7",
+    "designs/structural__M4/README.md": "d3b4ab85a09f11de5c395f306fe5706b7366c3c1a2c23cc37e3fa21629ba2e09",
+    "designs/structural__M4/budget_curves.pdf": "9404127d48d55e68e99158449fe82ad571781cebe6efc46954222d6b4a6457ad",
+    "designs/structural__M4/budget_curves.svg": "12ec40334dee55e7ab5a5fe54cd77b4b198081894b67ac6e3bb7657f1f43c3bd",
+    "designs/structural__M4/replicate_scores.csv": "71ee03fd2c34b3a9f3eb22f30355fc125c6740727df9ac2b3f6029f6192de776",
+    "designs/structural__M4/summary.json": "a5429b1ac50354e2f7a2c41dfb4f2c6bb8686a8183a0d7b8c59efc5566fe8c16",
+    "designs/structural__M5/README.md": "d63f79cfbaa81c21425c45b4c8d3c9c91ae49576231fc93661175972813acac2",
+    "designs/structural__M5/budget_curves.pdf": "1f52fd19cf0410d770a599ee7b58110ddd98edcf08e4633b92fd9213e19c0d1e",
+    "designs/structural__M5/budget_curves.svg": "a208f4ff5df901a13d1284a430cc9ca0bb283a74033c4fc77d075ed92b446955",
+    "designs/structural__M5/replicate_scores.csv": "17898b08d489d0d41913416ddc6f9a3ef1646f04e8fb685196070186246d986b",
+    "designs/structural__M5/summary.json": "ee283f6a096df65dc9c6e8bafa3ba7e41af3336171fa4b0dbaae4eb7f4d87a2c",
+    "designs/structural__M6/README.md": "cfbe61aeb5fc43fcae6ec59d2fb97b8b247135896ddce97ee0a2786d6b934db4",
+    "designs/structural__M6/budget_curves.pdf": "f54a074e3d2a67a3dfc293f6ee8ae434ec66b833fbfbc9a18e01d2362688b2cb",
+    "designs/structural__M6/budget_curves.svg": "4e8536ff585ebccb391fb6c20a91734c1ee77f1cf96d8a1c34f6d07418905481",
+    "designs/structural__M6/replicate_scores.csv": "0f0617dbcc76cc5c8e1346526d30a20c0761fb1194d0be449ffe9bcac63d938b",
+    "designs/structural__M6/summary.json": "3949f6707c99b6865738437032b9f69cb06287a80af855a88135006ef8ba870e",
+    "designs/structural__M7/README.md": "8f8d687ec19d4c9d3dda9856968064792e48c5842c14a7514ced437586286b7f",
+    "designs/structural__M7/budget_curves.pdf": "9d16b5dba9a249f5d389752c7d1d1c2243a2df856fe7a4996a9f28370756fdd3",
+    "designs/structural__M7/budget_curves.svg": "500a6cf20408dcead2a929e80c3046e41461545468e12af55ea7d431b1adc0c8",
+    "designs/structural__M7/replicate_scores.csv": "42bec85644efe34730b56dbb0e54612b30ec7d3425efd7c3bdd2dbf81b6e858f",
+    "designs/structural__M7/summary.json": "0a790b3dc9b765dc585d36b7dcb7c41e0259a2d738d83dcfefaeb8d7a6281300",
+    "designs/structural__M8/README.md": "ea692330cd8519f9a9a05b2b6a2c9d3a6d4c8bd8c56494f5fc359d4e496a76e8",
+    "designs/structural__M8/budget_curves.pdf": "66df104c1f254fbf9cf0dbbdfcddf01221b07bcfd69dba4c7f67118c06bccb76",
+    "designs/structural__M8/budget_curves.svg": "91667172d1a99a8dfa0c4140899f2f140e0576ec0a14555092d72d1241c33b0a",
+    "designs/structural__M8/replicate_scores.csv": "6ab4c2fe356ae8d4d20b396ee14bf7cec0219cd58e38ff0f7c03bdaf21c36738",
+    "designs/structural__M8/summary.json": "eda20f32bf8d3aef54f6f57aa5977a93c8bec324c721bf84dc71fe7db1c9136f",
+    "designs/structural__M9/README.md": "126c8742284a8c7f07f02937f25ec0f747f4afec0d39959dcea0b2018dad0968",
+    "designs/structural__M9/budget_curves.pdf": "a471105734b5bb7275252012d14aeb3d84e1e14ed456fe8624327dbeef00f81d",
+    "designs/structural__M9/budget_curves.svg": "91bec3c2718b7e2fafb82873877aa743cd4099745ea8e258f180414e92aa9e05",
+    "designs/structural__M9/replicate_scores.csv": "62649a5e1fa363157293a9b05623a5e547cbe993411c9d34390629138408650c",
+    "designs/structural__M9/summary.json": "f18dc58832e424246f3d5e63bfddebb20da6e0f7e755be5d31beb4be201bba29",
+    "not_applicable.csv": "be183b59b23ded6ab3b4a44c7ca0e05a7349337177961443db099dc81100beb3",
+    "primary_contrasts.csv": "7918004f54caefa2575050be7cd907a93c0ab869d1a67ad0f743c02492817235",
+    "producer_identity.json": "d36b54f3d7146443e105fc5c9213f57331a6541e425ad3955447b7af7b2905f1",
+    "summary.json": "ec733a54970b19f8ccff1e0a1334796c8433257c3c5d0ad7b6e790e0de72ff27"
+  },
+  "schema_version": 1
+}

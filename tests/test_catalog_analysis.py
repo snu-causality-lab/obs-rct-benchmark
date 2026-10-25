@@ -242,3 +242,49 @@ def test_repro_checker_rejects_changed_saved_score_without_substituting_another_
     monkeypatch.setattr(repro, "make_method", lambda *a, **k: Different())
     result = repro.verify(c, [], tmp_path / "result.json")
     assert result["mismatched_cells"] == 1 and result["seed"] == 3
+
+
+def test_partial_score_figure_and_report_disclose_success_conditioning(tmp_path):
+    pytest.importorskip("matplotlib")
+    c = config()
+    path = tmp_path / "partial"
+    rows, _ = write_shard(path, c)
+    failed = next(row for row in rows if row["method"] == "datafusionppi" and row["seed"] == 3)
+    failed.update(status="failed", metrics=None, stage="method_or_metric", error_type="RuntimeError")
+    (path / "records.jsonl").write_text("".join(json.dumps(row) + "\n" for row in rows))
+    records, _ = analysis.collect_records(c, [path])
+    scores, contrasts, _ = analysis.analyze_records(c, records)
+    unchanged = json.dumps([scores, contrasts], sort_keys=True)
+    report = analysis._condition_report(list(c.scenarios), scores, contrasts,
+        family_status={"size": 4, "complete": False, "incomplete": 2})
+    assert "All 4 eligible family-level Holm decisions are withheld" in report
+    assert "successful fits only" in report and "not full-grid performance" in report
+    analysis.make_figure(list(c.scenarios), scores, tmp_path)
+    svg = (tmp_path / "budget_curves.svg").read_text()
+    assert "1/2; 1 failed, 0 missing" in svg
+    assert "condition on fit success" in svg
+    assert json.dumps([scores, contrasts], sort_keys=True) == unchanged
+
+
+def test_zero_success_method_is_displayed_as_failed_rather_than_unsupported(tmp_path):
+    pytest.importorskip("matplotlib")
+    c = config()
+    path = tmp_path / "failed"
+    write_shard(path, c, failed="datafusionppi")
+    records, _ = analysis.collect_records(c, [path])
+    scores, _, _ = analysis.analyze_records(c, records)
+    analysis.make_figure(list(c.scenarios), scores, tmp_path)
+    svg = (tmp_path / "budget_curves.svg").read_text()
+    assert "DataFusionPPI: 0 successes; 2 failed, 0 missing" in svg
+    assert "DataFusionPPI: N/A" not in svg
+
+
+def test_compact_identity_contains_actual_authenticated_producer_fields(tmp_path):
+    c = config()
+    path = tmp_path / "source"
+    _, manifest = write_shard(path, c)
+    identity = {}
+    analysis.collect_records(c, [path], identity_sink=identity)
+    for key in ("source", "environment", "custom_methods", "empirical_inputs",
+                "external_methods", "resolved_scenarios"):
+        assert identity[key] == manifest[key]

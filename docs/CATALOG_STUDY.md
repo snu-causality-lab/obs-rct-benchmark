@@ -90,3 +90,17 @@ obs-rct-benchmark run --config outputs/catalog-configs/group-variable_propensity
 ```
 
 Execute each of the 128 generated configurations once; add `--resume` to the identical configuration/output for a completed-run check. The helper's `study_manifest.json` gives the deterministic order and complete list. Frozen analysis/checking tools must use the same canonical configuration and applicability/heavy-tail rules. Publish every condition's result and uncertainty limits, including failures and adverse outcomes. The study does not include new fusion methods, actual IHDP/ACIC validation, a multi-source contract or an extension of recruitment to the nine paper-related generators.
+
+
+After executing all 128 configurations, authenticate and summarize the complete grid:
+
+```sh
+python scripts/analyze_catalog_study.py --config configs/catalog_study.toml --runs outputs/catalog/group-* --output outputs/catalog-analysis --paper-assets
+python scripts/verify_catalog_targets.py --config configs/catalog_study.toml --output outputs/catalog-target-check.json
+python scripts/verify_catalog_reproducibility.py --config configs/catalog_study.toml --runs outputs/catalog/group-common-seed-20000 outputs/catalog/group-variable_propensity-seed-20000 --output outputs/catalog-reproducibility.json
+python scripts/verify_catalog_aggregates.py --config configs/catalog_study.toml --analysis outputs/catalog-analysis --output outputs/catalog-arithmetic-check.json
+```
+
+An analysis with terminal failed cells writes authenticated reports and exits nonzero. Preserve that status and inspect coverage; do not call it a fully successful fit campaign or retry failed cells to obtain scores. A failure-free pipeline dependency must not silently prevent reporting retained scientific failures. The independent arithmetic check can pass for a complete, honestly reported grid containing terminal failures.
+
+[Completed execution and results](../results/catalog_study/SCIENTIFIC_RESULT.md) report the realized coverage, diagnostics and reconstruction limits. To check its compact public export, use `verify_catalog_aggregates.py` with `--delivery-manifest results/catalog_study/DELIVERY_MANIFEST.json`; only explicitly hash-bound manuscript PDFs may be omitted. Full per-seed compact CSVs remain mandatory. The selected original first-seed manifests/records are in `results/catalog_study/evidence/runs/`; the frozen full-run protocol can regenerate every input.

@@ -28,6 +28,7 @@ jobs:
       - run: python -m pip install -e '.[baselines,test,notebooks]'
       - run: python scripts/check_release.py
       - run: python -m pytest
+      - run: python scripts/verify_catalog_aggregates.py --config configs/catalog_study.toml --analysis results/catalog_study --delivery-manifest results/catalog_study/DELIVERY_MANIFEST.json --output outputs/catalog-arithmetic-check.json
       - run: obs-rct-benchmark run --config configs/smoke.toml --output outputs/ci-smoke
       - run: obs-rct-benchmark run --config configs/gamma_smoke.toml --output outputs/ci-gamma
       - run: python examples/run_synthetic_file_smoke.py --output outputs/ci-file-fixtures

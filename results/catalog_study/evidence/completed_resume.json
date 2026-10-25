@@ -1,0 +1,2181 @@
+{
+  "all_128_completed_resumes_byte_identical": true,
+  "shards": [
+    {
+      "completed_resume_records_byte_identical": true,
+      "config": "group-common-seed-20000.toml",
+      "coverage": {
+        "expected": 1200,
+        "failed": 0,
+        "missing": 0,
+        "recorded": 1200,
+        "successful": 1200
+      },
+      "driver_sha256": "d8175fd1097d25c80dd0f9896b254d5ad60250f8dd3e7b2188c4d2a288318faa",
+      "elapsed_seconds": 226.50505038909614,
+      "exit_status": 0,
+      "index": 0,
+      "records_sha256": "463cb53a4dc646fe03822f85ad5891bfb405a24184d6fb953f03d6b8cb50a461",
+      "source_fingerprint": "32b49416fa48e33750c6ed8d7bfebb149c570f56f4af00d9a315a75ac67ff6e7"
+    },
+    {
+      "completed_resume_records_byte_identical": true,
+      "config": "group-variable_propensity-seed-20000.toml",
+      "coverage": {
+        "expected": 36,
+        "failed": 0,
+        "missing": 0,
+        "recorded": 36,
+        "successful": 36
+      },
+      "driver_sha256": "d8175fd1097d25c80dd0f9896b254d5ad60250f8dd3e7b2188c4d2a288318faa",
+      "elapsed_seconds": 13.289855489972979,
+      "exit_status": 0,
+      "index": 1,
+      "records_sha256": "03b1d12f839777914a2475445cee14ded4a0d6052ff29fea23d98918d03ddf01",
+      "source_fingerprint": "859d60e4369e08a0b457e3a8e341d88310a3fcbf932fc1cec354c71349d8e61f"
+    },
+    {
+      "completed_resume_records_byte_identical": true,
+      "config": "group-common-seed-20001.toml",
+      "coverage": {
+        "expected": 1200,
+        "failed": 0,
+        "missing": 0,
+        "recorded": 1200,
+        "successful": 1200
+      },
+      "driver_sha256": "d8175fd1097d25c80dd0f9896b254d5ad60250f8dd3e7b2188c4d2a288318faa",
+      "elapsed_seconds": 275.58593540033326,
+      "exit_status": 0,
+      "index": 2,
+      "records_sha256": "5c98be49ff76da4f0771d66d76c7ec20540ee837d0b9518fe6864fc5323e9e89",
+      "source_fingerprint": "32b49416fa48e33750c6ed8d7bfebb149c570f56f4af00d9a315a75ac67ff6e7"
+    },
+    {
+      "completed_resume_records_byte_identical": true,
+      "config": "group-variable_propensity-seed-20001.toml",
+      "coverage": {
+        "expected": 36,
+        "failed": 0,
+        "missing": 0,
+        "recorded": 36,
+        "successful": 36
+      },
+      "driver_sha256": "d8175fd1097d25c80dd0f9896b254d5ad60250f8dd3e7b2188c4d2a288318faa",
+      "elapsed_seconds": 30.869931377004832,
+      "exit_status": 0,
+      "index": 3,
+      "records_sha256": "9eef88121723963a2f6f109a1a98de93d13d189690c5818a073bc5df3dd51568",
+      "source_fingerprint": "859d60e4369e08a0b457e3a8e341d88310a3fcbf932fc1cec354c71349d8e61f"
+    },
+    {
+      "completed_resume_records_byte_identical": true,
+      "config": "group-common-seed-20002.toml",
+      "coverage": {
+        "expected": 1200,
+        "failed": 0,
+        "missing": 0,
+        "recorded": 1200,
+        "successful": 1200
+      },
+      "driver_sha256": "d8175fd1097d25c80dd0f9896b254d5ad60250f8dd3e7b2188c4d2a288318faa",
+      "elapsed_seconds": 273.1570285381749,
+      "exit_status": 0,
+      "index": 4,
+      "records_sha256": "02751170ac29e583e1e5a16d8d5eaddd99b0db9d021cd30bc715c1aae1e824fb",
+      "source_fingerprint": "32b49416fa48e33750c6ed8d7bfebb149c570f56f4af00d9a315a75ac67ff6e7"
+    },
+    {
+      "completed_resume_records_byte_identical": true,
+      "config": "group-variable_propensity-seed-20002.toml",
+      "coverage": {
+        "expected": 36,
+        "failed": 0,
+        "missing": 0,
+        "recorded": 36,
+        "successful": 36
+      },
+      "driver_sha256": "d8175fd1097d25c80dd0f9896b254d5ad60250f8dd3e7b2188c4d2a288318faa",
+      "elapsed_seconds": 31.883451621048152,
+      "exit_status": 0,
+      "index": 5,
+      "records_sha256": "636dc5194b46bf0c67a5bb7c4034dfaaf3939de1793d12c8f3582b4fd5911537",
+      "source_fingerprint": "859d60e4369e08a0b457e3a8e341d88310a3fcbf932fc1cec354c71349d8e61f"
+    },
+    {
+      "completed_resume_records_byte_identical": true,
+      "config": "group-common-seed-20003.toml",
+      "coverage": {
+        "expected": 1200,
+        "failed": 0,
+        "missing": 0,
+        "recorded": 1200,
+        "successful": 1200
+      },
+      "driver_sha256": "d8175fd1097d25c80dd0f9896b254d5ad60250f8dd3e7b2188c4d2a288318faa",
+      "elapsed_seconds": 274.1664470862597,
+      "exit_status": 0,
+      "index": 6,
+      "records_sha256": "41c7aa0136e98e73098c94266aae46ccfd5d9a2a4b1c677020f6aaa5b70e5840",
+      "source_fingerprint": "32b49416fa48e33750c6ed8d7bfebb149c570f56f4af00d9a315a75ac67ff6e7"
+    },
+    {
+      "completed_resume_records_byte_identical": true,
+      "config": "group-variable_propensity-seed-20003.toml",
+      "coverage": {
+        "expected": 36,
+        "failed": 0,
+        "missing": 0,
+        "recorded": 36,
+        "successful": 36
+      },
+      "driver_sha256": "d8175fd1097d25c80dd0f9896b254d5ad60250f8dd3e7b2188c4d2a288318faa",
+      "elapsed_seconds": 30.92342222481966,
+      "exit_status": 0,
+      "index": 7,
+      "records_sha256": "eeca198d7546cc49e373aed09948e011dcf986f38d48fbb53b535c14ea81bba9",
+      "source_fingerprint": "859d60e4369e08a0b457e3a8e341d88310a3fcbf932fc1cec354c71349d8e61f"
+    },
+    {
+      "completed_resume_records_byte_identical": true,
+      "config": "group-common-seed-20004.toml",
+      "coverage": {
+        "expected": 1200,
+        "failed": 0,
+        "missing": 0,
+        "recorded": 1200,
+        "successful": 1200
+      },
+      "driver_sha256": "d8175fd1097d25c80dd0f9896b254d5ad60250f8dd3e7b2188c4d2a288318faa",
+      "elapsed_seconds": 273.0998437809758,
+      "exit_status": 0,
+      "index": 8,
+      "records_sha256": "fac236d1c40e5aec209f333e8fcc00defbdd381d7d029217beb2a07bfa3af378",
+      "source_fingerprint": "32b49416fa48e33750c6ed8d7bfebb149c570f56f4af00d9a315a75ac67ff6e7"
+    },
+    {
+      "completed_resume_records_byte_identical": true,
+      "config": "group-variable_propensity-seed-20004.toml",
+      "coverage": {
+        "expected": 36,
+        "failed": 0,
+        "missing": 0,
+        "recorded": 36,
+        "successful": 36
+      },
+      "driver_sha256": "d8175fd1097d25c80dd0f9896b254d5ad60250f8dd3e7b2188c4d2a288318faa",
+      "elapsed_seconds": 32.25261031417176,
+      "exit_status": 0,
+      "index": 9,
+      "records_sha256": "f6d3f9ae4c331ca499e1598c6a2e6adc6e793e8c5f5a6a9cae981f3f261183b5",
+      "source_fingerprint": "859d60e4369e08a0b457e3a8e341d88310a3fcbf932fc1cec354c71349d8e61f"
+    },
+    {
+      "completed_resume_records_byte_identical": true,
+      "config": "group-common-seed-20005.toml",
+      "coverage": {
+        "expected": 1200,
+        "failed": 0,
+        "missing": 0,
+        "recorded": 1200,
+        "successful": 1200
+      },
+      "driver_sha256": "d8175fd1097d25c80dd0f9896b254d5ad60250f8dd3e7b2188c4d2a288318faa",
+      "elapsed_seconds": 274.44161030557007,
+      "exit_status": 0,
+      "index": 10,
+      "records_sha256": "e7923685f67364d8f9acbaf1bd468b20f4e5a5ac9e639a98b812fb68a37ffa26",
+      "source_fingerprint": "32b49416fa48e33750c6ed8d7bfebb149c570f56f4af00d9a315a75ac67ff6e7"
+    },
+    {
+      "completed_resume_records_byte_identical": true,
+      "config": "group-variable_propensity-seed-20005.toml",
+      "coverage": {
+        "expected": 36,
+        "failed": 0,
+        "missing": 0,
+        "recorded": 36,
+        "successful": 36
+      },
+      "driver_sha256": "d8175fd1097d25c80dd0f9896b254d5ad60250f8dd3e7b2188c4d2a288318faa",
+      "elapsed_seconds": 32.31445456435904,
+      "exit_status": 0,
+      "index": 11,
+      "records_sha256": "c0eba9c9caff95f44a15246fd4ed4f96a1d00834628b7d51f9d82aad9faec920",
+      "source_fingerprint": "859d60e4369e08a0b457e3a8e341d88310a3fcbf932fc1cec354c71349d8e61f"
+    },
+    {
+      "completed_resume_records_byte_identical": true,
+      "config": "group-common-seed-20006.toml",
+      "coverage": {
+        "expected": 1200,
+        "failed": 0,
+        "missing": 0,
+        "recorded": 1200,
+        "successful": 1200
+      },
+      "driver_sha256": "d8175fd1097d25c80dd0f9896b254d5ad60250f8dd3e7b2188c4d2a288318faa",
+      "elapsed_seconds": 274.6306651150808,
+      "exit_status": 0,
+      "index": 12,
+      "records_sha256": "6b026603e75f6c1420b3df929fad1dac6ed9b9cdbe90fff9910877a273fee01a",
+      "source_fingerprint": "32b49416fa48e33750c6ed8d7bfebb149c570f56f4af00d9a315a75ac67ff6e7"
+    },
+    {
+      "completed_resume_records_byte_identical": true,
+      "config": "group-variable_propensity-seed-20006.toml",
+      "coverage": {
+        "expected": 36,
+        "failed": 0,
+        "missing": 0,
+        "recorded": 36,
+        "successful": 36
+      },
+      "driver_sha256": "d8175fd1097d25c80dd0f9896b254d5ad60250f8dd3e7b2188c4d2a288318faa",
+      "elapsed_seconds": 32.02464100997895,
+      "exit_status": 0,
+      "index": 13,
+      "records_sha256": "ecb1bbe4724a7d152e4ac66c05726d99e30e9e3a336f26c5139c5c564b383533",
+      "source_fingerprint": "859d60e4369e08a0b457e3a8e341d88310a3fcbf932fc1cec354c71349d8e61f"
+    },
+    {
+      "completed_resume_records_byte_identical": true,
+      "config": "group-common-seed-20007.toml",
+      "coverage": {
+        "expected": 1200,
+        "failed": 0,
+        "missing": 0,
+        "recorded": 1200,
+        "successful": 1200
+      },
+      "driver_sha256": "d8175fd1097d25c80dd0f9896b254d5ad60250f8dd3e7b2188c4d2a288318faa",
+      "elapsed_seconds": 272.42929012468085,
+      "exit_status": 0,
+      "index": 14,
+      "records_sha256": "62c1a5d9182368bf415fd438666f49a23b65f3257d2eddf5e0fbefdcad438d88",
+      "source_fingerprint": "32b49416fa48e33750c6ed8d7bfebb149c570f56f4af00d9a315a75ac67ff6e7"
+    },
+    {
+      "completed_resume_records_byte_identical": true,
+      "config": "group-variable_propensity-seed-20007.toml",
+      "coverage": {
+        "expected": 36,
+        "failed": 0,
+        "missing": 0,
+        "recorded": 36,
+        "successful": 36
+      },
+      "driver_sha256": "d8175fd1097d25c80dd0f9896b254d5ad60250f8dd3e7b2188c4d2a288318faa",
+      "elapsed_seconds": 31.984536728821695,
+      "exit_status": 0,
+      "index": 15,
+      "records_sha256": "c76cd1efb1e6368dbd3c118ab7d5c5d9adcd8d7f9ae890ab9083519ae268dcc5",
+      "source_fingerprint": "859d60e4369e08a0b457e3a8e341d88310a3fcbf932fc1cec354c71349d8e61f"
+    },
+    {
+      "completed_resume_records_byte_identical": true,
+      "config": "group-common-seed-20008.toml",
+      "coverage": {
+        "expected": 1200,
+        "failed": 0,
+        "missing": 0,
+        "recorded": 1200,
+        "successful": 1200
+      },
+      "driver_sha256": "d8175fd1097d25c80dd0f9896b254d5ad60250f8dd3e7b2188c4d2a288318faa",
+      "elapsed_seconds": 272.7277294122614,
+      "exit_status": 0,
+      "index": 16,
+      "records_sha256": "f8d8e0c704f1f1aeace702bbf7306a6c33cd39db27eca23cd8af36affb64177a",
+      "source_fingerprint": "32b49416fa48e33750c6ed8d7bfebb149c570f56f4af00d9a315a75ac67ff6e7"
+    },
+    {
+      "completed_resume_records_byte_identical": true,
+      "config": "group-variable_propensity-seed-20008.toml",
+      "coverage": {
+        "expected": 36,
+        "failed": 0,
+        "missing": 0,
+        "recorded": 36,
+        "successful": 36
+      },
+      "driver_sha256": "d8175fd1097d25c80dd0f9896b254d5ad60250f8dd3e7b2188c4d2a288318faa",
+      "elapsed_seconds": 30.87694205204025,
+      "exit_status": 0,
+      "index": 17,
+      "records_sha256": "5b3ccd99a79755c1dd7804b0c83c057b6a3400855100300ec2cecf8003db1744",
+      "source_fingerprint": "859d60e4369e08a0b457e3a8e341d88310a3fcbf932fc1cec354c71349d8e61f"
+    },
+    {
+      "completed_resume_records_byte_identical": true,
+      "config": "group-common-seed-20009.toml",
+      "coverage": {
+        "expected": 1200,
+        "failed": 0,
+        "missing": 0,
+        "recorded": 1200,
+        "successful": 1200
+      },
+      "driver_sha256": "d8175fd1097d25c80dd0f9896b254d5ad60250f8dd3e7b2188c4d2a288318faa",
+      "elapsed_seconds": 255.27884926320985,
+      "exit_status": 0,
+      "index": 18,
+      "records_sha256": "d28dec6a482e7be97f5aa765563ca8cc039940d15d9584c24cbfd1cd4fba3acf",
+      "source_fingerprint": "32b49416fa48e33750c6ed8d7bfebb149c570f56f4af00d9a315a75ac67ff6e7"
+    },
+    {
+      "completed_resume_records_byte_identical": true,
+      "config": "group-variable_propensity-seed-20009.toml",
+      "coverage": {
+        "expected": 36,
+        "failed": 0,
+        "missing": 0,
+        "recorded": 36,
+        "successful": 36
+      },
+      "driver_sha256": "d8175fd1097d25c80dd0f9896b254d5ad60250f8dd3e7b2188c4d2a288318faa",
+      "elapsed_seconds": 18.03376258397475,
+      "exit_status": 0,
+      "index": 19,
+      "records_sha256": "27f8dd11103122609490c3a81aa6daa857bd82e7667cadede6a96ee75f0b77ce",
+      "source_fingerprint": "859d60e4369e08a0b457e3a8e341d88310a3fcbf932fc1cec354c71349d8e61f"
+    },
+    {
+      "completed_resume_records_byte_identical": true,
+      "config": "group-common-seed-20010.toml",
+      "coverage": {
+        "expected": 1200,
+        "failed": 0,
+        "missing": 0,
+        "recorded": 1200,
+        "successful": 1200
+      },
+      "driver_sha256": "d8175fd1097d25c80dd0f9896b254d5ad60250f8dd3e7b2188c4d2a288318faa",
+      "elapsed_seconds": 251.9401766229421,
+      "exit_status": 0,
+      "index": 20,
+      "records_sha256": "9530af2d1382120c38fbdc1704cb777b821bd6355b89cdc519a93364c1f2446a",
+      "source_fingerprint": "32b49416fa48e33750c6ed8d7bfebb149c570f56f4af00d9a315a75ac67ff6e7"
+    },
+    {
+      "completed_resume_records_byte_identical": true,
+      "config": "group-variable_propensity-seed-20010.toml",
+      "coverage": {
+        "expected": 36,
+        "failed": 0,
+        "missing": 0,
+        "recorded": 36,
+        "successful": 36
+      },
+      "driver_sha256": "d8175fd1097d25c80dd0f9896b254d5ad60250f8dd3e7b2188c4d2a288318faa",
+      "elapsed_seconds": 18.35739826783538,
+      "exit_status": 0,
+      "index": 21,
+      "records_sha256": "34287d5cfeec1a465a36f6b5158d604a35451fea7023732834b69da3c511b87e",
+      "source_fingerprint": "859d60e4369e08a0b457e3a8e341d88310a3fcbf932fc1cec354c71349d8e61f"
+    },
+    {
+      "completed_resume_records_byte_identical": true,
+      "config": "group-common-seed-20011.toml",
+      "coverage": {
+        "expected": 1200,
+        "failed": 0,
+        "missing": 0,
+        "recorded": 1200,
+        "successful": 1200
+      },
+      "driver_sha256": "d8175fd1097d25c80dd0f9896b254d5ad60250f8dd3e7b2188c4d2a288318faa",
+      "elapsed_seconds": 254.8104795627296,
+      "exit_status": 0,
+      "index": 22,
+      "records_sha256": "369532de5cebe682662d7d36a9c8908fc835377ac927e6dbcae9ab846bca7e6c",
+      "source_fingerprint": "32b49416fa48e33750c6ed8d7bfebb149c570f56f4af00d9a315a75ac67ff6e7"
+    },
+    {
+      "completed_resume_records_byte_identical": true,
+      "config": "group-variable_propensity-seed-20011.toml",
+      "coverage": {
+        "expected": 36,
+        "failed": 0,
+        "missing": 0,
+        "recorded": 36,
+        "successful": 36
+      },
+      "driver_sha256": "d8175fd1097d25c80dd0f9896b254d5ad60250f8dd3e7b2188c4d2a288318faa",
+      "elapsed_seconds": 18.223832496907562,
+      "exit_status": 0,
+      "index": 23,
+      "records_sha256": "7f82dfc77da0e9ca1db51658184cfbee6e750243fa97a59c26d3361c171d27b1",
+      "source_fingerprint": "859d60e4369e08a0b457e3a8e341d88310a3fcbf932fc1cec354c71349d8e61f"
+    },
+    {
+      "completed_resume_records_byte_identical": true,
+      "config": "group-common-seed-20012.toml",
+      "coverage": {
+        "expected": 1200,
+        "failed": 0,
+        "missing": 0,
+        "recorded": 1200,
+        "successful": 1200
+      },
+      "driver_sha256": "d8175fd1097d25c80dd0f9896b254d5ad60250f8dd3e7b2188c4d2a288318faa",
+      "elapsed_seconds": 254.22175162797794,
+      "exit_status": 0,
+      "index": 24,
+      "records_sha256": "7fd720684c8cc40aa091044006c9e241fe495708fd3a1388a9c9ecaeca939146",
+      "source_fingerprint": "32b49416fa48e33750c6ed8d7bfebb149c570f56f4af00d9a315a75ac67ff6e7"
+    },
+    {
+      "completed_resume_records_byte_identical": true,
+      "config": "group-variable_propensity-seed-20012.toml",
+      "coverage": {
+        "expected": 36,
+        "failed": 0,
+        "missing": 0,
+        "recorded": 36,
+        "successful": 36
+      },
+      "driver_sha256": "d8175fd1097d25c80dd0f9896b254d5ad60250f8dd3e7b2188c4d2a288318faa",
+      "elapsed_seconds": 18.42910136701539,
+      "exit_status": 0,
+      "index": 25,
+      "records_sha256": "7554faa7c403711a162d6e22c3fb181d37676bad456169057cc0ba9d212f6b93",
+      "source_fingerprint": "859d60e4369e08a0b457e3a8e341d88310a3fcbf932fc1cec354c71349d8e61f"
+    },
+    {
+      "completed_resume_records_byte_identical": true,
+      "config": "group-common-seed-20013.toml",
+      "coverage": {
+        "expected": 1200,
+        "failed": 0,
+        "missing": 0,
+        "recorded": 1200,
+        "successful": 1200
+      },
+      "driver_sha256": "d8175fd1097d25c80dd0f9896b254d5ad60250f8dd3e7b2188c4d2a288318faa",
+      "elapsed_seconds": 249.6368762231432,
+      "exit_status": 0,
+      "index": 26,
+      "records_sha256": "8bf32b1928a7d0d4df8c803969fd80ab06ea95d0ae0b559b65fd667ef2dab9ff",
+      "source_fingerprint": "32b49416fa48e33750c6ed8d7bfebb149c570f56f4af00d9a315a75ac67ff6e7"
+    },
+    {
+      "completed_resume_records_byte_identical": true,
+      "config": "group-variable_propensity-seed-20013.toml",
+      "coverage": {
+        "expected": 36,
+        "failed": 0,
+        "missing": 0,
+        "recorded": 36,
+        "successful": 36
+      },
+      "driver_sha256": "d8175fd1097d25c80dd0f9896b254d5ad60250f8dd3e7b2188c4d2a288318faa",
+      "elapsed_seconds": 14.764680727850646,
+      "exit_status": 0,
+      "index": 27,
+      "records_sha256": "79966a4b7050f30e0376b1d9e33ed884c34cf94190e3982ad8be69f386983d6f",
+      "source_fingerprint": "859d60e4369e08a0b457e3a8e341d88310a3fcbf932fc1cec354c71349d8e61f"
+    },
+    {
+      "completed_resume_records_byte_identical": true,
+      "config": "group-common-seed-20014.toml",
+      "coverage": {
+        "expected": 1200,
+        "failed": 2,
+        "missing": 0,
+        "recorded": 1200,
+        "successful": 1198
+      },
+      "driver_sha256": "d8175fd1097d25c80dd0f9896b254d5ad60250f8dd3e7b2188c4d2a288318faa",
+      "elapsed_seconds": 257.7466757912189,
+      "exit_status": 1,
+      "index": 28,
+      "records_sha256": "fc3cd01b578a85e83d246bc7c266dff57ab7f81a8f8877ab03048f729c027541",
+      "source_fingerprint": "32b49416fa48e33750c6ed8d7bfebb149c570f56f4af00d9a315a75ac67ff6e7"
+    },
+    {
+      "completed_resume_records_byte_identical": true,
+      "config": "group-variable_propensity-seed-20014.toml",
+      "coverage": {
+        "expected": 36,
+        "failed": 0,
+        "missing": 0,
+        "recorded": 36,
+        "successful": 36
+      },
+      "driver_sha256": "d8175fd1097d25c80dd0f9896b254d5ad60250f8dd3e7b2188c4d2a288318faa",
+      "elapsed_seconds": 14.788335775956511,
+      "exit_status": 0,
+      "index": 29,
+      "records_sha256": "4aaa2c929b1315481b4c0f3f6ca040dfbdd61f1b38c1e07b1e20ecab21f6008b",
+      "source_fingerprint": "859d60e4369e08a0b457e3a8e341d88310a3fcbf932fc1cec354c71349d8e61f"
+    },
+    {
+      "completed_resume_records_byte_identical": true,
+      "config": "group-common-seed-20015.toml",
+      "coverage": {
+        "expected": 1200,
+        "failed": 0,
+        "missing": 0,
+        "recorded": 1200,
+        "successful": 1200
+      },
+      "driver_sha256": "d8175fd1097d25c80dd0f9896b254d5ad60250f8dd3e7b2188c4d2a288318faa",
+      "elapsed_seconds": 249.7933108881116,
+      "exit_status": 0,
+      "index": 30,
+      "records_sha256": "93388ff215ff88c61d7989ffae199d0eabe466430806e16367462ec98621f8d5",
+      "source_fingerprint": "32b49416fa48e33750c6ed8d7bfebb149c570f56f4af00d9a315a75ac67ff6e7"
+    },
+    {
+      "completed_resume_records_byte_identical": true,
+      "config": "group-variable_propensity-seed-20015.toml",
+      "coverage": {
+        "expected": 36,
+        "failed": 0,
+        "missing": 0,
+        "recorded": 36,
+        "successful": 36
+      },
+      "driver_sha256": "d8175fd1097d25c80dd0f9896b254d5ad60250f8dd3e7b2188c4d2a288318faa",
+      "elapsed_seconds": 21.344370686914772,
+      "exit_status": 0,
+      "index": 31,
+      "records_sha256": "04d2b3486d9c45486bc3c014f0c5b2d35fdf0abfa841dc491f34e0b8f3c87fb2",
+      "source_fingerprint": "859d60e4369e08a0b457e3a8e341d88310a3fcbf932fc1cec354c71349d8e61f"
+    },
+    {
+      "completed_resume_records_byte_identical": true,
+      "config": "group-common-seed-20016.toml",
+      "coverage": {
+        "expected": 1200,
+        "failed": 0,
+        "missing": 0,
+        "recorded": 1200,
+        "successful": 1200
+      },
+      "driver_sha256": "d8175fd1097d25c80dd0f9896b254d5ad60250f8dd3e7b2188c4d2a288318faa",
+      "elapsed_seconds": 240.8043306171894,
+      "exit_status": 0,
+      "index": 32,
+      "records_sha256": "33bb64ff13e0d1a19c20397d1b7321e1489db633df25514e3266586f433a342e",
+      "source_fingerprint": "32b49416fa48e33750c6ed8d7bfebb149c570f56f4af00d9a315a75ac67ff6e7"
+    },
+    {
+      "completed_resume_records_byte_identical": true,
+      "config": "group-variable_propensity-seed-20016.toml",
+      "coverage": {
+        "expected": 36,
+        "failed": 0,
+        "missing": 0,
+        "recorded": 36,
+        "successful": 36
+      },
+      "driver_sha256": "d8175fd1097d25c80dd0f9896b254d5ad60250f8dd3e7b2188c4d2a288318faa",
+      "elapsed_seconds": 15.597751021850854,
+      "exit_status": 0,
+      "index": 33,
+      "records_sha256": "ecf99539d5a9ec05ebb545d008aaf941940adcccc78b3c67ac2776f78e28434d",
+      "source_fingerprint": "859d60e4369e08a0b457e3a8e341d88310a3fcbf932fc1cec354c71349d8e61f"
+    },
+    {
+      "completed_resume_records_byte_identical": true,
+      "config": "group-common-seed-20017.toml",
+      "coverage": {
+        "expected": 1200,
+        "failed": 1,
+        "missing": 0,
+        "recorded": 1200,
+        "successful": 1199
+      },
+      "driver_sha256": "d8175fd1097d25c80dd0f9896b254d5ad60250f8dd3e7b2188c4d2a288318faa",
+      "elapsed_seconds": 246.84257328277454,
+      "exit_status": 1,
+      "index": 34,
+      "records_sha256": "075a3de25bcfcb0ca2448cc221e52d0837a55282c09f3f79153f400d61b7b5df",
+      "source_fingerprint": "32b49416fa48e33750c6ed8d7bfebb149c570f56f4af00d9a315a75ac67ff6e7"
+    },
+    {
+      "completed_resume_records_byte_identical": true,
+      "config": "group-variable_propensity-seed-20017.toml",
+      "coverage": {
+        "expected": 36,
+        "failed": 0,
+        "missing": 0,
+        "recorded": 36,
+        "successful": 36
+      },
+      "driver_sha256": "d8175fd1097d25c80dd0f9896b254d5ad60250f8dd3e7b2188c4d2a288318faa",
+      "elapsed_seconds": 15.432981695048511,
+      "exit_status": 0,
+      "index": 35,
+      "records_sha256": "729bc42fd46218aa465623489edd0c81df307293703ad302499a0d04b63d61f7",
+      "source_fingerprint": "859d60e4369e08a0b457e3a8e341d88310a3fcbf932fc1cec354c71349d8e61f"
+    },
+    {
+      "completed_resume_records_byte_identical": true,
+      "config": "group-common-seed-20018.toml",
+      "coverage": {
+        "expected": 1200,
+        "failed": 0,
+        "missing": 0,
+        "recorded": 1200,
+        "successful": 1200
+      },
+      "driver_sha256": "d8175fd1097d25c80dd0f9896b254d5ad60250f8dd3e7b2188c4d2a288318faa",
+      "elapsed_seconds": 243.4136870042421,
+      "exit_status": 0,
+      "index": 36,
+      "records_sha256": "511c188aecb5094da379237b576d149cd38c8fc30dce9d000eed7f4782fc1587",
+      "source_fingerprint": "32b49416fa48e33750c6ed8d7bfebb149c570f56f4af00d9a315a75ac67ff6e7"
+    },
+    {
+      "completed_resume_records_byte_identical": true,
+      "config": "group-variable_propensity-seed-20018.toml",
+      "coverage": {
+        "expected": 36,
+        "failed": 0,
+        "missing": 0,
+        "recorded": 36,
+        "successful": 36
+      },
+      "driver_sha256": "d8175fd1097d25c80dd0f9896b254d5ad60250f8dd3e7b2188c4d2a288318faa",
+      "elapsed_seconds": 16.049531229771674,
+      "exit_status": 0,
+      "index": 37,
+      "records_sha256": "bbebd40fd78ccefe57a15574348467a31461a58220b5a6f119c7c01332429379",
+      "source_fingerprint": "859d60e4369e08a0b457e3a8e341d88310a3fcbf932fc1cec354c71349d8e61f"
+    },
+    {
+      "completed_resume_records_byte_identical": true,
+      "config": "group-common-seed-20019.toml",
+      "coverage": {
+        "expected": 1200,
+        "failed": 1,
+        "missing": 0,
+        "recorded": 1200,
+        "successful": 1199
+      },
+      "driver_sha256": "d8175fd1097d25c80dd0f9896b254d5ad60250f8dd3e7b2188c4d2a288318faa",
+      "elapsed_seconds": 252.68785546114668,
+      "exit_status": 1,
+      "index": 38,
+      "records_sha256": "27d33172e04d96bb9fdbb394befcb7dcb04e53964306f11236cb2a2aa2b0c2b5",
+      "source_fingerprint": "32b49416fa48e33750c6ed8d7bfebb149c570f56f4af00d9a315a75ac67ff6e7"
+    },
+    {
+      "completed_resume_records_byte_identical": true,
+      "config": "group-variable_propensity-seed-20019.toml",
+      "coverage": {
+        "expected": 36,
+        "failed": 0,
+        "missing": 0,
+        "recorded": 36,
+        "successful": 36
+      },
+      "driver_sha256": "d8175fd1097d25c80dd0f9896b254d5ad60250f8dd3e7b2188c4d2a288318faa",
+      "elapsed_seconds": 16.10787457320839,
+      "exit_status": 0,
+      "index": 39,
+      "records_sha256": "c384556d0746c4aa128bd5faf336ce4a472f9fe25bd5f51505fafae148af32fb",
+      "source_fingerprint": "859d60e4369e08a0b457e3a8e341d88310a3fcbf932fc1cec354c71349d8e61f"
+    },
+    {
+      "completed_resume_records_byte_identical": true,
+      "config": "group-common-seed-20020.toml",
+      "coverage": {
+        "expected": 1200,
+        "failed": 0,
+        "missing": 0,
+        "recorded": 1200,
+        "successful": 1200
+      },
+      "driver_sha256": "d8175fd1097d25c80dd0f9896b254d5ad60250f8dd3e7b2188c4d2a288318faa",
+      "elapsed_seconds": 248.26449840934947,
+      "exit_status": 0,
+      "index": 40,
+      "records_sha256": "ca5ea290620011aa020d9c8a12cdf6d84c7f9525f9c7d6d361d8ad296b17d3c9",
+      "source_fingerprint": "32b49416fa48e33750c6ed8d7bfebb149c570f56f4af00d9a315a75ac67ff6e7"
+    },
+    {
+      "completed_resume_records_byte_identical": true,
+      "config": "group-variable_propensity-seed-20020.toml",
+      "coverage": {
+        "expected": 36,
+        "failed": 0,
+        "missing": 0,
+        "recorded": 36,
+        "successful": 36
+      },
+      "driver_sha256": "d8175fd1097d25c80dd0f9896b254d5ad60250f8dd3e7b2188c4d2a288318faa",
+      "elapsed_seconds": 14.20748008415103,
+      "exit_status": 0,
+      "index": 41,
+      "records_sha256": "ec151e1a3dcdf39a7f039b129483236d35d44753d7a7d1674fcbfab7db1b9269",
+      "source_fingerprint": "859d60e4369e08a0b457e3a8e341d88310a3fcbf932fc1cec354c71349d8e61f"
+    },
+    {
+      "completed_resume_records_byte_identical": true,
+      "config": "group-common-seed-20021.toml",
+      "coverage": {
+        "expected": 1200,
+        "failed": 0,
+        "missing": 0,
+        "recorded": 1200,
+        "successful": 1200
+      },
+      "driver_sha256": "d8175fd1097d25c80dd0f9896b254d5ad60250f8dd3e7b2188c4d2a288318faa",
+      "elapsed_seconds": 243.64105287613347,
+      "exit_status": 0,
+      "index": 42,
+      "records_sha256": "2fca5751b45d8e173e01470c97a722cbd1870473c9245e71684d2910f963f5d2",
+      "source_fingerprint": "32b49416fa48e33750c6ed8d7bfebb149c570f56f4af00d9a315a75ac67ff6e7"
+    },
+    {
+      "completed_resume_records_byte_identical": true,
+      "config": "group-variable_propensity-seed-20021.toml",
+      "coverage": {
+        "expected": 36,
+        "failed": 0,
+        "missing": 0,
+        "recorded": 36,
+        "successful": 36
+      },
+      "driver_sha256": "d8175fd1097d25c80dd0f9896b254d5ad60250f8dd3e7b2188c4d2a288318faa",
+      "elapsed_seconds": 15.606170297134668,
+      "exit_status": 0,
+      "index": 43,
+      "records_sha256": "ea458e2dd62be7d536bf14ad404c36feffe1442675f1c4046ad7e1f3cb6baf04",
+      "source_fingerprint": "859d60e4369e08a0b457e3a8e341d88310a3fcbf932fc1cec354c71349d8e61f"
+    },
+    {
+      "completed_resume_records_byte_identical": true,
+      "config": "group-common-seed-20022.toml",
+      "coverage": {
+        "expected": 1200,
+        "failed": 0,
+        "missing": 0,
+        "recorded": 1200,
+        "successful": 1200
+      },
+      "driver_sha256": "d8175fd1097d25c80dd0f9896b254d5ad60250f8dd3e7b2188c4d2a288318faa",
+      "elapsed_seconds": 250.0874778931029,
+      "exit_status": 0,
+      "index": 44,
+      "records_sha256": "7ed1c2a88dfadd1a88946e87f085353d830c0c950fa2402f13c3c6890116d9b8",
+      "source_fingerprint": "32b49416fa48e33750c6ed8d7bfebb149c570f56f4af00d9a315a75ac67ff6e7"
+    },
+    {
+      "completed_resume_records_byte_identical": true,
+      "config": "group-variable_propensity-seed-20022.toml",
+      "coverage": {
+        "expected": 36,
+        "failed": 0,
+        "missing": 0,
+        "recorded": 36,
+        "successful": 36
+      },
+      "driver_sha256": "d8175fd1097d25c80dd0f9896b254d5ad60250f8dd3e7b2188c4d2a288318faa",
+      "elapsed_seconds": 15.119166401680559,
+      "exit_status": 0,
+      "index": 45,
+      "records_sha256": "afb0352f572791479ca39be2537ec58a3ee90b58f328bba9464b59ad76d44608",
+      "source_fingerprint": "859d60e4369e08a0b457e3a8e341d88310a3fcbf932fc1cec354c71349d8e61f"
+    },
+    {
+      "completed_resume_records_byte_identical": true,
+      "config": "group-common-seed-20023.toml",
+      "coverage": {
+        "expected": 1200,
+        "failed": 1,
+        "missing": 0,
+        "recorded": 1200,
+        "successful": 1199
+      },
+      "driver_sha256": "d8175fd1097d25c80dd0f9896b254d5ad60250f8dd3e7b2188c4d2a288318faa",
+      "elapsed_seconds": 246.47409681603312,
+      "exit_status": 1,
+      "index": 46,
+      "records_sha256": "720f934ccf5555ce14de95011a400c9ff95fc2feda3321a80866ea37448979e2",
+      "source_fingerprint": "32b49416fa48e33750c6ed8d7bfebb149c570f56f4af00d9a315a75ac67ff6e7"
+    },
+    {
+      "completed_resume_records_byte_identical": true,
+      "config": "group-variable_propensity-seed-20023.toml",
+      "coverage": {
+        "expected": 36,
+        "failed": 0,
+        "missing": 0,
+        "recorded": 36,
+        "successful": 36
+      },
+      "driver_sha256": "d8175fd1097d25c80dd0f9896b254d5ad60250f8dd3e7b2188c4d2a288318faa",
+      "elapsed_seconds": 15.275353325996548,
+      "exit_status": 0,
+      "index": 47,
+      "records_sha256": "d16a00db6aa193649612fa4a09109cc536d51a479e824aaea0fed3746cfcec9c",
+      "source_fingerprint": "859d60e4369e08a0b457e3a8e341d88310a3fcbf932fc1cec354c71349d8e61f"
+    },
+    {
+      "completed_resume_records_byte_identical": true,
+      "config": "group-common-seed-20024.toml",
+      "coverage": {
+        "expected": 1200,
+        "failed": 0,
+        "missing": 0,
+        "recorded": 1200,
+        "successful": 1200
+      },
+      "driver_sha256": "d8175fd1097d25c80dd0f9896b254d5ad60250f8dd3e7b2188c4d2a288318faa",
+      "elapsed_seconds": 245.98286502389237,
+      "exit_status": 0,
+      "index": 48,
+      "records_sha256": "96b3963243c4583f6cc2fecf7a351b1fb1a1b215d979a8a86f5a1959a0a7345e",
+      "source_fingerprint": "32b49416fa48e33750c6ed8d7bfebb149c570f56f4af00d9a315a75ac67ff6e7"
+    },
+    {
+      "completed_resume_records_byte_identical": true,
+      "config": "group-variable_propensity-seed-20024.toml",
+      "coverage": {
+        "expected": 36,
+        "failed": 0,
+        "missing": 0,
+        "recorded": 36,
+        "successful": 36
+      },
+      "driver_sha256": "d8175fd1097d25c80dd0f9896b254d5ad60250f8dd3e7b2188c4d2a288318faa",
+      "elapsed_seconds": 13.18089223280549,
+      "exit_status": 0,
+      "index": 49,
+      "records_sha256": "f4933c02ad02155620a9b22f67448ab743868cf8cb898f0be36f1a62c52db1f3",
+      "source_fingerprint": "859d60e4369e08a0b457e3a8e341d88310a3fcbf932fc1cec354c71349d8e61f"
+    },
+    {
+      "completed_resume_records_byte_identical": true,
+      "config": "group-common-seed-20025.toml",
+      "coverage": {
+        "expected": 1200,
+        "failed": 0,
+        "missing": 0,
+        "recorded": 1200,
+        "successful": 1200
+      },
+      "driver_sha256": "d8175fd1097d25c80dd0f9896b254d5ad60250f8dd3e7b2188c4d2a288318faa",
+      "elapsed_seconds": 245.62008415302262,
+      "exit_status": 0,
+      "index": 50,
+      "records_sha256": "fee6d61f6de9cb78383601d8eacafb2bf6577909a374251b4e3a3d5cc4068377",
+      "source_fingerprint": "32b49416fa48e33750c6ed8d7bfebb149c570f56f4af00d9a315a75ac67ff6e7"
+    },
+    {
+      "completed_resume_records_byte_identical": true,
+      "config": "group-variable_propensity-seed-20025.toml",
+      "coverage": {
+        "expected": 36,
+        "failed": 0,
+        "missing": 0,
+        "recorded": 36,
+        "successful": 36
+      },
+      "driver_sha256": "d8175fd1097d25c80dd0f9896b254d5ad60250f8dd3e7b2188c4d2a288318faa",
+      "elapsed_seconds": 13.982210627291352,
+      "exit_status": 0,
+      "index": 51,
+      "records_sha256": "a3a87fe4935c00afdd0dce8cf6707a5fa6782301584f439016a05e08fa21282c",
+      "source_fingerprint": "859d60e4369e08a0b457e3a8e341d88310a3fcbf932fc1cec354c71349d8e61f"
+    },
+    {
+      "completed_resume_records_byte_identical": true,
+      "config": "group-common-seed-20026.toml",
+      "coverage": {
+        "expected": 1200,
+        "failed": 0,
+        "missing": 0,
+        "recorded": 1200,
+        "successful": 1200
+      },
+      "driver_sha256": "d8175fd1097d25c80dd0f9896b254d5ad60250f8dd3e7b2188c4d2a288318faa",
+      "elapsed_seconds": 242.33437914773822,
+      "exit_status": 0,
+      "index": 52,
+      "records_sha256": "8bd11645019371441e1a5c0aeaf970a2b5a8c5ec4254d8bd62ae62cbc59d6681",
+      "source_fingerprint": "32b49416fa48e33750c6ed8d7bfebb149c570f56f4af00d9a315a75ac67ff6e7"
+    },
+    {
+      "completed_resume_records_byte_identical": true,
+      "config": "group-variable_propensity-seed-20026.toml",
+      "coverage": {
+        "expected": 36,
+        "failed": 0,
+        "missing": 0,
+        "recorded": 36,
+        "successful": 36
+      },
+      "driver_sha256": "d8175fd1097d25c80dd0f9896b254d5ad60250f8dd3e7b2188c4d2a288318faa",
+      "elapsed_seconds": 14.166486341971904,
+      "exit_status": 0,
+      "index": 53,
+      "records_sha256": "0ad12ee38dadf77ae604863c0eade0f70a44ff5645cd09cc07b8ea62eda12dc5",
+      "source_fingerprint": "859d60e4369e08a0b457e3a8e341d88310a3fcbf932fc1cec354c71349d8e61f"
+    },
+    {
+      "completed_resume_records_byte_identical": true,
+      "config": "group-common-seed-20027.toml",
+      "coverage": {
+        "expected": 1200,
+        "failed": 0,
+        "missing": 0,
+        "recorded": 1200,
+        "successful": 1200
+      },
+      "driver_sha256": "d8175fd1097d25c80dd0f9896b254d5ad60250f8dd3e7b2188c4d2a288318faa",
+      "elapsed_seconds": 243.1374038029462,
+      "exit_status": 0,
+      "index": 54,
+      "records_sha256": "c3723a333ffdb071e43280d9519dcabf5d2f13b811bc4b8852054c656f90dcbf",
+      "source_fingerprint": "32b49416fa48e33750c6ed8d7bfebb149c570f56f4af00d9a315a75ac67ff6e7"
+    },
+    {
+      "completed_resume_records_byte_identical": true,
+      "config": "group-variable_propensity-seed-20027.toml",
+      "coverage": {
+        "expected": 36,
+        "failed": 0,
+        "missing": 0,
+        "recorded": 36,
+        "successful": 36
+      },
+      "driver_sha256": "d8175fd1097d25c80dd0f9896b254d5ad60250f8dd3e7b2188c4d2a288318faa",
+      "elapsed_seconds": 12.622651601675898,
+      "exit_status": 0,
+      "index": 55,
+      "records_sha256": "a2ade341ed1be8d47fdc3fa0b0d595836173040e866202bdc6ddc5d67606ed19",
+      "source_fingerprint": "859d60e4369e08a0b457e3a8e341d88310a3fcbf932fc1cec354c71349d8e61f"
+    },
+    {
+      "completed_resume_records_byte_identical": true,
+      "config": "group-common-seed-20028.toml",
+      "coverage": {
+        "expected": 1200,
+        "failed": 0,
+        "missing": 0,
+        "recorded": 1200,
+        "successful": 1200
+      },
+      "driver_sha256": "d8175fd1097d25c80dd0f9896b254d5ad60250f8dd3e7b2188c4d2a288318faa",
+      "elapsed_seconds": 245.89103771792725,
+      "exit_status": 0,
+      "index": 56,
+      "records_sha256": "e3ee9c5dd60556afa6c04236aae5b785ea78770d6154b7662ef72d4ec57dd0a2",
+      "source_fingerprint": "32b49416fa48e33750c6ed8d7bfebb149c570f56f4af00d9a315a75ac67ff6e7"
+    },
+    {
+      "completed_resume_records_byte_identical": true,
+      "config": "group-variable_propensity-seed-20028.toml",
+      "coverage": {
+        "expected": 36,
+        "failed": 0,
+        "missing": 0,
+        "recorded": 36,
+        "successful": 36
+      },
+      "driver_sha256": "d8175fd1097d25c80dd0f9896b254d5ad60250f8dd3e7b2188c4d2a288318faa",
+      "elapsed_seconds": 13.515508425887674,
+      "exit_status": 0,
+      "index": 57,
+      "records_sha256": "e6ab249c3bda7a5654f10b2c27d5cbdaa0c44231e000c04095088b270ebd8b81",
+      "source_fingerprint": "859d60e4369e08a0b457e3a8e341d88310a3fcbf932fc1cec354c71349d8e61f"
+    },
+    {
+      "completed_resume_records_byte_identical": true,
+      "config": "group-common-seed-20029.toml",
+      "coverage": {
+        "expected": 1200,
+        "failed": 2,
+        "missing": 0,
+        "recorded": 1200,
+        "successful": 1198
+      },
+      "driver_sha256": "d8175fd1097d25c80dd0f9896b254d5ad60250f8dd3e7b2188c4d2a288318faa",
+      "elapsed_seconds": 244.93526523420587,
+      "exit_status": 1,
+      "index": 58,
+      "records_sha256": "06349fb46d6a3fc54280a696ae939991c794fda0c65dfe190b055383776d5ee8",
+      "source_fingerprint": "32b49416fa48e33750c6ed8d7bfebb149c570f56f4af00d9a315a75ac67ff6e7"
+    },
+    {
+      "completed_resume_records_byte_identical": true,
+      "config": "group-variable_propensity-seed-20029.toml",
+      "coverage": {
+        "expected": 36,
+        "failed": 0,
+        "missing": 0,
+        "recorded": 36,
+        "successful": 36
+      },
+      "driver_sha256": "d8175fd1097d25c80dd0f9896b254d5ad60250f8dd3e7b2188c4d2a288318faa",
+      "elapsed_seconds": 13.683998591732234,
+      "exit_status": 0,
+      "index": 59,
+      "records_sha256": "44f5e9ea3a81b24b82733059e8e97ebac0efaff53a0ede4eae23e05517331db1",
+      "source_fingerprint": "859d60e4369e08a0b457e3a8e341d88310a3fcbf932fc1cec354c71349d8e61f"
+    },
+    {
+      "completed_resume_records_byte_identical": true,
+      "config": "group-common-seed-20030.toml",
+      "coverage": {
+        "expected": 1200,
+        "failed": 0,
+        "missing": 0,
+        "recorded": 1200,
+        "successful": 1200
+      },
+      "driver_sha256": "d8175fd1097d25c80dd0f9896b254d5ad60250f8dd3e7b2188c4d2a288318faa",
+      "elapsed_seconds": 243.4520565168932,
+      "exit_status": 0,
+      "index": 60,
+      "records_sha256": "a1e5b5bc9f0bb7f84397936423bdd0fedb633a877d5c4a88d9b5475c4a88b4af",
+      "source_fingerprint": "32b49416fa48e33750c6ed8d7bfebb149c570f56f4af00d9a315a75ac67ff6e7"
+    },
+    {
+      "completed_resume_records_byte_identical": true,
+      "config": "group-variable_propensity-seed-20030.toml",
+      "coverage": {
+        "expected": 36,
+        "failed": 0,
+        "missing": 0,
+        "recorded": 36,
+        "successful": 36
+      },
+      "driver_sha256": "d8175fd1097d25c80dd0f9896b254d5ad60250f8dd3e7b2188c4d2a288318faa",
+      "elapsed_seconds": 15.168267745990306,
+      "exit_status": 0,
+      "index": 61,
+      "records_sha256": "99543dcbbed3e5d83c5dcec71489f5c394d5dc18c5cad4f858e99bf30bab0d6f",
+      "source_fingerprint": "859d60e4369e08a0b457e3a8e341d88310a3fcbf932fc1cec354c71349d8e61f"
+    },
+    {
+      "completed_resume_records_byte_identical": true,
+      "config": "group-common-seed-20031.toml",
+      "coverage": {
+        "expected": 1200,
+        "failed": 1,
+        "missing": 0,
+        "recorded": 1200,
+        "successful": 1199
+      },
+      "driver_sha256": "d8175fd1097d25c80dd0f9896b254d5ad60250f8dd3e7b2188c4d2a288318faa",
+      "elapsed_seconds": 239.34943002928048,
+      "exit_status": 1,
+      "index": 62,
+      "records_sha256": "ccadabda67d7445aac9954091332f23911ad332e16317171c739136991201a39",
+      "source_fingerprint": "32b49416fa48e33750c6ed8d7bfebb149c570f56f4af00d9a315a75ac67ff6e7"
+    },
+    {
+      "completed_resume_records_byte_identical": true,
+      "config": "group-variable_propensity-seed-20031.toml",
+      "coverage": {
+        "expected": 36,
+        "failed": 0,
+        "missing": 0,
+        "recorded": 36,
+        "successful": 36
+      },
+      "driver_sha256": "d8175fd1097d25c80dd0f9896b254d5ad60250f8dd3e7b2188c4d2a288318faa",
+      "elapsed_seconds": 13.082537625916302,
+      "exit_status": 0,
+      "index": 63,
+      "records_sha256": "7ca96e1ce13ade7af03e6c054e9b2c9d266eecbde90a9d94655b8c2678de58c6",
+      "source_fingerprint": "859d60e4369e08a0b457e3a8e341d88310a3fcbf932fc1cec354c71349d8e61f"
+    },
+    {
+      "completed_resume_records_byte_identical": true,
+      "config": "group-common-seed-20032.toml",
+      "coverage": {
+        "expected": 1200,
+        "failed": 2,
+        "missing": 0,
+        "recorded": 1200,
+        "successful": 1198
+      },
+      "driver_sha256": "d8175fd1097d25c80dd0f9896b254d5ad60250f8dd3e7b2188c4d2a288318faa",
+      "elapsed_seconds": 241.36275030998513,
+      "exit_status": 1,
+      "index": 64,
+      "records_sha256": "84b135c07683b40451ed9be439fb4fcf223268414d4b583e321d2936bea8eb2a",
+      "source_fingerprint": "32b49416fa48e33750c6ed8d7bfebb149c570f56f4af00d9a315a75ac67ff6e7"
+    },
+    {
+      "completed_resume_records_byte_identical": true,
+      "config": "group-variable_propensity-seed-20032.toml",
+      "coverage": {
+        "expected": 36,
+        "failed": 0,
+        "missing": 0,
+        "recorded": 36,
+        "successful": 36
+      },
+      "driver_sha256": "d8175fd1097d25c80dd0f9896b254d5ad60250f8dd3e7b2188c4d2a288318faa",
+      "elapsed_seconds": 14.038268911186606,
+      "exit_status": 0,
+      "index": 65,
+      "records_sha256": "2deef2f88371fe6a1b026daa31b04019cb5580499eb0e1020d0c8dccca3236fa",
+      "source_fingerprint": "859d60e4369e08a0b457e3a8e341d88310a3fcbf932fc1cec354c71349d8e61f"
+    },
+    {
+      "completed_resume_records_byte_identical": true,
+      "config": "group-common-seed-20033.toml",
+      "coverage": {
+        "expected": 1200,
+        "failed": 0,
+        "missing": 0,
+        "recorded": 1200,
+        "successful": 1200
+      },
+      "driver_sha256": "d8175fd1097d25c80dd0f9896b254d5ad60250f8dd3e7b2188c4d2a288318faa",
+      "elapsed_seconds": 242.40540558984503,
+      "exit_status": 0,
+      "index": 66,
+      "records_sha256": "cf3b5a8a357a720bf7bd7d57b8bd7604e08192d290b7e70aad1160d6580f3c7f",
+      "source_fingerprint": "32b49416fa48e33750c6ed8d7bfebb149c570f56f4af00d9a315a75ac67ff6e7"
+    },
+    {
+      "completed_resume_records_byte_identical": true,
+      "config": "group-variable_propensity-seed-20033.toml",
+      "coverage": {
+        "expected": 36,
+        "failed": 0,
+        "missing": 0,
+        "recorded": 36,
+        "successful": 36
+      },
+      "driver_sha256": "d8175fd1097d25c80dd0f9896b254d5ad60250f8dd3e7b2188c4d2a288318faa",
+      "elapsed_seconds": 14.1370452279225,
+      "exit_status": 0,
+      "index": 67,
+      "records_sha256": "aa214aa13c771e4de60783fc3381104e01f993f2c4716841c198a3106857fe0b",
+      "source_fingerprint": "859d60e4369e08a0b457e3a8e341d88310a3fcbf932fc1cec354c71349d8e61f"
+    },
+    {
+      "completed_resume_records_byte_identical": true,
+      "config": "group-common-seed-20034.toml",
+      "coverage": {
+        "expected": 1200,
+        "failed": 0,
+        "missing": 0,
+        "recorded": 1200,
+        "successful": 1200
+      },
+      "driver_sha256": "d8175fd1097d25c80dd0f9896b254d5ad60250f8dd3e7b2188c4d2a288318faa",
+      "elapsed_seconds": 241.61612905422226,
+      "exit_status": 0,
+      "index": 68,
+      "records_sha256": "0807a134047e191decd3b34c042918f143ccb1141341e65de46994a68c184ffe",
+      "source_fingerprint": "32b49416fa48e33750c6ed8d7bfebb149c570f56f4af00d9a315a75ac67ff6e7"
+    },
+    {
+      "completed_resume_records_byte_identical": true,
+      "config": "group-variable_propensity-seed-20034.toml",
+      "coverage": {
+        "expected": 36,
+        "failed": 0,
+        "missing": 0,
+        "recorded": 36,
+        "successful": 36
+      },
+      "driver_sha256": "d8175fd1097d25c80dd0f9896b254d5ad60250f8dd3e7b2188c4d2a288318faa",
+      "elapsed_seconds": 14.485355177894235,
+      "exit_status": 0,
+      "index": 69,
+      "records_sha256": "55a2cb77d761a6c08ca2a7f39cea78a88b163b8fbffbf5df573ab09eb9589efd",
+      "source_fingerprint": "859d60e4369e08a0b457e3a8e341d88310a3fcbf932fc1cec354c71349d8e61f"
+    },
+    {
+      "completed_resume_records_byte_identical": true,
+      "config": "group-common-seed-20035.toml",
+      "coverage": {
+        "expected": 1200,
+        "failed": 0,
+        "missing": 0,
+        "recorded": 1200,
+        "successful": 1200
+      },
+      "driver_sha256": "d8175fd1097d25c80dd0f9896b254d5ad60250f8dd3e7b2188c4d2a288318faa",
+      "elapsed_seconds": 237.75729615613818,
+      "exit_status": 0,
+      "index": 70,
+      "records_sha256": "04b5302f18f6a709c2e5443762306c4e0992a163d65cf5d6ab3524a9f47785f2",
+      "source_fingerprint": "32b49416fa48e33750c6ed8d7bfebb149c570f56f4af00d9a315a75ac67ff6e7"
+    },
+    {
+      "completed_resume_records_byte_identical": true,
+      "config": "group-variable_propensity-seed-20035.toml",
+      "coverage": {
+        "expected": 36,
+        "failed": 0,
+        "missing": 0,
+        "recorded": 36,
+        "successful": 36
+      },
+      "driver_sha256": "d8175fd1097d25c80dd0f9896b254d5ad60250f8dd3e7b2188c4d2a288318faa",
+      "elapsed_seconds": 15.282904114108533,
+      "exit_status": 0,
+      "index": 71,
+      "records_sha256": "95895d2113e38619c56f8bde0a73d1732e71899f5b759f7ec309f030a8d44285",
+      "source_fingerprint": "859d60e4369e08a0b457e3a8e341d88310a3fcbf932fc1cec354c71349d8e61f"
+    },
+    {
+      "completed_resume_records_byte_identical": true,
+      "config": "group-common-seed-20036.toml",
+      "coverage": {
+        "expected": 1200,
+        "failed": 0,
+        "missing": 0,
+        "recorded": 1200,
+        "successful": 1200
+      },
+      "driver_sha256": "d8175fd1097d25c80dd0f9896b254d5ad60250f8dd3e7b2188c4d2a288318faa",
+      "elapsed_seconds": 243.26194031443447,
+      "exit_status": 0,
+      "index": 72,
+      "records_sha256": "a206251dbfca14896754acd1ddb965b4bcfcaa7f00f1fffe4bba39a89a22967a",
+      "source_fingerprint": "32b49416fa48e33750c6ed8d7bfebb149c570f56f4af00d9a315a75ac67ff6e7"
+    },
+    {
+      "completed_resume_records_byte_identical": true,
+      "config": "group-variable_propensity-seed-20036.toml",
+      "coverage": {
+        "expected": 36,
+        "failed": 0,
+        "missing": 0,
+        "recorded": 36,
+        "successful": 36
+      },
+      "driver_sha256": "d8175fd1097d25c80dd0f9896b254d5ad60250f8dd3e7b2188c4d2a288318faa",
+      "elapsed_seconds": 14.641177471727133,
+      "exit_status": 0,
+      "index": 73,
+      "records_sha256": "e3fb161d3a1c9a354d0d1f0d46a559450ac54e82c4e010011f1a484f563f6f41",
+      "source_fingerprint": "859d60e4369e08a0b457e3a8e341d88310a3fcbf932fc1cec354c71349d8e61f"
+    },
+    {
+      "completed_resume_records_byte_identical": true,
+      "config": "group-common-seed-20037.toml",
+      "coverage": {
+        "expected": 1200,
+        "failed": 0,
+        "missing": 0,
+        "recorded": 1200,
+        "successful": 1200
+      },
+      "driver_sha256": "d8175fd1097d25c80dd0f9896b254d5ad60250f8dd3e7b2188c4d2a288318faa",
+      "elapsed_seconds": 245.94936564704403,
+      "exit_status": 0,
+      "index": 74,
+      "records_sha256": "b975a6fb2cca306c05fc79ffb96b28766a81d2ca310d6d1d813bff20073c84ee",
+      "source_fingerprint": "32b49416fa48e33750c6ed8d7bfebb149c570f56f4af00d9a315a75ac67ff6e7"
+    },
+    {
+      "completed_resume_records_byte_identical": true,
+      "config": "group-variable_propensity-seed-20037.toml",
+      "coverage": {
+        "expected": 36,
+        "failed": 0,
+        "missing": 0,
+        "recorded": 36,
+        "successful": 36
+      },
+      "driver_sha256": "d8175fd1097d25c80dd0f9896b254d5ad60250f8dd3e7b2188c4d2a288318faa",
+      "elapsed_seconds": 13.72301974100992,
+      "exit_status": 0,
+      "index": 75,
+      "records_sha256": "1bbcce5dfe40595e9d6bc0bbed826cafd7259cbbe968975e28c0d694207ea18c",
+      "source_fingerprint": "859d60e4369e08a0b457e3a8e341d88310a3fcbf932fc1cec354c71349d8e61f"
+    },
+    {
+      "completed_resume_records_byte_identical": true,
+      "config": "group-common-seed-20038.toml",
+      "coverage": {
+        "expected": 1200,
+        "failed": 0,
+        "missing": 0,
+        "recorded": 1200,
+        "successful": 1200
+      },
+      "driver_sha256": "d8175fd1097d25c80dd0f9896b254d5ad60250f8dd3e7b2188c4d2a288318faa",
+      "elapsed_seconds": 244.3199164927937,
+      "exit_status": 0,
+      "index": 76,
+      "records_sha256": "f67d4bf1f2d26f8046f6bddd229d77b6c1d751dd6540b735750ddbb1379a4df5",
+      "source_fingerprint": "32b49416fa48e33750c6ed8d7bfebb149c570f56f4af00d9a315a75ac67ff6e7"
+    },
+    {
+      "completed_resume_records_byte_identical": true,
+      "config": "group-variable_propensity-seed-20038.toml",
+      "coverage": {
+        "expected": 36,
+        "failed": 0,
+        "missing": 0,
+        "recorded": 36,
+        "successful": 36
+      },
+      "driver_sha256": "d8175fd1097d25c80dd0f9896b254d5ad60250f8dd3e7b2188c4d2a288318faa",
+      "elapsed_seconds": 13.167848732788116,
+      "exit_status": 0,
+      "index": 77,
+      "records_sha256": "cb0c55f64ed518638dce3952c88ee2e1c165388efcfbb8bc21c227ba66a42839",
+      "source_fingerprint": "859d60e4369e08a0b457e3a8e341d88310a3fcbf932fc1cec354c71349d8e61f"
+    },
+    {
+      "completed_resume_records_byte_identical": true,
+      "config": "group-common-seed-20039.toml",
+      "coverage": {
+        "expected": 1200,
+        "failed": 1,
+        "missing": 0,
+        "recorded": 1200,
+        "successful": 1199
+      },
+      "driver_sha256": "d8175fd1097d25c80dd0f9896b254d5ad60250f8dd3e7b2188c4d2a288318faa",
+      "elapsed_seconds": 245.47400438506156,
+      "exit_status": 1,
+      "index": 78,
+      "records_sha256": "d5757fa33189a434b9b10e6b367582c20d6f1cb29a9ed8f9d80e64d57051bb43",
+      "source_fingerprint": "32b49416fa48e33750c6ed8d7bfebb149c570f56f4af00d9a315a75ac67ff6e7"
+    },
+    {
+      "completed_resume_records_byte_identical": true,
+      "config": "group-variable_propensity-seed-20039.toml",
+      "coverage": {
+        "expected": 36,
+        "failed": 0,
+        "missing": 0,
+        "recorded": 36,
+        "successful": 36
+      },
+      "driver_sha256": "d8175fd1097d25c80dd0f9896b254d5ad60250f8dd3e7b2188c4d2a288318faa",
+      "elapsed_seconds": 13.700913779903203,
+      "exit_status": 0,
+      "index": 79,
+      "records_sha256": "8692c5ea75a7c957d0ea6505ae6759bb92d37c4bc2de031d9171788559bececa",
+      "source_fingerprint": "859d60e4369e08a0b457e3a8e341d88310a3fcbf932fc1cec354c71349d8e61f"
+    },
+    {
+      "completed_resume_records_byte_identical": true,
+      "config": "group-common-seed-20040.toml",
+      "coverage": {
+        "expected": 1200,
+        "failed": 0,
+        "missing": 0,
+        "recorded": 1200,
+        "successful": 1200
+      },
+      "driver_sha256": "d8175fd1097d25c80dd0f9896b254d5ad60250f8dd3e7b2188c4d2a288318faa",
+      "elapsed_seconds": 244.981181723997,
+      "exit_status": 0,
+      "index": 80,
+      "records_sha256": "babe828dcd512cfc6ba0e70b90db3c28d25ada9b48268b9171f9f2c41e6712f8",
+      "source_fingerprint": "32b49416fa48e33750c6ed8d7bfebb149c570f56f4af00d9a315a75ac67ff6e7"
+    },
+    {
+      "completed_resume_records_byte_identical": true,
+      "config": "group-variable_propensity-seed-20040.toml",
+      "coverage": {
+        "expected": 36,
+        "failed": 0,
+        "missing": 0,
+        "recorded": 36,
+        "successful": 36
+      },
+      "driver_sha256": "d8175fd1097d25c80dd0f9896b254d5ad60250f8dd3e7b2188c4d2a288318faa",
+      "elapsed_seconds": 13.453800819814205,
+      "exit_status": 0,
+      "index": 81,
+      "records_sha256": "e602147bbd26eb5e644c438a770636f4f39f54d3a704a6ddc897640967980016",
+      "source_fingerprint": "859d60e4369e08a0b457e3a8e341d88310a3fcbf932fc1cec354c71349d8e61f"
+    },
+    {
+      "completed_resume_records_byte_identical": true,
+      "config": "group-common-seed-20041.toml",
+      "coverage": {
+        "expected": 1200,
+        "failed": 0,
+        "missing": 0,
+        "recorded": 1200,
+        "successful": 1200
+      },
+      "driver_sha256": "d8175fd1097d25c80dd0f9896b254d5ad60250f8dd3e7b2188c4d2a288318faa",
+      "elapsed_seconds": 245.289086479228,
+      "exit_status": 0,
+      "index": 82,
+      "records_sha256": "7b7cd707eb3a0a881c898883b0c194f93f70ee5ac7e83d267d0403ba1ba00b80",
+      "source_fingerprint": "32b49416fa48e33750c6ed8d7bfebb149c570f56f4af00d9a315a75ac67ff6e7"
+    },
+    {
+      "completed_resume_records_byte_identical": true,
+      "config": "group-variable_propensity-seed-20041.toml",
+      "coverage": {
+        "expected": 36,
+        "failed": 0,
+        "missing": 0,
+        "recorded": 36,
+        "successful": 36
+      },
+      "driver_sha256": "d8175fd1097d25c80dd0f9896b254d5ad60250f8dd3e7b2188c4d2a288318faa",
+      "elapsed_seconds": 13.488147913012654,
+      "exit_status": 0,
+      "index": 83,
+      "records_sha256": "0eb8ae724f87bcd5f600b6e67a191465b0e7540547159bf3b4cda7c325cd9ca3",
+      "source_fingerprint": "859d60e4369e08a0b457e3a8e341d88310a3fcbf932fc1cec354c71349d8e61f"
+    },
+    {
+      "completed_resume_records_byte_identical": true,
+      "config": "group-common-seed-20042.toml",
+      "coverage": {
+        "expected": 1200,
+        "failed": 0,
+        "missing": 0,
+        "recorded": 1200,
+        "successful": 1200
+      },
+      "driver_sha256": "d8175fd1097d25c80dd0f9896b254d5ad60250f8dd3e7b2188c4d2a288318faa",
+      "elapsed_seconds": 247.4689119248651,
+      "exit_status": 0,
+      "index": 84,
+      "records_sha256": "02fa09bd515892016e92611dcf8d6c20c7ca1c50fd769c02991dd9f42be4eadc",
+      "source_fingerprint": "32b49416fa48e33750c6ed8d7bfebb149c570f56f4af00d9a315a75ac67ff6e7"
+    },
+    {
+      "completed_resume_records_byte_identical": true,
+      "config": "group-variable_propensity-seed-20042.toml",
+      "coverage": {
+        "expected": 36,
+        "failed": 0,
+        "missing": 0,
+        "recorded": 36,
+        "successful": 36
+      },
+      "driver_sha256": "d8175fd1097d25c80dd0f9896b254d5ad60250f8dd3e7b2188c4d2a288318faa",
+      "elapsed_seconds": 12.90270884335041,
+      "exit_status": 0,
+      "index": 85,
+      "records_sha256": "91c4526b33540f71cd44704c52ca397a7f3c3a75191a1169d1a324cf67edc05c",
+      "source_fingerprint": "859d60e4369e08a0b457e3a8e341d88310a3fcbf932fc1cec354c71349d8e61f"
+    },
+    {
+      "completed_resume_records_byte_identical": true,
+      "config": "group-common-seed-20043.toml",
+      "coverage": {
+        "expected": 1200,
+        "failed": 0,
+        "missing": 0,
+        "recorded": 1200,
+        "successful": 1200
+      },
+      "driver_sha256": "d8175fd1097d25c80dd0f9896b254d5ad60250f8dd3e7b2188c4d2a288318faa",
+      "elapsed_seconds": 246.8837257567793,
+      "exit_status": 0,
+      "index": 86,
+      "records_sha256": "c5fabb8044eaefbfb83a60d41fc68e321c160d5a396ac37025006d5515029e1e",
+      "source_fingerprint": "32b49416fa48e33750c6ed8d7bfebb149c570f56f4af00d9a315a75ac67ff6e7"
+    },
+    {
+      "completed_resume_records_byte_identical": true,
+      "config": "group-variable_propensity-seed-20043.toml",
+      "coverage": {
+        "expected": 36,
+        "failed": 0,
+        "missing": 0,
+        "recorded": 36,
+        "successful": 36
+      },
+      "driver_sha256": "d8175fd1097d25c80dd0f9896b254d5ad60250f8dd3e7b2188c4d2a288318faa",
+      "elapsed_seconds": 15.209155318327248,
+      "exit_status": 0,
+      "index": 87,
+      "records_sha256": "bd2969e98bfea3bbd8b465968a3b00db18b018f6a73aedb06fbd6fddf0d83c4c",
+      "source_fingerprint": "859d60e4369e08a0b457e3a8e341d88310a3fcbf932fc1cec354c71349d8e61f"
+    },
+    {
+      "completed_resume_records_byte_identical": true,
+      "config": "group-common-seed-20044.toml",
+      "coverage": {
+        "expected": 1200,
+        "failed": 0,
+        "missing": 0,
+        "recorded": 1200,
+        "successful": 1200
+      },
+      "driver_sha256": "d8175fd1097d25c80dd0f9896b254d5ad60250f8dd3e7b2188c4d2a288318faa",
+      "elapsed_seconds": 247.66655976185575,
+      "exit_status": 0,
+      "index": 88,
+      "records_sha256": "5a43241452c51590604558e45fdc9038439bc71d5218da62e739939d551b2e77",
+      "source_fingerprint": "32b49416fa48e33750c6ed8d7bfebb149c570f56f4af00d9a315a75ac67ff6e7"
+    },
+    {
+      "completed_resume_records_byte_identical": true,
+      "config": "group-variable_propensity-seed-20044.toml",
+      "coverage": {
+        "expected": 36,
+        "failed": 0,
+        "missing": 0,
+        "recorded": 36,
+        "successful": 36
+      },
+      "driver_sha256": "d8175fd1097d25c80dd0f9896b254d5ad60250f8dd3e7b2188c4d2a288318faa",
+      "elapsed_seconds": 13.425656190142035,
+      "exit_status": 0,
+      "index": 89,
+      "records_sha256": "838e28f2eeab356ba8c49d8add8cd2df70043db812bcc1a6c777142ae186c53f",
+      "source_fingerprint": "859d60e4369e08a0b457e3a8e341d88310a3fcbf932fc1cec354c71349d8e61f"
+    },
+    {
+      "completed_resume_records_byte_identical": true,
+      "config": "group-common-seed-20045.toml",
+      "coverage": {
+        "expected": 1200,
+        "failed": 0,
+        "missing": 0,
+        "recorded": 1200,
+        "successful": 1200
+      },
+      "driver_sha256": "d8175fd1097d25c80dd0f9896b254d5ad60250f8dd3e7b2188c4d2a288318faa",
+      "elapsed_seconds": 248.89821298373863,
+      "exit_status": 0,
+      "index": 90,
+      "records_sha256": "2d0c01a63c6360c9ddeef0eee88ea40f237e4e3b666e07081091be56b55b1f5d",
+      "source_fingerprint": "32b49416fa48e33750c6ed8d7bfebb149c570f56f4af00d9a315a75ac67ff6e7"
+    },
+    {
+      "completed_resume_records_byte_identical": true,
+      "config": "group-variable_propensity-seed-20045.toml",
+      "coverage": {
+        "expected": 36,
+        "failed": 0,
+        "missing": 0,
+        "recorded": 36,
+        "successful": 36
+      },
+      "driver_sha256": "d8175fd1097d25c80dd0f9896b254d5ad60250f8dd3e7b2188c4d2a288318faa",
+      "elapsed_seconds": 13.595321143046021,
+      "exit_status": 0,
+      "index": 91,
+      "records_sha256": "ef935750506ac1122e6ac06b26b759cbeb826e6b2383e07e5848cb08fa087b8e",
+      "source_fingerprint": "859d60e4369e08a0b457e3a8e341d88310a3fcbf932fc1cec354c71349d8e61f"
+    },
+    {
+      "completed_resume_records_byte_identical": true,
+      "config": "group-common-seed-20046.toml",
+      "coverage": {
+        "expected": 1200,
+        "failed": 0,
+        "missing": 0,
+        "recorded": 1200,
+        "successful": 1200
+      },
+      "driver_sha256": "d8175fd1097d25c80dd0f9896b254d5ad60250f8dd3e7b2188c4d2a288318faa",
+      "elapsed_seconds": 242.8457976053469,
+      "exit_status": 0,
+      "index": 92,
+      "records_sha256": "78486a22687f87726d03ad4654871dbb950bb7d4c1678a6b349e6023b0bc0bc9",
+      "source_fingerprint": "32b49416fa48e33750c6ed8d7bfebb149c570f56f4af00d9a315a75ac67ff6e7"
+    },
+    {
+      "completed_resume_records_byte_identical": true,
+      "config": "group-variable_propensity-seed-20046.toml",
+      "coverage": {
+        "expected": 36,
+        "failed": 0,
+        "missing": 0,
+        "recorded": 36,
+        "successful": 36
+      },
+      "driver_sha256": "d8175fd1097d25c80dd0f9896b254d5ad60250f8dd3e7b2188c4d2a288318faa",
+      "elapsed_seconds": 13.771998350974172,
+      "exit_status": 0,
+      "index": 93,
+      "records_sha256": "cd8a57c4a566bf8d30765e34a0a05f521e64363fa1facfcdf3b0826659b69358",
+      "source_fingerprint": "859d60e4369e08a0b457e3a8e341d88310a3fcbf932fc1cec354c71349d8e61f"
+    },
+    {
+      "completed_resume_records_byte_identical": true,
+      "config": "group-common-seed-20047.toml",
+      "coverage": {
+        "expected": 1200,
+        "failed": 1,
+        "missing": 0,
+        "recorded": 1200,
+        "successful": 1199
+      },
+      "driver_sha256": "d8175fd1097d25c80dd0f9896b254d5ad60250f8dd3e7b2188c4d2a288318faa",
+      "elapsed_seconds": 250.4706319021061,
+      "exit_status": 1,
+      "index": 94,
+      "records_sha256": "1f6a78b18565ee246a1f89c864b923b311798dd74959e17c95e603cfb95a31c5",
+      "source_fingerprint": "32b49416fa48e33750c6ed8d7bfebb149c570f56f4af00d9a315a75ac67ff6e7"
+    },
+    {
+      "completed_resume_records_byte_identical": true,
+      "config": "group-variable_propensity-seed-20047.toml",
+      "coverage": {
+        "expected": 36,
+        "failed": 0,
+        "missing": 0,
+        "recorded": 36,
+        "successful": 36
+      },
+      "driver_sha256": "d8175fd1097d25c80dd0f9896b254d5ad60250f8dd3e7b2188c4d2a288318faa",
+      "elapsed_seconds": 13.44524288084358,
+      "exit_status": 0,
+      "index": 95,
+      "records_sha256": "a2b48c35dcf93571c8a8b53b8be9649bd82d0edffab224e77dc4fcb085cccc75",
+      "source_fingerprint": "859d60e4369e08a0b457e3a8e341d88310a3fcbf932fc1cec354c71349d8e61f"
+    },
+    {
+      "completed_resume_records_byte_identical": true,
+      "config": "group-common-seed-20048.toml",
+      "coverage": {
+        "expected": 1200,
+        "failed": 0,
+        "missing": 0,
+        "recorded": 1200,
+        "successful": 1200
+      },
+      "driver_sha256": "d8175fd1097d25c80dd0f9896b254d5ad60250f8dd3e7b2188c4d2a288318faa",
+      "elapsed_seconds": 249.4101962451823,
+      "exit_status": 0,
+      "index": 96,
+      "records_sha256": "d7960fbcfdfee6d2b96398d72d2e9be3706678355073cb4549f3ad3b53656d2d",
+      "source_fingerprint": "32b49416fa48e33750c6ed8d7bfebb149c570f56f4af00d9a315a75ac67ff6e7"
+    },
+    {
+      "completed_resume_records_byte_identical": true,
+      "config": "group-variable_propensity-seed-20048.toml",
+      "coverage": {
+        "expected": 36,
+        "failed": 0,
+        "missing": 0,
+        "recorded": 36,
+        "successful": 36
+      },
+      "driver_sha256": "d8175fd1097d25c80dd0f9896b254d5ad60250f8dd3e7b2188c4d2a288318faa",
+      "elapsed_seconds": 13.430953577626497,
+      "exit_status": 0,
+      "index": 97,
+      "records_sha256": "c5636a3b6817087cfc36455d990a64042d4c030d9bc4f16b4ec024fd973bc3dd",
+      "source_fingerprint": "859d60e4369e08a0b457e3a8e341d88310a3fcbf932fc1cec354c71349d8e61f"
+    },
+    {
+      "completed_resume_records_byte_identical": true,
+      "config": "group-common-seed-20049.toml",
+      "coverage": {
+        "expected": 1200,
+        "failed": 0,
+        "missing": 0,
+        "recorded": 1200,
+        "successful": 1200
+      },
+      "driver_sha256": "d8175fd1097d25c80dd0f9896b254d5ad60250f8dd3e7b2188c4d2a288318faa",
+      "elapsed_seconds": 252.9646599991247,
+      "exit_status": 0,
+      "index": 98,
+      "records_sha256": "b59ab7fd253ddef979066eeb714a9a86a7ade379047e20ac55c28218ad269db2",
+      "source_fingerprint": "32b49416fa48e33750c6ed8d7bfebb149c570f56f4af00d9a315a75ac67ff6e7"
+    },
+    {
+      "completed_resume_records_byte_identical": true,
+      "config": "group-variable_propensity-seed-20049.toml",
+      "coverage": {
+        "expected": 36,
+        "failed": 0,
+        "missing": 0,
+        "recorded": 36,
+        "successful": 36
+      },
+      "driver_sha256": "d8175fd1097d25c80dd0f9896b254d5ad60250f8dd3e7b2188c4d2a288318faa",
+      "elapsed_seconds": 13.023626503068954,
+      "exit_status": 0,
+      "index": 99,
+      "records_sha256": "62d1e89989c64bafd13dee940a6381bc8c0d6b7a437423a4f0d254e7ceaccd76",
+      "source_fingerprint": "859d60e4369e08a0b457e3a8e341d88310a3fcbf932fc1cec354c71349d8e61f"
+    },
+    {
+      "completed_resume_records_byte_identical": true,
+      "config": "group-common-seed-20050.toml",
+      "coverage": {
+        "expected": 1200,
+        "failed": 0,
+        "missing": 0,
+        "recorded": 1200,
+        "successful": 1200
+      },
+      "driver_sha256": "d8175fd1097d25c80dd0f9896b254d5ad60250f8dd3e7b2188c4d2a288318faa",
+      "elapsed_seconds": 251.90190901840106,
+      "exit_status": 0,
+      "index": 100,
+      "records_sha256": "25a7c1b5138d30624c4421c6acfdfd9ef7125ef067d3166ab71508db62994072",
+      "source_fingerprint": "32b49416fa48e33750c6ed8d7bfebb149c570f56f4af00d9a315a75ac67ff6e7"
+    },
+    {
+      "completed_resume_records_byte_identical": true,
+      "config": "group-variable_propensity-seed-20050.toml",
+      "coverage": {
+        "expected": 36,
+        "failed": 0,
+        "missing": 0,
+        "recorded": 36,
+        "successful": 36
+      },
+      "driver_sha256": "d8175fd1097d25c80dd0f9896b254d5ad60250f8dd3e7b2188c4d2a288318faa",
+      "elapsed_seconds": 13.640801263973117,
+      "exit_status": 0,
+      "index": 101,
+      "records_sha256": "90e6af325ef88b26e8eab89f7b7bb9a39f7b671de899e193b15d4d088de730d0",
+      "source_fingerprint": "859d60e4369e08a0b457e3a8e341d88310a3fcbf932fc1cec354c71349d8e61f"
+    },
+    {
+      "completed_resume_records_byte_identical": true,
+      "config": "group-common-seed-20051.toml",
+      "coverage": {
+        "expected": 1200,
+        "failed": 1,
+        "missing": 0,
+        "recorded": 1200,
+        "successful": 1199
+      },
+      "driver_sha256": "d8175fd1097d25c80dd0f9896b254d5ad60250f8dd3e7b2188c4d2a288318faa",
+      "elapsed_seconds": 245.75060400832444,
+      "exit_status": 1,
+      "index": 102,
+      "records_sha256": "b7e65cbccbac087a060c65635c0cad18d22fcc3a8ed4944535f7a0a5f0f17742",
+      "source_fingerprint": "32b49416fa48e33750c6ed8d7bfebb149c570f56f4af00d9a315a75ac67ff6e7"
+    },
+    {
+      "completed_resume_records_byte_identical": true,
+      "config": "group-variable_propensity-seed-20051.toml",
+      "coverage": {
+        "expected": 36,
+        "failed": 0,
+        "missing": 0,
+        "recorded": 36,
+        "successful": 36
+      },
+      "driver_sha256": "d8175fd1097d25c80dd0f9896b254d5ad60250f8dd3e7b2188c4d2a288318faa",
+      "elapsed_seconds": 15.179038791917264,
+      "exit_status": 0,
+      "index": 103,
+      "records_sha256": "c6139f4859435a6ba16fa828e8514aab91379c59ab8eb98262e3e147fdcb0405",
+      "source_fingerprint": "859d60e4369e08a0b457e3a8e341d88310a3fcbf932fc1cec354c71349d8e61f"
+    },
+    {
+      "completed_resume_records_byte_identical": true,
+      "config": "group-common-seed-20052.toml",
+      "coverage": {
+        "expected": 1200,
+        "failed": 1,
+        "missing": 0,
+        "recorded": 1200,
+        "successful": 1199
+      },
+      "driver_sha256": "d8175fd1097d25c80dd0f9896b254d5ad60250f8dd3e7b2188c4d2a288318faa",
+      "elapsed_seconds": 253.72928064037114,
+      "exit_status": 1,
+      "index": 104,
+      "records_sha256": "55c6c940fe22020229e16d5a2f854654cacd08a91da79357ded77a46aa446d9d",
+      "source_fingerprint": "32b49416fa48e33750c6ed8d7bfebb149c570f56f4af00d9a315a75ac67ff6e7"
+    },
+    {
+      "completed_resume_records_byte_identical": true,
+      "config": "group-variable_propensity-seed-20052.toml",
+      "coverage": {
+        "expected": 36,
+        "failed": 0,
+        "missing": 0,
+        "recorded": 36,
+        "successful": 36
+      },
+      "driver_sha256": "d8175fd1097d25c80dd0f9896b254d5ad60250f8dd3e7b2188c4d2a288318faa",
+      "elapsed_seconds": 19.808326976839453,
+      "exit_status": 0,
+      "index": 105,
+      "records_sha256": "01bcb25339f9f011cbf9c4ea8a1d85b7e84523d5bc635bb125adf365052cb9de",
+      "source_fingerprint": "859d60e4369e08a0b457e3a8e341d88310a3fcbf932fc1cec354c71349d8e61f"
+    },
+    {
+      "completed_resume_records_byte_identical": true,
+      "config": "group-common-seed-20053.toml",
+      "coverage": {
+        "expected": 1200,
+        "failed": 1,
+        "missing": 0,
+        "recorded": 1200,
+        "successful": 1199
+      },
+      "driver_sha256": "d8175fd1097d25c80dd0f9896b254d5ad60250f8dd3e7b2188c4d2a288318faa",
+      "elapsed_seconds": 251.18391261715442,
+      "exit_status": 1,
+      "index": 106,
+      "records_sha256": "e33146e12298f9b1b7faaf0be576cdd64b99ff47ca91ce4b408c3bfc0b7bd42c",
+      "source_fingerprint": "32b49416fa48e33750c6ed8d7bfebb149c570f56f4af00d9a315a75ac67ff6e7"
+    },
+    {
+      "completed_resume_records_byte_identical": true,
+      "config": "group-variable_propensity-seed-20053.toml",
+      "coverage": {
+        "expected": 36,
+        "failed": 0,
+        "missing": 0,
+        "recorded": 36,
+        "successful": 36
+      },
+      "driver_sha256": "d8175fd1097d25c80dd0f9896b254d5ad60250f8dd3e7b2188c4d2a288318faa",
+      "elapsed_seconds": 17.524779186118394,
+      "exit_status": 0,
+      "index": 107,
+      "records_sha256": "8c6aa7d300f3745b3cda73698779653846bb93a1b48239613bd51e8f9b68c886",
+      "source_fingerprint": "859d60e4369e08a0b457e3a8e341d88310a3fcbf932fc1cec354c71349d8e61f"
+    },
+    {
+      "completed_resume_records_byte_identical": true,
+      "config": "group-common-seed-20054.toml",
+      "coverage": {
+        "expected": 1200,
+        "failed": 0,
+        "missing": 0,
+        "recorded": 1200,
+        "successful": 1200
+      },
+      "driver_sha256": "d8175fd1097d25c80dd0f9896b254d5ad60250f8dd3e7b2188c4d2a288318faa",
+      "elapsed_seconds": 247.0535610979423,
+      "exit_status": 0,
+      "index": 108,
+      "records_sha256": "0941179cf77ec454f989cd41f69782b582fb4c22b43442e4d7ca07fbf639e71a",
+      "source_fingerprint": "32b49416fa48e33750c6ed8d7bfebb149c570f56f4af00d9a315a75ac67ff6e7"
+    },
+    {
+      "completed_resume_records_byte_identical": true,
+      "config": "group-variable_propensity-seed-20054.toml",
+      "coverage": {
+        "expected": 36,
+        "failed": 0,
+        "missing": 0,
+        "recorded": 36,
+        "successful": 36
+      },
+      "driver_sha256": "d8175fd1097d25c80dd0f9896b254d5ad60250f8dd3e7b2188c4d2a288318faa",
+      "elapsed_seconds": 13.905780525878072,
+      "exit_status": 0,
+      "index": 109,
+      "records_sha256": "e143379a7d178d02216202f39abaece03e2d6713f2f09efd6baf457f7e99f804",
+      "source_fingerprint": "859d60e4369e08a0b457e3a8e341d88310a3fcbf932fc1cec354c71349d8e61f"
+    },
+    {
+      "completed_resume_records_byte_identical": true,
+      "config": "group-common-seed-20055.toml",
+      "coverage": {
+        "expected": 1200,
+        "failed": 2,
+        "missing": 0,
+        "recorded": 1200,
+        "successful": 1198
+      },
+      "driver_sha256": "d8175fd1097d25c80dd0f9896b254d5ad60250f8dd3e7b2188c4d2a288318faa",
+      "elapsed_seconds": 244.82806088496,
+      "exit_status": 1,
+      "index": 110,
+      "records_sha256": "eebad2af800d1075f87aa29491faed5d14eb5ee544d0c75bc8370de72791a6bb",
+      "source_fingerprint": "32b49416fa48e33750c6ed8d7bfebb149c570f56f4af00d9a315a75ac67ff6e7"
+    },
+    {
+      "completed_resume_records_byte_identical": true,
+      "config": "group-variable_propensity-seed-20055.toml",
+      "coverage": {
+        "expected": 36,
+        "failed": 0,
+        "missing": 0,
+        "recorded": 36,
+        "successful": 36
+      },
+      "driver_sha256": "d8175fd1097d25c80dd0f9896b254d5ad60250f8dd3e7b2188c4d2a288318faa",
+      "elapsed_seconds": 13.271925352979451,
+      "exit_status": 0,
+      "index": 111,
+      "records_sha256": "f2bc73f0db3aa5b8ce1947ae7697ab1dd395331d734eb416ca2d45b0c2c23b74",
+      "source_fingerprint": "859d60e4369e08a0b457e3a8e341d88310a3fcbf932fc1cec354c71349d8e61f"
+    },
+    {
+      "completed_resume_records_byte_identical": true,
+      "config": "group-common-seed-20056.toml",
+      "coverage": {
+        "expected": 1200,
+        "failed": 0,
+        "missing": 0,
+        "recorded": 1200,
+        "successful": 1200
+      },
+      "driver_sha256": "d8175fd1097d25c80dd0f9896b254d5ad60250f8dd3e7b2188c4d2a288318faa",
+      "elapsed_seconds": 245.2478630882688,
+      "exit_status": 0,
+      "index": 112,
+      "records_sha256": "9c623ca2e4915a545bc0acc3ff475ec76bb358ac035dc61d2115f01f4832f879",
+      "source_fingerprint": "32b49416fa48e33750c6ed8d7bfebb149c570f56f4af00d9a315a75ac67ff6e7"
+    },
+    {
+      "completed_resume_records_byte_identical": true,
+      "config": "group-variable_propensity-seed-20056.toml",
+      "coverage": {
+        "expected": 36,
+        "failed": 0,
+        "missing": 0,
+        "recorded": 36,
+        "successful": 36
+      },
+      "driver_sha256": "d8175fd1097d25c80dd0f9896b254d5ad60250f8dd3e7b2188c4d2a288318faa",
+      "elapsed_seconds": 13.976317661814392,
+      "exit_status": 0,
+      "index": 113,
+      "records_sha256": "ee85d5dcd28ba404786d4c4fe474c9fa482fb272144190e48579f693ded82dd2",
+      "source_fingerprint": "859d60e4369e08a0b457e3a8e341d88310a3fcbf932fc1cec354c71349d8e61f"
+    },
+    {
+      "completed_resume_records_byte_identical": true,
+      "config": "group-common-seed-20057.toml",
+      "coverage": {
+        "expected": 1200,
+        "failed": 2,
+        "missing": 0,
+        "recorded": 1200,
+        "successful": 1198
+      },
+      "driver_sha256": "d8175fd1097d25c80dd0f9896b254d5ad60250f8dd3e7b2188c4d2a288318faa",
+      "elapsed_seconds": 243.59381347103044,
+      "exit_status": 1,
+      "index": 114,
+      "records_sha256": "838310d2493d00de7f5cfd4f7c6ebf2cc19a8313f19e2874e32c1b39d9a35e27",
+      "source_fingerprint": "32b49416fa48e33750c6ed8d7bfebb149c570f56f4af00d9a315a75ac67ff6e7"
+    },
+    {
+      "completed_resume_records_byte_identical": true,
+      "config": "group-variable_propensity-seed-20057.toml",
+      "coverage": {
+        "expected": 36,
+        "failed": 0,
+        "missing": 0,
+        "recorded": 36,
+        "successful": 36
+      },
+      "driver_sha256": "d8175fd1097d25c80dd0f9896b254d5ad60250f8dd3e7b2188c4d2a288318faa",
+      "elapsed_seconds": 13.926431900821626,
+      "exit_status": 0,
+      "index": 115,
+      "records_sha256": "69d70392b37c373bc568e4ab0d27e8eddccb863c47cd058a46b40caf0e37e262",
+      "source_fingerprint": "859d60e4369e08a0b457e3a8e341d88310a3fcbf932fc1cec354c71349d8e61f"
+    },
+    {
+      "completed_resume_records_byte_identical": true,
+      "config": "group-common-seed-20058.toml",
+      "coverage": {
+        "expected": 1200,
+        "failed": 0,
+        "missing": 0,
+        "recorded": 1200,
+        "successful": 1200
+      },
+      "driver_sha256": "d8175fd1097d25c80dd0f9896b254d5ad60250f8dd3e7b2188c4d2a288318faa",
+      "elapsed_seconds": 247.18262186693028,
+      "exit_status": 0,
+      "index": 116,
+      "records_sha256": "a5819a18fcdd6e6cd1298c4f343f188fefe6fc243032568f7afef15ab48f9a0a",
+      "source_fingerprint": "32b49416fa48e33750c6ed8d7bfebb149c570f56f4af00d9a315a75ac67ff6e7"
+    },
+    {
+      "completed_resume_records_byte_identical": true,
+      "config": "group-variable_propensity-seed-20058.toml",
+      "coverage": {
+        "expected": 36,
+        "failed": 0,
+        "missing": 0,
+        "recorded": 36,
+        "successful": 36
+      },
+      "driver_sha256": "d8175fd1097d25c80dd0f9896b254d5ad60250f8dd3e7b2188c4d2a288318faa",
+      "elapsed_seconds": 15.604574780911207,
+      "exit_status": 0,
+      "index": 117,
+      "records_sha256": "69b32fd96bcfe433109f61edc50a571b44b905e9f3f497bf41ac4110e98f4cb2",
+      "source_fingerprint": "859d60e4369e08a0b457e3a8e341d88310a3fcbf932fc1cec354c71349d8e61f"
+    },
+    {
+      "completed_resume_records_byte_identical": true,
+      "config": "group-common-seed-20059.toml",
+      "coverage": {
+        "expected": 1200,
+        "failed": 2,
+        "missing": 0,
+        "recorded": 1200,
+        "successful": 1198
+      },
+      "driver_sha256": "d8175fd1097d25c80dd0f9896b254d5ad60250f8dd3e7b2188c4d2a288318faa",
+      "elapsed_seconds": 244.7867222749628,
+      "exit_status": 1,
+      "index": 118,
+      "records_sha256": "61ffc2b28dce86d7a74b58036743924182ee5afb334e8625773efc95a5c70b74",
+      "source_fingerprint": "32b49416fa48e33750c6ed8d7bfebb149c570f56f4af00d9a315a75ac67ff6e7"
+    },
+    {
+      "completed_resume_records_byte_identical": true,
+      "config": "group-variable_propensity-seed-20059.toml",
+      "coverage": {
+        "expected": 36,
+        "failed": 0,
+        "missing": 0,
+        "recorded": 36,
+        "successful": 36
+      },
+      "driver_sha256": "d8175fd1097d25c80dd0f9896b254d5ad60250f8dd3e7b2188c4d2a288318faa",
+      "elapsed_seconds": 14.955692441668361,
+      "exit_status": 0,
+      "index": 119,
+      "records_sha256": "fb135dbc3bdd679f3d7acd135638b535169381b908eb9ea83da6650178794214",
+      "source_fingerprint": "859d60e4369e08a0b457e3a8e341d88310a3fcbf932fc1cec354c71349d8e61f"
+    },
+    {
+      "completed_resume_records_byte_identical": true,
+      "config": "group-common-seed-20060.toml",
+      "coverage": {
+        "expected": 1200,
+        "failed": 0,
+        "missing": 0,
+        "recorded": 1200,
+        "successful": 1200
+      },
+      "driver_sha256": "d8175fd1097d25c80dd0f9896b254d5ad60250f8dd3e7b2188c4d2a288318faa",
+      "elapsed_seconds": 245.45071550179273,
+      "exit_status": 0,
+      "index": 120,
+      "records_sha256": "269642aca4098817c0ad3de3c33b0628c182b3e9efb310d3f8f9d25ee632bf55",
+      "source_fingerprint": "32b49416fa48e33750c6ed8d7bfebb149c570f56f4af00d9a315a75ac67ff6e7"
+    },
+    {
+      "completed_resume_records_byte_identical": true,
+      "config": "group-variable_propensity-seed-20060.toml",
+      "coverage": {
+        "expected": 36,
+        "failed": 0,
+        "missing": 0,
+        "recorded": 36,
+        "successful": 36
+      },
+      "driver_sha256": "d8175fd1097d25c80dd0f9896b254d5ad60250f8dd3e7b2188c4d2a288318faa",
+      "elapsed_seconds": 13.734255137853324,
+      "exit_status": 0,
+      "index": 121,
+      "records_sha256": "538ddd45c5888859bb330424ae65dfb36968be215ac12780fdd3d97f2ddbf9b5",
+      "source_fingerprint": "859d60e4369e08a0b457e3a8e341d88310a3fcbf932fc1cec354c71349d8e61f"
+    },
+    {
+      "completed_resume_records_byte_identical": true,
+      "config": "group-common-seed-20061.toml",
+      "coverage": {
+        "expected": 1200,
+        "failed": 0,
+        "missing": 0,
+        "recorded": 1200,
+        "successful": 1200
+      },
+      "driver_sha256": "d8175fd1097d25c80dd0f9896b254d5ad60250f8dd3e7b2188c4d2a288318faa",
+      "elapsed_seconds": 237.63356282701716,
+      "exit_status": 0,
+      "index": 122,
+      "records_sha256": "938e0533c0567dcea9baa65dc3128dbf9db26226bc7e9192eedbf31bc540cbeb",
+      "source_fingerprint": "32b49416fa48e33750c6ed8d7bfebb149c570f56f4af00d9a315a75ac67ff6e7"
+    },
+    {
+      "completed_resume_records_byte_identical": true,
+      "config": "group-variable_propensity-seed-20061.toml",
+      "coverage": {
+        "expected": 36,
+        "failed": 0,
+        "missing": 0,
+        "recorded": 36,
+        "successful": 36
+      },
+      "driver_sha256": "d8175fd1097d25c80dd0f9896b254d5ad60250f8dd3e7b2188c4d2a288318faa",
+      "elapsed_seconds": 13.662279337178916,
+      "exit_status": 0,
+      "index": 123,
+      "records_sha256": "fd8fe3ae7aa419c1be121f52e9ec3b015af53a81e3df038fbd276b7ad521eed5",
+      "source_fingerprint": "859d60e4369e08a0b457e3a8e341d88310a3fcbf932fc1cec354c71349d8e61f"
+    },
+    {
+      "completed_resume_records_byte_identical": true,
+      "config": "group-common-seed-20062.toml",
+      "coverage": {
+        "expected": 1200,
+        "failed": 0,
+        "missing": 0,
+        "recorded": 1200,
+        "successful": 1200
+      },
+      "driver_sha256": "d8175fd1097d25c80dd0f9896b254d5ad60250f8dd3e7b2188c4d2a288318faa",
+      "elapsed_seconds": 241.0256868340075,
+      "exit_status": 0,
+      "index": 124,
+      "records_sha256": "b21add1ca27b3948af84c98df194da320be308679b42dfcc13c53f9e011fa7e0",
+      "source_fingerprint": "32b49416fa48e33750c6ed8d7bfebb149c570f56f4af00d9a315a75ac67ff6e7"
+    },
+    {
+      "completed_resume_records_byte_identical": true,
+      "config": "group-variable_propensity-seed-20062.toml",
+      "coverage": {
+        "expected": 36,
+        "failed": 0,
+        "missing": 0,
+        "recorded": 36,
+        "successful": 36
+      },
+      "driver_sha256": "d8175fd1097d25c80dd0f9896b254d5ad60250f8dd3e7b2188c4d2a288318faa",
+      "elapsed_seconds": 14.626455930061638,
+      "exit_status": 0,
+      "index": 125,
+      "records_sha256": "788c2ab77bf11d10cb96cc56f1598368505d1161d6e7071e3da70c3fa6791fbd",
+      "source_fingerprint": "859d60e4369e08a0b457e3a8e341d88310a3fcbf932fc1cec354c71349d8e61f"
+    },
+    {
+      "completed_resume_records_byte_identical": true,
+      "config": "group-common-seed-20063.toml",
+      "coverage": {
+        "expected": 1200,
+        "failed": 0,
+        "missing": 0,
+        "recorded": 1200,
+        "successful": 1200
+      },
+      "driver_sha256": "d8175fd1097d25c80dd0f9896b254d5ad60250f8dd3e7b2188c4d2a288318faa",
+      "elapsed_seconds": 237.91523172799498,
+      "exit_status": 0,
+      "index": 126,
+      "records_sha256": "d08f020873fd78bfa38464682e8ff12c5ec0f3740e84b39cc912f6529e59d661",
+      "source_fingerprint": "32b49416fa48e33750c6ed8d7bfebb149c570f56f4af00d9a315a75ac67ff6e7"
+    },
+    {
+      "completed_resume_records_byte_identical": true,
+      "config": "group-variable_propensity-seed-20063.toml",
+      "coverage": {
+        "expected": 36,
+        "failed": 0,
+        "missing": 0,
+        "recorded": 36,
+        "successful": 36
+      },
+      "driver_sha256": "d8175fd1097d25c80dd0f9896b254d5ad60250f8dd3e7b2188c4d2a288318faa",
+      "elapsed_seconds": 13.71741206292063,
+      "exit_status": 0,
+      "index": 127,
+      "records_sha256": "a931b2b9017ea5cb7dc132a4202d09102515d12944abfd81ad8ea9d06018ec27",
+      "source_fingerprint": "859d60e4369e08a0b457e3a8e341d88310a3fcbf932fc1cec354c71349d8e61f"
+    }
+  ]
+}

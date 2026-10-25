@@ -1,0 +1,5 @@
+scenario,method,seed_count,reason
+paper:integrative_r_learner_multivariate_paper@o512_r128,datafusionppi,64,The pinned official adapter requires constant trial propensity; this preset has covariate-dependent trial propensity.
+paper:integrative_r_learner_multivariate_paper@o512_r512,datafusionppi,64,The pinned official adapter requires constant trial propensity; this preset has covariate-dependent trial propensity.
+paper:integrative_r_learner_multivariate_paper@o2048_r128,datafusionppi,64,The pinned official adapter requires constant trial propensity; this preset has covariate-dependent trial propensity.
+paper:integrative_r_learner_multivariate_paper@o2048_r512,datafusionppi,64,The pinned official adapter requires constant trial propensity; this preset has covariate-dependent trial propensity.

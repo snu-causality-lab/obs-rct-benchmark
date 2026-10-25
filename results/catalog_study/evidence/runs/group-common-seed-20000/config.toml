@@ -1,0 +1,1457 @@
+schema_version = 1
+
+[run]
+methods = ["rct_t_ridge", "obs_t_ridge", "naive_pooled_t_ridge", "rct_t_extra_trees", "obs_t_extra_trees", "naive_pooled_t_extra_trees", "rct_dr_ridge", "rct_dr_extra_trees", "datafusionppi", "cornet_official"]
+purpose = "reference"
+reference_method = "rct_dr_extra_trees"
+scope = "prespecified full catalog study; 31 canonical presets, 4 OBS/RCT budget pairs, 64 independent sample seeds, fixed public recipes; explicit adapter applicability and heavy-tail inference limits"
+seeds = [20000]
+
+[method_options.cornet_official]
+correction_epochs = 200
+correction_penalty = 0.0
+learning_rate = 0.1
+outcome_penalty = 0.1
+source_epochs = 500
+standardize = true
+width = 25
+
+[method_options.datafusionppi]
+covariate_shift = true
+learner = "DR"
+
+[method_options.naive_pooled_t_extra_trees]
+min_samples_leaf = 5
+n_estimators = 100
+
+[method_options.naive_pooled_t_ridge]
+ridge_alpha = 1.0
+
+[method_options.obs_t_extra_trees]
+min_samples_leaf = 5
+n_estimators = 100
+
+[method_options.obs_t_ridge]
+ridge_alpha = 1.0
+
+[method_options.rct_dr_extra_trees]
+min_samples_leaf = 5
+n_estimators = 100
+
+[method_options.rct_dr_ridge]
+ridge_alpha = 1.0
+
+[method_options.rct_t_extra_trees]
+min_samples_leaf = 5
+n_estimators = 100
+
+[method_options.rct_t_ridge]
+ridge_alpha = 1.0
+
+[[scenarios]]
+id = "M0"
+kind = "structural"
+label = "o512_r128"
+[scenarios.parameters]
+n_eval = 2048
+n_obs = 512
+n_rct_test = 64
+n_rct_train = 128
+n_rct_tune = 32
+n_target_reference = 0
+
+[[scenarios]]
+id = "M0"
+kind = "structural"
+label = "o512_r512"
+[scenarios.parameters]
+n_eval = 2048
+n_obs = 512
+n_rct_test = 64
+n_rct_train = 512
+n_rct_tune = 32
+n_target_reference = 0
+
+[[scenarios]]
+id = "M0"
+kind = "structural"
+label = "o2048_r128"
+[scenarios.parameters]
+n_eval = 2048
+n_obs = 2048
+n_rct_test = 64
+n_rct_train = 128
+n_rct_tune = 32
+n_target_reference = 0
+
+[[scenarios]]
+id = "M0"
+kind = "structural"
+label = "o2048_r512"
+[scenarios.parameters]
+n_eval = 2048
+n_obs = 2048
+n_rct_test = 64
+n_rct_train = 512
+n_rct_tune = 32
+n_target_reference = 0
+
+[[scenarios]]
+id = "M1"
+kind = "structural"
+label = "o512_r128"
+[scenarios.parameters]
+n_eval = 2048
+n_obs = 512
+n_rct_test = 64
+n_rct_train = 128
+n_rct_tune = 32
+n_target_reference = 0
+
+[[scenarios]]
+id = "M1"
+kind = "structural"
+label = "o512_r512"
+[scenarios.parameters]
+n_eval = 2048
+n_obs = 512
+n_rct_test = 64
+n_rct_train = 512
+n_rct_tune = 32
+n_target_reference = 0
+
+[[scenarios]]
+id = "M1"
+kind = "structural"
+label = "o2048_r128"
+[scenarios.parameters]
+n_eval = 2048
+n_obs = 2048
+n_rct_test = 64
+n_rct_train = 128
+n_rct_tune = 32
+n_target_reference = 0
+
+[[scenarios]]
+id = "M1"
+kind = "structural"
+label = "o2048_r512"
+[scenarios.parameters]
+n_eval = 2048
+n_obs = 2048
+n_rct_test = 64
+n_rct_train = 512
+n_rct_tune = 32
+n_target_reference = 0
+
+[[scenarios]]
+id = "M2"
+kind = "structural"
+label = "o512_r128"
+[scenarios.parameters]
+n_eval = 2048
+n_obs = 512
+n_rct_test = 64
+n_rct_train = 128
+n_rct_tune = 32
+n_target_reference = 0
+
+[[scenarios]]
+id = "M2"
+kind = "structural"
+label = "o512_r512"
+[scenarios.parameters]
+n_eval = 2048
+n_obs = 512
+n_rct_test = 64
+n_rct_train = 512
+n_rct_tune = 32
+n_target_reference = 0
+
+[[scenarios]]
+id = "M2"
+kind = "structural"
+label = "o2048_r128"
+[scenarios.parameters]
+n_eval = 2048
+n_obs = 2048
+n_rct_test = 64
+n_rct_train = 128
+n_rct_tune = 32
+n_target_reference = 0
+
+[[scenarios]]
+id = "M2"
+kind = "structural"
+label = "o2048_r512"
+[scenarios.parameters]
+n_eval = 2048
+n_obs = 2048
+n_rct_test = 64
+n_rct_train = 512
+n_rct_tune = 32
+n_target_reference = 0
+
+[[scenarios]]
+id = "M3"
+kind = "structural"
+label = "o512_r128"
+[scenarios.parameters]
+n_eval = 2048
+n_obs = 512
+n_rct_test = 64
+n_rct_train = 128
+n_rct_tune = 32
+n_target_reference = 0
+
+[[scenarios]]
+id = "M3"
+kind = "structural"
+label = "o512_r512"
+[scenarios.parameters]
+n_eval = 2048
+n_obs = 512
+n_rct_test = 64
+n_rct_train = 512
+n_rct_tune = 32
+n_target_reference = 0
+
+[[scenarios]]
+id = "M3"
+kind = "structural"
+label = "o2048_r128"
+[scenarios.parameters]
+n_eval = 2048
+n_obs = 2048
+n_rct_test = 64
+n_rct_train = 128
+n_rct_tune = 32
+n_target_reference = 0
+
+[[scenarios]]
+id = "M3"
+kind = "structural"
+label = "o2048_r512"
+[scenarios.parameters]
+n_eval = 2048
+n_obs = 2048
+n_rct_test = 64
+n_rct_train = 512
+n_rct_tune = 32
+n_target_reference = 0
+
+[[scenarios]]
+id = "M4"
+kind = "structural"
+label = "o512_r128"
+[scenarios.parameters]
+n_eval = 2048
+n_obs = 512
+n_rct_test = 64
+n_rct_train = 128
+n_rct_tune = 32
+n_target_reference = 0
+
+[[scenarios]]
+id = "M4"
+kind = "structural"
+label = "o512_r512"
+[scenarios.parameters]
+n_eval = 2048
+n_obs = 512
+n_rct_test = 64
+n_rct_train = 512
+n_rct_tune = 32
+n_target_reference = 0
+
+[[scenarios]]
+id = "M4"
+kind = "structural"
+label = "o2048_r128"
+[scenarios.parameters]
+n_eval = 2048
+n_obs = 2048
+n_rct_test = 64
+n_rct_train = 128
+n_rct_tune = 32
+n_target_reference = 0
+
+[[scenarios]]
+id = "M4"
+kind = "structural"
+label = "o2048_r512"
+[scenarios.parameters]
+n_eval = 2048
+n_obs = 2048
+n_rct_test = 64
+n_rct_train = 512
+n_rct_tune = 32
+n_target_reference = 0
+
+[[scenarios]]
+id = "M5"
+kind = "structural"
+label = "o512_r128"
+[scenarios.parameters]
+n_eval = 2048
+n_obs = 512
+n_rct_test = 64
+n_rct_train = 128
+n_rct_tune = 32
+n_target_reference = 0
+
+[[scenarios]]
+id = "M5"
+kind = "structural"
+label = "o512_r512"
+[scenarios.parameters]
+n_eval = 2048
+n_obs = 512
+n_rct_test = 64
+n_rct_train = 512
+n_rct_tune = 32
+n_target_reference = 0
+
+[[scenarios]]
+id = "M5"
+kind = "structural"
+label = "o2048_r128"
+[scenarios.parameters]
+n_eval = 2048
+n_obs = 2048
+n_rct_test = 64
+n_rct_train = 128
+n_rct_tune = 32
+n_target_reference = 0
+
+[[scenarios]]
+id = "M5"
+kind = "structural"
+label = "o2048_r512"
+[scenarios.parameters]
+n_eval = 2048
+n_obs = 2048
+n_rct_test = 64
+n_rct_train = 512
+n_rct_tune = 32
+n_target_reference = 0
+
+[[scenarios]]
+id = "M6"
+kind = "structural"
+label = "o512_r128"
+[scenarios.parameters]
+n_eval = 2048
+n_obs = 512
+n_rct_test = 64
+n_rct_train = 128
+n_rct_tune = 32
+n_target_reference = 0
+
+[[scenarios]]
+id = "M6"
+kind = "structural"
+label = "o512_r512"
+[scenarios.parameters]
+n_eval = 2048
+n_obs = 512
+n_rct_test = 64
+n_rct_train = 512
+n_rct_tune = 32
+n_target_reference = 0
+
+[[scenarios]]
+id = "M6"
+kind = "structural"
+label = "o2048_r128"
+[scenarios.parameters]
+n_eval = 2048
+n_obs = 2048
+n_rct_test = 64
+n_rct_train = 128
+n_rct_tune = 32
+n_target_reference = 0
+
+[[scenarios]]
+id = "M6"
+kind = "structural"
+label = "o2048_r512"
+[scenarios.parameters]
+n_eval = 2048
+n_obs = 2048
+n_rct_test = 64
+n_rct_train = 512
+n_rct_tune = 32
+n_target_reference = 0
+
+[[scenarios]]
+id = "M7"
+kind = "structural"
+label = "o512_r128"
+[scenarios.parameters]
+n_eval = 2048
+n_obs = 512
+n_rct_test = 64
+n_rct_train = 128
+n_rct_tune = 32
+n_target_reference = 0
+
+[[scenarios]]
+id = "M7"
+kind = "structural"
+label = "o512_r512"
+[scenarios.parameters]
+n_eval = 2048
+n_obs = 512
+n_rct_test = 64
+n_rct_train = 512
+n_rct_tune = 32
+n_target_reference = 0
+
+[[scenarios]]
+id = "M7"
+kind = "structural"
+label = "o2048_r128"
+[scenarios.parameters]
+n_eval = 2048
+n_obs = 2048
+n_rct_test = 64
+n_rct_train = 128
+n_rct_tune = 32
+n_target_reference = 0
+
+[[scenarios]]
+id = "M7"
+kind = "structural"
+label = "o2048_r512"
+[scenarios.parameters]
+n_eval = 2048
+n_obs = 2048
+n_rct_test = 64
+n_rct_train = 512
+n_rct_tune = 32
+n_target_reference = 0
+
+[[scenarios]]
+id = "M8"
+kind = "structural"
+label = "o512_r128"
+[scenarios.parameters]
+n_eval = 2048
+n_obs = 512
+n_rct_test = 64
+n_rct_train = 128
+n_rct_tune = 32
+n_target_reference = 0
+
+[[scenarios]]
+id = "M8"
+kind = "structural"
+label = "o512_r512"
+[scenarios.parameters]
+n_eval = 2048
+n_obs = 512
+n_rct_test = 64
+n_rct_train = 512
+n_rct_tune = 32
+n_target_reference = 0
+
+[[scenarios]]
+id = "M8"
+kind = "structural"
+label = "o2048_r128"
+[scenarios.parameters]
+n_eval = 2048
+n_obs = 2048
+n_rct_test = 64
+n_rct_train = 128
+n_rct_tune = 32
+n_target_reference = 0
+
+[[scenarios]]
+id = "M8"
+kind = "structural"
+label = "o2048_r512"
+[scenarios.parameters]
+n_eval = 2048
+n_obs = 2048
+n_rct_test = 64
+n_rct_train = 512
+n_rct_tune = 32
+n_target_reference = 0
+
+[[scenarios]]
+id = "M9"
+kind = "structural"
+label = "o512_r128"
+[scenarios.parameters]
+n_eval = 2048
+n_obs = 512
+n_rct_test = 64
+n_rct_train = 128
+n_rct_tune = 32
+n_target_reference = 0
+
+[[scenarios]]
+id = "M9"
+kind = "structural"
+label = "o512_r512"
+[scenarios.parameters]
+n_eval = 2048
+n_obs = 512
+n_rct_test = 64
+n_rct_train = 512
+n_rct_tune = 32
+n_target_reference = 0
+
+[[scenarios]]
+id = "M9"
+kind = "structural"
+label = "o2048_r128"
+[scenarios.parameters]
+n_eval = 2048
+n_obs = 2048
+n_rct_test = 64
+n_rct_train = 128
+n_rct_tune = 32
+n_target_reference = 0
+
+[[scenarios]]
+id = "M9"
+kind = "structural"
+label = "o2048_r512"
+[scenarios.parameters]
+n_eval = 2048
+n_obs = 2048
+n_rct_test = 64
+n_rct_train = 512
+n_rct_tune = 32
+n_target_reference = 0
+
+[[scenarios]]
+id = "M10"
+kind = "structural"
+label = "o512_r128"
+[scenarios.parameters]
+n_eval = 2048
+n_obs = 512
+n_rct_test = 64
+n_rct_train = 128
+n_rct_tune = 32
+n_target_reference = 0
+
+[[scenarios]]
+id = "M10"
+kind = "structural"
+label = "o512_r512"
+[scenarios.parameters]
+n_eval = 2048
+n_obs = 512
+n_rct_test = 64
+n_rct_train = 512
+n_rct_tune = 32
+n_target_reference = 0
+
+[[scenarios]]
+id = "M10"
+kind = "structural"
+label = "o2048_r128"
+[scenarios.parameters]
+n_eval = 2048
+n_obs = 2048
+n_rct_test = 64
+n_rct_train = 128
+n_rct_tune = 32
+n_target_reference = 0
+
+[[scenarios]]
+id = "M10"
+kind = "structural"
+label = "o2048_r512"
+[scenarios.parameters]
+n_eval = 2048
+n_obs = 2048
+n_rct_test = 64
+n_rct_train = 512
+n_rct_tune = 32
+n_target_reference = 0
+
+[[scenarios]]
+id = "M11"
+kind = "structural"
+label = "o512_r128"
+[scenarios.parameters]
+n_eval = 2048
+n_obs = 512
+n_rct_test = 64
+n_rct_train = 128
+n_rct_tune = 32
+n_target_reference = 0
+
+[[scenarios]]
+id = "M11"
+kind = "structural"
+label = "o512_r512"
+[scenarios.parameters]
+n_eval = 2048
+n_obs = 512
+n_rct_test = 64
+n_rct_train = 512
+n_rct_tune = 32
+n_target_reference = 0
+
+[[scenarios]]
+id = "M11"
+kind = "structural"
+label = "o2048_r128"
+[scenarios.parameters]
+n_eval = 2048
+n_obs = 2048
+n_rct_test = 64
+n_rct_train = 128
+n_rct_tune = 32
+n_target_reference = 0
+
+[[scenarios]]
+id = "M11"
+kind = "structural"
+label = "o2048_r512"
+[scenarios.parameters]
+n_eval = 2048
+n_obs = 2048
+n_rct_test = 64
+n_rct_train = 512
+n_rct_tune = 32
+n_target_reference = 0
+
+[[scenarios]]
+id = "C01"
+kind = "addendum"
+label = "o512_r128"
+[scenarios.parameters]
+n_eval = 2048
+n_obs = 512
+n_rct_test = 64
+n_rct_train = 128
+n_rct_tune = 32
+n_target_reference = 0
+
+[[scenarios]]
+id = "C01"
+kind = "addendum"
+label = "o512_r512"
+[scenarios.parameters]
+n_eval = 2048
+n_obs = 512
+n_rct_test = 64
+n_rct_train = 512
+n_rct_tune = 32
+n_target_reference = 0
+
+[[scenarios]]
+id = "C01"
+kind = "addendum"
+label = "o2048_r128"
+[scenarios.parameters]
+n_eval = 2048
+n_obs = 2048
+n_rct_test = 64
+n_rct_train = 128
+n_rct_tune = 32
+n_target_reference = 0
+
+[[scenarios]]
+id = "C01"
+kind = "addendum"
+label = "o2048_r512"
+[scenarios.parameters]
+n_eval = 2048
+n_obs = 2048
+n_rct_test = 64
+n_rct_train = 512
+n_rct_tune = 32
+n_target_reference = 0
+
+[[scenarios]]
+id = "C02"
+kind = "addendum"
+label = "o512_r128"
+[scenarios.parameters]
+n_eval = 2048
+n_obs = 512
+n_rct_test = 64
+n_rct_train = 128
+n_rct_tune = 32
+n_target_reference = 0
+
+[[scenarios]]
+id = "C02"
+kind = "addendum"
+label = "o512_r512"
+[scenarios.parameters]
+n_eval = 2048
+n_obs = 512
+n_rct_test = 64
+n_rct_train = 512
+n_rct_tune = 32
+n_target_reference = 0
+
+[[scenarios]]
+id = "C02"
+kind = "addendum"
+label = "o2048_r128"
+[scenarios.parameters]
+n_eval = 2048
+n_obs = 2048
+n_rct_test = 64
+n_rct_train = 128
+n_rct_tune = 32
+n_target_reference = 0
+
+[[scenarios]]
+id = "C02"
+kind = "addendum"
+label = "o2048_r512"
+[scenarios.parameters]
+n_eval = 2048
+n_obs = 2048
+n_rct_test = 64
+n_rct_train = 512
+n_rct_tune = 32
+n_target_reference = 0
+
+[[scenarios]]
+id = "C03"
+kind = "addendum"
+label = "o512_r128"
+[scenarios.parameters]
+n_eval = 2048
+n_obs = 512
+n_rct_test = 64
+n_rct_train = 128
+n_rct_tune = 32
+n_target_reference = 0
+
+[[scenarios]]
+id = "C03"
+kind = "addendum"
+label = "o512_r512"
+[scenarios.parameters]
+n_eval = 2048
+n_obs = 512
+n_rct_test = 64
+n_rct_train = 512
+n_rct_tune = 32
+n_target_reference = 0
+
+[[scenarios]]
+id = "C03"
+kind = "addendum"
+label = "o2048_r128"
+[scenarios.parameters]
+n_eval = 2048
+n_obs = 2048
+n_rct_test = 64
+n_rct_train = 128
+n_rct_tune = 32
+n_target_reference = 0
+
+[[scenarios]]
+id = "C03"
+kind = "addendum"
+label = "o2048_r512"
+[scenarios.parameters]
+n_eval = 2048
+n_obs = 2048
+n_rct_test = 64
+n_rct_train = 512
+n_rct_tune = 32
+n_target_reference = 0
+
+[[scenarios]]
+id = "C04"
+kind = "addendum"
+label = "o512_r128"
+[scenarios.parameters]
+n_eval = 2048
+n_obs = 512
+n_rct_test = 64
+n_rct_train = 128
+n_rct_tune = 32
+n_target_reference = 0
+
+[[scenarios]]
+id = "C04"
+kind = "addendum"
+label = "o512_r512"
+[scenarios.parameters]
+n_eval = 2048
+n_obs = 512
+n_rct_test = 64
+n_rct_train = 512
+n_rct_tune = 32
+n_target_reference = 0
+
+[[scenarios]]
+id = "C04"
+kind = "addendum"
+label = "o2048_r128"
+[scenarios.parameters]
+n_eval = 2048
+n_obs = 2048
+n_rct_test = 64
+n_rct_train = 128
+n_rct_tune = 32
+n_target_reference = 0
+
+[[scenarios]]
+id = "C04"
+kind = "addendum"
+label = "o2048_r512"
+[scenarios.parameters]
+n_eval = 2048
+n_obs = 2048
+n_rct_test = 64
+n_rct_train = 512
+n_rct_tune = 32
+n_target_reference = 0
+
+[[scenarios]]
+id = "C05"
+kind = "addendum"
+label = "o512_r128"
+[scenarios.parameters]
+n_eval = 2048
+n_obs = 512
+n_rct_test = 64
+n_rct_train = 128
+n_rct_tune = 32
+n_target_reference = 0
+
+[[scenarios]]
+id = "C05"
+kind = "addendum"
+label = "o512_r512"
+[scenarios.parameters]
+n_eval = 2048
+n_obs = 512
+n_rct_test = 64
+n_rct_train = 512
+n_rct_tune = 32
+n_target_reference = 0
+
+[[scenarios]]
+id = "C05"
+kind = "addendum"
+label = "o2048_r128"
+[scenarios.parameters]
+n_eval = 2048
+n_obs = 2048
+n_rct_test = 64
+n_rct_train = 128
+n_rct_tune = 32
+n_target_reference = 0
+
+[[scenarios]]
+id = "C05"
+kind = "addendum"
+label = "o2048_r512"
+[scenarios.parameters]
+n_eval = 2048
+n_obs = 2048
+n_rct_test = 64
+n_rct_train = 512
+n_rct_tune = 32
+n_target_reference = 0
+
+[[scenarios]]
+id = "C06"
+kind = "addendum"
+label = "o512_r128"
+[scenarios.parameters]
+n_eval = 2048
+n_obs = 512
+n_rct_test = 64
+n_rct_train = 128
+n_rct_tune = 32
+n_target_reference = 0
+
+[[scenarios]]
+id = "C06"
+kind = "addendum"
+label = "o512_r512"
+[scenarios.parameters]
+n_eval = 2048
+n_obs = 512
+n_rct_test = 64
+n_rct_train = 512
+n_rct_tune = 32
+n_target_reference = 0
+
+[[scenarios]]
+id = "C06"
+kind = "addendum"
+label = "o2048_r128"
+[scenarios.parameters]
+n_eval = 2048
+n_obs = 2048
+n_rct_test = 64
+n_rct_train = 128
+n_rct_tune = 32
+n_target_reference = 0
+
+[[scenarios]]
+id = "C06"
+kind = "addendum"
+label = "o2048_r512"
+[scenarios.parameters]
+n_eval = 2048
+n_obs = 2048
+n_rct_test = 64
+n_rct_train = 512
+n_rct_tune = 32
+n_target_reference = 0
+
+[[scenarios]]
+id = "C07"
+kind = "addendum"
+label = "o512_r128"
+[scenarios.parameters]
+n_eval = 2048
+n_obs = 512
+n_rct_test = 64
+n_rct_train = 128
+n_rct_tune = 32
+n_target_reference = 0
+
+[[scenarios]]
+id = "C07"
+kind = "addendum"
+label = "o512_r512"
+[scenarios.parameters]
+n_eval = 2048
+n_obs = 512
+n_rct_test = 64
+n_rct_train = 512
+n_rct_tune = 32
+n_target_reference = 0
+
+[[scenarios]]
+id = "C07"
+kind = "addendum"
+label = "o2048_r128"
+[scenarios.parameters]
+n_eval = 2048
+n_obs = 2048
+n_rct_test = 64
+n_rct_train = 128
+n_rct_tune = 32
+n_target_reference = 0
+
+[[scenarios]]
+id = "C07"
+kind = "addendum"
+label = "o2048_r512"
+[scenarios.parameters]
+n_eval = 2048
+n_obs = 2048
+n_rct_test = 64
+n_rct_train = 512
+n_rct_tune = 32
+n_target_reference = 0
+
+[[scenarios]]
+id = "C08"
+kind = "addendum"
+label = "o512_r128"
+[scenarios.parameters]
+n_eval = 2048
+n_obs = 512
+n_rct_test = 64
+n_rct_train = 128
+n_rct_tune = 32
+n_target_reference = 0
+
+[[scenarios]]
+id = "C08"
+kind = "addendum"
+label = "o512_r512"
+[scenarios.parameters]
+n_eval = 2048
+n_obs = 512
+n_rct_test = 64
+n_rct_train = 512
+n_rct_tune = 32
+n_target_reference = 0
+
+[[scenarios]]
+id = "C08"
+kind = "addendum"
+label = "o2048_r128"
+[scenarios.parameters]
+n_eval = 2048
+n_obs = 2048
+n_rct_test = 64
+n_rct_train = 128
+n_rct_tune = 32
+n_target_reference = 0
+
+[[scenarios]]
+id = "C08"
+kind = "addendum"
+label = "o2048_r512"
+[scenarios.parameters]
+n_eval = 2048
+n_obs = 2048
+n_rct_test = 64
+n_rct_train = 512
+n_rct_tune = 32
+n_target_reference = 0
+
+[[scenarios]]
+id = "C09"
+kind = "addendum"
+label = "o512_r128"
+[scenarios.parameters]
+n_eval = 2048
+n_obs = 512
+n_rct_test = 64
+n_rct_train = 128
+n_rct_tune = 32
+n_target_reference = 0
+
+[[scenarios]]
+id = "C09"
+kind = "addendum"
+label = "o512_r512"
+[scenarios.parameters]
+n_eval = 2048
+n_obs = 512
+n_rct_test = 64
+n_rct_train = 512
+n_rct_tune = 32
+n_target_reference = 0
+
+[[scenarios]]
+id = "C09"
+kind = "addendum"
+label = "o2048_r128"
+[scenarios.parameters]
+n_eval = 2048
+n_obs = 2048
+n_rct_test = 64
+n_rct_train = 128
+n_rct_tune = 32
+n_target_reference = 0
+
+[[scenarios]]
+id = "C09"
+kind = "addendum"
+label = "o2048_r512"
+[scenarios.parameters]
+n_eval = 2048
+n_obs = 2048
+n_rct_test = 64
+n_rct_train = 512
+n_rct_tune = 32
+n_target_reference = 0
+
+[[scenarios]]
+id = "C10"
+kind = "addendum"
+label = "o512_r128"
+[scenarios.parameters]
+n_eval = 2048
+n_obs = 512
+n_rct_test = 64
+n_rct_train = 128
+n_rct_tune = 32
+n_target_reference = 0
+
+[[scenarios]]
+id = "C10"
+kind = "addendum"
+label = "o512_r512"
+[scenarios.parameters]
+n_eval = 2048
+n_obs = 512
+n_rct_test = 64
+n_rct_train = 512
+n_rct_tune = 32
+n_target_reference = 0
+
+[[scenarios]]
+id = "C10"
+kind = "addendum"
+label = "o2048_r128"
+[scenarios.parameters]
+n_eval = 2048
+n_obs = 2048
+n_rct_test = 64
+n_rct_train = 128
+n_rct_tune = 32
+n_target_reference = 0
+
+[[scenarios]]
+id = "C10"
+kind = "addendum"
+label = "o2048_r512"
+[scenarios.parameters]
+n_eval = 2048
+n_obs = 2048
+n_rct_test = 64
+n_rct_train = 512
+n_rct_tune = 32
+n_target_reference = 0
+
+[[scenarios]]
+id = "cornet_official_n_conf"
+kind = "paper"
+label = "o512_r128"
+[scenarios.parameters]
+n_eval = 2048
+n_obs = 512
+n_rct_test = 64
+n_rct_train = 128
+n_rct_tune = 32
+
+[[scenarios]]
+id = "cornet_official_n_conf"
+kind = "paper"
+label = "o512_r512"
+[scenarios.parameters]
+n_eval = 2048
+n_obs = 512
+n_rct_test = 64
+n_rct_train = 512
+n_rct_tune = 32
+
+[[scenarios]]
+id = "cornet_official_n_conf"
+kind = "paper"
+label = "o2048_r128"
+[scenarios.parameters]
+n_eval = 2048
+n_obs = 2048
+n_rct_test = 64
+n_rct_train = 128
+n_rct_tune = 32
+
+[[scenarios]]
+id = "cornet_official_n_conf"
+kind = "paper"
+label = "o2048_r512"
+[scenarios.parameters]
+n_eval = 2048
+n_obs = 2048
+n_rct_test = 64
+n_rct_train = 512
+n_rct_tune = 32
+
+[[scenarios]]
+id = "experimental_grounding_kps"
+kind = "paper"
+label = "o512_r128"
+[scenarios.parameters]
+n_eval = 2048
+n_obs = 512
+n_rct_test = 64
+n_rct_train = 128
+n_rct_tune = 32
+
+[[scenarios]]
+id = "experimental_grounding_kps"
+kind = "paper"
+label = "o512_r512"
+[scenarios.parameters]
+n_eval = 2048
+n_obs = 512
+n_rct_test = 64
+n_rct_train = 512
+n_rct_tune = 32
+
+[[scenarios]]
+id = "experimental_grounding_kps"
+kind = "paper"
+label = "o2048_r128"
+[scenarios.parameters]
+n_eval = 2048
+n_obs = 2048
+n_rct_test = 64
+n_rct_train = 128
+n_rct_tune = 32
+
+[[scenarios]]
+id = "experimental_grounding_kps"
+kind = "paper"
+label = "o2048_r512"
+[scenarios.parameters]
+n_eval = 2048
+n_obs = 2048
+n_rct_test = 64
+n_rct_train = 512
+n_rct_tune = 32
+
+[[scenarios]]
+id = "integrative_r_learner_kps_normal_target_extension"
+kind = "paper"
+label = "o512_r128"
+[scenarios.parameters]
+n_eval = 2048
+n_obs = 512
+n_rct_test = 64
+n_rct_train = 128
+n_rct_tune = 32
+
+[[scenarios]]
+id = "integrative_r_learner_kps_normal_target_extension"
+kind = "paper"
+label = "o512_r512"
+[scenarios.parameters]
+n_eval = 2048
+n_obs = 512
+n_rct_test = 64
+n_rct_train = 512
+n_rct_tune = 32
+
+[[scenarios]]
+id = "integrative_r_learner_kps_normal_target_extension"
+kind = "paper"
+label = "o2048_r128"
+[scenarios.parameters]
+n_eval = 2048
+n_obs = 2048
+n_rct_test = 64
+n_rct_train = 128
+n_rct_tune = 32
+
+[[scenarios]]
+id = "integrative_r_learner_kps_normal_target_extension"
+kind = "paper"
+label = "o2048_r512"
+[scenarios.parameters]
+n_eval = 2048
+n_obs = 2048
+n_rct_test = 64
+n_rct_train = 512
+n_rct_tune = 32
+
+[[scenarios]]
+id = "integrative_r_learner_kps_code"
+kind = "paper"
+label = "o512_r128"
+[scenarios.parameters]
+n_eval = 2048
+n_obs = 512
+n_rct_test = 64
+n_rct_train = 128
+n_rct_tune = 32
+
+[[scenarios]]
+id = "integrative_r_learner_kps_code"
+kind = "paper"
+label = "o512_r512"
+[scenarios.parameters]
+n_eval = 2048
+n_obs = 512
+n_rct_test = 64
+n_rct_train = 512
+n_rct_tune = 32
+
+[[scenarios]]
+id = "integrative_r_learner_kps_code"
+kind = "paper"
+label = "o2048_r128"
+[scenarios.parameters]
+n_eval = 2048
+n_obs = 2048
+n_rct_test = 64
+n_rct_train = 128
+n_rct_tune = 32
+
+[[scenarios]]
+id = "integrative_r_learner_kps_code"
+kind = "paper"
+label = "o2048_r512"
+[scenarios.parameters]
+n_eval = 2048
+n_obs = 2048
+n_rct_test = 64
+n_rct_train = 512
+n_rct_tune = 32
+
+[[scenarios]]
+id = "elastic_integrative_gen_data_overlap"
+kind = "paper"
+label = "o512_r128"
+[scenarios.parameters]
+n_eval = 2048
+n_obs = 512
+n_rct_test = 64
+n_rct_train = 128
+n_rct_tune = 32
+
+[[scenarios]]
+id = "elastic_integrative_gen_data_overlap"
+kind = "paper"
+label = "o512_r512"
+[scenarios.parameters]
+n_eval = 2048
+n_obs = 512
+n_rct_test = 64
+n_rct_train = 512
+n_rct_tune = 32
+
+[[scenarios]]
+id = "elastic_integrative_gen_data_overlap"
+kind = "paper"
+label = "o2048_r128"
+[scenarios.parameters]
+n_eval = 2048
+n_obs = 2048
+n_rct_test = 64
+n_rct_train = 128
+n_rct_tune = 32
+
+[[scenarios]]
+id = "elastic_integrative_gen_data_overlap"
+kind = "paper"
+label = "o2048_r512"
+[scenarios.parameters]
+n_eval = 2048
+n_obs = 2048
+n_rct_test = 64
+n_rct_train = 512
+n_rct_tune = 32
+
+[[scenarios]]
+id = "power_likelihood_paper_text"
+kind = "paper"
+label = "o512_r128"
+[scenarios.parameters]
+n_eval = 2048
+n_obs = 512
+n_rct_test = 64
+n_rct_train = 128
+n_rct_tune = 32
+
+[[scenarios]]
+id = "power_likelihood_paper_text"
+kind = "paper"
+label = "o512_r512"
+[scenarios.parameters]
+n_eval = 2048
+n_obs = 512
+n_rct_test = 64
+n_rct_train = 512
+n_rct_tune = 32
+
+[[scenarios]]
+id = "power_likelihood_paper_text"
+kind = "paper"
+label = "o2048_r128"
+[scenarios.parameters]
+n_eval = 2048
+n_obs = 2048
+n_rct_test = 64
+n_rct_train = 128
+n_rct_tune = 32
+
+[[scenarios]]
+id = "power_likelihood_paper_text"
+kind = "paper"
+label = "o2048_r512"
+[scenarios.parameters]
+n_eval = 2048
+n_obs = 2048
+n_rct_test = 64
+n_rct_train = 512
+n_rct_tune = 32
+
+[[scenarios]]
+id = "power_likelihood_supplement_code"
+kind = "paper"
+label = "o512_r128"
+[scenarios.parameters]
+n_eval = 2048
+n_obs = 512
+n_rct_test = 64
+n_rct_train = 128
+n_rct_tune = 32
+
+[[scenarios]]
+id = "power_likelihood_supplement_code"
+kind = "paper"
+label = "o512_r512"
+[scenarios.parameters]
+n_eval = 2048
+n_obs = 512
+n_rct_test = 64
+n_rct_train = 512
+n_rct_tune = 32
+
+[[scenarios]]
+id = "power_likelihood_supplement_code"
+kind = "paper"
+label = "o2048_r128"
+[scenarios.parameters]
+n_eval = 2048
+n_obs = 2048
+n_rct_test = 64
+n_rct_train = 128
+n_rct_tune = 32
+
+[[scenarios]]
+id = "power_likelihood_supplement_code"
+kind = "paper"
+label = "o2048_r512"
+[scenarios.parameters]
+n_eval = 2048
+n_obs = 2048
+n_rct_test = 64
+n_rct_train = 512
+n_rct_tune = 32
+
+[[scenarios]]
+id = "cvci_official_linear_bias"
+kind = "paper"
+label = "o512_r128"
+[scenarios.parameters]
+n_eval = 2048
+n_obs = 512
+n_rct_test = 64
+n_rct_train = 128
+n_rct_tune = 32
+
+[[scenarios]]
+id = "cvci_official_linear_bias"
+kind = "paper"
+label = "o512_r512"
+[scenarios.parameters]
+n_eval = 2048
+n_obs = 512
+n_rct_test = 64
+n_rct_train = 512
+n_rct_tune = 32
+
+[[scenarios]]
+id = "cvci_official_linear_bias"
+kind = "paper"
+label = "o2048_r128"
+[scenarios.parameters]
+n_eval = 2048
+n_obs = 2048
+n_rct_test = 64
+n_rct_train = 128
+n_rct_tune = 32
+
+[[scenarios]]
+id = "cvci_official_linear_bias"
+kind = "paper"
+label = "o2048_r512"
+[scenarios.parameters]
+n_eval = 2048
+n_obs = 2048
+n_rct_test = 64
+n_rct_train = 512
+n_rct_tune = 32

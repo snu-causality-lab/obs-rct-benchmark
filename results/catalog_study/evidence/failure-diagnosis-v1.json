@@ -1,0 +1,182 @@
+{
+  "checker_sha256": "574bad3b436091b786bd3a46cf783a21fbef0f0faf512b12bb8d4945d811d9f0",
+  "checks": [
+    {
+      "failure_reproduced": true,
+      "method": "datafusionppi",
+      "original_error_type": "RuntimeError",
+      "original_stage": "method_or_metric",
+      "record_id": "d6bea5af70d238746610226705afb665affbfd004dc22e150634d9a7b583db07",
+      "repeats": [
+        {
+          "error_type": "RuntimeError",
+          "frames": [
+            {
+              "file": "diagnose_failures.py",
+              "function": "<module>",
+              "line": 20
+            },
+            {
+              "file": "methods.py",
+              "function": "fit_predict",
+              "line": 225
+            },
+            {
+              "file": "api.py",
+              "function": "fuse_cate",
+              "line": 182
+            },
+            {
+              "file": "drf.py",
+              "function": "density_ratio",
+              "line": 53
+            },
+            {
+              "file": "method.py",
+              "function": "density_ratio",
+              "line": 233
+            },
+            {
+              "file": "method.py",
+              "function": "balancing_ratio",
+              "line": 157
+            }
+          ],
+          "message": "the calibration of the density ratio did not reach its balance equations",
+          "stage": "method_or_metric",
+          "status": "failed"
+        },
+        {
+          "error_type": "RuntimeError",
+          "frames": [
+            {
+              "file": "diagnose_failures.py",
+              "function": "<module>",
+              "line": 20
+            },
+            {
+              "file": "methods.py",
+              "function": "fit_predict",
+              "line": 225
+            },
+            {
+              "file": "api.py",
+              "function": "fuse_cate",
+              "line": 182
+            },
+            {
+              "file": "drf.py",
+              "function": "density_ratio",
+              "line": 53
+            },
+            {
+              "file": "method.py",
+              "function": "density_ratio",
+              "line": 233
+            },
+            {
+              "file": "method.py",
+              "function": "balancing_ratio",
+              "line": 157
+            }
+          ],
+          "message": "the calibration of the density ratio did not reach its balance equations",
+          "stage": "method_or_metric",
+          "status": "failed"
+        }
+      ],
+      "scenario": "paper:elastic_integrative_gen_data_overlap@o512_r128",
+      "seed": 20014
+    },
+    {
+      "failure_reproduced": true,
+      "method": "datafusionppi",
+      "original_error_type": "RuntimeError",
+      "original_stage": "method_or_metric",
+      "record_id": "75daf828158eb6d0a630b47ec7c8f06f718668aa2f3aef7ecc2be3686248eb03",
+      "repeats": [
+        {
+          "error_type": "RuntimeError",
+          "frames": [
+            {
+              "file": "diagnose_failures.py",
+              "function": "<module>",
+              "line": 20
+            },
+            {
+              "file": "methods.py",
+              "function": "fit_predict",
+              "line": 225
+            },
+            {
+              "file": "api.py",
+              "function": "fuse_cate",
+              "line": 182
+            },
+            {
+              "file": "drf.py",
+              "function": "density_ratio",
+              "line": 53
+            },
+            {
+              "file": "method.py",
+              "function": "density_ratio",
+              "line": 233
+            },
+            {
+              "file": "method.py",
+              "function": "balancing_ratio",
+              "line": 157
+            }
+          ],
+          "message": "the calibration of the density ratio did not reach its balance equations",
+          "stage": "method_or_metric",
+          "status": "failed"
+        },
+        {
+          "error_type": "RuntimeError",
+          "frames": [
+            {
+              "file": "diagnose_failures.py",
+              "function": "<module>",
+              "line": 20
+            },
+            {
+              "file": "methods.py",
+              "function": "fit_predict",
+              "line": 225
+            },
+            {
+              "file": "api.py",
+              "function": "fuse_cate",
+              "line": 182
+            },
+            {
+              "file": "drf.py",
+              "function": "density_ratio",
+              "line": 53
+            },
+            {
+              "file": "method.py",
+              "function": "density_ratio",
+              "line": 233
+            },
+            {
+              "file": "method.py",
+              "function": "balancing_ratio",
+              "line": 157
+            }
+          ],
+          "message": "the calibration of the density ratio did not reach its balance equations",
+          "stage": "method_or_metric",
+          "status": "failed"
+        }
+      ],
+      "scenario": "paper:elastic_integrative_gen_data_overlap@o512_r512",
+      "seed": 20014
+    }
+  ],
+  "config_hash": "ae6897d3b21caaaeab30066161893e056a710b36fc78461ea5d825d146fe7d91",
+  "records_sha256": "fc3cd01b578a85e83d246bc7c266dff57ab7f81a8f8877ab03048f729c027541",
+  "scope": "post-hoc failure diagnosis of seed20014; original records preserved, no retry replaces a failed score"
+}

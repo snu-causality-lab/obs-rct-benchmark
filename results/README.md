@@ -1,9 +1,10 @@
 # Reference studies and execution examples
 
-Version `0.2.0a1` adds two fixed reference studies, executed on 2026-10-25. All requested cells completed; original alpha examples remain unchanged below.
+Version `0.2.0a1` includes a full-catalog study completed on 2026-10-26 and two earlier reference studies. Failures, unsupported combinations and heavy-tail inference limits remain explicit; original alpha examples are preserved below.
 
 | Study | Coverage | Question and readout |
 | --- | ---: | --- |
+| [Full catalog comparison](catalog_study/SCIENTIFIC_RESULT.md) | 79,083 successful / 79,104 applicable; 21 failed, 0 missing; 256 N/A | All 31 native presets × four budgets × ten recipes × 64 seeds; all 472 eligible Holm decisions withheld because four contrasts lack complete pairs |
 | [Static reference comparison](reference_study/SCIENTIFIC_RESULT.md) | 3,072 / 3,072 | Four matched M2 variants × four OBS/RCT budget pairs × six public recipes × 32 seeds; full official training, nonlinear RCT controls, all 64 primary contrasts with Holm adjustment |
 | [Adaptive recruitment comparison](adaptive_reference/SCIENTIFIC_RESULT.md) | 1,152 / 1,152 | Three mechanisms × two outcome budgets × three recruitment policies × two final estimators × 32 seeds; same-estimator policy contrasts, exact acquisition costs and complete deterministic replay |
 

@@ -5,4 +5,4 @@ recursive-include examples *.py
 recursive-include notebooks *.ipynb *.md *.json
 recursive-include scripts *.py
 recursive-include tests *.py
-recursive-include results *.md *.json *.toml *.jsonl *.csv *.svg
+recursive-include results *.py *.txt *.md *.json *.toml *.jsonl *.csv *.svg

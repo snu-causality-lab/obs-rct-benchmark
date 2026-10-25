@@ -1,0 +1,321 @@
+{
+  "config": {
+    "method_options": {
+      "cornet_official": {
+        "correction_epochs": 200,
+        "correction_penalty": 0.0,
+        "learning_rate": 0.1,
+        "outcome_penalty": 0.1,
+        "source_epochs": 500,
+        "standardize": true,
+        "width": 25
+      },
+      "naive_pooled_t_extra_trees": {
+        "min_samples_leaf": 5,
+        "n_estimators": 100
+      },
+      "naive_pooled_t_ridge": {
+        "ridge_alpha": 1.0
+      },
+      "obs_t_extra_trees": {
+        "min_samples_leaf": 5,
+        "n_estimators": 100
+      },
+      "obs_t_ridge": {
+        "ridge_alpha": 1.0
+      },
+      "rct_dr_extra_trees": {
+        "min_samples_leaf": 5,
+        "n_estimators": 100
+      },
+      "rct_dr_ridge": {
+        "ridge_alpha": 1.0
+      },
+      "rct_t_extra_trees": {
+        "min_samples_leaf": 5,
+        "n_estimators": 100
+      },
+      "rct_t_ridge": {
+        "ridge_alpha": 1.0
+      }
+    },
+    "run": {
+      "methods": [
+        "rct_t_ridge",
+        "obs_t_ridge",
+        "naive_pooled_t_ridge",
+        "rct_t_extra_trees",
+        "obs_t_extra_trees",
+        "naive_pooled_t_extra_trees",
+        "rct_dr_ridge",
+        "rct_dr_extra_trees",
+        "cornet_official"
+      ],
+      "purpose": "reference",
+      "reference_method": "rct_dr_extra_trees",
+      "scope": "prespecified full catalog study; 31 canonical presets, 4 OBS/RCT budget pairs, 64 independent sample seeds, fixed public recipes; explicit adapter applicability and heavy-tail inference limits",
+      "seeds": [
+        20000
+      ]
+    },
+    "scenarios": [
+      {
+        "id": "integrative_r_learner_multivariate_paper",
+        "kind": "paper",
+        "label": "o512_r128",
+        "parameters": {
+          "n_eval": 2048,
+          "n_obs": 512,
+          "n_rct_test": 64,
+          "n_rct_train": 128,
+          "n_rct_tune": 32
+        }
+      },
+      {
+        "id": "integrative_r_learner_multivariate_paper",
+        "kind": "paper",
+        "label": "o512_r512",
+        "parameters": {
+          "n_eval": 2048,
+          "n_obs": 512,
+          "n_rct_test": 64,
+          "n_rct_train": 512,
+          "n_rct_tune": 32
+        }
+      },
+      {
+        "id": "integrative_r_learner_multivariate_paper",
+        "kind": "paper",
+        "label": "o2048_r128",
+        "parameters": {
+          "n_eval": 2048,
+          "n_obs": 2048,
+          "n_rct_test": 64,
+          "n_rct_train": 128,
+          "n_rct_tune": 32
+        }
+      },
+      {
+        "id": "integrative_r_learner_multivariate_paper",
+        "kind": "paper",
+        "label": "o2048_r512",
+        "parameters": {
+          "n_eval": 2048,
+          "n_obs": 2048,
+          "n_rct_test": 64,
+          "n_rct_train": 512,
+          "n_rct_tune": 32
+        }
+      }
+    ],
+    "schema_version": 1
+  },
+  "config_hash": "fcd5c19787436e4a47a8c292a6823274c33b2139e7981f467e965decd6991fc3",
+  "created_utc": "2026-10-25T14:48:07.937174+00:00",
+  "custom_methods": {},
+  "custom_provenance_policy": "author-supplied identifiers; custom source is not automatically verified",
+  "empirical_inputs": {},
+  "environment": {
+    "implementation": "CPython",
+    "machine": "x86_64",
+    "packages": {
+      "dfppi": "0.1.0",
+      "numpy": "1.26.4",
+      "obs-rct-benchmark": "0.2.0a1",
+      "scikit-learn": "1.5.2",
+      "scipy": "1.15.3",
+      "torch": "2.2.2+cpu"
+    },
+    "python": "3.12.3",
+    "system": "Linux"
+  },
+  "external_methods": {
+    "cornet_official": {
+      "availability": "available",
+      "declared_git_revision": "38b9c37d5a86bc87950945d6ddb1ceb5354a45ba",
+      "expected_revision": "38b9c37d5a86bc87950945d6ddb1ceb5354a45ba",
+      "extra_import_files": [],
+      "package_file_sha256": {
+        "model/functions.py": "5eda20f55c31c69968f6dc40a8ad2973482421c16b61ca0b1b47efcf49e5685e",
+        "model/helper.py": "f18e6e7eed78cd25896e9344a470f8c35be888a14eb3831a3bbf6acb307000ac",
+        "model/models.py": "31ff1086ca97fe729cff320338da3e3dd619bb879668e46de94c5bea4366826a",
+        "simulation_studies/simdata.py": "07576aabc15e490fa60595b1cdf3c3631eb60dd5344c14a5d3cbde06a9fa4541"
+      },
+      "tracked_changes": false,
+      "verified": true
+    }
+  },
+  "interpretation": "reference comparison under the declared protocol; scientific conclusions require adequate precision and a justified design",
+  "purpose": "reference",
+  "resolved_scenarios": {
+    "paper:integrative_r_learner_multivariate_paper@o2048_r128": {
+      "config": {
+        "cornet_delta_rms": 2.0,
+        "cornet_outcome_norm": 10.0,
+        "cornet_sparse_ratio": 0.666,
+        "cvci_obs_propensity": 0.2,
+        "cvci_te_bias": 0.3,
+        "cvci_true_te": 0.5,
+        "d": 9,
+        "elastic_mean_x": 1.0,
+        "elastic_rct_selection_intercept": -4.5,
+        "elastic_tlocalpar": 2.0,
+        "int_r_cf": 0.75,
+        "int_r_confounding_strength": 2.5,
+        "int_r_rct_selection_intercept": 7.0,
+        "int_r_zero_cate_coefficients": 0,
+        "kps_kappa": 0.5,
+        "kps_nu0": -0.25,
+        "kps_nu1": 0.25,
+        "mechanism_seed": 2025,
+        "n_eval": 2048,
+        "n_obs": 2048,
+        "n_rct_test": 64,
+        "n_rct_train": 128,
+        "n_rct_tune": 32,
+        "name": "paper:integrative_r_learner_multivariate_paper@o2048_r128",
+        "noise_std": 1.0,
+        "paper_id": "integrative_r_learner_multivariate_paper",
+        "power_copula_intercept": 1.0,
+        "power_copula_treatment_coef": 2.5,
+        "power_omega": 0.5,
+        "power_u_distribution": "binary",
+        "quadrature_order": 31
+      },
+      "generator_version": "2.0.0"
+    },
+    "paper:integrative_r_learner_multivariate_paper@o2048_r512": {
+      "config": {
+        "cornet_delta_rms": 2.0,
+        "cornet_outcome_norm": 10.0,
+        "cornet_sparse_ratio": 0.666,
+        "cvci_obs_propensity": 0.2,
+        "cvci_te_bias": 0.3,
+        "cvci_true_te": 0.5,
+        "d": 9,
+        "elastic_mean_x": 1.0,
+        "elastic_rct_selection_intercept": -4.5,
+        "elastic_tlocalpar": 2.0,
+        "int_r_cf": 0.75,
+        "int_r_confounding_strength": 2.5,
+        "int_r_rct_selection_intercept": 7.0,
+        "int_r_zero_cate_coefficients": 0,
+        "kps_kappa": 0.5,
+        "kps_nu0": -0.25,
+        "kps_nu1": 0.25,
+        "mechanism_seed": 2025,
+        "n_eval": 2048,
+        "n_obs": 2048,
+        "n_rct_test": 64,
+        "n_rct_train": 512,
+        "n_rct_tune": 32,
+        "name": "paper:integrative_r_learner_multivariate_paper@o2048_r512",
+        "noise_std": 1.0,
+        "paper_id": "integrative_r_learner_multivariate_paper",
+        "power_copula_intercept": 1.0,
+        "power_copula_treatment_coef": 2.5,
+        "power_omega": 0.5,
+        "power_u_distribution": "binary",
+        "quadrature_order": 31
+      },
+      "generator_version": "2.0.0"
+    },
+    "paper:integrative_r_learner_multivariate_paper@o512_r128": {
+      "config": {
+        "cornet_delta_rms": 2.0,
+        "cornet_outcome_norm": 10.0,
+        "cornet_sparse_ratio": 0.666,
+        "cvci_obs_propensity": 0.2,
+        "cvci_te_bias": 0.3,
+        "cvci_true_te": 0.5,
+        "d": 9,
+        "elastic_mean_x": 1.0,
+        "elastic_rct_selection_intercept": -4.5,
+        "elastic_tlocalpar": 2.0,
+        "int_r_cf": 0.75,
+        "int_r_confounding_strength": 2.5,
+        "int_r_rct_selection_intercept": 7.0,
+        "int_r_zero_cate_coefficients": 0,
+        "kps_kappa": 0.5,
+        "kps_nu0": -0.25,
+        "kps_nu1": 0.25,
+        "mechanism_seed": 2025,
+        "n_eval": 2048,
+        "n_obs": 512,
+        "n_rct_test": 64,
+        "n_rct_train": 128,
+        "n_rct_tune": 32,
+        "name": "paper:integrative_r_learner_multivariate_paper@o512_r128",
+        "noise_std": 1.0,
+        "paper_id": "integrative_r_learner_multivariate_paper",
+        "power_copula_intercept": 1.0,
+        "power_copula_treatment_coef": 2.5,
+        "power_omega": 0.5,
+        "power_u_distribution": "binary",
+        "quadrature_order": 31
+      },
+      "generator_version": "2.0.0"
+    },
+    "paper:integrative_r_learner_multivariate_paper@o512_r512": {
+      "config": {
+        "cornet_delta_rms": 2.0,
+        "cornet_outcome_norm": 10.0,
+        "cornet_sparse_ratio": 0.666,
+        "cvci_obs_propensity": 0.2,
+        "cvci_te_bias": 0.3,
+        "cvci_true_te": 0.5,
+        "d": 9,
+        "elastic_mean_x": 1.0,
+        "elastic_rct_selection_intercept": -4.5,
+        "elastic_tlocalpar": 2.0,
+        "int_r_cf": 0.75,
+        "int_r_confounding_strength": 2.5,
+        "int_r_rct_selection_intercept": 7.0,
+        "int_r_zero_cate_coefficients": 0,
+        "kps_kappa": 0.5,
+        "kps_nu0": -0.25,
+        "kps_nu1": 0.25,
+        "mechanism_seed": 2025,
+        "n_eval": 2048,
+        "n_obs": 512,
+        "n_rct_test": 64,
+        "n_rct_train": 512,
+        "n_rct_tune": 32,
+        "name": "paper:integrative_r_learner_multivariate_paper@o512_r512",
+        "noise_std": 1.0,
+        "paper_id": "integrative_r_learner_multivariate_paper",
+        "power_copula_intercept": 1.0,
+        "power_copula_treatment_coef": 2.5,
+        "power_omega": 0.5,
+        "power_u_distribution": "binary",
+        "quadrature_order": 31
+      },
+      "generator_version": "2.0.0"
+    }
+  },
+  "run_id": "fcd5c19787436e4a",
+  "schema_version": 1,
+  "scope": "prespecified full catalog study; 31 canonical presets, 4 OBS/RCT budget pairs, 64 independent sample seeds, fixed public recipes; explicit adapter applicability and heavy-tail inference limits",
+  "source": {
+    "aggregate_sha256": "56d2f7075fa128a6831f4969d332fccb135608a15c2408da7eaea71ab5a8d3a1",
+    "distribution": "obs-rct-benchmark",
+    "package_file_sha256": {
+      "__init__.py": "7ecfc3d0af8177e83b635635e02533a99c063d0e60005eac67b3105e3dde3c2a",
+      "adaptive.py": "e1e961a45e508684f75c546ec1d3adf92e2aff424e008e7b0486aa7113959005",
+      "adaptive_runner.py": "afecb6c75ab4f9e8c07a58b65edbacc22fac95bd59ff25c08c61b60a296302b9",
+      "cli.py": "39f14951a56b3a752f87081ceaec5cbf93228d5cb6b80a65e94904c8296c22ef",
+      "cornet.py": "3ccd76509d2965ea8451da9e279a7f3c8780873c5c24625f380d3c9b719b83bf",
+      "data.py": "616958669558c6ed274709b17d683f06c18b0f0606d7fcbc8a5485919f744573",
+      "datasets.py": "c05090977b6513bfced49baafad77340c113f631af15ea062b4f7f035496825a",
+      "evaluation.py": "b66a7c0dabdb0a31aa20ef70a1744c29da6007fea438ffba33e52e35796faca9",
+      "inputs.py": "be3d6e327cc092c33f465c1e14baae74fc9d5e2077e2511a4b293af3f899c0db",
+      "methods.py": "e32db3213bba4ece5429f0358eed3a402e84674a8bf53378648bec0319fe97bb",
+      "paper_dgp.py": "77bb899367e6ce8d12ee127b4ff6deb833215e90a707bb0f35c9aacf55f6a3f2",
+      "runner.py": "612be57cb8c26588aea0bdff4723f668edaaf8452838ecd3de9c78c7ed82eab8",
+      "sensitivity.py": "f684b08c65a129d43df6a1acfba36e43d71ee072e92e2fcfdaaf27de8a6e134f",
+      "structural_dgp.py": "49c94e6e5c6725d942a15a122344b03a3bd8174a131cbee0304f3a5e5994bdf4"
+    },
+    "version": "0.2.0a1"
+  },
+  "source_fingerprint": "859d60e4369e08a0b457e3a8e341d88310a3fcbf932fc1cec354c71349d8e61f"
+}

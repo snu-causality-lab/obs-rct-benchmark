@@ -180,7 +180,8 @@ def _shard_config(config: BenchmarkConfig, payload: dict) -> BenchmarkConfig:
     return shard
 
 
-def collect_records(config: BenchmarkConfig, runs: list[Path], *, require_full: bool = True) -> tuple[dict, list[dict]]:
+def collect_records(config: BenchmarkConfig, runs: list[Path], *, require_full: bool = True,
+                    identity_sink: dict | None = None) -> tuple[dict, list[dict]]:
     if not runs:
         raise ValueError("at least one shard is required")
     expected = expected_cells(config)
@@ -245,6 +246,17 @@ def collect_records(config: BenchmarkConfig, runs: list[Path], *, require_full: 
                            "methods": list(shard.methods), "requested_cells": len(cells),
                            "recorded_cells": len(seen), "manifest_sha256": file_hash(manifest_path),
                            "records_sha256": file_hash(records_path)})
+        if identity_sink is not None:
+            for name in ("source", "environment", "custom_methods", "empirical_inputs"):
+                if name in identity_sink and identity_sink[name] != manifest[name]:
+                    raise ValueError("authenticated producer identity differs across input manifests")
+                identity_sink[name] = manifest[name]
+            for name in ("external_methods", "resolved_scenarios"):
+                merged = identity_sink.setdefault(name, {})
+                for key, value in manifest[name].items():
+                    if key in merged and merged[key] != value:
+                        raise ValueError("authenticated producer controls differ across input manifests")
+                    merged[key] = value
     if require_full and (declared != expected or set(collected) != expected):
         raise ValueError("shards do not form the complete declared applicable catalog grid")
     return collected, provenance
@@ -321,12 +333,19 @@ def _number(value: float | None, digits: int = 5) -> str:
     return "unavailable" if value is None else f"{value:.{digits}g}"
 
 
-def _condition_report(scenarios: list, scores: list[dict], contrasts: list[dict]) -> str:
+def _condition_report(scenarios: list, scores: list[dict], contrasts: list[dict], *,
+                      family_status: dict | None = None) -> str:
     title = scenarios[0].kind + ":" + scenarios[0].id
     lines = ["# " + title, "", "All declared OBS/RCT budgets and methods are retained. "
              "Means describe successful runs with their coverage; N/A is a prospectively unsupported combination. "
-             "Intervals are pointwise and Holm decisions use the complete eligible cross-catalog family. "
+             "For incomplete rows, the reported mean, MCSE and interval describe successful fits only; "
+             "they are not full-grid performance estimates and assign no score to failed fits. "
+             "Intervals are pointwise and Holm decisions require the complete eligible cross-catalog family. "
              "The optional budget plot focuses on the two nonlinear RCT controls and official fusion recipes; all recipes appear in the table.", ""]
+    if family_status is not None and not family_status["complete"]:
+        lines += [f"**All {family_status['size']} eligible family-level Holm decisions are withheld:** "
+                  f"{family_status['incomplete']} eligible contrasts lack a successful pair at every requested seed. "
+                  "Complete individual pointwise intervals do not restore the withheld family-level inference.", ""]
     if inference_reason(scenarios[0]):
         lines += ["**Heavy-tailed descriptive setting:** " + HEAVY_TAIL_REASON,
                   "Sample median and interquartile range describe the realized replicate scores; they are not intervals for population mean risk.", ""]
@@ -376,7 +395,15 @@ def make_figure(scenarios: list, scores: list[dict], output: Path, *, paper_asse
             valid = [(scenario, lookup.get((scenario.key, method))) for scenario in selected]
             valid = [(scenario, row) for scenario, row in valid if row and row["applicable"] and row["mean"] is not None]
             if not valid:
-                ax.text(.02, .96 - .06 * displayed.index(method), labels[method] + ": N/A",
+                applicable = [row for _, row in [(scenario, lookup.get((scenario.key, method)))
+                                                 for scenario in selected]
+                              if row is not None and row["applicable"]]
+                if applicable:
+                    state = (f"0 successes; {sum(row['failed'] for row in applicable)} failed, "
+                             f"{sum(row['missing'] for row in applicable)} missing")
+                else:
+                    state = "N/A"
+                ax.text(.02, .96 - .06 * displayed.index(method), labels[method] + ": " + state,
                         transform=ax.transAxes, va="top", fontsize=8, color=colors[method])
                 continue
             x = [scenario.parameters["n_rct_train"] + scenario.parameters["n_rct_tune"] for scenario, _ in valid]
@@ -384,6 +411,13 @@ def make_figure(scenarios: list, scores: list[dict], output: Path, *, paper_asse
             for xvalue, (_, row) in zip(x, valid):
                 if row["ci95"] is not None:
                     ax.vlines(xvalue, *row["ci95"], color=colors[method])
+                if row["successful"] != row["expected"]:
+                    label = (f"{row['successful']}/{row['expected']}; "
+                             f"{row['failed']} failed, {row['missing']} missing")
+                    rightmost = xvalue == max(x)
+                    ax.annotate(label, (xvalue, row["mean"]),
+                                xytext=(-6 if rightmost else 6, 10), textcoords="offset points",
+                                ha="right" if rightmost else "left", fontsize=7, color=colors[method])
         ax.set_title(f"OBS {n_obs:,}")
         ax.set_xlabel("Available RCT labels (training + 32 reserved)")
         ax.set_ylabel("Target CATE MSE")
@@ -392,7 +426,10 @@ def make_figure(scenarios: list, scores: list[dict], output: Path, *, paper_asse
     axes[0, 0].legend(fontsize=8)
     suffix = "descriptive means; no mean-t intervals" if inference_reason(scenarios[0]) else "means and pointwise 95% seed intervals"
     fig.suptitle(scenarios[0].kind + ":" + scenarios[0].id + "\n" + suffix, fontsize=11)
-    fig.tight_layout(rect=(0, 0, 1, .87))
+    fig.text(.5, .015, "Incomplete points show successes/expected and failed/missing counts.\n"
+             "Their means and intervals condition on fit success, not full-grid performance.",
+             ha="center", va="bottom", fontsize=7)
+    fig.tight_layout(rect=(0, .11, 1, .87))
     fig.savefig(output / "budget_curves.svg", metadata={"Date": None})
     if paper_assets:
         fig.savefig(output / "budget_curves.pdf", metadata={"CreationDate": None})
@@ -403,9 +440,21 @@ def write_analysis(config: BenchmarkConfig, runs: list[Path], output: Path, *,
                    paper_assets: bool = False, no_plots: bool = False) -> dict:
     if output.exists() and any(output.iterdir()):
         raise ValueError("analysis output must be a fresh directory")
-    records, inputs = collect_records(config, runs)
+    producer_identity = {}
+    records, inputs = collect_records(config, runs, identity_sink=producer_identity)
+    if producer_identity["resolved_scenarios"] != resolved_scenarios(config):
+        raise ValueError("producer identities do not cover all declared resolved controls")
+    producer_identity.update(schema_version=1, normalized_configuration=config.payload(),
+                             normalized_config_sha256=config.config_hash, authenticated_inputs=inputs,
+                             scope="Exact identity fields merged from all authenticated input manifests; no data arrays or fitted models are included")
     scores, contrasts, coverage = analyze_records(config, records)
+    family_status = {"size": coverage["mean_t_family_size"],
+                     "complete": coverage["mean_t_family_complete"],
+                     "incomplete": sum(row["inference_eligible"] and not row["complete"]
+                                       for row in contrasts)}
     output.mkdir(parents=True, exist_ok=True)
+    (output / "producer_identity.json").write_text(json.dumps(
+        producer_identity, indent=2, sort_keys=True, allow_nan=False) + "\n")
     _write_csv(output / "condition_scores.csv", scores)
     _write_csv(output / "primary_contrasts.csv", contrasts)
     _write_csv(output / "not_applicable.csv", not_applicable_rows(config))
@@ -424,7 +473,8 @@ def write_analysis(config: BenchmarkConfig, runs: list[Path], output: Path, *,
                   "conditions": [scenario.key for scenario in scenarios], "scores": selected_scores,
                   "primary_contrasts": selected_contrasts, "inference_note": inference_reason(scenarios[0])}
         (folder / "summary.json").write_text(json.dumps(detail, indent=2, sort_keys=True, allow_nan=False) + "\n")
-        (folder / "README.md").write_text(_condition_report(scenarios, selected_scores, selected_contrasts))
+        (folder / "README.md").write_text(_condition_report(
+            scenarios, selected_scores, selected_contrasts, family_status=family_status))
         _write_csv(folder / "replicate_scores.csv", [
             {"scenario": scenario.key, "seed": seed, "method": method,
              "status": "missing" if records.get((scenario.key, seed, method)) is None else records[(scenario.key, seed, method)]["status"],
@@ -445,6 +495,7 @@ def write_analysis(config: BenchmarkConfig, runs: list[Path], output: Path, *,
                                     "reason": HEAVY_TAIL_REASON,
                                     "eligible_family": "two-sided paired mean-t tests; joint Holm at .05; incomplete eligible family withholds every decision"},
                "analysis_source_sha256": file_hash(Path(__file__)),
+               "producer_identity_file": "producer_identity.json",
                "scope": "Complete declared catalog and budget grid; inspected mechanisms, fixed recipes, no universal ranking or unseen-mechanism claim",
                "prediction_replay": "Not performed by aggregation; see separate reproducibility checker"}
     (output / "summary.json").write_text(json.dumps(summary, indent=2, sort_keys=True, allow_nan=False) + "\n")
@@ -458,9 +509,15 @@ def write_analysis(config: BenchmarkConfig, runs: list[Path], output: Path, *,
              "The eligible family uses joint Holm adjustment at .05. M11's canonical Student-t(3) noise is retained, with no mean-t MCSE/CI/p-value. "
              "Its replicate means and empirical quantiles are descriptive, not a substitute for finite-variance inference.", "",
              "| Preset | Conditions | Inference | Complete report |", "| --- | ---: | --- | --- |"]
+    if not family_status["complete"]:
+        lines[2:2] = [f"**All {family_status['size']} eligible family-level Holm decisions are withheld.** "
+                      f"{family_status['incomplete']} eligible contrasts lack complete successful paired coverage. "
+                      "No smaller family is selected, and no failed case is assigned a favorable score.", ""]
     lines.extend(f"| `{item['preset']}` | {item['conditions']} | {item['inference']} | [Results]({item['path']}/README.md) |" for item in per_preset)
     lines.extend(["", "[All condition scores](condition_scores.csv), [all supported primary contrasts](primary_contrasts.csv), "
                   "[declared unsupported combinations](not_applicable.csv) and [input/config/source bindings](summary.json). "
+                  "[Producer identity](producer_identity.json) includes the actual source-file hashes, numerical environment, "
+                  "upstream implementations and resolved controls merged from the authenticated input manifests. "
                   "Aggregation authenticates recorded artifacts; it does not independently refit predictions. "
                   "The design is in `docs/CATALOG_STUDY.md`.", ""])
     (output / "README.md").write_text("\n".join(lines))
