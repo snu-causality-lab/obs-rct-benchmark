@@ -1,6 +1,6 @@
 # v0.3 optional native estimators
 
-The package now exposes three additional fixed recipes. Native execution checks passed on GSDS: 304 tests, direct-source agreement and fresh repeats for all three recipes, independent analytic checks, and six bounded cost profiles. These adapters have not been included in the frozen v0.2 catalog and add no comparative performance result. Exact evidence is in [native_adapter_admission](../results/native_adapter_admission/README.md). The [method inventory](v03_methods.toml) records scientific scope; this document records executable recipes.
+The 0.3.0a1 admission added three fixed recipes. Version0.3.0a2 adds the source-restricted GP controls specified by the [controlled pilot](GP_SOURCE_PILOT.md); the original admission evidence below remains tied to its own source snapshot. Native execution checks passed on GSDS: 304 tests, direct-source agreement and fresh repeats for all three recipes, independent analytic checks, and six bounded cost profiles. These adapters have not been included in the frozen v0.2 catalog and add no comparative performance result. Exact evidence is in [native_adapter_admission](../results/native_adapter_admission/README.md). The [method inventory](v03_methods.toml) records scientific scope; this document records executable recipes.
 
 | Method ID | Recipe | Native target and qualification |
 | --- | --- | --- |
@@ -65,7 +65,7 @@ Even `rho=0` still allows OBS labels to fit shared GP hyperparameters. It is not
 
 The prospective checks require deterministic direct-source/wrapper agreement at absolute tolerance 1e-10 and relative tolerance 1e-8, repeated fresh fits, and independently derived analytic identities at 1e-12. Tiny fitted examples test API fidelity and reproducibility; they do not establish CATE accuracy or a method ranking. All direct-source/wrapper and repeated-fit prediction discrepancies were zero on the declared fixtures, including changes to unused tuning labels and target-reference rows. Independent GP covariance/posterior checks had maximum absolute error 1.11e-15; the native R hand-coefficient map was exact. The separate fitted d2 polynomial/standardization checks had maximum prediction-map error 2.22e-16. These checks establish the stated source-call and target-map scope, not paper-table reproduction.
 
-The package version is now `0.3.0a1`. Replay v0.2 results with their recorded producer source and environment. Adding optional methods changes package source fingerprints, so old result trees must not be resumed under this source tree.
+The original admission used package `0.3.0a1`; the source-control pilot uses `0.3.0a2`. Replay v0.2 results with their recorded producer source and environment. Adding optional methods changes package source fingerprints, so old result trees must not be resumed under this source tree.
 
 
 ## Measured execution costs

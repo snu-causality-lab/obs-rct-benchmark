@@ -375,3 +375,241 @@ def test_only_exact_gpy_paramz_aliases_with_canonical_identity_are_accepted(
         monkeypatch.delitem(sys.modules, alias_name)
         monkeypatch.delitem(sys.modules, canonical_name)
         assert adapter._numerical_provenance() == evidence
+
+
+@pytest.mark.parametrize("source", [None, "full", "both", "trial", 1, True, ["obs"]])
+def test_source_control_rejects_ambiguous_source(source):
+    with pytest.raises(ValueError, match="source must be"):
+        adapter.CausalICMSourceControl(source=source)
+
+
+@pytest.mark.parametrize("source", ["rct", "obs"])
+def test_source_control_excludes_rows_and_preserves_trial_prediction(monkeypatch, source):
+    calls, queries = [], []
+
+    class Model:
+        def __init__(self, arm):
+            self.arm = arm
+
+        def predict_noiseless(self, x):
+            queries.append(x.copy())
+            return self.arm * (2 + x[:, :1]) + 1000 * x[:, -1:], None
+
+    def native(**kwargs):
+        calls.append(kwargs)
+        return Model(0), Model(1)
+
+    monkeypatch.setattr(adapter, "_official_icm", lambda: native)
+    monkeypatch.setattr(adapter, "causal_icm_provenance", lambda: {"verified": True})
+    training, query = _training(), np.array([[3., 7., 11.], [-2., 4., 5.]])
+    included = training.rct_train if source == "rct" else training.obs_train
+    method = adapter.CausalICMSourceControl(source=source, rho=.5)
+    result = method.fit_predict(training, query, seed=11)
+    np.testing.assert_array_equal(result, 2 + query[:, 0])
+    assert result.shape == (2,) and result.dtype == np.float64
+    assert len(calls) == 1
+    passed = calls[0]
+    selected, excluded = ("E", "O") if source == "rct" else ("O", "E")
+    for field in ("X", "T", "Y"):
+        actual = passed[f"{field}_{selected}"]
+        expected = getattr(included, field)
+        np.testing.assert_array_equal(actual, expected)
+        assert not np.shares_memory(actual, expected)
+        assert passed[f"{field}_{excluded}"].shape == ((0, included.d) if field == "X" else (0,))
+    assert (passed["r"], passed["ID"], passed["AD"], passed["rho"]) == (2, 3, [0, 1, 2], .5)
+    for x in queries:
+        np.testing.assert_array_equal(x[:, :-1], query)
+        np.testing.assert_array_equal(x[:, -1], 0)
+    access = method.provenance_["fitting_sources"]
+    assert access[source] == {"availability": "included", "fit_rows": 6,
+                              "arm_rows": {"0": 3, "1": 3}}
+    assert access["obs" if source == "rct" else "rct"] == {
+        "availability": "not_accessed", "fit_rows": 0, "arm_rows": {"0": 0, "1": 0}}
+    assert method.provenance_["status"] == "completed"
+    assert method.provenance_["prediction_source"] == 0
+
+
+@pytest.mark.parametrize("source", ["rct", "obs"])
+def test_source_control_does_not_read_excluded_source_or_other_roles(monkeypatch, source):
+    calls = []
+
+    def native(**kwargs):
+        calls.append(kwargs)
+        value = sum(np.sum(kwargs[k]) for k in ("X_E", "X_O", "Y_E", "Y_O"))
+        return tuple(SimpleNamespace(predict_noiseless=lambda x, a=a: (
+            np.full((len(x), 1), a * value), None)) for a in (0, 1))
+
+    monkeypatch.setattr(adapter, "_official_icm", lambda: native)
+    monkeypatch.setattr(adapter, "causal_icm_provenance", lambda: {"verified": True})
+    training = _training()
+    excluded_field = "obs_train" if source == "rct" else "rct_train"
+    excluded = getattr(training, excluded_field)
+    changed_sample = replace(excluded, X=excluded.X + 10000,
+                             T=np.zeros(excluded.n), Y=excluded.Y - 100000)
+    changed = replace(training, **{excluded_field: changed_sample})
+    query = np.zeros((2, 3))
+    first = adapter.CausalICMSourceControl(source).fit_predict(training, query, seed=7)
+    second = adapter.CausalICMSourceControl(source).fit_predict(changed, query, seed=7)
+    np.testing.assert_array_equal(first, second)
+
+    class Unreadable:
+        def __getattribute__(self, name):
+            raise AssertionError(f"excluded role was accessed: {name}")
+
+    # Deliberately poison an otherwise validated view to test adapter access,
+    # including dimensions and propensities, independently of its constructor.
+    for field in (excluded_field, "rct_tune", "target_reference"):
+        object.__setattr__(changed, field, Unreadable())
+    third = adapter.CausalICMSourceControl(source).fit_predict(changed, query, seed=7)
+    np.testing.assert_array_equal(first, third)
+    assert len(calls) == 3
+    for name in calls[0]:
+        np.testing.assert_array_equal(calls[0][name], calls[1][name])
+        np.testing.assert_array_equal(calls[0][name], calls[2][name])
+
+
+@pytest.mark.parametrize("source", ["rct", "obs"])
+@pytest.mark.parametrize("rho", [0., .5, 1.])
+def test_source_control_uses_row_exclusion_at_every_rho(monkeypatch, source, rho):
+    calls = []
+
+    def native(**kwargs):
+        calls.append(kwargs)
+        return tuple(SimpleNamespace(predict_noiseless=lambda x: (
+            np.zeros((len(x), 1)), None)) for _ in (0, 1))
+
+    monkeypatch.setattr(adapter, "_official_icm", lambda: native)
+    monkeypatch.setattr(adapter, "causal_icm_provenance", lambda: {"verified": True})
+    method = adapter.CausalICMSourceControl(source=source, rho=rho)
+    method.fit_predict(_training(), np.zeros((2, 3)), seed=1)
+    assert calls[0]["rho"] == rho
+    assert len(calls[0]["Y_O" if source == "rct" else "Y_E"]) == 0
+    assert method.provenance_["rct_only_by_row_exclusion"] == (source == "rct")
+
+
+@pytest.mark.parametrize("source", ["rct", "obs"])
+def test_source_control_validates_only_included_arm_and_query_contract(monkeypatch, source):
+    monkeypatch.setattr(adapter, "_official_icm", lambda: pytest.fail("native code loaded"))
+    method = adapter.CausalICMSourceControl(source)
+    with pytest.raises(TypeError, match="TrainingView"):
+        method.fit_predict(object(), np.zeros((2, 3)), seed=1)
+    training = _training()
+    included_field = "rct_train" if source == "rct" else "obs_train"
+    selected = getattr(training, included_field)
+    changed = replace(training, **{included_field: replace(selected, T=np.zeros(selected.n))})
+    with pytest.raises(ValueError, match="both treatment arms"):
+        method.fit_predict(changed, np.zeros((2, 3)), seed=1)
+    with pytest.raises(ValueError, match="included covariates"):
+        method.fit_predict(training, np.zeros((2, 4)), seed=1)
+    for seed in (-1, 2**32, True, 1.5):
+        with pytest.raises(ValueError, match="seed"):
+            method.fit_predict(training, np.zeros((2, 3)), seed=seed)
+
+
+@pytest.mark.parametrize("source", ["rct", "obs"])
+@pytest.mark.parametrize("failure", [False, True])
+def test_source_control_restores_rng_even_if_loading_or_fitting_mutates_it(monkeypatch, source, failure):
+    def native(**kwargs):
+        value = np.random.random() + random.random()
+        if failure:
+            raise RuntimeError("synthetic control failure")
+        return tuple(SimpleNamespace(predict_noiseless=lambda x, a=a: (
+            np.full((len(x), 1), a * value), None)) for a in (0, 1))
+
+    def load():
+        np.random.random()
+        random.random()
+        return native
+
+    monkeypatch.setattr(adapter, "_official_icm", load)
+    monkeypatch.setattr(adapter, "causal_icm_provenance", lambda: {"verified": True})
+    np_state, py_state = np.random.get_state(), random.getstate()
+    method, training, query = adapter.CausalICMSourceControl(source), _training(), np.zeros((2, 3))
+    if failure:
+        with pytest.raises(RuntimeError, match="synthetic control failure"):
+            method.fit_predict(training, query, seed=17)
+        assert method.provenance_["status"] == "failed"
+        assert method.provenance_["error_type"] == "RuntimeError"
+    else:
+        first = method.fit_predict(training, query, seed=17)
+        np.testing.assert_array_equal(first, method.fit_predict(training, query, seed=17))
+    restored = np.random.get_state()
+    assert restored[0] == np_state[0] and restored[2:] == np_state[2:]
+    np.testing.assert_array_equal(restored[1], np_state[1])
+    assert random.getstate() == py_state
+
+
+def test_source_control_load_failure_restores_rng_and_retains_attempt(monkeypatch):
+    def load():
+        np.random.random()
+        random.random()
+        raise ImportError("synthetic optional dependency failure")
+
+    monkeypatch.setattr(adapter, "_official_icm", load)
+    np_state, py_state = np.random.get_state(), random.getstate()
+    method = adapter.CausalICMSourceControl("rct")
+    with pytest.raises(ImportError, match="synthetic optional"):
+        method.fit_predict(_training(), np.zeros((2, 3)), seed=3)
+    restored = np.random.get_state()
+    assert restored[0] == np_state[0] and restored[2:] == np_state[2:]
+    np.testing.assert_array_equal(restored[1], np_state[1])
+    assert random.getstate() == py_state
+    assert method.provenance_["status"] == "failed"
+    assert method.provenance_["error_type"] == "ImportError"
+    assert method.provenance_["fitting_sources"]["obs"]["availability"] == "not_accessed"
+
+
+@pytest.mark.parametrize("source", ["rct", "obs"])
+@pytest.mark.parametrize("bad_mean,error", [
+    (np.zeros(2), ValueError), (np.zeros((1, 1)), ValueError),
+    (np.full((2, 1), np.nan), FloatingPointError),
+])
+def test_source_control_predictions_fail_closed(monkeypatch, source, bad_mean, error):
+    model = SimpleNamespace(predict_noiseless=lambda x: (bad_mean, None))
+    monkeypatch.setattr(adapter, "_official_icm", lambda: lambda **kwargs: (model, model))
+    monkeypatch.setattr(adapter, "causal_icm_provenance", lambda: {"verified": True})
+    method = adapter.CausalICMSourceControl(source)
+    with pytest.raises(error):
+        method.fit_predict(_training(), np.zeros((2, 3)), seed=1)
+    assert method.provenance_["status"] == "failed"
+
+
+@pytest.mark.parametrize("source", ["rct", "obs"])
+def test_source_control_single_sample_matches_training_view_delegation(monkeypatch, source):
+    calls = []
+
+    def native(**kwargs):
+        calls.append(kwargs)
+        value = sum(np.sum(kwargs[name]) for name in ("X_E", "X_O", "Y_E", "Y_O"))
+        return tuple(SimpleNamespace(predict_noiseless=lambda x, a=a: (
+            np.full((len(x), 1), a * value), None)) for a in (0, 1))
+
+    monkeypatch.setattr(adapter, "_official_icm", lambda: native)
+    monkeypatch.setattr(adapter, "causal_icm_provenance", lambda: {"verified": True})
+    training, query = _training(), np.zeros((2, 3))
+    included = training.rct_train if source == "rct" else training.obs_train
+    direct, wrapped = adapter.CausalICMSourceControl(source), adapter.CausalICMSourceControl(source)
+    np.testing.assert_array_equal(
+        direct.fit_predict_sample(included, query, seed=11),
+        wrapped.fit_predict(training, query, seed=11),
+    )
+    assert direct.provenance_ == wrapped.provenance_
+    for name in calls[0]:
+        np.testing.assert_array_equal(calls[0][name], calls[1][name])
+
+
+@pytest.mark.parametrize("source", ["rct", "obs"])
+def test_source_control_single_sample_rejects_wrong_type_source_and_role(monkeypatch, source):
+    monkeypatch.setattr(adapter, "_official_icm", lambda: pytest.fail("native code loaded"))
+    training, query = _training(), np.zeros((2, 3))
+    included = training.rct_train if source == "rct" else training.obs_train
+    other = training.obs_train if source == "rct" else training.rct_train
+    method = adapter.CausalICMSourceControl(source)
+    for value in (training, object(), np.zeros((2, 3))):
+        with pytest.raises(TypeError, match="SourceSample"):
+            method.fit_predict_sample(value, query, seed=1)
+    with pytest.raises(ValueError, match="declared source"):
+        method.fit_predict_sample(other, query, seed=1)
+    for role in ("rct_tune", "rct_test", "eval", "target_reference", "unknown"):
+        with pytest.raises(ValueError, match="fitting role"):
+            method.fit_predict_sample(replace(included, role=role), query, seed=1)

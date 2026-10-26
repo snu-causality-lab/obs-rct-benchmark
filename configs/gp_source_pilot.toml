@@ -1,0 +1,24 @@
+schema_version = 1
+scope = "controlled-development / fixed native GP source-access pilot / descriptive"
+description = "Same trial target and native GP; full versus RCT-only and OBS-conditioned trial-task starting prediction. Not an unseen-mechanism or source-paper reproduction."
+generator = "paired_gp_source_v1"
+d = 2
+n_obs = 512
+rct_budgets = [128, 512]
+n_eval = 1024
+deltas = [0, 1, 2]
+seeds = [
+  30000, 30001, 30002, 30003, 30004, 30005, 30006, 30007,
+  30008, 30009, 30010, 30011, 30012, 30013, 30014, 30015,
+  30016, 30017, 30018, 30019, 30020, 30021, 30022, 30023,
+  30024, 30025, 30026, 30027, 30028, 30029, 30030, 30031,
+]
+rho = 0.5
+fit_timeout_seconds = 180
+tune_role = "first_two_training_rows_alias"
+inference = "pointwise_paired_t_descriptive"
+
+[methods]
+full = "causal_icm_fixed"
+rct_only = "causal_icm_rct_only"
+obs_start = "causal_icm_obs_start"

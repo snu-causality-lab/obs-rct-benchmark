@@ -316,6 +316,7 @@ def method_names() -> tuple[str, ...]:
         "rct_t_extra_trees", "obs_t_extra_trees", "naive_pooled_t_extra_trees",
         "rct_dr_ridge", "rct_dr_extra_trees", "datafusionppi", "cornet_official",
         "integrative_r_linear", "integrative_r_quadratic", "causal_icm_fixed",
+        "causal_icm_rct_only", "causal_icm_obs_start",
         *sorted(_FACTORIES),
     )
 
@@ -360,6 +361,13 @@ def make_method(name: str, **options: Any) -> CATEMethod:
         from .causal_icm import OfficialCausalICM
 
         return OfficialCausalICM(**options)
+    if name in {"causal_icm_rct_only", "causal_icm_obs_start"}:
+        if "source" in options:
+            raise ValueError("Causal-ICM fitting source is fixed by the method ID")
+        from .causal_icm import CausalICMSourceControl
+
+        source = "rct" if name == "causal_icm_rct_only" else "obs"
+        return CausalICMSourceControl(source=source, **options)
     if name.startswith("rct_dr_"):
         learner = name.removeprefix("rct_dr_")
         if name not in method_names():

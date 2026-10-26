@@ -102,15 +102,16 @@ def test_methods_reject_a_simulation_object_in_place_of_training_view():
             method.fit_predict(object(), np.zeros((2, 2)), seed=0)
 
 
-def test_builtin_registry_has_thirteen_recipes_and_preserves_original_names():
+def test_builtin_registry_has_fifteen_recipes_and_preserves_original_names():
     expected = {
         "rct_t_ridge", "obs_t_ridge", "naive_pooled_t_ridge",
         "rct_t_extra_trees", "obs_t_extra_trees", "naive_pooled_t_extra_trees",
         "rct_dr_ridge", "rct_dr_extra_trees", "datafusionppi", "cornet_official",
         "integrative_r_linear", "integrative_r_quadratic", "causal_icm_fixed",
+        "causal_icm_rct_only", "causal_icm_obs_start",
     }
     assert set(methods.method_names()) - set(methods.custom_provenance()) == expected
-    assert len(expected) == 13
+    assert len(expected) == 15
 
 
 @pytest.mark.parametrize("name,basis", [
@@ -135,6 +136,19 @@ def test_causal_icm_recipe_forwards_native_rho_and_declared_columns():
     assert estimator.rho == .3 and estimator.effect_modifier_columns == (2, 0)
 
 
+@pytest.mark.parametrize("name,source", [
+    ("causal_icm_rct_only", "rct"), ("causal_icm_obs_start", "obs"),
+])
+def test_causal_control_ids_exclude_source_override(name, source):
+    from obs_rct_benchmark.causal_icm import CausalICMSourceControl
+
+    estimator = methods.make_method(name, rho=.5)
+    assert isinstance(estimator, CausalICMSourceControl)
+    assert estimator.source == source and estimator.rho == .5
+    with pytest.raises(ValueError, match="source is fixed"):
+        methods.make_method(name, source="obs" if source == "rct" else "rct")
+
+
 def test_new_recipe_construction_in_fresh_process_imports_no_optional_dependencies():
     # A clean interpreter makes this independent of test collection/order and
     # catches constructor-time probes even if another test already imported GPy.
@@ -152,7 +166,7 @@ def reject_probe(*args, **kwargs):
     raise AssertionError("external process during construction")
 subprocess.run = subprocess.check_output = reject_probe
 from obs_rct_benchmark.methods import make_method
-for name in ("integrative_r_linear", "integrative_r_quadratic", "causal_icm_fixed"):
+for name in ("integrative_r_linear", "integrative_r_quadratic", "causal_icm_fixed", "causal_icm_rct_only", "causal_icm_obs_start"):
     assert callable(make_method(name).fit_predict)
 assert not any(name.split(".")[0] in blocked for name in sys.modules)
 '''

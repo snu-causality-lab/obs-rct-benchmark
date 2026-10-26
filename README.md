@@ -31,6 +31,8 @@ Generic baselines include RCT-only, OBS-only and naive pooled T-learners, plus a
 
 The [empirical-data interface](docs/DATASETS.md#local-file-adapters) reads separately obtained files and defines new semi-synthetic OBS/RCT problems; it does not preserve the source experiment's treatment assignments or noisy outcomes. The [Γ/Γ(X) factory](docs/SENSITIVITY.md) preserves a specified marginal propensity and checks the sensitivity bound at evaluated covariates. Configuration files support constant and logistic Γ profiles; the Python API accepts pointwise callbacks. The factory implements one configurable construction within the marginal sensitivity model.
 
+The [controlled GP source-access pilot](docs/GP_SOURCE_PILOT.md) specifies RCT-only, OBS-conditioned trial starting prediction, and OBS+RCT with the same native GP. Version **0.3.0a2** adds two source controls (15 registered recipes). Native source/data preflight and 371 tests pass; a separately configured CorNet integration test also passes. Comparative pilot fitting has not started at this protocol publication.
+
 ## References
 
 These research sources have different roles in the benchmark. A translated DGP does not imply that the paper's estimator is implemented.

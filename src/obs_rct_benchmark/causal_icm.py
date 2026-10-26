@@ -24,7 +24,7 @@ from typing import Any
 
 import numpy as np
 
-from .data import TrainingView
+from .data import SourceSample, TrainingView
 
 
 CAUSAL_ICM_REVISION = "0f0c6ca424b7ca44b84649ca072384b9933b2afe"
@@ -321,3 +321,121 @@ class OfficialCausalICM:
         if not np.isfinite(prediction).all():
             raise FloatingPointError("Causal-ICM produced nonfinite CATE predictions")
         return np.asarray(prediction, dtype=np.float64)
+
+
+@dataclass(frozen=True)
+class CausalICMSourceControl:
+    """Condition the same native trial-task GP on exactly one fitting source.
+
+    ``source="rct"`` passes no observational rows to native optimization.
+    ``source="obs"`` is the trial-task prediction conditional on OBS alone:
+    both treatment models are still queried at task0, preserving the fixed
+    borrowing prior. It is not the task1 observational contrast and does not
+    identify trial CATE from observational data without model assumptions.
+
+    Both controls use every included covariate. They retain the rank-two RBF
+    x source kernel, fixed native W/kappa, Gaussian noise and optimizer defaults.
+    The native function accepts correctly shaped empty arrays for the excluded
+    source. Its values, shape, treatment arms and propensities are never read.
+    Tuning labels, target-reference rows and query covariates never enter fit.
+    ``fit_predict_sample`` accepts only the included fitting sample; the common
+    ``fit_predict`` interface delegates to it for runner compatibility.
+    """
+
+    source: str
+    rho: float = 0.5
+
+    def __post_init__(self) -> None:
+        if not isinstance(self.source, str) or self.source not in {"rct", "obs"}:
+            raise ValueError("source must be rct or obs")
+        # Reuse the existing scalar contract without loading native code.
+        OfficialCausalICM(rho=self.rho)
+
+    def fit_predict(self, training: TrainingView, eval_X, *, seed: int):
+        object.__setattr__(self, "provenance_", None)
+        if not isinstance(training, TrainingView):
+            raise TypeError("methods require a TrainingView")
+        # Compatibility with the common runner; the pilot uses the single-
+        # sample entry point below so excluded real labels never cross its API.
+        included = training.rct_train if self.source == "rct" else training.obs_train
+        return self.fit_predict_sample(included, eval_X, seed=seed)
+
+    def fit_predict_sample(self, included: SourceSample, eval_X, *, seed: int):
+        """Fit using only the declared fitting sample, without another source.
+
+        Source and role are both checked: tuning/test/evaluation samples cannot
+        enter this path merely because they use the same numeric array schema.
+        """
+        object.__setattr__(self, "provenance_", None)
+        if not isinstance(included, SourceSample):
+            raise TypeError("source controls require a SourceSample")
+        if included.source != self.source or included.role != self.source + "_train":
+            raise ValueError("sample must have the declared source and its fitting role")
+        if (isinstance(seed, bool) or not isinstance(seed, (int, np.integer))
+                or not 0 <= seed < 2**32):
+            raise ValueError("seed must be an integer in [0, 2**32)")
+        query = np.asarray(eval_X, dtype=np.float64)
+        if (query.ndim != 2 or query.shape[0] == 0 or query.shape[1] != included.d
+                or not np.isfinite(query).all()):
+            raise ValueError("eval_X must be a nonempty finite matrix matching the included covariates")
+        if set(np.unique(included.T)) != {0.0, 1.0}:
+            raise ValueError("Causal-ICM requires both treatment arms in the included source")
+        access = {name: {"availability": "not_accessed", "fit_rows": 0,
+                         "arm_rows": {"0": 0, "1": 0}} for name in ("rct", "obs")}
+        access[self.source] = {
+            "availability": "included", "fit_rows": int(included.n),
+            "arm_rows": {str(arm): int(np.count_nonzero(included.T == arm)) for arm in (0, 1)},
+        }
+        record = {
+            "recipe": "source_restricted_native_trial_task_gp", "source": self.source,
+            "rho": float(self.rho), "supplied_seed": int(seed), "rank": 2,
+            "effect_modifier_columns": list(range(included.d)),
+            "source_encoding": {"rct": 0, "obs": 1}, "fitting_sources": access,
+            "prediction_source": 0, "prediction": "treated_mean_minus_control_mean",
+            "known_propensity": "not_used", "rct_tune": "not_accessed",
+            "target_reference": "not_accessed", "excluded_source": "empty_native_arrays",
+            "rct_only_by_row_exclusion": self.source == "rct",
+            "noise": "native_GPy_Gaussian_noise_optimized",
+            "optimization": "native_GPy_optimize_defaults_no_restarts", "status": "preparing",
+        }
+        object.__setattr__(self, "provenance_", record)
+        numpy_state, python_state = np.random.get_state(), random.getstate()
+        try:
+            native = _official_icm()
+            record["native_source"] = causal_icm_provenance()
+            record["status"] = "fitting"
+            np.random.seed(int(seed))
+            random.seed(int(seed))
+            empty_X = np.empty((0, included.d), dtype=np.float64)
+            empty_vector = np.empty(0, dtype=np.float64)
+            included_X = np.array(included.X, copy=True)
+            included_T, included_Y = np.array(included.T, copy=True), np.array(included.Y, copy=True)
+            m0, m1 = native(
+                X_E=included_X if self.source == "rct" else empty_X.copy(),
+                X_O=included_X if self.source == "obs" else empty_X.copy(),
+                T_E=included_T if self.source == "rct" else empty_vector.copy(),
+                T_O=included_T if self.source == "obs" else empty_vector.copy(),
+                Y_E=included_Y if self.source == "rct" else empty_vector.copy(),
+                Y_O=included_Y if self.source == "obs" else empty_vector.copy(),
+                r=2, ID=included.d, AD=list(range(included.d)), rho=float(self.rho),
+            )
+            native_query = np.column_stack((query, np.zeros(query.shape[0])))
+            means = []
+            for model in (m0, m1):
+                mean = np.asarray(model.predict_noiseless(native_query.copy())[0], dtype=np.float64)
+                if mean.shape != (query.shape[0], 1):
+                    raise ValueError("Causal-ICM native means must have shape (n_query, 1)")
+                if not np.isfinite(mean).all():
+                    raise FloatingPointError("Causal-ICM produced nonfinite native means")
+                means.append(mean[:, 0])
+            prediction = means[1] - means[0]
+            if not np.isfinite(prediction).all():
+                raise FloatingPointError("Causal-ICM produced nonfinite CATE predictions")
+            record["status"] = "completed"
+            return np.asarray(prediction, dtype=np.float64)
+        except BaseException as exc:
+            record.update(status="failed", error_type=type(exc).__name__)
+            raise
+        finally:
+            np.random.set_state(numpy_state)
+            random.setstate(python_state)
