@@ -1,6 +1,8 @@
 # v0.3 optional native estimators
 
-The 0.3.0a1 admission added three fixed recipes. Version0.3.0a2 adds the source-restricted GP controls specified by the [controlled pilot](GP_SOURCE_PILOT.md); the original admission evidence below remains tied to its own source snapshot. Native execution checks passed on GSDS: 304 tests, direct-source agreement and fresh repeats for all three recipes, independent analytic checks, and six bounded cost profiles. These adapters have not been included in the frozen v0.2 catalog and add no comparative performance result. Exact evidence is in [native_adapter_admission](../results/native_adapter_admission/README.md). The [method inventory](v03_methods.toml) records scientific scope; this document records executable recipes.
+Version **0.3.0a2** provides the three native recipes below and two source-restricted GP controls. Its separately frozen [controlled pilot](../results/gp_source_pilot/SCIENTIFIC_RESULT.md) completes 576 fits across six conditions and 32 paired seeds: OBS addition helps the fixed GP at discrepancy levels 0/1 and hurts it at level 2 relative to the matched RCT-only GP at both trial budgets. The broader v0.3 campaign remains pending.
+
+The original **0.3.0a1 admission** remains tied to its own source snapshot: 304 GSDS tests, direct-source agreement and fresh repeats for all three native recipes, independent analytic checks, and six bounded cost profiles. Those admission checks do not establish comparative accuracy. Exact evidence is in [native_adapter_admission](../results/native_adapter_admission/README.md); the frozen v0.2 catalog is unchanged. The [method inventory](v03_methods.toml) records scientific scope; this document records executable recipes.
 
 | Method ID | Recipe | Native target and qualification |
 | --- | --- | --- |
@@ -59,13 +61,13 @@ The numerical lock is NumPy 1.26.4, SciPy 1.12.0, GPy 1.13.2 and paramz 0.9.6. G
 
 Both treatment models are queried with source task 0 (RCT); task 1 denotes OBS. Selected effect-modifier columns are an explicit model restriction. A reduced-X fit is rejected when known RCT assignment probabilities vary across rows, because dropping an assignment covariate can change the conditional arm contrast. The all-X default has no such reduction. No simulation truth chooses columns or borrowing values.
 
-Even `rho=0` still allows OBS labels to fit shared GP hyperparameters. It is not an RCT-only control. A matched trial-only GP must actually exclude OBS fitting rows. Native GP matrix operations grow with source sample size; bounded cost measurements are required before a full catalog run.
+Even `rho=0` still allows OBS labels to fit shared GP hyperparameters. It is not an RCT-only control. Version 0.3.0a2 implements `causal_icm_rct_only`, which excludes OBS rows from both fitting and shared-hyperparameter optimization, and `causal_icm_obs_start`, which excludes RCT rows and queries the trial task 0. Each control can receive only its included `SourceSample`; the pilot uses that source-restricted API. The OBS starting prediction is prior-shrunken by `rho/(1+kappa)` relative to the same fitted GP's OBS-task mean (`kappa=1e-9`), not the unshrunk OBS contrast or an optimal OBS-only estimate. Both source controls use every observed covariate and retain the same native rank 2 GP and optimization defaults. See the [frozen source-access specification](GP_SOURCE_PILOT.md). Native GP matrix operations grow with source sample size; the pilot's resource measurements do not establish feasibility of a full catalog run.
 
 ## Reproduction status
 
 The prospective checks require deterministic direct-source/wrapper agreement at absolute tolerance 1e-10 and relative tolerance 1e-8, repeated fresh fits, and independently derived analytic identities at 1e-12. Tiny fitted examples test API fidelity and reproducibility; they do not establish CATE accuracy or a method ranking. All direct-source/wrapper and repeated-fit prediction discrepancies were zero on the declared fixtures, including changes to unused tuning labels and target-reference rows. Independent GP covariance/posterior checks had maximum absolute error 1.11e-15; the native R hand-coefficient map was exact. The separate fitted d2 polynomial/standardization checks had maximum prediction-map error 2.22e-16. These checks establish the stated source-call and target-map scope, not paper-table reproduction.
 
-The original admission used package `0.3.0a1`; the source-control pilot uses `0.3.0a2`. Replay v0.2 results with their recorded producer source and environment. Adding optional methods changes package source fingerprints, so old result trees must not be resumed under this source tree.
+The original admission used package `0.3.0a1`; the source-control pilot uses `0.3.0a2`. The [pilot checks](../results/gp_source_pilot/checks_summary.json) pass 371 tests in the fresh numerical environment plus one separately configured CorNet integration test, 13 native/data preflight fits, independent reconstruction of all 576 risks and 160 source-exclusion groups, 18 prespecified fresh replays with identical predictions, and a byte-identical completed-run resume with no refits. See the [pilot evidence](../results/gp_source_pilot/README.md) for checks, failures retained from an out-of-panel helper attempt, and replay scope. These checks do not establish unseen-mechanism performance or source-paper table reproduction. Replay v0.2 results with their recorded producer source and environment. Adding optional methods changes package source fingerprints, so old result trees must not be resumed under this source tree.
 
 
 ## Measured execution costs
@@ -80,7 +82,7 @@ Six single-thread CPU profiles use one fixed observed-data fixture per size, fiv
 
 All profiles completed within their 600-second limit under one CPU and a 4 GiB allocation. The largest observed GP worker high-water mark was 588,036 KiB; R child marks reached 361,056 KiB. These separate process marks do not establish simultaneous whole-job peak RAM. Full process/launcher times and identities are retained in the evidence. No approximation or subsampling changes the native algorithms.
 
-Campaign execution still needs genuinely matched RCT-only backbones, finalized tuning/resource limits and trial-target evaluation samples. In particular, neither the native L1 `rlasso` fit nor `rho=0` supplies the required matched control automatically. The planned broader method inventory remains incomplete.
+The pilot supplies a genuinely source-excluded GP control with frozen trial-target samples and budgets. The broader campaign still needs other matched RCT-only backbones and finalized tuning/resource limits. In particular, the native L1 `rlasso` fit does not automatically match the integrative SCAD regularizer. The planned broader method inventory remains incomplete.
 
 
 ## Running the recorded checks

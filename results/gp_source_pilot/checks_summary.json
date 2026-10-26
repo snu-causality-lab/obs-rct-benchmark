@@ -1,0 +1,65 @@
+{
+  "completed_run_resume": {
+    "byte_identical_records": 576,
+    "job_id": "721977",
+    "records": 576,
+    "refits": 0,
+    "status": "passed"
+  },
+  "execution_smoke": {
+    "job_id": "721767",
+    "numerical_failures": 0,
+    "resume_byte_identical": true,
+    "seed": 424242,
+    "terminal_records": 3
+  },
+  "full_suite": {
+    "errors": 0,
+    "failed": 0,
+    "job_id": "721757",
+    "passed": 371,
+    "python": "3.11.17",
+    "seconds": 37.297,
+    "skipped": 1,
+    "tests": 372,
+    "xml_sha256": "7fbdc429d0d1f859dc1cec95c5f695c6ef1c53d7c757850293aebfb04cf25c20"
+  },
+  "helper_smoke_attempt": {
+    "analysis_and_render": "passed",
+    "independent_verifier": "rejected out-of-panel smoke configuration before reading scores; fixed main-panel verification subsequently passed",
+    "job_id": "721910",
+    "job_status": "failed_orchestration_mismatch_retained",
+    "numerical_failures": 0,
+    "terminal_records": 24
+  },
+  "main_analysis_and_replay": {
+    "fresh_replays": 18,
+    "independent_score_records": 576,
+    "invariant_groups": 160,
+    "job_id": "721933",
+    "max_absolute_prediction_difference": 0.0,
+    "status": "passed"
+  },
+  "native_and_data_preflight": {
+    "driver_sha256": "06e6bb61c3381684a21c8a6b5de0e920373ed78df228b92fe30487a11a873cec",
+    "job_id": "721757",
+    "native_fits": 13,
+    "plan_sha256": "71ae5da23bc094a08415ae512af65619a018bc1d25104cabde33e9213ccae7f5",
+    "record_sha256": "3f6dbc4a9c6b379dccd302546b0d6362529d8897210c7e92f2f0f5b6dc8d5ac4",
+    "status": "passed"
+  },
+  "producer_commit": "a645821ea187cea2bb95de535d2b1bee5564bb41",
+  "separate_external_cornet": {
+    "environment": "read-only previously configured Torch environment; same imported package files",
+    "errors": 0,
+    "failed": 0,
+    "job_id": "721767",
+    "passed": 1,
+    "python": "3.12.3",
+    "seconds": 6.304,
+    "skipped": 0,
+    "tests": 1,
+    "xml_sha256": "92bc3d71b44c010d7e7616650428a2b8d5f918c23ce38de0a2a9ca27d2714ad7"
+  },
+  "source_fingerprint": "9caa7669ba658c000cc0ea2c0855d04c6b238330476d0c81176511aa34584655"
+}

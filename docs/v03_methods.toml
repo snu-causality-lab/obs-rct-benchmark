@@ -1,15 +1,15 @@
 schema_version = 1
 literature_cutoff = "2026-10-26"
-checked_at = "2026-10-26"
-status = "design_only"
-understood_as = "Plan a source-backed method-by-target-by-assumption comparison; do not implement estimators, install new environments, or run experiments."
+checked_at = "2026-10-27"
+status = "inventory_with_partial_native_admission_and_fixed_gp_pilot"
+understood_as = "Track source-backed method-by-target-by-assumption comparisons and their observed implementation readiness; this inventory is not an execution authorization."
 canonical_scope = "Inventory and scientific disposition only; executable pins stay in sources.lock.toml."
 machine_status_semantics = "Status fields are descriptive annotations, not executable enums. Disposition values are defined in status_vocabulary; this inventory is not an execution configuration."
-verification_scope = "Primary papers and official GitHub metadata/README/API documentation were read. No new method was executed. Revisions use the repository default branch history up to the cutoff; they are candidate references, not dependency admission."
+verification_scope = "Primary papers and official GitHub metadata/README/API documentation were read at the literature cutoff. Subsequent native admission covers three fixed recipes; the fixed GP source-access pilot ran 576 fits. Other revisions remain candidate references, not dependency admission; per-method status and linked evidence define scope."
 revision_query = "https://api.github.com/repos/{owner}/{repo}/commits?until=2026-10-26T14:59:59Z&per_page=1"
 pending_is_not_na = true
 code_redistributed = false
-v03_runtime_status = "No new runtime measurements; server cost and reproducibility checks pending."
+v03_runtime_status = "Three native recipes have bounded cost and reproduction checks; the fixed GP and two source controls completed a 576-fit development pilot. See V03_ADAPTERS.md and results/gp_source_pilot. Broader campaign pending."
 
 [status_vocabulary]
 paper_verified = "Primary source consulted; not a theorem-by-theorem independent review."
@@ -56,12 +56,12 @@ support_assumptions = "Trial support covers scored target or extrapolation is fl
 transport_assumptions = "Conditional effect transport for target-population scoring."
 model_assumptions = "Match capacity and regularization without importing OBS features, pretraining or tuning results into the OBS-free control."
 source_status = "benchmark_design"
-code_status = "pending_method_specific_specification"
-license_status = "Inherited from selected backbone; pending review."
-adapter_status = "not_implemented_as_v03_set"
-reproduction_status = "not_executed_v03"
+code_status = "fixed_gp_source_control_implemented_other_backbones_pending"
+license_status = "Inherited from selected backbone; GP source obtained separately, not redistributed. Other backbones pending review."
+adapter_status = "partial_causal_icm_rct_only_implemented_other_backbones_pending"
+reproduction_status = "fixed_gp_native_source_exclusion_checks_and576_fit_pilot_passed_other_backbones_pending"
 disposition = "planned_core"
-reason = "Separate OBS borrowing from backbone strength; architecture-specific removals must be disclosed rather than called exact source-paper reproductions."
+reason = "Fixed GP control physically excludes OBS labels from fitting and shared-hyperparameter optimization. The six-condition pilot is a controlled development result, not an exact source-paper reproduction. Other matched backbones remain pending."
 
 [[method]]
 id = "rct_rlearner"
@@ -302,11 +302,11 @@ code_url = "https://github.com/EvanDimitriou/CausalICM"
 code_revision = "0f0c6ca424b7ca44b84649ca072384b9933b2afe"
 code_commit_date = "2026-04-07"
 code_entrypoints = ["rebuttals/extrapolation.ipynb:cell3"]
-license_status = "No root license file in inspected revision; execution/environment assessment pending."
-adapter_status = "implemented_fixed_rho_native_admitted"
-reproduction_status = "fixed_recipe_native_fidelity_and_independent_checks_passed_v03_not_paper_tables"
+license_status = "No root license file in inspected revision; separately obtained source is executed without redistribution. Pinned numerical environment and bounded execution checked in native admission and pilot."
+adapter_status = "implemented_fixed_rho_native_admitted_with_two_source_controls"
+reproduction_status = "fixed_recipe_native_fidelity_and_independent_checks_passed576_fit_source_pilot_not_paper_tables"
 disposition = "planned_core"
-reason = "Contemporary Bayesian nonlinear borrowing comparator; native target covariates and GPy environment/cost need review."
+reason = "Fixed rho=0.5 all-X GP source-access pilot completed 576 fits with matched RCT-only and prior-shrunken OBS-start controls. Negative transfer at discrepancy 2 is specific to this fixed recipe and generator; selected borrowing and broader campaign remain pending."
 
 [[method]]
 id = "cheng_cai_2021"

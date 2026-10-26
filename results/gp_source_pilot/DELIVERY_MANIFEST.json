@@ -1,0 +1,30 @@
+{
+  "as_of_KST": "2026-10-27",
+  "files": {
+    "README.md": "006e66fa379844390de1f2550e1b314a4e6b866e25ab223504e35349001a77bf",
+    "SCIENTIFIC_RESULT.md": "cf62adf78fbc9f12ab530b3cef8c48eb8ce4e9529a754c03917653b1f608c59f",
+    "checks_summary.json": "e2bf7dfb7dcaf97b9ef33783e0e355b4c752026fa195ac0fa8cdb46881d70124",
+    "manifest.json": "39f47d64dff2f48105d0699b542cbe318fd27b697782e9d1904da2bdbb21ea74",
+    "producer_binding.json": "a18e9b1206e8f6b13c5024e801dffc25623002133f5a55c16ff2312fd06d482c",
+    "rendered/README.md": "024c3d90d305e391ea1ee771fef034af2cc042880a3422137d9b83531a1dd481",
+    "rendered/condition_scores.csv": "bdea146922877011463575380d1bdc93a3c0a694a877554e03c073d6f52e3384",
+    "rendered/condition_summary.csv": "27a62fd38e292abcc8fa5fd5b23e427ce58a877a94ae6f54f36d055bfee26013",
+    "rendered/cost_summary.csv": "6efa4cc5cf45b34823fb84046a458da5ededc2e8b8c12e1d30938460cdc9de48",
+    "rendered/figure_source.json": "531a13b5c557be543aa95fdf686bf26bd80716d2974e5e5fa9bac4f38ead5dd8",
+    "rendered/mse_by_delta.svg": "f70c98a67ca96ff891442beac508763b8398023546f1b14734b7248482f3d86a",
+    "rendered/paired_contrasts.csv": "7121e30e2e66f8b9cef1398fb6805a500f7b0fd754fcf85b72e4a39e1e5e60b5",
+    "rendered/paired_differences.svg": "5dff126214cbf29756c91b85e539c15b0c7012ba759f669e898c315573093027",
+    "rendered/scalar_records.csv": "91b7f7c91a7c3e9caed96e3576dc97dc25c2a06f17e4e144b215bbeedc60c097",
+    "summary.json": "e5ee45fbe95e1e1f2f608c2b8b714a0efdbb9b3b22cd4c0cc3684c55f6479551",
+    "verification/preflight.json": "3f6dbc4a9c6b379dccd302546b0d6362529d8897210c7e92f2f0f5b6dc8d5ac4",
+    "verification/replay.json": "a9f42b6b512b2c1ef49bb5dcfaf98d7c8f33d1e812377f924f493e27d13e4e7f",
+    "verification/verification.json": "7a707041b4871c6ceec1e3d7dc636a01a17f4f983b2b59fc2288079d1dc05b90"
+  },
+  "paper_pdf_assets_retained_on_server_and_Overleaf": {
+    "mse_by_delta.pdf": "e625b8c6d33df255ed4a1d702e290511342f3f4d971fdc9c86feee599bb7c1ff",
+    "paired_differences.pdf": "47ed8095172f8245b99a9b0878f0cafb9fcfa0511bc2356efe447aede8126c54"
+  },
+  "producer_commit": "a645821ea187cea2bb95de535d2b1bee5564bb41",
+  "schema_version": 1,
+  "scope": "Fixed three-procedure GP development pilot; compact publication, no raw arrays or model states."
+}

@@ -1,0 +1,944 @@
+{
+  "config_sha256": "68b54caaa02bb083130d1e75cf2cb6a209d6c78beaba379089ac411768190176",
+  "data": {
+    "assumptions": [
+      "development-designed controlled SCM, not unseen-mechanism validation",
+      "observed treatment positivity holds; latent OBS positivity is not assumed",
+      "latent prognostic distribution differs by source; common causal CATE remains tau",
+      "trial observed noise variance and evaluation law are fixed across delta"
+    ],
+    "case_count": 6,
+    "config_sha256": "68b54caaa02bb083130d1e75cf2cb6a209d6c78beaba379089ac411768190176",
+    "control_method_input": "one declared fitting SourceSample; excluded outcomes and tune roles absent",
+    "max_absolute_discrepancy": {
+      "common_obs_noise_delta0_B128": 0.0,
+      "common_obs_noise_delta0_B512": 0.0,
+      "common_obs_noise_delta1_B128": 6.661338147750939e-16,
+      "common_obs_noise_delta1_B512": 6.661338147750939e-16,
+      "common_obs_noise_delta2_B128": 6.661338147750939e-16,
+      "common_obs_noise_delta2_B512": 6.661338147750939e-16,
+      "eval_tau_delta0_B128": 0.0,
+      "eval_tau_delta0_B512": 0.0,
+      "eval_tau_delta1_B128": 0.0,
+      "eval_tau_delta1_B512": 0.0,
+      "eval_tau_delta2_B128": 0.0,
+      "eval_tau_delta2_B512": 0.0,
+      "hand_b": 6.123233995736766e-17,
+      "hand_m": 0.0,
+      "hand_tau": 1.1102230246251565e-16,
+      "mean_b": 1.0001076826909134e-18,
+      "mean_b_squared": 0.0,
+      "mean_tau": 1.1102230246251565e-16,
+      "mean_tau_b": 2.9734496043321175e-19,
+      "mean_tau_squared": 0.0,
+      "obs_bias_shift_delta0_B128": 0.0,
+      "obs_bias_shift_delta0_B512": 0.0,
+      "obs_bias_shift_delta1_B128": 5.551115123125783e-16,
+      "obs_bias_shift_delta1_B512": 5.551115123125783e-16,
+      "obs_bias_shift_delta2_B128": 6.106226635438361e-16,
+      "obs_bias_shift_delta2_B512": 6.106226635438361e-16,
+      "observed_contrast_delta0": 0.0,
+      "observed_contrast_delta1": 0.0,
+      "observed_contrast_delta2": 0.0,
+      "potential_contrast_delta0_u0.0": 0.0,
+      "potential_contrast_delta0_u0.5": 0.0,
+      "potential_contrast_delta0_u1.0": 0.0,
+      "potential_contrast_delta1_u0.0": 0.0,
+      "potential_contrast_delta1_u0.5": 0.0,
+      "potential_contrast_delta1_u1.0": 0.0,
+      "potential_contrast_delta2_u0.0": 0.0,
+      "potential_contrast_delta2_u0.5": 0.0,
+      "potential_contrast_delta2_u1.0": 0.0
+    },
+    "seed": 30000,
+    "shared_observations_nested_RCT_and_query_checks": "passed",
+    "unused_tune_role": "full method only: first two RCT fitting rows; zero additional unique outcome labels"
+  },
+  "driver_sha256": "06e6bb61c3381684a21c8a6b5de0e920373ed78df228b92fe30487a11a873cec",
+  "failure_details_server_only": "stderr.log",
+  "log_sha256": {
+    "stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "native": {
+    "accuracy_test": false,
+    "adapter_fit_count": 10,
+    "max_absolute_discrepancy": {
+      "full_direct_wrapper1": 0.0,
+      "full_direct_wrapper2": 0.0,
+      "full_fresh_repeat_with_information_mutation": 0.0,
+      "obs_direct_single_source_entry": 0.0,
+      "obs_direct_wrapper1": 0.0,
+      "obs_direct_wrapper2": 0.0,
+      "obs_fresh_repeat_with_information_mutation": 0.0,
+      "obs_prior_mean_arm0": 1.1102230246251565e-16,
+      "obs_prior_mean_arm1": 1.5543122344752192e-15,
+      "rct_direct_single_source_entry": 0.0,
+      "rct_direct_wrapper1": 0.0,
+      "rct_direct_wrapper2": 0.0,
+      "rct_fresh_repeat_with_information_mutation": 0.0,
+      "rct_rho_0.2_invariance": 0.0,
+      "rct_rho_0.8_invariance": 0.0
+    },
+    "native_fit_count": 3,
+    "obs_start_meaning": "trial-task prior conditioned on OBS only; not naive OBS task1 contrast",
+    "source": {
+      "availability": "available",
+      "cell_index": 3,
+      "cell_sha256": "6c85f01d85087e3e69f75c1dbaf926bc8868b6b1be0521a699e00be643f7ca85",
+      "declared_git_revision": "0f0c6ca424b7ca44b84649ca072384b9933b2afe",
+      "entrypoint": "ICM",
+      "expected_cell_sha256": "6c85f01d85087e3e69f75c1dbaf926bc8868b6b1be0521a699e00be643f7ca85",
+      "expected_revision": "0f0c6ca424b7ca44b84649ca072384b9933b2afe",
+      "expected_source_file_sha256": "0326f655bac0993fd845412ce59fb0cde05e04c6f70890f42ef7e6750fcd855c",
+      "import_resolution": "isolated_locked_notebook_cell",
+      "nominal_helper_status": "unresolved_merge_markers_not_imported",
+      "numerical_environment": {
+        "GPy": {
+          "compatibility_aliases": {
+            "GPy.core.parameterization.index_operations": "paramz.core.index_operations",
+            "GPy.core.parameterization.lists_and_dicts": "paramz.core.lists_and_dicts",
+            "GPy.core.parameterization.observable_array": "paramz.core.observable_array"
+          },
+          "expected_version": "1.13.2",
+          "import_resolution": "verified_distribution",
+          "init_sha256": "09f87a30c1a971f56c383b48bf4d2aed56d618557eed0e4c92aed9715764dadf",
+          "installed_version": "1.13.2",
+          "verified": true
+        },
+        "numpy": {
+          "compatibility_aliases": {},
+          "expected_version": "1.26.4",
+          "import_resolution": "verified_distribution",
+          "init_sha256": "22cd1535fa14d74ef6f457cca149ffdc80875f460be313b8f895273f78bc402e",
+          "installed_version": "1.26.4",
+          "verified": true
+        },
+        "paramz": {
+          "compatibility_aliases": {},
+          "expected_version": "0.9.6",
+          "import_resolution": "verified_distribution",
+          "init_sha256": "c79840d8d7599518fdaef4dfb8f05f22a8030632e7f05faa9123f3f177eb9fbe",
+          "installed_version": "0.9.6",
+          "verified": true
+        },
+        "scipy": {
+          "compatibility_aliases": {},
+          "expected_version": "1.12.0",
+          "import_resolution": "verified_distribution",
+          "init_sha256": "3ae25e68311f068b721aa81b9c72931a245ffb651329ef97ca119b99b0a7935d",
+          "installed_version": "1.12.0",
+          "verified": true
+        }
+      },
+      "source_file": "rebuttals/extrapolation.ipynb",
+      "source_file_sha256": "0326f655bac0993fd845412ce59fb0cde05e04c6f70890f42ef7e6750fcd855c",
+      "source_verified": true,
+      "tracked_changes": false,
+      "verified": true
+    },
+    "wrapper_records": [
+      {
+        "provenance": {
+          "effect_modifier_columns": [
+            0,
+            1
+          ],
+          "native_source": {
+            "availability": "available",
+            "cell_index": 3,
+            "cell_sha256": "6c85f01d85087e3e69f75c1dbaf926bc8868b6b1be0521a699e00be643f7ca85",
+            "declared_git_revision": "0f0c6ca424b7ca44b84649ca072384b9933b2afe",
+            "entrypoint": "ICM",
+            "expected_cell_sha256": "6c85f01d85087e3e69f75c1dbaf926bc8868b6b1be0521a699e00be643f7ca85",
+            "expected_revision": "0f0c6ca424b7ca44b84649ca072384b9933b2afe",
+            "expected_source_file_sha256": "0326f655bac0993fd845412ce59fb0cde05e04c6f70890f42ef7e6750fcd855c",
+            "import_resolution": "isolated_locked_notebook_cell",
+            "nominal_helper_status": "unresolved_merge_markers_not_imported",
+            "numerical_environment": {
+              "GPy": {
+                "compatibility_aliases": {
+                  "GPy.core.parameterization.index_operations": "paramz.core.index_operations",
+                  "GPy.core.parameterization.lists_and_dicts": "paramz.core.lists_and_dicts",
+                  "GPy.core.parameterization.observable_array": "paramz.core.observable_array"
+                },
+                "expected_version": "1.13.2",
+                "import_resolution": "verified_distribution",
+                "init_sha256": "09f87a30c1a971f56c383b48bf4d2aed56d618557eed0e4c92aed9715764dadf",
+                "installed_version": "1.13.2",
+                "verified": true
+              },
+              "numpy": {
+                "compatibility_aliases": {},
+                "expected_version": "1.26.4",
+                "import_resolution": "verified_distribution",
+                "init_sha256": "22cd1535fa14d74ef6f457cca149ffdc80875f460be313b8f895273f78bc402e",
+                "installed_version": "1.26.4",
+                "verified": true
+              },
+              "paramz": {
+                "compatibility_aliases": {},
+                "expected_version": "0.9.6",
+                "import_resolution": "verified_distribution",
+                "init_sha256": "c79840d8d7599518fdaef4dfb8f05f22a8030632e7f05faa9123f3f177eb9fbe",
+                "installed_version": "0.9.6",
+                "verified": true
+              },
+              "scipy": {
+                "compatibility_aliases": {},
+                "expected_version": "1.12.0",
+                "import_resolution": "verified_distribution",
+                "init_sha256": "3ae25e68311f068b721aa81b9c72931a245ffb651329ef97ca119b99b0a7935d",
+                "installed_version": "1.12.0",
+                "verified": true
+              }
+            },
+            "source_file": "rebuttals/extrapolation.ipynb",
+            "source_file_sha256": "0326f655bac0993fd845412ce59fb0cde05e04c6f70890f42ef7e6750fcd855c",
+            "source_verified": true,
+            "tracked_changes": false,
+            "verified": true
+          },
+          "noise": "native_GPy_Gaussian_noise_optimized",
+          "optimization": "native_GPy_optimize_defaults_no_restarts",
+          "prediction": "treated_mean_minus_control_mean",
+          "prediction_source": 0,
+          "rank": 2,
+          "recipe": "fixed_rho_native_two_arm_gp",
+          "rho": 0.5,
+          "rho_zero_is_rct_only": false,
+          "source_encoding": {
+            "obs": 1,
+            "rct": 0
+          }
+        },
+        "repetition": 1,
+        "source": "full"
+      },
+      {
+        "provenance": {
+          "effect_modifier_columns": [
+            0,
+            1
+          ],
+          "native_source": {
+            "availability": "available",
+            "cell_index": 3,
+            "cell_sha256": "6c85f01d85087e3e69f75c1dbaf926bc8868b6b1be0521a699e00be643f7ca85",
+            "declared_git_revision": "0f0c6ca424b7ca44b84649ca072384b9933b2afe",
+            "entrypoint": "ICM",
+            "expected_cell_sha256": "6c85f01d85087e3e69f75c1dbaf926bc8868b6b1be0521a699e00be643f7ca85",
+            "expected_revision": "0f0c6ca424b7ca44b84649ca072384b9933b2afe",
+            "expected_source_file_sha256": "0326f655bac0993fd845412ce59fb0cde05e04c6f70890f42ef7e6750fcd855c",
+            "import_resolution": "isolated_locked_notebook_cell",
+            "nominal_helper_status": "unresolved_merge_markers_not_imported",
+            "numerical_environment": {
+              "GPy": {
+                "compatibility_aliases": {
+                  "GPy.core.parameterization.index_operations": "paramz.core.index_operations",
+                  "GPy.core.parameterization.lists_and_dicts": "paramz.core.lists_and_dicts",
+                  "GPy.core.parameterization.observable_array": "paramz.core.observable_array"
+                },
+                "expected_version": "1.13.2",
+                "import_resolution": "verified_distribution",
+                "init_sha256": "09f87a30c1a971f56c383b48bf4d2aed56d618557eed0e4c92aed9715764dadf",
+                "installed_version": "1.13.2",
+                "verified": true
+              },
+              "numpy": {
+                "compatibility_aliases": {},
+                "expected_version": "1.26.4",
+                "import_resolution": "verified_distribution",
+                "init_sha256": "22cd1535fa14d74ef6f457cca149ffdc80875f460be313b8f895273f78bc402e",
+                "installed_version": "1.26.4",
+                "verified": true
+              },
+              "paramz": {
+                "compatibility_aliases": {},
+                "expected_version": "0.9.6",
+                "import_resolution": "verified_distribution",
+                "init_sha256": "c79840d8d7599518fdaef4dfb8f05f22a8030632e7f05faa9123f3f177eb9fbe",
+                "installed_version": "0.9.6",
+                "verified": true
+              },
+              "scipy": {
+                "compatibility_aliases": {},
+                "expected_version": "1.12.0",
+                "import_resolution": "verified_distribution",
+                "init_sha256": "3ae25e68311f068b721aa81b9c72931a245ffb651329ef97ca119b99b0a7935d",
+                "installed_version": "1.12.0",
+                "verified": true
+              }
+            },
+            "source_file": "rebuttals/extrapolation.ipynb",
+            "source_file_sha256": "0326f655bac0993fd845412ce59fb0cde05e04c6f70890f42ef7e6750fcd855c",
+            "source_verified": true,
+            "tracked_changes": false,
+            "verified": true
+          },
+          "noise": "native_GPy_Gaussian_noise_optimized",
+          "optimization": "native_GPy_optimize_defaults_no_restarts",
+          "prediction": "treated_mean_minus_control_mean",
+          "prediction_source": 0,
+          "rank": 2,
+          "recipe": "fixed_rho_native_two_arm_gp",
+          "rho": 0.5,
+          "rho_zero_is_rct_only": false,
+          "source_encoding": {
+            "obs": 1,
+            "rct": 0
+          }
+        },
+        "repetition": 2,
+        "source": "full"
+      },
+      {
+        "provenance": {
+          "effect_modifier_columns": [
+            0,
+            1
+          ],
+          "excluded_source": "empty_native_arrays",
+          "fitting_sources": {
+            "obs": {
+              "arm_rows": {
+                "0": 0,
+                "1": 0
+              },
+              "availability": "not_accessed",
+              "fit_rows": 0
+            },
+            "rct": {
+              "arm_rows": {
+                "0": 6,
+                "1": 6
+              },
+              "availability": "included",
+              "fit_rows": 12
+            }
+          },
+          "known_propensity": "not_used",
+          "native_source": {
+            "availability": "available",
+            "cell_index": 3,
+            "cell_sha256": "6c85f01d85087e3e69f75c1dbaf926bc8868b6b1be0521a699e00be643f7ca85",
+            "declared_git_revision": "0f0c6ca424b7ca44b84649ca072384b9933b2afe",
+            "entrypoint": "ICM",
+            "expected_cell_sha256": "6c85f01d85087e3e69f75c1dbaf926bc8868b6b1be0521a699e00be643f7ca85",
+            "expected_revision": "0f0c6ca424b7ca44b84649ca072384b9933b2afe",
+            "expected_source_file_sha256": "0326f655bac0993fd845412ce59fb0cde05e04c6f70890f42ef7e6750fcd855c",
+            "import_resolution": "isolated_locked_notebook_cell",
+            "nominal_helper_status": "unresolved_merge_markers_not_imported",
+            "numerical_environment": {
+              "GPy": {
+                "compatibility_aliases": {
+                  "GPy.core.parameterization.index_operations": "paramz.core.index_operations",
+                  "GPy.core.parameterization.lists_and_dicts": "paramz.core.lists_and_dicts",
+                  "GPy.core.parameterization.observable_array": "paramz.core.observable_array"
+                },
+                "expected_version": "1.13.2",
+                "import_resolution": "verified_distribution",
+                "init_sha256": "09f87a30c1a971f56c383b48bf4d2aed56d618557eed0e4c92aed9715764dadf",
+                "installed_version": "1.13.2",
+                "verified": true
+              },
+              "numpy": {
+                "compatibility_aliases": {},
+                "expected_version": "1.26.4",
+                "import_resolution": "verified_distribution",
+                "init_sha256": "22cd1535fa14d74ef6f457cca149ffdc80875f460be313b8f895273f78bc402e",
+                "installed_version": "1.26.4",
+                "verified": true
+              },
+              "paramz": {
+                "compatibility_aliases": {},
+                "expected_version": "0.9.6",
+                "import_resolution": "verified_distribution",
+                "init_sha256": "c79840d8d7599518fdaef4dfb8f05f22a8030632e7f05faa9123f3f177eb9fbe",
+                "installed_version": "0.9.6",
+                "verified": true
+              },
+              "scipy": {
+                "compatibility_aliases": {},
+                "expected_version": "1.12.0",
+                "import_resolution": "verified_distribution",
+                "init_sha256": "3ae25e68311f068b721aa81b9c72931a245ffb651329ef97ca119b99b0a7935d",
+                "installed_version": "1.12.0",
+                "verified": true
+              }
+            },
+            "source_file": "rebuttals/extrapolation.ipynb",
+            "source_file_sha256": "0326f655bac0993fd845412ce59fb0cde05e04c6f70890f42ef7e6750fcd855c",
+            "source_verified": true,
+            "tracked_changes": false,
+            "verified": true
+          },
+          "noise": "native_GPy_Gaussian_noise_optimized",
+          "optimization": "native_GPy_optimize_defaults_no_restarts",
+          "prediction": "treated_mean_minus_control_mean",
+          "prediction_source": 0,
+          "rank": 2,
+          "rct_only_by_row_exclusion": true,
+          "rct_tune": "not_accessed",
+          "recipe": "source_restricted_native_trial_task_gp",
+          "rho": 0.5,
+          "source": "rct",
+          "source_encoding": {
+            "obs": 1,
+            "rct": 0
+          },
+          "status": "completed",
+          "supplied_seed": 2601026,
+          "target_reference": "not_accessed"
+        },
+        "repetition": 1,
+        "source": "rct"
+      },
+      {
+        "provenance": {
+          "effect_modifier_columns": [
+            0,
+            1
+          ],
+          "excluded_source": "empty_native_arrays",
+          "fitting_sources": {
+            "obs": {
+              "arm_rows": {
+                "0": 0,
+                "1": 0
+              },
+              "availability": "not_accessed",
+              "fit_rows": 0
+            },
+            "rct": {
+              "arm_rows": {
+                "0": 6,
+                "1": 6
+              },
+              "availability": "included",
+              "fit_rows": 12
+            }
+          },
+          "known_propensity": "not_used",
+          "native_source": {
+            "availability": "available",
+            "cell_index": 3,
+            "cell_sha256": "6c85f01d85087e3e69f75c1dbaf926bc8868b6b1be0521a699e00be643f7ca85",
+            "declared_git_revision": "0f0c6ca424b7ca44b84649ca072384b9933b2afe",
+            "entrypoint": "ICM",
+            "expected_cell_sha256": "6c85f01d85087e3e69f75c1dbaf926bc8868b6b1be0521a699e00be643f7ca85",
+            "expected_revision": "0f0c6ca424b7ca44b84649ca072384b9933b2afe",
+            "expected_source_file_sha256": "0326f655bac0993fd845412ce59fb0cde05e04c6f70890f42ef7e6750fcd855c",
+            "import_resolution": "isolated_locked_notebook_cell",
+            "nominal_helper_status": "unresolved_merge_markers_not_imported",
+            "numerical_environment": {
+              "GPy": {
+                "compatibility_aliases": {
+                  "GPy.core.parameterization.index_operations": "paramz.core.index_operations",
+                  "GPy.core.parameterization.lists_and_dicts": "paramz.core.lists_and_dicts",
+                  "GPy.core.parameterization.observable_array": "paramz.core.observable_array"
+                },
+                "expected_version": "1.13.2",
+                "import_resolution": "verified_distribution",
+                "init_sha256": "09f87a30c1a971f56c383b48bf4d2aed56d618557eed0e4c92aed9715764dadf",
+                "installed_version": "1.13.2",
+                "verified": true
+              },
+              "numpy": {
+                "compatibility_aliases": {},
+                "expected_version": "1.26.4",
+                "import_resolution": "verified_distribution",
+                "init_sha256": "22cd1535fa14d74ef6f457cca149ffdc80875f460be313b8f895273f78bc402e",
+                "installed_version": "1.26.4",
+                "verified": true
+              },
+              "paramz": {
+                "compatibility_aliases": {},
+                "expected_version": "0.9.6",
+                "import_resolution": "verified_distribution",
+                "init_sha256": "c79840d8d7599518fdaef4dfb8f05f22a8030632e7f05faa9123f3f177eb9fbe",
+                "installed_version": "0.9.6",
+                "verified": true
+              },
+              "scipy": {
+                "compatibility_aliases": {},
+                "expected_version": "1.12.0",
+                "import_resolution": "verified_distribution",
+                "init_sha256": "3ae25e68311f068b721aa81b9c72931a245ffb651329ef97ca119b99b0a7935d",
+                "installed_version": "1.12.0",
+                "verified": true
+              }
+            },
+            "source_file": "rebuttals/extrapolation.ipynb",
+            "source_file_sha256": "0326f655bac0993fd845412ce59fb0cde05e04c6f70890f42ef7e6750fcd855c",
+            "source_verified": true,
+            "tracked_changes": false,
+            "verified": true
+          },
+          "noise": "native_GPy_Gaussian_noise_optimized",
+          "optimization": "native_GPy_optimize_defaults_no_restarts",
+          "prediction": "treated_mean_minus_control_mean",
+          "prediction_source": 0,
+          "rank": 2,
+          "rct_only_by_row_exclusion": true,
+          "rct_tune": "not_accessed",
+          "recipe": "source_restricted_native_trial_task_gp",
+          "rho": 0.5,
+          "source": "rct",
+          "source_encoding": {
+            "obs": 1,
+            "rct": 0
+          },
+          "status": "completed",
+          "supplied_seed": 2601026,
+          "target_reference": "not_accessed"
+        },
+        "repetition": 2,
+        "source": "rct"
+      },
+      {
+        "entry": "fit_predict_sample",
+        "provenance": {
+          "effect_modifier_columns": [
+            0,
+            1
+          ],
+          "excluded_source": "empty_native_arrays",
+          "fitting_sources": {
+            "obs": {
+              "arm_rows": {
+                "0": 0,
+                "1": 0
+              },
+              "availability": "not_accessed",
+              "fit_rows": 0
+            },
+            "rct": {
+              "arm_rows": {
+                "0": 6,
+                "1": 6
+              },
+              "availability": "included",
+              "fit_rows": 12
+            }
+          },
+          "known_propensity": "not_used",
+          "native_source": {
+            "availability": "available",
+            "cell_index": 3,
+            "cell_sha256": "6c85f01d85087e3e69f75c1dbaf926bc8868b6b1be0521a699e00be643f7ca85",
+            "declared_git_revision": "0f0c6ca424b7ca44b84649ca072384b9933b2afe",
+            "entrypoint": "ICM",
+            "expected_cell_sha256": "6c85f01d85087e3e69f75c1dbaf926bc8868b6b1be0521a699e00be643f7ca85",
+            "expected_revision": "0f0c6ca424b7ca44b84649ca072384b9933b2afe",
+            "expected_source_file_sha256": "0326f655bac0993fd845412ce59fb0cde05e04c6f70890f42ef7e6750fcd855c",
+            "import_resolution": "isolated_locked_notebook_cell",
+            "nominal_helper_status": "unresolved_merge_markers_not_imported",
+            "numerical_environment": {
+              "GPy": {
+                "compatibility_aliases": {
+                  "GPy.core.parameterization.index_operations": "paramz.core.index_operations",
+                  "GPy.core.parameterization.lists_and_dicts": "paramz.core.lists_and_dicts",
+                  "GPy.core.parameterization.observable_array": "paramz.core.observable_array"
+                },
+                "expected_version": "1.13.2",
+                "import_resolution": "verified_distribution",
+                "init_sha256": "09f87a30c1a971f56c383b48bf4d2aed56d618557eed0e4c92aed9715764dadf",
+                "installed_version": "1.13.2",
+                "verified": true
+              },
+              "numpy": {
+                "compatibility_aliases": {},
+                "expected_version": "1.26.4",
+                "import_resolution": "verified_distribution",
+                "init_sha256": "22cd1535fa14d74ef6f457cca149ffdc80875f460be313b8f895273f78bc402e",
+                "installed_version": "1.26.4",
+                "verified": true
+              },
+              "paramz": {
+                "compatibility_aliases": {},
+                "expected_version": "0.9.6",
+                "import_resolution": "verified_distribution",
+                "init_sha256": "c79840d8d7599518fdaef4dfb8f05f22a8030632e7f05faa9123f3f177eb9fbe",
+                "installed_version": "0.9.6",
+                "verified": true
+              },
+              "scipy": {
+                "compatibility_aliases": {},
+                "expected_version": "1.12.0",
+                "import_resolution": "verified_distribution",
+                "init_sha256": "3ae25e68311f068b721aa81b9c72931a245ffb651329ef97ca119b99b0a7935d",
+                "installed_version": "1.12.0",
+                "verified": true
+              }
+            },
+            "source_file": "rebuttals/extrapolation.ipynb",
+            "source_file_sha256": "0326f655bac0993fd845412ce59fb0cde05e04c6f70890f42ef7e6750fcd855c",
+            "source_verified": true,
+            "tracked_changes": false,
+            "verified": true
+          },
+          "noise": "native_GPy_Gaussian_noise_optimized",
+          "optimization": "native_GPy_optimize_defaults_no_restarts",
+          "prediction": "treated_mean_minus_control_mean",
+          "prediction_source": 0,
+          "rank": 2,
+          "rct_only_by_row_exclusion": true,
+          "rct_tune": "not_accessed",
+          "recipe": "source_restricted_native_trial_task_gp",
+          "rho": 0.5,
+          "source": "rct",
+          "source_encoding": {
+            "obs": 1,
+            "rct": 0
+          },
+          "status": "completed",
+          "supplied_seed": 2601026,
+          "target_reference": "not_accessed"
+        },
+        "source": "rct",
+        "supplied_observed_roles": [
+          "rct_train"
+        ]
+      },
+      {
+        "provenance": {
+          "effect_modifier_columns": [
+            0,
+            1
+          ],
+          "excluded_source": "empty_native_arrays",
+          "fitting_sources": {
+            "obs": {
+              "arm_rows": {
+                "0": 8,
+                "1": 8
+              },
+              "availability": "included",
+              "fit_rows": 16
+            },
+            "rct": {
+              "arm_rows": {
+                "0": 0,
+                "1": 0
+              },
+              "availability": "not_accessed",
+              "fit_rows": 0
+            }
+          },
+          "known_propensity": "not_used",
+          "native_source": {
+            "availability": "available",
+            "cell_index": 3,
+            "cell_sha256": "6c85f01d85087e3e69f75c1dbaf926bc8868b6b1be0521a699e00be643f7ca85",
+            "declared_git_revision": "0f0c6ca424b7ca44b84649ca072384b9933b2afe",
+            "entrypoint": "ICM",
+            "expected_cell_sha256": "6c85f01d85087e3e69f75c1dbaf926bc8868b6b1be0521a699e00be643f7ca85",
+            "expected_revision": "0f0c6ca424b7ca44b84649ca072384b9933b2afe",
+            "expected_source_file_sha256": "0326f655bac0993fd845412ce59fb0cde05e04c6f70890f42ef7e6750fcd855c",
+            "import_resolution": "isolated_locked_notebook_cell",
+            "nominal_helper_status": "unresolved_merge_markers_not_imported",
+            "numerical_environment": {
+              "GPy": {
+                "compatibility_aliases": {
+                  "GPy.core.parameterization.index_operations": "paramz.core.index_operations",
+                  "GPy.core.parameterization.lists_and_dicts": "paramz.core.lists_and_dicts",
+                  "GPy.core.parameterization.observable_array": "paramz.core.observable_array"
+                },
+                "expected_version": "1.13.2",
+                "import_resolution": "verified_distribution",
+                "init_sha256": "09f87a30c1a971f56c383b48bf4d2aed56d618557eed0e4c92aed9715764dadf",
+                "installed_version": "1.13.2",
+                "verified": true
+              },
+              "numpy": {
+                "compatibility_aliases": {},
+                "expected_version": "1.26.4",
+                "import_resolution": "verified_distribution",
+                "init_sha256": "22cd1535fa14d74ef6f457cca149ffdc80875f460be313b8f895273f78bc402e",
+                "installed_version": "1.26.4",
+                "verified": true
+              },
+              "paramz": {
+                "compatibility_aliases": {},
+                "expected_version": "0.9.6",
+                "import_resolution": "verified_distribution",
+                "init_sha256": "c79840d8d7599518fdaef4dfb8f05f22a8030632e7f05faa9123f3f177eb9fbe",
+                "installed_version": "0.9.6",
+                "verified": true
+              },
+              "scipy": {
+                "compatibility_aliases": {},
+                "expected_version": "1.12.0",
+                "import_resolution": "verified_distribution",
+                "init_sha256": "3ae25e68311f068b721aa81b9c72931a245ffb651329ef97ca119b99b0a7935d",
+                "installed_version": "1.12.0",
+                "verified": true
+              }
+            },
+            "source_file": "rebuttals/extrapolation.ipynb",
+            "source_file_sha256": "0326f655bac0993fd845412ce59fb0cde05e04c6f70890f42ef7e6750fcd855c",
+            "source_verified": true,
+            "tracked_changes": false,
+            "verified": true
+          },
+          "noise": "native_GPy_Gaussian_noise_optimized",
+          "optimization": "native_GPy_optimize_defaults_no_restarts",
+          "prediction": "treated_mean_minus_control_mean",
+          "prediction_source": 0,
+          "rank": 2,
+          "rct_only_by_row_exclusion": false,
+          "rct_tune": "not_accessed",
+          "recipe": "source_restricted_native_trial_task_gp",
+          "rho": 0.5,
+          "source": "obs",
+          "source_encoding": {
+            "obs": 1,
+            "rct": 0
+          },
+          "status": "completed",
+          "supplied_seed": 2601026,
+          "target_reference": "not_accessed"
+        },
+        "repetition": 1,
+        "source": "obs"
+      },
+      {
+        "provenance": {
+          "effect_modifier_columns": [
+            0,
+            1
+          ],
+          "excluded_source": "empty_native_arrays",
+          "fitting_sources": {
+            "obs": {
+              "arm_rows": {
+                "0": 8,
+                "1": 8
+              },
+              "availability": "included",
+              "fit_rows": 16
+            },
+            "rct": {
+              "arm_rows": {
+                "0": 0,
+                "1": 0
+              },
+              "availability": "not_accessed",
+              "fit_rows": 0
+            }
+          },
+          "known_propensity": "not_used",
+          "native_source": {
+            "availability": "available",
+            "cell_index": 3,
+            "cell_sha256": "6c85f01d85087e3e69f75c1dbaf926bc8868b6b1be0521a699e00be643f7ca85",
+            "declared_git_revision": "0f0c6ca424b7ca44b84649ca072384b9933b2afe",
+            "entrypoint": "ICM",
+            "expected_cell_sha256": "6c85f01d85087e3e69f75c1dbaf926bc8868b6b1be0521a699e00be643f7ca85",
+            "expected_revision": "0f0c6ca424b7ca44b84649ca072384b9933b2afe",
+            "expected_source_file_sha256": "0326f655bac0993fd845412ce59fb0cde05e04c6f70890f42ef7e6750fcd855c",
+            "import_resolution": "isolated_locked_notebook_cell",
+            "nominal_helper_status": "unresolved_merge_markers_not_imported",
+            "numerical_environment": {
+              "GPy": {
+                "compatibility_aliases": {
+                  "GPy.core.parameterization.index_operations": "paramz.core.index_operations",
+                  "GPy.core.parameterization.lists_and_dicts": "paramz.core.lists_and_dicts",
+                  "GPy.core.parameterization.observable_array": "paramz.core.observable_array"
+                },
+                "expected_version": "1.13.2",
+                "import_resolution": "verified_distribution",
+                "init_sha256": "09f87a30c1a971f56c383b48bf4d2aed56d618557eed0e4c92aed9715764dadf",
+                "installed_version": "1.13.2",
+                "verified": true
+              },
+              "numpy": {
+                "compatibility_aliases": {},
+                "expected_version": "1.26.4",
+                "import_resolution": "verified_distribution",
+                "init_sha256": "22cd1535fa14d74ef6f457cca149ffdc80875f460be313b8f895273f78bc402e",
+                "installed_version": "1.26.4",
+                "verified": true
+              },
+              "paramz": {
+                "compatibility_aliases": {},
+                "expected_version": "0.9.6",
+                "import_resolution": "verified_distribution",
+                "init_sha256": "c79840d8d7599518fdaef4dfb8f05f22a8030632e7f05faa9123f3f177eb9fbe",
+                "installed_version": "0.9.6",
+                "verified": true
+              },
+              "scipy": {
+                "compatibility_aliases": {},
+                "expected_version": "1.12.0",
+                "import_resolution": "verified_distribution",
+                "init_sha256": "3ae25e68311f068b721aa81b9c72931a245ffb651329ef97ca119b99b0a7935d",
+                "installed_version": "1.12.0",
+                "verified": true
+              }
+            },
+            "source_file": "rebuttals/extrapolation.ipynb",
+            "source_file_sha256": "0326f655bac0993fd845412ce59fb0cde05e04c6f70890f42ef7e6750fcd855c",
+            "source_verified": true,
+            "tracked_changes": false,
+            "verified": true
+          },
+          "noise": "native_GPy_Gaussian_noise_optimized",
+          "optimization": "native_GPy_optimize_defaults_no_restarts",
+          "prediction": "treated_mean_minus_control_mean",
+          "prediction_source": 0,
+          "rank": 2,
+          "rct_only_by_row_exclusion": false,
+          "rct_tune": "not_accessed",
+          "recipe": "source_restricted_native_trial_task_gp",
+          "rho": 0.5,
+          "source": "obs",
+          "source_encoding": {
+            "obs": 1,
+            "rct": 0
+          },
+          "status": "completed",
+          "supplied_seed": 2601026,
+          "target_reference": "not_accessed"
+        },
+        "repetition": 2,
+        "source": "obs"
+      },
+      {
+        "entry": "fit_predict_sample",
+        "provenance": {
+          "effect_modifier_columns": [
+            0,
+            1
+          ],
+          "excluded_source": "empty_native_arrays",
+          "fitting_sources": {
+            "obs": {
+              "arm_rows": {
+                "0": 8,
+                "1": 8
+              },
+              "availability": "included",
+              "fit_rows": 16
+            },
+            "rct": {
+              "arm_rows": {
+                "0": 0,
+                "1": 0
+              },
+              "availability": "not_accessed",
+              "fit_rows": 0
+            }
+          },
+          "known_propensity": "not_used",
+          "native_source": {
+            "availability": "available",
+            "cell_index": 3,
+            "cell_sha256": "6c85f01d85087e3e69f75c1dbaf926bc8868b6b1be0521a699e00be643f7ca85",
+            "declared_git_revision": "0f0c6ca424b7ca44b84649ca072384b9933b2afe",
+            "entrypoint": "ICM",
+            "expected_cell_sha256": "6c85f01d85087e3e69f75c1dbaf926bc8868b6b1be0521a699e00be643f7ca85",
+            "expected_revision": "0f0c6ca424b7ca44b84649ca072384b9933b2afe",
+            "expected_source_file_sha256": "0326f655bac0993fd845412ce59fb0cde05e04c6f70890f42ef7e6750fcd855c",
+            "import_resolution": "isolated_locked_notebook_cell",
+            "nominal_helper_status": "unresolved_merge_markers_not_imported",
+            "numerical_environment": {
+              "GPy": {
+                "compatibility_aliases": {
+                  "GPy.core.parameterization.index_operations": "paramz.core.index_operations",
+                  "GPy.core.parameterization.lists_and_dicts": "paramz.core.lists_and_dicts",
+                  "GPy.core.parameterization.observable_array": "paramz.core.observable_array"
+                },
+                "expected_version": "1.13.2",
+                "import_resolution": "verified_distribution",
+                "init_sha256": "09f87a30c1a971f56c383b48bf4d2aed56d618557eed0e4c92aed9715764dadf",
+                "installed_version": "1.13.2",
+                "verified": true
+              },
+              "numpy": {
+                "compatibility_aliases": {},
+                "expected_version": "1.26.4",
+                "import_resolution": "verified_distribution",
+                "init_sha256": "22cd1535fa14d74ef6f457cca149ffdc80875f460be313b8f895273f78bc402e",
+                "installed_version": "1.26.4",
+                "verified": true
+              },
+              "paramz": {
+                "compatibility_aliases": {},
+                "expected_version": "0.9.6",
+                "import_resolution": "verified_distribution",
+                "init_sha256": "c79840d8d7599518fdaef4dfb8f05f22a8030632e7f05faa9123f3f177eb9fbe",
+                "installed_version": "0.9.6",
+                "verified": true
+              },
+              "scipy": {
+                "compatibility_aliases": {},
+                "expected_version": "1.12.0",
+                "import_resolution": "verified_distribution",
+                "init_sha256": "3ae25e68311f068b721aa81b9c72931a245ffb651329ef97ca119b99b0a7935d",
+                "installed_version": "1.12.0",
+                "verified": true
+              }
+            },
+            "source_file": "rebuttals/extrapolation.ipynb",
+            "source_file_sha256": "0326f655bac0993fd845412ce59fb0cde05e04c6f70890f42ef7e6750fcd855c",
+            "source_verified": true,
+            "tracked_changes": false,
+            "verified": true
+          },
+          "noise": "native_GPy_Gaussian_noise_optimized",
+          "optimization": "native_GPy_optimize_defaults_no_restarts",
+          "prediction": "treated_mean_minus_control_mean",
+          "prediction_source": 0,
+          "rank": 2,
+          "rct_only_by_row_exclusion": false,
+          "rct_tune": "not_accessed",
+          "recipe": "source_restricted_native_trial_task_gp",
+          "rho": 0.5,
+          "source": "obs",
+          "source_encoding": {
+            "obs": 1,
+            "rct": 0
+          },
+          "status": "completed",
+          "supplied_seed": 2601026,
+          "target_reference": "not_accessed"
+        },
+        "source": "obs",
+        "supplied_observed_roles": [
+          "obs_train"
+        ]
+      }
+    ]
+  },
+  "pilot_engine_sha256": "f5bb3e96e97bc4308dbf2d317ba51958845ce2d6e5a143c6af767c52e209ce48",
+  "plan_sha256": "71ae5da23bc094a08415ae512af65619a018bc1d25104cabde33e9213ccae7f5",
+  "producer": {
+    "aggregate_sha256": "9caa7669ba658c000cc0ea2c0855d04c6b238330476d0c81176511aa34584655",
+    "distribution": "obs-rct-benchmark",
+    "package_file_sha256": {
+      "__init__.py": "ec6c2ec197956cef138c6dd1f6d00426f4677c33c016fd0703405a3fef78e914",
+      "adaptive.py": "e1e961a45e508684f75c546ec1d3adf92e2aff424e008e7b0486aa7113959005",
+      "adaptive_runner.py": "afecb6c75ab4f9e8c07a58b65edbacc22fac95bd59ff25c08c61b60a296302b9",
+      "causal_icm.py": "3ba5fc9311c9cf6b11fd1c09dc84c8e760d3282da9a1cbd586174183014a75a1",
+      "cli.py": "39f14951a56b3a752f87081ceaec5cbf93228d5cb6b80a65e94904c8296c22ef",
+      "cornet.py": "3ccd76509d2965ea8451da9e279a7f3c8780873c5c24625f380d3c9b719b83bf",
+      "data.py": "616958669558c6ed274709b17d683f06c18b0f0606d7fcbc8a5485919f744573",
+      "datasets.py": "c05090977b6513bfced49baafad77340c113f631af15ea062b4f7f035496825a",
+      "evaluation.py": "b66a7c0dabdb0a31aa20ef70a1744c29da6007fea438ffba33e52e35796faca9",
+      "inputs.py": "be3d6e327cc092c33f465c1e14baae74fc9d5e2077e2511a4b293af3f899c0db",
+      "integrative_r.py": "593a883eaf88002a5ce3746deb61dc70fff7b8985a62be6f7aa5bc551dacbc5f",
+      "methods.py": "a6993d5720b5ce7d7a27955de0cb3febc94a7196e7d7e101e02aef7b09ef15aa",
+      "paper_dgp.py": "77bb899367e6ce8d12ee127b4ff6deb833215e90a707bb0f35c9aacf55f6a3f2",
+      "runner.py": "5fe4e221a0a9628d20687c49272cedd505fd27692ccf55ec6fa7d0f31b9fd9b8",
+      "sensitivity.py": "f684b08c65a129d43df6a1acfba36e43d71ee072e92e2fcfdaaf27de8a6e134f",
+      "structural_dgp.py": "49c94e6e5c6725d942a15a122344b03a3bd8174a131cbee0304f3a5e5994bdf4"
+    },
+    "version": "0.3.0a2"
+  },
+  "schema_version": 1,
+  "stage": "all",
+  "status": "passed",
+  "wall_seconds": 7.728790385997854
+}
