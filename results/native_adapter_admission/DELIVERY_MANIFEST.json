@@ -1,8 +1,14 @@
 {
   "as_of": "2026-10-26",
   "files": {
-    "README.md": "a447ffbc899651e334f98191d2db65e3124dd60c0f3880d45bb4c3382a4b9371",
+    "README.md": "35d24cc7cb5378a3dcd3b4e5692a7f170912a19c80ce9e9e7ec670eb59666534",
     "attempts.json": "41ec48a3f12de13ccdaa7f7d868521902a8e9885ba88b60c1dd8d57f275cf6b8",
+    "environment/README.md": "0b1ce9e97fa815e9896bfc010b7999340c949652e2f121a730a698efa4fc54a6",
+    "environment/compare_recorded_replay.py": "7ce00409d57aeea6a8e0c158244b56ca1fd0b47b76ae6f1061d0303013d26eb7",
+    "environment/conda-linux-64.explicit.txt": "03afb42432e4068a12c133cfc2dda2384b273a3529e196b7980f836857a4ce80",
+    "environment/pip-supplement.txt": "9f711b1c29940e48eefd07e608df1bc16e8de92dea27bc0de49c0d976fbef8b6",
+    "environment/provenance.json": "2867cde81143f9dbee5e5b83ebe30e41e55a62c12be1af5ebd3f275f83865b83",
+    "environment/reconstruction.json": "7495f9417810a61074f86fdc8e10ede122c7ead4e4b06f8631d98cde49727c5f",
     "integrative_native_admission.json": "ce4d86708f5f44bd5f06d7d7b82547140854f753103bc26d69d8881390952852",
     "native-v2/analytic-gp/20261026T095710.762012Z-2376139/record.json": "4ab80839506ad515773b633d713175fb645aafd5675b4014c5a30ba9b69ceb50",
     "native-v2/analytic-intr/20261026T095712.606815Z-2376139/record.json": "f63ca3e7ca59fa6a817fb9fb12f870c312974df6dd54bcf52046b297d48cf5b6",

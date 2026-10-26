@@ -1,0 +1,54 @@
+{
+  "as_of": "2026-10-26",
+  "describes": "Installed native-adapter fitting and CPU-profile environment",
+  "omitted_from_pip_supplement": {
+    "conda_file_origin_entries": 15,
+    "conda_origin_python_packages": [
+      "cloudpickle",
+      "colorama",
+      "exceptiongroup",
+      "iniconfig",
+      "joblib",
+      "numpy",
+      "packaging",
+      "pip",
+      "pluggy",
+      "pytest",
+      "scikit-learn",
+      "scipy",
+      "threadpoolctl",
+      "tomli",
+      "typing_extensions"
+    ],
+    "editable_project_entries": 1,
+    "reason": "The file-origin packages are already installed by the explicit conda URLs. Install the benchmark from its recorded source checkout separately."
+  },
+  "platform": "linux-64 / x86_64",
+  "producer_identity": "../producer_identity.json",
+  "published_specifications": {
+    "conda-linux-64.explicit.txt": {
+      "package_urls": 193,
+      "sha256": "03afb42432e4068a12c133cfc2dda2384b273a3529e196b7980f836857a4ce80",
+      "transformation": "Add @EXPLICIT; retain the original HTTPS package URLs in their original order; remove header and blank lines."
+    },
+    "pip-supplement.txt": {
+      "exact_requirements": 18,
+      "sha256": "9f711b1c29940e48eefd07e608df1bc16e8de92dea27bc0de49c0d976fbef8b6",
+      "transformation": "Retain only the original name==version PyPI entries in their original order."
+    }
+  },
+  "reconstruction_evidence": "reconstruction.json",
+  "reconstruction_status": "passed_fresh_prefix_native_replay",
+  "runtime_fingerprint": "../runtime_fingerprint.json",
+  "schema_version": 1,
+  "source_records": {
+    "conda-explicit.txt": {
+      "format": "micromamba installed-package URL list with a private prefix header",
+      "sha256": "858dd0c11d458ec3cfb0f77b84ffce3c622859907049cf6dfbf0f1637b6eb424"
+    },
+    "pip-freeze-admission-720448.txt": {
+      "origin_job": "720448",
+      "sha256": "f98dfd3e7b85ad83f55adccd10e7a6065b4d6014fc76ae2416603455b21692d2"
+    }
+  }
+}

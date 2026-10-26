@@ -1,0 +1,26 @@
+{
+  "atol": 1e-10,
+  "comparison_driver_sha256": "7ce00409d57aeea6a8e0c158244b56ca1fd0b47b76ae6f1061d0303013d26eb7",
+  "job_id": "720512",
+  "prediction_checks": {
+    "icm-adapter-1": 0.0,
+    "icm-adapter-2": 0.0,
+    "icm-direct": 0.0,
+    "integrative_r_linear/center": 0.0,
+    "integrative_r_linear/prediction": 0.0,
+    "integrative_r_linear/scale": 0.0,
+    "integrative_r_linear/tau_beta": 0.0,
+    "integrative_r_quadratic/center": 0.0,
+    "integrative_r_quadratic/prediction": 0.0,
+    "integrative_r_quadratic/scale": 0.0,
+    "integrative_r_quadratic/tau_beta": 0.0
+  },
+  "producer_source_aggregate_sha256": "8ebb4c4389d79e1b50f52c95f51f51d47f94a8e0d889dee3502aef4afb958c1d",
+  "rtol": 1e-08,
+  "scope": "Fresh-prefix reconstruction from the published specifications, full native checks rerun, and original/new prediction and intR parameter comparisons; no new performance study.",
+  "specification_sha256": {
+    "conda-linux-64.explicit.txt": "03afb42432e4068a12c133cfc2dda2384b273a3529e196b7980f836857a4ce80",
+    "pip-supplement.txt": "9f711b1c29940e48eefd07e608df1bc16e8de92dea27bc0de49c0d976fbef8b6"
+  },
+  "status": "passed"
+}
