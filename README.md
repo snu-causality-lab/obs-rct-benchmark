@@ -4,6 +4,8 @@ A benchmark for estimating conditional average treatment effects (CATE) from a l
 
 This is a research alpha. The initial scope is binary treatment and tabular covariates. The catalog covers multiple borrowing assumptions and failure mechanisms; it does not claim to cover every OBS–RCT setting.
 
+Read the **[AI-generated technical report](docs/REPORT.md)** ([PDF](https://github.com/snu-causality-lab/obs-rct-benchmark/releases/download/report-2026-10-27/obsrct_benchmark_icml.pdf)): one integrated manuscript, ten main-text pages and 51 total, covering the framework, native checks and four studies. It is an AI-generated research draft; the report page binds its document hash and study-specific evidence.
+
 ## Choose an evaluation track
 
 - **Static estimation:** compare fixed observed-data recipes across named conditions and OBS/RCT sample budgets. Optional condition labels let one DGP appear at several budgets without changing its sampling seed. Reports show each condition's scores, paired differences, intervals and failures. See the [protocol](docs/PROTOCOL.md) and [budget-grid example](docs/EXTENDING.md).
@@ -31,7 +33,7 @@ The broader [v0.3 comparison design](docs/V03_DESIGN.md) records 22 method or me
 
 The six paper sources are CorNet, Experimental Grounding, Integrative R-learner, Elastic Integrative, power likelihood and CVCI. The Integrative R-learner normal-target extension deliberately evaluates outside the Uniform[-1,1] trial support; its original paper and code use a Uniform[-1,1] test population. Variants of one source are not counted as independent papers. See the [paper cards](docs/PAPER_DGPS.md), [coverage](docs/COVERAGE.md) and [extraction notes](docs/DGP_EXTRACTION.md).
 
-Generic baselines include RCT-only, OBS-only and naive pooled T-learners, plus an RCT DR-learner. Optional adapters call pinned official DataFusionPPI and CorNet implementations. Baseline settings and adaptations are explicit; the included recipes are not tuned reproductions of every source paper's results.
+Generic baselines include RCT-only, OBS-only and naive pooled T-learners, plus an RCT DR-learner, each with Ridge or ExtraTrees. Optional native recipes include DataFusionPPI, CorNet, Integrative R with two bases, and fixed-rho Causal-ICM with two source controls. These are 15 registered recipes spanning variants and controls, including four fusion approaches; they are not 15 distinct algorithms. [Native settings and admission](docs/V03_ADAPTERS.md) are explicit; the included recipes are not tuned reproductions of every source paper's results.
 
 The [empirical-data interface](docs/DATASETS.md#local-file-adapters) reads separately obtained files and defines new semi-synthetic OBS/RCT problems; it does not preserve the source experiment's treatment assignments or noisy outcomes. The [Γ/Γ(X) factory](docs/SENSITIVITY.md) preserves a specified marginal propensity and checks the sensitivity bound at evaluated covariates. Configuration files support constant and logistic Γ profiles; the Python API accepts pointwise callbacks. The factory implements one configurable construction within the marginal sensitivity model.
 
@@ -47,12 +49,12 @@ These research sources have different roles in the benchmark. A translated DGP d
 | Yang et al. (2022), [Elastic Integrative Analysis of Randomized Trial and Real-World Data for Treatment Heterogeneity Estimation](https://arxiv.org/abs/2005.10579v3) | Elastic Integrative simulation | Not included |
 | Lin, Tarp and Evans (2025), [Combining experimental and observational data through a power likelihood](https://academic.oup.com/biometrics/article/81/1/ujaf008/8016472) | Paper and supplement variants | Not included |
 | Yang et al. (2025), [Cross-Validated Causal Inference: a Modern Method to Combine Experimental and Observational Data](https://arxiv.org/abs/2511.00727v1) | CVCI linear simulation | Not included |
-| Jung and Yang (2026), [Prediction-Powered Data Fusion for Treatment Effect Estimation](https://arxiv.org/abs/2610.12332v1) | Not included | Optional official DataFusionPPI |
-| Dimitriou et al. (2026), [Causal-ICM](https://proceedings.mlr.press/v323/dimitriou26a.html) | Not included | Optional fixed-rho native GP recipe |
+| Jung and Yang (2026), [Prediction-Powered Data Fusion for Treatment Effect Estimation](https://arxiv.org/abs/2610.12332v2) | Not included | Optional official DataFusionPPI |
+| Dimitriou et al. (2026), [Causal-ICM](https://proceedings.mlr.press/v323/dimitriou26a.html) | No source-paper DGP translation; a separate [controlled GP experiment](results/gp_source_pilot/README.md) is available | Optional fixed-rho native GP recipe and source controls |
 
 For empirical benchmark provenance, see Hill (2011), [Bayesian Nonparametric Modeling for Causal Inference](https://doi.org/10.1198/jcgs.2010.08162), and Dorie et al. (2019), [Automated versus Do-It-Yourself Methods for Causal Inference: Lessons Learned from a Data Analysis Competition](https://doi.org/10.1214/18-STS667). [Dataset sources and terms](docs/DATASETS.md) distinguish the original IHDP archive, semi-synthetic IHDP releases and the ACIC2016 package. No dataset is bundled with this repository.
 
-For benchmark-design background, Curth and van der Schaar (2021), [Doing Great at Estimating CATE? On the Neglected Assumptions in Benchmark Comparisons of Treatment Effect Estimators](https://arxiv.org/abs/2107.13346v1), examines how IHDP/ACIC2016 data-generation assumptions interact with estimator comparisons.
+For benchmark-design background, Curth, Svensson, Weatherall and van der Schaar (2021), [Really Doing Great at Estimating CATE? A Critical Look at ML Benchmarking Practices in Treatment Effect Estimation](https://datasets-benchmarks-proceedings.neurips.cc/paper/2021/hash/2a79ea27c279e471f4d180b08d62b00a-Abstract-round2.html), examines how semi-synthetic assumptions and evaluation metrics affect CATE comparisons.
 
 ## Learn with notebooks
 
@@ -114,7 +116,7 @@ The benchmark's MIT license covers its original code. External sources retain th
 
 ## Evaluation contract
 
-A method receives `TrainingView`: OBS training data, RCT training data, RCT tuning data and any permitted outcome-free target covariates. Query `eval_X` is for prediction only: fit preprocessing, density models and adaptation using training data or the separate permitted `target_reference`. Latent confounders, evaluation outcomes and effect truth stay with the evaluator. This interface helps prevent accidental leakage; it is not a security sandbox.
+The common method entry uses `TrainingView` to separate OBS training, RCT training, RCT tuning and permitted outcome-free target covariates. The [GP source-access experiment](docs/GP_SOURCE_PILOT.md) uses a stricter included-sample-only entry for its controls; excluded-source outcomes never enter their method arguments. Query `eval_X` is for prediction only: fit preprocessing, density models and adaptation using training data or the separate permitted `target_reference`. Latent confounders, evaluation outcomes and effect truth stay with the evaluator. This interface helps prevent accidental leakage; it is not a security sandbox.
 
 Supported generators provide an independent target-covariate sample when `n_target_reference>0`; the default is no such sample. The separate `rct_test` is evaluator-owned and reserved for factual diagnostics. The current runner scores predictions against `eval_tau` at `eval_X`, without using RCT test outcomes. All methods within one scenario/seed receive the same realized samples. The [protocol](docs/PROTOCOL.md) and [extension guide](docs/EXTENDING.md) specify prediction shape, registration and failure handling.
 

@@ -1,0 +1,22 @@
+# AI-generated technical report
+
+[Read the integrated PDF](https://github.com/snu-causality-lab/obs-rct-benchmark/releases/download/report-2026-10-27/obsrct_benchmark_icml.pdf) · [Report snapshot](https://github.com/snu-causality-lab/obs-rct-benchmark/releases/tag/report-2026-10-27) · [Document and evidence identities](report_provenance.json)
+
+The report is an **AI-generated research draft**, labeled in the PDF. It is not peer reviewed, and its human author list is unassigned. The single manuscript contains ten main-text pages and 51 pages in total. It integrates the target/assumption framework, native implementation checks and four studies, with condition-level tables, paired comparisons and explicit numerical coverage.
+
+The clearest finding is that improving an observational starting prediction does not establish that borrowing observational data helps. In one fixed Gaussian-process experiment, adding 512 observational outcomes increases mean trial-CATE MSE by about 0.040 at trial size 128 and 0.017 at size 512 relative to the same RCT-only GP at the largest observational discrepancy. Yet it improves on its prior-shrunken OBS starting reference in all six conditions. The discrepancy scale changes the OBS arm-mean contrast while holding trial difficulty, causal CATE and query population fixed; the source correlation is fixed at 0.5.
+
+| Evidence | Executed scope | Interpretation |
+| --- | --- | --- |
+| [Native catalog](../results/catalog_study/SCIENTIFIC_RESULT.md) | 31 presets, four budgets, 64 seeds, ten recipes; 79,083 successes, 21 failures, 256 prospectively N/A cells, zero unattempted applicable cells | Four incomplete contrasts withhold all 472 declared Holm decisions; this is not 472 nonsignificant findings. Heavy-tailed M11 has descriptive means/quantiles. Every requested fit has a success or failure record. |
+| [Matched GP experiment](../results/gp_source_pilot/SCIENTIFIC_RESULT.md) | Six conditions, 32 seeds, three source-access procedures; 576 successes | OBS addition lowers mean CATE MSE at discrepancy 0/1 and raises it at 2 versus matched RCT-only at both trial budgets. All 12 intervals are pointwise and unadjusted. |
+| [Matched-M2 comparison](../results/reference_study/SCIENTIFIC_RESULT.md) | Cross hidden treatment selection with source-effect shift: 16 budget conditions, 32 seeds, six recipes; 3,072 successes | All 64 predeclared fusion-versus-trial contrasts have complete pairs and their own joint Holm adjustment. |
+| [Charged recruitment](../results/adaptive_reference/SCIENTIFIC_RESULT.md) | Three mechanisms, three policies, two final estimators, 32 seeds; 1,152 successes | Pointwise policy comparisons, charged pilot/tuning outcomes and replay of queries, costs, final fits and scores |
+
+The package registers 15 recipes, including variants and source controls. The catalog executes ten; the GP experiment executes three. Native Integrative R/GP [fidelity and cost checks](../results/native_adapter_admission/README.md) establish their stated software scope, rather than a new comparison of all methods over all presets. Improvements over the GP's prior-shrunken OBS start do not establish superiority to stronger OBS-only estimators.
+
+The manuscript's scientific snapshot is [1c39243](https://github.com/snu-causality-lab/obs-rct-benchmark/tree/1c392430457a099f249099a5627944efa976b38a). Each study retains its own producer, configuration, environment, seeds, recording limits and inference. The report's disclosure label and publication do not refit estimators, change scores or replace the frozen protocols. [Verification](VERIFICATION.md) distinguishes native-call fidelity, independent arithmetic, subset prediction replay and empirical validation.
+
+All mechanisms were inspected during development. Actual IHDP/ACIC evaluation, unseen-mechanism validation, several estimator families, shared observable-data tuning, and richer uncertainty/decision metrics remain open in the [comparison design](V03_DESIGN.md) and [method inventory](V03_METHODS.md).
+
+This page remains the reading entry point for the integrated report. Future scientific results belong in that manuscript, with a new explicitly bound snapshot when published. Earlier study records remain available through the [results index](../results/README.md).

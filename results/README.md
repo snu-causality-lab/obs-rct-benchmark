@@ -1,20 +1,21 @@
-# Reference studies and execution examples
+# Results and execution examples
 
-Version `0.2.0a1` includes a full-catalog study completed on 2026-10-26 and two earlier reference studies. Failures, unsupported combinations and heavy-tail inference limits remain explicit; original alpha examples are preserved below.
+The [AI-generated technical report](../docs/REPORT.md) gives one integrated reading account. The result packets below retain their own frozen producer, configuration, source/environment identities and uncertainty rules. Package **0.3.0a2** registers 15 recipes; this is not a count of 15 distinct fusion algorithms or a claim that every recipe has run on every design.
 
 | Study | Coverage | Question and readout |
 | --- | ---: | --- |
 | [Full catalog comparison](catalog_study/SCIENTIFIC_RESULT.md) | 79,083 successful / 79,104 applicable; 21 failed, 0 missing; 256 N/A | All 31 native presets × four budgets × ten recipes × 64 seeds; all 472 eligible Holm decisions withheld because four contrasts lack complete pairs |
-| [Static reference comparison](reference_study/SCIENTIFIC_RESULT.md) | 3,072 / 3,072 | Four matched M2 variants × four OBS/RCT budget pairs × six public recipes × 32 seeds; full official training, nonlinear RCT controls, all 64 primary contrasts with Holm adjustment |
-| [Adaptive recruitment comparison](adaptive_reference/SCIENTIFIC_RESULT.md) | 1,152 / 1,152 | Three mechanisms × two outcome budgets × three recruitment policies × two final estimators × 32 seeds; same-estimator policy contrasts, exact acquisition costs and complete deterministic replay |
+| [GP source-access experiment](gp_source_pilot/SCIENTIFIC_RESULT.md) | 576 / 576; 0 failed or missing | Three procedures × three OBS discrepancies × two trial budgets × 32 paired seeds. Fixed native GP: adding OBS helps mean risk at discrepancy 0/1 and hurts at 2 relative to its matched RCT-only fit at both budgets. Both contrasts and all six conditions are retained; intervals are pointwise and unadjusted. |
+| [Matched-M2 comparison](reference_study/SCIENTIFIC_RESULT.md) | 3,072 / 3,072 | Four matched M2 variants × four OBS/RCT budget pairs × six public recipes × 32 seeds; full official training, nonlinear RCT controls and all 64 primary contrasts with Holm adjustment |
+| [Recruitment comparison](adaptive_reference/SCIENTIFIC_RESULT.md) | 1,152 / 1,152 | Three mechanisms × two outcome budgets × three recruitment policies × two final estimators × 32 seeds; same-estimator policy contrasts, exact acquisition costs and complete deterministic replay |
 
-These studies give sampling replications conditional on development-inspected mechanisms. They do not establish unseen-mechanism generalization or validate identification assumptions in a real population. Pointwise intervals in the adaptive study are descriptive and have no multiplicity adjustment. See the frozen [static](../docs/REFERENCE_STUDY.md) and [adaptive](../docs/ADAPTIVE.md) protocols and [verification](../docs/VERIFICATION.md).
+The GP experiment is one additional controlled mechanism in its dedicated driver, not six new canonical presets or a 31-preset comparison of the new recipes. Its OBS start is a prior-shrunken trial-task prediction, not an optimal OBS-only estimator. The [native implementation checks](native_adapter_admission/README.md) separately cover three recipes, 304 tests, direct/repeated calls, independent numerical identities and six bounded CPU profiles; they are not a comparative accuracy study.
+
+These studies provide sampling replications conditional on development-inspected mechanisms. Actual IHDP/ACIC evaluation and unseen-mechanism validation remain open. The catalog, GP, matched-M2 and recruitment analyses keep separate seed collections and inference. Pointwise GP/recruitment intervals are descriptive and have no multiplicity adjustment. See [verification scopes](../docs/VERIFICATION.md) and each linked frozen protocol before reproducing a study; the current package must not resume older result trees with different source fingerprints.
 
 ## Original alpha execution examples
 
-Compact results from public methods only, executed with package `0.1.0a1`. These small-sample, two-seed examples check execution; they are not a scientific method-ranking study.
-
-Each result set contains per-record metrics/status, an aggregate JSON summary, a Markdown report and source/environment provenance. Configured runs also include the executed TOML; the file-fixture run is reproduced by its linked Python recipe and fully resolved manifest. Raw arrays, trained models and machine-specific paths are excluded.
+Compact results from public methods, executed with package `0.1.0a1`. These small-sample, two-seed examples check execution rather than method ranking. Their result packets preserve per-record metrics/status, aggregate JSON, configuration and source/environment provenance. The file-fixture run uses its linked Python recipe and resolved manifest. Raw arrays, trained models and machine-specific paths are excluded from these compact examples.
 
 | Example | Coverage | Methods | Interpretation |
 | --- | ---: | --- | --- |
@@ -24,4 +25,4 @@ Each result set contains per-record metrics/status, an aggregate JSON summary, a
 | [Gamma factory smoke](gamma_smoke/README.md) | 16 / 16 | Four generic ridge baselines | Constant and logistic Gamma(X), two seeds |
 | [Synthetic file-format smoke](empirical_fixture_smoke/README.md) | 16 / 16 | Four generic ridge baselines | Invented IHDP/ACIC-format records; [reproduction recipe](../examples/run_synthetic_file_smoke.py) |
 
-All **308 cells** completed without failures or missing records; resume left records unchanged. The file-format example uses no real IHDP/ACIC data and makes no empirical-dataset performance claim. Numerical results appear in the linked reports and JSON. Averaging raw errors over designs with different outcome scales is descriptive. See [verification](../docs/VERIFICATION.md) and the main README for reproduction and limits.
+All **308 cells** completed without failures or missing records; completed-run resume preserved the records. The bundles overlap and are not 308 independent scientific tasks. File fixtures use no real IHDP/ACIC data. Their numerical results and original manifests remain unchanged.

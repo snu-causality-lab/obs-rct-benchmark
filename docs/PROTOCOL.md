@@ -1,6 +1,6 @@
 # Data and evaluation protocol
 
-This is the implemented protocol for the current package. The [v0.3 comparison design](V03_DESIGN.md) specifies future native-target comparisons and selection rules; it does not modify this API or reinterpret earlier results.
+This is the implemented contract for the generic static runner. Separately declared study drivers retain their own frozen information and analysis specifications; the [GP source-access experiment](GP_SOURCE_PILOT.md) uses the stricter included-sample entry described below. The [v0.3 comparison design](V03_DESIGN.md) specifies future native-target comparisons and selection rules; it does not change generic role permissions or reinterpret earlier results.
 
 The estimand for each scenario is the target-population conditional average treatment effect, `tau_target(x)=E_target[Y(1)-Y(0)|X=x]`. The target population is part of the scenario definition. A randomized trial identifies effects in its enrolled population; random treatment assignment alone does not establish transport to another population. This distinction matters in the hidden-participation scenarios.
 
@@ -20,6 +20,8 @@ Each replicate generates independent role draws from a fixed mechanism. A `Sourc
 
 `problem.training_view()` returns only `TrainingView(obs_train, rct_train, rct_tune, target_reference)`. A method implements `fit_predict(training, eval_X, *, seed)` and returns one finite prediction per evaluation row. Arrays are copied and read-only. This API prevents accidental access through the supplied objects; it is not an operating-system sandbox for arbitrary plugin code. Do not capture a `SimulationProblem` or truth in an adapter closure.
 
+The GP source controls also provide `fit_predict_sample(sample, eval_X, *, seed)`. Their separate experiment supplies only the included `SourceSample`: RCT-only receives no OBS sample, and OBS start receives no RCT sample. The generic `TrainingView` entry remains a compatibility delegator for these controls. Source exclusion covers shared-hyperparameter fitting as well as outcome fitting.
+
 Query `eval_X` is prediction-only. Do not fit preprocessing, estimate target densities or adapt model parameters on those evaluation rows. Use observed training data or an explicitly enabled independent `target_reference` for those operations. This rule makes the evaluation distribution available through a declared sample rather than through evaluation queries. A future transductive protocol would need its own declared information contract.
 
 Use fixed declared defaults, an internal split of training data, or a disclosed tuning rule based on observed training/tuning data. A trial factual prediction loss can tune outcome models, but it is not an oracle CATE loss. Keep each method's data use visible: the optional official DataFusionPPI adapter uses `rct_train` and `obs_train`, and the upstream method makes its own internal splits; it does not consume `rct_tune`.
@@ -31,6 +33,8 @@ A scenario's `kind` and `id` choose its generator preset. Its optional `label` n
 Changing a label alone does not change the generated observations, mechanism seed or method seed. Changing sample sizes or parameters does change the experiment. Matching sample seeds pairs the random streams across settings; it does not guarantee that every smaller sample is an exact prefix of a larger one. Labels are conditions, not independent replicates, so repeated copies of one setting must not increase the reported number of seed blocks.
 
 The report shows sample sizes separately for OBS training, RCT training, RCT tuning, evaluator-only RCT test, target reference and evaluation. It also shows `RCT train + tune`, the randomized-outcome budget made available to methods. This is an access budget: a fixed recipe may leave tuning data unused. Neither unused tuning data nor evaluator-only test data silently becomes additional fitting data.
+
+That sum applies to the generic runner's independently drawn roles. The separate GP driver uses an ignored compatibility tuning field that aliases the first two already charged RCT fitting rows; it is not independent validation and adds no unique outcomes. Full and RCT-only therefore each receive B unique randomized outcomes, and OBS start receives zero. This driver-specific placeholder does not relax the generic independent-role contract or authorize tuning on fitting aliases.
 
 ## Confounding and source outcome shift
 
@@ -64,6 +68,8 @@ root_pehe = sqrt(cate_mse)
 All methods in a scenario/seed receive the same generated samples and evaluation covariates. Pairwise differences are method minus reference, so negative values favor the method. For an overall comparison, scenario differences are averaged within each seed before uncertainty is computed across seed blocks. This gives each requested scenario equal weight and preserves the within-seed pairing. Declare any other scenario weighting before running it.
 
 The summary reports a mean and approximate two-sided Student `t` interval across independent seed blocks. The implementation uses a conservative critical-value table; a single seed block has no uncertainty interval. Evaluation rows, scenarios, and methods are not treated as independent replicate blocks. The interval describes simulation-seed variability conditional on the selected mechanisms and settings; it does not account for how those scenarios were selected.
+
+Generic runner summaries are execution diagnostics. A frozen study-specific analyzer governs scientific inference, including the catalog's M11 mean-inference exclusions and complete-collection Holm rule. Monte Carlo intervals across seed blocks are not individual CATE uncertainty or calibrated learner-posterior intervals.
 
 The generated Markdown report shows each scenario's scores, failed/missing cells, and paired CATE-MSE differences against the declared reference. These intervals are pointwise and have no multiplicity adjustment. An aggregate table remains available as a descriptive equal-cell average on the original outcome scales; large-scale scenarios can dominate it. Use the condition-specific results to interpret failures and borrowing benefits rather than treating the raw-scale aggregate as a universal ranking. `summary.json` additionally contains paired root-PEHE comparisons and the overall seed-block summaries.
 
