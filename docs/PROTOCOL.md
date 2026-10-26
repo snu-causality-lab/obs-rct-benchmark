@@ -1,5 +1,7 @@
 # Data and evaluation protocol
 
+This is the implemented protocol for the current package. The [v0.3 comparison design](V03_DESIGN.md) specifies future native-target comparisons and selection rules; it does not modify this API or reinterpret earlier results.
+
 The estimand for each scenario is the target-population conditional average treatment effect, `tau_target(x)=E_target[Y(1)-Y(0)|X=x]`. The target population is part of the scenario definition. A randomized trial identifies effects in its enrolled population; random treatment assignment alone does not establish transport to another population. This distinction matters in the hidden-participation scenarios.
 
 ## Roles and information boundary

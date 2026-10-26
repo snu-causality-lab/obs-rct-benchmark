@@ -1,6 +1,6 @@
 include LICENSE README.md CITATION.cff CONTRIBUTING.md THIRD_PARTY_NOTICES.md sources.lock.toml
 recursive-include configs *.toml
-recursive-include docs *.md
+recursive-include docs *.md *.toml *.csv
 recursive-include examples *.py
 recursive-include notebooks *.ipynb *.md *.json
 recursive-include scripts *.py

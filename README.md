@@ -11,6 +11,10 @@ This is a research alpha. The initial scope is binary treatment and tabular cova
 
 The [full catalog study](results/catalog_study/SCIENTIFIC_RESULT.md) evaluates all 31 native presets, four sample-budget pairs, 64 seeds and ten recipes: **79,083 successful fits, 21 terminal failures, zero missing applicable cells**, plus 256 prospectively unsupported cells. All failures are DataFusionPPI calibration failures in two Elastic conditions. The frozen rule withholds all 472 eligible Holm decisions; all condition-level results remain reported. Prespecified refits and independent score reaggregation pass. The earlier [matched-M2](results/reference_study/SCIENTIFIC_RESULT.md) and [recruitment](results/adaptive_reference/SCIENTIFIC_RESULT.md) studies remain separate evidence. These inspected synthetic mechanisms do not establish unseen-mechanism generalization.
 
+## Next comparison design
+
+The [v0.3 comparison design](docs/V03_DESIGN.md) records 22 method or method-group entries and classifies all 31 existing presets by target, support, transport and implementation assumptions. It prioritizes missing native-CATE comparisons, separates causal-parameter/subgroup/bounds/acquisition tasks, and specifies observable-data tuning and failure rules. This is a design document; it adds no estimator or new performance result. Existing v0.2 source and results remain unchanged.
+
 ## What is included
 
 | Track | Available designs | Purpose |

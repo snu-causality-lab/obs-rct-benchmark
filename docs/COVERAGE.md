@@ -2,6 +2,8 @@
 
 The candidate includes 31 named scenarios: eight published-mechanism translations and one target-population extension associated with six research sources, twelve structural mechanisms (`M0`–`M11`), and ten paired structural variants (`C01`–`C10`). This is a bounded simulation collection. It does not claim comprehensive coverage of observational–trial fusion, all kinds of hidden confounding, or every published benchmark. [Paper cards](PAPER_DGPS.md) document the external sources; structural configurations and truth equations live in [`structural_dgp.py`](../src/obs_rct_benchmark/structural_dgp.py).
 
+For the planned v0.3 comparison, [scenario annotations](V03_SCENARIOS.md) distinguish trial/OBS effect transport, support and method assumptions for every canonical preset; the [comparison design](V03_DESIGN.md) states how those annotations constrain scientific claims. These annotations do not change the preset equations.
+
 ## Structural mechanisms
 
 | ID | Main feature | Interpretation |
