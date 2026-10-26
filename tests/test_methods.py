@@ -5,6 +5,7 @@ import hashlib
 import importlib.metadata
 import importlib.util
 import json
+import subprocess
 import sys
 from types import SimpleNamespace
 
@@ -99,3 +100,60 @@ def test_methods_reject_a_simulation_object_in_place_of_training_view():
     for method in (TLearner(), RCTDRLearner(), DataFusionPPI()):
         with pytest.raises(TypeError, match="TrainingView"):
             method.fit_predict(object(), np.zeros((2, 2)), seed=0)
+
+
+def test_builtin_registry_has_thirteen_recipes_and_preserves_original_names():
+    expected = {
+        "rct_t_ridge", "obs_t_ridge", "naive_pooled_t_ridge",
+        "rct_t_extra_trees", "obs_t_extra_trees", "naive_pooled_t_extra_trees",
+        "rct_dr_ridge", "rct_dr_extra_trees", "datafusionppi", "cornet_official",
+        "integrative_r_linear", "integrative_r_quadratic", "causal_icm_fixed",
+    }
+    assert set(methods.method_names()) - set(methods.custom_provenance()) == expected
+    assert len(expected) == 13
+
+
+@pytest.mark.parametrize("name,basis", [
+    ("integrative_r_linear", "linear"), ("integrative_r_quadratic", "quadratic"),
+])
+def test_integrative_recipe_ids_fix_basis_and_forward_other_options(name, basis):
+    from obs_rct_benchmark.integrative_r import OfficialIntegrativeR
+
+    estimator = methods.make_method(name, k_folds=3, timeout_seconds=45)
+    assert isinstance(estimator, OfficialIntegrativeR)
+    assert (estimator.basis, estimator.k_folds, estimator.timeout_seconds) == (basis, 3, 45)
+    for override in ("linear", "quadratic"):
+        with pytest.raises(ValueError, match="basis is fixed by the method ID"):
+            methods.make_method(name, basis=override)
+
+
+def test_causal_icm_recipe_forwards_native_rho_and_declared_columns():
+    from obs_rct_benchmark.causal_icm import OfficialCausalICM
+
+    estimator = methods.make_method("causal_icm_fixed", rho=.3, effect_modifier_columns=[2, 0])
+    assert isinstance(estimator, OfficialCausalICM)
+    assert estimator.rho == .3 and estimator.effect_modifier_columns == (2, 0)
+
+
+def test_new_recipe_construction_in_fresh_process_imports_no_optional_dependencies():
+    # A clean interpreter makes this independent of test collection/order and
+    # catches constructor-time probes even if another test already imported GPy.
+    script = '''
+import importlib.abc
+import subprocess
+import sys
+blocked = {"GPy", "paramz", "scipy", "sklearn", "torch", "rpy2", "dfppi"}
+class RejectOptional(importlib.abc.MetaPathFinder):
+    def find_spec(self, fullname, path=None, target=None):
+        if fullname.split(".")[0] in blocked:
+            raise AssertionError("optional import during construction: " + fullname)
+sys.meta_path.insert(0, RejectOptional())
+def reject_probe(*args, **kwargs):
+    raise AssertionError("external process during construction")
+subprocess.run = subprocess.check_output = reject_probe
+from obs_rct_benchmark.methods import make_method
+for name in ("integrative_r_linear", "integrative_r_quadratic", "causal_icm_fixed"):
+    assert callable(make_method(name).fit_predict)
+assert not any(name.split(".")[0] in blocked for name in sys.modules)
+'''
+    subprocess.run([sys.executable, "-c", script], check=True, capture_output=True, text=True)

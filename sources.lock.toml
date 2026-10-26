@@ -65,15 +65,33 @@ use = "Mathematical mechanism reference; not vendored."
 
 [[source]]
 id = "integrative_r_learner_official"
-kind = "git-reference"
+kind = "optional-external-source"
 url = "https://github.com/lwu9/intRlearner.git"
 revision = "a46ce2c1cc814865898b863d6a8e130bbc2c802b"
 license_status = "No license file found; DESCRIPTION contains a placeholder license field."
-reference_files = ["R/intRlearner.R", "R/utils.R", "DESCRIPTION"]
+reference_files = ["R/intRlearner.R", "R/utils.R", "DESCRIPTION", "NAMESPACE"]
 generator_file_sha256 = "98563e2423f41153fcbb2548f3b54ac779c72bcb8d154608bf51f778086fdce8"
 support_file_sha256 = "2b85e2e56db83e33427f6f43aa1b59d995bafb6d46bfc1aec8e5f2e6a215525b"
 description_sha256 = "fa2885ec2a8aef1c1502ab3984647f0ae25815c26494e2444dfd296c8bec4810"
-use = "Equation reference only; upstream code not vendored."
+namespace_sha256 = "736cb2c31c983b3a07d06d09b8ef93d89972f312c1db584ff253a0281d082bac"
+adapter_checked_at = "2026-10-26"
+use = "DGP equation reference and optional Rscript adapter to separately obtained, unmodified source; upstream code not vendored."
+
+[[source]]
+id = "causal_icm_official"
+kind = "optional-external-source"
+paper_url = "https://proceedings.mlr.press/v323/dimitriou26a.html"
+url = "https://github.com/EvanDimitriou/CausalICM.git"
+revision = "0f0c6ca424b7ca44b84649ca072384b9933b2afe"
+adapter_checked_at = "2026-10-26"
+license_status = "No root license file found at the pinned reference."
+reference_files = ["rebuttals/extrapolation.ipynb"]
+notebook_sha256 = "0326f655bac0993fd845412ce59fb0cde05e04c6f70890f42ef7e6750fcd855c"
+cell_index_zero_based = 3
+cell_sha256 = "6c85f01d85087e3e69f75c1dbaf926bc8868b6b1be0521a699e00be643f7ca85"
+source_note = "Nominal functions/model_training.py has unresolved merge markers. Adapter executes only the intact original ICM definition cell at this same revision; no source patch."
+recipe = "causal_icm_fixed: prospectively fixed rho=0.5, all X by default, source task0 contrast for both treatment arms."
+use = "Optional adapter to a separately obtained, hash-verified author notebook cell; no upstream source or notebook vendored."
 
 [[source]]
 id = "elastic_integrative_paper"

@@ -1,0 +1,17 @@
+{
+  "console_pytest_seconds": 19.01,
+  "errors": 0,
+  "failures": 0,
+  "job_id": "720450",
+  "log_sha256": "0173f30146bfa9c699a5c912596b220ab587003a8e1c43a287c46479ac68af85",
+  "native_runtime_is_separate": "Python3.11.17, R4.3.3",
+  "original_summary_sha256": "50ff7acd09ed265ecb5f76641e754b268b469dfb06c21ed896067f89362e7ccd",
+  "pytest": "8.3.5",
+  "pytest_seconds": 18.99,
+  "python": "3.12.3",
+  "skipped": 0,
+  "source_identity": "producer_identity.json",
+  "tests": 304,
+  "warnings": 3,
+  "xml_sha256": "2ddcd3528f8ce83473e3e480e61e289f54dd8bcbe1d85b68e6207931b9b104ef"
+}

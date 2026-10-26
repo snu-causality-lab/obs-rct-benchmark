@@ -1,0 +1,53 @@
+{
+  "attempt": "analytic-gp/20261026T095710.762012Z-2376139",
+  "children_maxrss_platform_units": 65536,
+  "driver_sha256": "3f894d610d6e4f6875c5fcea668bbabd37231a88097f10a26bd72ffa1a11c68d",
+  "log_sha256": {
+    "stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "maxrss_unit": "KiB",
+  "plan_sha256": "00859873082ef136a966d8571c70081032639a0392f0e57595c185a004917f3f",
+  "producer_sha256": {
+    "causal_icm.py": "752dac23743c0b043ffbe117d20990852c171d9d74d09da3e8071e905f506304",
+    "data.py": "616958669558c6ed274709b17d683f06c18b0f0606d7fcbc8a5485919f744573",
+    "integrative_r.py": "593a883eaf88002a5ce3746deb61dc70fff7b8985a62be6f7aa5bc551dacbc5f"
+  },
+  "public_projection": {
+    "frozen_fixture_source": "scripts/native_admission.py",
+    "omitted_numeric_fields": [
+      "manual_latent_variance",
+      "manual_mean",
+      "native_latent_variance",
+      "native_mean"
+    ],
+    "original_record_sha256": "19a115d75d09db01ddf34fc2db7ada97c4a7743268bcf0aac6d340c2d7484f7e",
+    "source_reference_base": "repository"
+  },
+  "result": {
+    "environment": {
+      "GPy": "1.13.2",
+      "GPy_exact_inference_sha256": "38f302f082fe4aae9435b3a8f45c8d3588e0755f94fcadbcf2a79e569f7381e1",
+      "GPy_init_sha256": "09f87a30c1a971f56c383b48bf4d2aed56d618557eed0e4c92aed9715764dadf",
+      "executable_sha256": "750899df25484a2749629a26855d8266973ba1bee0127be2f72ae5e9e5e685bd",
+      "numpy": "1.26.4",
+      "paramz": "0.9.6",
+      "platform": "Linux-6.8.0-35-generic-x86_64-with-glibc2.39",
+      "python": "3.11.17",
+      "scipy": "1.12.0"
+    },
+    "max_absolute_discrepancy": {
+      "coregionalization": 0.0,
+      "cross_covariance": 2.220446049250313e-16,
+      "posterior_latent_variance": 4.440892098500626e-16,
+      "posterior_mean": 1.1102230246251565e-15,
+      "training_covariance": 5.551115123125783e-17
+    },
+    "optimization_performed": false
+  },
+  "self_maxrss_platform_units": 122964,
+  "stage": "analytic-gp",
+  "started_utc": "20261026T095710.762012Z",
+  "status": "passed",
+  "wall_seconds": 1.8345196740119718
+}

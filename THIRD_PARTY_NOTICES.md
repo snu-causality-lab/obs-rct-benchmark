@@ -8,11 +8,12 @@ The DGP implementations express mathematical mechanisms in the benchmark's data 
 | --- | --- | --- | --- |
 | CorNet | [`38b9c37`](https://github.com/tobhatt/CorNet/tree/38b9c37d5a86bc87950945d6ddb1ceb5354a45ba) | No license file found | Mathematical mechanism and architecture reference |
 | Experimental Grounding | [`a25cf3d`](https://github.com/CausalML/RemovingHiddenConfounding/tree/a25cf3d2524a01c8a8d821f25cdeeb312c34a9cd) | No license file found | Mathematical mechanism reference |
-| Integrative R-learner | [`a46ce2c`](https://github.com/lwu9/intRlearner/tree/a46ce2c1cc814865898b863d6a8e130bbc2c802b) | No license file found; `DESCRIPTION` has a placeholder license field | Mathematical mechanism reference |
+| Integrative R-learner | [`a46ce2c`](https://github.com/lwu9/intRlearner/tree/a46ce2c1cc814865898b863d6a8e130bbc2c802b) | No license file found; `DESCRIPTION` has a placeholder license field | Mathematical mechanism reference and separate optional Rscript adapter |
 | Elastic Integrative | [`a8c9a06`](https://github.com/Gaochenyin/ElasticIntegrative/tree/a8c9a06371485c25caca5cc8396ea5ba47f381b6) | [MIT, `LICENSE.md`](https://github.com/Gaochenyin/ElasticIntegrative/blob/a8c9a06371485c25caca5cc8396ea5ba47f381b6/LICENSE.md), copyright 2022 elasticHTE authors | Mathematical mechanism reference; source not vendored |
 | Power-likelihood | [Publisher supplement](https://academic.oup.com/biometrics/article/81/1/ujaf008/8016472), archive SHA-256 in the lock | No code license file found in the inspected supplement | Mathematical mechanism reference |
 | CVCI | [`d74cb7c`](https://github.com/xyang23/cross_validated_causal/tree/d74cb7c928938fd1a2978481f9aab6ac654c7d08) | No license file found | Mathematical mechanism reference |
 | DataFusionPPI, optional | [`04c7f34`](https://github.com/CausalDataScience/DataFusionPPI/tree/04c7f3447b02fa09f875e68e8c47100a7207d546) | [MIT, `LICENSE`](https://github.com/CausalDataScience/DataFusionPPI/blob/04c7f3447b02fa09f875e68e8c47100a7207d546/LICENSE) | Separately installed official method, called through an adapter |
+| Causal-ICM, optional | [`0f0c6ca`](https://github.com/EvanDimitriou/CausalICM/tree/0f0c6ca424b7ca44b84649ca072384b9933b2afe) | No root license file found | Separately obtained intact notebook definition cell, called without vendoring |
 
 [sources.lock.toml](sources.lock.toml) records full revisions, selected file hashes, primary paper links, and source use. The six paper sources support eight translations and one explicit target-population extension; DataFusionPPI is an optional method reference and does not add a DGP source. The lock records inspected references rather than asserting that these are the latest upstream versions.
 

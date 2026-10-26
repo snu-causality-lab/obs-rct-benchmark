@@ -425,7 +425,8 @@ def environment_provenance() -> dict[str, Any]:
         "python": platform.python_version(), "implementation": platform.python_implementation(),
         "system": platform.system(), "machine": platform.machine(),
         "packages": {name: _version(name) for name in
-                     ("obs-rct-benchmark", "numpy", "scikit-learn", "scipy", "dfppi", "torch")},
+                     ("obs-rct-benchmark", "numpy", "scikit-learn", "scipy", "dfppi", "torch",
+                      "GPy", "paramz")},
     }
 
 
@@ -433,8 +434,10 @@ def external_method_provenance(methods: tuple[str, ...]) -> dict[str, Any]:
     """Bind requested external implementations to manifest/resume identity.
 
     This records availability and actual file hashes without training or
-    importing external algorithm code. Adapter execution handles unavailable
-    or modified dependencies as failed cells, preserving coverage reporting.
+    importing external Python algorithm code. The integrative R bridge probes
+    installed R namespaces once, without fitting, for both basis recipes.
+    Adapter execution handles unavailable or modified dependencies as failed
+    cells, preserving coverage reporting.
     """
     result: dict[str, Any] = {}
     if "datafusionppi" in methods:
@@ -443,6 +446,17 @@ def external_method_provenance(methods: tuple[str, ...]) -> dict[str, Any]:
         from .cornet import cornet_provenance
 
         result["cornet_official"] = cornet_provenance()
+    integrative = {"integrative_r_linear", "integrative_r_quadratic"}.intersection(methods)
+    if integrative:
+        from .integrative_r import integrative_r_provenance
+
+        snapshot = integrative_r_provenance()
+        for name in sorted(integrative):
+            result[name] = {**snapshot, "basis": name.removeprefix("integrative_r_")}
+    if "causal_icm_fixed" in methods:
+        from .causal_icm import causal_icm_provenance
+
+        result["causal_icm_fixed"] = causal_icm_provenance()
     return result
 
 

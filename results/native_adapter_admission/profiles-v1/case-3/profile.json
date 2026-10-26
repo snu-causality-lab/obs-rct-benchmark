@@ -1,0 +1,1176 @@
+{
+  "created_utc": "2026-10-26T09:58:14.812062+00:00",
+  "launcher_children_usage": {
+    "maxrss_kib": 349492,
+    "system_cpu_seconds": 1.04994,
+    "user_cpu_seconds": 12.788887
+  },
+  "launcher_elapsed_seconds": 15.203891051001847,
+  "launcher_self_usage": {
+    "maxrss_kib": 19456,
+    "system_cpu_seconds": 0.026574,
+    "user_cpu_seconds": 0.048526
+  },
+  "memory_interpretation": "Linux ru_maxrss is in KiB; separate self/child high-water marks do not establish the simultaneous process-group or whole-job peak",
+  "parameters": {
+    "d": 5,
+    "method": "integrative_r_linear",
+    "n_eval": 2048,
+    "n_obs": 2048,
+    "n_rct_train": 512,
+    "seed": 2642,
+    "timeout_seconds": 600,
+    "unused_rct_tune_rows": 2
+  },
+  "process_group_cleanup": {
+    "leader_reaped": true,
+    "signal": "group_already_absent"
+  },
+  "returncode": 0,
+  "schema_version": 1,
+  "scope": "resource_profile_only_not_native_admission_or_performance_evidence",
+  "server_only_artifacts": [
+    "observed_inputs.npz",
+    "predictions.npy",
+    "stdout.log",
+    "stderr.log",
+    "native_stdout.log",
+    "native_stderr.log",
+    "native_parameters.npz",
+    "worker_traceback.txt",
+    "parent_traceback.txt",
+    "tmp/"
+  ],
+  "source_identity": {
+    "driver": "scripts/profile_native_adapters.py",
+    "driver_sha256": "42b50e624cfbbb38f74bc2a77171e56a6b787685f1945c6fdae979d30e735d7d",
+    "package_file_sha256": {
+      "__init__.py": "9763415259658ec202c5b5a28aa335689ea1f7156bf671a374b62023fb80ef40",
+      "adaptive.py": "e1e961a45e508684f75c546ec1d3adf92e2aff424e008e7b0486aa7113959005",
+      "adaptive_runner.py": "afecb6c75ab4f9e8c07a58b65edbacc22fac95bd59ff25c08c61b60a296302b9",
+      "causal_icm.py": "752dac23743c0b043ffbe117d20990852c171d9d74d09da3e8071e905f506304",
+      "cli.py": "39f14951a56b3a752f87081ceaec5cbf93228d5cb6b80a65e94904c8296c22ef",
+      "cornet.py": "3ccd76509d2965ea8451da9e279a7f3c8780873c5c24625f380d3c9b719b83bf",
+      "data.py": "616958669558c6ed274709b17d683f06c18b0f0606d7fcbc8a5485919f744573",
+      "datasets.py": "c05090977b6513bfced49baafad77340c113f631af15ea062b4f7f035496825a",
+      "evaluation.py": "b66a7c0dabdb0a31aa20ef70a1744c29da6007fea438ffba33e52e35796faca9",
+      "inputs.py": "be3d6e327cc092c33f465c1e14baae74fc9d5e2077e2511a4b293af3f899c0db",
+      "integrative_r.py": "593a883eaf88002a5ce3746deb61dc70fff7b8985a62be6f7aa5bc551dacbc5f",
+      "methods.py": "e32a220b43fd95ce1fe9900a459fd2b663ff350cc9c85c107dc5b61becc76577",
+      "paper_dgp.py": "77bb899367e6ce8d12ee127b4ff6deb833215e90a707bb0f35c9aacf55f6a3f2",
+      "runner.py": "ae91ab0bb6d3b7ee7f1e46d269770af3e3dc5faa6512d0cd7dfbac0020ec1176",
+      "sensitivity.py": "f684b08c65a129d43df6a1acfba36e43d71ee072e92e2fcfdaaf27de8a6e134f",
+      "structural_dgp.py": "49c94e6e5c6725d942a15a122344b03a3bd8174a131cbee0304f3a5e5994bdf4"
+    }
+  },
+  "status": "completed",
+  "termination": "worker_process_group_including_R_children",
+  "thread_limits": {
+    "BLIS_NUM_THREADS": "1",
+    "MKL_NUM_THREADS": "1",
+    "NUMEXPR_NUM_THREADS": "1",
+    "OMP_NUM_THREADS": "1",
+    "OPENBLAS_NUM_THREADS": "1",
+    "RCPP_PARALLEL_NUM_THREADS": "1",
+    "VECLIB_MAXIMUM_THREADS": "1"
+  },
+  "worker": {
+    "attempt_provenance_": {
+      "basis": "linear",
+      "basis_origin": "benchmark_raw_covariate_recipe",
+      "bridge_sha256": "11eb8e6a9f6fe956466af2b2ef7622a45f650a26391e7bd9ae2730cda6aac456",
+      "executable_path_sha256": "1cd20039b4ccb2c436e66ce010fe43c7d2a919c54b43d5b226146e70ff7c1ca8",
+      "executable_sha256": "0f7ee94401cd3e8a7d38b6d6fe594cc92e64f5819f917d32d9de107d28d2755f",
+      "fold_rule": "source_arm_stratified_numpy_default_rng_v1",
+      "foldid_sha256": "6b666376c074027963454c293bf9ac76bf95ad63e10bfb35f87e5b78cc505546",
+      "k_folds": 5,
+      "known_rct_propensity": "not_used_native_estimation",
+      "native_seed": 2642,
+      "source": {
+        "availability": "available",
+        "declared_git_revision": "a46ce2c1cc814865898b863d6a8e130bbc2c802b",
+        "expected_revision": "a46ce2c1cc814865898b863d6a8e130bbc2c802b",
+        "extra_source_files": [],
+        "package_file_sha256": {
+          "DESCRIPTION": "fa2885ec2a8aef1c1502ab3984647f0ae25815c26494e2444dfd296c8bec4810",
+          "NAMESPACE": "736cb2c31c983b3a07d06d09b8ef93d89972f312c1db584ff253a0281d082bac",
+          "R/intRlearner.R": "98563e2423f41153fcbb2548f3b54ac779c72bcb8d154608bf51f778086fdce8",
+          "R/utils.R": "2b85e2e56db83e33427f6f43aa1b59d995bafb6d46bfc1aec8e5f2e6a215525b"
+        },
+        "source_files": [
+          "R/utils.R",
+          "R/intRlearner.R"
+        ],
+        "tracked_changes": false,
+        "untracked_changes": false,
+        "verified": true
+      },
+      "supplied_seed": 2642,
+      "timeout_seconds": 1200
+    },
+    "environment": {
+      "implementation": "CPython",
+      "machine": "x86_64",
+      "packages": {
+        "GPy": "1.13.2",
+        "dfppi": "not-installed",
+        "numpy": "1.26.4",
+        "obs-rct-benchmark": "0.3.0a1",
+        "paramz": "0.9.6",
+        "scikit-learn": "1.5.2",
+        "scipy": "1.12.0",
+        "torch": "not-installed"
+      },
+      "python": "3.11.17",
+      "system": "Linux"
+    },
+    "external_methods": {
+      "integrative_r_linear": {
+        "availability": "available",
+        "basis": "linear",
+        "declared_git_revision": "a46ce2c1cc814865898b863d6a8e130bbc2c802b",
+        "expected_revision": "a46ce2c1cc814865898b863d6a8e130bbc2c802b",
+        "extra_source_files": [],
+        "package_file_sha256": {
+          "DESCRIPTION": "fa2885ec2a8aef1c1502ab3984647f0ae25815c26494e2444dfd296c8bec4810",
+          "NAMESPACE": "736cb2c31c983b3a07d06d09b8ef93d89972f312c1db584ff253a0281d082bac",
+          "R/intRlearner.R": "98563e2423f41153fcbb2548f3b54ac779c72bcb8d154608bf51f778086fdce8",
+          "R/utils.R": "2b85e2e56db83e33427f6f43aa1b59d995bafb6d46bfc1aec8e5f2e6a215525b"
+        },
+        "runtime": {
+          "availability": "available",
+          "executable_path_sha256": "1cd20039b4ccb2c436e66ce010fe43c7d2a919c54b43d5b226146e70ff7c1ca8",
+          "executable_sha256": "0f7ee94401cd3e8a7d38b6d6fe594cc92e64f5819f917d32d9de107d28d2755f",
+          "namespace_packages": {
+            "MASS": {
+              "description_sha256": "e297307d0e5449d585932f6debceaaa9e360dd90a4725fc6c8c9785d4471e44c",
+              "namespace_path_sha256": "11dbb83f96999aaa88ef7a5d025b47addd3ccea2c1b22aeba0f8a88e0ea01bcc",
+              "version": "7.3.60.0.1"
+            },
+            "Matrix": {
+              "description_sha256": "47781fe7447e33325e8db4ead0e81bcea0bb80ebcbf41b0c7a49a4c1bf615ab6",
+              "namespace_path_sha256": "9b9d454a4aad9acabfe51db0bcaf28ac2c9ca5eddedb73a7dfb42043ce123074",
+              "version": "1.6.5"
+            },
+            "ModelMetrics": {
+              "description_sha256": "4ad86fc2d0fdcdccece050158f8c85276540a6ea4fb64e990e32435b5834d48e",
+              "namespace_path_sha256": "b238a61dd2fb95cce27b75c7698bd5fcff2d88a9d1bdccd46476e5b604d9e126",
+              "version": "1.2.2.2"
+            },
+            "R6": {
+              "description_sha256": "011c350bfd414a6ff490d3302e2d3db84487da4b0a0b0ff3f46362fe9c699f04",
+              "namespace_path_sha256": "19c6a7d381d64736e9f2e1c7e74e17d4edc4345dc7f41c39971da0c79a07ff42",
+              "version": "2.6.1"
+            },
+            "RColorBrewer": {
+              "description_sha256": "5757c16b335bcd434138071ec561180c570116f9e5ec74a23aab1d0d4712e5de",
+              "namespace_path_sha256": "c864ae6773e5610592db287e4540006b2b8be1e63d72f173914d0ffeeccf99a1",
+              "version": "1.1.3"
+            },
+            "Rcpp": {
+              "description_sha256": "4bdffc364dbf1f3f4d0dd742dc8d6548f3a29321743937ad805148385cf850dd",
+              "namespace_path_sha256": "f0dd11e7e226c72571a6e49c94b012b10535a666df80a9fce8eadb73c680ab8d",
+              "version": "1.1.0"
+            },
+            "base": {
+              "description_sha256": "928d748311860b4f6abc12073d83b842b8cfb09d6a0eda8243f4943b06c0433d",
+              "namespace_path_sha256": "cb6a006fb2cabf8513a4178d34a0624c354f1279ce02c242b1c8974f01807772",
+              "version": "4.3.3"
+            },
+            "caret": {
+              "description_sha256": "d660fd2edebd72b2fd9b1dd3e8f8c67840c7c71b5f46c14ecdcb17683cd4de5f",
+              "namespace_path_sha256": "b8aed65c919edff8f96fad03b70a2e259bc67ad01fbc9598688fa1d6d332a49a",
+              "version": "6.0.94"
+            },
+            "class": {
+              "description_sha256": "8b9bcdfb3e828e1cdfe06f1dfa34cc46842aa7cf9bfd8bdd257bee363a22b492",
+              "namespace_path_sha256": "c6d67ce4912e6af7b61d6b99eb2861a903ea6c9517e48eddd89eedaaec33c13d",
+              "version": "7.3.23"
+            },
+            "cli": {
+              "description_sha256": "6a5c5d3cfae86af2591626bb8c1c54ce1001b4684c3a247430d056753ada42a7",
+              "namespace_path_sha256": "4b907577461ad53bbffd01087acd935e03e3d8b1aa80e98a3927f918d11c96b3",
+              "version": "3.6.5"
+            },
+            "codetools": {
+              "description_sha256": "1abfe4711909463e07825a688be27a909480e58c1f4f89a27ba6f4c159f055b6",
+              "namespace_path_sha256": "e86a0ce74e1cfbfa2c2921a260eccbef194ecbf9177e34b511e2fd045ee3c210",
+              "version": "0.2.20"
+            },
+            "compiler": {
+              "description_sha256": "35076c6ec521708b734061a6ab955d28bd9c5a8913ba82aae17c6f0ce6df4b68",
+              "namespace_path_sha256": "f8f94e91ff54db6b6a86ee81a2bf71166ac0ada0ffba2f08cdffe1bc7b96b928",
+              "version": "4.3.3"
+            },
+            "data.table": {
+              "description_sha256": "5d0c0231689db2bb6c93e21063998d96290a1ea6154b8493ed32fb686bf36980",
+              "namespace_path_sha256": "15bc112f22ff29dbaaec0ef7ca5f59a2b8218f35739a46053cf797423daaa3fc",
+              "version": "1.17.8"
+            },
+            "datasets": {
+              "description_sha256": "24604c26895102377719d17a833f35518392a317b843952378bcab02d1a9564a",
+              "namespace_path_sha256": "304d89fa40adbc24d33b1dc546c482ee6eebe205a8cf18edd0342904da55d5c5",
+              "version": "4.3.3"
+            },
+            "digest": {
+              "description_sha256": "15335b5dddfd523c9741a91ea4ff07c6ee3c14e3936fc5d8905660c4adcd885b",
+              "namespace_path_sha256": "e899710b421968db258746a541d24331cc2aee638233a65a4398794004a8bc3d",
+              "version": "0.6.37"
+            },
+            "dplyr": {
+              "description_sha256": "e76000094ef1bdb2f84435d4b4a14094427757b9eeac30c487a42b95da5ada4f",
+              "namespace_path_sha256": "ba4b26ddd045b6aabac76cc04d7342fcf4c875bf9be5d93e3506fdc16a065874",
+              "version": "1.1.4"
+            },
+            "farver": {
+              "description_sha256": "b9887d13b4965991e7cf1604525e8e4a8021c5dc2f6f2969cf922771b961e397",
+              "namespace_path_sha256": "a8953a00d6aba16f19e6f10c59c28ef2b2ae1f8518c1eadfa6bd29755cd1b73b",
+              "version": "2.1.2"
+            },
+            "foreach": {
+              "description_sha256": "64986f915e2f77b655f696fdab586f8c0b6328e2ccbd4854c4232d55b5298228",
+              "namespace_path_sha256": "59dbf52e926e649f2f37649808003681f79b62997c6c17fdfcadd0a855402c2c",
+              "version": "1.5.2"
+            },
+            "future": {
+              "description_sha256": "c8a9acc22668e90cee775b1a1a8b5ae92d09e216f915de3a08bcfdcda760827a",
+              "namespace_path_sha256": "8ce732112cdbdf91c1a4f1505829d53e84251f89f6fba09310e47041a1a6d502",
+              "version": "1.67.0"
+            },
+            "future.apply": {
+              "description_sha256": "60986739fd2b4d478cd5d1a5bf7b901cafb8d7fcc5f01333bd2dbde6917c53b1",
+              "namespace_path_sha256": "dc026228d70abc6c050d4dbe38d5ed3d896998b607e65174f219b3cee137fca0",
+              "version": "1.20.0"
+            },
+            "generics": {
+              "description_sha256": "129d673b178bf88a946f770f695f8b94e209db3d36acc8551317cea1f1f1c698",
+              "namespace_path_sha256": "48486889e028a03f8795f366906818933976f156d2b447598cbf14e23b731c41",
+              "version": "0.1.4"
+            },
+            "ggplot2": {
+              "description_sha256": "42f760b75bdc50d1383bec22c42d0280b39b11ee05d7debca467cb4d3eb3c0c5",
+              "namespace_path_sha256": "fd53fb3f179fe16a050157047eaf53f08aef38f34d6bb2d7cf1a07040e626218",
+              "version": "3.5.2"
+            },
+            "glmnet": {
+              "description_sha256": "992fb33b5eddf148fe914d408f581611f4c1daced7037b9b1ae794270f313df3",
+              "namespace_path_sha256": "00ee6b53b5dbd3754fb846975110afe45fad6d13199a3d350fd0ae91bd9d6c74",
+              "version": "4.1.10"
+            },
+            "globals": {
+              "description_sha256": "2a7933d4cd916eb89928765103a3d894ff48c4c8aab76ba95c1e26dc4c6c2d6a",
+              "namespace_path_sha256": "e5e7ba32f52a77faccfa0b3ebfcd58be43fabed1f6682fd90a0330263c44e256",
+              "version": "0.18.0"
+            },
+            "glue": {
+              "description_sha256": "c9bfca791c0824c4180bc2c207366316c0000a8707761a641df14145ab707541",
+              "namespace_path_sha256": "e4bd1a033755133bc66e52a191fbe6c4547f8c3861715b036a8e2156bcf90a60",
+              "version": "1.8.0"
+            },
+            "gower": {
+              "description_sha256": "c9eeef4b4b9cc1c67eb38419b6110a1a33c8b4b8c932c47bb43d65f711bbd4a1",
+              "namespace_path_sha256": "0705433f4f707c778551bad130f0878a19c22d6be1000d660b476a322c3861c8",
+              "version": "1.0.1"
+            },
+            "grDevices": {
+              "description_sha256": "db1f78924695d1ef1ba1a11dfe4b2d0e7ad860a398810dd4542bf45fd8eb5ed9",
+              "namespace_path_sha256": "241ac38ca840e30e2bf92ce7655bc3367e457f58d4a5ec564d6c44e1c9eb5b04",
+              "version": "4.3.3"
+            },
+            "graphics": {
+              "description_sha256": "3210af40c78d4c4de6e36535c3b2c3c4cf30b2b0a7a65d40f4872a5501b2c57f",
+              "namespace_path_sha256": "202468ad2077e3ca339c90686a1776f6fc66333ee624ffa8e2e977fb7ca8160f",
+              "version": "4.3.3"
+            },
+            "grid": {
+              "description_sha256": "e5fd172f3ca25dfa32409bbd18c72a355ec1d6a5cb3ae41f5d8679cc3600c183",
+              "namespace_path_sha256": "6a0d020a95aa07b939aeb0bbd6fc7de8ae86a455db1d958c3b854fb7e7fb9854",
+              "version": "4.3.3"
+            },
+            "gtable": {
+              "description_sha256": "44b30ad38aec15da2ea61f6a308c5fb1cbc4a802b2b0448990637c0fc0a22b7e",
+              "namespace_path_sha256": "22dcbc3d42619bf0c9148521ee70a1905385fe1999220fe39f73b090c2c4659b",
+              "version": "0.3.6"
+            },
+            "hardhat": {
+              "description_sha256": "e314472ddc6f4d397e62aef6d5a78eed37f4f7f02396e20508e908be584fcb08",
+              "namespace_path_sha256": "84a5aac4705ee8f3d55481858081f7c1e0d934760caccc3496d3a4fb48f0802a",
+              "version": "1.4.2"
+            },
+            "ipred": {
+              "description_sha256": "250c4d595c802093aa981cc51ad8ea106aabe4a2f92a2268bbf949ba04a7105a",
+              "namespace_path_sha256": "d179c7a42e24a2c9dc5b842812c155ec3594427d119dd925aca8c9dd3c6a00a3",
+              "version": "0.9.15"
+            },
+            "iterators": {
+              "description_sha256": "c5bf8a23665230c25e283ea9aec6538d1c64010689c709f84cca03b30c41e2ce",
+              "namespace_path_sha256": "892f3edaddde410f77f60ff302f8a211ba2fde89c940785b23e88ec3e8127429",
+              "version": "1.0.14"
+            },
+            "lattice": {
+              "description_sha256": "a5e47abae822132880525135c952658a10745972d4ba82feaa4933b472a6aa15",
+              "namespace_path_sha256": "5d3a5cdcca5d2cea28dee72380139759068d837eb323502a42774fc46795305c",
+              "version": "0.22.7"
+            },
+            "lava": {
+              "description_sha256": "44f0e358e033699418095bb3dc748504ba88a4c7040dce3e08692a908db3fa0d",
+              "namespace_path_sha256": "25fbe0d350e06f865a7324dd1506fd5118d443f4e301bfc316e5ac47475dc07c",
+              "version": "1.8.1"
+            },
+            "lifecycle": {
+              "description_sha256": "1b2ab4027bb8db90b3f3692d6fffde14e6a9fc3dc44653146fa2201e953bd13d",
+              "namespace_path_sha256": "cd1214e0e8466b935b6b4ac6db393a788cddafdf2e1095fadc382530f949918c",
+              "version": "1.0.4"
+            },
+            "listenv": {
+              "description_sha256": "ac0bebb4fa8d67ab9e38098086dcaef3678820aa8abedb1203764d88845909cf",
+              "namespace_path_sha256": "057c796b139c6939337b6cb94d7b495c7440cf9281ab3aff0d9d69452981aaf1",
+              "version": "0.9.1"
+            },
+            "lubridate": {
+              "description_sha256": "c623d90d303abfbbfa0d358a8f019a2d7d01e2e53535cc5201ac08a7618beb32",
+              "namespace_path_sha256": "6a32c8b5bada2baffe4f5bf8a92db545932ffecd617e90a9aa17bb1ba0c33f43",
+              "version": "1.9.4"
+            },
+            "magrittr": {
+              "description_sha256": "874a26dcd9022b2de268b85d33c6204012f32a8efdb06b1ce255bca8d3d9ca01",
+              "namespace_path_sha256": "6a72a30e11e667bc33928de5427a57029444579499e297cf5fac777879a727f7",
+              "version": "2.0.3"
+            },
+            "methods": {
+              "description_sha256": "e0359ea9bd2ccd845a9bddf84bb1e06d1f26a491580fc53818d68d6d7614db49",
+              "namespace_path_sha256": "426a133aba230e92a4f3aa2186eb37e36075321e115e096a020d4aad64a76023",
+              "version": "4.3.3"
+            },
+            "ncvreg": {
+              "description_sha256": "4405eeb71dcc8957784cb4fe23e1860134cbb99420452150aaf360a10dfa4ca9",
+              "namespace_path_sha256": "01f88f4aa53739eb429f79dc489f10599364c2a5aace0728d52b397911f20ffe",
+              "version": "3.15.0"
+            },
+            "nlme": {
+              "description_sha256": "cceea05e2de21d390fd24b4c12dcd0974878f5aa6706c4067dc80852f61fa921",
+              "namespace_path_sha256": "23313db5e232e71d608e5f64f98ce8b295e601b1c4cab338afb7c4b47e9585d3",
+              "version": "3.1.168"
+            },
+            "nnet": {
+              "description_sha256": "25f81049ac5955fe80d2b6a54703dd65f69675d25594b5cd5bfb006e594931c5",
+              "namespace_path_sha256": "8679451ea5cd4071acb9c2f0eb3b2b193caf918bb38abacbeb48487a7803de60",
+              "version": "7.3.20"
+            },
+            "pROC": {
+              "description_sha256": "b4dafae518f6dfd0bc77e7cdd309b2be392ada3b913ae1881dd5ad8dc24b1f09",
+              "namespace_path_sha256": "d5adf75ed4ad8a46fc179f8b63cd990832f9cd4980679948cc07681370e26f1b",
+              "version": "1.19.0.1"
+            },
+            "parallel": {
+              "description_sha256": "5e79b0c6a876947eb3e3931e7d365a7fd89f8deffae0d9c26cfcceb611f900f1",
+              "namespace_path_sha256": "8455dd78f47e0b9fe9b6e9d51068920aafb3018cf168ade9de7b62f1108bcb78",
+              "version": "4.3.3"
+            },
+            "parallelly": {
+              "description_sha256": "4b2860b7c7ea03cc2cecb9ccba6709a0d80e923d02d529c1da2cb099948c2cc5",
+              "namespace_path_sha256": "ed0da31a67094ea384c5cadab0b24f444e3374ad5e99608478d15b55eb5404c1",
+              "version": "1.45.1"
+            },
+            "pillar": {
+              "description_sha256": "ce8a0aa1cd7377590856c04be4a6a96d15a82d5d73b468d1a130e547bea0c9be",
+              "namespace_path_sha256": "2fc3aac9d883ba2a399ceca17856346840acf244ab20d3b9355225277175443b",
+              "version": "1.11.0"
+            },
+            "pkgconfig": {
+              "description_sha256": "4fd210bbd0b62357fd15ac349ef8bbf39f098ed0b94b98b1aa92cc06482b34f9",
+              "namespace_path_sha256": "99c81c9378e3614817fad0d7c1f147ad0c43af62d2c82ed956c2ad1c34114099",
+              "version": "2.0.3"
+            },
+            "plyr": {
+              "description_sha256": "05ab9afdc35132744c0cf5c3cbd2da96796f8f21ba9a700d1e3ba2dbb6fd87df",
+              "namespace_path_sha256": "3b3656a710364e8371b8e7d6423f167516816d672086492ef3cd0b13f4e7e495",
+              "version": "1.8.9"
+            },
+            "prodlim": {
+              "description_sha256": "5c4eeae72d4d08faad1c480be61b0aee2aabb990f078a73803aa01883319f1e0",
+              "namespace_path_sha256": "50ae52bce7d58719c206d09b1f8385546491e9aebef91eedf5d39db25470722b",
+              "version": "2025.4.28"
+            },
+            "purrr": {
+              "description_sha256": "39c3435691e9a9005f1bcf1f170dc5e1c3bb220776c73cfbdc79f939efe83088",
+              "namespace_path_sha256": "591b34bf164e8ca00f8bee475910b558406e3df8b5dacce58f1804d1b852d539",
+              "version": "1.1.0"
+            },
+            "recipes": {
+              "description_sha256": "fa4ccfc0094b3f69cd1ce13a5077cbca02b397405734aaa97705998d61b0a252",
+              "namespace_path_sha256": "e7138b999e376004904d43f432d2be7ac24f654f88be5d397c19092536a30c52",
+              "version": "1.3.1"
+            },
+            "reshape2": {
+              "description_sha256": "2d808cf930a49fcbba34b8952b78822dbca01b2ba74b5b27cd7867c91e8c5322",
+              "namespace_path_sha256": "173b30d370890c017b8f1ac485d56f5e3e0922c2131275da1b052bfb7b12a288",
+              "version": "1.4.4"
+            },
+            "rlang": {
+              "description_sha256": "82a13d9efa01b458e25d76059c337578839864a9f576fad9b09d9e4ef26af5d2",
+              "namespace_path_sha256": "650e80e85374764b4efff804272cfa34eb2800fbd9d45cc1cb70dc80dec09e5e",
+              "version": "1.1.6"
+            },
+            "rpart": {
+              "description_sha256": "e9b3a854ac330701b298801fe48de9b56b0af5ab20e01221e39ec8835140d1ab",
+              "namespace_path_sha256": "8415fde8a5bb981db775cdfca81d20b9d8779e35b4b38003d7ab826720423805",
+              "version": "4.1.24"
+            },
+            "scales": {
+              "description_sha256": "92f82e45efeb578f28f3631935b0d0b8b0463196166984a549def57da33d1ffa",
+              "namespace_path_sha256": "412621f782a1000bac2582da482861e447c32b12fbe92f41a8669cb748443c9d",
+              "version": "1.4.0"
+            },
+            "shape": {
+              "description_sha256": "c710a2c2e972556ffda59a6899fa799f62d778911b594179982b8e9c878cea56",
+              "namespace_path_sha256": "b7947ea637ce104d13ea05befa0c47f64ad90fff1fcf068dfa1f2625e04f3b51",
+              "version": "1.4.6.1"
+            },
+            "splines": {
+              "description_sha256": "b2c7d822ca5d7e21019b8e4a69e019770d5e370fefbabbc8b4b5176ae809ab5d",
+              "namespace_path_sha256": "774eb8aeddcba9f526c48136e4f7555fe4845abc7682b9a77d064352420f7107",
+              "version": "4.3.3"
+            },
+            "stats": {
+              "description_sha256": "b296b4526021508e82e5ea5ee3c4bab2e1b0007f1595ec6f6996d51501999b9a",
+              "namespace_path_sha256": "f7621cebd3e98c79706b755405c78dc9dac8d8d0414ad79552a1b1903164a67f",
+              "version": "4.3.3"
+            },
+            "stats4": {
+              "description_sha256": "24f4106ae094419226ed182bc1d168cdf250d41b13fb5d79c9fb2f51f8d4ac50",
+              "namespace_path_sha256": "cb7db70933170b03774c8fc292a04e75b45c57b8548ecad620c945ca64e318f9",
+              "version": "4.3.3"
+            },
+            "stringi": {
+              "description_sha256": "0a8d8f340031addb86ec47d411b2caaa02dc271e5e4e16bc54ade486791bc888",
+              "namespace_path_sha256": "fb737506ae046b62ea2b622267d3c6d8a61b8aa56d9ffe64fe5b0dfea1fade3f",
+              "version": "1.8.7"
+            },
+            "stringr": {
+              "description_sha256": "f97112153f640cef7e4facfed3d8f1d8a06be8365b6174165e7fe34e01985df1",
+              "namespace_path_sha256": "6b10103d36afa375c3855c644e5389ee47391dfc79a21021d8aa3e9396553109",
+              "version": "1.5.2"
+            },
+            "survival": {
+              "description_sha256": "e9b122087e147fda6c317f597db98405bd63061bdf2960fdc3557a62c4da9f1f",
+              "namespace_path_sha256": "9027505b59bbf5a7d82b965443cb5f2953fa00cf1b3d4f98ea3e849e036cca7f",
+              "version": "3.8.3"
+            },
+            "tibble": {
+              "description_sha256": "da1616486908481ad12f5c6b436d9e3e10dfc14a9fae76e9d88d757d4b6acf78",
+              "namespace_path_sha256": "fdac776d15fb99a613fef1313e07c0432e59e12b1fd4b2cadf1f50f682486560",
+              "version": "3.3.0"
+            },
+            "tidyselect": {
+              "description_sha256": "7280bc6ee74bff89678d40a3b27046f9947c566aa5922f3e62c0e431dfdc8299",
+              "namespace_path_sha256": "f2b54b31c9936a45cd71bde933a55e01c15b561f15222627343d2d0bb7759815",
+              "version": "1.2.1"
+            },
+            "timeDate": {
+              "description_sha256": "3beee99dcc0df03a6f0f8925717902d0b4c50d2d3d212e2f58b24fb1097664b3",
+              "namespace_path_sha256": "24b97f16d94613f382b1cdc9c0d1a9e00a0b7d358821ee4dff512bdc31f847fd",
+              "version": "4041.110"
+            },
+            "timechange": {
+              "description_sha256": "444b932276698fa7339d3f4bdf44c8e8ac03efc917c1c031bd22b060e4f9a4b7",
+              "namespace_path_sha256": "c3c43ee156111619273cc293febe770289108d6375ecfc2643bab5b375a90d07",
+              "version": "0.3.0"
+            },
+            "tools": {
+              "description_sha256": "e498971222975ff5be9a528616159c02072a0c1d2d1fcb0846c261d18b1ada6d",
+              "namespace_path_sha256": "b4835ba21b19d0456447bea1caf79a84bd1a226c46c4c4daa65aa6c55cb41f84",
+              "version": "4.3.3"
+            },
+            "utils": {
+              "description_sha256": "d2083496de6e8060771dca7c93c99b19457e390b89e0b968eadbb5df0b3db68c",
+              "namespace_path_sha256": "e3bc08b44217cd33786fa7941893eb092cf902931a3ec94444e23403854ffeca",
+              "version": "4.3.3"
+            },
+            "vctrs": {
+              "description_sha256": "b9b48e552e4f52d7b512a8a2f72a18e01ac39a5c3604fd4792caa76aba64e42c",
+              "namespace_path_sha256": "197b32c0f26a7dc9ab1a1a91d4c49a66ae73a135f041c335cea59ac94e4e5c05",
+              "version": "0.6.5"
+            },
+            "withr": {
+              "description_sha256": "20bf9d64b66eb1ae579e25fabd2c2303f63665a3cd317ae2dd7b710fcd51dd48",
+              "namespace_path_sha256": "a02bbd4072fff2b3f76b3146558eff6d66c8aeea945c8239cae2be74e21e09d1",
+              "version": "3.0.2"
+            }
+          },
+          "r_version": "R version 4.3.3 (2024-02-29)"
+        },
+        "source_files": [
+          "R/utils.R",
+          "R/intRlearner.R"
+        ],
+        "tracked_changes": false,
+        "untracked_changes": false,
+        "verified": true
+      }
+    },
+    "fit_predict_seconds": 11.204673436994199,
+    "fitting_arm_counts": {
+      "obs": {
+        "0": 1028,
+        "1": 1020
+      },
+      "rct": {
+        "0": 272,
+        "1": 240
+      }
+    },
+    "imported_package_source": {
+      "aggregate_sha256": "8ebb4c4389d79e1b50f52c95f51f51d47f94a8e0d889dee3502aef4afb958c1d",
+      "distribution": "obs-rct-benchmark",
+      "package_file_sha256": {
+        "__init__.py": "9763415259658ec202c5b5a28aa335689ea1f7156bf671a374b62023fb80ef40",
+        "adaptive.py": "e1e961a45e508684f75c546ec1d3adf92e2aff424e008e7b0486aa7113959005",
+        "adaptive_runner.py": "afecb6c75ab4f9e8c07a58b65edbacc22fac95bd59ff25c08c61b60a296302b9",
+        "causal_icm.py": "752dac23743c0b043ffbe117d20990852c171d9d74d09da3e8071e905f506304",
+        "cli.py": "39f14951a56b3a752f87081ceaec5cbf93228d5cb6b80a65e94904c8296c22ef",
+        "cornet.py": "3ccd76509d2965ea8451da9e279a7f3c8780873c5c24625f380d3c9b719b83bf",
+        "data.py": "616958669558c6ed274709b17d683f06c18b0f0606d7fcbc8a5485919f744573",
+        "datasets.py": "c05090977b6513bfced49baafad77340c113f631af15ea062b4f7f035496825a",
+        "evaluation.py": "b66a7c0dabdb0a31aa20ef70a1744c29da6007fea438ffba33e52e35796faca9",
+        "inputs.py": "be3d6e327cc092c33f465c1e14baae74fc9d5e2077e2511a4b293af3f899c0db",
+        "integrative_r.py": "593a883eaf88002a5ce3746deb61dc70fff7b8985a62be6f7aa5bc551dacbc5f",
+        "methods.py": "e32a220b43fd95ce1fe9900a459fd2b663ff350cc9c85c107dc5b61becc76577",
+        "paper_dgp.py": "77bb899367e6ce8d12ee127b4ff6deb833215e90a707bb0f35c9aacf55f6a3f2",
+        "runner.py": "ae91ab0bb6d3b7ee7f1e46d269770af3e3dc5faa6512d0cd7dfbac0020ec1176",
+        "sensitivity.py": "f684b08c65a129d43df6a1acfba36e43d71ee072e92e2fcfdaaf27de8a6e134f",
+        "structural_dgp.py": "49c94e6e5c6725d942a15a122344b03a3bd8174a131cbee0304f3a5e5994bdf4"
+      },
+      "version": "0.3.0a1"
+    },
+    "input_recipe": {
+      "id": "fixed_observed_gaussian_covariates_binary_arms_v1",
+      "obs_assignment": "logistic_covariate_and_unobserved_variable",
+      "outcome": "fixed_covariate_mean_plus_arm_covariate_term_and_noise",
+      "rct_assignment_probability": 0.5,
+      "rejection_or_resampling": false,
+      "tuning_role": "two_independent_observed_rows_unused_by_all_requested_recipes"
+    },
+    "last_run_provenance_": {
+      "basis": "linear",
+      "basis_origin": "benchmark_raw_covariate_recipe",
+      "bridge_sha256": "11eb8e6a9f6fe956466af2b2ef7622a45f650a26391e7bd9ae2730cda6aac456",
+      "executable_path_sha256": "1cd20039b4ccb2c436e66ce010fe43c7d2a919c54b43d5b226146e70ff7c1ca8",
+      "executable_sha256": "0f7ee94401cd3e8a7d38b6d6fe594cc92e64f5819f917d32d9de107d28d2755f",
+      "fold_rule": "source_arm_stratified_numpy_default_rng_v1",
+      "foldid_sha256": "6b666376c074027963454c293bf9ac76bf95ad63e10bfb35f87e5b78cc505546",
+      "k_folds": 5,
+      "known_rct_propensity": "not_used_native_estimation",
+      "native_seed": 2642,
+      "returncode": 0,
+      "source": {
+        "availability": "available",
+        "declared_git_revision": "a46ce2c1cc814865898b863d6a8e130bbc2c802b",
+        "expected_revision": "a46ce2c1cc814865898b863d6a8e130bbc2c802b",
+        "extra_source_files": [],
+        "package_file_sha256": {
+          "DESCRIPTION": "fa2885ec2a8aef1c1502ab3984647f0ae25815c26494e2444dfd296c8bec4810",
+          "NAMESPACE": "736cb2c31c983b3a07d06d09b8ef93d89972f312c1db584ff253a0281d082bac",
+          "R/intRlearner.R": "98563e2423f41153fcbb2548f3b54ac779c72bcb8d154608bf51f778086fdce8",
+          "R/utils.R": "2b85e2e56db83e33427f6f43aa1b59d995bafb6d46bfc1aec8e5f2e6a215525b"
+        },
+        "source_files": [
+          "R/utils.R",
+          "R/intRlearner.R"
+        ],
+        "tracked_changes": false,
+        "untracked_changes": false,
+        "verified": true
+      },
+      "status": "success",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "6571e82d5d37594a4a17fcababd8302ddb5cb5bce00919aa5916e1127b6f4913",
+      "supplied_seed": 2642,
+      "timeout_seconds": 1200
+    },
+    "memory_interpretation": "Linux ru_maxrss in KiB: self and largest reaped child are separate high-water marks; neither is the simultaneous process-group or whole-job peak",
+    "native_log_files": {
+      "stderr": {
+        "file": "native_stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout": {
+        "file": "native_stdout.log",
+        "sha256": "6571e82d5d37594a4a17fcababd8302ddb5cb5bce00919aa5916e1127b6f4913"
+      }
+    },
+    "native_parameter_arrays": {
+      "center": {
+        "dtype": "float64",
+        "sha256": "93f868e6b05c166fbd831bd47c7368e44ea6e572d1db9247edec12cb63f9390e",
+        "shape": [
+          5
+        ]
+      },
+      "scale": {
+        "dtype": "float64",
+        "sha256": "ae958d6622c99870acc358cf7d5be70f26f8dadb37d0920528e9aaaae894b02f",
+        "shape": [
+          5
+        ]
+      },
+      "tau_beta": {
+        "dtype": "float64",
+        "sha256": "9736452d5eb45f42ef7f2aaf94989b0080422fcaf74d6fc014376f32947afc33",
+        "shape": [
+          11
+        ]
+      }
+    },
+    "observed_input_arrays": {
+      "obs_T": {
+        "dtype": "float64",
+        "sha256": "984f726151cd9fab86007b5018d5ccc2095b6e5216ff7e07e35e1e32ea9e49ba",
+        "shape": [
+          2048
+        ]
+      },
+      "obs_X": {
+        "dtype": "float64",
+        "sha256": "99d2e5c5703e2de1ad21e06655327b6d9dc250272c257413483a57f3c61fde18",
+        "shape": [
+          2048,
+          5
+        ]
+      },
+      "obs_Y": {
+        "dtype": "float64",
+        "sha256": "04d7cb32f9e663f3c58e80a711fa8a5f3026f108a238a78b96fac1359060d13f",
+        "shape": [
+          2048
+        ]
+      },
+      "query_X": {
+        "dtype": "float64",
+        "sha256": "ce8cbe389208d631aa4dab77cdd673555701356cb44b1dcc42743be3531c80fa",
+        "shape": [
+          2048,
+          5
+        ]
+      },
+      "rct_T": {
+        "dtype": "float64",
+        "sha256": "eb1a56cc5e9219c93be22db735a72321cf310d619d8637963d5ff76d0d7b9431",
+        "shape": [
+          512
+        ]
+      },
+      "rct_X": {
+        "dtype": "float64",
+        "sha256": "fe5824864dd4cc49d126846c18789a7104d67a11edcb46c463e0c2225c4205a5",
+        "shape": [
+          512,
+          5
+        ]
+      },
+      "rct_Y": {
+        "dtype": "float64",
+        "sha256": "f39681f97b291ff01adfad2a8efcb239e23b8828967374af9cf2d9f7904c5fef",
+        "shape": [
+          512
+        ]
+      },
+      "rct_known_propensity": {
+        "dtype": "float64",
+        "sha256": "fd0e29ac3500b548f5a03de32a3e16ae218c62bdc8d5fada312e4919c3c7229e",
+        "shape": [
+          512
+        ]
+      },
+      "unused_tune_T": {
+        "dtype": "float64",
+        "sha256": "3239b05c38b825ebb79f103172438292a22a0951351a6b81be1df5d44776cc65",
+        "shape": [
+          2
+        ]
+      },
+      "unused_tune_X": {
+        "dtype": "float64",
+        "sha256": "a8c22aaebe48630e9ecf53d00db821c3e76d070baef47ccc330d6a6f385acd38",
+        "shape": [
+          2,
+          5
+        ]
+      },
+      "unused_tune_Y": {
+        "dtype": "float64",
+        "sha256": "d03a4dbc371de789c9e8fdb8d567eac0dd7f6633492c582f0a0b57926a4f1c8c",
+        "shape": [
+          2
+        ]
+      },
+      "unused_tune_known_propensity": {
+        "dtype": "float64",
+        "sha256": "606e5166986dd9f186277d16e3d18bae3887a944a829487b59fd8672bbb20251",
+        "shape": [
+          2
+        ]
+      }
+    },
+    "parameters": {
+      "d": 5,
+      "method": "integrative_r_linear",
+      "n_eval": 2048,
+      "n_obs": 2048,
+      "n_rct_train": 512,
+      "seed": 2642,
+      "timeout_seconds": 600,
+      "unused_rct_tune_rows": 2
+    },
+    "prediction": {
+      "dtype": "float64",
+      "sha256": "fa131109e5fc291c24c9d0dbbc200ccf8d394f893fb9e46ec0369de0015144c9",
+      "shape": [
+        2048
+      ]
+    },
+    "prefit_provenance_seconds": 3.4987418790115044,
+    "provenance_": {
+      "basis": "linear",
+      "basis_origin": "benchmark_raw_covariate_recipe",
+      "bridge_sha256": "11eb8e6a9f6fe956466af2b2ef7622a45f650a26391e7bd9ae2730cda6aac456",
+      "executable_path_sha256": "1cd20039b4ccb2c436e66ce010fe43c7d2a919c54b43d5b226146e70ff7c1ca8",
+      "executable_sha256": "0f7ee94401cd3e8a7d38b6d6fe594cc92e64f5819f917d32d9de107d28d2755f",
+      "fold_rule": "source_arm_stratified_numpy_default_rng_v1",
+      "foldid_sha256": "6b666376c074027963454c293bf9ac76bf95ad63e10bfb35f87e5b78cc505546",
+      "k_folds": 5,
+      "known_rct_propensity": "not_used_native_estimation",
+      "native_seed": 2642,
+      "returncode": 0,
+      "runtime": {
+        "availability": "available",
+        "executable_path_sha256": "1cd20039b4ccb2c436e66ce010fe43c7d2a919c54b43d5b226146e70ff7c1ca8",
+        "executable_sha256": "0f7ee94401cd3e8a7d38b6d6fe594cc92e64f5819f917d32d9de107d28d2755f",
+        "namespace_packages": {
+          "MASS": {
+            "description_sha256": "e297307d0e5449d585932f6debceaaa9e360dd90a4725fc6c8c9785d4471e44c",
+            "namespace_path_sha256": "11dbb83f96999aaa88ef7a5d025b47addd3ccea2c1b22aeba0f8a88e0ea01bcc",
+            "version": "7.3.60.0.1"
+          },
+          "Matrix": {
+            "description_sha256": "47781fe7447e33325e8db4ead0e81bcea0bb80ebcbf41b0c7a49a4c1bf615ab6",
+            "namespace_path_sha256": "9b9d454a4aad9acabfe51db0bcaf28ac2c9ca5eddedb73a7dfb42043ce123074",
+            "version": "1.6.5"
+          },
+          "ModelMetrics": {
+            "description_sha256": "4ad86fc2d0fdcdccece050158f8c85276540a6ea4fb64e990e32435b5834d48e",
+            "namespace_path_sha256": "b238a61dd2fb95cce27b75c7698bd5fcff2d88a9d1bdccd46476e5b604d9e126",
+            "version": "1.2.2.2"
+          },
+          "R6": {
+            "description_sha256": "011c350bfd414a6ff490d3302e2d3db84487da4b0a0b0ff3f46362fe9c699f04",
+            "namespace_path_sha256": "19c6a7d381d64736e9f2e1c7e74e17d4edc4345dc7f41c39971da0c79a07ff42",
+            "version": "2.6.1"
+          },
+          "RColorBrewer": {
+            "description_sha256": "5757c16b335bcd434138071ec561180c570116f9e5ec74a23aab1d0d4712e5de",
+            "namespace_path_sha256": "c864ae6773e5610592db287e4540006b2b8be1e63d72f173914d0ffeeccf99a1",
+            "version": "1.1.3"
+          },
+          "Rcpp": {
+            "description_sha256": "4bdffc364dbf1f3f4d0dd742dc8d6548f3a29321743937ad805148385cf850dd",
+            "namespace_path_sha256": "f0dd11e7e226c72571a6e49c94b012b10535a666df80a9fce8eadb73c680ab8d",
+            "version": "1.1.0"
+          },
+          "base": {
+            "description_sha256": "928d748311860b4f6abc12073d83b842b8cfb09d6a0eda8243f4943b06c0433d",
+            "namespace_path_sha256": "cb6a006fb2cabf8513a4178d34a0624c354f1279ce02c242b1c8974f01807772",
+            "version": "4.3.3"
+          },
+          "caret": {
+            "description_sha256": "d660fd2edebd72b2fd9b1dd3e8f8c67840c7c71b5f46c14ecdcb17683cd4de5f",
+            "namespace_path_sha256": "b8aed65c919edff8f96fad03b70a2e259bc67ad01fbc9598688fa1d6d332a49a",
+            "version": "6.0.94"
+          },
+          "class": {
+            "description_sha256": "8b9bcdfb3e828e1cdfe06f1dfa34cc46842aa7cf9bfd8bdd257bee363a22b492",
+            "namespace_path_sha256": "c6d67ce4912e6af7b61d6b99eb2861a903ea6c9517e48eddd89eedaaec33c13d",
+            "version": "7.3.23"
+          },
+          "cli": {
+            "description_sha256": "6a5c5d3cfae86af2591626bb8c1c54ce1001b4684c3a247430d056753ada42a7",
+            "namespace_path_sha256": "4b907577461ad53bbffd01087acd935e03e3d8b1aa80e98a3927f918d11c96b3",
+            "version": "3.6.5"
+          },
+          "codetools": {
+            "description_sha256": "1abfe4711909463e07825a688be27a909480e58c1f4f89a27ba6f4c159f055b6",
+            "namespace_path_sha256": "e86a0ce74e1cfbfa2c2921a260eccbef194ecbf9177e34b511e2fd045ee3c210",
+            "version": "0.2.20"
+          },
+          "compiler": {
+            "description_sha256": "35076c6ec521708b734061a6ab955d28bd9c5a8913ba82aae17c6f0ce6df4b68",
+            "namespace_path_sha256": "f8f94e91ff54db6b6a86ee81a2bf71166ac0ada0ffba2f08cdffe1bc7b96b928",
+            "version": "4.3.3"
+          },
+          "data.table": {
+            "description_sha256": "5d0c0231689db2bb6c93e21063998d96290a1ea6154b8493ed32fb686bf36980",
+            "namespace_path_sha256": "15bc112f22ff29dbaaec0ef7ca5f59a2b8218f35739a46053cf797423daaa3fc",
+            "version": "1.17.8"
+          },
+          "datasets": {
+            "description_sha256": "24604c26895102377719d17a833f35518392a317b843952378bcab02d1a9564a",
+            "namespace_path_sha256": "304d89fa40adbc24d33b1dc546c482ee6eebe205a8cf18edd0342904da55d5c5",
+            "version": "4.3.3"
+          },
+          "digest": {
+            "description_sha256": "15335b5dddfd523c9741a91ea4ff07c6ee3c14e3936fc5d8905660c4adcd885b",
+            "namespace_path_sha256": "e899710b421968db258746a541d24331cc2aee638233a65a4398794004a8bc3d",
+            "version": "0.6.37"
+          },
+          "dplyr": {
+            "description_sha256": "e76000094ef1bdb2f84435d4b4a14094427757b9eeac30c487a42b95da5ada4f",
+            "namespace_path_sha256": "ba4b26ddd045b6aabac76cc04d7342fcf4c875bf9be5d93e3506fdc16a065874",
+            "version": "1.1.4"
+          },
+          "farver": {
+            "description_sha256": "b9887d13b4965991e7cf1604525e8e4a8021c5dc2f6f2969cf922771b961e397",
+            "namespace_path_sha256": "a8953a00d6aba16f19e6f10c59c28ef2b2ae1f8518c1eadfa6bd29755cd1b73b",
+            "version": "2.1.2"
+          },
+          "foreach": {
+            "description_sha256": "64986f915e2f77b655f696fdab586f8c0b6328e2ccbd4854c4232d55b5298228",
+            "namespace_path_sha256": "59dbf52e926e649f2f37649808003681f79b62997c6c17fdfcadd0a855402c2c",
+            "version": "1.5.2"
+          },
+          "future": {
+            "description_sha256": "c8a9acc22668e90cee775b1a1a8b5ae92d09e216f915de3a08bcfdcda760827a",
+            "namespace_path_sha256": "8ce732112cdbdf91c1a4f1505829d53e84251f89f6fba09310e47041a1a6d502",
+            "version": "1.67.0"
+          },
+          "future.apply": {
+            "description_sha256": "60986739fd2b4d478cd5d1a5bf7b901cafb8d7fcc5f01333bd2dbde6917c53b1",
+            "namespace_path_sha256": "dc026228d70abc6c050d4dbe38d5ed3d896998b607e65174f219b3cee137fca0",
+            "version": "1.20.0"
+          },
+          "generics": {
+            "description_sha256": "129d673b178bf88a946f770f695f8b94e209db3d36acc8551317cea1f1f1c698",
+            "namespace_path_sha256": "48486889e028a03f8795f366906818933976f156d2b447598cbf14e23b731c41",
+            "version": "0.1.4"
+          },
+          "ggplot2": {
+            "description_sha256": "42f760b75bdc50d1383bec22c42d0280b39b11ee05d7debca467cb4d3eb3c0c5",
+            "namespace_path_sha256": "fd53fb3f179fe16a050157047eaf53f08aef38f34d6bb2d7cf1a07040e626218",
+            "version": "3.5.2"
+          },
+          "glmnet": {
+            "description_sha256": "992fb33b5eddf148fe914d408f581611f4c1daced7037b9b1ae794270f313df3",
+            "namespace_path_sha256": "00ee6b53b5dbd3754fb846975110afe45fad6d13199a3d350fd0ae91bd9d6c74",
+            "version": "4.1.10"
+          },
+          "globals": {
+            "description_sha256": "2a7933d4cd916eb89928765103a3d894ff48c4c8aab76ba95c1e26dc4c6c2d6a",
+            "namespace_path_sha256": "e5e7ba32f52a77faccfa0b3ebfcd58be43fabed1f6682fd90a0330263c44e256",
+            "version": "0.18.0"
+          },
+          "glue": {
+            "description_sha256": "c9bfca791c0824c4180bc2c207366316c0000a8707761a641df14145ab707541",
+            "namespace_path_sha256": "e4bd1a033755133bc66e52a191fbe6c4547f8c3861715b036a8e2156bcf90a60",
+            "version": "1.8.0"
+          },
+          "gower": {
+            "description_sha256": "c9eeef4b4b9cc1c67eb38419b6110a1a33c8b4b8c932c47bb43d65f711bbd4a1",
+            "namespace_path_sha256": "0705433f4f707c778551bad130f0878a19c22d6be1000d660b476a322c3861c8",
+            "version": "1.0.1"
+          },
+          "grDevices": {
+            "description_sha256": "db1f78924695d1ef1ba1a11dfe4b2d0e7ad860a398810dd4542bf45fd8eb5ed9",
+            "namespace_path_sha256": "241ac38ca840e30e2bf92ce7655bc3367e457f58d4a5ec564d6c44e1c9eb5b04",
+            "version": "4.3.3"
+          },
+          "graphics": {
+            "description_sha256": "3210af40c78d4c4de6e36535c3b2c3c4cf30b2b0a7a65d40f4872a5501b2c57f",
+            "namespace_path_sha256": "202468ad2077e3ca339c90686a1776f6fc66333ee624ffa8e2e977fb7ca8160f",
+            "version": "4.3.3"
+          },
+          "grid": {
+            "description_sha256": "e5fd172f3ca25dfa32409bbd18c72a355ec1d6a5cb3ae41f5d8679cc3600c183",
+            "namespace_path_sha256": "6a0d020a95aa07b939aeb0bbd6fc7de8ae86a455db1d958c3b854fb7e7fb9854",
+            "version": "4.3.3"
+          },
+          "gtable": {
+            "description_sha256": "44b30ad38aec15da2ea61f6a308c5fb1cbc4a802b2b0448990637c0fc0a22b7e",
+            "namespace_path_sha256": "22dcbc3d42619bf0c9148521ee70a1905385fe1999220fe39f73b090c2c4659b",
+            "version": "0.3.6"
+          },
+          "hardhat": {
+            "description_sha256": "e314472ddc6f4d397e62aef6d5a78eed37f4f7f02396e20508e908be584fcb08",
+            "namespace_path_sha256": "84a5aac4705ee8f3d55481858081f7c1e0d934760caccc3496d3a4fb48f0802a",
+            "version": "1.4.2"
+          },
+          "ipred": {
+            "description_sha256": "250c4d595c802093aa981cc51ad8ea106aabe4a2f92a2268bbf949ba04a7105a",
+            "namespace_path_sha256": "d179c7a42e24a2c9dc5b842812c155ec3594427d119dd925aca8c9dd3c6a00a3",
+            "version": "0.9.15"
+          },
+          "iterators": {
+            "description_sha256": "c5bf8a23665230c25e283ea9aec6538d1c64010689c709f84cca03b30c41e2ce",
+            "namespace_path_sha256": "892f3edaddde410f77f60ff302f8a211ba2fde89c940785b23e88ec3e8127429",
+            "version": "1.0.14"
+          },
+          "lattice": {
+            "description_sha256": "a5e47abae822132880525135c952658a10745972d4ba82feaa4933b472a6aa15",
+            "namespace_path_sha256": "5d3a5cdcca5d2cea28dee72380139759068d837eb323502a42774fc46795305c",
+            "version": "0.22.7"
+          },
+          "lava": {
+            "description_sha256": "44f0e358e033699418095bb3dc748504ba88a4c7040dce3e08692a908db3fa0d",
+            "namespace_path_sha256": "25fbe0d350e06f865a7324dd1506fd5118d443f4e301bfc316e5ac47475dc07c",
+            "version": "1.8.1"
+          },
+          "lifecycle": {
+            "description_sha256": "1b2ab4027bb8db90b3f3692d6fffde14e6a9fc3dc44653146fa2201e953bd13d",
+            "namespace_path_sha256": "cd1214e0e8466b935b6b4ac6db393a788cddafdf2e1095fadc382530f949918c",
+            "version": "1.0.4"
+          },
+          "listenv": {
+            "description_sha256": "ac0bebb4fa8d67ab9e38098086dcaef3678820aa8abedb1203764d88845909cf",
+            "namespace_path_sha256": "057c796b139c6939337b6cb94d7b495c7440cf9281ab3aff0d9d69452981aaf1",
+            "version": "0.9.1"
+          },
+          "lubridate": {
+            "description_sha256": "c623d90d303abfbbfa0d358a8f019a2d7d01e2e53535cc5201ac08a7618beb32",
+            "namespace_path_sha256": "6a32c8b5bada2baffe4f5bf8a92db545932ffecd617e90a9aa17bb1ba0c33f43",
+            "version": "1.9.4"
+          },
+          "magrittr": {
+            "description_sha256": "874a26dcd9022b2de268b85d33c6204012f32a8efdb06b1ce255bca8d3d9ca01",
+            "namespace_path_sha256": "6a72a30e11e667bc33928de5427a57029444579499e297cf5fac777879a727f7",
+            "version": "2.0.3"
+          },
+          "methods": {
+            "description_sha256": "e0359ea9bd2ccd845a9bddf84bb1e06d1f26a491580fc53818d68d6d7614db49",
+            "namespace_path_sha256": "426a133aba230e92a4f3aa2186eb37e36075321e115e096a020d4aad64a76023",
+            "version": "4.3.3"
+          },
+          "ncvreg": {
+            "description_sha256": "4405eeb71dcc8957784cb4fe23e1860134cbb99420452150aaf360a10dfa4ca9",
+            "namespace_path_sha256": "01f88f4aa53739eb429f79dc489f10599364c2a5aace0728d52b397911f20ffe",
+            "version": "3.15.0"
+          },
+          "nlme": {
+            "description_sha256": "cceea05e2de21d390fd24b4c12dcd0974878f5aa6706c4067dc80852f61fa921",
+            "namespace_path_sha256": "23313db5e232e71d608e5f64f98ce8b295e601b1c4cab338afb7c4b47e9585d3",
+            "version": "3.1.168"
+          },
+          "nnet": {
+            "description_sha256": "25f81049ac5955fe80d2b6a54703dd65f69675d25594b5cd5bfb006e594931c5",
+            "namespace_path_sha256": "8679451ea5cd4071acb9c2f0eb3b2b193caf918bb38abacbeb48487a7803de60",
+            "version": "7.3.20"
+          },
+          "pROC": {
+            "description_sha256": "b4dafae518f6dfd0bc77e7cdd309b2be392ada3b913ae1881dd5ad8dc24b1f09",
+            "namespace_path_sha256": "d5adf75ed4ad8a46fc179f8b63cd990832f9cd4980679948cc07681370e26f1b",
+            "version": "1.19.0.1"
+          },
+          "parallel": {
+            "description_sha256": "5e79b0c6a876947eb3e3931e7d365a7fd89f8deffae0d9c26cfcceb611f900f1",
+            "namespace_path_sha256": "8455dd78f47e0b9fe9b6e9d51068920aafb3018cf168ade9de7b62f1108bcb78",
+            "version": "4.3.3"
+          },
+          "parallelly": {
+            "description_sha256": "4b2860b7c7ea03cc2cecb9ccba6709a0d80e923d02d529c1da2cb099948c2cc5",
+            "namespace_path_sha256": "ed0da31a67094ea384c5cadab0b24f444e3374ad5e99608478d15b55eb5404c1",
+            "version": "1.45.1"
+          },
+          "pillar": {
+            "description_sha256": "ce8a0aa1cd7377590856c04be4a6a96d15a82d5d73b468d1a130e547bea0c9be",
+            "namespace_path_sha256": "2fc3aac9d883ba2a399ceca17856346840acf244ab20d3b9355225277175443b",
+            "version": "1.11.0"
+          },
+          "pkgconfig": {
+            "description_sha256": "4fd210bbd0b62357fd15ac349ef8bbf39f098ed0b94b98b1aa92cc06482b34f9",
+            "namespace_path_sha256": "99c81c9378e3614817fad0d7c1f147ad0c43af62d2c82ed956c2ad1c34114099",
+            "version": "2.0.3"
+          },
+          "plyr": {
+            "description_sha256": "05ab9afdc35132744c0cf5c3cbd2da96796f8f21ba9a700d1e3ba2dbb6fd87df",
+            "namespace_path_sha256": "3b3656a710364e8371b8e7d6423f167516816d672086492ef3cd0b13f4e7e495",
+            "version": "1.8.9"
+          },
+          "prodlim": {
+            "description_sha256": "5c4eeae72d4d08faad1c480be61b0aee2aabb990f078a73803aa01883319f1e0",
+            "namespace_path_sha256": "50ae52bce7d58719c206d09b1f8385546491e9aebef91eedf5d39db25470722b",
+            "version": "2025.4.28"
+          },
+          "purrr": {
+            "description_sha256": "39c3435691e9a9005f1bcf1f170dc5e1c3bb220776c73cfbdc79f939efe83088",
+            "namespace_path_sha256": "591b34bf164e8ca00f8bee475910b558406e3df8b5dacce58f1804d1b852d539",
+            "version": "1.1.0"
+          },
+          "recipes": {
+            "description_sha256": "fa4ccfc0094b3f69cd1ce13a5077cbca02b397405734aaa97705998d61b0a252",
+            "namespace_path_sha256": "e7138b999e376004904d43f432d2be7ac24f654f88be5d397c19092536a30c52",
+            "version": "1.3.1"
+          },
+          "reshape2": {
+            "description_sha256": "2d808cf930a49fcbba34b8952b78822dbca01b2ba74b5b27cd7867c91e8c5322",
+            "namespace_path_sha256": "173b30d370890c017b8f1ac485d56f5e3e0922c2131275da1b052bfb7b12a288",
+            "version": "1.4.4"
+          },
+          "rlang": {
+            "description_sha256": "82a13d9efa01b458e25d76059c337578839864a9f576fad9b09d9e4ef26af5d2",
+            "namespace_path_sha256": "650e80e85374764b4efff804272cfa34eb2800fbd9d45cc1cb70dc80dec09e5e",
+            "version": "1.1.6"
+          },
+          "rpart": {
+            "description_sha256": "e9b3a854ac330701b298801fe48de9b56b0af5ab20e01221e39ec8835140d1ab",
+            "namespace_path_sha256": "8415fde8a5bb981db775cdfca81d20b9d8779e35b4b38003d7ab826720423805",
+            "version": "4.1.24"
+          },
+          "scales": {
+            "description_sha256": "92f82e45efeb578f28f3631935b0d0b8b0463196166984a549def57da33d1ffa",
+            "namespace_path_sha256": "412621f782a1000bac2582da482861e447c32b12fbe92f41a8669cb748443c9d",
+            "version": "1.4.0"
+          },
+          "shape": {
+            "description_sha256": "c710a2c2e972556ffda59a6899fa799f62d778911b594179982b8e9c878cea56",
+            "namespace_path_sha256": "b7947ea637ce104d13ea05befa0c47f64ad90fff1fcf068dfa1f2625e04f3b51",
+            "version": "1.4.6.1"
+          },
+          "splines": {
+            "description_sha256": "b2c7d822ca5d7e21019b8e4a69e019770d5e370fefbabbc8b4b5176ae809ab5d",
+            "namespace_path_sha256": "774eb8aeddcba9f526c48136e4f7555fe4845abc7682b9a77d064352420f7107",
+            "version": "4.3.3"
+          },
+          "stats": {
+            "description_sha256": "b296b4526021508e82e5ea5ee3c4bab2e1b0007f1595ec6f6996d51501999b9a",
+            "namespace_path_sha256": "f7621cebd3e98c79706b755405c78dc9dac8d8d0414ad79552a1b1903164a67f",
+            "version": "4.3.3"
+          },
+          "stats4": {
+            "description_sha256": "24f4106ae094419226ed182bc1d168cdf250d41b13fb5d79c9fb2f51f8d4ac50",
+            "namespace_path_sha256": "cb7db70933170b03774c8fc292a04e75b45c57b8548ecad620c945ca64e318f9",
+            "version": "4.3.3"
+          },
+          "stringi": {
+            "description_sha256": "0a8d8f340031addb86ec47d411b2caaa02dc271e5e4e16bc54ade486791bc888",
+            "namespace_path_sha256": "fb737506ae046b62ea2b622267d3c6d8a61b8aa56d9ffe64fe5b0dfea1fade3f",
+            "version": "1.8.7"
+          },
+          "stringr": {
+            "description_sha256": "f97112153f640cef7e4facfed3d8f1d8a06be8365b6174165e7fe34e01985df1",
+            "namespace_path_sha256": "6b10103d36afa375c3855c644e5389ee47391dfc79a21021d8aa3e9396553109",
+            "version": "1.5.2"
+          },
+          "survival": {
+            "description_sha256": "e9b122087e147fda6c317f597db98405bd63061bdf2960fdc3557a62c4da9f1f",
+            "namespace_path_sha256": "9027505b59bbf5a7d82b965443cb5f2953fa00cf1b3d4f98ea3e849e036cca7f",
+            "version": "3.8.3"
+          },
+          "tibble": {
+            "description_sha256": "da1616486908481ad12f5c6b436d9e3e10dfc14a9fae76e9d88d757d4b6acf78",
+            "namespace_path_sha256": "fdac776d15fb99a613fef1313e07c0432e59e12b1fd4b2cadf1f50f682486560",
+            "version": "3.3.0"
+          },
+          "tidyselect": {
+            "description_sha256": "7280bc6ee74bff89678d40a3b27046f9947c566aa5922f3e62c0e431dfdc8299",
+            "namespace_path_sha256": "f2b54b31c9936a45cd71bde933a55e01c15b561f15222627343d2d0bb7759815",
+            "version": "1.2.1"
+          },
+          "timeDate": {
+            "description_sha256": "3beee99dcc0df03a6f0f8925717902d0b4c50d2d3d212e2f58b24fb1097664b3",
+            "namespace_path_sha256": "24b97f16d94613f382b1cdc9c0d1a9e00a0b7d358821ee4dff512bdc31f847fd",
+            "version": "4041.110"
+          },
+          "timechange": {
+            "description_sha256": "444b932276698fa7339d3f4bdf44c8e8ac03efc917c1c031bd22b060e4f9a4b7",
+            "namespace_path_sha256": "c3c43ee156111619273cc293febe770289108d6375ecfc2643bab5b375a90d07",
+            "version": "0.3.0"
+          },
+          "tools": {
+            "description_sha256": "e498971222975ff5be9a528616159c02072a0c1d2d1fcb0846c261d18b1ada6d",
+            "namespace_path_sha256": "b4835ba21b19d0456447bea1caf79a84bd1a226c46c4c4daa65aa6c55cb41f84",
+            "version": "4.3.3"
+          },
+          "utils": {
+            "description_sha256": "d2083496de6e8060771dca7c93c99b19457e390b89e0b968eadbb5df0b3db68c",
+            "namespace_path_sha256": "e3bc08b44217cd33786fa7941893eb092cf902931a3ec94444e23403854ffeca",
+            "version": "4.3.3"
+          },
+          "vctrs": {
+            "description_sha256": "b9b48e552e4f52d7b512a8a2f72a18e01ac39a5c3604fd4792caa76aba64e42c",
+            "namespace_path_sha256": "197b32c0f26a7dc9ab1a1a91d4c49a66ae73a135f041c335cea59ac94e4e5c05",
+            "version": "0.6.5"
+          },
+          "withr": {
+            "description_sha256": "20bf9d64b66eb1ae579e25fabd2c2303f63665a3cd317ae2dd7b710fcd51dd48",
+            "namespace_path_sha256": "a02bbd4072fff2b3f76b3146558eff6d66c8aeea945c8239cae2be74e21e09d1",
+            "version": "3.0.2"
+          }
+        },
+        "r_version": "R version 4.3.3 (2024-02-29)"
+      },
+      "source": {
+        "availability": "available",
+        "declared_git_revision": "a46ce2c1cc814865898b863d6a8e130bbc2c802b",
+        "expected_revision": "a46ce2c1cc814865898b863d6a8e130bbc2c802b",
+        "extra_source_files": [],
+        "package_file_sha256": {
+          "DESCRIPTION": "fa2885ec2a8aef1c1502ab3984647f0ae25815c26494e2444dfd296c8bec4810",
+          "NAMESPACE": "736cb2c31c983b3a07d06d09b8ef93d89972f312c1db584ff253a0281d082bac",
+          "R/intRlearner.R": "98563e2423f41153fcbb2548f3b54ac779c72bcb8d154608bf51f778086fdce8",
+          "R/utils.R": "2b85e2e56db83e33427f6f43aa1b59d995bafb6d46bfc1aec8e5f2e6a215525b"
+        },
+        "source_files": [
+          "R/utils.R",
+          "R/intRlearner.R"
+        ],
+        "tracked_changes": false,
+        "untracked_changes": false,
+        "verified": true
+      },
+      "status": "success",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_sha256": "6571e82d5d37594a4a17fcababd8302ddb5cb5bce00919aa5916e1127b6f4913",
+      "supplied_seed": 2642,
+      "timeout_seconds": 1200
+    },
+    "recipe_options": {
+      "basis": "linear",
+      "k_folds": 5,
+      "timeout_seconds": 1200
+    },
+    "schema_version": 1,
+    "scope": "resource_profile_only_not_native_admission_or_performance_evidence",
+    "source_identity": {
+      "driver": "scripts/profile_native_adapters.py",
+      "driver_sha256": "42b50e624cfbbb38f74bc2a77171e56a6b787685f1945c6fdae979d30e735d7d",
+      "package_file_sha256": {
+        "__init__.py": "9763415259658ec202c5b5a28aa335689ea1f7156bf671a374b62023fb80ef40",
+        "adaptive.py": "e1e961a45e508684f75c546ec1d3adf92e2aff424e008e7b0486aa7113959005",
+        "adaptive_runner.py": "afecb6c75ab4f9e8c07a58b65edbacc22fac95bd59ff25c08c61b60a296302b9",
+        "causal_icm.py": "752dac23743c0b043ffbe117d20990852c171d9d74d09da3e8071e905f506304",
+        "cli.py": "39f14951a56b3a752f87081ceaec5cbf93228d5cb6b80a65e94904c8296c22ef",
+        "cornet.py": "3ccd76509d2965ea8451da9e279a7f3c8780873c5c24625f380d3c9b719b83bf",
+        "data.py": "616958669558c6ed274709b17d683f06c18b0f0606d7fcbc8a5485919f744573",
+        "datasets.py": "c05090977b6513bfced49baafad77340c113f631af15ea062b4f7f035496825a",
+        "evaluation.py": "b66a7c0dabdb0a31aa20ef70a1744c29da6007fea438ffba33e52e35796faca9",
+        "inputs.py": "be3d6e327cc092c33f465c1e14baae74fc9d5e2077e2511a4b293af3f899c0db",
+        "integrative_r.py": "593a883eaf88002a5ce3746deb61dc70fff7b8985a62be6f7aa5bc551dacbc5f",
+        "methods.py": "e32a220b43fd95ce1fe9900a459fd2b663ff350cc9c85c107dc5b61becc76577",
+        "paper_dgp.py": "77bb899367e6ce8d12ee127b4ff6deb833215e90a707bb0f35c9aacf55f6a3f2",
+        "runner.py": "ae91ab0bb6d3b7ee7f1e46d269770af3e3dc5faa6512d0cd7dfbac0020ec1176",
+        "sensitivity.py": "f684b08c65a129d43df6a1acfba36e43d71ee072e92e2fcfdaaf27de8a6e134f",
+        "structural_dgp.py": "49c94e6e5c6725d942a15a122344b03a3bd8174a131cbee0304f3a5e5994bdf4"
+      }
+    },
+    "status": "completed",
+    "worker_children_usage": {
+      "maxrss_kib": 349492,
+      "system_cpu_seconds": 0.939952,
+      "user_cpu_seconds": 12.455782
+    },
+    "worker_elapsed_seconds": 15.04073367494857,
+    "worker_self_usage": {
+      "maxrss_kib": 44032,
+      "system_cpu_seconds": 0.10217799999999999,
+      "user_cpu_seconds": 0.296001
+    }
+  },
+  "worker_record": "worker_result.json"
+}

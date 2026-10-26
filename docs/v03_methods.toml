@@ -167,9 +167,9 @@ code_url = "https://github.com/lwu9/intRlearner"
 code_revision = "a46ce2c1cc814865898b863d6a8e130bbc2c802b"
 code_commit_date = "2023-08-24"
 code_entrypoints = ["README.md", "R/intRlearner.R", "R/utils.R"]
-license_status = "No root license file; DESCRIPTION contains a placeholder field in sources.lock.toml. Assessment pending."
-adapter_status = "not_implemented"
-reproduction_status = "DGP_translation_only_no_public_estimator_execution"
+license_status = "No root license file; DESCRIPTION contains a placeholder field in sources.lock.toml. Separately obtained source only; not vendored."
+adapter_status = "implemented_fixed_linear_and_quadratic_native_admitted"
+reproduction_status = "fixed_recipe_native_fidelity_and_independent_checks_passed_v03_not_paper_tables"
 disposition = "planned_core"
 reason = "Direct CATE/confounding-function comparator. Normal-target benchmark extension remains separate from the native Uniform[-1,1] target."
 
@@ -301,10 +301,10 @@ source_status = "published_paper_and_official_README_verified"
 code_url = "https://github.com/EvanDimitriou/CausalICM"
 code_revision = "0f0c6ca424b7ca44b84649ca072384b9933b2afe"
 code_commit_date = "2026-04-07"
-code_entrypoints = ["README.md", "functions", "univariate", "multivariate"]
+code_entrypoints = ["rebuttals/extrapolation.ipynb:cell3"]
 license_status = "No root license file in inspected revision; execution/environment assessment pending."
-adapter_status = "not_implemented"
-reproduction_status = "not_executed_v03"
+adapter_status = "implemented_fixed_rho_native_admitted"
+reproduction_status = "fixed_recipe_native_fidelity_and_independent_checks_passed_v03_not_paper_tables"
 disposition = "planned_core"
 reason = "Contemporary Bayesian nonlinear borrowing comparator; native target covariates and GPy environment/cost need review."
 

@@ -1,4 +1,4 @@
-"""Generic CATE baselines and an optional, unmodified public method adapter.
+"""Generic CATE baselines and optional adapters to pinned public implementations.
 
 The method boundary contains observed training data and evaluation covariates.
 Neither simulation truth nor test outcomes are passed across this boundary.
@@ -44,8 +44,11 @@ class CATEMethod(Protocol):
     """A method may use only the supplied TrainingView and eval_X.
 
     Implementations return one finite CATE prediction per evaluation row.
-    Use rct_tune factual prediction loss for any tuning, or disclose fixed
-    defaults. Never select an estimator using evaluation truth or rct_test.
+    Built-in recipes disclose fixed settings and any native internal selection.
+    They do not implement the future v0.3 controlled-tuning lane, which requires
+    a frozen normalized R-loss selector on independent RCT tuning rows and its
+    declared fitting/nuisance budgets. Never select using evaluation truth or
+    rct_test; eval_X is prediction-only.
     """
 
     def fit_predict(
@@ -312,6 +315,7 @@ def method_names() -> tuple[str, ...]:
         "rct_t_ridge", "obs_t_ridge", "naive_pooled_t_ridge",
         "rct_t_extra_trees", "obs_t_extra_trees", "naive_pooled_t_extra_trees",
         "rct_dr_ridge", "rct_dr_extra_trees", "datafusionppi", "cornet_official",
+        "integrative_r_linear", "integrative_r_quadratic", "causal_icm_fixed",
         *sorted(_FACTORIES),
     )
 
@@ -346,6 +350,16 @@ def make_method(name: str, **options: Any) -> CATEMethod:
         from .cornet import OfficialCorNet
 
         return OfficialCorNet(**options)
+    if name in {"integrative_r_linear", "integrative_r_quadratic"}:
+        if "basis" in options:
+            raise ValueError("integrative R-learner basis is fixed by the method ID")
+        from .integrative_r import OfficialIntegrativeR
+
+        return OfficialIntegrativeR(basis=name.removeprefix("integrative_r_"), **options)
+    if name == "causal_icm_fixed":
+        from .causal_icm import OfficialCausalICM
+
+        return OfficialCausalICM(**options)
     if name.startswith("rct_dr_"):
         learner = name.removeprefix("rct_dr_")
         if name not in method_names():

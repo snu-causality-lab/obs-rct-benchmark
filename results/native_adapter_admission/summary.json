@@ -1,0 +1,299 @@
+{
+  "as_of": "2026-10-26",
+  "attempts_record": "attempts.json",
+  "campaign_status": "not_started",
+  "existing_v02_results": "unchanged",
+  "fidelity_tolerance": {
+    "absolute": 1e-10,
+    "relative": 1e-08
+  },
+  "independent_checks": {
+    "fitted_d2_basis_pooled_standardization_prediction_map": {
+      "basis_and_standardization_passed": true,
+      "prediction_map_max_absolute_difference": 2.220446049250313e-16,
+      "record": "integrative_native_admission.json"
+    },
+    "gp_covariance_posterior": {
+      "max_absolute_difference": 1.1102230246251565e-15,
+      "record": "native-v2/analytic-gp/20261026T095710.762012Z-2376139/record.json",
+      "rho": 0.6
+    },
+    "native_R_hand_coefficient_map": {
+      "max_absolute_difference": 0.0,
+      "record": "native-v2/analytic-intr/20261026T095712.606815Z-2376139/record.json"
+    }
+  },
+  "independent_tolerance": {
+    "absolute": 1e-12,
+    "relative": 0.0
+  },
+  "not_established": [
+    "paper-table reproduction",
+    "adaptive-rho selection",
+    "CATE accuracy or superiority",
+    "unrestricted effect transport",
+    "multi-DGP campaign readiness"
+  ],
+  "package_version": "0.3.0a1",
+  "phase": "native adapter preparation",
+  "producer": {
+    "actual_file_mapping_matches_snapshot": true,
+    "actual_runtime_record": "runtime_fingerprint.json",
+    "causal_icm_revision": "0f0c6ca424b7ca44b84649ca072384b9933b2afe",
+    "identity_record": "producer_identity.json",
+    "integrative_r_revision": "a46ce2c1cc814865898b863d6a8e130bbc2c802b",
+    "native_R": "4.3.3",
+    "native_python": "3.11.17",
+    "package_source_file_count": 16
+  },
+  "profile_design": {
+    "cases": 6,
+    "distinct_input_sizes": 2,
+    "fixtures_per_size": 1,
+    "job_id": "720451",
+    "memory_interpretation": "Linux ru_maxrss KiB: separate self and largest reaped-child high-water marks; not additive or simultaneous process-group or whole-job peak",
+    "node": "b08",
+    "numerical_threads": 1,
+    "outer_worker_timeout_seconds": 600,
+    "partition": "P2",
+    "prediction_rows": 2048,
+    "raw_covariates": 5,
+    "requested_cpus_per_task": 1,
+    "requested_memory_gib_per_task": 4,
+    "same_observed_input_hashes_across_methods_at_each_size": true,
+    "scheduler_allocated_logical_cpus": 2,
+    "scope": "Single-fixture resource measurements, not sampling distributions, CATE performance results, controlled speed comparisons, or campaign projections",
+    "seed": 2642,
+    "time_interpretation": "end_to_end_seconds includes worker startup, separate prefit provenance inspection, fitting, prediction and artifact handling; excludes queue delay and Slurm startup"
+  },
+  "profiles": [
+    {
+      "case": 0,
+      "d": 5,
+      "end_to_end_seconds": 3.625207958975807,
+      "fit_predict_seconds": 2.7080810139887035,
+      "launcher_child_maxrss_kib": 173916,
+      "launcher_self_maxrss_kib": 19456,
+      "method": "causal_icm_fixed",
+      "n_eval": 2048,
+      "n_obs": 512,
+      "n_rct_train": 128,
+      "prefit_provenance_seconds": 0.13243622099980712,
+      "recipe_options": {
+        "effect_modifier_columns": null,
+        "rho": 0.5
+      },
+      "record": "profiles-v1/case-0/profile.json",
+      "seed": 2642,
+      "status": "completed",
+      "worker_child_maxrss_kib": 121856,
+      "worker_elapsed_seconds": 3.2456714370055124,
+      "worker_self_maxrss_kib": 173916
+    },
+    {
+      "case": 1,
+      "d": 5,
+      "end_to_end_seconds": 17.35695512703387,
+      "fit_predict_seconds": 16.437230708950665,
+      "launcher_child_maxrss_kib": 588036,
+      "launcher_self_maxrss_kib": 19456,
+      "method": "causal_icm_fixed",
+      "n_eval": 2048,
+      "n_obs": 2048,
+      "n_rct_train": 512,
+      "prefit_provenance_seconds": 0.08978251798544079,
+      "recipe_options": {
+        "effect_modifier_columns": null,
+        "rho": 0.5
+      },
+      "record": "profiles-v1/case-1/profile.json",
+      "seed": 2642,
+      "status": "completed",
+      "worker_child_maxrss_kib": 121856,
+      "worker_elapsed_seconds": 16.99299121898366,
+      "worker_self_maxrss_kib": 588036
+    },
+    {
+      "case": 2,
+      "d": 5,
+      "end_to_end_seconds": 10.39253237604862,
+      "fit_predict_seconds": 6.0383221480296925,
+      "launcher_child_maxrss_kib": 361056,
+      "launcher_self_maxrss_kib": 17408,
+      "method": "integrative_r_linear",
+      "n_eval": 2048,
+      "n_obs": 512,
+      "n_rct_train": 128,
+      "prefit_provenance_seconds": 3.70389723603148,
+      "recipe_options": {
+        "basis": "linear",
+        "k_folds": 5,
+        "timeout_seconds": 1200
+      },
+      "record": "profiles-v1/case-2/profile.json",
+      "seed": 2642,
+      "status": "completed",
+      "worker_child_maxrss_kib": 361056,
+      "worker_elapsed_seconds": 10.170134347048588,
+      "worker_self_maxrss_kib": 45056
+    },
+    {
+      "case": 3,
+      "d": 5,
+      "end_to_end_seconds": 15.203891051001847,
+      "fit_predict_seconds": 11.204673436994199,
+      "launcher_child_maxrss_kib": 349492,
+      "launcher_self_maxrss_kib": 19456,
+      "method": "integrative_r_linear",
+      "n_eval": 2048,
+      "n_obs": 2048,
+      "n_rct_train": 512,
+      "prefit_provenance_seconds": 3.4987418790115044,
+      "recipe_options": {
+        "basis": "linear",
+        "k_folds": 5,
+        "timeout_seconds": 1200
+      },
+      "record": "profiles-v1/case-3/profile.json",
+      "seed": 2642,
+      "status": "completed",
+      "worker_child_maxrss_kib": 349492,
+      "worker_elapsed_seconds": 15.04073367494857,
+      "worker_self_maxrss_kib": 44032
+    },
+    {
+      "case": 4,
+      "d": 5,
+      "end_to_end_seconds": 16.404887515993323,
+      "fit_predict_seconds": 12.483529173012357,
+      "launcher_child_maxrss_kib": 354392,
+      "launcher_self_maxrss_kib": 19456,
+      "method": "integrative_r_quadratic",
+      "n_eval": 2048,
+      "n_obs": 512,
+      "n_rct_train": 128,
+      "prefit_provenance_seconds": 3.448626399040222,
+      "recipe_options": {
+        "basis": "quadratic",
+        "k_folds": 5,
+        "timeout_seconds": 1200
+      },
+      "record": "profiles-v1/case-4/profile.json",
+      "seed": 2642,
+      "status": "completed",
+      "worker_child_maxrss_kib": 354392,
+      "worker_elapsed_seconds": 16.23749917797977,
+      "worker_self_maxrss_kib": 44032
+    },
+    {
+      "case": 5,
+      "d": 5,
+      "end_to_end_seconds": 33.786078156961594,
+      "fit_predict_seconds": 29.62067253200803,
+      "launcher_child_maxrss_kib": 352508,
+      "launcher_self_maxrss_kib": 19456,
+      "method": "integrative_r_quadratic",
+      "n_eval": 2048,
+      "n_obs": 2048,
+      "n_rct_train": 512,
+      "prefit_provenance_seconds": 3.644677688018419,
+      "recipe_options": {
+        "basis": "quadratic",
+        "k_folds": 5,
+        "timeout_seconds": 1200
+      },
+      "record": "profiles-v1/case-5/profile.json",
+      "seed": 2642,
+      "status": "completed",
+      "worker_child_maxrss_kib": 352508,
+      "worker_elapsed_seconds": 33.5993172749877,
+      "worker_self_maxrss_kib": 44032
+    }
+  ],
+  "public_artifacts": "Compact status, scalar discrepancies, source/runtime identities, input/prediction hashes and resource metadata; raw arrays, model objects and logs remain private server evidence",
+  "recipes": [
+    {
+      "d": 2,
+      "direct_wrapper_max_absolute_difference": 0.0,
+      "fresh_repeat_max_absolute_difference": 0.0,
+      "fresh_wrapper_fits": 2,
+      "job_id": "720448",
+      "method": "causal_icm_fixed",
+      "n_obs": 16,
+      "n_query": 4,
+      "n_rct_train": 12,
+      "native_prediction": "treated task 0 minus control task 0",
+      "record": "native-v2/icm-compare/20261026T095717.556388Z-2376139/record.json",
+      "rho": 0.5,
+      "second_fit_tuning_and_reference_mutated": true,
+      "seed": 2601026,
+      "status": "passed"
+    },
+    {
+      "d": 2,
+      "direct_native_wall_seconds": 4.026379171002191,
+      "direct_wrapper_max_absolute_difference": 0.0,
+      "fresh_repeat_max_absolute_difference": 0.0,
+      "fresh_wrapper_fits": 2,
+      "independent_feature_map_and_pooled_standardization_passed": true,
+      "independent_prediction_map_max_absolute_difference": 2.220446049250313e-16,
+      "job_id": "720496",
+      "k_folds": 5,
+      "method": "integrative_r_linear",
+      "n_obs": 120,
+      "n_query": 7,
+      "n_rct_train": 80,
+      "record": "integrative_native_admission.json",
+      "second_fit_tuning_and_reference_mutated": true,
+      "seed": 41729,
+      "status": "passed",
+      "wrapper_wall_seconds": [
+        4.228437816025689,
+        4.048099599021953
+      ]
+    },
+    {
+      "d": 2,
+      "direct_native_wall_seconds": 4.075754533987492,
+      "direct_wrapper_max_absolute_difference": 0.0,
+      "fresh_repeat_max_absolute_difference": 0.0,
+      "fresh_wrapper_fits": 2,
+      "independent_feature_map_and_pooled_standardization_passed": true,
+      "independent_prediction_map_max_absolute_difference": 1.1102230246251565e-16,
+      "job_id": "720496",
+      "k_folds": 5,
+      "method": "integrative_r_quadratic",
+      "n_obs": 120,
+      "n_query": 1,
+      "n_rct_train": 80,
+      "record": "integrative_native_admission.json",
+      "second_fit_tuning_and_reference_mutated": true,
+      "seed": 41729,
+      "status": "passed",
+      "wrapper_wall_seconds": [
+        4.700396322004963,
+        4.6501798940007575
+      ]
+    }
+  ],
+  "remaining_comparison_requirements": [
+    "A trial-only Integrative R control with the same effect basis and matched SCAD/nuisance treatment; native L1/OLS rlasso is not automatically matched.",
+    "A genuine trial-only GP control that excludes OBS labels; rho=0 still uses OBS data to estimate shared GP hyperparameters.",
+    "Declared trial-target evaluation draws, tuning rules and campaign resource limits."
+  ],
+  "schema_version": 1,
+  "status": "native_recipe_fidelity_and_bounded_CPU_profiles_completed",
+  "tests": {
+    "console_seconds": 19.01,
+    "errors": 0,
+    "failures": 0,
+    "job_id": "720450",
+    "passed": 304,
+    "pytest": "8.3.5",
+    "python": "3.12.3",
+    "record": "tests_summary.json",
+    "skipped": 0,
+    "warnings": 3,
+    "xml_seconds": 18.99
+  }
+}

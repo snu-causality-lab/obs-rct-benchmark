@@ -1,0 +1,26 @@
+{
+  "as_of": "2026-10-26",
+  "files": {
+    "README.md": "a447ffbc899651e334f98191d2db65e3124dd60c0f3880d45bb4c3382a4b9371",
+    "attempts.json": "41ec48a3f12de13ccdaa7f7d868521902a8e9885ba88b60c1dd8d57f275cf6b8",
+    "integrative_native_admission.json": "ce4d86708f5f44bd5f06d7d7b82547140854f753103bc26d69d8881390952852",
+    "native-v2/analytic-gp/20261026T095710.762012Z-2376139/record.json": "4ab80839506ad515773b633d713175fb645aafd5675b4014c5a30ba9b69ceb50",
+    "native-v2/analytic-intr/20261026T095712.606815Z-2376139/record.json": "f63ca3e7ca59fa6a817fb9fb12f870c312974df6dd54bcf52046b297d48cf5b6",
+    "native-v2/icm-adapter-1/20261026T095716.445920Z-2376139/record.json": "d9725571448143e58cf4487426f8091885929e775df797751319fdc2c2d13a72",
+    "native-v2/icm-adapter-2/20261026T095717.029335Z-2376139/record.json": "8ec4e31e750e11386def3e67f6867f5de010eba1cb96c7c864de160c60f48ada",
+    "native-v2/icm-compare/20261026T095717.556388Z-2376139/record.json": "26d0a5dedbd236e7102586e5701c87e9e0dbcce80dda42e6a0d5fa583fab1ee4",
+    "native-v2/icm-direct/20261026T095716.259342Z-2376139/record.json": "6f13b5c035f0dee1e878b03981f2c4df2b3f091b6009d3837e4033a189e360c1",
+    "producer_identity.json": "a66761b6788460209437a19c27a5c18bae0bbfb29fbc389a8a685899c164f626",
+    "profiles-v1/case-0/profile.json": "3fa475001bf8528b48175114ac46a17276f78db1878c7dd981ce22b700695d2e",
+    "profiles-v1/case-1/profile.json": "82dcf529f2e33aeab1f84b85cff1f4b9dd194ddc3a797f3fd006803734cf7440",
+    "profiles-v1/case-2/profile.json": "1ea402be0658dd5d7fd7bf911f46f616dbe0710adc55aaf773d394acb5dbe86d",
+    "profiles-v1/case-3/profile.json": "39537bcdad68d9ec6ec8896188bd734950b5412e15325a24a632a54fb6fbdcb4",
+    "profiles-v1/case-4/profile.json": "99b9b6782f346e6caa8ded1f804e511ef0a8d6cc88b7c44c54a9776c666b0af3",
+    "profiles-v1/case-5/profile.json": "beb984bf5a112fabd14f4a146926cb740bd8793a782847eb378f56a1a8df835c",
+    "runtime_fingerprint.json": "03670a24e25ce7638a179953ad10f301db29693f1ffe2681c11b41606b72eb00",
+    "summary.json": "ef46768bb7de53e17267cadc2129db07e97993c4ef20b8410c52836c5dac6d32",
+    "tests_summary.json": "68ef271d88cb8b4969278b94caea31fb203f2274dc5e4a4a9c163dac8ae9c50d"
+  },
+  "interpretation": "SHA256 of public compact evidence and README; this manifest excludes itself.",
+  "schema_version": 1
+}

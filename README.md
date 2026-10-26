@@ -13,7 +13,7 @@ The [full catalog study](results/catalog_study/SCIENTIFIC_RESULT.md) evaluates a
 
 ## Next comparison design
 
-The [v0.3 comparison design](docs/V03_DESIGN.md) records 22 method or method-group entries and classifies all 31 existing presets by target, support, transport and implementation assumptions. It prioritizes missing native-CATE comparisons, separates causal-parameter/subgroup/bounds/acquisition tasks, and specifies observable-data tuning and failure rules. This is a design document; it adds no estimator or new performance result. Existing v0.2 source and results remain unchanged.
+The [v0.3 comparison design](docs/V03_DESIGN.md) records 22 method or method-group entries and classifies all 31 existing presets by target, support, transport and implementation assumptions. It prioritizes missing native-CATE comparisons, separates causal-parameter/subgroup/bounds/acquisition tasks, and specifies observable-data tuning and failure rules. The design adds no performance result. The current v0.3 package adds three optional [native estimator recipes](docs/V03_ADAPTERS.md): linear/quadratic Integrative R and fixed-rho Causal-ICM. [Direct-source/repeat checks, independent identities, 304 tests and six cost profiles pass](results/native_adapter_admission/README.md). These checks are separate from the preserved v0.2 performance results and manuscript.
 
 ## What is included
 
@@ -33,17 +33,18 @@ The [empirical-data interface](docs/DATASETS.md#local-file-adapters) reads separ
 
 ## References
 
-These seven research sources have different roles in the benchmark. A translated DGP does not imply that the paper's estimator is implemented.
+These research sources have different roles in the benchmark. A translated DGP does not imply that the paper's estimator is implemented.
 
 | Paper | DGP translation | Method adapter |
 | --- | --- | --- |
 | Hatt et al. (2022), [Combining Observational and Randomized Data for Estimating Heterogeneous Treatment Effects](https://arxiv.org/abs/2202.12891v1) | CorNet simulation | Optional official CorNet |
 | Kallus, Puli and Shalit (2018), [Removing Hidden Confounding by Experimental Grounding](https://arxiv.org/abs/1810.11646v1) | Experimental Grounding simulation | Not included |
-| Wu and Yang (2022), [Integrative R-learner of heterogeneous treatment effects combining experimental and observational studies](https://proceedings.mlr.press/v177/wu22a.html) | Two translations and an explicit target extension | Not included |
+| Wu and Yang (2022), [Integrative R-learner of heterogeneous treatment effects combining experimental and observational studies](https://proceedings.mlr.press/v177/wu22a.html) | Two translations and an explicit target extension | Optional native linear/quadratic recipes |
 | Yang et al. (2022), [Elastic Integrative Analysis of Randomized Trial and Real-World Data for Treatment Heterogeneity Estimation](https://arxiv.org/abs/2005.10579v3) | Elastic Integrative simulation | Not included |
 | Lin, Tarp and Evans (2025), [Combining experimental and observational data through a power likelihood](https://academic.oup.com/biometrics/article/81/1/ujaf008/8016472) | Paper and supplement variants | Not included |
 | Yang et al. (2025), [Cross-Validated Causal Inference: a Modern Method to Combine Experimental and Observational Data](https://arxiv.org/abs/2511.00727v1) | CVCI linear simulation | Not included |
 | Jung and Yang (2026), [Prediction-Powered Data Fusion for Treatment Effect Estimation](https://arxiv.org/abs/2610.12332v1) | Not included | Optional official DataFusionPPI |
+| Dimitriou et al. (2026), [Causal-ICM](https://proceedings.mlr.press/v323/dimitriou26a.html) | Not included | Optional fixed-rho native GP recipe |
 
 For empirical benchmark provenance, see Hill (2011), [Bayesian Nonparametric Modeling for Causal Inference](https://doi.org/10.1198/jcgs.2010.08162), and Dorie et al. (2019), [Automated versus Do-It-Yourself Methods for Causal Inference: Lessons Learned from a Data Analysis Competition](https://doi.org/10.1214/18-STS667). [Dataset sources and terms](docs/DATASETS.md) distinguish the original IHDP archive, semi-synthetic IHDP releases and the ACIC2016 package. No dataset is bundled with this repository.
 

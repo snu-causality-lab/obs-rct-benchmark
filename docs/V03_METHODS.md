@@ -1,10 +1,10 @@
 # v0.3 method inventory
 
-**Design only; literature cutoff: 2026-10-26.** This inventory plans comparisons by method, estimand, population and assumptions. It adds no estimator, dependency, experiment or reproduced result. The detailed records in [v03_methods.toml](v03_methods.toml) are the canonical inventory; [V03_DESIGN.md](V03_DESIGN.md) defines admission and comparison rules, and [V03_SCENARIOS.md](V03_SCENARIOS.md) classifies scenarios.
+**Comparison inventory; literature cutoff: 2026-10-26.** This inventory plans comparisons by method, estimand, population and assumptions. Current adapter implementation and admission status are recorded in [V03_ADAPTERS.md](V03_ADAPTERS.md); no v0.3 comparative result is available. The detailed records in [v03_methods.toml](v03_methods.toml) are the canonical inventory; [V03_DESIGN.md](V03_DESIGN.md) defines admission and comparison rules, and [V03_SCENARIOS.md](V03_SCENARIOS.md) classifies scenarios.
 
 ## What has actually run
 
-The [v0.2 catalog](CATALOG_STUDY.md) used eight generic Ridge/ExtraTrees recipes, official CorNet and official DataFusionPPI **DR**: 79,104 applicable records, 79,083 successful fits and 21 terminal failures. These are fixed benchmark recipes, not reproduced source-paper tables. A translated DGP does not establish an estimator's availability. The canonical 31 presets derive from six paper sources plus structural comparisons; KPS, integrative R, Elastic, power likelihood and CVCI estimators are absent from the public package. The PPI adapter accepts `learner="R"`, but the catalog did not run that option. See [verification](VERIFICATION.md) and the [frozen results](../results/catalog_study/SCIENTIFIC_RESULT.md).
+The [v0.2 catalog](CATALOG_STUDY.md) used eight generic Ridge/ExtraTrees recipes, official CorNet and official DataFusionPPI **DR**: 79,104 applicable records, 79,083 successful fits and 21 terminal failures. These are fixed benchmark recipes, not reproduced source-paper tables. A translated DGP does not establish an estimator's availability. The canonical 31 presets derive from six paper sources plus structural comparisons; KPS, Elastic, power likelihood and CVCI estimators remain absent from the public package. Integrative R and Causal-ICM are now optional fixed recipes, with native execution checks separate from v0.2. The PPI adapter accepts `learner="R"`, but the catalog did not run that option. See [verification](VERIFICATION.md) and the [frozen results](../results/catalog_study/SCIENTIFIC_RESULT.md).
 
 ## Planned comparison sets
 

@@ -2,7 +2,7 @@ cff-version: 1.2.0
 message: "Please cite this software and the primary papers for the designs, methods and datasets you use. See README.md and docs/DATASETS.md for references."
 type: software
 title: "OBS–RCT Benchmark"
-version: 0.2.0a1
+version: 0.3.0a1
 abstract: "A research-alpha benchmark for observational and randomized treatment-effect estimation, with source-documented generators, budgeted comparisons and sequential recruitment evaluation."
 authors:
   - family-names: Lee

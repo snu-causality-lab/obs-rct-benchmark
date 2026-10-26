@@ -1,0 +1,65 @@
+{
+  "attempt": "icm-direct/20261026T095716.259342Z-2376139",
+  "children_maxrss_platform_units": 237776,
+  "driver_sha256": "3f894d610d6e4f6875c5fcea668bbabd37231a88097f10a26bd72ffa1a11c68d",
+  "log_sha256": {
+    "stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "maxrss_unit": "KiB",
+  "plan_sha256": "00859873082ef136a966d8571c70081032639a0392f0e57595c185a004917f3f",
+  "producer_sha256": {
+    "causal_icm.py": "752dac23743c0b043ffbe117d20990852c171d9d74d09da3e8071e905f506304",
+    "data.py": "616958669558c6ed274709b17d683f06c18b0f0606d7fcbc8a5485919f744573",
+    "integrative_r.py": "593a883eaf88002a5ce3746deb61dc70fff7b8985a62be6f7aa5bc551dacbc5f"
+  },
+  "public_projection": {
+    "frozen_fixture_source": "scripts/native_admission.py",
+    "omitted_numeric_fields": [
+      "native_arm_parameters",
+      "observational_contrast",
+      "prediction",
+      "trial_control_mean",
+      "trial_latent_variance",
+      "trial_treated_mean",
+      "wrong_mixed_source_contrast"
+    ],
+    "original_record_sha256": "32f6850d50db337fe67e6b982e9f67dad947bd4193611dbbabadf87fa872d76c",
+    "source_reference_base": "repository"
+  },
+  "result": {
+    "environment": {
+      "GPy": "1.13.2",
+      "GPy_exact_inference_sha256": "38f302f082fe4aae9435b3a8f45c8d3588e0755f94fcadbcf2a79e569f7381e1",
+      "GPy_init_sha256": "09f87a30c1a971f56c383b48bf4d2aed56d618557eed0e4c92aed9715764dadf",
+      "executable_sha256": "750899df25484a2749629a26855d8266973ba1bee0127be2f72ae5e9e5e685bd",
+      "numpy": "1.26.4",
+      "paramz": "0.9.6",
+      "platform": "Linux-6.8.0-35-generic-x86_64-with-glibc2.39",
+      "python": "3.11.17",
+      "scipy": "1.12.0"
+    },
+    "fixture_sha256": "3e3b3b8ed7a1bc17a4c8b05c06fc1d9bd0f035b0c96928595fa169f15bb227b9",
+    "mixed_source_max_difference": 1.3063309617897003,
+    "source": {
+      "cell_index": 3,
+      "cell_sha256": "6c85f01d85087e3e69f75c1dbaf926bc8868b6b1be0521a699e00be643f7ca85",
+      "checkout_path_sha256": "2a40e0317f737213d3b0fe50a0f9de373c47535ade6fd99420becf13285e4c33",
+      "file_sha256": {
+        "rebuttals/extrapolation.ipynb": "0326f655bac0993fd845412ce59fb0cde05e04c6f70890f42ef7e6750fcd855c"
+      },
+      "nominal_helper": {
+        "line": 38,
+        "message": "invalid syntax",
+        "sha256": "7eb24844ec98a8dd8ade28780ccf6f88d40cdfcfd1cb3330c2238102e054e6f4",
+        "status": "SyntaxError_preserved"
+      },
+      "revision": "0f0c6ca424b7ca44b84649ca072384b9933b2afe"
+    }
+  },
+  "self_maxrss_platform_units": 153684,
+  "stage": "icm-direct",
+  "started_utc": "20261026T095716.259342Z",
+  "status": "passed",
+  "wall_seconds": 0.17748210800345987
+}

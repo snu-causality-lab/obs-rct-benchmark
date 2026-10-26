@@ -1,0 +1,162 @@
+{
+  "as_of": "2026-10-26",
+  "attempts": [
+    {
+      "job": "720393",
+      "kind": "setup",
+      "reason": "b30 NFS rpc wait; partial prefix retained",
+      "state": "cancelled"
+    },
+    {
+      "job": "720411",
+      "kind": "tests",
+      "reason": "b30 NFS rpc wait; partial logs retained",
+      "state": "cancelled"
+    },
+    {
+      "job": "720413",
+      "kind": "native",
+      "reason": "dependency setup cancelled",
+      "state": "cancelled_before_start"
+    },
+    {
+      "elapsed_seconds": 125,
+      "job": "720420",
+      "kind": "setup",
+      "node": "b08",
+      "state": "completed"
+    },
+    {
+      "job": "720421",
+      "kind": "tests",
+      "passed": 277,
+      "skipped": 1,
+      "state": "passed"
+    },
+    {
+      "job": "720428",
+      "kind": "external_CorNet_test",
+      "passed": 1,
+      "state": "passed"
+    },
+    {
+      "job": "720426",
+      "kind": "native",
+      "reason": "GPy imports undeclared Matplotlib plotting dependency",
+      "state": "failed_before_fit"
+    },
+    {
+      "job": "720430",
+      "kind": "native",
+      "passed": [
+        "analytic-gp",
+        "analytic-intr"
+      ],
+      "reason": "static nominal-helper check needed file omitted from sparse checkout",
+      "state": "partially_passed"
+    },
+    {
+      "job": "720431",
+      "kind": "native",
+      "passed": [
+        "icm-direct"
+      ],
+      "reason": "provenance rejected three official GPy aliases of paramz modules",
+      "state": "partially_passed"
+    },
+    {
+      "job": "720437",
+      "kind": "GPy_import_diagnosis",
+      "reason": "identified exact three canonical aliases",
+      "state": "completed"
+    },
+    {
+      "job": "720438",
+      "kind": "intR_native_cost",
+      "reason": "R built-in base namespace rejects getNamespaceInfo(path)",
+      "state": "failed_before_fit"
+    },
+    {
+      "job": "720443",
+      "kind": "R_runtime_diagnosis",
+      "reason": "actual base namespace runtime error captured",
+      "state": "completed"
+    }
+  ],
+  "interpretation": "Preserved initial preparation attempts, including cancellations and partially successful runs. The four native prerequisites below were resolved without changing numerical tolerances or native fitting algorithms.",
+  "original_attempts_record_sha256": "204bbe178e5019e1bc4ee709d50b6e0799654f50e142f003e6a2e8c3095cbab4",
+  "raw_logs_and_partial_environments": "retained privately on the server; no raw arrays or logs are included here",
+  "resolved_prerequisites": [
+    {
+      "job": "720426",
+      "prerequisite": "GPy plotting dependency",
+      "resolution": "Declare Matplotlib in the optional dependency set and install 3.9.4 in the new environment; retain before/after locks."
+    },
+    {
+      "job": "720430",
+      "prerequisite": "Sparse author checkout omitted nominal helper inspected by source guard",
+      "resolution": "Materialize the unchanged helper file at the same pinned author revision; preserve its unresolved merge markers."
+    },
+    {
+      "job": "720431",
+      "prerequisite": "Three official GPy aliases resolve to paramz namespaces",
+      "resolution": "Verify exactly those three canonical aliases against the pinned distributions; continue rejecting unrelated import paths."
+    },
+    {
+      "job": "720438",
+      "prerequisite": "R built-in base namespace metadata path",
+      "resolution": "Resolve base metadata from the running R installation; retain strict getNamespaceInfo paths for other namespaces and rejection of malformed records."
+    }
+  ],
+  "schema_version": 1,
+  "subsequent_checks": [
+    {
+      "job": "720447",
+      "kind": "R_runtime_regression",
+      "state": "passed",
+      "tests_passed": 35
+    },
+    {
+      "job": "720448",
+      "kind": "native_GP_and_independent_R_map",
+      "stages": 6,
+      "state": "passed"
+    },
+    {
+      "bases": [
+        "linear",
+        "quadratic"
+      ],
+      "fresh_wrapper_fits_per_basis": 2,
+      "job": "720449",
+      "kind": "integrative_R_fidelity_v2",
+      "state": "passed",
+      "superseded_for_complete_python_producer_binding": true
+    },
+    {
+      "job": "720450",
+      "kind": "full_tests",
+      "passed": 304,
+      "skipped": 0,
+      "state": "passed",
+      "warnings": 3
+    },
+    {
+      "cases": 6,
+      "job": "720451",
+      "kind": "bounded_CPU_profiles",
+      "state": "completed"
+    },
+    {
+      "bases": [
+        "linear",
+        "quadratic"
+      ],
+      "fresh_wrapper_fits_per_basis": 2,
+      "job": "720496",
+      "kind": "integrative_R_fidelity_v3",
+      "purpose": "Bind actual imported 16-file Python producer, driver hash and verified checkout to the unchanged native fidelity checks.",
+      "state": "passed"
+    }
+  ]
+}

@@ -1,0 +1,119 @@
+{
+  "attempt": "icm-adapter-2/20261026T095717.029335Z-2376139",
+  "children_maxrss_platform_units": 237776,
+  "driver_sha256": "3f894d610d6e4f6875c5fcea668bbabd37231a88097f10a26bd72ffa1a11c68d",
+  "log_sha256": {
+    "stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "maxrss_unit": "KiB",
+  "plan_sha256": "00859873082ef136a966d8571c70081032639a0392f0e57595c185a004917f3f",
+  "producer_sha256": {
+    "causal_icm.py": "752dac23743c0b043ffbe117d20990852c171d9d74d09da3e8071e905f506304",
+    "data.py": "616958669558c6ed274709b17d683f06c18b0f0606d7fcbc8a5485919f744573",
+    "integrative_r.py": "593a883eaf88002a5ce3746deb61dc70fff7b8985a62be6f7aa5bc551dacbc5f"
+  },
+  "public_projection": {
+    "frozen_fixture_source": "scripts/native_admission.py",
+    "omitted_numeric_fields": [
+      "prediction"
+    ],
+    "original_record_sha256": "69e27ea4726c519e6ecb56a4f1fd510e43d19bf47c465995b86fccc34f7a9761",
+    "source_reference_base": "repository"
+  },
+  "result": {
+    "adapter_provenance": {
+      "effect_modifier_columns": [
+        0,
+        1
+      ],
+      "native_source": {
+        "availability": "available",
+        "cell_index": 3,
+        "cell_sha256": "6c85f01d85087e3e69f75c1dbaf926bc8868b6b1be0521a699e00be643f7ca85",
+        "declared_git_revision": "0f0c6ca424b7ca44b84649ca072384b9933b2afe",
+        "entrypoint": "ICM",
+        "expected_cell_sha256": "6c85f01d85087e3e69f75c1dbaf926bc8868b6b1be0521a699e00be643f7ca85",
+        "expected_revision": "0f0c6ca424b7ca44b84649ca072384b9933b2afe",
+        "expected_source_file_sha256": "0326f655bac0993fd845412ce59fb0cde05e04c6f70890f42ef7e6750fcd855c",
+        "import_resolution": "isolated_locked_notebook_cell",
+        "nominal_helper_status": "unresolved_merge_markers_not_imported",
+        "numerical_environment": {
+          "GPy": {
+            "compatibility_aliases": {
+              "GPy.core.parameterization.index_operations": "paramz.core.index_operations",
+              "GPy.core.parameterization.lists_and_dicts": "paramz.core.lists_and_dicts",
+              "GPy.core.parameterization.observable_array": "paramz.core.observable_array"
+            },
+            "expected_version": "1.13.2",
+            "import_resolution": "verified_distribution",
+            "init_sha256": "09f87a30c1a971f56c383b48bf4d2aed56d618557eed0e4c92aed9715764dadf",
+            "installed_version": "1.13.2",
+            "verified": true
+          },
+          "numpy": {
+            "compatibility_aliases": {},
+            "expected_version": "1.26.4",
+            "import_resolution": "verified_distribution",
+            "init_sha256": "22cd1535fa14d74ef6f457cca149ffdc80875f460be313b8f895273f78bc402e",
+            "installed_version": "1.26.4",
+            "verified": true
+          },
+          "paramz": {
+            "compatibility_aliases": {},
+            "expected_version": "0.9.6",
+            "import_resolution": "verified_distribution",
+            "init_sha256": "c79840d8d7599518fdaef4dfb8f05f22a8030632e7f05faa9123f3f177eb9fbe",
+            "installed_version": "0.9.6",
+            "verified": true
+          },
+          "scipy": {
+            "compatibility_aliases": {},
+            "expected_version": "1.12.0",
+            "import_resolution": "verified_distribution",
+            "init_sha256": "3ae25e68311f068b721aa81b9c72931a245ffb651329ef97ca119b99b0a7935d",
+            "installed_version": "1.12.0",
+            "verified": true
+          }
+        },
+        "source_file": "rebuttals/extrapolation.ipynb",
+        "source_file_sha256": "0326f655bac0993fd845412ce59fb0cde05e04c6f70890f42ef7e6750fcd855c",
+        "source_verified": true,
+        "tracked_changes": false,
+        "verified": true
+      },
+      "noise": "native_GPy_Gaussian_noise_optimized",
+      "optimization": "native_GPy_optimize_defaults_no_restarts",
+      "prediction": "treated_mean_minus_control_mean",
+      "prediction_source": 0,
+      "rank": 2,
+      "recipe": "fixed_rho_native_two_arm_gp",
+      "rho": 0.5,
+      "rho_zero_is_rct_only": false,
+      "source_encoding": {
+        "obs": 1,
+        "rct": 0
+      }
+    },
+    "environment": {
+      "GPy": "1.13.2",
+      "GPy_exact_inference_sha256": "38f302f082fe4aae9435b3a8f45c8d3588e0755f94fcadbcf2a79e569f7381e1",
+      "GPy_init_sha256": "09f87a30c1a971f56c383b48bf4d2aed56d618557eed0e4c92aed9715764dadf",
+      "executable_sha256": "750899df25484a2749629a26855d8266973ba1bee0127be2f72ae5e9e5e685bd",
+      "numpy": "1.26.4",
+      "paramz": "0.9.6",
+      "platform": "Linux-6.8.0-35-generic-x86_64-with-glibc2.39",
+      "python": "3.11.17",
+      "scipy": "1.12.0"
+    },
+    "evaluation_outcomes_accessible": false,
+    "fixture_sha256": "3e3b3b8ed7a1bc17a4c8b05c06fc1d9bd0f035b0c96928595fa169f15bb227b9",
+    "repeat": 2,
+    "tuning_reference_mutated": true
+  },
+  "self_maxrss_platform_units": 154708,
+  "stage": "icm-adapter-2",
+  "started_utc": "20261026T095717.029335Z",
+  "status": "passed",
+  "wall_seconds": 0.5182030120049603
+}

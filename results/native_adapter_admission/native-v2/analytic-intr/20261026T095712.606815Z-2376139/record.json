@@ -1,0 +1,55 @@
+{
+  "attempt": "analytic-intr/20261026T095712.606815Z-2376139",
+  "children_maxrss_platform_units": 237776,
+  "driver_sha256": "3f894d610d6e4f6875c5fcea668bbabd37231a88097f10a26bd72ffa1a11c68d",
+  "log_sha256": {
+    "stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "maxrss_unit": "KiB",
+  "plan_sha256": "00859873082ef136a966d8571c70081032639a0392f0e57595c185a004917f3f",
+  "producer_sha256": {
+    "causal_icm.py": "752dac23743c0b043ffbe117d20990852c171d9d74d09da3e8071e905f506304",
+    "data.py": "616958669558c6ed274709b17d683f06c18b0f0606d7fcbc8a5485919f744573",
+    "integrative_r.py": "593a883eaf88002a5ce3746deb61dc70fff7b8985a62be6f7aa5bc551dacbc5f"
+  },
+  "public_projection": {
+    "frozen_fixture_source": "scripts/native_admission.py",
+    "omitted_numeric_fields": [
+      "adapter_predictions",
+      "native_predictions"
+    ],
+    "original_record_sha256": "103a790ec2ae104161c7fa395a38cce5d2a21c7cc80b830810703ad1ea296c5d",
+    "source_reference_base": "repository"
+  },
+  "result": {
+    "environment": {
+      "executable_sha256": "750899df25484a2749629a26855d8266973ba1bee0127be2f72ae5e9e5e685bd",
+      "numpy": "1.26.4",
+      "platform": "Linux-6.8.0-35-generic-x86_64-with-glibc2.39",
+      "python": "3.11.17"
+    },
+    "max_absolute_discrepancy": {
+      "adapter_prediction_map": 0.0,
+      "native_center": 0.0,
+      "native_predictions": 0.0,
+      "native_scale": 0.0
+    },
+    "native_fitting_performed": false,
+    "r_runtime_session_info_sha256": "9d6f6d45bbf468a76061efcf3d2ecbb91fe36f0ff47dc9fe43e4bf6768d544a9",
+    "rscript_sha256": "0f7ee94401cd3e8a7d38b6d6fe594cc92e64f5819f917d32d9de107d28d2755f",
+    "source": {
+      "checkout_path_sha256": "20ae3c76575fa8206bb9da39e241698b4a37aa9aefa7dede771f925f0b65003c",
+      "file_sha256": {
+        "R/intRlearner.R": "98563e2423f41153fcbb2548f3b54ac779c72bcb8d154608bf51f778086fdce8",
+        "R/utils.R": "2b85e2e56db83e33427f6f43aa1b59d995bafb6d46bfc1aec8e5f2e6a215525b"
+      },
+      "revision": "a46ce2c1cc814865898b863d6a8e130bbc2c802b"
+    }
+  },
+  "self_maxrss_platform_units": 153684,
+  "stage": "analytic-intr",
+  "started_utc": "20261026T095712.606815Z",
+  "status": "passed",
+  "wall_seconds": 3.643798667995725
+}

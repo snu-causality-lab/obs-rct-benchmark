@@ -1,0 +1,49 @@
+{
+  "attempt": "icm-compare/20261026T095717.556388Z-2376139",
+  "children_maxrss_platform_units": 237776,
+  "driver_sha256": "3f894d610d6e4f6875c5fcea668bbabd37231a88097f10a26bd72ffa1a11c68d",
+  "log_sha256": {
+    "stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "maxrss_unit": "KiB",
+  "plan_sha256": "00859873082ef136a966d8571c70081032639a0392f0e57595c185a004917f3f",
+  "producer_sha256": {
+    "causal_icm.py": "752dac23743c0b043ffbe117d20990852c171d9d74d09da3e8071e905f506304",
+    "data.py": "616958669558c6ed274709b17d683f06c18b0f0606d7fcbc8a5485919f744573",
+    "integrative_r.py": "593a883eaf88002a5ce3746deb61dc70fff7b8985a62be6f7aa5bc551dacbc5f"
+  },
+  "public_projection": {
+    "frozen_fixture_source": "scripts/native_admission.py",
+    "omitted_numeric_fields": [],
+    "original_record_sha256": "6d32c025ce456a3e7da6037221f5bb3e7d8d45c52e0b43418159c7ad1c6fe829",
+    "source_reference_base": "repository"
+  },
+  "result": {
+    "admitted_scope": "fixed-rho native two-arm trial-response mean component on this checked environment",
+    "max_absolute_discrepancy": {
+      "fresh_repeat_and_information_mutation": 0.0,
+      "icm-adapter-1": 0.0,
+      "icm-adapter-2": 0.0
+    },
+    "not_established": [
+      "paper table reproduction",
+      "adaptive-rho recipe",
+      "performance superiority",
+      "unrestricted transport",
+      "campaign readiness",
+      "intR fit fidelity"
+    ],
+    "required_stage_records": {
+      "analytic-gp": "analytic-gp/20261026T095710.762012Z-2376139/record.json",
+      "icm-adapter-1": "icm-adapter-1/20261026T095716.445920Z-2376139/record.json",
+      "icm-adapter-2": "icm-adapter-2/20261026T095717.029335Z-2376139/record.json",
+      "icm-direct": "icm-direct/20261026T095716.259342Z-2376139/record.json"
+    }
+  },
+  "self_maxrss_platform_units": 154708,
+  "stage": "icm-compare",
+  "started_utc": "20261026T095717.556388Z",
+  "status": "passed",
+  "wall_seconds": 0.005101118003949523
+}

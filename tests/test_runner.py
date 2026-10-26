@@ -306,3 +306,97 @@ def test_scenario_report_exposes_paired_effects_and_withholds_failed_pairs(tmp_p
     report = (failed / "README.md").read_text()
     assert "| `structural:M0` | `obs_t_ridge` | unavailable | unavailable | 0 / 2 | 2 | 0 |" in report
     assert "unavailable | unavailable | 0 / 2 | withheld: failed or missing requested cells" in report
+
+
+def test_new_external_provenance_uses_requested_recipes_and_one_r_runtime_probe(monkeypatch):
+    from obs_rct_benchmark import causal_icm, integrative_r
+
+    calls = []
+
+    def r_snapshot():
+        calls.append("R")
+        return {"expected_revision": "r-revision", "runtime": {"r_version": "r-runtime"}}
+
+    def gp_snapshot():
+        calls.append("GPy")
+        return {"cell_sha256": "native-cell", "numerical_environment": {"GPy": "gp-runtime"}}
+
+    monkeypatch.setattr(integrative_r, "integrative_r_provenance", r_snapshot)
+    monkeypatch.setattr(causal_icm, "causal_icm_provenance", gp_snapshot)
+    assert runner.external_method_provenance(("rct_t_ridge",)) == {}
+    assert calls == []
+    result = runner.external_method_provenance((
+        "integrative_r_linear", "integrative_r_quadratic", "causal_icm_fixed"))
+    assert calls == ["R", "GPy"]
+    assert set(result) == {"integrative_r_linear", "integrative_r_quadratic", "causal_icm_fixed"}
+    assert result["integrative_r_linear"]["basis"] == "linear"
+    assert result["integrative_r_quadratic"]["basis"] == "quadratic"
+    assert result["integrative_r_linear"]["runtime"] == {"r_version": "r-runtime"}
+    assert result["causal_icm_fixed"]["cell_sha256"] == "native-cell"
+
+
+def test_environment_records_gpy_and_paramz_from_metadata_without_importing_them(monkeypatch):
+    calls = []
+
+    def version(name):
+        calls.append(name)
+        return "metadata-" + name
+
+    monkeypatch.setattr(runner, "_version", version)
+    environment = runner.environment_provenance()
+    assert environment["packages"]["GPy"] == "metadata-GPy"
+    assert environment["packages"]["paramz"] == "metadata-paramz"
+    assert calls.count("GPy") == calls.count("paramz") == 1
+
+
+@pytest.mark.parametrize("method,change", [
+    ("integrative_r_linear", "source"),
+    ("integrative_r_quadratic", "r_runtime"),
+    ("causal_icm_fixed", "notebook"),
+    ("causal_icm_fixed", "cell"),
+    ("causal_icm_fixed", "numerical_runtime"),
+])
+def test_new_native_source_and_numerical_runtime_changes_reject_resume(
+        tmp_path, monkeypatch, method, change):
+    from obs_rct_benchmark import causal_icm, integrative_r
+
+    r_snapshot = {
+        "expected_revision": "r-revision", "package_file_sha256": {"R/intRlearner.R": "r-source"},
+        "runtime": {"r_version": "R-locked", "namespace_packages": {"glmnet": {"version": "locked"}}},
+    }
+    gp_snapshot = {
+        "expected_revision": "gp-revision", "source_file_sha256": "notebook-source",
+        "cell_sha256": "model-cell",
+        "numerical_environment": {"GPy": {"installed_version": "locked", "init_sha256": "gp-source"}},
+    }
+    monkeypatch.setattr(integrative_r, "integrative_r_provenance", lambda: r_snapshot)
+    monkeypatch.setattr(causal_icm, "causal_icm_provenance", lambda: gp_snapshot)
+
+    class PredictionOnly:
+        def fit_predict(self, training, query, *, seed):
+            return np.zeros(len(query))
+
+    monkeypatch.setattr(runner, "make_method", lambda *args, **kwargs: PredictionOnly())
+    monkeypatch.setattr(runner, "_generate", lambda *args: SimpleNamespace(
+        training_view=lambda: object(), eval_X=np.zeros((2, 2)),
+        eval_tau=np.zeros(2), metadata={}))
+    requested = BenchmarkConfig(scenarios=config().scenarios, seeds=(3,),
+        methods=("rct_t_ridge", method), reference_method="rct_t_ridge")
+    output = tmp_path / "new-native"
+    run_benchmark(requested, output)
+    manifest = json.loads((output / "run_manifest.json").read_text())
+    assert method in manifest["external_methods"]
+    saved_records = (output / "records.jsonl").read_bytes()
+    if change == "source":
+        r_snapshot["package_file_sha256"]["R/intRlearner.R"] = "changed"
+    elif change == "r_runtime":
+        r_snapshot["runtime"]["namespace_packages"]["glmnet"]["version"] = "changed"
+    elif change == "notebook":
+        gp_snapshot["source_file_sha256"] = "changed"
+    elif change == "cell":
+        gp_snapshot["cell_sha256"] = "changed"
+    else:
+        gp_snapshot["numerical_environment"]["GPy"]["installed_version"] = "changed"
+    with pytest.raises(ValueError, match="config or source provenance"):
+        run_benchmark(requested, output, resume=True)
+    assert (output / "records.jsonl").read_bytes() == saved_records
