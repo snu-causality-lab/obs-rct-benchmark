@@ -1,6 +1,6 @@
 # Results and execution examples
 
-The [AI-generated technical report](../docs/REPORT.md) gives one integrated reading account. The result packets below retain their own frozen producer, configuration, source/environment identities and uncertainty rules. Package **0.3.0a3** registers 15 recipes and applies [metric-specific inference permissions](../docs/INFERENCE.md) to new generic runs; this is not a count of 15 distinct fusion algorithms or a claim that every recipe has run on every design.
+The [AI-generated technical report](../docs/REPORT.md) gives one integrated reading account. The result packets below retain their own frozen producer, configuration, source/environment identities and uncertainty rules. Package **0.3.0a4** registers 16 recipes, including an admitted RCT-only causal forest, and applies [metric-specific inference permissions](../docs/INFERENCE.md) to new generic runs; this is not a count of 16 distinct fusion algorithms or a claim that every recipe has run on every design.
 
 | Study | Coverage | Question and readout |
 | --- | ---: | --- |
@@ -14,6 +14,8 @@ The GP experiment is one additional controlled mechanism in its dedicated driver
 These studies provide sampling replications conditional on development-inspected mechanisms. Actual IHDP/ACIC evaluation and unseen-mechanism validation remain open. The catalog, GP, matched-M2 and recruitment analyses keep separate seed collections and inference. Pointwise GP/recruitment intervals are descriptive and have no multiplicity adjustment. See [verification scopes](../docs/VERIFICATION.md) and each linked frozen protocol before reproducing a study; the current package must not resume older result trees with different source fingerprints.
 
 The [0.3.0a3 inference-policy checks](inference_policy_checks/README.md) separately record 428 passing tests, smoke/replay and tutorial execution. They check the shared reporting rules and preserve every scientific study above.
+
+The [0.3.0a4 causal-forest admission](causal_forest_admission/README.md) records direct-native and independent prediction-map checks, two bounded cost profiles and 475 passing tests. It adds a comparator candidate, with no new performance ranking or source-paper table reproduction.
 
 ## Original alpha execution examples
 

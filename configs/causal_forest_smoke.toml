@@ -1,0 +1,19 @@
+schema_version = 1
+
+[run]
+seeds = [3, 5]
+methods = ["rct_t_ridge", "rct_causal_forest"]
+reference_method = "rct_t_ridge"
+purpose = "smoke"
+scope = "optional native causal-forest execution check; not method-ranking evidence"
+
+[[scenarios]]
+kind = "structural"
+id = "M0"
+
+[scenarios.parameters]
+n_obs = 32
+n_rct_train = 128
+n_rct_tune = 8
+n_rct_test = 8
+n_eval = 8

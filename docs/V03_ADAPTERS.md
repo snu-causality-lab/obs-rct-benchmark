@@ -1,6 +1,6 @@
 # v0.3 optional native estimators
 
-Version **0.3.0a3** provides the three native recipes below and two source-restricted GP controls. The separately frozen **0.3.0a2** [controlled pilot](../results/gp_source_pilot/SCIENTIFIC_RESULT.md) completes 576 fits across six conditions and 32 paired seeds: OBS addition helps the fixed GP at discrepancy levels 0/1 and hurts it at level 2 relative to the matched RCT-only GP at both trial budgets. The broader v0.3 campaign remains pending.
+Version **0.3.0a4** provides the four native recipes below and two source-restricted GP controls. The RCT-only causal forest has separate default-recipe admission; it has not entered a comparative accuracy study. The separately frozen **0.3.0a2** [controlled pilot](../results/gp_source_pilot/SCIENTIFIC_RESULT.md) completes 576 fits across six conditions and 32 paired seeds: OBS addition helps the fixed GP at discrepancy levels 0/1 and hurts it at level 2 relative to the matched RCT-only GP at both trial budgets. The broader v0.3 campaign remains pending.
 
 The original **0.3.0a1 admission** remains tied to its own source snapshot: 304 GSDS tests, direct-source agreement and fresh repeats for all three native recipes, independent analytic checks, and six bounded cost profiles. Those admission checks do not establish comparative accuracy. Exact evidence is in [native_adapter_admission](../results/native_adapter_admission/README.md); the frozen v0.2 catalog is unchanged. The [method inventory](v03_methods.toml) records scientific scope; this document records executable recipes.
 
@@ -9,8 +9,9 @@ The original **0.3.0a1 admission** remains tied to its own source snapshot: 304 
 | `integrative_r_linear` | Author `intrlearner` with a raw-X linear basis, five source/arm-stratified cross-fitting folds and its full native SCAD search | Shared conditional effect across studies, evaluated using the trial effect component. This restricted basis is a benchmark recipe. |
 | `integrative_r_quadratic` | Same estimator with the author's `poly_interaction(d=2, interact=TRUE)` feature map | Quadratic expansion used by the author generator. Matching this feature map does not reproduce a paper table. |
 | `causal_icm_fixed` | Author two-arm multi-task GP, rank 2, fixed `rho=0.5`, all observed X by default | Trial task 0 in both arms. This is a fixed borrowing recipe; the paper's borrowing selection is not implemented. |
+| `rct_causal_forest` | Official `grf` 2.6.1, 2,000 honest trees, known trial propensity, native OOB outcome nuisance, one thread and no tuning | RCT full-X CATE; only RCT fitting rows enter nuisances and trees. Admission covers the default recipe, without native variance intervals or accuracy claims. |
 
-All three ignore `rct_tune`, target-reference rows and evaluation outcomes. They receive observed fitting samples and evaluation covariates through `TrainingView`. Their source algorithms do not consume the supplied known randomization probabilities. Internal native optimization remains part of each recipe; this is distinct from the proposed common selection rule in [V03_DESIGN.md](V03_DESIGN.md).
+All four ignore `rct_tune`, target-reference rows and evaluation outcomes. They receive observed fitting samples and prediction covariates through `TrainingView`; the causal forest also accepts an RCT-only `SourceSample`. Integrative R and Causal-ICM do not consume the supplied known randomization probabilities; the causal forest supplies them as `W.hat`. Internal native optimization remains part of the fusion recipes; this is distinct from the proposed common selection rule in [V03_DESIGN.md](V03_DESIGN.md).
 
 For new generic runs, these native recipes and source controls require an explicit per-scenario declaration for each metric before seed-level uncertainty is reported. Source fidelity and deterministic replay do not establish finite variance of fitted-method risk. Omission retains descriptive scores and complete paired means. See the [inference policy](INFERENCE.md); the pilot's frozen analysis retains its own rules.
 
@@ -30,6 +31,12 @@ assert prediction.shape == (8,)
 ```
 
 `TrainingView` is the observed-data contract in [data.py](../src/obs_rct_benchmark/data.py); constructing it from a simulation excludes truth and RCT test outcomes. Seeds control input generation, deterministic folds and estimator initialization. Exact replay also requires the recorded source, numerical environment and thread settings.
+
+## RCT-only honest causal forest
+
+The [recipe and installation instructions](CAUSAL_FOREST.md) specify the pinned official source, separate build copy, mandatory build manifest and actual loaded namespace/native-library checks. The adapter uses only `rct_train.X/T/Y/known_propensity`, with `Y.hat=NULL` and native OOB outcome regression. OBS, tuning and target-reference fields are not accessed; evaluation covariates enter prediction only.
+
+The separate [0.3.0a4 admission](../results/causal_forest_admission/README.md) passes six native fits: a direct call, two fresh adapter processes, query extension and two cost profiles. Direct/repeated predictions and the original query prefix agree exactly; an independent local-intercept calculation differs by at most 2.220446049250313e-15. Its 60 focused and 475 full-suite tests pass with no skips. This checks the default source call and prediction arithmetic conditional on native neighborhoods/nuisances, not comparative CATE performance or source-paper tables. R-learner and Bayesian causal forest admission remain planned.
 
 ## Integrative R-learner
 
@@ -67,14 +74,14 @@ Even `rho=0` still allows OBS labels to fit shared GP hyperparameters. It is not
 
 ## Reproduction status
 
-The prospective checks require deterministic direct-source/wrapper agreement at absolute tolerance 1e-10 and relative tolerance 1e-8, repeated fresh fits, and independently derived analytic identities at 1e-12. Tiny fitted examples test API fidelity and reproducibility; they do not establish CATE accuracy or a method ranking. All direct-source/wrapper and repeated-fit prediction discrepancies were zero on the declared fixtures, including changes to unused tuning labels and target-reference rows. Independent GP covariance/posterior checks had maximum absolute error 1.11e-15; the native R hand-coefficient map was exact. The separate fitted d2 polynomial/standardization checks had maximum prediction-map error 2.22e-16. These checks establish the stated source-call and target-map scope, not paper-table reproduction.
+The original 0.3.0a1 checks required deterministic direct-source/wrapper agreement at absolute tolerance 1e-10 and relative tolerance 1e-8, repeated fresh fits, and independently derived analytic identities at 1e-12. Tiny fitted examples test API fidelity and reproducibility; they do not establish CATE accuracy or a method ranking. All direct-source/wrapper and repeated-fit prediction discrepancies were zero on those declared fixtures, including changes to unused tuning labels and target-reference rows. Independent GP covariance/posterior checks had maximum absolute error 1.11e-15; the native R hand-coefficient map was exact. The separate fitted d2 polynomial/standardization checks had maximum prediction-map error 2.22e-16. These checks establish the stated source-call and target-map scope, not paper-table reproduction.
 
 The original admission used package `0.3.0a1`; the source-control pilot uses `0.3.0a2`. The [pilot checks](../results/gp_source_pilot/checks_summary.json) pass 371 tests in the fresh numerical environment plus one separately configured CorNet integration test, 13 native/data preflight fits, independent reconstruction of all 576 risks and 160 source-exclusion groups, 18 prespecified fresh replays with identical predictions, and a byte-identical completed-run resume with no refits. See the [pilot evidence](../results/gp_source_pilot/README.md) for checks, failures retained from an out-of-panel helper attempt, and replay scope. These checks do not establish unseen-mechanism performance or source-paper table reproduction. Replay v0.2 results with their recorded producer source and environment. Adding optional methods changes package source fingerprints, so old result trees must not be resumed under this source tree.
 
 
 ## Measured execution costs
 
-Six single-thread CPU profiles use one fixed observed-data fixture per size, five covariates, 2,048 prediction rows and seed 2642. The following seconds measure `fit_predict`; they are not medians across DGPs or projected campaign runtimes.
+The original admission's six single-thread CPU profiles use one fixed observed-data fixture per size, five covariates, 2,048 prediction rows and seed 2642. The following seconds measure `fit_predict`; they are not medians across DGPs or projected campaign runtimes.
 
 | Recipe | OBS 512 / RCT 128 | OBS 2048 / RCT 512 |
 | --- | ---: | ---: |
@@ -83,6 +90,8 @@ Six single-thread CPU profiles use one fixed observed-data fixture per size, fiv
 | Integrative R quadratic | 12.48 s | 29.62 s |
 
 All profiles completed within their 600-second limit under one CPU and a 4 GiB allocation. The largest observed GP worker high-water mark was 588,036 KiB; R child marks reached 361,056 KiB. These separate process marks do not establish simultaneous whole-job peak RAM. Full process/launcher times and identities are retained in the evidence. No approximation or subsampling changes the native algorithms.
+
+The causal forest has two separately recorded RCT-only cost fixtures under its [own default settings and admission](CAUSAL_FOREST.md#recorded-admission). Those full-adapter measurements include provenance checks and process startup; their child RSS marks are not simultaneous whole-job peaks. Neither set of fixtures forecasts a full campaign or establishes a performance ranking.
 
 The pilot supplies a genuinely source-excluded GP control with frozen trial-target samples and budgets. The broader campaign still needs other matched RCT-only backbones and finalized tuning/resource limits. In particular, the native L1 `rlasso` fit does not automatically match the integrative SCAD regularizer. The planned broader method inventory remains incomplete.
 

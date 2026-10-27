@@ -1,0 +1,67 @@
+{
+  "admission_manifest_sha256": "eb22856a46df0f6cd956311b5d5b034908ad17291cfe63a978aafcdab52fb830",
+  "bootstrap_manifest_sha256": "5215fae9de02e3e51d04ccffbb8fd274b1182a224e2c9687e334f8bc3f95920c",
+  "build_dependency_versions": {
+    "DiceKriging": "1.6.1",
+    "Matrix": "1.6.5",
+    "Rcpp": "1.1.0",
+    "RcppEigen": "0.3.4.0.2",
+    "base": "4.3.3",
+    "compiler": "4.3.3",
+    "datasets": "4.3.3",
+    "grDevices": "4.3.3",
+    "graphics": "4.3.3",
+    "grid": "4.3.3",
+    "lattice": "0.22.7",
+    "lmtest": "0.9.40",
+    "methods": "4.3.3",
+    "sandwich": "3.1.3",
+    "stats": "4.3.3",
+    "tools": "4.3.3",
+    "utils": "4.3.3",
+    "zoo": "1.9.1"
+  },
+  "build_request": {
+    "cpus_per_task": 1,
+    "gpus": 0,
+    "memory": "4G",
+    "partition": "P2",
+    "time": "00:20:00"
+  },
+  "compiler": "conda-forge GCC 16.2.0",
+  "full_runtime_authentication": false,
+  "grf_revision": "5bee99b51471f76cb2d63acbc8a9b0ffec408ba0",
+  "grf_tree": "237ca65b6dbdb53180c0dbc9f1f68ddef28c0689",
+  "grf_version": "2.6.1",
+  "installed_grf_files": 24,
+  "manifest_generation": "scripts/record_causal_forest_build.py records canonical versions, installed R code/native file identities and selected namespace runtime; private paths stay with each build.",
+  "metadata_canonicalization_job": 724288,
+  "new_dependency_source_tarball_sha256": {
+    "DiceKriging_1.6.1.tar.gz": "4c65dc2abd006fc3d3e07f97f4fe6571ff822f4e4ecce00e769fc9c0651c1ad2",
+    "lmtest_0.9-40.tar.gz": "64400d4d6cc635316531042971f1783539686e9015c76f5741c07304fa14d997",
+    "sandwich_3.1-3.tar.gz": "960006cf4fcbada936b43acd04ddd8c0d1255570f41dda046ce778873f546134",
+    "zoo_1.9-1.tar.gz": "a2d998726a9b528efd20af449099e4b2df53887a0d10f48ac9ba63992b3a053a"
+  },
+  "python_environment": {
+    "implementation": "CPython",
+    "machine": "x86_64",
+    "packages": {
+      "GPy": "not-installed",
+      "dfppi": "0.1.0",
+      "numpy": "1.26.4",
+      "obs-rct-benchmark": "0.3.0a4",
+      "paramz": "not-installed",
+      "scikit-learn": "1.5.2",
+      "scipy": "1.15.3",
+      "torch": "2.2.2+cpu"
+    },
+    "python": "3.12.3",
+    "system": "Linux"
+  },
+  "r_version": "R version 4.3.3 (2024-02-29)",
+  "schema_version": 1,
+  "source_build_elapsed": "00:03:59",
+  "source_build_job": 724272,
+  "source_build_task_MaxRSS_KiB": 514456,
+  "source_files": 960
+}

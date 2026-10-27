@@ -512,6 +512,10 @@ def external_method_provenance(methods: tuple[str, ...]) -> dict[str, Any]:
         from .cornet import cornet_provenance
 
         result["cornet_official"] = cornet_provenance()
+    if "rct_causal_forest" in methods:
+        from .causal_forest import causal_forest_provenance
+
+        result["rct_causal_forest"] = causal_forest_provenance()
     integrative = {"integrative_r_linear", "integrative_r_quadratic"}.intersection(methods)
     if integrative:
         from .integrative_r import integrative_r_provenance

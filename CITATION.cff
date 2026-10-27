@@ -2,7 +2,7 @@ cff-version: 1.2.0
 message: "Please cite this software and the primary papers for the designs, methods and datasets you use. See README.md and docs/DATASETS.md for references."
 type: software
 title: "OBS–RCT Benchmark"
-version: 0.3.0a3
+version: 0.3.0a4
 abstract: "A research-alpha benchmark for observational and randomized treatment-effect estimation, with source-documented generators, budgeted comparisons and sequential recruitment evaluation."
 authors:
   - family-names: Lee
@@ -15,6 +15,29 @@ keywords:
   - randomized trials
   - simulation benchmark
 references:
+  - type: article
+    title: "Generalized Random Forests"
+    authors:
+      - {family-names: Athey, given-names: Susan}
+      - {family-names: Tibshirani, given-names: Julie}
+      - {family-names: Wager, given-names: Stefan}
+    year: 2019
+    journal: "The Annals of Statistics"
+    volume: 47
+    issue: 2
+    doi: "10.1214/18-AOS1709"
+    url: "https://arxiv.org/abs/1610.01271"
+  - type: article
+    title: "Estimation and Inference of Heterogeneous Treatment Effects using Random Forests"
+    authors:
+      - {family-names: Wager, given-names: Stefan}
+      - {family-names: Athey, given-names: Susan}
+    year: 2018
+    journal: "Journal of the American Statistical Association"
+    volume: 113
+    issue: 523
+    doi: "10.1080/01621459.2017.1319839"
+    url: "https://arxiv.org/abs/1510.04342"
   - type: article
     title: "Combining Observational and Randomized Data for Estimating Heterogeneous Treatment Effects"
     authors:

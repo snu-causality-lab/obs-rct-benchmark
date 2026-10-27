@@ -1,0 +1,77 @@
+{
+  "admission_job": {
+    "allocated_logical_cpus": 2,
+    "batch_MaxRSS_KiB": 449640,
+    "elapsed": "00:02:04",
+    "exit_code": "0:0",
+    "job_id": 724455,
+    "memory_scope": "largest batch-task RSS, not simultaneous whole-job peak",
+    "requested_cpus": 1,
+    "requested_memory_GiB": 4,
+    "status": "COMPLETED"
+  },
+  "configured_integrations": [
+    "CorNet",
+    "R namespace probe"
+  ],
+  "date": "2026-10-27",
+  "focused_tests": {
+    "errors": 0,
+    "failures": 0,
+    "skipped": 0,
+    "tests": 60
+  },
+  "full_tests": {
+    "errors": 0,
+    "failures": 0,
+    "skipped": 0,
+    "tests": 475
+  },
+  "junit_sha256": {
+    "focused": "6126be3ccd298fee40202ed68c16e417aaddbe116132b9caa4c1c90a2710b80c",
+    "full": "29902f27a4bbf5e8ada9741264713707feef6f71ea2f2ed9c3006032867190af"
+  },
+  "limits": "Native default fidelity/prediction map and bounded costs only; no comparative accuracy or interval coverage claim.",
+  "native_procedure_calls": 6,
+  "package_version": "0.3.0a4",
+  "release_checks": {
+    "adaptive_smoke_cells": 24,
+    "adaptive_successful_replayed": 24,
+    "additional_native_causal_forest_calls_in_runner_smoke": 2,
+    "elapsed": "00:01:05",
+    "executed_code_cells": 47,
+    "exit_code": "0:0",
+    "gamma_smoke_cells": 16,
+    "generic_static_smoke_cells": 248,
+    "independent_catalog_contrast_rows": 488,
+    "independent_catalog_score_rows": 1240,
+    "job_id": 724504,
+    "native_runner_resume_record_bytes_unchanged": true,
+    "native_runner_smoke_cells": 4,
+    "notebooks": 5,
+    "png_figures": 11,
+    "source_release_check": "passed",
+    "status": "COMPLETED",
+    "synthetic_file_smoke_cells": 16
+  },
+  "retained_attempts": [
+    {
+      "job_id": 724269,
+      "reason": "bootstrap tried to hash a directory symlink as a regular file; no dependencies or forests fitted",
+      "status": "FAILED"
+    },
+    {
+      "job_id": 724270,
+      "reason": "bootstrap compared canonical R package version with DESCRIPTION spelling; no grf fit",
+      "status": "FAILED"
+    },
+    {
+      "job_id": 724447,
+      "reason": "56 focused tests passed and 2 failed because mock intercepted NumPy CPU probe; no native fit reached; mock scope corrected",
+      "status": "FAILED"
+    }
+  ],
+  "schema_version": 1,
+  "source_aggregate_sha256": "33ff528129a7ffafcc1b68ba84287492fc3cbcaff915141ec4334e2a171a7c08",
+  "summary_sha256": "42be8f80300ce6f983f24f40ad7fc41809d427c411eeeac075e8efbb0deb0d2e"
+}

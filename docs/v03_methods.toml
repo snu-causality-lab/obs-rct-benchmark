@@ -1,15 +1,15 @@
 schema_version = 1
 literature_cutoff = "2026-10-26"
 checked_at = "2026-10-27"
-status = "inventory_with_partial_native_admission_and_fixed_gp_pilot"
+status = "inventory_with_default_causal_forest_admission_and_fixed_gp_pilot"
 understood_as = "Track source-backed method-by-target-by-assumption comparisons and their observed implementation readiness; this inventory is not an execution authorization."
 canonical_scope = "Inventory and scientific disposition only; executable pins stay in sources.lock.toml."
 machine_status_semantics = "Status fields are descriptive annotations, not executable enums. Disposition values are defined in status_vocabulary; this inventory is not an execution configuration."
-verification_scope = "Primary papers and official GitHub metadata/README/API documentation were read at the literature cutoff. Subsequent native admission covers three fixed recipes; the fixed GP source-access pilot ran 576 fits. Other revisions remain candidate references, not dependency admission; per-method status and linked evidence define scope."
+verification_scope = "Primary papers and official GitHub metadata/README/API documentation were read at the literature cutoff. Native admission covers Integrative R linear/quadratic, fixed-rho Causal-ICM and the default RCT-only honest causal forest; the fixed GP source-access pilot ran 576 fits. Other revisions remain candidate references, not dependency admission; per-method status and linked evidence define scope."
 revision_query = "https://api.github.com/repos/{owner}/{repo}/commits?until=2026-10-26T14:59:59Z&per_page=1"
 pending_is_not_na = true
 code_redistributed = false
-v03_runtime_status = "Three native recipes have bounded cost and reproduction checks; the fixed GP and two source controls completed a 576-fit development pilot. See V03_ADAPTERS.md and results/gp_source_pilot. Broader campaign pending."
+v03_runtime_status = "Four native recipes have bounded cost and source-fidelity checks, including the default RCT-only causal forest under 0.3.0a4; the fixed GP and two source controls completed a 576-fit development pilot. See V03_ADAPTERS.md, CAUSAL_FOREST.md and the separate result packets. Broader comparative campaign pending."
 
 [status_vocabulary]
 paper_verified = "Primary source consulted; not a theorem-by-theorem independent review."
@@ -91,21 +91,21 @@ name = "RCT-only honest causal forest"
 primary_urls = ["https://arxiv.org/abs/1510.04342v4", "https://arxiv.org/abs/1610.01271"]
 native_estimand = "Full-X CATE."
 native_population = "Fitting population, here RCT."
-data_requirements = "RCT X, A, Y; honest forest fitting and declared nuisance estimates."
-propensity_requirements = "Known trial assignment probability supplied as W.hat where supported."
+data_requirements = "RCT training X, A, Y only; honest forest fitting and native OOB outcome nuisance. Evaluation X is prediction-only."
+propensity_requirements = "Known trial assignment probability vector supplied as W.hat; no propensity forest."
 support_assumptions = "Treatment overlap and sufficient target covariate coverage; local tree regularity matters for inference."
 transport_assumptions = "External target CATE agreement conditional on X."
-model_assumptions = "Honesty, splitting and leaf-size settings must be explicit; prediction accuracy and confidence coverage are separate claims."
-source_status = "paper_and_official_code_verified"
+model_assumptions = "Native honest default: 2000 causal trees, 500 outcome nuisance trees, one thread, no tuning or native variance intervals. Source fidelity, prediction accuracy and confidence coverage are separate claims."
+source_status = "paper_and_official_code_verified_default_recipe_native_admitted"
 code_url = "https://github.com/grf-labs/grf"
 code_revision = "5bee99b51471f76cb2d63acbc8a9b0ffec408ba0"
 code_commit_date = "2026-04-30"
-code_entrypoints = ["r-package/grf", "README.md: causal_forest, predict"]
-license_status = "GPL-3.0 declared by official repository; execution/environment review pending."
-adapter_status = "not_implemented"
-reproduction_status = "not_executed_v03"
+code_entrypoints = ["r-package/grf/R/causal_forest.R: causal_forest, predict.causal_forest", "r-package/grf/R/analysis_tools.R: get_forest_weights"]
+license_status = "GPL-3.0 declared by official repository; separately built source is executed without upstream redistribution."
+adapter_status = "implemented_default_rct_only_native_admitted"
+reproduction_status = "default_recipe_native_fidelity_independent_prediction_map_and_two_cost_profiles_passed_no_accuracy_comparison"
 disposition = "planned_core"
-reason = "Strong nonlinear RCT control; exact package/version, forest size, tuning and cost remain provisional."
+reason = "Official grf 2.6.1 default recipe admitted under package 0.3.0a4: six native fits, direct/fresh-process agreement, independent local-intercept prediction arithmetic and two bounded cost profiles. See CAUSAL_FOREST.md and results/causal_forest_admission. Comparative ranking remains pending."
 
 [[method]]
 id = "rct_bcf"

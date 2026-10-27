@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "obs-rct-benchmark"
-version = "0.3.0a3"
+version = "0.3.0a4"
 description = "Role-separated simulation benchmark for observational and randomized CATE learning"
 readme = "README.md"
 requires-python = ">=3.11"

@@ -6,6 +6,24 @@ scope = "Public primary sources for mathematical DGP translations, sensitivity-m
 # An omitted license is never interpreted as permission to redistribute code.
 
 [[source]]
+id = "grf_official"
+kind = "optional-external-source"
+url = "https://github.com/grf-labs/grf.git"
+revision = "5bee99b51471f76cb2d63acbc8a9b0ffec408ba0"
+git_tree = "237ca65b6dbdb53180c0dbc9f1f68ddef28c0689"
+package = "grf"
+package_version = "2.6.1"
+adapter_checked_at = "2026-10-27"
+license = "GPL-3"
+license_evidence = "r-package/grf/DESCRIPTION"
+reference_files = ["r-package/grf/R/causal_forest.R", "r-package/grf/R/regression_forest.R", "r-package/grf/R/analysis_tools.R", "r-package/grf/bindings/CausalForestBindings.cpp", "core/src/prediction/InstrumentalPredictionStrategy.cpp", "core/src/prediction/collector/SampleWeightComputer.cpp"]
+description_sha256 = "30058538ee88d58aef86afe6069528a9da2261f2bdc1dc46bf6cd00abac1369b"
+causal_forest_sha256 = "55910469846d24075b04e614fe06fb3473f7ed58ea75e698497d6f4f07c16c3d"
+prediction_strategy_sha256 = "4480418c7ab3c89f09fcc61e773d0e2bd709392539a8fc448145dfafefa1b89f"
+recipe = "rct_causal_forest: RCT-only honest CATE, known W.hat, native Y.hat nuisance, 2000 trees, one thread, no tuning or variance intervals."
+use = "Separately built, source/hash-verified R package called through Rscript; no upstream source, compiled library or data vendored. Full source/install/build/environment identities accompany native admission."
+
+[[source]]
 id = "cornet_paper"
 kind = "paper"
 title = "Combining Observational and Randomized Data for Estimating Heterogeneous Treatment Effects"

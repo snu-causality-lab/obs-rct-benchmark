@@ -317,6 +317,7 @@ def method_names() -> tuple[str, ...]:
         "rct_dr_ridge", "rct_dr_extra_trees", "datafusionppi", "cornet_official",
         "integrative_r_linear", "integrative_r_quadratic", "causal_icm_fixed",
         "causal_icm_rct_only", "causal_icm_obs_start",
+        "rct_causal_forest",
         *sorted(_FACTORIES),
     )
 
@@ -351,6 +352,10 @@ def make_method(name: str, **options: Any) -> CATEMethod:
         from .cornet import OfficialCorNet
 
         return OfficialCorNet(**options)
+    if name == "rct_causal_forest":
+        from .causal_forest import RCTCausalForest
+
+        return RCTCausalForest(**options)
     if name in {"integrative_r_linear", "integrative_r_quadratic"}:
         if "basis" in options:
             raise ValueError("integrative R-learner basis is fixed by the method ID")
