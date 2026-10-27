@@ -17,7 +17,7 @@ The [0.3.0a3 inference-policy checks](inference_policy_checks/README.md) separat
 
 The [0.3.0a4 causal-forest admission](causal_forest_admission/README.md) records direct-native and independent prediction-map checks, two bounded cost profiles and 475 passing tests. It adds a comparator candidate, with no new performance ranking or source-paper table reproduction.
 
-The [native/default panel preflight](native_panel_preflight/README.md) records correctness and unscored resource checks for the separate [prospective protocol](../docs/NATIVE_PANEL.md). Its planned 8,448 fits are not completed comparative evidence and are not a fifth study in the integrated report.
+The [native/default panel](native_panel/README.md) is running on GSDS with 8,448 requested fits and automatic eight-shard continuation. The [preflight](native_panel_preflight/README.md) records its correctness and unscored resource checks. Completed comparative evidence is pending; this campaign is not yet a fifth completed study in the integrated report.
 
 ## Original alpha execution examples
 

@@ -1,0 +1,53 @@
+{
+  "allocation_per_fit_job": {
+    "cpus": 1,
+    "job_time_seconds": 21600,
+    "memory_gib": 8,
+    "threads": 1
+  },
+  "array_script_sha256": "af1fd37e9e2db2c65a68a1ccbbb2b42382c49b0c79c0dae7399c05a7d7f28605",
+  "cases_per_shard": 6,
+  "continuation": "Authenticate all 66 terminal records per completed shard; schedule the next eight after valid fit failures; stop on missing records or provenance errors.",
+  "controller_allocation": {
+    "cpus": 1,
+    "job_time_seconds": 900,
+    "memory_gib": 2
+  },
+  "controller_dependency": "afterany:725161",
+  "expected_cases": 768,
+  "expected_fits": 8448,
+  "first_array_job_id": "725161",
+  "first_controller_job_id": "725193",
+  "first_shard_range": [
+    0,
+    7
+  ],
+  "fits_per_shard": 66,
+  "frozen_source_revision": "83c45c3acca5ffd316a48153647b078280d648cb",
+  "manifest_sha256": "56003f39f113bbc84f673d0603f1fa2396030bdb64a809edde4d2473dd496c91",
+  "maximum_simultaneous_fitting_jobs": 8,
+  "orchestration_script_sha256": {
+    "analyze.sbatch": "0b69f3f489b15084c7205adf77f82d773f18c08d0c393e9734eb0ddf7858940a",
+    "controller.sbatch": "637a351d2471e10b2c4483b6751d27c7ebd76dbcdb63c53e4e7aa29737ba4462",
+    "launch_waves.py": "9d7b357617faaef28e953e174de9331b8bd58c10480414625dc8d41f5c47b417",
+    "test_orchestration.py": "562b7a831ecee512e0bd4df7fe506aad47baf0ab2aedeea65417a9ace0cf1a28",
+    "verify.sbatch": "21a1ed9fae27b4b955d79bb019a8f26b222e5e2132c8255537b35a2d0df2aafe"
+  },
+  "orchestration_smoke_checks": {
+    "count": 8,
+    "scope": "stdlib-only fake scheduler submissions; no native fits",
+    "seconds": 0.02
+  },
+  "phase": "running",
+  "postprocessing": "full independent verification, then analysis after successful verification",
+  "postprocessing_allocation_per_job": {
+    "cpus": 1,
+    "job_time_seconds": 7200,
+    "memory_gib": 4
+  },
+  "schema_version": 1,
+  "scientific_configuration_changed": false,
+  "shards": 128,
+  "started_on": "2026-10-27",
+  "submitted_at": "2026-10-27T15:18:40+09:00"
+}
