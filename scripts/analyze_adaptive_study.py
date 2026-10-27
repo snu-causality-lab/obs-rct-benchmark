@@ -18,9 +18,9 @@ from types import SimpleNamespace
 from typing import Any
 
 from obs_rct_benchmark.adaptive_runner import (
-    _expected, _validate_records, load_adaptive_config,
+    _expected, _policy_report, _validate_records, adaptive_inference_policy, load_adaptive_config,
 )
-from obs_rct_benchmark.evaluation import mean_ci, summarize_records
+from obs_rct_benchmark.evaluation import summarize_metric, summarize_records
 from obs_rct_benchmark.runner import (
     _hash, _load_json, _read_records, resolved_scenarios, source_provenance,
 )
@@ -87,14 +87,17 @@ def collect_records(config, runs: list[Path]) -> tuple[list[dict], list[dict]]:
 
 
 def analyze_records(config, records: list[dict]) -> tuple[dict, list[dict], list[dict]]:
+    inference = adaptive_inference_policy(config)
     summary = summarize_records(records, scenarios=config.scenario_keys, seeds=config.seeds,
-                                methods=config.methods, reference_method="uniform__"+config.estimators[0])
+                                methods=config.methods, reference_method="uniform__"+config.estimators[0],
+                                scenario_inference=inference)
     comparisons = {}
     for estimator in config.estimators:
         subset = [row for row in records if row["estimator"] == estimator]
         partial = summarize_records(subset, scenarios=config.scenario_keys, seeds=config.seeds,
                     methods=tuple(p+"__"+estimator for p in config.policies),
-                    reference_method="uniform__"+estimator)
+                    reference_method="uniform__"+estimator,
+                    scenario_inference=inference)
         comparisons[estimator] = partial["paired_comparisons"]
     summary["within_estimator_policy_comparisons"] = comparisons
     summary["config"] = config.payload()
@@ -108,15 +111,21 @@ def analyze_records(config, records: list[dict]) -> tuple[dict, list[dict], list
                     method = policy+"__"+estimator
                     rows = [by_cell[(key, seed, method)] for seed in config.seeds]
                     good = [row for row in rows if row["status"] == "ok"]
-                    estimate = mean_ci(row["metrics"]["cate_mse"] for row in good)
+                    complete = len(good) == len(config.seeds)
+                    estimate = summarize_metric(
+                        (row["metrics"]["cate_mse"] for row in good),
+                        policy=inference[key]["cate_mse"], complete=complete)
                     interval = estimate["ci95"] or [None, None]
                     scores.append({"scenario": scenario.key, "budget": budget,
                                    "estimator": estimator, "policy": policy,
                                    "expected_seeds": len(config.seeds), "successful": len(good),
                                    "failed": len(rows)-len(good), "missing": 0,
+                                   "complete_coverage": complete,
                                    "mean_mse": estimate["mean"], "mcse_mse": estimate["standard_error"],
                                    "ci95_lower": interval[0], "ci95_upper": interval[1],
-                                   "mean_scope": "successful cells; descriptive if incomplete"})
+                                   "eligible_for_inference": estimate["eligible_for_inference"],
+                                   "withheld_reason": estimate["withheld_reason"],
+                                   "mean_scope": "successful cells; uncertainty requires complete coverage and an eligible metric policy"})
                     if policy == "uniform":
                         continue
                     comparison = comparisons[estimator][method]["by_scenario"][key]
@@ -125,16 +134,19 @@ def analyze_records(config, records: list[dict]) -> tuple[dict, list[dict], list
                     contrasts.append({"scenario": scenario.key, "budget": budget,
                                       "estimator": estimator, "policy": policy, "reference": "uniform",
                                       "complete": comparison["eligible_for_comparison"],
+                                      "complete_coverage": comparison["complete_coverage"],
                                       "expected_pairs": comparison["expected_seed_blocks"],
                                       "successful_pairs": comparison["complete_seed_blocks"],
                                       "mean_difference": metric["mean"], "mcse_difference": metric["standard_error"],
                                       "ci95_lower": interval[0], "ci95_upper": interval[1],
-                                      "withheld_reason": comparison["withheld_reason"]})
+                                      "eligible_for_inference": metric["eligible_for_inference"],
+                                      "withheld_reason": metric["withheld_reason"]})
     summary["scores"] = scores
     summary["policy_contrasts"] = contrasts
     summary["terminal_failures"] = [dict(row) for row in records if row["status"] != "ok"]
     summary["interpretation"] = ("All predeclared conditions retained. Paired differences are policy minus uniform "
-                                 "for the same estimator. Pointwise Monte Carlo intervals have no multiplicity "
+                                 "for the same estimator. Metric policies and complete coverage govern uncertainty. "
+                                 "Eligible pointwise Monte Carlo intervals have no multiplicity "
                                  "adjustment and do not establish unseen-mechanism generalization.")
     return summary, scores, contrasts
 
@@ -185,7 +197,7 @@ def plot_results(config, scores: list[dict], contrasts: list[dict], output: Path
             ax.set_xticks(config.budgets)
             ax.grid(alpha=.2)
     axes[0, 0].legend(fontsize=8)
-    fig.suptitle("Fixed-budget recruitment: every mechanism and final estimator\nPointwise 95% seed-block Monte Carlo intervals", fontsize=12)
+    fig.suptitle("Fixed-budget recruitment: every mechanism and final estimator\nEligible pointwise 95% seed-block Monte Carlo intervals", fontsize=12)
     fig.tight_layout(rect=(0, 0, 1, .94))
     fig.savefig(output/"adaptive_budget_curves.svg")
     if paper_assets:
@@ -211,7 +223,7 @@ def plot_results(config, scores: list[dict], contrasts: list[dict], output: Path
         ax.set_xlabel("CATE MSE: policy minus uniform (negative favors policy)")
         ax.invert_yaxis()
         ax.grid(axis="x", alpha=.2)
-    fig.suptitle("Recruitment contrasts with the final estimator held fixed\nPointwise 95% intervals; no multiplicity-adjusted superiority claim", fontsize=12)
+    fig.suptitle("Recruitment contrasts with the final estimator held fixed\nEligible pointwise 95% intervals; no multiplicity-adjusted superiority claim", fontsize=12)
     fig.tight_layout(rect=(0, 0, 1, .92))
     fig.savefig(output/"adaptive_policy_contrasts.svg")
     if paper_assets:
@@ -243,10 +255,13 @@ def write_analysis(config, runs: list[Path], output: Path, *, paper_assets: bool
               "Each queried outcome, including the common pilot and tuning sample, is charged. "
               "The source pool and independent evaluation rows are shared within each mechanism/seed. "
               "The outcome policy is a residual-based heuristic and pooling is naive. "
-              "Pointwise paired Monte Carlo intervals have no multiplicity adjustment; favorable, adverse and unresolved directions are all retained. "
+              "Complete coverage and a metric-specific declaration are required for uncertainty summaries. "
+              "Withholding reasons are recorded with each score and contrast. "
+              "Eligible pointwise paired Monte Carlo intervals have no multiplicity adjustment; favorable, adverse and unresolved directions are all retained. "
               "Fresh seeds are sampling replications on development-inspected mechanisms, not an independent mechanism challenge.\n\n"
               "Input manifests and records are authenticated by seed-grid/config/source/environment checks and file hashes in summary.json. "
               "This aggregation does not independently refit predictions; run the separate adaptive replay verifier for that check.\n")
+    report += _policy_report(summary)
     (output/"README.md").write_text(report, encoding="utf-8")
     summary["output_sha256"] = {p.name: file_hash(p) for p in sorted(output.iterdir()) if p.is_file()}
     (output/"summary.json").write_text(json.dumps(summary, indent=2, sort_keys=True, allow_nan=False)+"\n", encoding="utf-8")

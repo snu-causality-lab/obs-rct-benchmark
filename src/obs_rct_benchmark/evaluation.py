@@ -80,15 +80,63 @@ def mean_ci(values: Iterable[float]) -> dict[str, Any]:
     return result
 
 
+def validate_inference_policy(policy: Mapping[str, Any], *, resolved: bool = False) -> None:
+    """Validate declarations, not their statistical truth or empirical coverage."""
+    if not isinstance(policy, Mapping) or set(policy) - {"cate_mse", "root_pehe"}:
+        raise ValueError("inference policy must map known metrics to declarations")
+    for declaration in policy.values():
+        allowed = {"eligible", "reason", "source"} if resolved else {"eligible", "reason"}
+        if (not isinstance(declaration, Mapping)
+                or set(declaration) - allowed
+                or not {"eligible", "reason"} <= declaration.keys()
+                or not isinstance(declaration["eligible"], bool)
+                or not isinstance(declaration["reason"], str)
+                or not declaration["reason"].strip()
+                or any(c in declaration["reason"] for c in "\n\r")):
+            raise ValueError("inference declaration needs a boolean eligible and one-line reason")
+        if "source" in declaration and (
+                not isinstance(declaration["source"], str) or not declaration["source"].strip()):
+            raise ValueError("inference policy source must be nonempty")
+
+
+def summarize_metric(values: Iterable[float], *, policy: Mapping[str, Any] | None = None,
+                     complete: bool = True) -> dict[str, Any]:
+    """Keep descriptive arithmetic while applying a declared uncertainty policy.
+
+    Permission is an assumption fixed before scoring, not a finite-moment proof.
+    Missing declarations fail closed. The raw ``mean_ci`` helper remains policy-free.
+    """
+    if policy is not None:
+        validate_inference_policy({"cate_mse": policy}, resolved=True)
+    permission = policy or {"eligible": False, "reason": "inference policy not declared"}
+    numbers = list(values)
+    # Do not calculate unsupported sample uncertainty even as a discarded result.
+    result = mean_ci(numbers if complete and permission["eligible"] else ())
+    if not complete or not permission["eligible"]:
+        array = np.asarray(numbers, dtype=np.float64)
+        if array.ndim != 1 or not np.isfinite(array).all():
+            raise ValueError("summary values must be finite scalars")
+        result.update(n_seed_blocks=len(numbers), mean=float(array.mean()) if numbers else None,
+                      ci_method=None)
+    reason = ("failed or missing requested cells" if not complete else
+              permission["reason"] if not permission["eligible"] else
+              "fewer than two seed blocks" if len(numbers) < 2 else None)
+    if reason is not None:
+        result.update(standard_error=None, ci95=None, ci_method=None)
+    result.update(eligible_for_inference=reason is None, withheld_reason=reason)
+    return result
+
+
 def summarize_records(records: Iterable[Mapping[str, Any]], *,
                       scenarios: Iterable[str], seeds: Iterable[int],
-                      methods: Iterable[str], reference_method: str) -> dict[str, Any]:
+                      methods: Iterable[str], reference_method: str,
+                      scenario_inference: Mapping[str, Mapping[str, Any]] | None = None) -> dict[str, Any]:
     """Summarize an explicitly requested Cartesian grid, failing closed.
 
     Missing or failed cells are counted, never converted to zero or discarded
-    from inferential comparisons. A comparison is emitted only when both
-    methods cover the full requested grid. Descriptive means of successful
-    cells remain available, with explicit incomplete-coverage labels.
+    from inferential comparisons. Complete paired means remain descriptive
+    when a metric's uncertainty permission is absent or withheld. Incomplete
+    pairs retain no paired mean; successful-cell descriptions remain available.
     """
     scenario_ids, seed_ids, method_ids = tuple(scenarios), tuple(seeds), tuple(methods)
     if (not scenario_ids or not seed_ids or not method_ids
@@ -98,6 +146,18 @@ def summarize_records(records: Iterable[Mapping[str, Any]], *,
         raise ValueError("summary axes must be nonempty and unique")
     if reference_method not in method_ids:
         raise ValueError("reference_method must be requested")
+    if scenario_inference is not None and not isinstance(scenario_inference, Mapping):
+        raise ValueError("scenario inference must be a mapping")
+    policies = {}
+    for scenario in scenario_ids:
+        declared = (scenario_inference or {}).get(scenario, {})
+        validate_inference_policy(declared, resolved=True)
+        policies[scenario] = {
+            metric: dict(declared.get(metric, {
+                "eligible": False, "reason": f"inference policy not declared for {metric}",
+                "source": "unknown_default",
+            })) for metric in ("cate_mse", "root_pehe")
+        }
     expected = {(scenario, seed, method) for scenario in scenario_ids
                 for seed in seed_ids for method in method_ids}
     by_key: dict[tuple[str, int, str], Mapping[str, Any]] = {}
@@ -118,6 +178,7 @@ def summarize_records(records: Iterable[Mapping[str, Any]], *,
                      "successful": success, "failed": failed, "missing": missing},
         "metric_definitions": METRIC_DEFINITIONS,
         "reference_method": reference_method,
+        "scenario_inference": policies,
         "uncertainty_unit": "independent seed block; scenarios averaged within each seed",
         "methods": {}, "scenarios": {}, "paired_comparisons": {},
     }
@@ -134,9 +195,9 @@ def summarize_records(records: Iterable[Mapping[str, Any]], *,
         if method == reference_method:
             continue
         result["paired_comparisons"][method] = {
-            "overall": _paired(by_key, scenario_ids, seed_ids, method, reference_method),
+            "overall": _paired(by_key, scenario_ids, seed_ids, method, reference_method, policies),
             "by_scenario": {
-                scenario: _paired(by_key, (scenario,), seed_ids, method, reference_method)
+                scenario: _paired(by_key, (scenario,), seed_ids, method, reference_method, policies)
                 for scenario in scenario_ids
             },
         }
@@ -179,7 +240,7 @@ def _describe(rows: list[Mapping[str, Any]], expected: int) -> dict[str, Any]:
 
 def _paired(by_key: Mapping[tuple[str, int, str], Mapping[str, Any]],
             scenarios: tuple[str, ...], seeds: tuple[int, ...],
-            method: str, reference: str) -> dict[str, Any]:
+            method: str, reference: str, policies: Mapping[str, Any]) -> dict[str, Any]:
     blocks: dict[str, list[float]] = defaultdict(list)
     for seed in seeds:
         pairs = [(by_key.get((scenario, seed, method)),
@@ -193,13 +254,21 @@ def _paired(by_key: Mapping[tuple[str, int, str], Mapping[str, Any]],
             ])))
     n_complete = len(blocks["cate_mse"])
     complete = n_complete == len(seeds)
+    metrics = {}
+    for metric in ("cate_mse", "root_pehe"):
+        restrictions = [f"{scenario}: {policies[scenario][metric]['reason']}"
+                        for scenario in scenarios if not policies[scenario][metric]["eligible"]]
+        permission = {"eligible": not restrictions,
+                      "reason": "; ".join(restrictions) if restrictions else
+                      "all contributing scenarios declare uncertainty permission"}
+        metrics[metric] = summarize_metric(blocks[metric] if complete else (),
+                                           policy=permission, complete=complete)
     return {
         "difference": "method minus reference; negative favors method",
         "expected_seed_blocks": len(seeds), "complete_seed_blocks": n_complete,
-        "complete_coverage": complete, "eligible_for_comparison": complete,
-        "metrics": {
-            metric: mean_ci(blocks[metric] if complete else ())
-            for metric in ("cate_mse", "root_pehe")
-        },
-        "withheld_reason": None if complete else "failed or missing requested cells",
+        "complete_coverage": complete,
+        # Compatibility aliases describe CATE MSE only; inspect each metric.
+        "eligible_for_comparison": metrics["cate_mse"]["eligible_for_inference"],
+        "metrics": metrics,
+        "withheld_reason": metrics["cate_mse"]["withheld_reason"],
     }

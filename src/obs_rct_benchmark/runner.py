@@ -21,7 +21,7 @@ import tempfile
 import tomllib
 from typing import Any, Iterator, Mapping
 
-from .evaluation import summarize_records, cate_metrics
+from .evaluation import summarize_records, cate_metrics, validate_inference_policy
 from .methods import custom_provenance, datafusionppi_provenance, make_method, method_names
 from .paper_dgp import PAPER_DGP_VERSION, generate_paper_problem, make_paper_config
 from .structural_dgp import (
@@ -39,6 +39,7 @@ class ScenarioConfig:
     id: str
     parameters: Mapping[str, Any] = field(default_factory=dict)
     label: str | None = None
+    inference_policy: Mapping[str, Mapping[str, Any]] = field(default_factory=dict)
 
     @property
     def key(self) -> str:
@@ -59,6 +60,8 @@ class ScenarioConfig:
         if {"name", "mechanism", "cell", "paper_id", "gamma_profile", "dataset_id"} & self.parameters.keys():
             raise ValueError("scenario identity must not be overridden in parameters")
         _validate_public_values(dict(self.parameters))
+        validate_inference_policy(self.inference_policy)
+        _validate_public_values(dict(self.inference_policy))
         # Validate the full DGP config before creating output artifacts.
         build_dgp_config(self)
 
@@ -107,6 +110,8 @@ class BenchmarkConfig:
             entry = asdict(scenario)
             if scenario.label is None:
                 entry.pop("label")
+            if not scenario.inference_policy:
+                entry.pop("inference_policy")
             scenarios.append(entry)
         return json.loads(_json({
             "schema_version": SCHEMA_VERSION,
@@ -152,7 +157,7 @@ def load_config(path: str | Path) -> BenchmarkConfig:
         raise ValueError("unknown run field")
     scenarios = []
     for entry in raw.get("scenarios", []):
-        if set(entry) - {"kind", "id", "parameters", "label"}:
+        if set(entry) - {"kind", "id", "parameters", "label", "inference_policy"}:
             raise ValueError("unknown scenario field")
         scenarios.append(ScenarioConfig(**entry))
     converted = dict(run)
@@ -183,6 +188,62 @@ def build_dgp_config(scenario: ScenarioConfig) -> Any:
         return make_structural_addendum_config(name=scenario.key, cell=scenario.id,
                                                **parameters)
     return make_structural_config(name=scenario.key, mechanism=scenario.id, **parameters)
+
+
+_GENERIC_INFERENCE_METHODS = frozenset({
+    "rct_t_ridge", "obs_t_ridge", "naive_pooled_t_ridge", "rct_dr_ridge",
+    "rct_t_extra_trees", "obs_t_extra_trees", "naive_pooled_t_extra_trees",
+    "rct_dr_extra_trees",
+})
+_INFERENCE_SAMPLE_SIZES = frozenset({
+    "n_obs", "n_rct_train", "n_rct_tune", "n_rct_test", "n_eval", "n_target_reference",
+})
+
+
+def resolve_inference_policy(scenario: ScenarioConfig, methods: tuple[str, ...],
+                             method_options: Mapping[str, Mapping[str, Any]] | None = None
+                             ) -> dict[str, dict[str, Any]]:
+    """Resolve prospective assumptions from actual controls, never observed scores.
+
+    Canonical normal-noise structural/addendum and paper presets have a declared
+    finite paired-risk variance assumption for the eight default generic recipes.
+    This is not a moment proof, an empirical coverage check, or permission for
+    custom/native methods or scientific overrides. Declarations cover all requested
+    recipes and options; Student-t(3) MSE remains descriptive under this policy.
+    """
+    resolved = build_dgp_config(scenario)
+    student_t = (scenario.kind in {"structural", "addendum"}
+                 and resolved.noise_distribution == "student_t")
+    canonical = (scenario.kind in {"structural", "addendum", "paper"}
+                 and set(scenario.parameters) <= _INFERENCE_SAMPLE_SIZES
+                 and set(methods) <= _GENERIC_INFERENCE_METHODS
+                 and not any((method_options or {}).get(name) for name in methods))
+    policies = {}
+    for metric in ("cate_mse", "root_pehe"):
+        if metric == "cate_mse" and student_t:
+            declaration = {
+                "eligible": False, "source": "resolved_noise",
+                "reason": "Student-t(3) noise: mean-MSE uncertainty is not justified by this policy",
+            }
+        elif metric in scenario.inference_policy:
+            declaration = dict(scenario.inference_policy[metric], source="scenario_declaration")
+        elif student_t:
+            declaration = {
+                "eligible": False, "source": "resolved_noise",
+                "reason": "finite expected fitted-method MSE sufficient for root-PEHE variance is not established",
+            }
+        elif canonical:
+            declaration = {
+                "eligible": True, "source": "builtin_declared_policy",
+                "reason": f"finite variance of {metric} seed scores and paired differences assumed for canonical presets and default generic recipes; not proven",
+            }
+        else:
+            declaration = {
+                "eligible": False, "source": "unknown_default",
+                "reason": f"inference policy not declared for {metric} under these methods and generator controls",
+            }
+        policies[metric] = declaration
+    return policies
 
 
 def _generate(scenario: ScenarioConfig, seed: int) -> Any:
@@ -242,6 +303,8 @@ def run_benchmark(config: BenchmarkConfig, output: str | Path, *,
         environment = environment_provenance()
         external = external_method_provenance(config.methods)
         resolved = resolved_scenarios(config)
+        inference = {scenario.key: resolve_inference_policy(
+            scenario, config.methods, config.method_options) for scenario in config.scenarios}
         inputs = scenario_input_provenance(config)
         fingerprint = _hash({"source": source, "custom_methods": custom,
                              "environment": environment, "external_methods": external,
@@ -252,7 +315,8 @@ def run_benchmark(config: BenchmarkConfig, output: str | Path, *,
             manifest = _load_json(manifest_path)
             if (manifest.get("config_hash") != config.config_hash
                     or manifest.get("source_fingerprint") != fingerprint
-                    or manifest.get("config") != config.payload()):
+                    or manifest.get("config") != config.payload()
+                    or manifest.get("scenario_inference") != inference):
                 raise ValueError("resume config or source provenance does not match")
         else:
             manifest = {
@@ -263,6 +327,7 @@ def run_benchmark(config: BenchmarkConfig, output: str | Path, *,
                 "custom_provenance_policy": "author-supplied identifiers; custom source is not automatically verified",
                 "external_methods": external, "environment": environment,
                 "resolved_scenarios": resolved,
+                "scenario_inference": inference,
                 "empirical_inputs": inputs,
                 "created_utc": datetime.now(timezone.utc).isoformat(),
                 "scope": config.scope,
@@ -323,6 +388,7 @@ def run_benchmark(config: BenchmarkConfig, output: str | Path, *,
             records, scenarios=[scenario.key for scenario in config.scenarios],
             seeds=config.seeds, methods=config.methods,
             reference_method=config.reference_method,
+            scenario_inference=inference,
         )
         summary.update(config_hash=config.config_hash, run_id=manifest["run_id"],
                        scope=config.scope, purpose=config.purpose,
@@ -575,8 +641,8 @@ def _result_readme(summary: Mapping[str, Any]) -> str:
             interval = metric["ci95"]
             interval_text = ("unavailable" if interval is None else
                              f"[{interval[0]:.6g}, {interval[1]:.6g}]")
-            state = ("complete" if comparison["eligible_for_comparison"] else
-                     f"withheld: {comparison['withheld_reason']}")
+            state = ("complete" if metric["eligible_for_inference"] else
+                     "withheld: " + metric["withheld_reason"].replace("|", "\\|"))
             pair_table.append(
                 f"| `{scenario}` | `{method}` | {_report_number(metric['mean'])} | "
                 f"{interval_text} | {comparison['complete_seed_blocks']} / "
@@ -631,10 +697,16 @@ def _result_readme(summary: Mapping[str, Any]) -> str:
         "reported separately and generally differ.\n\n"
         "Paired differences are method minus reference. For the overall comparison, "
         "scenario differences are averaged within each independent seed block. "
+        "When allowed by the declared metric-specific inference policy, "
         "95% Student t intervals use a conservative tabulated critical value; "
         "fewer than two seed blocks produces no interval. Two seeds are a smoke check, "
         "not sufficient evidence for a scientific comparison. Failed or missing cells "
         "withhold inferential comparisons; no failure is assigned a winning score.\n\n"
+        "Complete coverage is separate from inference permission. Unsupported or "
+        "undeclared uncertainty is withheld with a reason; complete-pair means remain "
+        "descriptive. Root-PEHE has its own policy. `summary.json` records resolved "
+        "scenario/metric permissions and their sources. Permissions are assumptions, "
+        "not proofs of finite moments or interval coverage.\n\n"
         "Resume accepts only matching configuration and source hashes, rejects duplicates "
         "and partial final JSONL lines, and never retries terminal failed records. "
         "After a hard process kill, inspect the output and confirm no writer remains "

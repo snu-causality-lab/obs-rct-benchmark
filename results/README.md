@@ -1,6 +1,6 @@
 # Results and execution examples
 
-The [AI-generated technical report](../docs/REPORT.md) gives one integrated reading account. The result packets below retain their own frozen producer, configuration, source/environment identities and uncertainty rules. Package **0.3.0a2** registers 15 recipes; this is not a count of 15 distinct fusion algorithms or a claim that every recipe has run on every design.
+The [AI-generated technical report](../docs/REPORT.md) gives one integrated reading account. The result packets below retain their own frozen producer, configuration, source/environment identities and uncertainty rules. Package **0.3.0a3** registers 15 recipes and applies [metric-specific inference permissions](../docs/INFERENCE.md) to new generic runs; this is not a count of 15 distinct fusion algorithms or a claim that every recipe has run on every design.
 
 | Study | Coverage | Question and readout |
 | --- | ---: | --- |
@@ -12,6 +12,8 @@ The [AI-generated technical report](../docs/REPORT.md) gives one integrated read
 The GP experiment is one additional controlled mechanism in its dedicated driver, not six new canonical presets or a 31-preset comparison of the new recipes. Its OBS start is a prior-shrunken trial-task prediction, not an optimal OBS-only estimator. The [native implementation checks](native_adapter_admission/README.md) separately cover three recipes, 304 tests, direct/repeated calls, independent numerical identities and six bounded CPU profiles; they are not a comparative accuracy study.
 
 These studies provide sampling replications conditional on development-inspected mechanisms. Actual IHDP/ACIC evaluation and unseen-mechanism validation remain open. The catalog, GP, matched-M2 and recruitment analyses keep separate seed collections and inference. Pointwise GP/recruitment intervals are descriptive and have no multiplicity adjustment. See [verification scopes](../docs/VERIFICATION.md) and each linked frozen protocol before reproducing a study; the current package must not resume older result trees with different source fingerprints.
+
+The [0.3.0a3 inference-policy checks](inference_policy_checks/README.md) separately record 428 passing tests, smoke/replay and tutorial execution. They check the shared reporting rules and preserve every scientific study above.
 
 ## Original alpha execution examples
 

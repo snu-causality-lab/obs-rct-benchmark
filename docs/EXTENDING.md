@@ -58,7 +58,11 @@ n_eval = 128
 
 The keys are `structural:M0@rct64` and `structural:M0@rct128`. Labels must be unique within a preset and contain only ASCII letters, digits or underscores. Unlabelled configurations retain their existing keys and hashes. Labels do not reseed the generator or method; repeated labels with different parameters are rejected. Separate conditions are not independent simulation replicates, and matched seeds do not guarantee nested observations after a sample-size change.
 
-The Markdown report lists the available RCT train-plus-tune budget, condition-specific errors and paired CATE-MSE differences with seed coverage. For a substantive study, set `purpose = "reference"`, choose replication and analysis rules before inspecting results, and describe them in the scope and study protocol. The purpose changes output interpretation, not the strength of the evidence. See the [evaluation protocol](PROTOCOL.md#repeated-settings-and-sample-budgets) for roles, pairing and limits.
+The Markdown report lists the available RCT train-plus-tune budget, condition-specific errors and paired CATE-MSE differences with seed coverage and uncertainty-withholding reasons. For a substantive study, set `purpose = "reference"`, choose replication and analysis rules before inspecting results, and describe them in the scope and study protocol. The purpose changes output interpretation, not the strength of the evidence. See the [evaluation protocol](PROTOCOL.md#repeated-settings-and-sample-budgets) for roles, pairing and limits.
+
+## Declaring inference permissions
+
+Custom, native and external recipes, Gamma or empirical generators, changed method options and scientific parameter overrides require explicit per-metric declarations to enable generic seed-level uncertainty. Omission still permits fitting, scoring and descriptive summaries. Declare `inference_policy` on each scenario, outside `parameters`, with a boolean `eligible` and a nonempty one-line `reason` for each requested metric. The [inference policy](INFERENCE.md#configuration-and-python-api) gives the TOML syntax, scope of declarations and low-level summary API. Resolve the required fitted-method moment assumptions before inspecting scores; finite realized predictions alone do not establish them.
 
 ## A structural configuration
 

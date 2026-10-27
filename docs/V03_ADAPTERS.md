@@ -1,6 +1,6 @@
 # v0.3 optional native estimators
 
-Version **0.3.0a2** provides the three native recipes below and two source-restricted GP controls. Its separately frozen [controlled pilot](../results/gp_source_pilot/SCIENTIFIC_RESULT.md) completes 576 fits across six conditions and 32 paired seeds: OBS addition helps the fixed GP at discrepancy levels 0/1 and hurts it at level 2 relative to the matched RCT-only GP at both trial budgets. The broader v0.3 campaign remains pending.
+Version **0.3.0a3** provides the three native recipes below and two source-restricted GP controls. The separately frozen **0.3.0a2** [controlled pilot](../results/gp_source_pilot/SCIENTIFIC_RESULT.md) completes 576 fits across six conditions and 32 paired seeds: OBS addition helps the fixed GP at discrepancy levels 0/1 and hurts it at level 2 relative to the matched RCT-only GP at both trial budgets. The broader v0.3 campaign remains pending.
 
 The original **0.3.0a1 admission** remains tied to its own source snapshot: 304 GSDS tests, direct-source agreement and fresh repeats for all three native recipes, independent analytic checks, and six bounded cost profiles. Those admission checks do not establish comparative accuracy. Exact evidence is in [native_adapter_admission](../results/native_adapter_admission/README.md); the frozen v0.2 catalog is unchanged. The [method inventory](v03_methods.toml) records scientific scope; this document records executable recipes.
 
@@ -11,6 +11,8 @@ The original **0.3.0a1 admission** remains tied to its own source snapshot: 304 
 | `causal_icm_fixed` | Author two-arm multi-task GP, rank 2, fixed `rho=0.5`, all observed X by default | Trial task 0 in both arms. This is a fixed borrowing recipe; the paper's borrowing selection is not implemented. |
 
 All three ignore `rct_tune`, target-reference rows and evaluation outcomes. They receive observed fitting samples and evaluation covariates through `TrainingView`. Their source algorithms do not consume the supplied known randomization probabilities. Internal native optimization remains part of each recipe; this is distinct from the proposed common selection rule in [V03_DESIGN.md](V03_DESIGN.md).
+
+For new generic runs, these native recipes and source controls require an explicit per-scenario declaration for each metric before seed-level uncertainty is reported. Source fidelity and deterministic replay do not establish finite variance of fitted-method risk. Omission retains descriptive scores and complete paired means. See the [inference policy](INFERENCE.md); the pilot's frozen analysis retains its own rules.
 
 Run the installation commands below from the `obs-rct-benchmark` repository root. Sibling checkout directories are examples; the environment variables may point to any verified checkout. After installing dependencies and setting the source variable, this bounded example runs on an allocated compute node:
 

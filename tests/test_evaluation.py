@@ -42,7 +42,10 @@ def test_seed_blocks_prevent_pseudoreplication_across_scenarios():
             records.extend([row(scenario, seed, "r", 1),
                             row(scenario, seed, "m", 1 + difference)])
     result = summarize_records(records, scenarios=["a", "b"], seeds=[0, 1],
-                               methods=["r", "m"], reference_method="r")
+                               methods=["r", "m"], reference_method="r",
+                               scenario_inference={s: {"cate_mse": {
+                                   "eligible": True, "reason": "finite fixture variance assumed",
+                               }} for s in ("a", "b")})
     estimate = result["paired_comparisons"]["m"]["overall"]["metrics"]["cate_mse"]
     assert estimate["n_seed_blocks"] == 2
     assert estimate["mean"] == 3

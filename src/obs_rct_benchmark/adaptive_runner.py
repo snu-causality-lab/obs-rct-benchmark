@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 import argparse
-from dataclasses import dataclass, field
+from dataclasses import dataclass, field, replace
 from datetime import datetime, timezone
 import json
 from pathlib import Path
@@ -20,7 +20,7 @@ from .runner import (
     ScenarioConfig, _append_record, _generate, _hash, _load_json, _read_records,
     _result_readme, _run_lock, _validate_public_values, _write_json, _write_text,
     environment_provenance, external_method_provenance, method_seed,
-    resolved_scenarios, source_provenance,
+    resolve_inference_policy, resolved_scenarios, source_provenance,
 )
 
 
@@ -85,8 +85,7 @@ class AdaptiveConfig:
         # policy/final estimator. They satisfy the existing generator contract.
         parameters = dict(scenario.parameters, n_rct_train=self.pool_size,
                           n_rct_tune=4, n_rct_test=4, n_target_reference=0)
-        return ScenarioConfig(scenario.kind, scenario.id, parameters,
-                              **({"label": scenario.label} if getattr(scenario, "label", None) is not None else {}))
+        return replace(scenario, parameters=parameters)
 
     def payload(self) -> dict[str, Any]:
         return {"schema_version": 1, "track": "adaptive_fixed_pool_v1",
@@ -95,7 +94,9 @@ class AdaptiveConfig:
                         "pilot_size": self.pilot_size, "tune_size": self.tune_size,
                         "pool_size": self.pool_size, "purpose": self.purpose, "scope": self.scope},
                 "scenarios": [dict(kind=x.kind, id=x.id, parameters=dict(x.parameters),
-                                   **({"label": x.label} if getattr(x, "label", None) is not None else {}))
+                                   **({"label": x.label} if x.label is not None else {}),
+                                   **({"inference_policy": dict(x.inference_policy)}
+                                      if x.inference_policy else {}))
                               for x in self.scenarios],
                 "method_options": {k: dict(v) for k, v in self.method_options.items()}}
 
@@ -119,10 +120,24 @@ def load_adaptive_config(path: str | Path) -> AdaptiveConfig:
             run[name] = tuple(run[name])
     scenarios = []
     for item in raw.get("scenarios", []):
-        if set(item)-{"kind", "id", "parameters", "label"}:
+        if set(item)-{"kind", "id", "parameters", "label", "inference_policy"}:
             raise ValueError("unknown adaptive scenario field")
         scenarios.append(ScenarioConfig(**item))
     return AdaptiveConfig(tuple(scenarios), method_options=raw.get("method_options", {}), **run)
+
+
+def adaptive_inference_policy(config: AdaptiveConfig) -> dict[str, Any]:
+    """Resolve metric declarations for each original scenario and budget.
+
+    Estimator names identify the fitting recipes. Recruitment-policy prefixes
+    and pool-only sample sizes do not change the declarations being resolved.
+    """
+    policies = {}
+    for scenario in config.scenarios:
+        resolved = resolve_inference_policy(scenario, config.estimators, config.method_options)
+        for budget in config.budgets:
+            policies[scenario.key+f"/budget_{budget}"] = resolved
+    return policies
 
 
 def _identity(config: AdaptiveConfig, scenario: str, seed: int, policy: str,
@@ -172,7 +187,8 @@ def _validate_records(config: AdaptiveConfig, records: list[dict[str, Any]]) -> 
             raise ValueError("completed acquisition must spend its budget")
         seen.add(key)
     summarize_records(records, scenarios=config.scenario_keys, seeds=config.seeds,
-                      methods=config.methods, reference_method="uniform__"+config.estimators[0])
+                      methods=config.methods, reference_method="uniform__"+config.estimators[0],
+                      scenario_inference=adaptive_inference_policy(config))
     return seen
 
 
@@ -196,16 +212,19 @@ def run_adaptive_benchmark(config: AdaptiveConfig, output: str | Path, *, resume
         raise ValueError("adaptive output must be empty unless resuming")
     output.mkdir(parents=True, exist_ok=True)
     with _run_lock(output):
+        inference = adaptive_inference_policy(config)
         provenance, fingerprint = _provenance(config)
         path = output/"run_manifest.json"
         if resume:
             manifest = _load_json(path)
             if (manifest.get("config") != config.payload()
-                    or manifest.get("source_fingerprint") != fingerprint):
+                    or manifest.get("source_fingerprint") != fingerprint
+                    or manifest.get("scenario_inference") != inference):
                 raise ValueError("adaptive resume config or source provenance does not match")
         else:
             manifest = dict(provenance, config=config.payload(), config_hash=config.config_hash,
                             source_fingerprint=fingerprint, created_utc=datetime.now(timezone.utc).isoformat(),
+                            scenario_inference=inference,
                             purpose=config.purpose, scope=config.scope,
                             information_contract="fixed-pool two-stage recruitment; one outcome per queried row",
                             interpretation="Declared reference comparison; development-inspected mechanisms; no automatic confirmatory claim"
@@ -241,7 +260,8 @@ def run_adaptive_benchmark(config: AdaptiveConfig, output: str | Path, *, resume
                     records.append(row)
         _validate_records(config, records)
         summary = summarize_records(records, scenarios=config.scenario_keys, seeds=config.seeds,
-                                    methods=config.methods, reference_method="uniform__"+config.estimators[0])
+                                    methods=config.methods, reference_method="uniform__"+config.estimators[0],
+                                    scenario_inference=inference)
         # Recruitment effects use a same-estimator uniform reference, rather
         # than conflating policy changes with OBS use in a different estimator.
         summary["within_estimator_policy_comparisons"] = {}
@@ -249,7 +269,8 @@ def run_adaptive_benchmark(config: AdaptiveConfig, output: str | Path, *, resume
             subset = [row for row in records if row["estimator"] == estimator]
             comparison = summarize_records(subset, scenarios=config.scenario_keys, seeds=config.seeds,
                             methods=tuple(p+"__"+estimator for p in config.policies),
-                            reference_method="uniform__"+estimator)
+                            reference_method="uniform__"+estimator,
+                            scenario_inference=inference)
             summary["within_estimator_policy_comparisons"][estimator] = comparison["paired_comparisons"]
         summary.update(scope=config.scope, purpose=config.purpose, config_hash=config.config_hash,
                        run_id=config.config_hash[:16], source_fingerprint=fingerprint)
@@ -278,9 +299,9 @@ def run_adaptive_benchmark(config: AdaptiveConfig, output: str | Path, *, resume
 def _policy_report(summary: Mapping[str, Any]) -> str:
     lines = ["\n## Recruitment effects with the final estimator held fixed\n",
              "Differences are policy minus uniform recruitment for the same final estimator. "
-             "Intervals are pointwise paired Monte Carlo summaries without multiplicity adjustment.\n",
-             "| Estimator | Scenario | Policy | Mean MSE difference | 95% interval | Complete / expected seeds |",
-             "| --- | --- | --- | ---: | --- | ---: |"]
+             "Eligible intervals are pointwise paired Monte Carlo summaries without multiplicity adjustment.\n",
+             "| Estimator | Scenario | Policy | Mean MSE difference | 95% interval | Complete / expected seeds | MSE inference |",
+             "| --- | --- | --- | ---: | --- | ---: | --- |"]
     for estimator, methods in summary["within_estimator_policy_comparisons"].items():
         for method, comparisons in methods.items():
             for scenario, comparison in comparisons["by_scenario"].items():
@@ -288,9 +309,11 @@ def _policy_report(summary: Mapping[str, Any]) -> str:
                 mean = "withheld" if metric["mean"] is None else f"{metric['mean']:.6g}"
                 ci = metric["ci95"]
                 interval = "unavailable" if ci is None else f"[{ci[0]:.6g}, {ci[1]:.6g}]"
+                state = ("eligible" if metric["eligible_for_inference"] else
+                         f"withheld: {metric['withheld_reason']}")
                 policy = method.split("__", 1)[0]
                 lines.append(f"| `{estimator}` | `{scenario}` | `{policy}` | {mean} | {interval} | "
-                             f"{comparison['complete_seed_blocks']} / {comparison['expected_seed_blocks']} |")
+                             f"{comparison['complete_seed_blocks']} / {comparison['expected_seed_blocks']} | {state} |")
     return "\n".join(lines)+"\n"
 
 
@@ -299,7 +322,9 @@ def verify_adaptive_run(config: AdaptiveConfig, output: str | Path) -> dict[str,
     output = Path(output)
     manifest = _load_json(output/"run_manifest.json")
     _, fingerprint = _provenance(config)
-    if manifest.get("config") != config.payload() or manifest.get("source_fingerprint") != fingerprint:
+    if (manifest.get("config") != config.payload()
+            or manifest.get("source_fingerprint") != fingerprint
+            or manifest.get("scenario_inference") != adaptive_inference_policy(config)):
         raise ValueError("adaptive replay config or provenance does not match")
     records = _read_records(output/"records.jsonl")
     seen = _validate_records(config, records)

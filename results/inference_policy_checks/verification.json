@@ -1,0 +1,243 @@
+{
+  "artifact": "inference-policy execution checks, not a performance study",
+  "baseline_commit": "2fe9c483b2edfc90ee1abeafc1250aba3e1782e5",
+  "checks": {
+    "adaptive_smoke": {
+      "failed": 0,
+      "missing": 0,
+      "successful": 24,
+      "successful_replayed": 24
+    },
+    "catalog_arithmetic": {
+      "arithmetic_tolerance": {
+        "absolute": 1e-12,
+        "relative": 1e-12
+      },
+      "checked_rows": {
+        "condition_scores.csv": 1240,
+        "primary_contrasts.csv": 488
+      },
+      "checker_source_sha256": "7e837dab5be79e37af1675a014a30b4eca4238a5e2b98b27b208197572027e34",
+      "config_file_sha256": "17b5f87d466ea10eefe6c3c4dd4699182c709b9c8e8a984a477bc28468344645",
+      "coverage": {
+        "descriptive_heavy_tail_contrasts": 16,
+        "expected": 79104,
+        "failed": 21,
+        "mean_t_family_complete": false,
+        "mean_t_family_size": 472,
+        "missing": 0,
+        "nominal_cells": 79360,
+        "nominal_primary_contrasts": 496,
+        "not_applicable_cells": 256,
+        "not_applicable_primary_contrasts": 8,
+        "recorded": 79104,
+        "successful": 79083,
+        "supported_primary_contrasts": 488
+      },
+      "delivery_manifest_sha256": "6ffa831105b93415e32492a9ece92036419ab6b706c99d0b333d03c40a3b3e23",
+      "environment": {
+        "python": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+        "scipy": "1.15.3"
+      },
+      "incomplete_eligible_contrasts": 4,
+      "input_sha256": {
+        "condition_scores.csv": "4267b27069e110ec6eafd32d6283734e58df14993c7326ac7dbdafadc87cec4a",
+        "designs/addendum__C01/replicate_scores.csv": "687f788fd9d1acc2e2abf415e91b9a7082a42855674f037a2cfd2fb0e6f4dc11",
+        "designs/addendum__C02/replicate_scores.csv": "4bb3d12d2e4ca4e7a00075ffc78d640e5d5a5861f77f742ef470834a3d068dea",
+        "designs/addendum__C03/replicate_scores.csv": "b2ad5e4137c09828dabac2061edcc80649894daa14610c7ead16c53dbed12797",
+        "designs/addendum__C04/replicate_scores.csv": "560d3ce001696f37b7c4d642b425856b882da0d873d5b853d925e8f04ecdf77f",
+        "designs/addendum__C05/replicate_scores.csv": "0376a8a7c26cbd94cbe371c1e5638726e86bffefae8a2917648f8ad3e93ab84a",
+        "designs/addendum__C06/replicate_scores.csv": "02d6b6b0eae4ca4d6fde5aea3151f6cbb4d56bd220905b50e8e81067b41220ab",
+        "designs/addendum__C07/replicate_scores.csv": "d611726abb56c17d6f505038a523b7f41fe167d0211501b1060fbf150f9e378a",
+        "designs/addendum__C08/replicate_scores.csv": "1d6ea1ed430f4e81b594ea5962c017b069307f5bddf7e1da53d789ac539b5693",
+        "designs/addendum__C09/replicate_scores.csv": "df821a03233f3ea9f97362e4888d9009dc408d126a82e7bce0a8ed6b7bb85e62",
+        "designs/addendum__C10/replicate_scores.csv": "81887e1ed56ffe34884e53b9c4967d914377a92739d6f1af8a93f6bc69c4545f",
+        "designs/paper__cornet_official_n_conf/replicate_scores.csv": "b5ac26293aef122c0c6cd271b0a9e34050e798788a2bb69aadc043ed344902d3",
+        "designs/paper__cvci_official_linear_bias/replicate_scores.csv": "de314c090978cc81549501fa6625758c6b50c2e04e2144e29fc1dc57944375ef",
+        "designs/paper__elastic_integrative_gen_data_overlap/replicate_scores.csv": "bdafea039c49bb26d80595e7ae3c73b9f4d6ae98e46ffc47e8bcd6704b992591",
+        "designs/paper__experimental_grounding_kps/replicate_scores.csv": "df673bbf56342eff541e9ce5e100bb14a7d81edd4dfd5263b3a80ace2d004af0",
+        "designs/paper__integrative_r_learner_kps_code/replicate_scores.csv": "230f279da1810cb68f2159e5e75c047fa74f68573fde11535a7775e1144e2ebb",
+        "designs/paper__integrative_r_learner_kps_normal_target_extension/replicate_scores.csv": "90ee3282982df698ff1a2d7f31296451d7f1f685686dfa2bc2bc5ef64a1bd10e",
+        "designs/paper__integrative_r_learner_multivariate_paper/replicate_scores.csv": "ddf91685c21d5775cdd3c81d4d5bf008be6fb3c46b797c588a5f49a16d030884",
+        "designs/paper__power_likelihood_paper_text/replicate_scores.csv": "066c7f884fdd945b6ee1922a097384dec154a67a95145aef65cffe05b7eef937",
+        "designs/paper__power_likelihood_supplement_code/replicate_scores.csv": "275b5ad2a9aa7a369f4ff82e3b88570b6aa3dfc2d6edd81fcc0ead001bd74ae1",
+        "designs/structural__M0/replicate_scores.csv": "f4d634e5a17f804f7171f264f878ee153ead05275d0558f67c0e65356d22ae61",
+        "designs/structural__M1/replicate_scores.csv": "769a1bb519d3ad31eeaeca457fe2ef8f3281da470265d1f1ecdf427a00cf3bf6",
+        "designs/structural__M10/replicate_scores.csv": "4a1ca1b244b22d87ece82b1f6f2d287c370660306bbb296465f070d30cd168e8",
+        "designs/structural__M11/replicate_scores.csv": "357f167777d0a3a5a73f988d5c1bf950622b883069d208f665455419e21eb0f1",
+        "designs/structural__M2/replicate_scores.csv": "ce955a43027febd6307e28f83006cfda4ac5078c96651e4a22e0250948d8af95",
+        "designs/structural__M3/replicate_scores.csv": "af0fc06f8aecc92d081f3a0b8ef274092c4121f620901eded7465b01c28ce675",
+        "designs/structural__M4/replicate_scores.csv": "71ee03fd2c34b3a9f3eb22f30355fc125c6740727df9ac2b3f6029f6192de776",
+        "designs/structural__M5/replicate_scores.csv": "17898b08d489d0d41913416ddc6f9a3ef1646f04e8fb685196070186246d986b",
+        "designs/structural__M6/replicate_scores.csv": "0f0617dbcc76cc5c8e1346526d30a20c0761fb1194d0be449ffe9bcac63d938b",
+        "designs/structural__M7/replicate_scores.csv": "42bec85644efe34730b56dbb0e54612b30ec7d3425efd7c3bdd2dbf81b6e858f",
+        "designs/structural__M8/replicate_scores.csv": "6ab4c2fe356ae8d4d20b396ee14bf7cec0219cd58e38ff0f7c03bdaf21c36738",
+        "designs/structural__M9/replicate_scores.csv": "62649a5e1fa363157293a9b05623a5e547cbe993411c9d34390629138408650c",
+        "manifest.json": "afeddad173e1fc7087447ad0ffbb3ad0366833b613ca6e5a7098d5f59c2dfe74",
+        "not_applicable.csv": "be183b59b23ded6ab3b4a44c7ca0e05a7349337177961443db099dc81100beb3",
+        "primary_contrasts.csv": "7918004f54caefa2575050be7cd907a93c0ab869d1a67ad0f743c02492817235",
+        "summary.json": "ec733a54970b19f8ccff1e0a1334796c8433257c3c5d0ad7b6e790e0de72ff27"
+      },
+      "omitted_regenerable_paper_assets": {
+        "designs/addendum__C01/budget_curves.pdf": "bf8ffdadb3f84181542267600252a63a1d8a0753c7f667958220575ecc15271b",
+        "designs/addendum__C02/budget_curves.pdf": "f079176b42e0c92aec5770cee5b8a26ea20b1d2773f83a297368ddc32e10199a",
+        "designs/addendum__C03/budget_curves.pdf": "0b02b3f15c90319afea1d73e15498bc5d327122f43cd52d5b5ae76a2009b9511",
+        "designs/addendum__C04/budget_curves.pdf": "de4c1817d2113a81fbd816bbc3bccd18960c119aa640e143ae622e7b9ee559d4",
+        "designs/addendum__C05/budget_curves.pdf": "7b810c41a99c86bbc4c1fe3a0b12b70b0f9bbedeab7c34ea0173aaedc2e28f41",
+        "designs/addendum__C06/budget_curves.pdf": "7b323a23a1e14be4f962b6c692db0aae7f9fb9bc6c1c1d7a2761c0b5b3165c9c",
+        "designs/addendum__C07/budget_curves.pdf": "01cf5cef4d2376fb421524f596bbb4d6c3bb37061c69368e4389e019312b4805",
+        "designs/addendum__C08/budget_curves.pdf": "ce2aa36eea37b5e3ae72bb8a3ddd0cd741405ac5d2629fe082707f4f77bcc04a",
+        "designs/addendum__C09/budget_curves.pdf": "87f264628091efe3a024e00fbc4db1db5525a85e7c5d5642f18eb3cfe625ee9b",
+        "designs/addendum__C10/budget_curves.pdf": "4ac26823fec18c436f8a2a23faa980bd5dad85ea147c884e0a427d3a528d303f",
+        "designs/paper__cornet_official_n_conf/budget_curves.pdf": "87b9c175df2e66d85e0c5d07d31e4a7fd5ccfca9566b504520c1f5e8d25f1714",
+        "designs/paper__cvci_official_linear_bias/budget_curves.pdf": "eb82800372fc1efb8149dc6e3a339ea14eddc0a857dc1c08501a87893c83e7da",
+        "designs/paper__elastic_integrative_gen_data_overlap/budget_curves.pdf": "bdc149c1cbbd479ddc08960804d7a5f65058fcac855501f4324df3fa851ee0a1",
+        "designs/paper__experimental_grounding_kps/budget_curves.pdf": "c5fb997f254ebd372f86cb1025a54af80529d4b8e4fbd55812e5cdd7cd8a80f5",
+        "designs/paper__integrative_r_learner_kps_code/budget_curves.pdf": "dd9499a4c933a267f53e73abd2433bf1561e24cf4f47c1932f7cefcc4d5495bb",
+        "designs/paper__integrative_r_learner_kps_normal_target_extension/budget_curves.pdf": "394310fa9c4a1475c063d7504b33c3d5bf0773e34b652657c9c614001809a290",
+        "designs/paper__integrative_r_learner_multivariate_paper/budget_curves.pdf": "0e8cd709fba06cad497f209869bf07e92b92c6b7cdfabc344b7bcff3932168ab",
+        "designs/paper__power_likelihood_paper_text/budget_curves.pdf": "55b2fd87262c461a9f62dd4b258959a7430703ee8db8708f942e9d8134e4658c",
+        "designs/paper__power_likelihood_supplement_code/budget_curves.pdf": "3aef1545a8ff1c744e8709469fe8408f65a1544c96164c0b38c87e691d3cc388",
+        "designs/structural__M0/budget_curves.pdf": "1bcf5e8f5aa9bf91b5272ffb1039f70f71abcb7d3418a988e6c65a69d58c71b3",
+        "designs/structural__M1/budget_curves.pdf": "25efacd830d963249dc54fab21c13b30a724b085f94025bca055c061dadd839a",
+        "designs/structural__M10/budget_curves.pdf": "f59a6ee3d85a013c4f6de4291db13fa82c7333932d1156c8b4fcd1c1e1512497",
+        "designs/structural__M11/budget_curves.pdf": "f560f46b413a55b8a47b51276c687825c185d5113ba61b3cdd658b3fed25d4a8",
+        "designs/structural__M2/budget_curves.pdf": "0a57f7ee713e4e6f7558d9531fe352e822cccfe0c22c4d3e12f2bc295079b423",
+        "designs/structural__M3/budget_curves.pdf": "5f9c3b37c9172ed36b5b5f3bb97f872981efd87a762b3f686c4149d8c30ce64c",
+        "designs/structural__M4/budget_curves.pdf": "9404127d48d55e68e99158449fe82ad571781cebe6efc46954222d6b4a6457ad",
+        "designs/structural__M5/budget_curves.pdf": "1f52fd19cf0410d770a599ee7b58110ddd98edcf08e4633b92fd9213e19c0d1e",
+        "designs/structural__M6/budget_curves.pdf": "f54a074e3d2a67a3dfc293f6ee8ae434ec66b833fbfbc9a18e01d2362688b2cb",
+        "designs/structural__M7/budget_curves.pdf": "9d16b5dba9a249f5d389752c7d1d1c2243a2df856fe7a4996a9f28370756fdd3",
+        "designs/structural__M8/budget_curves.pdf": "66df104c1f254fbf9cf0dbbdfcddf01221b07bcfd69dba4c7f67118c06bccb76",
+        "designs/structural__M9/budget_curves.pdf": "a471105734b5bb7275252012d14aeb3d84e1e14ed456fe8624327dbeef00f81d"
+      },
+      "schema_version": 1,
+      "scope": "independent compact-CSV arithmetic check; no prediction replay",
+      "status": "passed"
+    },
+    "gamma_smoke": {
+      "failed": 0,
+      "missing": 0,
+      "successful": 16
+    },
+    "notebooks": {
+      "code_cells": 47,
+      "execution_record": "../../notebooks/execution_v030a3.json",
+      "execution_record_sha256": "c3acdc714a216ca78a86c378f05be3eff15392b52579172498a9ebe9be077619",
+      "notebooks": 5,
+      "png_figures": 11
+    },
+    "observed_static_policy": {
+      "Gaussian_C03_mean_MSE": "declared eligible; interval retained",
+      "M11_containing_overall_MSE": "descriptive; SE and interval withheld",
+      "M11_mean_MSE": "descriptive; SE and interval withheld",
+      "M11_root_PEHE": "separate unestablished-moment policy; interval withheld"
+    },
+    "release_source": "passed",
+    "static_smoke": {
+      "failed": 0,
+      "missing": 0,
+      "resumed_record_bytes_unchanged": true,
+      "successful": 248
+    },
+    "synthetic_file_smoke": {
+      "failed": 0,
+      "missing": 0,
+      "successful": 16
+    }
+  },
+  "configured_integrations": [
+    "CorNet",
+    "R namespace probe"
+  ],
+  "date": "2026-10-27",
+  "environment": {
+    "implementation": "CPython",
+    "machine": "x86_64",
+    "packages": {
+      "GPy": "not-installed",
+      "dfppi": "0.1.0",
+      "numpy": "1.26.4",
+      "obs-rct-benchmark": "0.3.0a3",
+      "paramz": "not-installed",
+      "scikit-learn": "1.5.2",
+      "scipy": "1.15.3",
+      "torch": "2.2.2+cpu"
+    },
+    "python": "3.12.3",
+    "system": "Linux"
+  },
+  "execution": {
+    "destination": "GSDS",
+    "full_checks_job": 724166,
+    "full_checks_job_elapsed": "00:04:30",
+    "full_checks_job_status": "FAILED at notebook 04 after all 428 tests, release, arithmetic and smoke/replay checks passed",
+    "notebook_repair_job": 724194,
+    "notebook_repair_job_elapsed": "00:01:24",
+    "notebook_repair_job_status": "COMPLETED 0:0",
+    "partition": "P2",
+    "requested_cpus": 1,
+    "requested_memory_GiB": 4,
+    "retained_attempts": [
+      {
+        "job": 724121,
+        "status": "expected baseline RED: 10 new regression cases failed"
+      },
+      {
+        "job": 724138,
+        "status": "environment bootstrap failed before tests; ensurepip unavailable"
+      },
+      {
+        "job": 724145,
+        "status": "earlier policy snapshot passed 89 focused and 427 full tests; completed 0:0"
+      },
+      {
+        "job": 724166,
+        "status": "final package snapshot passed 90 focused and 428 full tests; notebook 04 then failed on withheld interval; consumer repaired without package-source changes"
+      }
+    ]
+  },
+  "frozen_scientific_outputs_changed": false,
+  "native_GPy_fitting_in_this_cohort": false,
+  "schema_version": 1,
+  "scope": "Policy enforcement and arithmetic are checked; finite moments, empirical interval coverage, new performance rankings and unseen-mechanism generalization are not established.",
+  "source": {
+    "aggregate_sha256": "d78d0fe0e3252bd3926e7af0ce444f2aee4512e2b1266df6e71f094b230d251e",
+    "distribution": "obs-rct-benchmark",
+    "package_file_sha256": {
+      "__init__.py": "13fca947b0f9f80ca104a0871a90f49bac9771e9823b641c434030426ca73a2c",
+      "adaptive.py": "e1e961a45e508684f75c546ec1d3adf92e2aff424e008e7b0486aa7113959005",
+      "adaptive_runner.py": "c9e162868481c8f68cd375db53e5125b675ee669ef8c9831c60915be2b3e1afe",
+      "causal_icm.py": "3ba5fc9311c9cf6b11fd1c09dc84c8e760d3282da9a1cbd586174183014a75a1",
+      "cli.py": "39f14951a56b3a752f87081ceaec5cbf93228d5cb6b80a65e94904c8296c22ef",
+      "cornet.py": "3ccd76509d2965ea8451da9e279a7f3c8780873c5c24625f380d3c9b719b83bf",
+      "data.py": "616958669558c6ed274709b17d683f06c18b0f0606d7fcbc8a5485919f744573",
+      "datasets.py": "c05090977b6513bfced49baafad77340c113f631af15ea062b4f7f035496825a",
+      "evaluation.py": "9eb81a3d901edd5c5d33cafb438aa4aab781d456471df59f575b4e6e65e5d7c0",
+      "inputs.py": "be3d6e327cc092c33f465c1e14baae74fc9d5e2077e2511a4b293af3f899c0db",
+      "integrative_r.py": "593a883eaf88002a5ce3746deb61dc70fff7b8985a62be6f7aa5bc551dacbc5f",
+      "methods.py": "a6993d5720b5ce7d7a27955de0cb3febc94a7196e7d7e101e02aef7b09ef15aa",
+      "paper_dgp.py": "77bb899367e6ce8d12ee127b4ff6deb833215e90a707bb0f35c9aacf55f6a3f2",
+      "runner.py": "bfded57520e01f019c5ab804c1da6e3fe13adc0448da17e5f9d70b15ec91c530",
+      "sensitivity.py": "f684b08c65a129d43df6a1acfba36e43d71ee072e92e2fcfdaaf27de8a6e134f",
+      "structural_dgp.py": "49c94e6e5c6725d942a15a122344b03a3bd8174a131cbee0304f3a5e5994bdf4"
+    },
+    "version": "0.3.0a3"
+  },
+  "tests": {
+    "focused": {
+      "errors": 0,
+      "failures": 0,
+      "junit_sha256": "1e91e3ec125df3fd4a3f2ea677b72a37a07a04fec32c56a9d477666734d46295",
+      "skipped": 0,
+      "tests": 90
+    },
+    "full": {
+      "errors": 0,
+      "failures": 0,
+      "junit_sha256": "04ad3fb115646365c4ed91605e897d1ca9e8a562010251eb524e16d75cc09c15",
+      "skipped": 0,
+      "tests": 428
+    }
+  }
+}
