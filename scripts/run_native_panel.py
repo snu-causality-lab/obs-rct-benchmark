@@ -39,6 +39,11 @@ OBS_KEYS = ("obs_X", "obs_T", "obs_Y")
 RCT_KEYS = ("rct_X", "rct_T", "rct_Y", "rct_known_propensity")
 OBSERVED_KEYS = OBS_KEYS + RCT_KEYS + ("eval_X",)
 TERMINAL = ("success", "failure", "timeout")
+WORKER_METADATA_FIELDS = (
+    "prediction_array_identity", "method_entry", "label_budget", "fit_predict_seconds",
+    "worker_seconds", "self_usage", "children_usage", "cgroup_memory",
+    "provenance_", "last_run_provenance_", "attempt_provenance_",
+)
 
 
 def canonical(value):
@@ -607,6 +612,13 @@ def metrics(prediction, truth):
     return {"cate_mse": mse, "root_pehe": math.sqrt(mse)}
 
 
+def authenticated_worker_metadata(worker, request):
+    if (not isinstance(worker, dict) or worker.get("request_sha256") != digest(request)
+            or worker.get("status") not in {"success", "failure"}):
+        raise ValueError("worker result identity or status changed")
+    return {field: worker[field] for field in WORKER_METADATA_FIELDS if field in worker}
+
+
 def execute_fit(output, case, method, manifest, *, resume):
     import numpy as np
     terminal = record_path(output, case, method)
@@ -672,6 +684,20 @@ def execute_fit(output, case, method, manifest, *, resume):
         finally:
             record["process_group_reaped"] = stop_process_group(process) if process is not None else True
             record["process_returncode"] = process.returncode if process is not None else None
+            if (record["process_group_reaped"] and record["status"] == "timeout"
+                    and (attempt / "worker.json").is_file()):
+                try:
+                    # SIGTERM can cause the worker to publish its result only
+                    # during cleanup. Preserve that evidence without rescuing
+                    # the expired fit or replacing its outer timeout cause.
+                    worker = read_json(attempt / "worker.json")
+                    record.update(authenticated_worker_metadata(worker, request))
+                    record["late_worker_status"] = worker["status"]
+                    if "error_type" in worker:
+                        record["late_worker_error_type"] = worker["error_type"]
+                except Exception as exc:
+                    record["late_worker_validation_error"] = type(exc).__name__
+                    (attempt / "launcher_cleanup_traceback.log").write_text(traceback.format_exc())
             if not record["process_group_reaped"]:
                 record.update(status="failure", error_type="UnreapedProcessGroup", metrics=None)
             record["launcher_seconds"] = time.perf_counter() - started
@@ -716,16 +742,19 @@ def verify_record(output, case, method, manifest):
         raise ValueError("fit request or label accounting changed")
     if "worker.json" in hashes:
         worker = read_json(attempt / "worker.json")
-        if worker.get("request_sha256") != digest(request) or worker.get("status") not in {"success", "failure"}:
-            raise ValueError("worker result identity changed")
+        metadata = authenticated_worker_metadata(worker, request)
         if record["status"] != "timeout" and "launcher_traceback.log" not in hashes:
             if record["status"] != worker["status"]:
                 raise ValueError("terminal status differs from worker")
-        for field in ("prediction_array_identity", "method_entry", "fit_predict_seconds",
-                      "worker_seconds", "self_usage", "children_usage", "cgroup_memory",
-                      "provenance_", "last_run_provenance_", "attempt_provenance_"):
-            if field in worker and record.get(field) != worker[field]:
+        for field, value in metadata.items():
+            if record.get(field) != value:
                 raise ValueError("terminal worker fields changed")
+        if record["status"] == "timeout":
+            if (record.get("error_type") != "FitTimeLimitExceeded"
+                    or record.get("late_worker_status") != worker["status"]
+                    or record.get("late_worker_error_type") != worker.get("error_type")
+                    or "late_worker_validation_error" in record):
+                raise ValueError("late worker timeout evidence changed")
     if record["status"] == "success":
         if not {"worker.json", "prediction.npy"} <= set(hashes) or not record["process_group_reaped"]:
             raise ValueError("successful fit has incomplete artifacts or live descendants")

@@ -314,6 +314,62 @@ def test_failure_and_timeout_are_terminal_resume_never_refits(tmp_path, monkeypa
     assert original == path.read_bytes()
 
 
+@pytest.mark.parametrize("mode", ["profile", "campaign"])
+@pytest.mark.parametrize("late_status", ["failure", "success"])
+def test_timeout_retains_late_worker_metadata_without_rescuing_prediction(
+        tmp_path, monkeypatch, fake_data, mode, late_status):
+    """SIGTERM cleanup can publish worker.json after wait() has timed out."""
+    mock_worker_process(monkeypatch, timeout=True)
+    (tmp_path / "cases").mkdir()
+    (tmp_path / "records").mkdir()
+    manifest = make_manifest(mode)
+    case, method = manifest["cases"][0], manifest["methods"][0]
+    late_worker = {}
+
+    def publish_during_cleanup(process):
+        request_path = next((tmp_path / "records").rglob("request.json"))
+        request = panel.read_json(request_path)
+        supplied = panel.load_arrays(request_path.parent / "observed_inputs.npz")
+        prediction = np.array([1., 2., 3.])
+        np.save(request_path.parent / "prediction.npy", prediction, allow_pickle=False)
+        late_worker.update(
+            status=late_status, request_sha256=panel.digest(request),
+            method_entry="training_view", label_budget=panel.label_budget(supplied, method),
+            fit_predict_seconds=1.01, worker_seconds=1.02,
+            self_usage={"maxrss_kib": 1024, "user_cpu_seconds": .8},
+            children_usage={"maxrss_kib": 2048, "user_cpu_seconds": .1},
+            cgroup_memory={"available": True, "counters": {"memory.peak": "4096"}},
+            prediction_array_identity=panel.array_identity({"prediction": prediction}),
+            provenance_={"status": "success" if late_status == "success" else "interrupted"},
+            last_run_provenance_={"native_source": "mock", "status": "interrupted"},
+            attempt_provenance_={"native_seed": 17},
+        )
+        if late_status == "failure":
+            late_worker["error_type"] = "KeyboardInterrupt"
+        panel.write_json(request_path.parent / "worker.json", late_worker)
+        process.returncode = 0 if late_status == "success" else 1
+        return True
+
+    monkeypatch.setattr(panel, "stop_process_group", publish_during_cleanup)
+    row = panel.execute_fit(tmp_path, case, method, manifest, resume=False)
+    assert row["status"] == "timeout"
+    assert row["error_type"] == "FitTimeLimitExceeded"
+    assert row["metrics"] is None
+    assert row["process_group_reaped"] is True
+    assert row["late_worker_status"] == late_status
+    assert row.get("late_worker_error_type") == late_worker.get("error_type")
+    for field in ("method_entry", "label_budget", "fit_predict_seconds", "worker_seconds",
+                  "self_usage", "children_usage", "cgroup_memory", "prediction_array_identity",
+                  "provenance_", "last_run_provenance_", "attempt_provenance_"):
+        assert row[field] == late_worker[field]
+    assert panel.verify_record(tmp_path, case, method, manifest) == row
+    terminal = panel.record_path(tmp_path, case, method)
+    original = terminal.read_bytes()
+    monkeypatch.setattr(panel.subprocess, "Popen", lambda *a, **k: pytest.fail("timed-out fit retried"))
+    assert panel.execute_fit(tmp_path, case, method, manifest, resume=True) == row
+    assert terminal.read_bytes() == original
+
+
 def test_fit_replay_rejects_score_edits_extra_files_and_native_worker_drift(tmp_path, monkeypatch, fake_data):
     mock_worker_process(monkeypatch)
     (tmp_path / "cases").mkdir()

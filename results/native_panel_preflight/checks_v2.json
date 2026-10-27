@@ -1,0 +1,28 @@
+{
+  "campaign_manifest_sha256": "56003f39f113bbc84f673d0603f1fa2396030bdb64a809edde4d2473dd496c91",
+  "comparative_fits_started": 0,
+  "config_sha256": "33d434a1e7fcfb2819ea3d6ed0723fbd99dd599351f50e27cb43ec1a844ecde6",
+  "fix_scope": "Authenticate late worker metadata after deadline; retain timeout, original outer cause, null metrics and byte-identical resume.",
+  "focused_regressions_passed": 4,
+  "full_suite_command": "python -m pytest -q -p no:cacheprovider",
+  "protocol_sha256": "1949ea861effd94080deadd45ef1ad612572a6138bb1aa6dd5906e7f1129069e",
+  "raw_log_basename": "freeze-725031.out",
+  "raw_log_sha256": "bac770e6a19b01bce418e1c0064fc779b2016519c10b4f2c9f1c15cf976cc833",
+  "regression_before_fix": {
+    "message": "terminal worker fields changed",
+    "slurm_job_id": "725024",
+    "test_seconds": 0.62,
+    "tests_failed": 4
+  },
+  "schema_version": 1,
+  "scope": "current GSDS source suite and zero-fit manifest; supersedes initial559-test source before fitting",
+  "slurm_exit_code": "0:0",
+  "slurm_job_id": "725031",
+  "slurm_status": "COMPLETED",
+  "suite_result_line": "563 passed, 3 warnings in 33.22s",
+  "test_seconds": 33.22,
+  "tests_failed": 0,
+  "tests_passed": 563,
+  "tests_skipped": 0,
+  "warnings": 3
+}
