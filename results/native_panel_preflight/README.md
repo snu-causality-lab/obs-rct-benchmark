@@ -2,13 +2,13 @@
 
 **Protocol and execution preparation, without comparative scores.** The [six-mechanism trial-CATE panel](../../docs/NATIVE_PANEL.md) requests 8,448 fits from eleven fixed recipes, two RCT budgets and 64 reserved seeds. This packet records correctness, input isolation and unscored resource checks. It is not another accuracy study or a performance update to the integrated report.
 
-The [machine-readable evidence](summary.json) distinguishes **ten successful profiles and one native deadline failure**. All eleven terminal attempts authenticate against their original source, runtime, observed-input and artifact bindings, with no scores persisted and no surviving worker descendants. Execution-contract review passes; all-profile numerical completion does not. The [configuration](../../configs/native_panel.toml) binds this evidence by SHA256. The [final source freeze](freeze.json) binds the protocol, all runtime identities, twelve resolved conditions, 72 comparisons and zero comparative fits started. The final GSDS source suite passes **559 tests**, no failures or skips.
+The [machine-readable evidence](summary.json) distinguishes **ten successful profiles and one native deadline failure**. All eleven terminal attempts authenticate against their original source, runtime, observed-input and artifact bindings, with no scores persisted and no surviving worker descendants. Execution-contract review passes; all-profile numerical completion does not. The [configuration](../../configs/native_panel.toml) binds this evidence by SHA256. The [final source freeze](freeze.json) binds the protocol, all runtime identities, twelve resolved conditions, 72 comparisons and zero comparative fits started. The [final GSDS checks](final_checks.json) record **559 passing tests**, no failures or skips, with the retained log hash and earlier diagnostic attempt.
 
 ## Resource measurements
 
 One fixed native CorNet fixture per recipe: d25, OBS512, RCT512, 2,048 queries and reserved profile seed 49999. Each task requests one CPU/thread and 8 GiB; at most two profile tasks run concurrently. Times include fresh worker startup, verification, fitting and prediction, but exclude the parent driver's initial runtime inspection. These are single-fixture costs, not campaign forecasts.
 
-| Recipe | Worker wall seconds | Outcome |
+| Recipe | Launcher wall seconds (`launcher_seconds`) | Outcome |
 | --- | ---: | --- |
 | RCT causal forest | 19.158 | Success |
 | RCT ExtraTrees T | 2.353 | Success |
@@ -22,7 +22,7 @@ One fixed native CorNet fixture per recipe: d25, OBS512, RCT512, 2,048 queries a
 | Fixed-rho GP Full | 23.352 | Success |
 | Matched GP RCT-only | 3.950 | Success |
 
-The quadratic basis expands 25 covariates to 350 columns. The author procedure uses a 702-column joint design and 44 SCAD cross-validations, including a branch with 351 unpenalized effect coordinates. Code inspection found no repeated basis expansion. The original search, basis and deadline are preserved. A separate diagnostic attempt also reached the same deadline; neither attempt is replaced or presented as an accuracy score.
+The quadratic basis expands 25 covariates to 350 columns. The author procedure uses a 702-column joint design and 44 SCAD cross-validations, including a branch with 351 unpenalized effect coordinates. Code inspection found no repeated basis expansion. The original search, basis and native 1,200-second inner deadline are preserved; the final outer launcher allowance is 1,320 seconds. That larger outer allowance does not extend the native deadline. A separate diagnostic attempt also reached the same deadline; neither attempt is replaced or presented as an accuracy score.
 
 The maximum recorded enclosing cgroup peak is 500,813,824 bytes. Process RSS and cgroup charged-memory peaks measure different things; separate parent/child high-water marks cannot be summed into a simultaneous peak. Cgroup `memory.max` reports `max`, so these records do not establish enforcement of the requested 8 GiB. A single fixture does not bound remaining seed/stage memory. The final plan conservatively retains 8 GiB per job.
 

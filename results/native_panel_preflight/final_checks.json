@@ -1,0 +1,26 @@
+{
+  "campaign_manifest_sha256": "2a41dca3b51b43139624d10fb0bdba4b6d2c84175e8ffb6d4d070cdc6d2b3497",
+  "comparative_fits_started": 0,
+  "config_sha256": "33d434a1e7fcfb2819ea3d6ed0723fbd99dd599351f50e27cb43ec1a844ecde6",
+  "full_suite_command": "python -m pytest -q -p no:cacheprovider",
+  "prior_diagnostic": {
+    "independent_target_failed": "C08 GH64 target error 5.726530361e-10 against 1e-12",
+    "not_in_authoritative_profile_table": true,
+    "quadratic_native_timeout_seconds": 1200,
+    "slurm_job_id": "724777"
+  },
+  "protocol_sha256": "1949ea861effd94080deadd45ef1ad612572a6138bb1aa6dd5906e7f1129069e",
+  "raw_log_basename": "freeze-724910.out",
+  "raw_log_sha256": "14a2254912b745937318a2decbbb39db7628193fa772c8d280f8eff2df5c5353",
+  "schema_version": 1,
+  "scope": "final GSDS source suite and zero-fit initialization",
+  "slurm_exit_code": "0:0",
+  "slurm_job_id": "724910",
+  "slurm_status": "COMPLETED",
+  "suite_result_line": "559 passed, 3 warnings in 38.53s",
+  "test_seconds": 38.53,
+  "tests_failed": 0,
+  "tests_passed": 559,
+  "tests_skipped": 0,
+  "warnings": 3
+}
