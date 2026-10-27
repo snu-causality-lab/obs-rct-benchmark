@@ -21,7 +21,9 @@ Version **0.3.0a4** registers 16 recipes, adding an [RCT-only honest causal fore
 
 New generic runs retain [condition- and metric-specific inference permissions](docs/INFERENCE.md). Complete comparisons retain descriptive means when uncertainty is withheld. Student-t(3) noise blocks mean-MSE uncertainty; root-PEHE has a separate policy. Native, external and custom recipes require an explicit declaration.
 
-The broader [v0.3 comparison design](docs/V03_DESIGN.md) records 22 method or method-group entries and classifies all 31 existing presets by target, support, transport and implementation assumptions. It prioritizes missing native-CATE comparisons, separates causal-parameter/subgroup/bounds/acquisition tasks, and specifies observable-data tuning and failure rules. That broader campaign remains pending; the GP pilot does not extend every new method across the 31-preset catalog. The preserved v0.2 performance results remain separate.
+The [native/default trial-CATE panel](docs/NATIVE_PANEL.md) specifies six inspected mechanisms, RCT budgets 128/512, eleven fixed recipes and 64 reserved seeds: **8,448 requested fits**. It includes causal forest, explicit C08 trial-target scoring, zero extra tuning labels, retained predictions and independent rescoring. Mean risks remain descriptive; a separate 72-comparison strict-win analysis has fixed failure and multiplicity rules. The [configuration](configs/native_panel.toml) and [resource preflight](results/native_panel_preflight/README.md) determine execution readiness. This is a prospective protocol, with no comparative results yet.
+
+The broader [v0.3 design](docs/V03_DESIGN.md) records 22 method or method-group entries and classifies all 31 presets by target, support, transport and implementation assumptions. Remaining native methods, matched controls, external targets and observable-data tuning extend beyond this bounded panel. The preserved v0.2 performance results remain separate.
 
 ## What is included
 

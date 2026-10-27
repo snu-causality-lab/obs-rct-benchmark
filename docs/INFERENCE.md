@@ -51,4 +51,6 @@ Every paired metric exposes `eligible_for_inference` and `withheld_reason`. Elig
 
 ## Preserved studies
 
+The separate [native/default panel](NATIVE_PANEL.md) withholds mean-MSE and mean-root-PEHE uncertainty for every recipe. Its prespecified exact-binomial/Holm analysis concerns a bounded strict finite-query win indicator, with ties as nonwins and one complete 72-comparison family. That endpoint does not grant the generic runner permission for mean-risk inference.
+
 This contract applies to new generic runs under 0.3.0a3. Frozen study protocols and outputs retain their original producers and analyses, including the catalog's M11 exclusions. Historical smoke JSON and original tutorial outputs are execution diagnostics from their recorded source; their generic intervals do not establish current eligibility. The live [custom-method tutorial](../notebooks/README.md) handles withheld uncertainty. The integrated AI-generated report remains the frozen account of the scientific studies. See [verification scopes](VERIFICATION.md) for their separate evidence.

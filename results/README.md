@@ -17,6 +17,8 @@ The [0.3.0a3 inference-policy checks](inference_policy_checks/README.md) separat
 
 The [0.3.0a4 causal-forest admission](causal_forest_admission/README.md) records direct-native and independent prediction-map checks, two bounded cost profiles and 475 passing tests. It adds a comparator candidate, with no new performance ranking or source-paper table reproduction.
 
+The [native/default panel preflight](native_panel_preflight/README.md) records correctness and unscored resource checks for the separate [prospective protocol](../docs/NATIVE_PANEL.md). Its planned 8,448 fits are not completed comparative evidence and are not a fifth study in the integrated report.
+
 ## Original alpha execution examples
 
 Compact results from public methods, executed with package `0.1.0a1`. These small-sample, two-seed examples check execution rather than method ranking. Their result packets preserve per-record metrics/status, aggregate JSON, configuration and source/environment provenance. The file-fixture run uses its linked Python recipe and resolved manifest. Raw arrays, trained models and machine-specific paths are excluded from these compact examples.

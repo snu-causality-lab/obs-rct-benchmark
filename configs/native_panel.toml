@@ -1,0 +1,161 @@
+schema_version = 1
+scope = "prospective development / native-default trial-population CATE"
+description = "Six inspected native mechanisms; source-matched GP attribution and fixed-recipe algorithm comparisons. New sample seeds are not unseen mechanisms. Resource limits reviewed; the native high-dimensional quadratic IR timeout is retained."
+generator = "native_trial_panel_v1"
+analysis = "descriptive_mse_root_pehe_and_exact_win_family_v1"
+n_obs = 512
+rct_budgets = [128, 512]
+n_eval = 2048
+seeds = [
+  50000, 50001, 50002, 50003, 50004, 50005, 50006, 50007,
+  50008, 50009, 50010, 50011, 50012, 50013, 50014, 50015,
+  50016, 50017, 50018, 50019, 50020, 50021, 50022, 50023,
+  50024, 50025, 50026, 50027, 50028, 50029, 50030, 50031,
+  50032, 50033, 50034, 50035, 50036, 50037, 50038, 50039,
+  50040, 50041, 50042, 50043, 50044, 50045, 50046, 50047,
+  50048, 50049, 50050, 50051, 50052, 50053, 50054, 50055,
+  50056, 50057, 50058, 50059, 50060, 50061, 50062, 50063,
+]
+preflight_seed = 49999
+tune_role = "first_two_training_rows_alias_ignored"
+# Both native configuration classes require >=4 rows in these roles. All eight
+# generated outcomes are discarded; method views alias two fitting rows instead.
+factory_rct_tune = 4
+factory_rct_test = 4
+methods = [
+  "rct_causal_forest", "rct_t_extra_trees", "rct_dr_extra_trees",
+  "obs_t_extra_trees", "naive_pooled_t_extra_trees", "cornet_official",
+  "datafusionppi", "integrative_r_linear", "integrative_r_quadratic",
+  "causal_icm_fixed", "causal_icm_rct_only",
+]
+
+[[conditions]]
+scenario_key = "structural:M0"
+target_law = "N(0,I_5)"
+target_role = "trial_full_X_CATE"
+native_dimension = 5
+discrepancy = "none"
+assumption_tags = ["clean_OBS", "shared_source_CATE", "nonpolynomial_effect"]
+
+[[conditions]]
+scenario_key = "structural:M2"
+target_law = "N(0,I_5)"
+target_role = "trial_full_X_CATE"
+native_dimension = 5
+discrepancy = "hidden_treatment_selection_smooth"
+assumption_tags = ["confounded_OBS", "shared_source_CATE", "nonpolynomial_effect"]
+
+[[conditions]]
+scenario_key = "structural:M10"
+target_law = "N(0,I_5)"
+target_role = "trial_full_X_CATE"
+native_dimension = 5
+discrepancy = "hidden_treatment_selection_and_OBS_effect_shift"
+assumption_tags = ["confounded_OBS", "OBS_effect_equality_violated", "trial_equals_canonical_target", "nonpolynomial_effect"]
+
+[[conditions]]
+scenario_key = "addendum:C08@trial_target"
+target_law = "N(0,I_5)"
+target_role = "trial_full_X_CATE"
+native_dimension = 5
+discrepancy = "hidden_participation_trial_effect_shift"
+assumption_tags = ["unconfounded_OBS", "OBS_effect_equality_violated", "trial_differs_from_canonical_target", "new_trial_target"]
+
+[[conditions]]
+scenario_key = "paper:integrative_r_learner_kps_code"
+target_law = "Uniform[-1,1]"
+target_role = "trial_full_X_CATE"
+native_dimension = 1
+discrepancy = "hidden_treatment_selection_linear"
+assumption_tags = ["confounded_OBS", "shared_source_CATE", "trial_support_covered", "quadratic_IR_effect_basis_correct", "linear_IR_effect_basis_misspecified"]
+
+[[conditions]]
+scenario_key = "paper:cornet_official_n_conf"
+target_law = "N(0,I_25)"
+target_role = "trial_full_X_CATE"
+native_dimension = 25
+discrepancy = "OBS_effect_shift_without_treatment_confounding"
+assumption_tags = ["unconfounded_OBS", "OBS_effect_equality_violated", "native_CorNet_construction_favorable", "nonlinear_effect"]
+
+[method_options.rct_causal_forest]
+num_trees = 2000
+num_threads = 1
+timeout_seconds = 600
+
+[method_options.rct_t_extra_trees]
+ridge_alpha = 1.0
+n_estimators = 100
+min_samples_leaf = 5
+
+[method_options.rct_dr_extra_trees]
+ridge_alpha = 1.0
+n_estimators = 100
+min_samples_leaf = 5
+
+[method_options.obs_t_extra_trees]
+ridge_alpha = 1.0
+n_estimators = 100
+min_samples_leaf = 5
+
+[method_options.naive_pooled_t_extra_trees]
+ridge_alpha = 1.0
+n_estimators = 100
+min_samples_leaf = 5
+
+[method_options.cornet_official]
+standardize = true
+source_epochs = 500
+correction_epochs = 200
+width = 25
+learning_rate = 0.1
+outcome_penalty = 0.1
+correction_penalty = 0.0
+
+[method_options.datafusionppi]
+learner = "DR"
+covariate_shift = true
+
+[method_options.integrative_r_linear]
+k_folds = 5
+timeout_seconds = 1200
+
+[method_options.integrative_r_quadratic]
+k_folds = 5
+timeout_seconds = 1200
+
+# All observed X, native optimizer defaults and no external selection. The
+# factory's None default selects all X; TOML has no null value to encode it.
+[method_options.causal_icm_fixed]
+rho = 0.5
+
+[method_options.causal_icm_rct_only]
+rho = 0.5
+
+[truth_precision]
+# Panel evaluator accuracy only; preserve native observed draws and canonical
+# studies. Independent adaptive-integration comparison retains absolute1e-12.
+c08_quadrature_order = 256
+target_atol = 1e-12
+target_rtol = 0.0
+native_observed_factory_unchanged = true
+
+[resources]
+status = "preflight_reviewed"
+default_fit_timeout_seconds = 1800
+memory_gib = 8
+num_cpus = 1
+num_threads = 1
+preflight_manifest_sha256 = "ebf89f7b32be33300a0ba19d720edce3b1125f4d30cc25fb45b3f534e03c6860"
+
+[resources.method_fit_timeout_seconds]
+rct_causal_forest = 120
+rct_t_extra_trees = 60
+rct_dr_extra_trees = 120
+obs_t_extra_trees = 60
+naive_pooled_t_extra_trees = 60
+cornet_official = 180
+datafusionppi = 180
+integrative_r_linear = 600
+integrative_r_quadratic = 1320
+causal_icm_fixed = 300
+causal_icm_rct_only = 180

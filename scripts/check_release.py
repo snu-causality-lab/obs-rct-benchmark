@@ -29,6 +29,8 @@ PATH_PATTERNS = [
     re.compile(r"-----BEGIN (?:[A-Z]+ )?PRIVATE KEY-----"),
 ]
 PUBLIC_EXTERNAL_IMPORTS = {"numpy", "scipy", "sklearn", "torch", "dfppi", "GPy", "pytest", "nbclient", "nbformat", "jupyter_client", "matplotlib"}
+PUBLIC_SCRIPT_MODULES = {"native_panel_data", "run_native_panel", "verify_native_panel",
+                         "analyze_native_panel"}
 
 
 def candidate_files():
@@ -77,7 +79,7 @@ def check() -> list[str]:
                 elif isinstance(node, ast.ImportFrom) and node.level == 0 and node.module:
                     names = [node.module.split(".")[0]]
                 for name in names:
-                    if name not in PUBLIC_EXTERNAL_IMPORTS | sys.stdlib_module_names | {"obs_rct_benchmark"}:
+                    if name not in PUBLIC_EXTERNAL_IMPORTS | PUBLIC_SCRIPT_MODULES | sys.stdlib_module_names | {"obs_rct_benchmark"}:
                         errors.append(f"Unlisted dependency {name!r}: {relative}")
                 if path.name in {"methods.py", "cornet.py", "causal_icm.py", "integrative_r.py", "causal_forest.py"} and isinstance(node, ast.Attribute):
                     if node.attr in {"eval_tau", "rct_test", "truth"}:
