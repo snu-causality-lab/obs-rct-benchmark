@@ -1,8 +1,10 @@
 # v0.3 optional native estimators
 
-Version **0.3.0a4** provides the four native recipes below and two source-restricted GP controls. The RCT-only causal forest has separate default-recipe admission; it has not entered a comparative accuracy study. The separately frozen **0.3.0a2** [controlled pilot](../results/gp_source_pilot/SCIENTIFIC_RESULT.md) completes 576 fits across six conditions and 32 paired seeds: OBS addition helps the fixed GP at discrepancy levels 0/1 and hurts it at level 2 relative to the matched RCT-only GP at both trial budgets. The broader v0.3 campaign remains pending.
+Version **0.3.0a4** provides the four native recipes below and two source-restricted GP controls. The [completed native/default trial-CATE collection](../results/native_panel/SCIENTIFIC_RESULT.md) compares these recipes and the matched GP control, preserving failures, timeouts and three missing attempts. All 72 joint decisions and the simultaneous precision statement remain withheld; mean risks are descriptive.
 
-The original **0.3.0a1 admission** remains tied to its own source snapshot: 304 GSDS tests, direct-source agreement and fresh repeats for all three native recipes, independent analytic checks, and six bounded cost profiles. Those admission checks do not establish comparative accuracy. Exact evidence is in [native_adapter_admission](../results/native_adapter_admission/README.md); the frozen v0.2 catalog is unchanged. The [method inventory](v03_methods.toml) records scientific scope; this document records executable recipes.
+The [controlled GP pilot](../results/gp_source_pilot/SCIENTIFIC_RESULT.md) and native panel retain their own producers and analysis rules. Additional methods, matched backbones and controlled tuning remain prospective in the [comparison design](V03_DESIGN.md).
+
+Source-call fidelity, independent mathematical identities and fixed-fixture cost profiles are documented in the [verification guide](VERIFICATION.md) and [native admission record](../results/native_adapter_admission/README.md). The [method inventory](v03_methods.toml) records scientific scope; this guide specifies executable recipes and dependencies.
 
 | Method ID | Recipe | Native target and qualification |
 | --- | --- | --- |
@@ -36,7 +38,7 @@ assert prediction.shape == (8,)
 
 The [recipe and installation instructions](CAUSAL_FOREST.md) specify the pinned official source, separate build copy, mandatory build manifest and actual loaded namespace/native-library checks. The adapter uses only `rct_train.X/T/Y/known_propensity`, with `Y.hat=NULL` and native OOB outcome regression. OBS, tuning and target-reference fields are not accessed; evaluation covariates enter prediction only.
 
-The separate [0.3.0a4 admission](../results/causal_forest_admission/README.md) passes six native fits: a direct call, two fresh adapter processes, query extension and two cost profiles. Direct/repeated predictions and the original query prefix agree exactly; an independent local-intercept calculation differs by at most 2.220446049250313e-15. Its 60 focused and 475 full-suite tests pass with no skips. This checks the default source call and prediction arithmetic conditional on native neighborhoods/nuisances, not comparative CATE performance or source-paper tables. R-learner and Bayesian causal forest admission remain planned.
+The [forest admission record](../results/causal_forest_admission/README.md) checks the default source call and local-intercept prediction arithmetic conditional on native neighborhoods/nuisances. Its direct/fresh-process comparisons, query-extension check and cost fixtures are implementation evidence, distinct from the native panel's CATE comparison. R-learner and Bayesian causal forest admission remain planned.
 
 ## Integrative R-learner
 
@@ -74,9 +76,7 @@ Even `rho=0` still allows OBS labels to fit shared GP hyperparameters. It is not
 
 ## Reproduction status
 
-The original 0.3.0a1 checks required deterministic direct-source/wrapper agreement at absolute tolerance 1e-10 and relative tolerance 1e-8, repeated fresh fits, and independently derived analytic identities at 1e-12. Tiny fitted examples test API fidelity and reproducibility; they do not establish CATE accuracy or a method ranking. All direct-source/wrapper and repeated-fit prediction discrepancies were zero on those declared fixtures, including changes to unused tuning labels and target-reference rows. Independent GP covariance/posterior checks had maximum absolute error 1.11e-15; the native R hand-coefficient map was exact. The separate fitted d2 polynomial/standardization checks had maximum prediction-map error 2.22e-16. These checks establish the stated source-call and target-map scope, not paper-table reproduction.
-
-The original admission used package `0.3.0a1`; the source-control pilot uses `0.3.0a2`. The [pilot checks](../results/gp_source_pilot/checks_summary.json) pass 371 tests in the fresh numerical environment plus one separately configured CorNet integration test, 13 native/data preflight fits, independent reconstruction of all 576 risks and 160 source-exclusion groups, 18 prespecified fresh replays with identical predictions, and a byte-identical completed-run resume with no refits. See the [pilot evidence](../results/gp_source_pilot/README.md) for checks, failures retained from an out-of-panel helper attempt, and replay scope. These checks do not establish unseen-mechanism performance or source-paper table reproduction. Replay v0.2 results with their recorded producer source and environment. Adding optional methods changes package source fingerprints, so old result trees must not be resumed under this source tree.
+The [admission record](../results/native_adapter_admission/README.md) specifies direct-source/wrapper tolerances, fresh-process repeats and independent GP covariance/posterior and R prediction-map calculations. The [GP pilot evidence](../results/gp_source_pilot/README.md) separately checks source exclusion, retained-score reconstruction, a declared fresh-fit subset and completed-run resume. These checks have different scopes; neither substitutes for comparative accuracy or empirical validation. Use each study's recorded producer and numerical environment for replay. Do not resume a retained result tree under a different source fingerprint.
 
 
 ## Measured execution costs
@@ -93,7 +93,7 @@ All profiles completed within their 600-second limit under one CPU and a 4 GiB a
 
 The causal forest has two separately recorded RCT-only cost fixtures under its [own default settings and admission](CAUSAL_FOREST.md#recorded-admission). Those full-adapter measurements include provenance checks and process startup; their child RSS marks are not simultaneous whole-job peaks. Neither set of fixtures forecasts a full campaign or establishes a performance ranking.
 
-The pilot supplies a genuinely source-excluded GP control with frozen trial-target samples and budgets. The broader campaign still needs other matched RCT-only backbones and finalized tuning/resource limits. In particular, the native L1 `rlasso` fit does not automatically match the integrative SCAD regularizer. The planned broader method inventory remains incomplete.
+The GP supplies the admitted source-excluded control. Other matched backbones and common tuning/resource rules remain prospective; the native L1 `rlasso` fit does not match the integrative SCAD regularizer.
 
 
 ## Running the recorded checks

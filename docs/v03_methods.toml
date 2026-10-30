@@ -1,15 +1,15 @@
 schema_version = 1
 literature_cutoff = "2026-10-26"
-checked_at = "2026-10-27"
-status = "inventory_with_default_causal_forest_admission_and_fixed_gp_pilot"
+checked_at = "2026-10-30"
+status = "inventory_with_incomplete_native_panel_results_and_fixed_gp_pilot"
 understood_as = "Track source-backed method-by-target-by-assumption comparisons and their observed implementation readiness; this inventory is not an execution authorization."
 canonical_scope = "Inventory and scientific disposition only; executable pins stay in sources.lock.toml."
 machine_status_semantics = "Status fields are descriptive annotations, not executable enums. Disposition values are defined in status_vocabulary; this inventory is not an execution configuration."
-verification_scope = "Primary papers and official GitHub metadata/README/API documentation were read at the literature cutoff. Native admission covers Integrative R linear/quadratic, fixed-rho Causal-ICM and the default RCT-only honest causal forest; the fixed GP source-access pilot ran 576 fits. Other revisions remain candidate references, not dependency admission; per-method status and linked evidence define scope."
+verification_scope = "Primary papers and official GitHub metadata/README/API documentation were read at the literature cutoff. Native admission covers Integrative R linear/quadratic, fixed-rho Causal-ICM and the default RCT-only honest causal forest; the fixed GP source-access pilot ran 576 fits. The completed native/default panel retains incomplete coverage and separate verification; all 72 joint decisions and simultaneous precision remain withheld. Other revisions remain candidate references, not dependency admission; per-method status and linked evidence define scope."
 revision_query = "https://api.github.com/repos/{owner}/{repo}/commits?until=2026-10-26T14:59:59Z&per_page=1"
 pending_is_not_na = true
 code_redistributed = false
-v03_runtime_status = "Four native recipes have bounded cost and source-fidelity checks, including the default RCT-only causal forest under 0.3.0a4; the fixed GP and two source controls completed a 576-fit development pilot. See V03_ADAPTERS.md, CAUSAL_FOREST.md and the separate result packets. Broader comparative campaign pending."
+v03_runtime_status = "Four native recipes have bounded cost and source-fidelity checks; the fixed GP and two source controls completed a 576-fit pilot. The native/default panel completed its retained collection with failures, timeouts and three missing attempts; all 72 joint decisions and simultaneous precision remain withheld, and mean risks are descriptive. See V03_ADAPTERS.md and results/native_panel/SCIENTIFIC_RESULT.md. Remaining methods, matched controls and controlled tuning are prospective."
 
 [status_vocabulary]
 paper_verified = "Primary source consulted; not a theorem-by-theorem independent review."
@@ -59,9 +59,9 @@ source_status = "benchmark_design"
 code_status = "fixed_gp_source_control_implemented_other_backbones_pending"
 license_status = "Inherited from selected backbone; GP source obtained separately, not redistributed. Other backbones pending review."
 adapter_status = "partial_causal_icm_rct_only_implemented_other_backbones_pending"
-reproduction_status = "fixed_gp_native_source_exclusion_checks_and576_fit_pilot_passed_other_backbones_pending"
+reproduction_status = "fixed_gp_native_checks_576_fit_pilot_and_native_panel_executed_other_backbones_pending"
 disposition = "planned_core"
-reason = "Fixed GP control physically excludes OBS labels from fitting and shared-hyperparameter optimization. The six-condition pilot is a controlled development result, not an exact source-paper reproduction. Other matched backbones remain pending."
+reason = "Fixed GP control physically excludes OBS labels from fitting and shared-hyperparameter optimization. It ran in the six-condition pilot and all twelve native-panel conditions; see results/native_panel/SCIENTIFIC_RESULT.md for the panel's withheld joint inference. Other matched backbones remain pending; neither study reproduces a source-paper table."
 
 [[method]]
 id = "rct_rlearner"
@@ -103,9 +103,9 @@ code_commit_date = "2026-04-30"
 code_entrypoints = ["r-package/grf/R/causal_forest.R: causal_forest, predict.causal_forest", "r-package/grf/R/analysis_tools.R: get_forest_weights"]
 license_status = "GPL-3.0 declared by official repository; separately built source is executed without upstream redistribution."
 adapter_status = "implemented_default_rct_only_native_admitted"
-reproduction_status = "default_recipe_native_fidelity_independent_prediction_map_and_two_cost_profiles_passed_no_accuracy_comparison"
+reproduction_status = "default_recipe_native_checks_passed_native_panel_executed_with_incomplete_coverage"
 disposition = "planned_core"
-reason = "Official grf 2.6.1 default recipe admitted under package 0.3.0a4: six native fits, direct/fresh-process agreement, independent local-intercept prediction arithmetic and two bounded cost profiles. See CAUSAL_FOREST.md and results/causal_forest_admission. Comparative ranking remains pending."
+reason = "Official grf 2.6.1 default recipe passed direct/fresh-process agreement, independent prediction arithmetic and two bounded cost profiles. The native panel retains 734 successful forest fits, 31 timeouts and three missing attempts out of 768 requested; its joint inference remains withheld. See CAUSAL_FOREST.md, results/causal_forest_admission and results/native_panel/SCIENTIFIC_RESULT.md."
 
 [[method]]
 id = "rct_bcf"
@@ -169,9 +169,9 @@ code_commit_date = "2023-08-24"
 code_entrypoints = ["README.md", "R/intRlearner.R", "R/utils.R"]
 license_status = "No root license file; DESCRIPTION contains a placeholder field in sources.lock.toml. Separately obtained source only; not vendored."
 adapter_status = "implemented_fixed_linear_and_quadratic_native_admitted"
-reproduction_status = "fixed_recipe_native_fidelity_and_independent_checks_passed_v03_not_paper_tables"
+reproduction_status = "fixed_linear_and_quadratic_native_checks_passed_native_panel_executed_with_failures_not_paper_tables"
 disposition = "planned_core"
-reason = "Direct CATE/confounding-function comparator. Normal-target benchmark extension remains separate from the native Uniform[-1,1] target."
+reason = "Direct CATE/confounding-function comparator. Both bases ran in the native panel, retaining 64 quadratic failures on native CorNet at RCT512 and withheld joint inference; see results/native_panel/SCIENTIFIC_RESULT.md. Normal-target benchmark extension remains separate from the native Uniform[-1,1] target."
 
 [[method]]
 id = "elastic_2022"
@@ -304,9 +304,9 @@ code_commit_date = "2026-04-07"
 code_entrypoints = ["rebuttals/extrapolation.ipynb:cell3"]
 license_status = "No root license file in inspected revision; separately obtained source is executed without redistribution. Pinned numerical environment and bounded execution checked in native admission and pilot."
 adapter_status = "implemented_fixed_rho_native_admitted_with_two_source_controls"
-reproduction_status = "fixed_recipe_native_fidelity_and_independent_checks_passed576_fit_source_pilot_not_paper_tables"
+reproduction_status = "fixed_recipe_native_checks_576_fit_source_pilot_and_native_panel_executed_not_paper_tables"
 disposition = "planned_core"
-reason = "Fixed rho=0.5 all-X GP source-access pilot completed 576 fits with matched RCT-only and prior-shrunken OBS-start controls. Negative transfer at discrepancy 2 is specific to this fixed recipe and generator; selected borrowing and broader campaign remain pending."
+reason = "Fixed rho=0.5 all-X GP source-access pilot completed 576 fits with matched RCT-only and prior-shrunken OBS-start controls. Full and matched RCT-only also completed all twelve native-panel conditions; see results/native_panel/SCIENTIFIC_RESULT.md for its descriptive means and withheld joint inference. Pilot negative transfer at discrepancy 2 is specific to that generator; selected borrowing and broader comparisons remain prospective."
 
 [[method]]
 id = "cheng_cai_2021"
