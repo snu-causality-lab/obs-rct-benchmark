@@ -1,0 +1,4514 @@
+{
+  "alpha": 0.05,
+  "analysis_kind": "separate_incomplete_collection_analysis",
+  "expected_fits": 8448,
+  "family_complete": false,
+  "family_size": 72,
+  "family_withheld_reason": "missing and/or failed required paired fits; full family withheld",
+  "method_summaries": [
+    {
+      "conditional_on_success": false,
+      "mean_risk_inference_eligible": false,
+      "mean_risk_inference_reason": "fitted-risk moment and mean precision conditions not established",
+      "means": {
+        "cate_mse": 0.18780585900561786,
+        "root_pehe": 0.4203362106241715
+      },
+      "method": "rct_causal_forest",
+      "missing": 0,
+      "n_rct": 128,
+      "requested": 64,
+      "scenario_key": "structural:M0",
+      "status_counts": {
+        "success": 64
+      },
+      "successful": 64,
+      "terminal": 64
+    },
+    {
+      "conditional_on_success": false,
+      "mean_risk_inference_eligible": false,
+      "mean_risk_inference_reason": "fitted-risk moment and mean precision conditions not established",
+      "means": {
+        "cate_mse": 0.3199961364521899,
+        "root_pehe": 0.5533515179967329
+      },
+      "method": "rct_t_extra_trees",
+      "missing": 0,
+      "n_rct": 128,
+      "requested": 64,
+      "scenario_key": "structural:M0",
+      "status_counts": {
+        "success": 64
+      },
+      "successful": 64,
+      "terminal": 64
+    },
+    {
+      "conditional_on_success": false,
+      "mean_risk_inference_eligible": false,
+      "mean_risk_inference_reason": "fitted-risk moment and mean precision conditions not established",
+      "means": {
+        "cate_mse": 0.5319365571601167,
+        "root_pehe": 0.7176272600343928
+      },
+      "method": "rct_dr_extra_trees",
+      "missing": 0,
+      "n_rct": 128,
+      "requested": 64,
+      "scenario_key": "structural:M0",
+      "status_counts": {
+        "success": 64
+      },
+      "successful": 64,
+      "terminal": 64
+    },
+    {
+      "conditional_on_success": false,
+      "mean_risk_inference_eligible": false,
+      "mean_risk_inference_reason": "fitted-risk moment and mean precision conditions not established",
+      "means": {
+        "cate_mse": 0.22217882654406068,
+        "root_pehe": 0.46680566427507925
+      },
+      "method": "obs_t_extra_trees",
+      "missing": 0,
+      "n_rct": 128,
+      "requested": 64,
+      "scenario_key": "structural:M0",
+      "status_counts": {
+        "success": 64
+      },
+      "successful": 64,
+      "terminal": 64
+    },
+    {
+      "conditional_on_success": false,
+      "mean_risk_inference_eligible": false,
+      "mean_risk_inference_reason": "fitted-risk moment and mean precision conditions not established",
+      "means": {
+        "cate_mse": 0.20464101177752372,
+        "root_pehe": 0.44895107800320305
+      },
+      "method": "naive_pooled_t_extra_trees",
+      "missing": 0,
+      "n_rct": 128,
+      "requested": 64,
+      "scenario_key": "structural:M0",
+      "status_counts": {
+        "success": 64
+      },
+      "successful": 64,
+      "terminal": 64
+    },
+    {
+      "conditional_on_success": false,
+      "mean_risk_inference_eligible": false,
+      "mean_risk_inference_reason": "fitted-risk moment and mean precision conditions not established",
+      "means": {
+        "cate_mse": 0.2210534077257674,
+        "root_pehe": 0.45476184021610555
+      },
+      "method": "cornet_official",
+      "missing": 0,
+      "n_rct": 128,
+      "requested": 64,
+      "scenario_key": "structural:M0",
+      "status_counts": {
+        "success": 64
+      },
+      "successful": 64,
+      "terminal": 64
+    },
+    {
+      "conditional_on_success": false,
+      "mean_risk_inference_eligible": false,
+      "mean_risk_inference_reason": "fitted-risk moment and mean precision conditions not established",
+      "means": {
+        "cate_mse": 0.7304209856572693,
+        "root_pehe": 0.8263605762078363
+      },
+      "method": "datafusionppi",
+      "missing": 0,
+      "n_rct": 128,
+      "requested": 64,
+      "scenario_key": "structural:M0",
+      "status_counts": {
+        "success": 64
+      },
+      "successful": 64,
+      "terminal": 64
+    },
+    {
+      "conditional_on_success": false,
+      "mean_risk_inference_eligible": false,
+      "mean_risk_inference_reason": "fitted-risk moment and mean precision conditions not established",
+      "means": {
+        "cate_mse": 0.18673753599484041,
+        "root_pehe": 0.3984465663292199
+      },
+      "method": "integrative_r_linear",
+      "missing": 0,
+      "n_rct": 128,
+      "requested": 64,
+      "scenario_key": "structural:M0",
+      "status_counts": {
+        "success": 64
+      },
+      "successful": 64,
+      "terminal": 64
+    },
+    {
+      "conditional_on_success": false,
+      "mean_risk_inference_eligible": false,
+      "mean_risk_inference_reason": "fitted-risk moment and mean precision conditions not established",
+      "means": {
+        "cate_mse": 0.1545922354278636,
+        "root_pehe": 0.3666296978231156
+      },
+      "method": "integrative_r_quadratic",
+      "missing": 0,
+      "n_rct": 128,
+      "requested": 64,
+      "scenario_key": "structural:M0",
+      "status_counts": {
+        "success": 64
+      },
+      "successful": 64,
+      "terminal": 64
+    },
+    {
+      "conditional_on_success": false,
+      "mean_risk_inference_eligible": false,
+      "mean_risk_inference_reason": "fitted-risk moment and mean precision conditions not established",
+      "means": {
+        "cate_mse": 0.3232231149949485,
+        "root_pehe": 0.5536956320702323
+      },
+      "method": "causal_icm_fixed",
+      "missing": 0,
+      "n_rct": 128,
+      "requested": 64,
+      "scenario_key": "structural:M0",
+      "status_counts": {
+        "success": 64
+      },
+      "successful": 64,
+      "terminal": 64
+    },
+    {
+      "conditional_on_success": false,
+      "mean_risk_inference_eligible": false,
+      "mean_risk_inference_reason": "fitted-risk moment and mean precision conditions not established",
+      "means": {
+        "cate_mse": 0.5569774083420274,
+        "root_pehe": 0.7155796109526613
+      },
+      "method": "causal_icm_rct_only",
+      "missing": 0,
+      "n_rct": 128,
+      "requested": 64,
+      "scenario_key": "structural:M0",
+      "status_counts": {
+        "success": 64
+      },
+      "successful": 64,
+      "terminal": 64
+    },
+    {
+      "conditional_on_success": true,
+      "mean_risk_inference_eligible": false,
+      "mean_risk_inference_reason": "fitted-risk moment and mean precision conditions not established",
+      "means": {
+        "cate_mse": 0.08796960641854355,
+        "root_pehe": 0.2879451453274911
+      },
+      "method": "rct_causal_forest",
+      "missing": 1,
+      "n_rct": 512,
+      "requested": 64,
+      "scenario_key": "structural:M0",
+      "status_counts": {
+        "success": 54,
+        "timeout": 9
+      },
+      "successful": 54,
+      "terminal": 63
+    },
+    {
+      "conditional_on_success": false,
+      "mean_risk_inference_eligible": false,
+      "mean_risk_inference_reason": "fitted-risk moment and mean precision conditions not established",
+      "means": {
+        "cate_mse": 0.21730870944184993,
+        "root_pehe": 0.4627510316890786
+      },
+      "method": "rct_t_extra_trees",
+      "missing": 0,
+      "n_rct": 512,
+      "requested": 64,
+      "scenario_key": "structural:M0",
+      "status_counts": {
+        "success": 64
+      },
+      "successful": 64,
+      "terminal": 64
+    },
+    {
+      "conditional_on_success": false,
+      "mean_risk_inference_eligible": false,
+      "mean_risk_inference_reason": "fitted-risk moment and mean precision conditions not established",
+      "means": {
+        "cate_mse": 0.3276027885421106,
+        "root_pehe": 0.5695470770091764
+      },
+      "method": "rct_dr_extra_trees",
+      "missing": 0,
+      "n_rct": 512,
+      "requested": 64,
+      "scenario_key": "structural:M0",
+      "status_counts": {
+        "success": 64
+      },
+      "successful": 64,
+      "terminal": 64
+    },
+    {
+      "conditional_on_success": false,
+      "mean_risk_inference_eligible": false,
+      "mean_risk_inference_reason": "fitted-risk moment and mean precision conditions not established",
+      "means": {
+        "cate_mse": 0.22217882654406068,
+        "root_pehe": 0.46680566427507925
+      },
+      "method": "obs_t_extra_trees",
+      "missing": 0,
+      "n_rct": 512,
+      "requested": 64,
+      "scenario_key": "structural:M0",
+      "status_counts": {
+        "success": 64
+      },
+      "successful": 64,
+      "terminal": 64
+    },
+    {
+      "conditional_on_success": false,
+      "mean_risk_inference_eligible": false,
+      "mean_risk_inference_reason": "fitted-risk moment and mean precision conditions not established",
+      "means": {
+        "cate_mse": 0.1858788636159191,
+        "root_pehe": 0.42867963335252496
+      },
+      "method": "naive_pooled_t_extra_trees",
+      "missing": 0,
+      "n_rct": 512,
+      "requested": 64,
+      "scenario_key": "structural:M0",
+      "status_counts": {
+        "success": 64
+      },
+      "successful": 64,
+      "terminal": 64
+    },
+    {
+      "conditional_on_success": false,
+      "mean_risk_inference_eligible": false,
+      "mean_risk_inference_reason": "fitted-risk moment and mean precision conditions not established",
+      "means": {
+        "cate_mse": 0.10667694611997594,
+        "root_pehe": 0.3185979601720518
+      },
+      "method": "cornet_official",
+      "missing": 0,
+      "n_rct": 512,
+      "requested": 64,
+      "scenario_key": "structural:M0",
+      "status_counts": {
+        "success": 64
+      },
+      "successful": 64,
+      "terminal": 64
+    },
+    {
+      "conditional_on_success": false,
+      "mean_risk_inference_eligible": false,
+      "mean_risk_inference_reason": "fitted-risk moment and mean precision conditions not established",
+      "means": {
+        "cate_mse": 0.17355955628140216,
+        "root_pehe": 0.40224407818196695
+      },
+      "method": "datafusionppi",
+      "missing": 0,
+      "n_rct": 512,
+      "requested": 64,
+      "scenario_key": "structural:M0",
+      "status_counts": {
+        "success": 64
+      },
+      "successful": 64,
+      "terminal": 64
+    },
+    {
+      "conditional_on_success": false,
+      "mean_risk_inference_eligible": false,
+      "mean_risk_inference_reason": "fitted-risk moment and mean precision conditions not established",
+      "means": {
+        "cate_mse": 0.08775871285206402,
+        "root_pehe": 0.28215817141997807
+      },
+      "method": "integrative_r_linear",
+      "missing": 0,
+      "n_rct": 512,
+      "requested": 64,
+      "scenario_key": "structural:M0",
+      "status_counts": {
+        "success": 64
+      },
+      "successful": 64,
+      "terminal": 64
+    },
+    {
+      "conditional_on_success": false,
+      "mean_risk_inference_eligible": false,
+      "mean_risk_inference_reason": "fitted-risk moment and mean precision conditions not established",
+      "means": {
+        "cate_mse": 0.09643613344915247,
+        "root_pehe": 0.29262272984715404
+      },
+      "method": "integrative_r_quadratic",
+      "missing": 0,
+      "n_rct": 512,
+      "requested": 64,
+      "scenario_key": "structural:M0",
+      "status_counts": {
+        "success": 64
+      },
+      "successful": 64,
+      "terminal": 64
+    },
+    {
+      "conditional_on_success": false,
+      "mean_risk_inference_eligible": false,
+      "mean_risk_inference_reason": "fitted-risk moment and mean precision conditions not established",
+      "means": {
+        "cate_mse": 0.1680828432691168,
+        "root_pehe": 0.40319648219728804
+      },
+      "method": "causal_icm_fixed",
+      "missing": 0,
+      "n_rct": 512,
+      "requested": 64,
+      "scenario_key": "structural:M0",
+      "status_counts": {
+        "success": 64
+      },
+      "successful": 64,
+      "terminal": 64
+    },
+    {
+      "conditional_on_success": false,
+      "mean_risk_inference_eligible": false,
+      "mean_risk_inference_reason": "fitted-risk moment and mean precision conditions not established",
+      "means": {
+        "cate_mse": 0.18917122615734502,
+        "root_pehe": 0.4267942101362002
+      },
+      "method": "causal_icm_rct_only",
+      "missing": 0,
+      "n_rct": 512,
+      "requested": 64,
+      "scenario_key": "structural:M0",
+      "status_counts": {
+        "success": 64
+      },
+      "successful": 64,
+      "terminal": 64
+    },
+    {
+      "conditional_on_success": false,
+      "mean_risk_inference_eligible": false,
+      "mean_risk_inference_reason": "fitted-risk moment and mean precision conditions not established",
+      "means": {
+        "cate_mse": 0.18385706549679343,
+        "root_pehe": 0.4137363803187994
+      },
+      "method": "rct_causal_forest",
+      "missing": 0,
+      "n_rct": 128,
+      "requested": 64,
+      "scenario_key": "structural:M2",
+      "status_counts": {
+        "success": 64
+      },
+      "successful": 64,
+      "terminal": 64
+    },
+    {
+      "conditional_on_success": false,
+      "mean_risk_inference_eligible": false,
+      "mean_risk_inference_reason": "fitted-risk moment and mean precision conditions not established",
+      "means": {
+        "cate_mse": 0.3085763779546036,
+        "root_pehe": 0.541698654077875
+      },
+      "method": "rct_t_extra_trees",
+      "missing": 0,
+      "n_rct": 128,
+      "requested": 64,
+      "scenario_key": "structural:M2",
+      "status_counts": {
+        "success": 64
+      },
+      "successful": 64,
+      "terminal": 64
+    },
+    {
+      "conditional_on_success": false,
+      "mean_risk_inference_eligible": false,
+      "mean_risk_inference_reason": "fitted-risk moment and mean precision conditions not established",
+      "means": {
+        "cate_mse": 0.49190374666032466,
+        "root_pehe": 0.6902770585232892
+      },
+      "method": "rct_dr_extra_trees",
+      "missing": 0,
+      "n_rct": 128,
+      "requested": 64,
+      "scenario_key": "structural:M2",
+      "status_counts": {
+        "success": 64
+      },
+      "successful": 64,
+      "terminal": 64
+    },
+    {
+      "conditional_on_success": false,
+      "mean_risk_inference_eligible": false,
+      "mean_risk_inference_reason": "fitted-risk moment and mean precision conditions not established",
+      "means": {
+        "cate_mse": 0.9588801715474444,
+        "root_pehe": 0.9698293079211283
+      },
+      "method": "obs_t_extra_trees",
+      "missing": 0,
+      "n_rct": 128,
+      "requested": 64,
+      "scenario_key": "structural:M2",
+      "status_counts": {
+        "success": 64
+      },
+      "successful": 64,
+      "terminal": 64
+    },
+    {
+      "conditional_on_success": false,
+      "mean_risk_inference_eligible": false,
+      "mean_risk_inference_reason": "fitted-risk moment and mean precision conditions not established",
+      "means": {
+        "cate_mse": 0.6877358369314502,
+        "root_pehe": 0.8210320360386939
+      },
+      "method": "naive_pooled_t_extra_trees",
+      "missing": 0,
+      "n_rct": 128,
+      "requested": 64,
+      "scenario_key": "structural:M2",
+      "status_counts": {
+        "success": 64
+      },
+      "successful": 64,
+      "terminal": 64
+    },
+    {
+      "conditional_on_success": false,
+      "mean_risk_inference_eligible": false,
+      "mean_risk_inference_reason": "fitted-risk moment and mean precision conditions not established",
+      "means": {
+        "cate_mse": 0.24331483154020456,
+        "root_pehe": 0.47387830000454634
+      },
+      "method": "cornet_official",
+      "missing": 0,
+      "n_rct": 128,
+      "requested": 64,
+      "scenario_key": "structural:M2",
+      "status_counts": {
+        "success": 64
+      },
+      "successful": 64,
+      "terminal": 64
+    },
+    {
+      "conditional_on_success": false,
+      "mean_risk_inference_eligible": false,
+      "mean_risk_inference_reason": "fitted-risk moment and mean precision conditions not established",
+      "means": {
+        "cate_mse": 0.9003510792568616,
+        "root_pehe": 0.9203766600921547
+      },
+      "method": "datafusionppi",
+      "missing": 0,
+      "n_rct": 128,
+      "requested": 64,
+      "scenario_key": "structural:M2",
+      "status_counts": {
+        "success": 64
+      },
+      "successful": 64,
+      "terminal": 64
+    },
+    {
+      "conditional_on_success": false,
+      "mean_risk_inference_eligible": false,
+      "mean_risk_inference_reason": "fitted-risk moment and mean precision conditions not established",
+      "means": {
+        "cate_mse": 0.3828681405410108,
+        "root_pehe": 0.5758255870799858
+      },
+      "method": "integrative_r_linear",
+      "missing": 0,
+      "n_rct": 128,
+      "requested": 64,
+      "scenario_key": "structural:M2",
+      "status_counts": {
+        "success": 64
+      },
+      "successful": 64,
+      "terminal": 64
+    },
+    {
+      "conditional_on_success": false,
+      "mean_risk_inference_eligible": false,
+      "mean_risk_inference_reason": "fitted-risk moment and mean precision conditions not established",
+      "means": {
+        "cate_mse": 0.47623428063215506,
+        "root_pehe": 0.6452166224655936
+      },
+      "method": "integrative_r_quadratic",
+      "missing": 0,
+      "n_rct": 128,
+      "requested": 64,
+      "scenario_key": "structural:M2",
+      "status_counts": {
+        "success": 64
+      },
+      "successful": 64,
+      "terminal": 64
+    },
+    {
+      "conditional_on_success": false,
+      "mean_risk_inference_eligible": false,
+      "mean_risk_inference_reason": "fitted-risk moment and mean precision conditions not established",
+      "means": {
+        "cate_mse": 0.3512823884816202,
+        "root_pehe": 0.5764061706286155
+      },
+      "method": "causal_icm_fixed",
+      "missing": 0,
+      "n_rct": 128,
+      "requested": 64,
+      "scenario_key": "structural:M2",
+      "status_counts": {
+        "success": 64
+      },
+      "successful": 64,
+      "terminal": 64
+    },
+    {
+      "conditional_on_success": false,
+      "mean_risk_inference_eligible": false,
+      "mean_risk_inference_reason": "fitted-risk moment and mean precision conditions not established",
+      "means": {
+        "cate_mse": 0.5367499849491558,
+        "root_pehe": 0.7066834545454381
+      },
+      "method": "causal_icm_rct_only",
+      "missing": 0,
+      "n_rct": 128,
+      "requested": 64,
+      "scenario_key": "structural:M2",
+      "status_counts": {
+        "success": 64
+      },
+      "successful": 64,
+      "terminal": 64
+    },
+    {
+      "conditional_on_success": false,
+      "mean_risk_inference_eligible": false,
+      "mean_risk_inference_reason": "fitted-risk moment and mean precision conditions not established",
+      "means": {
+        "cate_mse": 0.08458164945287738,
+        "root_pehe": 0.2823675995731005
+      },
+      "method": "rct_causal_forest",
+      "missing": 0,
+      "n_rct": 512,
+      "requested": 64,
+      "scenario_key": "structural:M2",
+      "status_counts": {
+        "success": 64
+      },
+      "successful": 64,
+      "terminal": 64
+    },
+    {
+      "conditional_on_success": false,
+      "mean_risk_inference_eligible": false,
+      "mean_risk_inference_reason": "fitted-risk moment and mean precision conditions not established",
+      "means": {
+        "cate_mse": 0.20497181004321263,
+        "root_pehe": 0.44871411209911666
+      },
+      "method": "rct_t_extra_trees",
+      "missing": 0,
+      "n_rct": 512,
+      "requested": 64,
+      "scenario_key": "structural:M2",
+      "status_counts": {
+        "success": 64
+      },
+      "successful": 64,
+      "terminal": 64
+    },
+    {
+      "conditional_on_success": false,
+      "mean_risk_inference_eligible": false,
+      "mean_risk_inference_reason": "fitted-risk moment and mean precision conditions not established",
+      "means": {
+        "cate_mse": 0.30620439513748865,
+        "root_pehe": 0.5508381774744542
+      },
+      "method": "rct_dr_extra_trees",
+      "missing": 0,
+      "n_rct": 512,
+      "requested": 64,
+      "scenario_key": "structural:M2",
+      "status_counts": {
+        "success": 64
+      },
+      "successful": 64,
+      "terminal": 64
+    },
+    {
+      "conditional_on_success": false,
+      "mean_risk_inference_eligible": false,
+      "mean_risk_inference_reason": "fitted-risk moment and mean precision conditions not established",
+      "means": {
+        "cate_mse": 0.9588801715474444,
+        "root_pehe": 0.9698293079211283
+      },
+      "method": "obs_t_extra_trees",
+      "missing": 0,
+      "n_rct": 512,
+      "requested": 64,
+      "scenario_key": "structural:M2",
+      "status_counts": {
+        "success": 64
+      },
+      "successful": 64,
+      "terminal": 64
+    },
+    {
+      "conditional_on_success": false,
+      "mean_risk_inference_eligible": false,
+      "mean_risk_inference_reason": "fitted-risk moment and mean precision conditions not established",
+      "means": {
+        "cate_mse": 0.3418746225264301,
+        "root_pehe": 0.5790793453712704
+      },
+      "method": "naive_pooled_t_extra_trees",
+      "missing": 0,
+      "n_rct": 512,
+      "requested": 64,
+      "scenario_key": "structural:M2",
+      "status_counts": {
+        "success": 64
+      },
+      "successful": 64,
+      "terminal": 64
+    },
+    {
+      "conditional_on_success": false,
+      "mean_risk_inference_eligible": false,
+      "mean_risk_inference_reason": "fitted-risk moment and mean precision conditions not established",
+      "means": {
+        "cate_mse": 0.1261466392945539,
+        "root_pehe": 0.3468287881604358
+      },
+      "method": "cornet_official",
+      "missing": 0,
+      "n_rct": 512,
+      "requested": 64,
+      "scenario_key": "structural:M2",
+      "status_counts": {
+        "success": 64
+      },
+      "successful": 64,
+      "terminal": 64
+    },
+    {
+      "conditional_on_success": false,
+      "mean_risk_inference_eligible": false,
+      "mean_risk_inference_reason": "fitted-risk moment and mean precision conditions not established",
+      "means": {
+        "cate_mse": 0.1743107780666103,
+        "root_pehe": 0.405479145682234
+      },
+      "method": "datafusionppi",
+      "missing": 0,
+      "n_rct": 512,
+      "requested": 64,
+      "scenario_key": "structural:M2",
+      "status_counts": {
+        "success": 64
+      },
+      "successful": 64,
+      "terminal": 64
+    },
+    {
+      "conditional_on_success": false,
+      "mean_risk_inference_eligible": false,
+      "mean_risk_inference_reason": "fitted-risk moment and mean precision conditions not established",
+      "means": {
+        "cate_mse": 0.11527639135257285,
+        "root_pehe": 0.3275053594923618
+      },
+      "method": "integrative_r_linear",
+      "missing": 0,
+      "n_rct": 512,
+      "requested": 64,
+      "scenario_key": "structural:M2",
+      "status_counts": {
+        "success": 64
+      },
+      "successful": 64,
+      "terminal": 64
+    },
+    {
+      "conditional_on_success": false,
+      "mean_risk_inference_eligible": false,
+      "mean_risk_inference_reason": "fitted-risk moment and mean precision conditions not established",
+      "means": {
+        "cate_mse": 0.11051854686811032,
+        "root_pehe": 0.3158243755523614
+      },
+      "method": "integrative_r_quadratic",
+      "missing": 0,
+      "n_rct": 512,
+      "requested": 64,
+      "scenario_key": "structural:M2",
+      "status_counts": {
+        "success": 64
+      },
+      "successful": 64,
+      "terminal": 64
+    },
+    {
+      "conditional_on_success": false,
+      "mean_risk_inference_eligible": false,
+      "mean_risk_inference_reason": "fitted-risk moment and mean precision conditions not established",
+      "means": {
+        "cate_mse": 0.16670219461977775,
+        "root_pehe": 0.40186354347008024
+      },
+      "method": "causal_icm_fixed",
+      "missing": 0,
+      "n_rct": 512,
+      "requested": 64,
+      "scenario_key": "structural:M2",
+      "status_counts": {
+        "success": 64
+      },
+      "successful": 64,
+      "terminal": 64
+    },
+    {
+      "conditional_on_success": false,
+      "mean_risk_inference_eligible": false,
+      "mean_risk_inference_reason": "fitted-risk moment and mean precision conditions not established",
+      "means": {
+        "cate_mse": 0.18774746121852062,
+        "root_pehe": 0.4260337946836699
+      },
+      "method": "causal_icm_rct_only",
+      "missing": 0,
+      "n_rct": 512,
+      "requested": 64,
+      "scenario_key": "structural:M2",
+      "status_counts": {
+        "success": 64
+      },
+      "successful": 64,
+      "terminal": 64
+    },
+    {
+      "conditional_on_success": true,
+      "mean_risk_inference_eligible": false,
+      "mean_risk_inference_reason": "fitted-risk moment and mean precision conditions not established",
+      "means": {
+        "cate_mse": 0.15478871506479586,
+        "root_pehe": 0.382746044088555
+      },
+      "method": "rct_causal_forest",
+      "missing": 0,
+      "n_rct": 128,
+      "requested": 64,
+      "scenario_key": "structural:M10",
+      "status_counts": {
+        "success": 57,
+        "timeout": 7
+      },
+      "successful": 57,
+      "terminal": 64
+    },
+    {
+      "conditional_on_success": false,
+      "mean_risk_inference_eligible": false,
+      "mean_risk_inference_reason": "fitted-risk moment and mean precision conditions not established",
+      "means": {
+        "cate_mse": 0.2426611950279295,
+        "root_pehe": 0.4832533995318124
+      },
+      "method": "rct_t_extra_trees",
+      "missing": 0,
+      "n_rct": 128,
+      "requested": 64,
+      "scenario_key": "structural:M10",
+      "status_counts": {
+        "success": 64
+      },
+      "successful": 64,
+      "terminal": 64
+    },
+    {
+      "conditional_on_success": false,
+      "mean_risk_inference_eligible": false,
+      "mean_risk_inference_reason": "fitted-risk moment and mean precision conditions not established",
+      "means": {
+        "cate_mse": 0.3827008845954813,
+        "root_pehe": 0.6101727427829351
+      },
+      "method": "rct_dr_extra_trees",
+      "missing": 0,
+      "n_rct": 128,
+      "requested": 64,
+      "scenario_key": "structural:M10",
+      "status_counts": {
+        "success": 64
+      },
+      "successful": 64,
+      "terminal": 64
+    },
+    {
+      "conditional_on_success": false,
+      "mean_risk_inference_eligible": false,
+      "mean_risk_inference_reason": "fitted-risk moment and mean precision conditions not established",
+      "means": {
+        "cate_mse": 0.9929322075285404,
+        "root_pehe": 0.9869448662438913
+      },
+      "method": "obs_t_extra_trees",
+      "missing": 0,
+      "n_rct": 128,
+      "requested": 64,
+      "scenario_key": "structural:M10",
+      "status_counts": {
+        "success": 64
+      },
+      "successful": 64,
+      "terminal": 64
+    },
+    {
+      "conditional_on_success": false,
+      "mean_risk_inference_eligible": false,
+      "mean_risk_inference_reason": "fitted-risk moment and mean precision conditions not established",
+      "means": {
+        "cate_mse": 0.7062025238522315,
+        "root_pehe": 0.8329424146779015
+      },
+      "method": "naive_pooled_t_extra_trees",
+      "missing": 0,
+      "n_rct": 128,
+      "requested": 64,
+      "scenario_key": "structural:M10",
+      "status_counts": {
+        "success": 64
+      },
+      "successful": 64,
+      "terminal": 64
+    },
+    {
+      "conditional_on_success": false,
+      "mean_risk_inference_eligible": false,
+      "mean_risk_inference_reason": "fitted-risk moment and mean precision conditions not established",
+      "means": {
+        "cate_mse": 0.2254070225306549,
+        "root_pehe": 0.46451755461698047
+      },
+      "method": "cornet_official",
+      "missing": 0,
+      "n_rct": 128,
+      "requested": 64,
+      "scenario_key": "structural:M10",
+      "status_counts": {
+        "success": 64
+      },
+      "successful": 64,
+      "terminal": 64
+    },
+    {
+      "conditional_on_success": false,
+      "mean_risk_inference_eligible": false,
+      "mean_risk_inference_reason": "fitted-risk moment and mean precision conditions not established",
+      "means": {
+        "cate_mse": 0.5650225678009424,
+        "root_pehe": 0.7149068585832453
+      },
+      "method": "datafusionppi",
+      "missing": 0,
+      "n_rct": 128,
+      "requested": 64,
+      "scenario_key": "structural:M10",
+      "status_counts": {
+        "success": 64
+      },
+      "successful": 64,
+      "terminal": 64
+    },
+    {
+      "conditional_on_success": false,
+      "mean_risk_inference_eligible": false,
+      "mean_risk_inference_reason": "fitted-risk moment and mean precision conditions not established",
+      "means": {
+        "cate_mse": 0.2924572835131916,
+        "root_pehe": 0.5099814227798031
+      },
+      "method": "integrative_r_linear",
+      "missing": 0,
+      "n_rct": 128,
+      "requested": 64,
+      "scenario_key": "structural:M10",
+      "status_counts": {
+        "success": 64
+      },
+      "successful": 64,
+      "terminal": 64
+    },
+    {
+      "conditional_on_success": false,
+      "mean_risk_inference_eligible": false,
+      "mean_risk_inference_reason": "fitted-risk moment and mean precision conditions not established",
+      "means": {
+        "cate_mse": 0.3202203529793538,
+        "root_pehe": 0.5216928733608801
+      },
+      "method": "integrative_r_quadratic",
+      "missing": 0,
+      "n_rct": 128,
+      "requested": 64,
+      "scenario_key": "structural:M10",
+      "status_counts": {
+        "success": 64
+      },
+      "successful": 64,
+      "terminal": 64
+    },
+    {
+      "conditional_on_success": false,
+      "mean_risk_inference_eligible": false,
+      "mean_risk_inference_reason": "fitted-risk moment and mean precision conditions not established",
+      "means": {
+        "cate_mse": 0.3149718210633929,
+        "root_pehe": 0.549931327072096
+      },
+      "method": "causal_icm_fixed",
+      "missing": 0,
+      "n_rct": 128,
+      "requested": 64,
+      "scenario_key": "structural:M10",
+      "status_counts": {
+        "success": 64
+      },
+      "successful": 64,
+      "terminal": 64
+    },
+    {
+      "conditional_on_success": false,
+      "mean_risk_inference_eligible": false,
+      "mean_risk_inference_reason": "fitted-risk moment and mean precision conditions not established",
+      "means": {
+        "cate_mse": 0.42929235750297073,
+        "root_pehe": 0.6340041076808063
+      },
+      "method": "causal_icm_rct_only",
+      "missing": 0,
+      "n_rct": 128,
+      "requested": 64,
+      "scenario_key": "structural:M10",
+      "status_counts": {
+        "success": 64
+      },
+      "successful": 64,
+      "terminal": 64
+    },
+    {
+      "conditional_on_success": false,
+      "mean_risk_inference_eligible": false,
+      "mean_risk_inference_reason": "fitted-risk moment and mean precision conditions not established",
+      "means": {
+        "cate_mse": 0.07088535827330723,
+        "root_pehe": 0.25892907931959547
+      },
+      "method": "rct_causal_forest",
+      "missing": 0,
+      "n_rct": 512,
+      "requested": 64,
+      "scenario_key": "structural:M10",
+      "status_counts": {
+        "success": 64
+      },
+      "successful": 64,
+      "terminal": 64
+    },
+    {
+      "conditional_on_success": false,
+      "mean_risk_inference_eligible": false,
+      "mean_risk_inference_reason": "fitted-risk moment and mean precision conditions not established",
+      "means": {
+        "cate_mse": 0.16000349762738497,
+        "root_pehe": 0.3962343894878629
+      },
+      "method": "rct_t_extra_trees",
+      "missing": 0,
+      "n_rct": 512,
+      "requested": 64,
+      "scenario_key": "structural:M10",
+      "status_counts": {
+        "success": 64
+      },
+      "successful": 64,
+      "terminal": 64
+    },
+    {
+      "conditional_on_success": false,
+      "mean_risk_inference_eligible": false,
+      "mean_risk_inference_reason": "fitted-risk moment and mean precision conditions not established",
+      "means": {
+        "cate_mse": 0.23404342213653206,
+        "root_pehe": 0.4815260641934798
+      },
+      "method": "rct_dr_extra_trees",
+      "missing": 0,
+      "n_rct": 512,
+      "requested": 64,
+      "scenario_key": "structural:M10",
+      "status_counts": {
+        "success": 64
+      },
+      "successful": 64,
+      "terminal": 64
+    },
+    {
+      "conditional_on_success": false,
+      "mean_risk_inference_eligible": false,
+      "mean_risk_inference_reason": "fitted-risk moment and mean precision conditions not established",
+      "means": {
+        "cate_mse": 0.9929322075285404,
+        "root_pehe": 0.9869448662438913
+      },
+      "method": "obs_t_extra_trees",
+      "missing": 0,
+      "n_rct": 512,
+      "requested": 64,
+      "scenario_key": "structural:M10",
+      "status_counts": {
+        "success": 64
+      },
+      "successful": 64,
+      "terminal": 64
+    },
+    {
+      "conditional_on_success": false,
+      "mean_risk_inference_eligible": false,
+      "mean_risk_inference_reason": "fitted-risk moment and mean precision conditions not established",
+      "means": {
+        "cate_mse": 0.3350986701689011,
+        "root_pehe": 0.5736344907133162
+      },
+      "method": "naive_pooled_t_extra_trees",
+      "missing": 0,
+      "n_rct": 512,
+      "requested": 64,
+      "scenario_key": "structural:M10",
+      "status_counts": {
+        "success": 64
+      },
+      "successful": 64,
+      "terminal": 64
+    },
+    {
+      "conditional_on_success": false,
+      "mean_risk_inference_eligible": false,
+      "mean_risk_inference_reason": "fitted-risk moment and mean precision conditions not established",
+      "means": {
+        "cate_mse": 0.13275955911883872,
+        "root_pehe": 0.3572918437828107
+      },
+      "method": "cornet_official",
+      "missing": 0,
+      "n_rct": 512,
+      "requested": 64,
+      "scenario_key": "structural:M10",
+      "status_counts": {
+        "success": 64
+      },
+      "successful": 64,
+      "terminal": 64
+    },
+    {
+      "conditional_on_success": false,
+      "mean_risk_inference_eligible": false,
+      "mean_risk_inference_reason": "fitted-risk moment and mean precision conditions not established",
+      "means": {
+        "cate_mse": 0.14470153947908881,
+        "root_pehe": 0.36154923527067606
+      },
+      "method": "datafusionppi",
+      "missing": 0,
+      "n_rct": 512,
+      "requested": 64,
+      "scenario_key": "structural:M10",
+      "status_counts": {
+        "success": 64
+      },
+      "successful": 64,
+      "terminal": 64
+    },
+    {
+      "conditional_on_success": false,
+      "mean_risk_inference_eligible": false,
+      "mean_risk_inference_reason": "fitted-risk moment and mean precision conditions not established",
+      "means": {
+        "cate_mse": 0.09675375088704165,
+        "root_pehe": 0.30001008574333715
+      },
+      "method": "integrative_r_linear",
+      "missing": 0,
+      "n_rct": 512,
+      "requested": 64,
+      "scenario_key": "structural:M10",
+      "status_counts": {
+        "success": 64
+      },
+      "successful": 64,
+      "terminal": 64
+    },
+    {
+      "conditional_on_success": false,
+      "mean_risk_inference_eligible": false,
+      "mean_risk_inference_reason": "fitted-risk moment and mean precision conditions not established",
+      "means": {
+        "cate_mse": 0.09755060127997711,
+        "root_pehe": 0.30019801311750677
+      },
+      "method": "integrative_r_quadratic",
+      "missing": 0,
+      "n_rct": 512,
+      "requested": 64,
+      "scenario_key": "structural:M10",
+      "status_counts": {
+        "success": 64
+      },
+      "successful": 64,
+      "terminal": 64
+    },
+    {
+      "conditional_on_success": false,
+      "mean_risk_inference_eligible": false,
+      "mean_risk_inference_reason": "fitted-risk moment and mean precision conditions not established",
+      "means": {
+        "cate_mse": 0.14092049982642746,
+        "root_pehe": 0.3706221439715335
+      },
+      "method": "causal_icm_fixed",
+      "missing": 0,
+      "n_rct": 512,
+      "requested": 64,
+      "scenario_key": "structural:M10",
+      "status_counts": {
+        "success": 64
+      },
+      "successful": 64,
+      "terminal": 64
+    },
+    {
+      "conditional_on_success": false,
+      "mean_risk_inference_eligible": false,
+      "mean_risk_inference_reason": "fitted-risk moment and mean precision conditions not established",
+      "means": {
+        "cate_mse": 0.1525752932242576,
+        "root_pehe": 0.3849966592591228
+      },
+      "method": "causal_icm_rct_only",
+      "missing": 0,
+      "n_rct": 512,
+      "requested": 64,
+      "scenario_key": "structural:M10",
+      "status_counts": {
+        "success": 64
+      },
+      "successful": 64,
+      "terminal": 64
+    },
+    {
+      "conditional_on_success": true,
+      "mean_risk_inference_eligible": false,
+      "mean_risk_inference_reason": "fitted-risk moment and mean precision conditions not established",
+      "means": {
+        "cate_mse": 0.1756509412652779,
+        "root_pehe": 0.4007976628574452
+      },
+      "method": "rct_causal_forest",
+      "missing": 0,
+      "n_rct": 128,
+      "requested": 64,
+      "scenario_key": "addendum:C08@trial_target",
+      "status_counts": {
+        "success": 57,
+        "timeout": 7
+      },
+      "successful": 57,
+      "terminal": 64
+    },
+    {
+      "conditional_on_success": false,
+      "mean_risk_inference_eligible": false,
+      "mean_risk_inference_reason": "fitted-risk moment and mean precision conditions not established",
+      "means": {
+        "cate_mse": 0.26232956760700693,
+        "root_pehe": 0.49587842204349153
+      },
+      "method": "rct_t_extra_trees",
+      "missing": 0,
+      "n_rct": 128,
+      "requested": 64,
+      "scenario_key": "addendum:C08@trial_target",
+      "status_counts": {
+        "success": 64
+      },
+      "successful": 64,
+      "terminal": 64
+    },
+    {
+      "conditional_on_success": false,
+      "mean_risk_inference_eligible": false,
+      "mean_risk_inference_reason": "fitted-risk moment and mean precision conditions not established",
+      "means": {
+        "cate_mse": 0.41602214168140994,
+        "root_pehe": 0.6357638564518576
+      },
+      "method": "rct_dr_extra_trees",
+      "missing": 0,
+      "n_rct": 128,
+      "requested": 64,
+      "scenario_key": "addendum:C08@trial_target",
+      "status_counts": {
+        "success": 64
+      },
+      "successful": 64,
+      "terminal": 64
+    },
+    {
+      "conditional_on_success": false,
+      "mean_risk_inference_eligible": false,
+      "mean_risk_inference_reason": "fitted-risk moment and mean precision conditions not established",
+      "means": {
+        "cate_mse": 1.5818330367364184,
+        "root_pehe": 1.2511391183221314
+      },
+      "method": "obs_t_extra_trees",
+      "missing": 0,
+      "n_rct": 128,
+      "requested": 64,
+      "scenario_key": "addendum:C08@trial_target",
+      "status_counts": {
+        "success": 64
+      },
+      "successful": 64,
+      "terminal": 64
+    },
+    {
+      "conditional_on_success": false,
+      "mean_risk_inference_eligible": false,
+      "mean_risk_inference_reason": "fitted-risk moment and mean precision conditions not established",
+      "means": {
+        "cate_mse": 1.0596461082140434,
+        "root_pehe": 1.0234079608956614
+      },
+      "method": "naive_pooled_t_extra_trees",
+      "missing": 0,
+      "n_rct": 128,
+      "requested": 64,
+      "scenario_key": "addendum:C08@trial_target",
+      "status_counts": {
+        "success": 64
+      },
+      "successful": 64,
+      "terminal": 64
+    },
+    {
+      "conditional_on_success": false,
+      "mean_risk_inference_eligible": false,
+      "mean_risk_inference_reason": "fitted-risk moment and mean precision conditions not established",
+      "means": {
+        "cate_mse": 0.21945529300799296,
+        "root_pehe": 0.44963923736254213
+      },
+      "method": "cornet_official",
+      "missing": 0,
+      "n_rct": 128,
+      "requested": 64,
+      "scenario_key": "addendum:C08@trial_target",
+      "status_counts": {
+        "success": 64
+      },
+      "successful": 64,
+      "terminal": 64
+    },
+    {
+      "conditional_on_success": false,
+      "mean_risk_inference_eligible": false,
+      "mean_risk_inference_reason": "fitted-risk moment and mean precision conditions not established",
+      "means": {
+        "cate_mse": 0.7657622752524217,
+        "root_pehe": 0.8340006732064681
+      },
+      "method": "datafusionppi",
+      "missing": 0,
+      "n_rct": 128,
+      "requested": 64,
+      "scenario_key": "addendum:C08@trial_target",
+      "status_counts": {
+        "success": 64
+      },
+      "successful": 64,
+      "terminal": 64
+    },
+    {
+      "conditional_on_success": false,
+      "mean_risk_inference_eligible": false,
+      "mean_risk_inference_reason": "fitted-risk moment and mean precision conditions not established",
+      "means": {
+        "cate_mse": 0.19626112210205277,
+        "root_pehe": 0.4089856279551091
+      },
+      "method": "integrative_r_linear",
+      "missing": 0,
+      "n_rct": 128,
+      "requested": 64,
+      "scenario_key": "addendum:C08@trial_target",
+      "status_counts": {
+        "success": 64
+      },
+      "successful": 64,
+      "terminal": 64
+    },
+    {
+      "conditional_on_success": false,
+      "mean_risk_inference_eligible": false,
+      "mean_risk_inference_reason": "fitted-risk moment and mean precision conditions not established",
+      "means": {
+        "cate_mse": 0.3194444028335299,
+        "root_pehe": 0.5059839180350689
+      },
+      "method": "integrative_r_quadratic",
+      "missing": 0,
+      "n_rct": 128,
+      "requested": 64,
+      "scenario_key": "addendum:C08@trial_target",
+      "status_counts": {
+        "success": 64
+      },
+      "successful": 64,
+      "terminal": 64
+    },
+    {
+      "conditional_on_success": false,
+      "mean_risk_inference_eligible": false,
+      "mean_risk_inference_reason": "fitted-risk moment and mean precision conditions not established",
+      "means": {
+        "cate_mse": 0.292279750460771,
+        "root_pehe": 0.5281879106450323
+      },
+      "method": "causal_icm_fixed",
+      "missing": 0,
+      "n_rct": 128,
+      "requested": 64,
+      "scenario_key": "addendum:C08@trial_target",
+      "status_counts": {
+        "success": 64
+      },
+      "successful": 64,
+      "terminal": 64
+    },
+    {
+      "conditional_on_success": false,
+      "mean_risk_inference_eligible": false,
+      "mean_risk_inference_reason": "fitted-risk moment and mean precision conditions not established",
+      "means": {
+        "cate_mse": 0.449988069810208,
+        "root_pehe": 0.6553039332707509
+      },
+      "method": "causal_icm_rct_only",
+      "missing": 0,
+      "n_rct": 128,
+      "requested": 64,
+      "scenario_key": "addendum:C08@trial_target",
+      "status_counts": {
+        "success": 64
+      },
+      "successful": 64,
+      "terminal": 64
+    },
+    {
+      "conditional_on_success": true,
+      "mean_risk_inference_eligible": false,
+      "mean_risk_inference_reason": "fitted-risk moment and mean precision conditions not established",
+      "means": {
+        "cate_mse": 0.0806960456713594,
+        "root_pehe": 0.276937094488616
+      },
+      "method": "rct_causal_forest",
+      "missing": 2,
+      "n_rct": 512,
+      "requested": 64,
+      "scenario_key": "addendum:C08@trial_target",
+      "status_counts": {
+        "success": 59,
+        "timeout": 3
+      },
+      "successful": 59,
+      "terminal": 62
+    },
+    {
+      "conditional_on_success": false,
+      "mean_risk_inference_eligible": false,
+      "mean_risk_inference_reason": "fitted-risk moment and mean precision conditions not established",
+      "means": {
+        "cate_mse": 0.17822666673234594,
+        "root_pehe": 0.4185232520453048
+      },
+      "method": "rct_t_extra_trees",
+      "missing": 0,
+      "n_rct": 512,
+      "requested": 64,
+      "scenario_key": "addendum:C08@trial_target",
+      "status_counts": {
+        "success": 64
+      },
+      "successful": 64,
+      "terminal": 64
+    },
+    {
+      "conditional_on_success": false,
+      "mean_risk_inference_eligible": false,
+      "mean_risk_inference_reason": "fitted-risk moment and mean precision conditions not established",
+      "means": {
+        "cate_mse": 0.27083869277474365,
+        "root_pehe": 0.5177390512231328
+      },
+      "method": "rct_dr_extra_trees",
+      "missing": 0,
+      "n_rct": 512,
+      "requested": 64,
+      "scenario_key": "addendum:C08@trial_target",
+      "status_counts": {
+        "success": 64
+      },
+      "successful": 64,
+      "terminal": 64
+    },
+    {
+      "conditional_on_success": false,
+      "mean_risk_inference_eligible": false,
+      "mean_risk_inference_reason": "fitted-risk moment and mean precision conditions not established",
+      "means": {
+        "cate_mse": 1.5818330367364184,
+        "root_pehe": 1.2511391183221314
+      },
+      "method": "obs_t_extra_trees",
+      "missing": 0,
+      "n_rct": 512,
+      "requested": 64,
+      "scenario_key": "addendum:C08@trial_target",
+      "status_counts": {
+        "success": 64
+      },
+      "successful": 64,
+      "terminal": 64
+    },
+    {
+      "conditional_on_success": false,
+      "mean_risk_inference_eligible": false,
+      "mean_risk_inference_reason": "fitted-risk moment and mean precision conditions not established",
+      "means": {
+        "cate_mse": 0.5111109879579133,
+        "root_pehe": 0.7110315655258838
+      },
+      "method": "naive_pooled_t_extra_trees",
+      "missing": 0,
+      "n_rct": 512,
+      "requested": 64,
+      "scenario_key": "addendum:C08@trial_target",
+      "status_counts": {
+        "success": 64
+      },
+      "successful": 64,
+      "terminal": 64
+    },
+    {
+      "conditional_on_success": false,
+      "mean_risk_inference_eligible": false,
+      "mean_risk_inference_reason": "fitted-risk moment and mean precision conditions not established",
+      "means": {
+        "cate_mse": 0.12134070888398261,
+        "root_pehe": 0.34095924800668437
+      },
+      "method": "cornet_official",
+      "missing": 0,
+      "n_rct": 512,
+      "requested": 64,
+      "scenario_key": "addendum:C08@trial_target",
+      "status_counts": {
+        "success": 64
+      },
+      "successful": 64,
+      "terminal": 64
+    },
+    {
+      "conditional_on_success": false,
+      "mean_risk_inference_eligible": false,
+      "mean_risk_inference_reason": "fitted-risk moment and mean precision conditions not established",
+      "means": {
+        "cate_mse": 0.16810417620662887,
+        "root_pehe": 0.3908464397915924
+      },
+      "method": "datafusionppi",
+      "missing": 0,
+      "n_rct": 512,
+      "requested": 64,
+      "scenario_key": "addendum:C08@trial_target",
+      "status_counts": {
+        "success": 64
+      },
+      "successful": 64,
+      "terminal": 64
+    },
+    {
+      "conditional_on_success": false,
+      "mean_risk_inference_eligible": false,
+      "mean_risk_inference_reason": "fitted-risk moment and mean precision conditions not established",
+      "means": {
+        "cate_mse": 0.08885589038070353,
+        "root_pehe": 0.28709388329848934
+      },
+      "method": "integrative_r_linear",
+      "missing": 0,
+      "n_rct": 512,
+      "requested": 64,
+      "scenario_key": "addendum:C08@trial_target",
+      "status_counts": {
+        "success": 64
+      },
+      "successful": 64,
+      "terminal": 64
+    },
+    {
+      "conditional_on_success": false,
+      "mean_risk_inference_eligible": false,
+      "mean_risk_inference_reason": "fitted-risk moment and mean precision conditions not established",
+      "means": {
+        "cate_mse": 0.09845873913562862,
+        "root_pehe": 0.30445595864667774
+      },
+      "method": "integrative_r_quadratic",
+      "missing": 0,
+      "n_rct": 512,
+      "requested": 64,
+      "scenario_key": "addendum:C08@trial_target",
+      "status_counts": {
+        "success": 64
+      },
+      "successful": 64,
+      "terminal": 64
+    },
+    {
+      "conditional_on_success": false,
+      "mean_risk_inference_eligible": false,
+      "mean_risk_inference_reason": "fitted-risk moment and mean precision conditions not established",
+      "means": {
+        "cate_mse": 0.1546976590633286,
+        "root_pehe": 0.3870484489905679
+      },
+      "method": "causal_icm_fixed",
+      "missing": 0,
+      "n_rct": 512,
+      "requested": 64,
+      "scenario_key": "addendum:C08@trial_target",
+      "status_counts": {
+        "success": 64
+      },
+      "successful": 64,
+      "terminal": 64
+    },
+    {
+      "conditional_on_success": false,
+      "mean_risk_inference_eligible": false,
+      "mean_risk_inference_reason": "fitted-risk moment and mean precision conditions not established",
+      "means": {
+        "cate_mse": 0.17621888918064038,
+        "root_pehe": 0.41281730531475835
+      },
+      "method": "causal_icm_rct_only",
+      "missing": 0,
+      "n_rct": 512,
+      "requested": 64,
+      "scenario_key": "addendum:C08@trial_target",
+      "status_counts": {
+        "success": 64
+      },
+      "successful": 64,
+      "terminal": 64
+    },
+    {
+      "conditional_on_success": false,
+      "mean_risk_inference_eligible": false,
+      "mean_risk_inference_reason": "fitted-risk moment and mean precision conditions not established",
+      "means": {
+        "cate_mse": 0.3056967277802622,
+        "root_pehe": 0.5416988249115278
+      },
+      "method": "rct_causal_forest",
+      "missing": 0,
+      "n_rct": 128,
+      "requested": 64,
+      "scenario_key": "paper:integrative_r_learner_kps_code",
+      "status_counts": {
+        "success": 64
+      },
+      "successful": 64,
+      "terminal": 64
+    },
+    {
+      "conditional_on_success": false,
+      "mean_risk_inference_eligible": false,
+      "mean_risk_inference_reason": "fitted-risk moment and mean precision conditions not established",
+      "means": {
+        "cate_mse": 0.2233206619650578,
+        "root_pehe": 0.44643990204436373
+      },
+      "method": "rct_t_extra_trees",
+      "missing": 0,
+      "n_rct": 128,
+      "requested": 64,
+      "scenario_key": "paper:integrative_r_learner_kps_code",
+      "status_counts": {
+        "success": 64
+      },
+      "successful": 64,
+      "terminal": 64
+    },
+    {
+      "conditional_on_success": false,
+      "mean_risk_inference_eligible": false,
+      "mean_risk_inference_reason": "fitted-risk moment and mean precision conditions not established",
+      "means": {
+        "cate_mse": 0.25453249346397233,
+        "root_pehe": 0.48387844667794766
+      },
+      "method": "rct_dr_extra_trees",
+      "missing": 0,
+      "n_rct": 128,
+      "requested": 64,
+      "scenario_key": "paper:integrative_r_learner_kps_code",
+      "status_counts": {
+        "success": 64
+      },
+      "successful": 64,
+      "terminal": 64
+    },
+    {
+      "conditional_on_success": false,
+      "mean_risk_inference_eligible": false,
+      "mean_risk_inference_reason": "fitted-risk moment and mean precision conditions not established",
+      "means": {
+        "cate_mse": 0.15489801620696458,
+        "root_pehe": 0.36690151771665513
+      },
+      "method": "obs_t_extra_trees",
+      "missing": 0,
+      "n_rct": 128,
+      "requested": 64,
+      "scenario_key": "paper:integrative_r_learner_kps_code",
+      "status_counts": {
+        "success": 64
+      },
+      "successful": 64,
+      "terminal": 64
+    },
+    {
+      "conditional_on_success": false,
+      "mean_risk_inference_eligible": false,
+      "mean_risk_inference_reason": "fitted-risk moment and mean precision conditions not established",
+      "means": {
+        "cate_mse": 0.1659882880394986,
+        "root_pehe": 0.36249497704292843
+      },
+      "method": "naive_pooled_t_extra_trees",
+      "missing": 0,
+      "n_rct": 128,
+      "requested": 64,
+      "scenario_key": "paper:integrative_r_learner_kps_code",
+      "status_counts": {
+        "success": 64
+      },
+      "successful": 64,
+      "terminal": 64
+    },
+    {
+      "conditional_on_success": false,
+      "mean_risk_inference_eligible": false,
+      "mean_risk_inference_reason": "fitted-risk moment and mean precision conditions not established",
+      "means": {
+        "cate_mse": 0.1052956280684997,
+        "root_pehe": 0.2988964481498061
+      },
+      "method": "cornet_official",
+      "missing": 0,
+      "n_rct": 128,
+      "requested": 64,
+      "scenario_key": "paper:integrative_r_learner_kps_code",
+      "status_counts": {
+        "success": 64
+      },
+      "successful": 64,
+      "terminal": 64
+    },
+    {
+      "conditional_on_success": false,
+      "mean_risk_inference_eligible": false,
+      "mean_risk_inference_reason": "fitted-risk moment and mean precision conditions not established",
+      "means": {
+        "cate_mse": 0.08902103254136458,
+        "root_pehe": 0.26502187939120836
+      },
+      "method": "datafusionppi",
+      "missing": 0,
+      "n_rct": 128,
+      "requested": 64,
+      "scenario_key": "paper:integrative_r_learner_kps_code",
+      "status_counts": {
+        "success": 64
+      },
+      "successful": 64,
+      "terminal": 64
+    },
+    {
+      "conditional_on_success": false,
+      "mean_risk_inference_eligible": false,
+      "mean_risk_inference_reason": "fitted-risk moment and mean precision conditions not established",
+      "means": {
+        "cate_mse": 0.22272850343839343,
+        "root_pehe": 0.43537126634264084
+      },
+      "method": "integrative_r_linear",
+      "missing": 0,
+      "n_rct": 128,
+      "requested": 64,
+      "scenario_key": "paper:integrative_r_learner_kps_code",
+      "status_counts": {
+        "success": 64
+      },
+      "successful": 64,
+      "terminal": 64
+    },
+    {
+      "conditional_on_success": false,
+      "mean_risk_inference_eligible": false,
+      "mean_risk_inference_reason": "fitted-risk moment and mean precision conditions not established",
+      "means": {
+        "cate_mse": 0.12573443194140263,
+        "root_pehe": 0.3062921297744971
+      },
+      "method": "integrative_r_quadratic",
+      "missing": 0,
+      "n_rct": 128,
+      "requested": 64,
+      "scenario_key": "paper:integrative_r_learner_kps_code",
+      "status_counts": {
+        "success": 64
+      },
+      "successful": 64,
+      "terminal": 64
+    },
+    {
+      "conditional_on_success": false,
+      "mean_risk_inference_eligible": false,
+      "mean_risk_inference_reason": "fitted-risk moment and mean precision conditions not established",
+      "means": {
+        "cate_mse": 0.09275769587737996,
+        "root_pehe": 0.2780762456091925
+      },
+      "method": "causal_icm_fixed",
+      "missing": 0,
+      "n_rct": 128,
+      "requested": 64,
+      "scenario_key": "paper:integrative_r_learner_kps_code",
+      "status_counts": {
+        "success": 64
+      },
+      "successful": 64,
+      "terminal": 64
+    },
+    {
+      "conditional_on_success": false,
+      "mean_risk_inference_eligible": false,
+      "mean_risk_inference_reason": "fitted-risk moment and mean precision conditions not established",
+      "means": {
+        "cate_mse": 0.1426225653810676,
+        "root_pehe": 0.3496571333891766
+      },
+      "method": "causal_icm_rct_only",
+      "missing": 0,
+      "n_rct": 128,
+      "requested": 64,
+      "scenario_key": "paper:integrative_r_learner_kps_code",
+      "status_counts": {
+        "success": 64
+      },
+      "successful": 64,
+      "terminal": 64
+    },
+    {
+      "conditional_on_success": true,
+      "mean_risk_inference_eligible": false,
+      "mean_risk_inference_reason": "fitted-risk moment and mean precision conditions not established",
+      "means": {
+        "cate_mse": 0.06065122599338197,
+        "root_pehe": 0.24122512214839734
+      },
+      "method": "rct_causal_forest",
+      "missing": 0,
+      "n_rct": 512,
+      "requested": 64,
+      "scenario_key": "paper:integrative_r_learner_kps_code",
+      "status_counts": {
+        "success": 59,
+        "timeout": 5
+      },
+      "successful": 59,
+      "terminal": 64
+    },
+    {
+      "conditional_on_success": false,
+      "mean_risk_inference_eligible": false,
+      "mean_risk_inference_reason": "fitted-risk moment and mean precision conditions not established",
+      "means": {
+        "cate_mse": 0.08441648915657479,
+        "root_pehe": 0.2866821895980309
+      },
+      "method": "rct_t_extra_trees",
+      "missing": 0,
+      "n_rct": 512,
+      "requested": 64,
+      "scenario_key": "paper:integrative_r_learner_kps_code",
+      "status_counts": {
+        "success": 64
+      },
+      "successful": 64,
+      "terminal": 64
+    },
+    {
+      "conditional_on_success": false,
+      "mean_risk_inference_eligible": false,
+      "mean_risk_inference_reason": "fitted-risk moment and mean precision conditions not established",
+      "means": {
+        "cate_mse": 0.1462921750396164,
+        "root_pehe": 0.37992186985805626
+      },
+      "method": "rct_dr_extra_trees",
+      "missing": 0,
+      "n_rct": 512,
+      "requested": 64,
+      "scenario_key": "paper:integrative_r_learner_kps_code",
+      "status_counts": {
+        "success": 64
+      },
+      "successful": 64,
+      "terminal": 64
+    },
+    {
+      "conditional_on_success": false,
+      "mean_risk_inference_eligible": false,
+      "mean_risk_inference_reason": "fitted-risk moment and mean precision conditions not established",
+      "means": {
+        "cate_mse": 0.15489801620696458,
+        "root_pehe": 0.36690151771665513
+      },
+      "method": "obs_t_extra_trees",
+      "missing": 0,
+      "n_rct": 512,
+      "requested": 64,
+      "scenario_key": "paper:integrative_r_learner_kps_code",
+      "status_counts": {
+        "success": 64
+      },
+      "successful": 64,
+      "terminal": 64
+    },
+    {
+      "conditional_on_success": false,
+      "mean_risk_inference_eligible": false,
+      "mean_risk_inference_reason": "fitted-risk moment and mean precision conditions not established",
+      "means": {
+        "cate_mse": 0.18928799712818528,
+        "root_pehe": 0.38936904959316443
+      },
+      "method": "naive_pooled_t_extra_trees",
+      "missing": 0,
+      "n_rct": 512,
+      "requested": 64,
+      "scenario_key": "paper:integrative_r_learner_kps_code",
+      "status_counts": {
+        "success": 64
+      },
+      "successful": 64,
+      "terminal": 64
+    },
+    {
+      "conditional_on_success": false,
+      "mean_risk_inference_eligible": false,
+      "mean_risk_inference_reason": "fitted-risk moment and mean precision conditions not established",
+      "means": {
+        "cate_mse": 0.04553731826316788,
+        "root_pehe": 0.20596803583657813
+      },
+      "method": "cornet_official",
+      "missing": 0,
+      "n_rct": 512,
+      "requested": 64,
+      "scenario_key": "paper:integrative_r_learner_kps_code",
+      "status_counts": {
+        "success": 64
+      },
+      "successful": 64,
+      "terminal": 64
+    },
+    {
+      "conditional_on_success": false,
+      "mean_risk_inference_eligible": false,
+      "mean_risk_inference_reason": "fitted-risk moment and mean precision conditions not established",
+      "means": {
+        "cate_mse": 0.02495055191605909,
+        "root_pehe": 0.1475537157002084
+      },
+      "method": "datafusionppi",
+      "missing": 0,
+      "n_rct": 512,
+      "requested": 64,
+      "scenario_key": "paper:integrative_r_learner_kps_code",
+      "status_counts": {
+        "success": 64
+      },
+      "successful": 64,
+      "terminal": 64
+    },
+    {
+      "conditional_on_success": false,
+      "mean_risk_inference_eligible": false,
+      "mean_risk_inference_reason": "fitted-risk moment and mean precision conditions not established",
+      "means": {
+        "cate_mse": 0.07637128788851812,
+        "root_pehe": 0.2719846481176994
+      },
+      "method": "integrative_r_linear",
+      "missing": 0,
+      "n_rct": 512,
+      "requested": 64,
+      "scenario_key": "paper:integrative_r_learner_kps_code",
+      "status_counts": {
+        "success": 64
+      },
+      "successful": 64,
+      "terminal": 64
+    },
+    {
+      "conditional_on_success": false,
+      "mean_risk_inference_eligible": false,
+      "mean_risk_inference_reason": "fitted-risk moment and mean precision conditions not established",
+      "means": {
+        "cate_mse": 0.025345807512512288,
+        "root_pehe": 0.13775556694986335
+      },
+      "method": "integrative_r_quadratic",
+      "missing": 0,
+      "n_rct": 512,
+      "requested": 64,
+      "scenario_key": "paper:integrative_r_learner_kps_code",
+      "status_counts": {
+        "success": 64
+      },
+      "successful": 64,
+      "terminal": 64
+    },
+    {
+      "conditional_on_success": false,
+      "mean_risk_inference_eligible": false,
+      "mean_risk_inference_reason": "fitted-risk moment and mean precision conditions not established",
+      "means": {
+        "cate_mse": 0.02528138274176561,
+        "root_pehe": 0.15054909392683336
+      },
+      "method": "causal_icm_fixed",
+      "missing": 0,
+      "n_rct": 512,
+      "requested": 64,
+      "scenario_key": "paper:integrative_r_learner_kps_code",
+      "status_counts": {
+        "success": 64
+      },
+      "successful": 64,
+      "terminal": 64
+    },
+    {
+      "conditional_on_success": false,
+      "mean_risk_inference_eligible": false,
+      "mean_risk_inference_reason": "fitted-risk moment and mean precision conditions not established",
+      "means": {
+        "cate_mse": 0.03448640378310762,
+        "root_pehe": 0.17593827301882672
+      },
+      "method": "causal_icm_rct_only",
+      "missing": 0,
+      "n_rct": 512,
+      "requested": 64,
+      "scenario_key": "paper:integrative_r_learner_kps_code",
+      "status_counts": {
+        "success": 64
+      },
+      "successful": 64,
+      "terminal": 64
+    },
+    {
+      "conditional_on_success": false,
+      "mean_risk_inference_eligible": false,
+      "mean_risk_inference_reason": "fitted-risk moment and mean precision conditions not established",
+      "means": {
+        "cate_mse": 2.8443852968444725,
+        "root_pehe": 1.685487473892102
+      },
+      "method": "rct_causal_forest",
+      "missing": 0,
+      "n_rct": 128,
+      "requested": 64,
+      "scenario_key": "paper:cornet_official_n_conf",
+      "status_counts": {
+        "success": 64
+      },
+      "successful": 64,
+      "terminal": 64
+    },
+    {
+      "conditional_on_success": false,
+      "mean_risk_inference_eligible": false,
+      "mean_risk_inference_reason": "fitted-risk moment and mean precision conditions not established",
+      "means": {
+        "cate_mse": 2.098656078939109,
+        "root_pehe": 1.4462303547282749
+      },
+      "method": "rct_t_extra_trees",
+      "missing": 0,
+      "n_rct": 128,
+      "requested": 64,
+      "scenario_key": "paper:cornet_official_n_conf",
+      "status_counts": {
+        "success": 64
+      },
+      "successful": 64,
+      "terminal": 64
+    },
+    {
+      "conditional_on_success": false,
+      "mean_risk_inference_eligible": false,
+      "mean_risk_inference_reason": "fitted-risk moment and mean precision conditions not established",
+      "means": {
+        "cate_mse": 1.9563216506049887,
+        "root_pehe": 1.396064300283095
+      },
+      "method": "rct_dr_extra_trees",
+      "missing": 0,
+      "n_rct": 128,
+      "requested": 64,
+      "scenario_key": "paper:cornet_official_n_conf",
+      "status_counts": {
+        "success": 64
+      },
+      "successful": 64,
+      "terminal": 64
+    },
+    {
+      "conditional_on_success": false,
+      "mean_risk_inference_eligible": false,
+      "mean_risk_inference_reason": "fitted-risk moment and mean precision conditions not established",
+      "means": {
+        "cate_mse": 5.197321813142135,
+        "root_pehe": 2.2776247846055955
+      },
+      "method": "obs_t_extra_trees",
+      "missing": 0,
+      "n_rct": 128,
+      "requested": 64,
+      "scenario_key": "paper:cornet_official_n_conf",
+      "status_counts": {
+        "success": 64
+      },
+      "successful": 64,
+      "terminal": 64
+    },
+    {
+      "conditional_on_success": false,
+      "mean_risk_inference_eligible": false,
+      "mean_risk_inference_reason": "fitted-risk moment and mean precision conditions not established",
+      "means": {
+        "cate_mse": 3.7983474203438212,
+        "root_pehe": 1.947197552623132
+      },
+      "method": "naive_pooled_t_extra_trees",
+      "missing": 0,
+      "n_rct": 128,
+      "requested": 64,
+      "scenario_key": "paper:cornet_official_n_conf",
+      "status_counts": {
+        "success": 64
+      },
+      "successful": 64,
+      "terminal": 64
+    },
+    {
+      "conditional_on_success": false,
+      "mean_risk_inference_eligible": false,
+      "mean_risk_inference_reason": "fitted-risk moment and mean precision conditions not established",
+      "means": {
+        "cate_mse": 1.5873957798945622,
+        "root_pehe": 1.2462605645034674
+      },
+      "method": "cornet_official",
+      "missing": 0,
+      "n_rct": 128,
+      "requested": 64,
+      "scenario_key": "paper:cornet_official_n_conf",
+      "status_counts": {
+        "success": 64
+      },
+      "successful": 64,
+      "terminal": 64
+    },
+    {
+      "conditional_on_success": false,
+      "mean_risk_inference_eligible": false,
+      "mean_risk_inference_reason": "fitted-risk moment and mean precision conditions not established",
+      "means": {
+        "cate_mse": 0.9285634423876111,
+        "root_pehe": 0.9569349008546854
+      },
+      "method": "datafusionppi",
+      "missing": 0,
+      "n_rct": 128,
+      "requested": 64,
+      "scenario_key": "paper:cornet_official_n_conf",
+      "status_counts": {
+        "success": 64
+      },
+      "successful": 64,
+      "terminal": 64
+    },
+    {
+      "conditional_on_success": false,
+      "mean_risk_inference_eligible": false,
+      "mean_risk_inference_reason": "fitted-risk moment and mean precision conditions not established",
+      "means": {
+        "cate_mse": 0.6475085937317286,
+        "root_pehe": 0.7829850492140086
+      },
+      "method": "integrative_r_linear",
+      "missing": 0,
+      "n_rct": 128,
+      "requested": 64,
+      "scenario_key": "paper:cornet_official_n_conf",
+      "status_counts": {
+        "success": 64
+      },
+      "successful": 64,
+      "terminal": 64
+    },
+    {
+      "conditional_on_success": false,
+      "mean_risk_inference_eligible": false,
+      "mean_risk_inference_reason": "fitted-risk moment and mean precision conditions not established",
+      "means": {
+        "cate_mse": 1.056601926289415,
+        "root_pehe": 1.0047481572948889
+      },
+      "method": "integrative_r_quadratic",
+      "missing": 0,
+      "n_rct": 128,
+      "requested": 64,
+      "scenario_key": "paper:cornet_official_n_conf",
+      "status_counts": {
+        "success": 64
+      },
+      "successful": 64,
+      "terminal": 64
+    },
+    {
+      "conditional_on_success": false,
+      "mean_risk_inference_eligible": false,
+      "mean_risk_inference_reason": "fitted-risk moment and mean precision conditions not established",
+      "means": {
+        "cate_mse": 0.39870113434874005,
+        "root_pehe": 0.6267269968009961
+      },
+      "method": "causal_icm_fixed",
+      "missing": 0,
+      "n_rct": 128,
+      "requested": 64,
+      "scenario_key": "paper:cornet_official_n_conf",
+      "status_counts": {
+        "success": 64
+      },
+      "successful": 64,
+      "terminal": 64
+    },
+    {
+      "conditional_on_success": false,
+      "mean_risk_inference_eligible": false,
+      "mean_risk_inference_reason": "fitted-risk moment and mean precision conditions not established",
+      "means": {
+        "cate_mse": 0.9389370671774617,
+        "root_pehe": 0.8943293430288505
+      },
+      "method": "causal_icm_rct_only",
+      "missing": 0,
+      "n_rct": 128,
+      "requested": 64,
+      "scenario_key": "paper:cornet_official_n_conf",
+      "status_counts": {
+        "success": 64
+      },
+      "successful": 64,
+      "terminal": 64
+    },
+    {
+      "conditional_on_success": false,
+      "mean_risk_inference_eligible": false,
+      "mean_risk_inference_reason": "fitted-risk moment and mean precision conditions not established",
+      "means": {
+        "cate_mse": 2.289421774976949,
+        "root_pehe": 1.5126261424284508
+      },
+      "method": "rct_causal_forest",
+      "missing": 0,
+      "n_rct": 512,
+      "requested": 64,
+      "scenario_key": "paper:cornet_official_n_conf",
+      "status_counts": {
+        "success": 64
+      },
+      "successful": 64,
+      "terminal": 64
+    },
+    {
+      "conditional_on_success": false,
+      "mean_risk_inference_eligible": false,
+      "mean_risk_inference_reason": "fitted-risk moment and mean precision conditions not established",
+      "means": {
+        "cate_mse": 1.5148100694085964,
+        "root_pehe": 1.2299849436507337
+      },
+      "method": "rct_t_extra_trees",
+      "missing": 0,
+      "n_rct": 512,
+      "requested": 64,
+      "scenario_key": "paper:cornet_official_n_conf",
+      "status_counts": {
+        "success": 64
+      },
+      "successful": 64,
+      "terminal": 64
+    },
+    {
+      "conditional_on_success": false,
+      "mean_risk_inference_eligible": false,
+      "mean_risk_inference_reason": "fitted-risk moment and mean precision conditions not established",
+      "means": {
+        "cate_mse": 1.3476310251881303,
+        "root_pehe": 1.1601691984554565
+      },
+      "method": "rct_dr_extra_trees",
+      "missing": 0,
+      "n_rct": 512,
+      "requested": 64,
+      "scenario_key": "paper:cornet_official_n_conf",
+      "status_counts": {
+        "success": 64
+      },
+      "successful": 64,
+      "terminal": 64
+    },
+    {
+      "conditional_on_success": false,
+      "mean_risk_inference_eligible": false,
+      "mean_risk_inference_reason": "fitted-risk moment and mean precision conditions not established",
+      "means": {
+        "cate_mse": 5.197321813142135,
+        "root_pehe": 2.2776247846055955
+      },
+      "method": "obs_t_extra_trees",
+      "missing": 0,
+      "n_rct": 512,
+      "requested": 64,
+      "scenario_key": "paper:cornet_official_n_conf",
+      "status_counts": {
+        "success": 64
+      },
+      "successful": 64,
+      "terminal": 64
+    },
+    {
+      "conditional_on_success": false,
+      "mean_risk_inference_eligible": false,
+      "mean_risk_inference_reason": "fitted-risk moment and mean precision conditions not established",
+      "means": {
+        "cate_mse": 2.2677564871490525,
+        "root_pehe": 1.5045621511504728
+      },
+      "method": "naive_pooled_t_extra_trees",
+      "missing": 0,
+      "n_rct": 512,
+      "requested": 64,
+      "scenario_key": "paper:cornet_official_n_conf",
+      "status_counts": {
+        "success": 64
+      },
+      "successful": 64,
+      "terminal": 64
+    },
+    {
+      "conditional_on_success": false,
+      "mean_risk_inference_eligible": false,
+      "mean_risk_inference_reason": "fitted-risk moment and mean precision conditions not established",
+      "means": {
+        "cate_mse": 1.5106707847424397,
+        "root_pehe": 1.2158328914819074
+      },
+      "method": "cornet_official",
+      "missing": 0,
+      "n_rct": 512,
+      "requested": 64,
+      "scenario_key": "paper:cornet_official_n_conf",
+      "status_counts": {
+        "success": 64
+      },
+      "successful": 64,
+      "terminal": 64
+    },
+    {
+      "conditional_on_success": false,
+      "mean_risk_inference_eligible": false,
+      "mean_risk_inference_reason": "fitted-risk moment and mean precision conditions not established",
+      "means": {
+        "cate_mse": 0.6802411544940699,
+        "root_pehe": 0.8224399834276015
+      },
+      "method": "datafusionppi",
+      "missing": 0,
+      "n_rct": 512,
+      "requested": 64,
+      "scenario_key": "paper:cornet_official_n_conf",
+      "status_counts": {
+        "success": 64
+      },
+      "successful": 64,
+      "terminal": 64
+    },
+    {
+      "conditional_on_success": false,
+      "mean_risk_inference_eligible": false,
+      "mean_risk_inference_reason": "fitted-risk moment and mean precision conditions not established",
+      "means": {
+        "cate_mse": 0.19322348179669482,
+        "root_pehe": 0.4382578293801019
+      },
+      "method": "integrative_r_linear",
+      "missing": 0,
+      "n_rct": 512,
+      "requested": 64,
+      "scenario_key": "paper:cornet_official_n_conf",
+      "status_counts": {
+        "success": 64
+      },
+      "successful": 64,
+      "terminal": 64
+    },
+    {
+      "conditional_on_success": true,
+      "mean_risk_inference_eligible": false,
+      "mean_risk_inference_reason": "fitted-risk moment and mean precision conditions not established",
+      "means": {
+        "cate_mse": null,
+        "root_pehe": null
+      },
+      "method": "integrative_r_quadratic",
+      "missing": 0,
+      "n_rct": 512,
+      "requested": 64,
+      "scenario_key": "paper:cornet_official_n_conf",
+      "status_counts": {
+        "failure": 64
+      },
+      "successful": 0,
+      "terminal": 64
+    },
+    {
+      "conditional_on_success": false,
+      "mean_risk_inference_eligible": false,
+      "mean_risk_inference_reason": "fitted-risk moment and mean precision conditions not established",
+      "means": {
+        "cate_mse": 0.16771412108572464,
+        "root_pehe": 0.4087466145859411
+      },
+      "method": "causal_icm_fixed",
+      "missing": 0,
+      "n_rct": 512,
+      "requested": 64,
+      "scenario_key": "paper:cornet_official_n_conf",
+      "status_counts": {
+        "success": 64
+      },
+      "successful": 64,
+      "terminal": 64
+    },
+    {
+      "conditional_on_success": false,
+      "mean_risk_inference_eligible": false,
+      "mean_risk_inference_reason": "fitted-risk moment and mean precision conditions not established",
+      "means": {
+        "cate_mse": 0.17176219592454356,
+        "root_pehe": 0.41366295190454727
+      },
+      "method": "causal_icm_rct_only",
+      "missing": 0,
+      "n_rct": 512,
+      "requested": 64,
+      "scenario_key": "paper:cornet_official_n_conf",
+      "status_counts": {
+        "success": 64
+      },
+      "successful": 64,
+      "terminal": 64
+    }
+  ],
+  "missing_fits": 3,
+  "missing_identities": [
+    {
+      "method": "rct_causal_forest",
+      "n_rct": 512,
+      "scenario_key": "addendum:C08@trial_target",
+      "seed": 50040
+    },
+    {
+      "method": "rct_causal_forest",
+      "n_rct": 512,
+      "scenario_key": "addendum:C08@trial_target",
+      "seed": 50042
+    },
+    {
+      "method": "rct_causal_forest",
+      "n_rct": 512,
+      "scenario_key": "structural:M0",
+      "seed": 50047
+    }
+  ],
+  "paired_comparisons": [
+    {
+      "complete": true,
+      "complete_pairs": 64,
+      "exact_pointwise_95_interval": [
+        0.2851470128108029,
+        0.536323122292206
+      ],
+      "failed_pairs": 0,
+      "holm_pvalue": null,
+      "losses": 38,
+      "mean_risk_inference_eligible": false,
+      "method": "cornet_official",
+      "missing_pairs": 0,
+      "n_rct": 128,
+      "one_sided_pvalue": 0.9482890608419595,
+      "paired_mean_differences": {
+        "cate_mse": 0.03324754872014953,
+        "root_pehe": 0.034425629591934064
+      },
+      "reference": "rct_causal_forest",
+      "reject_majority_nonwin": null,
+      "required_pairs": 64,
+      "scenario_key": "structural:M0",
+      "simultaneous_95_interval": null,
+      "strict_win_probability": 0.40625,
+      "ties": 0,
+      "wins": 26
+    },
+    {
+      "complete": true,
+      "complete_pairs": 64,
+      "exact_pointwise_95_interval": [
+        0.00039551251419647375,
+        0.08401032643435814
+      ],
+      "failed_pairs": 0,
+      "holm_pvalue": null,
+      "losses": 63,
+      "mean_risk_inference_eligible": false,
+      "method": "datafusionppi",
+      "missing_pairs": 0,
+      "n_rct": 128,
+      "one_sided_pvalue": 1.0,
+      "paired_mean_differences": {
+        "cate_mse": 0.5426151266516515,
+        "root_pehe": 0.40602436558366484
+      },
+      "reference": "rct_causal_forest",
+      "reject_majority_nonwin": null,
+      "required_pairs": 64,
+      "scenario_key": "structural:M0",
+      "simultaneous_95_interval": null,
+      "strict_win_probability": 0.015625,
+      "ties": 0,
+      "wins": 1
+    },
+    {
+      "complete": true,
+      "complete_pairs": 64,
+      "exact_pointwise_95_interval": [
+        0.4950764600522974,
+        0.7429510775519335
+      ],
+      "failed_pairs": 0,
+      "holm_pvalue": null,
+      "losses": 24,
+      "mean_risk_inference_eligible": false,
+      "method": "integrative_r_linear",
+      "missing_pairs": 0,
+      "n_rct": 128,
+      "one_sided_pvalue": 0.029970594783499616,
+      "paired_mean_differences": {
+        "cate_mse": -0.001068323010777443,
+        "root_pehe": -0.021889644294951622
+      },
+      "reference": "rct_causal_forest",
+      "reject_majority_nonwin": null,
+      "required_pairs": 64,
+      "scenario_key": "structural:M0",
+      "simultaneous_95_interval": null,
+      "strict_win_probability": 0.625,
+      "ties": 0,
+      "wins": 40
+    },
+    {
+      "complete": true,
+      "complete_pairs": 64,
+      "exact_pointwise_95_interval": [
+        0.5431232132213497,
+        0.7841280011062753
+      ],
+      "failed_pairs": 0,
+      "holm_pvalue": null,
+      "losses": 21,
+      "mean_risk_inference_eligible": false,
+      "method": "integrative_r_quadratic",
+      "missing_pairs": 0,
+      "n_rct": 128,
+      "one_sided_pvalue": 0.004073451114349284,
+      "paired_mean_differences": {
+        "cate_mse": -0.03321362357775427,
+        "root_pehe": -0.05370651280105586
+      },
+      "reference": "rct_causal_forest",
+      "reject_majority_nonwin": null,
+      "required_pairs": 64,
+      "scenario_key": "structural:M0",
+      "simultaneous_95_interval": null,
+      "strict_win_probability": 0.671875,
+      "ties": 0,
+      "wins": 43
+    },
+    {
+      "complete": true,
+      "complete_pairs": 64,
+      "exact_pointwise_95_interval": [
+        0.08904899632910263,
+        0.2867536578734695
+      ],
+      "failed_pairs": 0,
+      "holm_pvalue": null,
+      "losses": 53,
+      "mean_risk_inference_eligible": false,
+      "method": "causal_icm_fixed",
+      "missing_pairs": 0,
+      "n_rct": 128,
+      "one_sided_pvalue": 0.9999999900175088,
+      "paired_mean_differences": {
+        "cate_mse": 0.1354172559893306,
+        "root_pehe": 0.1333594214460608
+      },
+      "reference": "rct_causal_forest",
+      "reject_majority_nonwin": null,
+      "required_pairs": 64,
+      "scenario_key": "structural:M0",
+      "simultaneous_95_interval": null,
+      "strict_win_probability": 0.171875,
+      "ties": 0,
+      "wins": 11
+    },
+    {
+      "complete": true,
+      "complete_pairs": 64,
+      "exact_pointwise_95_interval": [
+        0.8270216709957792,
+        0.9741461598321495
+      ],
+      "failed_pairs": 0,
+      "holm_pvalue": null,
+      "losses": 5,
+      "mean_risk_inference_eligible": false,
+      "method": "causal_icm_fixed",
+      "missing_pairs": 0,
+      "n_rct": 128,
+      "one_sided_pvalue": 4.5014084690611633e-13,
+      "paired_mean_differences": {
+        "cate_mse": -0.23375429334707884,
+        "root_pehe": -0.16188397888242906
+      },
+      "reference": "causal_icm_rct_only",
+      "reject_majority_nonwin": null,
+      "required_pairs": 64,
+      "scenario_key": "structural:M0",
+      "simultaneous_95_interval": null,
+      "strict_win_probability": 0.921875,
+      "ties": 0,
+      "wins": 59
+    },
+    {
+      "complete": false,
+      "complete_pairs": 54,
+      "exact_pointwise_95_interval": null,
+      "failed_pairs": 9,
+      "holm_pvalue": null,
+      "losses": 35,
+      "mean_risk_inference_eligible": false,
+      "method": "cornet_official",
+      "missing_pairs": 1,
+      "n_rct": 512,
+      "one_sided_pvalue": null,
+      "paired_mean_differences": {
+        "cate_mse": null,
+        "root_pehe": null
+      },
+      "reference": "rct_causal_forest",
+      "reject_majority_nonwin": null,
+      "required_pairs": 64,
+      "scenario_key": "structural:M0",
+      "simultaneous_95_interval": null,
+      "strict_win_probability": null,
+      "ties": 0,
+      "wins": 19
+    },
+    {
+      "complete": false,
+      "complete_pairs": 54,
+      "exact_pointwise_95_interval": null,
+      "failed_pairs": 9,
+      "holm_pvalue": null,
+      "losses": 47,
+      "mean_risk_inference_eligible": false,
+      "method": "datafusionppi",
+      "missing_pairs": 1,
+      "n_rct": 512,
+      "one_sided_pvalue": null,
+      "paired_mean_differences": {
+        "cate_mse": null,
+        "root_pehe": null
+      },
+      "reference": "rct_causal_forest",
+      "reject_majority_nonwin": null,
+      "required_pairs": 64,
+      "scenario_key": "structural:M0",
+      "simultaneous_95_interval": null,
+      "strict_win_probability": null,
+      "ties": 0,
+      "wins": 7
+    },
+    {
+      "complete": false,
+      "complete_pairs": 54,
+      "exact_pointwise_95_interval": null,
+      "failed_pairs": 9,
+      "holm_pvalue": null,
+      "losses": 26,
+      "mean_risk_inference_eligible": false,
+      "method": "integrative_r_linear",
+      "missing_pairs": 1,
+      "n_rct": 512,
+      "one_sided_pvalue": null,
+      "paired_mean_differences": {
+        "cate_mse": null,
+        "root_pehe": null
+      },
+      "reference": "rct_causal_forest",
+      "reject_majority_nonwin": null,
+      "required_pairs": 64,
+      "scenario_key": "structural:M0",
+      "simultaneous_95_interval": null,
+      "strict_win_probability": null,
+      "ties": 0,
+      "wins": 28
+    },
+    {
+      "complete": false,
+      "complete_pairs": 54,
+      "exact_pointwise_95_interval": null,
+      "failed_pairs": 9,
+      "holm_pvalue": null,
+      "losses": 26,
+      "mean_risk_inference_eligible": false,
+      "method": "integrative_r_quadratic",
+      "missing_pairs": 1,
+      "n_rct": 512,
+      "one_sided_pvalue": null,
+      "paired_mean_differences": {
+        "cate_mse": null,
+        "root_pehe": null
+      },
+      "reference": "rct_causal_forest",
+      "reject_majority_nonwin": null,
+      "required_pairs": 64,
+      "scenario_key": "structural:M0",
+      "simultaneous_95_interval": null,
+      "strict_win_probability": null,
+      "ties": 0,
+      "wins": 28
+    },
+    {
+      "complete": false,
+      "complete_pairs": 54,
+      "exact_pointwise_95_interval": null,
+      "failed_pairs": 9,
+      "holm_pvalue": null,
+      "losses": 50,
+      "mean_risk_inference_eligible": false,
+      "method": "causal_icm_fixed",
+      "missing_pairs": 1,
+      "n_rct": 512,
+      "one_sided_pvalue": null,
+      "paired_mean_differences": {
+        "cate_mse": null,
+        "root_pehe": null
+      },
+      "reference": "rct_causal_forest",
+      "reject_majority_nonwin": null,
+      "required_pairs": 64,
+      "scenario_key": "structural:M0",
+      "simultaneous_95_interval": null,
+      "strict_win_probability": null,
+      "ties": 0,
+      "wins": 4
+    },
+    {
+      "complete": true,
+      "complete_pairs": 64,
+      "exact_pointwise_95_interval": [
+        0.7132463421265306,
+        0.9109510036708973
+      ],
+      "failed_pairs": 0,
+      "holm_pvalue": null,
+      "losses": 11,
+      "mean_risk_inference_eligible": false,
+      "method": "causal_icm_fixed",
+      "missing_pairs": 0,
+      "n_rct": 512,
+      "one_sided_pvalue": 5.029289922416297e-08,
+      "paired_mean_differences": {
+        "cate_mse": -0.02108838288822824,
+        "root_pehe": -0.023597727938912183
+      },
+      "reference": "causal_icm_rct_only",
+      "reject_majority_nonwin": null,
+      "required_pairs": 64,
+      "scenario_key": "structural:M0",
+      "simultaneous_95_interval": null,
+      "strict_win_probability": 0.828125,
+      "ties": 0,
+      "wins": 53
+    },
+    {
+      "complete": true,
+      "complete_pairs": 64,
+      "exact_pointwise_95_interval": [
+        0.25704892244806654,
+        0.5049235399477026
+      ],
+      "failed_pairs": 0,
+      "holm_pvalue": null,
+      "losses": 40,
+      "mean_risk_inference_eligible": false,
+      "method": "cornet_official",
+      "missing_pairs": 0,
+      "n_rct": 128,
+      "one_sided_pvalue": 0.9836171204505884,
+      "paired_mean_differences": {
+        "cate_mse": 0.05945776604341112,
+        "root_pehe": 0.06014191968574698
+      },
+      "reference": "rct_causal_forest",
+      "reject_majority_nonwin": null,
+      "required_pairs": 64,
+      "scenario_key": "structural:M2",
+      "simultaneous_95_interval": null,
+      "strict_win_probability": 0.375,
+      "ties": 0,
+      "wins": 24
+    },
+    {
+      "complete": true,
+      "complete_pairs": 64,
+      "exact_pointwise_95_interval": [
+        0.0,
+        0.05600908938663658
+      ],
+      "failed_pairs": 0,
+      "holm_pvalue": null,
+      "losses": 64,
+      "mean_risk_inference_eligible": false,
+      "method": "datafusionppi",
+      "missing_pairs": 0,
+      "n_rct": 128,
+      "one_sided_pvalue": 1.0,
+      "paired_mean_differences": {
+        "cate_mse": 0.7164940137600682,
+        "root_pehe": 0.5066402797733552
+      },
+      "reference": "rct_causal_forest",
+      "reject_majority_nonwin": null,
+      "required_pairs": 64,
+      "scenario_key": "structural:M2",
+      "simultaneous_95_interval": null,
+      "strict_win_probability": 0.0,
+      "ties": 0,
+      "wins": 0
+    },
+    {
+      "complete": true,
+      "complete_pairs": 64,
+      "exact_pointwise_95_interval": [
+        0.20242147258013,
+        0.44059436681702635
+      ],
+      "failed_pairs": 0,
+      "holm_pvalue": null,
+      "losses": 44,
+      "mean_risk_inference_eligible": false,
+      "method": "integrative_r_linear",
+      "missing_pairs": 0,
+      "n_rct": 128,
+      "one_sided_pvalue": 0.999218605327586,
+      "paired_mean_differences": {
+        "cate_mse": 0.1990110750442174,
+        "root_pehe": 0.16208920676118635
+      },
+      "reference": "rct_causal_forest",
+      "reject_majority_nonwin": null,
+      "required_pairs": 64,
+      "scenario_key": "structural:M2",
+      "simultaneous_95_interval": null,
+      "strict_win_probability": 0.3125,
+      "ties": 0,
+      "wins": 20
+    },
+    {
+      "complete": true,
+      "complete_pairs": 64,
+      "exact_pointwise_95_interval": [
+        0.06637407166842633,
+        0.250236835624012
+      ],
+      "failed_pairs": 0,
+      "holm_pvalue": null,
+      "losses": 55,
+      "mean_risk_inference_eligible": false,
+      "method": "integrative_r_quadratic",
+      "missing_pairs": 0,
+      "n_rct": 128,
+      "one_sided_pvalue": 0.9999999997218664,
+      "paired_mean_differences": {
+        "cate_mse": 0.29237721513536163,
+        "root_pehe": 0.23148024214679427
+      },
+      "reference": "rct_causal_forest",
+      "reject_majority_nonwin": null,
+      "required_pairs": 64,
+      "scenario_key": "structural:M2",
+      "simultaneous_95_interval": null,
+      "strict_win_probability": 0.140625,
+      "ties": 0,
+      "wins": 9
+    },
+    {
+      "complete": true,
+      "complete_pairs": 64,
+      "exact_pointwise_95_interval": [
+        0.03518733287081818,
+        0.19296910444834384
+      ],
+      "failed_pairs": 0,
+      "holm_pvalue": null,
+      "losses": 58,
+      "mean_risk_inference_eligible": false,
+      "method": "causal_icm_fixed",
+      "missing_pairs": 0,
+      "n_rct": 128,
+      "one_sided_pvalue": 0.9999999999995498,
+      "paired_mean_differences": {
+        "cate_mse": 0.16742532298482676,
+        "root_pehe": 0.16266979030981613
+      },
+      "reference": "rct_causal_forest",
+      "reject_majority_nonwin": null,
+      "required_pairs": 64,
+      "scenario_key": "structural:M2",
+      "simultaneous_95_interval": null,
+      "strict_win_probability": 0.09375,
+      "ties": 0,
+      "wins": 6
+    },
+    {
+      "complete": true,
+      "complete_pairs": 64,
+      "exact_pointwise_95_interval": [
+        0.7497631643759881,
+        0.9336259283315737
+      ],
+      "failed_pairs": 0,
+      "holm_pvalue": null,
+      "losses": 9,
+      "mean_risk_inference_eligible": false,
+      "method": "causal_icm_fixed",
+      "missing_pairs": 0,
+      "n_rct": 128,
+      "one_sided_pvalue": 1.771111690087538e-09,
+      "paired_mean_differences": {
+        "cate_mse": -0.18546759646753555,
+        "root_pehe": -0.13027728391682264
+      },
+      "reference": "causal_icm_rct_only",
+      "reject_majority_nonwin": null,
+      "required_pairs": 64,
+      "scenario_key": "structural:M2",
+      "simultaneous_95_interval": null,
+      "strict_win_probability": 0.859375,
+      "ties": 0,
+      "wins": 55
+    },
+    {
+      "complete": true,
+      "complete_pairs": 64,
+      "exact_pointwise_95_interval": [
+        0.10081515935364069,
+        0.3046228736951482
+      ],
+      "failed_pairs": 0,
+      "holm_pvalue": null,
+      "losses": 52,
+      "mean_risk_inference_eligible": false,
+      "method": "cornet_official",
+      "missing_pairs": 0,
+      "n_rct": 512,
+      "one_sided_pvalue": 0.9999999497071008,
+      "paired_mean_differences": {
+        "cate_mse": 0.04156498984167649,
+        "root_pehe": 0.06446118858733532
+      },
+      "reference": "rct_causal_forest",
+      "reject_majority_nonwin": null,
+      "required_pairs": 64,
+      "scenario_key": "structural:M2",
+      "simultaneous_95_interval": null,
+      "strict_win_probability": 0.1875,
+      "ties": 0,
+      "wins": 12
+    },
+    {
+      "complete": true,
+      "complete_pairs": 64,
+      "exact_pointwise_95_interval": [
+        0.02585384016785051,
+        0.17297832900422086
+      ],
+      "failed_pairs": 0,
+      "holm_pvalue": null,
+      "losses": 59,
+      "mean_risk_inference_eligible": false,
+      "method": "datafusionppi",
+      "missing_pairs": 0,
+      "n_rct": 512,
+      "one_sided_pvalue": 0.9999999999999631,
+      "paired_mean_differences": {
+        "cate_mse": 0.08972912861373293,
+        "root_pehe": 0.1231115461091335
+      },
+      "reference": "rct_causal_forest",
+      "reject_majority_nonwin": null,
+      "required_pairs": 64,
+      "scenario_key": "structural:M2",
+      "simultaneous_95_interval": null,
+      "strict_win_probability": 0.078125,
+      "ties": 0,
+      "wins": 5
+    },
+    {
+      "complete": true,
+      "complete_pairs": 64,
+      "exact_pointwise_95_interval": [
+        0.15015557408530572,
+        0.37399045688181903
+      ],
+      "failed_pairs": 0,
+      "holm_pvalue": null,
+      "losses": 48,
+      "mean_risk_inference_eligible": false,
+      "method": "integrative_r_linear",
+      "missing_pairs": 0,
+      "n_rct": 512,
+      "one_sided_pvalue": 0.9999878177139185,
+      "paired_mean_differences": {
+        "cate_mse": 0.030694741899695472,
+        "root_pehe": 0.045137759919261354
+      },
+      "reference": "rct_causal_forest",
+      "reject_majority_nonwin": null,
+      "required_pairs": 64,
+      "scenario_key": "structural:M2",
+      "simultaneous_95_interval": null,
+      "strict_win_probability": 0.25,
+      "ties": 0,
+      "wins": 16
+    },
+    {
+      "complete": true,
+      "complete_pairs": 64,
+      "exact_pointwise_95_interval": [
+        0.2294632424991274,
+        0.4730230387783163
+      ],
+      "failed_pairs": 0,
+      "holm_pvalue": null,
+      "losses": 42,
+      "mean_risk_inference_eligible": false,
+      "method": "integrative_r_quadratic",
+      "missing_pairs": 0,
+      "n_rct": 512,
+      "one_sided_pvalue": 0.9959265488856507,
+      "paired_mean_differences": {
+        "cate_mse": 0.025936897415232932,
+        "root_pehe": 0.033456775979260944
+      },
+      "reference": "rct_causal_forest",
+      "reject_majority_nonwin": null,
+      "required_pairs": 64,
+      "scenario_key": "structural:M2",
+      "simultaneous_95_interval": null,
+      "strict_win_probability": 0.34375,
+      "ties": 0,
+      "wins": 22
+    },
+    {
+      "complete": true,
+      "complete_pairs": 64,
+      "exact_pointwise_95_interval": [
+        0.0097730749544555,
+        0.13093573724140273
+      ],
+      "failed_pairs": 0,
+      "holm_pvalue": null,
+      "losses": 61,
+      "mean_risk_inference_eligible": false,
+      "method": "causal_icm_fixed",
+      "missing_pairs": 0,
+      "n_rct": 512,
+      "one_sided_pvalue": 0.9999999999999999,
+      "paired_mean_differences": {
+        "cate_mse": 0.08212054516690037,
+        "root_pehe": 0.11949594389697979
+      },
+      "reference": "rct_causal_forest",
+      "reject_majority_nonwin": null,
+      "required_pairs": 64,
+      "scenario_key": "structural:M2",
+      "simultaneous_95_interval": null,
+      "strict_win_probability": 0.046875,
+      "ties": 0,
+      "wins": 3
+    },
+    {
+      "complete": true,
+      "complete_pairs": 64,
+      "exact_pointwise_95_interval": [
+        0.7497631643759881,
+        0.9336259283315737
+      ],
+      "failed_pairs": 0,
+      "holm_pvalue": null,
+      "losses": 9,
+      "mean_risk_inference_eligible": false,
+      "method": "causal_icm_fixed",
+      "missing_pairs": 0,
+      "n_rct": 512,
+      "one_sided_pvalue": 1.771111690087538e-09,
+      "paired_mean_differences": {
+        "cate_mse": -0.02104526659874286,
+        "root_pehe": -0.024170251213589636
+      },
+      "reference": "causal_icm_rct_only",
+      "reject_majority_nonwin": null,
+      "required_pairs": 64,
+      "scenario_key": "structural:M2",
+      "simultaneous_95_interval": null,
+      "strict_win_probability": 0.859375,
+      "ties": 0,
+      "wins": 55
+    },
+    {
+      "complete": false,
+      "complete_pairs": 57,
+      "exact_pointwise_95_interval": null,
+      "failed_pairs": 7,
+      "holm_pvalue": null,
+      "losses": 44,
+      "mean_risk_inference_eligible": false,
+      "method": "cornet_official",
+      "missing_pairs": 0,
+      "n_rct": 128,
+      "one_sided_pvalue": null,
+      "paired_mean_differences": {
+        "cate_mse": null,
+        "root_pehe": null
+      },
+      "reference": "rct_causal_forest",
+      "reject_majority_nonwin": null,
+      "required_pairs": 64,
+      "scenario_key": "structural:M10",
+      "simultaneous_95_interval": null,
+      "strict_win_probability": null,
+      "ties": 0,
+      "wins": 13
+    },
+    {
+      "complete": false,
+      "complete_pairs": 57,
+      "exact_pointwise_95_interval": null,
+      "failed_pairs": 7,
+      "holm_pvalue": null,
+      "losses": 54,
+      "mean_risk_inference_eligible": false,
+      "method": "datafusionppi",
+      "missing_pairs": 0,
+      "n_rct": 128,
+      "one_sided_pvalue": null,
+      "paired_mean_differences": {
+        "cate_mse": null,
+        "root_pehe": null
+      },
+      "reference": "rct_causal_forest",
+      "reject_majority_nonwin": null,
+      "required_pairs": 64,
+      "scenario_key": "structural:M10",
+      "simultaneous_95_interval": null,
+      "strict_win_probability": null,
+      "ties": 0,
+      "wins": 3
+    },
+    {
+      "complete": false,
+      "complete_pairs": 57,
+      "exact_pointwise_95_interval": null,
+      "failed_pairs": 7,
+      "holm_pvalue": null,
+      "losses": 45,
+      "mean_risk_inference_eligible": false,
+      "method": "integrative_r_linear",
+      "missing_pairs": 0,
+      "n_rct": 128,
+      "one_sided_pvalue": null,
+      "paired_mean_differences": {
+        "cate_mse": null,
+        "root_pehe": null
+      },
+      "reference": "rct_causal_forest",
+      "reject_majority_nonwin": null,
+      "required_pairs": 64,
+      "scenario_key": "structural:M10",
+      "simultaneous_95_interval": null,
+      "strict_win_probability": null,
+      "ties": 0,
+      "wins": 12
+    },
+    {
+      "complete": false,
+      "complete_pairs": 57,
+      "exact_pointwise_95_interval": null,
+      "failed_pairs": 7,
+      "holm_pvalue": null,
+      "losses": 46,
+      "mean_risk_inference_eligible": false,
+      "method": "integrative_r_quadratic",
+      "missing_pairs": 0,
+      "n_rct": 128,
+      "one_sided_pvalue": null,
+      "paired_mean_differences": {
+        "cate_mse": null,
+        "root_pehe": null
+      },
+      "reference": "rct_causal_forest",
+      "reject_majority_nonwin": null,
+      "required_pairs": 64,
+      "scenario_key": "structural:M10",
+      "simultaneous_95_interval": null,
+      "strict_win_probability": null,
+      "ties": 0,
+      "wins": 11
+    },
+    {
+      "complete": false,
+      "complete_pairs": 57,
+      "exact_pointwise_95_interval": null,
+      "failed_pairs": 7,
+      "holm_pvalue": null,
+      "losses": 52,
+      "mean_risk_inference_eligible": false,
+      "method": "causal_icm_fixed",
+      "missing_pairs": 0,
+      "n_rct": 128,
+      "one_sided_pvalue": null,
+      "paired_mean_differences": {
+        "cate_mse": null,
+        "root_pehe": null
+      },
+      "reference": "rct_causal_forest",
+      "reject_majority_nonwin": null,
+      "required_pairs": 64,
+      "scenario_key": "structural:M10",
+      "simultaneous_95_interval": null,
+      "strict_win_probability": null,
+      "ties": 0,
+      "wins": 5
+    },
+    {
+      "complete": true,
+      "complete_pairs": 64,
+      "exact_pointwise_95_interval": [
+        0.6430658896038673,
+        0.8624845215594054
+      ],
+      "failed_pairs": 0,
+      "holm_pvalue": null,
+      "losses": 15,
+      "mean_risk_inference_eligible": false,
+      "method": "causal_icm_fixed",
+      "missing_pairs": 0,
+      "n_rct": 128,
+      "one_sided_pvalue": 1.2182286081466635e-05,
+      "paired_mean_differences": {
+        "cate_mse": -0.11432053643957783,
+        "root_pehe": -0.08407278060871023
+      },
+      "reference": "causal_icm_rct_only",
+      "reject_majority_nonwin": null,
+      "required_pairs": 64,
+      "scenario_key": "structural:M10",
+      "simultaneous_95_interval": null,
+      "strict_win_probability": 0.765625,
+      "ties": 0,
+      "wins": 49
+    },
+    {
+      "complete": true,
+      "complete_pairs": 64,
+      "exact_pointwise_95_interval": [
+        0.02585384016785051,
+        0.17297832900422086
+      ],
+      "failed_pairs": 0,
+      "holm_pvalue": null,
+      "losses": 59,
+      "mean_risk_inference_eligible": false,
+      "method": "cornet_official",
+      "missing_pairs": 0,
+      "n_rct": 512,
+      "one_sided_pvalue": 0.9999999999999631,
+      "paired_mean_differences": {
+        "cate_mse": 0.06187420084553148,
+        "root_pehe": 0.09836276446321526
+      },
+      "reference": "rct_causal_forest",
+      "reject_majority_nonwin": null,
+      "required_pairs": 64,
+      "scenario_key": "structural:M10",
+      "simultaneous_95_interval": null,
+      "strict_win_probability": 0.078125,
+      "ties": 0,
+      "wins": 5
+    },
+    {
+      "complete": true,
+      "complete_pairs": 64,
+      "exact_pointwise_95_interval": [
+        0.06637407166842633,
+        0.250236835624012
+      ],
+      "failed_pairs": 0,
+      "holm_pvalue": null,
+      "losses": 55,
+      "mean_risk_inference_eligible": false,
+      "method": "datafusionppi",
+      "missing_pairs": 0,
+      "n_rct": 512,
+      "one_sided_pvalue": 0.9999999997218664,
+      "paired_mean_differences": {
+        "cate_mse": 0.0738161812057816,
+        "root_pehe": 0.1026201559510806
+      },
+      "reference": "rct_causal_forest",
+      "reject_majority_nonwin": null,
+      "required_pairs": 64,
+      "scenario_key": "structural:M10",
+      "simultaneous_95_interval": null,
+      "strict_win_probability": 0.140625,
+      "ties": 0,
+      "wins": 9
+    },
+    {
+      "complete": true,
+      "complete_pairs": 64,
+      "exact_pointwise_95_interval": [
+        0.2294632424991274,
+        0.4730230387783163
+      ],
+      "failed_pairs": 0,
+      "holm_pvalue": null,
+      "losses": 42,
+      "mean_risk_inference_eligible": false,
+      "method": "integrative_r_linear",
+      "missing_pairs": 0,
+      "n_rct": 512,
+      "one_sided_pvalue": 0.9959265488856507,
+      "paired_mean_differences": {
+        "cate_mse": 0.02586839261373442,
+        "root_pehe": 0.0410810064237417
+      },
+      "reference": "rct_causal_forest",
+      "reject_majority_nonwin": null,
+      "required_pairs": 64,
+      "scenario_key": "structural:M10",
+      "simultaneous_95_interval": null,
+      "strict_win_probability": 0.34375,
+      "ties": 0,
+      "wins": 22
+    },
+    {
+      "complete": true,
+      "complete_pairs": 64,
+      "exact_pointwise_95_interval": [
+        0.16297605146851102,
+        0.39087612915341113
+      ],
+      "failed_pairs": 0,
+      "holm_pvalue": null,
+      "losses": 47,
+      "mean_risk_inference_eligible": false,
+      "method": "integrative_r_quadratic",
+      "missing_pairs": 0,
+      "n_rct": 512,
+      "one_sided_pvalue": 0.9999613346155936,
+      "paired_mean_differences": {
+        "cate_mse": 0.02666524300666989,
+        "root_pehe": 0.0412689337979113
+      },
+      "reference": "rct_causal_forest",
+      "reject_majority_nonwin": null,
+      "required_pairs": 64,
+      "scenario_key": "structural:M10",
+      "simultaneous_95_interval": null,
+      "strict_win_probability": 0.265625,
+      "ties": 0,
+      "wins": 17
+    },
+    {
+      "complete": true,
+      "complete_pairs": 64,
+      "exact_pointwise_95_interval": [
+        0.00380718138180264,
+        0.108370522224521
+      ],
+      "failed_pairs": 0,
+      "holm_pvalue": null,
+      "losses": 62,
+      "mean_risk_inference_eligible": false,
+      "method": "causal_icm_fixed",
+      "missing_pairs": 0,
+      "n_rct": 512,
+      "one_sided_pvalue": 1.0,
+      "paired_mean_differences": {
+        "cate_mse": 0.07003514155312024,
+        "root_pehe": 0.11169306465193798
+      },
+      "reference": "rct_causal_forest",
+      "reject_majority_nonwin": null,
+      "required_pairs": 64,
+      "scenario_key": "structural:M10",
+      "simultaneous_95_interval": null,
+      "strict_win_probability": 0.03125,
+      "ties": 0,
+      "wins": 2
+    },
+    {
+      "complete": true,
+      "complete_pairs": 64,
+      "exact_pointwise_95_interval": [
+        0.609123870846589,
+        0.837023948531489
+      ],
+      "failed_pairs": 0,
+      "holm_pvalue": null,
+      "losses": 17,
+      "mean_risk_inference_eligible": false,
+      "method": "causal_icm_fixed",
+      "missing_pairs": 0,
+      "n_rct": 512,
+      "one_sided_pvalue": 0.0001134411914416403,
+      "paired_mean_differences": {
+        "cate_mse": -0.011654793397830147,
+        "root_pehe": -0.014374515287589368
+      },
+      "reference": "causal_icm_rct_only",
+      "reject_majority_nonwin": null,
+      "required_pairs": 64,
+      "scenario_key": "structural:M10",
+      "simultaneous_95_interval": null,
+      "strict_win_probability": 0.734375,
+      "ties": 0,
+      "wins": 47
+    },
+    {
+      "complete": false,
+      "complete_pairs": 57,
+      "exact_pointwise_95_interval": null,
+      "failed_pairs": 7,
+      "holm_pvalue": null,
+      "losses": 38,
+      "mean_risk_inference_eligible": false,
+      "method": "cornet_official",
+      "missing_pairs": 0,
+      "n_rct": 128,
+      "one_sided_pvalue": null,
+      "paired_mean_differences": {
+        "cate_mse": null,
+        "root_pehe": null
+      },
+      "reference": "rct_causal_forest",
+      "reject_majority_nonwin": null,
+      "required_pairs": 64,
+      "scenario_key": "addendum:C08@trial_target",
+      "simultaneous_95_interval": null,
+      "strict_win_probability": null,
+      "ties": 0,
+      "wins": 19
+    },
+    {
+      "complete": false,
+      "complete_pairs": 57,
+      "exact_pointwise_95_interval": null,
+      "failed_pairs": 7,
+      "holm_pvalue": null,
+      "losses": 56,
+      "mean_risk_inference_eligible": false,
+      "method": "datafusionppi",
+      "missing_pairs": 0,
+      "n_rct": 128,
+      "one_sided_pvalue": null,
+      "paired_mean_differences": {
+        "cate_mse": null,
+        "root_pehe": null
+      },
+      "reference": "rct_causal_forest",
+      "reject_majority_nonwin": null,
+      "required_pairs": 64,
+      "scenario_key": "addendum:C08@trial_target",
+      "simultaneous_95_interval": null,
+      "strict_win_probability": null,
+      "ties": 0,
+      "wins": 1
+    },
+    {
+      "complete": false,
+      "complete_pairs": 57,
+      "exact_pointwise_95_interval": null,
+      "failed_pairs": 7,
+      "holm_pvalue": null,
+      "losses": 24,
+      "mean_risk_inference_eligible": false,
+      "method": "integrative_r_linear",
+      "missing_pairs": 0,
+      "n_rct": 128,
+      "one_sided_pvalue": null,
+      "paired_mean_differences": {
+        "cate_mse": null,
+        "root_pehe": null
+      },
+      "reference": "rct_causal_forest",
+      "reject_majority_nonwin": null,
+      "required_pairs": 64,
+      "scenario_key": "addendum:C08@trial_target",
+      "simultaneous_95_interval": null,
+      "strict_win_probability": null,
+      "ties": 0,
+      "wins": 33
+    },
+    {
+      "complete": false,
+      "complete_pairs": 57,
+      "exact_pointwise_95_interval": null,
+      "failed_pairs": 7,
+      "holm_pvalue": null,
+      "losses": 35,
+      "mean_risk_inference_eligible": false,
+      "method": "integrative_r_quadratic",
+      "missing_pairs": 0,
+      "n_rct": 128,
+      "one_sided_pvalue": null,
+      "paired_mean_differences": {
+        "cate_mse": null,
+        "root_pehe": null
+      },
+      "reference": "rct_causal_forest",
+      "reject_majority_nonwin": null,
+      "required_pairs": 64,
+      "scenario_key": "addendum:C08@trial_target",
+      "simultaneous_95_interval": null,
+      "strict_win_probability": null,
+      "ties": 0,
+      "wins": 22
+    },
+    {
+      "complete": false,
+      "complete_pairs": 57,
+      "exact_pointwise_95_interval": null,
+      "failed_pairs": 7,
+      "holm_pvalue": null,
+      "losses": 49,
+      "mean_risk_inference_eligible": false,
+      "method": "causal_icm_fixed",
+      "missing_pairs": 0,
+      "n_rct": 128,
+      "one_sided_pvalue": null,
+      "paired_mean_differences": {
+        "cate_mse": null,
+        "root_pehe": null
+      },
+      "reference": "rct_causal_forest",
+      "reject_majority_nonwin": null,
+      "required_pairs": 64,
+      "scenario_key": "addendum:C08@trial_target",
+      "simultaneous_95_interval": null,
+      "strict_win_probability": null,
+      "ties": 0,
+      "wins": 8
+    },
+    {
+      "complete": true,
+      "complete_pairs": 64,
+      "exact_pointwise_95_interval": [
+        0.8916294777754791,
+        0.9961928186181973
+      ],
+      "failed_pairs": 0,
+      "holm_pvalue": null,
+      "losses": 2,
+      "mean_risk_inference_eligible": false,
+      "method": "causal_icm_fixed",
+      "missing_pairs": 0,
+      "n_rct": 128,
+      "one_sided_pvalue": 1.1281123604711674e-16,
+      "paired_mean_differences": {
+        "cate_mse": -0.15770831934943697,
+        "root_pehe": -0.12711602262571853
+      },
+      "reference": "causal_icm_rct_only",
+      "reject_majority_nonwin": null,
+      "required_pairs": 64,
+      "scenario_key": "addendum:C08@trial_target",
+      "simultaneous_95_interval": null,
+      "strict_win_probability": 0.96875,
+      "ties": 0,
+      "wins": 62
+    },
+    {
+      "complete": false,
+      "complete_pairs": 59,
+      "exact_pointwise_95_interval": null,
+      "failed_pairs": 3,
+      "holm_pvalue": null,
+      "losses": 44,
+      "mean_risk_inference_eligible": false,
+      "method": "cornet_official",
+      "missing_pairs": 2,
+      "n_rct": 512,
+      "one_sided_pvalue": null,
+      "paired_mean_differences": {
+        "cate_mse": null,
+        "root_pehe": null
+      },
+      "reference": "rct_causal_forest",
+      "reject_majority_nonwin": null,
+      "required_pairs": 64,
+      "scenario_key": "addendum:C08@trial_target",
+      "simultaneous_95_interval": null,
+      "strict_win_probability": null,
+      "ties": 0,
+      "wins": 15
+    },
+    {
+      "complete": false,
+      "complete_pairs": 59,
+      "exact_pointwise_95_interval": null,
+      "failed_pairs": 3,
+      "holm_pvalue": null,
+      "losses": 50,
+      "mean_risk_inference_eligible": false,
+      "method": "datafusionppi",
+      "missing_pairs": 2,
+      "n_rct": 512,
+      "one_sided_pvalue": null,
+      "paired_mean_differences": {
+        "cate_mse": null,
+        "root_pehe": null
+      },
+      "reference": "rct_causal_forest",
+      "reject_majority_nonwin": null,
+      "required_pairs": 64,
+      "scenario_key": "addendum:C08@trial_target",
+      "simultaneous_95_interval": null,
+      "strict_win_probability": null,
+      "ties": 0,
+      "wins": 9
+    },
+    {
+      "complete": false,
+      "complete_pairs": 59,
+      "exact_pointwise_95_interval": null,
+      "failed_pairs": 3,
+      "holm_pvalue": null,
+      "losses": 31,
+      "mean_risk_inference_eligible": false,
+      "method": "integrative_r_linear",
+      "missing_pairs": 2,
+      "n_rct": 512,
+      "one_sided_pvalue": null,
+      "paired_mean_differences": {
+        "cate_mse": null,
+        "root_pehe": null
+      },
+      "reference": "rct_causal_forest",
+      "reject_majority_nonwin": null,
+      "required_pairs": 64,
+      "scenario_key": "addendum:C08@trial_target",
+      "simultaneous_95_interval": null,
+      "strict_win_probability": null,
+      "ties": 0,
+      "wins": 28
+    },
+    {
+      "complete": false,
+      "complete_pairs": 59,
+      "exact_pointwise_95_interval": null,
+      "failed_pairs": 3,
+      "holm_pvalue": null,
+      "losses": 41,
+      "mean_risk_inference_eligible": false,
+      "method": "integrative_r_quadratic",
+      "missing_pairs": 2,
+      "n_rct": 512,
+      "one_sided_pvalue": null,
+      "paired_mean_differences": {
+        "cate_mse": null,
+        "root_pehe": null
+      },
+      "reference": "rct_causal_forest",
+      "reject_majority_nonwin": null,
+      "required_pairs": 64,
+      "scenario_key": "addendum:C08@trial_target",
+      "simultaneous_95_interval": null,
+      "strict_win_probability": null,
+      "ties": 0,
+      "wins": 18
+    },
+    {
+      "complete": false,
+      "complete_pairs": 59,
+      "exact_pointwise_95_interval": null,
+      "failed_pairs": 3,
+      "holm_pvalue": null,
+      "losses": 56,
+      "mean_risk_inference_eligible": false,
+      "method": "causal_icm_fixed",
+      "missing_pairs": 2,
+      "n_rct": 512,
+      "one_sided_pvalue": null,
+      "paired_mean_differences": {
+        "cate_mse": null,
+        "root_pehe": null
+      },
+      "reference": "rct_causal_forest",
+      "reject_majority_nonwin": null,
+      "required_pairs": 64,
+      "scenario_key": "addendum:C08@trial_target",
+      "simultaneous_95_interval": null,
+      "strict_win_probability": null,
+      "ties": 0,
+      "wins": 3
+    },
+    {
+      "complete": true,
+      "complete_pairs": 64,
+      "exact_pointwise_95_interval": [
+        0.5923997036779759,
+        0.8240336768839289
+      ],
+      "failed_pairs": 0,
+      "holm_pvalue": null,
+      "losses": 18,
+      "mean_risk_inference_eligible": false,
+      "method": "causal_icm_fixed",
+      "missing_pairs": 0,
+      "n_rct": 512,
+      "one_sided_pvalue": 0.0003086891320335649,
+      "paired_mean_differences": {
+        "cate_mse": -0.02152123011731175,
+        "root_pehe": -0.025768856324190455
+      },
+      "reference": "causal_icm_rct_only",
+      "reject_majority_nonwin": null,
+      "required_pairs": 64,
+      "scenario_key": "addendum:C08@trial_target",
+      "simultaneous_95_interval": null,
+      "strict_win_probability": 0.71875,
+      "ties": 0,
+      "wins": 46
+    },
+    {
+      "complete": true,
+      "complete_pairs": 64,
+      "exact_pointwise_95_interval": [
+        0.7875427740445958,
+        0.9548789798132572
+      ],
+      "failed_pairs": 0,
+      "holm_pvalue": null,
+      "losses": 7,
+      "mean_risk_inference_eligible": false,
+      "method": "cornet_official",
+      "missing_pairs": 0,
+      "n_rct": 128,
+      "one_sided_pvalue": 3.819070672770111e-11,
+      "paired_mean_differences": {
+        "cate_mse": -0.2004010997117625,
+        "root_pehe": -0.24280237676172162
+      },
+      "reference": "rct_causal_forest",
+      "reject_majority_nonwin": null,
+      "required_pairs": 64,
+      "scenario_key": "paper:integrative_r_learner_kps_code",
+      "simultaneous_95_interval": null,
+      "strict_win_probability": 0.890625,
+      "ties": 0,
+      "wins": 57
+    },
+    {
+      "complete": true,
+      "complete_pairs": 64,
+      "exact_pointwise_95_interval": [
+        0.8270216709957792,
+        0.9741461598321495
+      ],
+      "failed_pairs": 0,
+      "holm_pvalue": null,
+      "losses": 5,
+      "mean_risk_inference_eligible": false,
+      "method": "datafusionppi",
+      "missing_pairs": 0,
+      "n_rct": 128,
+      "one_sided_pvalue": 4.5014084690611633e-13,
+      "paired_mean_differences": {
+        "cate_mse": -0.21667569523889763,
+        "root_pehe": -0.27667694552031935
+      },
+      "reference": "rct_causal_forest",
+      "reject_majority_nonwin": null,
+      "required_pairs": 64,
+      "scenario_key": "paper:integrative_r_learner_kps_code",
+      "simultaneous_95_interval": null,
+      "strict_win_probability": 0.921875,
+      "ties": 0,
+      "wins": 59
+    },
+    {
+      "complete": true,
+      "complete_pairs": 64,
+      "exact_pointwise_95_interval": [
+        0.609123870846589,
+        0.837023948531489
+      ],
+      "failed_pairs": 0,
+      "holm_pvalue": null,
+      "losses": 17,
+      "mean_risk_inference_eligible": false,
+      "method": "integrative_r_linear",
+      "missing_pairs": 0,
+      "n_rct": 128,
+      "one_sided_pvalue": 0.0001134411914416403,
+      "paired_mean_differences": {
+        "cate_mse": -0.08296822434186878,
+        "root_pehe": -0.1063275585688869
+      },
+      "reference": "rct_causal_forest",
+      "reject_majority_nonwin": null,
+      "required_pairs": 64,
+      "scenario_key": "paper:integrative_r_learner_kps_code",
+      "simultaneous_95_interval": null,
+      "strict_win_probability": 0.734375,
+      "ties": 0,
+      "wins": 47
+    },
+    {
+      "complete": true,
+      "complete_pairs": 64,
+      "exact_pointwise_95_interval": [
+        0.7313657557337271,
+        0.9224426681998769
+      ],
+      "failed_pairs": 0,
+      "holm_pvalue": null,
+      "losses": 10,
+      "mean_risk_inference_eligible": false,
+      "method": "integrative_r_quadratic",
+      "missing_pairs": 0,
+      "n_rct": 128,
+      "one_sided_pvalue": 9.982491118931073e-09,
+      "paired_mean_differences": {
+        "cate_mse": -0.17996229583885956,
+        "root_pehe": -0.23540669513703064
+      },
+      "reference": "rct_causal_forest",
+      "reject_majority_nonwin": null,
+      "required_pairs": 64,
+      "scenario_key": "paper:integrative_r_learner_kps_code",
+      "simultaneous_95_interval": null,
+      "strict_win_probability": 0.84375,
+      "ties": 0,
+      "wins": 54
+    },
+    {
+      "complete": true,
+      "complete_pairs": 64,
+      "exact_pointwise_95_interval": [
+        0.8476365265773033,
+        0.9827099726189449
+      ],
+      "failed_pairs": 0,
+      "holm_pvalue": null,
+      "losses": 4,
+      "mean_risk_inference_eligible": false,
+      "method": "causal_icm_fixed",
+      "missing_pairs": 0,
+      "n_rct": 128,
+      "one_sided_pvalue": 3.681522317902641e-14,
+      "paired_mean_differences": {
+        "cate_mse": -0.21293903190288224,
+        "root_pehe": -0.26362257930233524
+      },
+      "reference": "rct_causal_forest",
+      "reject_majority_nonwin": null,
+      "required_pairs": 64,
+      "scenario_key": "paper:integrative_r_learner_kps_code",
+      "simultaneous_95_interval": null,
+      "strict_win_probability": 0.9375,
+      "ties": 0,
+      "wins": 60
+    },
+    {
+      "complete": true,
+      "complete_pairs": 64,
+      "exact_pointwise_95_interval": [
+        0.7684736940339959,
+        0.944457208820398
+      ],
+      "failed_pairs": 0,
+      "holm_pvalue": null,
+      "losses": 8,
+      "mean_risk_inference_eligible": false,
+      "method": "causal_icm_fixed",
+      "missing_pairs": 0,
+      "n_rct": 128,
+      "one_sided_pvalue": 2.781336121159862e-10,
+      "paired_mean_differences": {
+        "cate_mse": -0.049864869503687646,
+        "root_pehe": -0.07158088777998409
+      },
+      "reference": "causal_icm_rct_only",
+      "reject_majority_nonwin": null,
+      "required_pairs": 64,
+      "scenario_key": "paper:integrative_r_learner_kps_code",
+      "simultaneous_95_interval": null,
+      "strict_win_probability": 0.875,
+      "ties": 0,
+      "wins": 56
+    },
+    {
+      "complete": false,
+      "complete_pairs": 59,
+      "exact_pointwise_95_interval": null,
+      "failed_pairs": 5,
+      "holm_pvalue": null,
+      "losses": 22,
+      "mean_risk_inference_eligible": false,
+      "method": "cornet_official",
+      "missing_pairs": 0,
+      "n_rct": 512,
+      "one_sided_pvalue": null,
+      "paired_mean_differences": {
+        "cate_mse": null,
+        "root_pehe": null
+      },
+      "reference": "rct_causal_forest",
+      "reject_majority_nonwin": null,
+      "required_pairs": 64,
+      "scenario_key": "paper:integrative_r_learner_kps_code",
+      "simultaneous_95_interval": null,
+      "strict_win_probability": null,
+      "ties": 0,
+      "wins": 37
+    },
+    {
+      "complete": false,
+      "complete_pairs": 59,
+      "exact_pointwise_95_interval": null,
+      "failed_pairs": 5,
+      "holm_pvalue": null,
+      "losses": 3,
+      "mean_risk_inference_eligible": false,
+      "method": "datafusionppi",
+      "missing_pairs": 0,
+      "n_rct": 512,
+      "one_sided_pvalue": null,
+      "paired_mean_differences": {
+        "cate_mse": null,
+        "root_pehe": null
+      },
+      "reference": "rct_causal_forest",
+      "reject_majority_nonwin": null,
+      "required_pairs": 64,
+      "scenario_key": "paper:integrative_r_learner_kps_code",
+      "simultaneous_95_interval": null,
+      "strict_win_probability": null,
+      "ties": 0,
+      "wins": 56
+    },
+    {
+      "complete": false,
+      "complete_pairs": 59,
+      "exact_pointwise_95_interval": null,
+      "failed_pairs": 5,
+      "holm_pvalue": null,
+      "losses": 41,
+      "mean_risk_inference_eligible": false,
+      "method": "integrative_r_linear",
+      "missing_pairs": 0,
+      "n_rct": 512,
+      "one_sided_pvalue": null,
+      "paired_mean_differences": {
+        "cate_mse": null,
+        "root_pehe": null
+      },
+      "reference": "rct_causal_forest",
+      "reject_majority_nonwin": null,
+      "required_pairs": 64,
+      "scenario_key": "paper:integrative_r_learner_kps_code",
+      "simultaneous_95_interval": null,
+      "strict_win_probability": null,
+      "ties": 0,
+      "wins": 18
+    },
+    {
+      "complete": false,
+      "complete_pairs": 59,
+      "exact_pointwise_95_interval": null,
+      "failed_pairs": 5,
+      "holm_pvalue": null,
+      "losses": 3,
+      "mean_risk_inference_eligible": false,
+      "method": "integrative_r_quadratic",
+      "missing_pairs": 0,
+      "n_rct": 512,
+      "one_sided_pvalue": null,
+      "paired_mean_differences": {
+        "cate_mse": null,
+        "root_pehe": null
+      },
+      "reference": "rct_causal_forest",
+      "reject_majority_nonwin": null,
+      "required_pairs": 64,
+      "scenario_key": "paper:integrative_r_learner_kps_code",
+      "simultaneous_95_interval": null,
+      "strict_win_probability": null,
+      "ties": 0,
+      "wins": 56
+    },
+    {
+      "complete": false,
+      "complete_pairs": 59,
+      "exact_pointwise_95_interval": null,
+      "failed_pairs": 5,
+      "holm_pvalue": null,
+      "losses": 1,
+      "mean_risk_inference_eligible": false,
+      "method": "causal_icm_fixed",
+      "missing_pairs": 0,
+      "n_rct": 512,
+      "one_sided_pvalue": null,
+      "paired_mean_differences": {
+        "cate_mse": null,
+        "root_pehe": null
+      },
+      "reference": "rct_causal_forest",
+      "reject_majority_nonwin": null,
+      "required_pairs": 64,
+      "scenario_key": "paper:integrative_r_learner_kps_code",
+      "simultaneous_95_interval": null,
+      "strict_win_probability": null,
+      "ties": 0,
+      "wins": 58
+    },
+    {
+      "complete": true,
+      "complete_pairs": 64,
+      "exact_pointwise_95_interval": [
+        0.7313657557337271,
+        0.9224426681998769
+      ],
+      "failed_pairs": 0,
+      "holm_pvalue": null,
+      "losses": 10,
+      "mean_risk_inference_eligible": false,
+      "method": "causal_icm_fixed",
+      "missing_pairs": 0,
+      "n_rct": 512,
+      "one_sided_pvalue": 9.982491118931073e-09,
+      "paired_mean_differences": {
+        "cate_mse": -0.009205021041342012,
+        "root_pehe": -0.02538917909199336
+      },
+      "reference": "causal_icm_rct_only",
+      "reject_majority_nonwin": null,
+      "required_pairs": 64,
+      "scenario_key": "paper:integrative_r_learner_kps_code",
+      "simultaneous_95_interval": null,
+      "strict_win_probability": 0.84375,
+      "ties": 0,
+      "wins": 54
+    },
+    {
+      "complete": true,
+      "complete_pairs": 64,
+      "exact_pointwise_95_interval": [
+        0.9439909106133634,
+        1.0
+      ],
+      "failed_pairs": 0,
+      "holm_pvalue": null,
+      "losses": 0,
+      "mean_risk_inference_eligible": false,
+      "method": "cornet_official",
+      "missing_pairs": 0,
+      "n_rct": 128,
+      "one_sided_pvalue": 5.421010862427522e-20,
+      "paired_mean_differences": {
+        "cate_mse": -1.2569895169499103,
+        "root_pehe": -0.43922690938863446
+      },
+      "reference": "rct_causal_forest",
+      "reject_majority_nonwin": null,
+      "required_pairs": 64,
+      "scenario_key": "paper:cornet_official_n_conf",
+      "simultaneous_95_interval": null,
+      "strict_win_probability": 1.0,
+      "ties": 0,
+      "wins": 64
+    },
+    {
+      "complete": true,
+      "complete_pairs": 64,
+      "exact_pointwise_95_interval": [
+        0.9439909106133634,
+        1.0
+      ],
+      "failed_pairs": 0,
+      "holm_pvalue": null,
+      "losses": 0,
+      "mean_risk_inference_eligible": false,
+      "method": "datafusionppi",
+      "missing_pairs": 0,
+      "n_rct": 128,
+      "one_sided_pvalue": 5.421010862427522e-20,
+      "paired_mean_differences": {
+        "cate_mse": -1.9158218544568613,
+        "root_pehe": -0.7285525730374165
+      },
+      "reference": "rct_causal_forest",
+      "reject_majority_nonwin": null,
+      "required_pairs": 64,
+      "scenario_key": "paper:cornet_official_n_conf",
+      "simultaneous_95_interval": null,
+      "strict_win_probability": 1.0,
+      "ties": 0,
+      "wins": 64
+    },
+    {
+      "complete": true,
+      "complete_pairs": 64,
+      "exact_pointwise_95_interval": [
+        0.9439909106133634,
+        1.0
+      ],
+      "failed_pairs": 0,
+      "holm_pvalue": null,
+      "losses": 0,
+      "mean_risk_inference_eligible": false,
+      "method": "integrative_r_linear",
+      "missing_pairs": 0,
+      "n_rct": 128,
+      "one_sided_pvalue": 5.421010862427522e-20,
+      "paired_mean_differences": {
+        "cate_mse": -2.1968767031127436,
+        "root_pehe": -0.9025024246780933
+      },
+      "reference": "rct_causal_forest",
+      "reject_majority_nonwin": null,
+      "required_pairs": 64,
+      "scenario_key": "paper:cornet_official_n_conf",
+      "simultaneous_95_interval": null,
+      "strict_win_probability": 1.0,
+      "ties": 0,
+      "wins": 64
+    },
+    {
+      "complete": true,
+      "complete_pairs": 64,
+      "exact_pointwise_95_interval": [
+        0.8690642627585972,
+        0.9902269250455445
+      ],
+      "failed_pairs": 0,
+      "holm_pvalue": null,
+      "losses": 3,
+      "mean_risk_inference_eligible": false,
+      "method": "integrative_r_quadratic",
+      "missing_pairs": 0,
+      "n_rct": 128,
+      "one_sided_pvalue": 2.3714212017689196e-15,
+      "paired_mean_differences": {
+        "cate_mse": -1.7877833705550574,
+        "root_pehe": -0.6807393165972131
+      },
+      "reference": "rct_causal_forest",
+      "reject_majority_nonwin": null,
+      "required_pairs": 64,
+      "scenario_key": "paper:cornet_official_n_conf",
+      "simultaneous_95_interval": null,
+      "strict_win_probability": 0.953125,
+      "ties": 0,
+      "wins": 61
+    },
+    {
+      "complete": true,
+      "complete_pairs": 64,
+      "exact_pointwise_95_interval": [
+        0.9439909106133634,
+        1.0
+      ],
+      "failed_pairs": 0,
+      "holm_pvalue": null,
+      "losses": 0,
+      "mean_risk_inference_eligible": false,
+      "method": "causal_icm_fixed",
+      "missing_pairs": 0,
+      "n_rct": 128,
+      "one_sided_pvalue": 5.421010862427522e-20,
+      "paired_mean_differences": {
+        "cate_mse": -2.4456841624957324,
+        "root_pehe": -1.0587604770911059
+      },
+      "reference": "rct_causal_forest",
+      "reject_majority_nonwin": null,
+      "required_pairs": 64,
+      "scenario_key": "paper:cornet_official_n_conf",
+      "simultaneous_95_interval": null,
+      "strict_win_probability": 1.0,
+      "ties": 0,
+      "wins": 64
+    },
+    {
+      "complete": true,
+      "complete_pairs": 64,
+      "exact_pointwise_95_interval": [
+        0.9439909106133634,
+        1.0
+      ],
+      "failed_pairs": 0,
+      "holm_pvalue": null,
+      "losses": 0,
+      "mean_risk_inference_eligible": false,
+      "method": "causal_icm_fixed",
+      "missing_pairs": 0,
+      "n_rct": 128,
+      "one_sided_pvalue": 5.421010862427522e-20,
+      "paired_mean_differences": {
+        "cate_mse": -0.5402359328287216,
+        "root_pehe": -0.2676023462278545
+      },
+      "reference": "causal_icm_rct_only",
+      "reject_majority_nonwin": null,
+      "required_pairs": 64,
+      "scenario_key": "paper:cornet_official_n_conf",
+      "simultaneous_95_interval": null,
+      "strict_win_probability": 1.0,
+      "ties": 0,
+      "wins": 64
+    },
+    {
+      "complete": true,
+      "complete_pairs": 64,
+      "exact_pointwise_95_interval": [
+        0.8690642627585972,
+        0.9902269250455445
+      ],
+      "failed_pairs": 0,
+      "holm_pvalue": null,
+      "losses": 3,
+      "mean_risk_inference_eligible": false,
+      "method": "cornet_official",
+      "missing_pairs": 0,
+      "n_rct": 512,
+      "one_sided_pvalue": 2.3714212017689196e-15,
+      "paired_mean_differences": {
+        "cate_mse": -0.7787509902345098,
+        "root_pehe": -0.2967932509465434
+      },
+      "reference": "rct_causal_forest",
+      "reject_majority_nonwin": null,
+      "required_pairs": 64,
+      "scenario_key": "paper:cornet_official_n_conf",
+      "simultaneous_95_interval": null,
+      "strict_win_probability": 0.953125,
+      "ties": 0,
+      "wins": 61
+    },
+    {
+      "complete": true,
+      "complete_pairs": 64,
+      "exact_pointwise_95_interval": [
+        0.9439909106133634,
+        1.0
+      ],
+      "failed_pairs": 0,
+      "holm_pvalue": null,
+      "losses": 0,
+      "mean_risk_inference_eligible": false,
+      "method": "datafusionppi",
+      "missing_pairs": 0,
+      "n_rct": 512,
+      "one_sided_pvalue": 5.421010862427522e-20,
+      "paired_mean_differences": {
+        "cate_mse": -1.6091806204828794,
+        "root_pehe": -0.6901861590008493
+      },
+      "reference": "rct_causal_forest",
+      "reject_majority_nonwin": null,
+      "required_pairs": 64,
+      "scenario_key": "paper:cornet_official_n_conf",
+      "simultaneous_95_interval": null,
+      "strict_win_probability": 1.0,
+      "ties": 0,
+      "wins": 64
+    },
+    {
+      "complete": true,
+      "complete_pairs": 64,
+      "exact_pointwise_95_interval": [
+        0.9439909106133634,
+        1.0
+      ],
+      "failed_pairs": 0,
+      "holm_pvalue": null,
+      "losses": 0,
+      "mean_risk_inference_eligible": false,
+      "method": "integrative_r_linear",
+      "missing_pairs": 0,
+      "n_rct": 512,
+      "one_sided_pvalue": 5.421010862427522e-20,
+      "paired_mean_differences": {
+        "cate_mse": -2.0961982931802545,
+        "root_pehe": -1.0743683130483488
+      },
+      "reference": "rct_causal_forest",
+      "reject_majority_nonwin": null,
+      "required_pairs": 64,
+      "scenario_key": "paper:cornet_official_n_conf",
+      "simultaneous_95_interval": null,
+      "strict_win_probability": 1.0,
+      "ties": 0,
+      "wins": 64
+    },
+    {
+      "complete": false,
+      "complete_pairs": 0,
+      "exact_pointwise_95_interval": null,
+      "failed_pairs": 64,
+      "holm_pvalue": null,
+      "losses": 0,
+      "mean_risk_inference_eligible": false,
+      "method": "integrative_r_quadratic",
+      "missing_pairs": 0,
+      "n_rct": 512,
+      "one_sided_pvalue": null,
+      "paired_mean_differences": {
+        "cate_mse": null,
+        "root_pehe": null
+      },
+      "reference": "rct_causal_forest",
+      "reject_majority_nonwin": null,
+      "required_pairs": 64,
+      "scenario_key": "paper:cornet_official_n_conf",
+      "simultaneous_95_interval": null,
+      "strict_win_probability": null,
+      "ties": 0,
+      "wins": 0
+    },
+    {
+      "complete": true,
+      "complete_pairs": 64,
+      "exact_pointwise_95_interval": [
+        0.9439909106133634,
+        1.0
+      ],
+      "failed_pairs": 0,
+      "holm_pvalue": null,
+      "losses": 0,
+      "mean_risk_inference_eligible": false,
+      "method": "causal_icm_fixed",
+      "missing_pairs": 0,
+      "n_rct": 512,
+      "one_sided_pvalue": 5.421010862427522e-20,
+      "paired_mean_differences": {
+        "cate_mse": -2.1217076538912245,
+        "root_pehe": -1.1038795278425098
+      },
+      "reference": "rct_causal_forest",
+      "reject_majority_nonwin": null,
+      "required_pairs": 64,
+      "scenario_key": "paper:cornet_official_n_conf",
+      "simultaneous_95_interval": null,
+      "strict_win_probability": 1.0,
+      "ties": 0,
+      "wins": 64
+    },
+    {
+      "complete": true,
+      "complete_pairs": 64,
+      "exact_pointwise_95_interval": [
+        0.6603036881849927,
+        0.8749317262847537
+      ],
+      "failed_pairs": 0,
+      "holm_pvalue": null,
+      "losses": 14,
+      "mean_risk_inference_eligible": false,
+      "method": "causal_icm_fixed",
+      "missing_pairs": 0,
+      "n_rct": 512,
+      "one_sided_pvalue": 3.5347437712728393e-06,
+      "paired_mean_differences": {
+        "cate_mse": -0.004048074838818913,
+        "root_pehe": -0.004916337318606167
+      },
+      "reference": "causal_icm_rct_only",
+      "reject_majority_nonwin": null,
+      "required_pairs": 64,
+      "scenario_key": "paper:cornet_official_n_conf",
+      "simultaneous_95_interval": null,
+      "strict_win_probability": 0.78125,
+      "ties": 0,
+      "wins": 50
+    }
+  ],
+  "pointwise_results": "descriptive_only",
+  "precision": {
+    "eligible": false,
+    "endpoint": "finite-query strict-win probability across independent seed blocks",
+    "simultaneous_half_width": 0.25
+  },
+  "schema_version": 1,
+  "scope": "inspected-mechanism development comparison; finite-query strict wins",
+  "status_counts": {
+    "failure": 64,
+    "success": 8350,
+    "timeout": 31
+  },
+  "terminal_fits": 8445,
+  "test": "exact binomial, one-sided greater than 0.5; Holm over all 72 withheld",
+  "ties": "nonwins; ties do not establish harm",
+  "verification": {
+    "bootstrap_sha256": "ffa474251ab4e179ed0d4b59e8ad5531841e90e77e47efeafc9b8d9710511851",
+    "campaign_mutated_by_this_analysis": false,
+    "manifest_sha256": "56003f39f113bbc84f673d0603f1fa2396030bdb64a809edde4d2473dd496c91",
+    "method": "original verified_records(require_complete=False), exact missing-union check and separate analysis",
+    "original_verifier": "independent trial truth and successful prediction score replay",
+    "recovery_analysis_source_sha256": "e58afd7f95e131f0c54129f7c51c838edcc635724ac35835930703eaa984ca82",
+    "slurm_job_id": "731708",
+    "source_analysis_sha256": "e1df3023dc3766632b08008d17a6278c20b95f41e68dd22cb143c24992cf2102",
+    "source_recovery_wrapper_sha256": "ec0c12b388ab632dc44ac6201c8f01106d2cae67c5200ebbe5398641bbe418ee",
+    "source_runner_sha256": "eb24bdc770917dc83d3c581280eeb568818669602bd3cbdd88da2c572684f8c3",
+    "source_truth_checker_sha256": "6ecffd6850d1a40735d8d424fc89a2f7753c773c78e015a101b9079bc56e09dd",
+    "terminal_record_path_and_sha256_digest": "a1333de2c4bca08674c1e4135e69de9dc3c0021bd291747e0a117008e601a0e4"
+  }
+}

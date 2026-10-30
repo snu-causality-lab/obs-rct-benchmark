@@ -1,0 +1,315 @@
+#!/usr/bin/env python3
+"""Separate post-interruption analysis of the original campaign's retained records.
+
+Run only on an allocated GSDS node after all original fitting jobs have stopped.
+This does not create terminal records, alter the campaign, or replace its analyzer.
+It requires the exact three unresolved fits documented at recovery design time.
+"""
+from __future__ import annotations
+
+import argparse
+import importlib
+from collections import Counter
+import hashlib
+import json
+import math
+import os
+from pathlib import Path
+import sys
+import tempfile
+
+ROOT = Path("/shared/s2/lab05/sanghack/work/obsrct-native-panel-20261027-r01")
+CODE = ROOT / "code-v5"
+RECOVERY = ROOT / "orchestration-recovery-v1"
+sys.path[:0] = [str(CODE / "scripts"), str(CODE / "src"), str(RECOVERY)]
+import analyze_native_panel as original_analysis
+import run_native_panel as original_runner
+
+EXPECTED_MISSING = frozenset({
+    ("addendum:C08@trial_target", 512, 50040, "rct_causal_forest"),
+    ("addendum:C08@trial_target", 512, 50042, "rct_causal_forest"),
+    ("structural:M0", 512, 50047, "rct_causal_forest"),
+})
+EXPECTED_MANIFEST = "56003f39f113bbc84f673d0603f1fa2396030bdb64a809edde4d2473dd496c91"
+EXPECTED_RECOVERY_SHA = "ec0c12b388ab632dc44ac6201c8f01106d2cae67c5200ebbe5398641bbe418ee"
+METRICS = ("cate_mse", "root_pehe")
+
+
+def key_for_record(record):
+    case = record["case"]
+    return (case["scenario_key"], case["n_rct"], case["seed"], record["method"])
+
+
+def expected_keys(config):
+    return {(c["scenario_key"], b, s, m)
+            for c in config["conditions"] for b in config["rct_budgets"]
+            for s in config["seeds"] for m in config["methods"]}
+
+
+def mean(values):
+    return math.fsum(values) / len(values) if values else None
+
+
+def summarize_incomplete(records, config):
+    """No invented terminal statuses; no partial-pair probability inference."""
+    from scipy.stats import binomtest
+
+    family = original_analysis.contrasts(config)
+    seeds = config["seeds"]
+    expected = expected_keys(config)
+    if (len(seeds) != original_analysis.N_SEEDS
+            or len(family) != original_analysis.FAMILY_SIZE
+            or len(expected) != 8448):
+        raise ValueError("not the frozen 64-seed, 72-contrast, 8448-fit design")
+    indexed = {}
+    for row in records:
+        key = key_for_record(row)
+        if key not in expected or key in indexed:
+            raise ValueError("extra or duplicate terminal record")
+        if row["status"] not in {"success", "failure", "timeout"}:
+            raise ValueError("unsupported terminal status")
+        if row["status"] == "success":
+            for metric in METRICS:
+                value = row["metrics"][metric]
+                if isinstance(value, bool) or not isinstance(value, (int, float)) or not math.isfinite(value) or value < 0:
+                    raise ValueError("invalid successful score")
+        elif row["metrics"] is not None:
+            raise ValueError("non-success has metrics")
+        indexed[key] = row
+    missing = expected - set(indexed)
+    if missing != EXPECTED_MISSING or len(records) != 8445:
+        raise ValueError("record union differs from the exact three predeclared unresolved fits")
+
+    method_summaries = []
+    for condition in config["conditions"]:
+        for budget in config["rct_budgets"]:
+            for method in config["methods"]:
+                keys = [(condition["scenario_key"], budget, seed, method) for seed in seeds]
+                rows = [indexed[key] for key in keys if key in indexed]
+                success = [r for r in rows if r["status"] == "success"]
+                counts = dict(Counter(row["status"] for row in rows))
+                method_summaries.append(dict(
+                    scenario_key=condition["scenario_key"], n_rct=budget, method=method,
+                    requested=len(keys), terminal=len(rows), missing=len(keys)-len(rows),
+                    successful=len(success), status_counts=counts,
+                    conditional_on_success=len(success) != len(keys),
+                    means={metric: mean([r["metrics"][metric] for r in success]) for metric in METRICS},
+                    mean_risk_inference_eligible=False,
+                    mean_risk_inference_reason="fitted-risk moment and mean precision conditions not established"))
+
+    paired = []
+    for comparison in family:
+        differences = {metric: [] for metric in METRICS}
+        wins = losses = ties = 0
+        absent_pairs = failed_pairs = 0
+        for seed in seeds:
+            prefix = (comparison["scenario_key"], comparison["n_rct"], seed)
+            left = indexed.get((*prefix, comparison["method"]))
+            right = indexed.get((*prefix, comparison["reference"]))
+            if left is None or right is None:
+                absent_pairs += 1
+                continue
+            if left["status"] != "success" or right["status"] != "success":
+                failed_pairs += 1
+                continue
+            for metric in METRICS:
+                differences[metric].append(left["metrics"][metric] - right["metrics"][metric])
+            delta = differences["cate_mse"][-1]
+            wins += delta < 0
+            losses += delta > 0
+            ties += delta == 0
+        complete = len(differences["cate_mse"]) == len(seeds)
+        row = dict(comparison, complete_pairs=len(differences["cate_mse"]),
+                   required_pairs=len(seeds), missing_pairs=absent_pairs, failed_pairs=failed_pairs,
+                   complete=complete, wins=wins, losses=losses, ties=ties,
+                   paired_mean_differences={m: mean(v) if complete else None for m,v in differences.items()},
+                   mean_risk_inference_eligible=False, strict_win_probability=None,
+                   exact_pointwise_95_interval=None, simultaneous_95_interval=None,
+                   one_sided_pvalue=None, holm_pvalue=None, reject_majority_nonwin=None)
+        if complete:
+            result = binomtest(wins, len(seeds), .5, alternative="greater")
+            interval = binomtest(wins, len(seeds)).proportion_ci(.95, method="exact")
+            row.update(strict_win_probability=wins / len(seeds),
+                       exact_pointwise_95_interval=[float(interval.low), float(interval.high)],
+                       one_sided_pvalue=float(result.pvalue))
+        paired.append(row)
+    # Even if code changes later, this incomplete collection cannot pass the full family rule.
+    if all(row["complete"] for row in paired):
+        raise ValueError("unexpected complete family with missing forest reference fits")
+    return dict(
+        schema_version=1,
+        analysis_kind="separate_incomplete_collection_analysis",
+        scope="inspected-mechanism development comparison; finite-query strict wins",
+        expected_fits=len(expected), terminal_fits=len(records), missing_fits=len(missing),
+        missing_identities=[dict(scenario_key=s, n_rct=b, seed=n, method=m) for s,b,n,m in sorted(missing)],
+        status_counts=dict(Counter(r["status"] for r in records)),
+        family_size=len(family), family_complete=False, pointwise_results="descriptive_only",
+        family_withheld_reason="missing and/or failed required paired fits; full family withheld",
+        alpha=original_analysis.ALPHA,
+        test="exact binomial, one-sided greater than 0.5; Holm over all 72 withheld",
+        ties="nonwins; ties do not establish harm",
+        precision=dict(endpoint="finite-query strict-win probability across independent seed blocks",
+                       simultaneous_half_width=original_analysis.WIN_HALF_WIDTH,
+                       eligible=False),
+        method_summaries=method_summaries, paired_comparisons=paired)
+
+
+def hash_file(path):
+    h = hashlib.sha256()
+    with path.open("rb") as handle:
+        for block in iter(lambda: handle.read(1024*1024), b""):
+            h.update(block)
+    return h.hexdigest()
+
+
+def record_inventory(records_root):
+    paths = sorted(records_root.rglob("record.json"))
+    if len(paths) != 8445:
+        raise ValueError("terminal record union does not have exactly 8445 files")
+    digest = hashlib.sha256()
+    for path in paths:
+        digest.update(str(path.relative_to(records_root)).encode() + b"\0" + hash_file(path).encode() + b"\n")
+    return digest.hexdigest()
+
+
+def validate_bootstrap(expected_sha, stage):
+    path = RECOVERY / "bootstrap.json"
+    if path.is_symlink() or len(expected_sha) != 64 or hash_file(path) != expected_sha:
+        raise ValueError("recovery bootstrap identity mismatch")
+    bootstrap = json.loads(path.read_text())
+    artifacts = bootstrap.get("artifacts", {})
+    controller_path = (RECOVERY / "controller.py").resolve()
+    if artifacts.get(str(controller_path)) != hash_file(controller_path):
+        raise ValueError("controller source hash mismatch")
+    controller = importlib.import_module("controller")
+    if Path(controller.__file__).resolve() != controller_path:
+        raise ValueError("unexpected controller module")
+    bootstrap = controller.bootstrap(expected_sha)
+    source = Path(__file__).resolve()
+    if source != (RECOVERY / "analyze_incomplete.py").resolve() or artifacts.get(str(source)) != hash_file(source):
+        raise ValueError("recovery analysis source not bound to bootstrap")
+    state_path = RECOVERY / "state" / "wave-15" / "status.json"
+    state = json.loads(state_path.read_text())
+    if (state.get("state") != "submitted" or state.get("wave_index") != 15
+            or state.get("manifest_sha256") != EXPECTED_MANIFEST
+            or state.get("bootstrap_sha256") != expected_sha
+            or state.get("jobs", {}).get(stage) != os.environ["SLURM_JOB_ID"]
+            or set(map(tuple, state.get("designated_missing", []))) != controller.MISSING):
+        raise ValueError("controller state or job identity mismatch")
+    return state
+
+
+def write_new(path, data):
+    """Publish without replacement, retaining incomplete staging on error."""
+    path.parent.mkdir(parents=True, exist_ok=True)
+    # Make a newly-created output directory durable before publishing in it.
+    parent = os.open(path.parent.parent, os.O_RDONLY)
+    try:
+        os.fsync(parent)
+    finally:
+        os.close(parent)
+    fd, temporary = tempfile.mkstemp(prefix=".pending-", dir=path.parent)
+    with os.fdopen(fd, "wb") as stream:
+        stream.write(data)
+        stream.flush()
+        os.fsync(stream.fileno())
+    # Hard-link publication is atomic and fails if destination already exists.
+    # A failed stage leaves its temporary file for inspection.
+    os.link(temporary, path)
+    directory = os.open(path.parent, os.O_RDONLY)
+    try:
+        os.fsync(directory)
+        os.unlink(temporary)
+        os.fsync(directory)
+    finally:
+        os.close(directory)
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--stage", choices=("verify", "analysis"), required=True)
+    parser.add_argument("--bootstrap-sha256", required=True)
+    args = parser.parse_args()
+    if not os.environ.get("SLURM_JOB_ID") or os.environ.get("SLURM_CPUS_PER_TASK") != "1":
+        raise ValueError("run under a one-CPU Slurm allocation")
+    memory_mib = os.environ.get("SLURM_MEM_PER_NODE", "")
+    if not memory_mib.isdigit() or int(memory_mib) < 4096:
+        raise ValueError("require at least 4 GiB Slurm memory allocation")
+    for name in ("OMP_NUM_THREADS", "MKL_NUM_THREADS", "OPENBLAS_NUM_THREADS", "NUMEXPR_NUM_THREADS"):
+        if os.environ.get(name) != "1":
+            raise ValueError(f"{name} must be limited to one thread")
+    if os.environ.get("PYTHONDONTWRITEBYTECODE") != "1":
+        raise ValueError("disable Python bytecode writes")
+    if Path(original_runner.__file__).resolve() != (CODE / "scripts" / "run_native_panel.py").resolve():
+        raise ValueError("unexpected original runner module")
+    if Path(original_analysis.__file__).resolve() != (CODE / "scripts" / "analyze_native_panel.py").resolve():
+        raise ValueError("unexpected original analysis module")
+    state = validate_bootstrap(args.bootstrap_sha256, args.stage)
+    recovery_path = (RECOVERY / "recover_shard.py").resolve()
+    if hash_file(recovery_path) != EXPECTED_RECOVERY_SHA:
+        raise ValueError("recovery wrapper source hash differs")
+    recovery = importlib.import_module("recover_shard")
+    if Path(recovery.__file__).resolve() != recovery_path:
+        raise ValueError("unexpected recovery wrapper module")
+    output = ROOT / "campaign-frozen-v2"
+    if output.is_symlink():
+        raise ValueError("campaign output must not be a symlink")
+    verified_summary = ROOT / "recovery-verification-v1" / "verified-summary.json"
+    receipt_path = ROOT / "recovery-verification-v1" / "receipt.json"
+    destination = ROOT / "recovery-analysis-v1" / "summary.json"
+    manifest = original_runner.read_manifest(output)
+    if manifest["manifest_sha256"] != EXPECTED_MANIFEST:
+        raise ValueError("unexpected campaign manifest")
+    if any(output.glob("shard-*.lock")) or any((output / "records").rglob("running.lock")):
+        raise ValueError("unresolved locks prevent collection acceptance")
+    recovery.validate_exclusions(original_runner, output, manifest)
+    records_root = output / "records"
+    inventory_before = record_inventory(records_root)
+    if args.stage == "analysis":
+        receipt = json.loads(receipt_path.read_text())
+        verified_bytes = verified_summary.read_bytes()
+        if (receipt.get("schema_version") != 1 or receipt.get("bootstrap_sha256") != args.bootstrap_sha256
+                or receipt.get("manifest_sha256") != EXPECTED_MANIFEST
+                or receipt.get("verification_job_id") != state["jobs"]["verify"]
+                or receipt.get("record_inventory_sha256") != inventory_before
+                or receipt.get("verified_summary_sha256") != hashlib.sha256(verified_bytes).hexdigest()):
+            raise ValueError("verification receipt, source record union or summary changed")
+        write_new(destination, verified_bytes)
+        print(json.dumps({"stage": "analysis", "verified_summary_sha256": receipt["verified_summary_sha256"]}))
+        return
+    # Full artifact authentication, independent target and successful-score replay.
+    config, records = original_runner.verified_records(output, require_complete=False)
+    if Path(original_runner._checker().__file__).resolve() != (CODE / "scripts" / "verify_native_panel.py").resolve():
+        raise ValueError("unexpected independent truth checker module")
+    if Path(original_runner._data().__file__).resolve() != (CODE / "scripts" / "native_panel_data.py").resolve():
+        raise ValueError("unexpected native data module")
+    if any(output.glob("shard-*.lock")) or any((output / "records").rglob("running.lock")):
+        raise ValueError("lock appeared during collection verification")
+    recovery.validate_exclusions(original_runner, output, manifest)
+    summary = summarize_incomplete(records, config)
+    inventory_after = record_inventory(records_root)
+    if inventory_after != inventory_before:
+        raise ValueError("terminal record collection changed during verification")
+    summary["verification"] = dict(
+        method="original verified_records(require_complete=False), exact missing-union check and separate analysis",
+        manifest_sha256=EXPECTED_MANIFEST, bootstrap_sha256=args.bootstrap_sha256,
+        terminal_record_path_and_sha256_digest=inventory_after,
+        recovery_analysis_source_sha256=hash_file(Path(__file__).resolve()),
+        source_runner_sha256=hash_file(Path(original_runner.__file__).resolve()),
+        source_analysis_sha256=hash_file(Path(original_analysis.__file__).resolve()),
+        source_truth_checker_sha256=hash_file(Path(original_runner._checker().__file__).resolve()),
+        source_recovery_wrapper_sha256=hash_file(recovery_path),
+        original_verifier="independent trial truth and successful prediction score replay",
+        campaign_mutated_by_this_analysis=False, slurm_job_id=os.environ["SLURM_JOB_ID"])
+    payload = (json.dumps(summary, indent=2, sort_keys=True, allow_nan=False) + "\n").encode()
+    write_new(verified_summary, payload)
+    receipt = dict(schema_version=1, bootstrap_sha256=args.bootstrap_sha256,
+                   manifest_sha256=EXPECTED_MANIFEST, verification_job_id=os.environ["SLURM_JOB_ID"],
+                   record_inventory_sha256=inventory_after,
+                   verified_summary_sha256=hashlib.sha256(payload).hexdigest())
+    write_new(receipt_path, (json.dumps(receipt, indent=2, sort_keys=True) + "\n").encode())
+    print(json.dumps({"stage": "verify", "terminal": len(records), "missing": len(EXPECTED_MISSING), "family_withheld": True}))
+
+
+if __name__ == "__main__":
+    main()

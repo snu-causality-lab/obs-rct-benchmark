@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "scope": "Compact publication export and independent scalar arithmetic; no new fitting, retry, data generation or raw-prediction replay",
+  "date_KST": "2026-10-30",
+  "scientific_fitter_revision": "83c45c3acca5ffd316a48153647b078280d648cb",
+  "original_summary_sha256": "e3377f07655a0163fa7c26fa159c05f5a5512cee8ddc2c7f02b1a9ec814b2b19",
+  "delivery_manifest_sha256": "f2e9ec3c23cc686b48ff02a206088c92a9ec1e9ed2067923d81fc74d5749e879",
+  "terminal_inventory_sha256": "a1333de2c4bca08674c1e4135e69de9dc3c0021bd291747e0a117008e601a0e4",
+  "original_raw_verification": {
+    "job_id": "731708",
+    "state": "COMPLETED",
+    "exit_code": "0:0",
+    "elapsed": "00:17:18",
+    "scope": "Independent synthetic trial truth and successful prediction-score replay on exactly 8445 terminal records, with three specific missing attempts preserved; original complete-union contract cannot pass"
+  },
+  "original_summary_delivery": {
+    "job_id": "731709",
+    "state": "COMPLETED",
+    "exit_code": "0:0",
+    "elapsed": "00:02:28",
+    "scope": "Receipt authentication and byte-identical copy of the verified incomplete-collection summary"
+  },
+  "compact_export": {
+    "job_id": "739359",
+    "state": "COMPLETED",
+    "exit_code": "0:0",
+    "requested_cpu_threads": 1,
+    "allocated_logical_cpus": 2,
+    "requested_memory_GiB": 4,
+    "requested_time": "00:30:00",
+    "elapsed": "00:06:54",
+    "batch_MaxRSS_KiB": 579548,
+    "exporter_source": "exporter_executed_v1.py.txt",
+    "exporter_sha256": "28cf3c42a53fbdbbf9f94fec9cdff6f324146bf4492fe55fad54376f81eb13f3",
+    "checker_source": "checker_executed_v1.py.txt",
+    "checker_sha256": "7b0815842312b623f1f55b9695219a9938aed9f62efc7a17d82491554989d319",
+    "scope": "Hash every original terminal JSON, match the prior receipt inventory, copy scalar/status fields, independently reduce all132 means and72 contrasts; scientific input directories were not written"
+  },
+  "initial_regressions": {
+    "job_id": "739377",
+    "state": "COMPLETED",
+    "exit_code": "0:0",
+    "passed": 13,
+    "test_seconds": 5.85
+  },
+  "final_checker_and_regressions": {
+    "job_id": "739382",
+    "state": "COMPLETED",
+    "exit_code": "0:0",
+    "requested_cpu_threads": 1,
+    "allocated_logical_cpus": 2,
+    "requested_memory_GiB": 1,
+    "requested_time": "00:10:00",
+    "elapsed": "00:00:11",
+    "passed": 15,
+    "test_seconds": 6.43,
+    "checker_sha256": "4ca78d491570b5a92c3d639ee65ead9e3e8397c4df3199dacce337e04e8aeb05",
+    "exporter_sha256": "44d19d8a2d11de1dc4c12edb22b39fd141f2b400ddf3517bcd2b500297647006",
+    "tests_sha256": "c0e7d57b8e5a67f6ee04ceb1db02447b3e18acd11c8b35de710471af2a0f9d39",
+    "command": "python scripts/verify_native_panel_delivery.py --config configs/native_panel.toml --analysis results/native_panel --expected-manifest-sha256 f2e9ec3c23cc686b48ff02a206088c92a9ec1e9ed2067923d81fc74d5749e879 --output outputs/native-panel-arithmetic-check.json",
+    "scope": "Final public checker requires an externally supplied manifest digest and cross-checks receipt/producer metadata; guards prevent the exporter destination from overlapping scientific inputs. No numerical export rule changed after the initial run."
+  },
+  "limitations": [
+    "Public scalar arithmetic is separate from the prior raw-prediction verification; omitted arrays and record JSON payloads are not replayed by CI.",
+    "The supplied terminal digest strings alone do not bind scalar values to raw records; the server export and pinned delivery manifest supply that publication binding.",
+    "Batch MaxRSS is a task measurement, not simultaneous whole-job peak memory.",
+    "All72 joint decisions and the simultaneous precision statement remain withheld; successful-only means remain conditional on success."
+  ]
+}

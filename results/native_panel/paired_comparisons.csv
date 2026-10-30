@@ -1,0 +1,73 @@
+complete,complete_pairs,exact_pointwise_95_interval,failed_pairs,holm_pvalue,losses,mean_risk_inference_eligible,method,missing_pairs,n_rct,one_sided_pvalue,paired_mean_differences__cate_mse,paired_mean_differences__root_pehe,reference,reject_majority_nonwin,required_pairs,scenario_key,simultaneous_95_interval,strict_win_probability,ties,wins
+True,64,"[0.2851470128108029, 0.536323122292206]",0,,38,False,cornet_official,0,128,0.9482890608419595,0.03324754872014953,0.034425629591934064,rct_causal_forest,,64,structural:M0,,0.40625,0,26
+True,64,"[0.00039551251419647375, 0.08401032643435814]",0,,63,False,datafusionppi,0,128,1.0,0.5426151266516515,0.40602436558366484,rct_causal_forest,,64,structural:M0,,0.015625,0,1
+True,64,"[0.4950764600522974, 0.7429510775519335]",0,,24,False,integrative_r_linear,0,128,0.029970594783499616,-0.001068323010777443,-0.021889644294951622,rct_causal_forest,,64,structural:M0,,0.625,0,40
+True,64,"[0.5431232132213497, 0.7841280011062753]",0,,21,False,integrative_r_quadratic,0,128,0.004073451114349284,-0.03321362357775427,-0.05370651280105586,rct_causal_forest,,64,structural:M0,,0.671875,0,43
+True,64,"[0.08904899632910263, 0.2867536578734695]",0,,53,False,causal_icm_fixed,0,128,0.9999999900175088,0.1354172559893306,0.1333594214460608,rct_causal_forest,,64,structural:M0,,0.171875,0,11
+True,64,"[0.8270216709957792, 0.9741461598321495]",0,,5,False,causal_icm_fixed,0,128,4.5014084690611633e-13,-0.23375429334707884,-0.16188397888242906,causal_icm_rct_only,,64,structural:M0,,0.921875,0,59
+False,54,,9,,35,False,cornet_official,1,512,,,,rct_causal_forest,,64,structural:M0,,,0,19
+False,54,,9,,47,False,datafusionppi,1,512,,,,rct_causal_forest,,64,structural:M0,,,0,7
+False,54,,9,,26,False,integrative_r_linear,1,512,,,,rct_causal_forest,,64,structural:M0,,,0,28
+False,54,,9,,26,False,integrative_r_quadratic,1,512,,,,rct_causal_forest,,64,structural:M0,,,0,28
+False,54,,9,,50,False,causal_icm_fixed,1,512,,,,rct_causal_forest,,64,structural:M0,,,0,4
+True,64,"[0.7132463421265306, 0.9109510036708973]",0,,11,False,causal_icm_fixed,0,512,5.029289922416297e-08,-0.02108838288822824,-0.023597727938912183,causal_icm_rct_only,,64,structural:M0,,0.828125,0,53
+True,64,"[0.25704892244806654, 0.5049235399477026]",0,,40,False,cornet_official,0,128,0.9836171204505884,0.05945776604341112,0.06014191968574698,rct_causal_forest,,64,structural:M2,,0.375,0,24
+True,64,"[0.0, 0.05600908938663658]",0,,64,False,datafusionppi,0,128,1.0,0.7164940137600682,0.5066402797733552,rct_causal_forest,,64,structural:M2,,0.0,0,0
+True,64,"[0.20242147258013, 0.44059436681702635]",0,,44,False,integrative_r_linear,0,128,0.999218605327586,0.1990110750442174,0.16208920676118635,rct_causal_forest,,64,structural:M2,,0.3125,0,20
+True,64,"[0.06637407166842633, 0.250236835624012]",0,,55,False,integrative_r_quadratic,0,128,0.9999999997218664,0.29237721513536163,0.23148024214679427,rct_causal_forest,,64,structural:M2,,0.140625,0,9
+True,64,"[0.03518733287081818, 0.19296910444834384]",0,,58,False,causal_icm_fixed,0,128,0.9999999999995498,0.16742532298482676,0.16266979030981613,rct_causal_forest,,64,structural:M2,,0.09375,0,6
+True,64,"[0.7497631643759881, 0.9336259283315737]",0,,9,False,causal_icm_fixed,0,128,1.771111690087538e-09,-0.18546759646753555,-0.13027728391682264,causal_icm_rct_only,,64,structural:M2,,0.859375,0,55
+True,64,"[0.10081515935364069, 0.3046228736951482]",0,,52,False,cornet_official,0,512,0.9999999497071008,0.04156498984167649,0.06446118858733532,rct_causal_forest,,64,structural:M2,,0.1875,0,12
+True,64,"[0.02585384016785051, 0.17297832900422086]",0,,59,False,datafusionppi,0,512,0.9999999999999631,0.08972912861373293,0.1231115461091335,rct_causal_forest,,64,structural:M2,,0.078125,0,5
+True,64,"[0.15015557408530572, 0.37399045688181903]",0,,48,False,integrative_r_linear,0,512,0.9999878177139185,0.030694741899695472,0.045137759919261354,rct_causal_forest,,64,structural:M2,,0.25,0,16
+True,64,"[0.2294632424991274, 0.4730230387783163]",0,,42,False,integrative_r_quadratic,0,512,0.9959265488856507,0.025936897415232932,0.033456775979260944,rct_causal_forest,,64,structural:M2,,0.34375,0,22
+True,64,"[0.0097730749544555, 0.13093573724140273]",0,,61,False,causal_icm_fixed,0,512,0.9999999999999999,0.08212054516690037,0.11949594389697979,rct_causal_forest,,64,structural:M2,,0.046875,0,3
+True,64,"[0.7497631643759881, 0.9336259283315737]",0,,9,False,causal_icm_fixed,0,512,1.771111690087538e-09,-0.02104526659874286,-0.024170251213589636,causal_icm_rct_only,,64,structural:M2,,0.859375,0,55
+False,57,,7,,44,False,cornet_official,0,128,,,,rct_causal_forest,,64,structural:M10,,,0,13
+False,57,,7,,54,False,datafusionppi,0,128,,,,rct_causal_forest,,64,structural:M10,,,0,3
+False,57,,7,,45,False,integrative_r_linear,0,128,,,,rct_causal_forest,,64,structural:M10,,,0,12
+False,57,,7,,46,False,integrative_r_quadratic,0,128,,,,rct_causal_forest,,64,structural:M10,,,0,11
+False,57,,7,,52,False,causal_icm_fixed,0,128,,,,rct_causal_forest,,64,structural:M10,,,0,5
+True,64,"[0.6430658896038673, 0.8624845215594054]",0,,15,False,causal_icm_fixed,0,128,1.2182286081466635e-05,-0.11432053643957783,-0.08407278060871023,causal_icm_rct_only,,64,structural:M10,,0.765625,0,49
+True,64,"[0.02585384016785051, 0.17297832900422086]",0,,59,False,cornet_official,0,512,0.9999999999999631,0.06187420084553148,0.09836276446321526,rct_causal_forest,,64,structural:M10,,0.078125,0,5
+True,64,"[0.06637407166842633, 0.250236835624012]",0,,55,False,datafusionppi,0,512,0.9999999997218664,0.0738161812057816,0.1026201559510806,rct_causal_forest,,64,structural:M10,,0.140625,0,9
+True,64,"[0.2294632424991274, 0.4730230387783163]",0,,42,False,integrative_r_linear,0,512,0.9959265488856507,0.02586839261373442,0.0410810064237417,rct_causal_forest,,64,structural:M10,,0.34375,0,22
+True,64,"[0.16297605146851102, 0.39087612915341113]",0,,47,False,integrative_r_quadratic,0,512,0.9999613346155936,0.02666524300666989,0.0412689337979113,rct_causal_forest,,64,structural:M10,,0.265625,0,17
+True,64,"[0.00380718138180264, 0.108370522224521]",0,,62,False,causal_icm_fixed,0,512,1.0,0.07003514155312024,0.11169306465193798,rct_causal_forest,,64,structural:M10,,0.03125,0,2
+True,64,"[0.609123870846589, 0.837023948531489]",0,,17,False,causal_icm_fixed,0,512,0.0001134411914416403,-0.011654793397830147,-0.014374515287589368,causal_icm_rct_only,,64,structural:M10,,0.734375,0,47
+False,57,,7,,38,False,cornet_official,0,128,,,,rct_causal_forest,,64,addendum:C08@trial_target,,,0,19
+False,57,,7,,56,False,datafusionppi,0,128,,,,rct_causal_forest,,64,addendum:C08@trial_target,,,0,1
+False,57,,7,,24,False,integrative_r_linear,0,128,,,,rct_causal_forest,,64,addendum:C08@trial_target,,,0,33
+False,57,,7,,35,False,integrative_r_quadratic,0,128,,,,rct_causal_forest,,64,addendum:C08@trial_target,,,0,22
+False,57,,7,,49,False,causal_icm_fixed,0,128,,,,rct_causal_forest,,64,addendum:C08@trial_target,,,0,8
+True,64,"[0.8916294777754791, 0.9961928186181973]",0,,2,False,causal_icm_fixed,0,128,1.1281123604711674e-16,-0.15770831934943697,-0.12711602262571853,causal_icm_rct_only,,64,addendum:C08@trial_target,,0.96875,0,62
+False,59,,3,,44,False,cornet_official,2,512,,,,rct_causal_forest,,64,addendum:C08@trial_target,,,0,15
+False,59,,3,,50,False,datafusionppi,2,512,,,,rct_causal_forest,,64,addendum:C08@trial_target,,,0,9
+False,59,,3,,31,False,integrative_r_linear,2,512,,,,rct_causal_forest,,64,addendum:C08@trial_target,,,0,28
+False,59,,3,,41,False,integrative_r_quadratic,2,512,,,,rct_causal_forest,,64,addendum:C08@trial_target,,,0,18
+False,59,,3,,56,False,causal_icm_fixed,2,512,,,,rct_causal_forest,,64,addendum:C08@trial_target,,,0,3
+True,64,"[0.5923997036779759, 0.8240336768839289]",0,,18,False,causal_icm_fixed,0,512,0.0003086891320335649,-0.02152123011731175,-0.025768856324190455,causal_icm_rct_only,,64,addendum:C08@trial_target,,0.71875,0,46
+True,64,"[0.7875427740445958, 0.9548789798132572]",0,,7,False,cornet_official,0,128,3.819070672770111e-11,-0.2004010997117625,-0.24280237676172162,rct_causal_forest,,64,paper:integrative_r_learner_kps_code,,0.890625,0,57
+True,64,"[0.8270216709957792, 0.9741461598321495]",0,,5,False,datafusionppi,0,128,4.5014084690611633e-13,-0.21667569523889763,-0.27667694552031935,rct_causal_forest,,64,paper:integrative_r_learner_kps_code,,0.921875,0,59
+True,64,"[0.609123870846589, 0.837023948531489]",0,,17,False,integrative_r_linear,0,128,0.0001134411914416403,-0.08296822434186878,-0.1063275585688869,rct_causal_forest,,64,paper:integrative_r_learner_kps_code,,0.734375,0,47
+True,64,"[0.7313657557337271, 0.9224426681998769]",0,,10,False,integrative_r_quadratic,0,128,9.982491118931073e-09,-0.17996229583885956,-0.23540669513703064,rct_causal_forest,,64,paper:integrative_r_learner_kps_code,,0.84375,0,54
+True,64,"[0.8476365265773033, 0.9827099726189449]",0,,4,False,causal_icm_fixed,0,128,3.681522317902641e-14,-0.21293903190288224,-0.26362257930233524,rct_causal_forest,,64,paper:integrative_r_learner_kps_code,,0.9375,0,60
+True,64,"[0.7684736940339959, 0.944457208820398]",0,,8,False,causal_icm_fixed,0,128,2.781336121159862e-10,-0.049864869503687646,-0.07158088777998409,causal_icm_rct_only,,64,paper:integrative_r_learner_kps_code,,0.875,0,56
+False,59,,5,,22,False,cornet_official,0,512,,,,rct_causal_forest,,64,paper:integrative_r_learner_kps_code,,,0,37
+False,59,,5,,3,False,datafusionppi,0,512,,,,rct_causal_forest,,64,paper:integrative_r_learner_kps_code,,,0,56
+False,59,,5,,41,False,integrative_r_linear,0,512,,,,rct_causal_forest,,64,paper:integrative_r_learner_kps_code,,,0,18
+False,59,,5,,3,False,integrative_r_quadratic,0,512,,,,rct_causal_forest,,64,paper:integrative_r_learner_kps_code,,,0,56
+False,59,,5,,1,False,causal_icm_fixed,0,512,,,,rct_causal_forest,,64,paper:integrative_r_learner_kps_code,,,0,58
+True,64,"[0.7313657557337271, 0.9224426681998769]",0,,10,False,causal_icm_fixed,0,512,9.982491118931073e-09,-0.009205021041342012,-0.02538917909199336,causal_icm_rct_only,,64,paper:integrative_r_learner_kps_code,,0.84375,0,54
+True,64,"[0.9439909106133634, 1.0]",0,,0,False,cornet_official,0,128,5.421010862427522e-20,-1.2569895169499103,-0.43922690938863446,rct_causal_forest,,64,paper:cornet_official_n_conf,,1.0,0,64
+True,64,"[0.9439909106133634, 1.0]",0,,0,False,datafusionppi,0,128,5.421010862427522e-20,-1.9158218544568613,-0.7285525730374165,rct_causal_forest,,64,paper:cornet_official_n_conf,,1.0,0,64
+True,64,"[0.9439909106133634, 1.0]",0,,0,False,integrative_r_linear,0,128,5.421010862427522e-20,-2.1968767031127436,-0.9025024246780933,rct_causal_forest,,64,paper:cornet_official_n_conf,,1.0,0,64
+True,64,"[0.8690642627585972, 0.9902269250455445]",0,,3,False,integrative_r_quadratic,0,128,2.3714212017689196e-15,-1.7877833705550574,-0.6807393165972131,rct_causal_forest,,64,paper:cornet_official_n_conf,,0.953125,0,61
+True,64,"[0.9439909106133634, 1.0]",0,,0,False,causal_icm_fixed,0,128,5.421010862427522e-20,-2.4456841624957324,-1.0587604770911059,rct_causal_forest,,64,paper:cornet_official_n_conf,,1.0,0,64
+True,64,"[0.9439909106133634, 1.0]",0,,0,False,causal_icm_fixed,0,128,5.421010862427522e-20,-0.5402359328287216,-0.2676023462278545,causal_icm_rct_only,,64,paper:cornet_official_n_conf,,1.0,0,64
+True,64,"[0.8690642627585972, 0.9902269250455445]",0,,3,False,cornet_official,0,512,2.3714212017689196e-15,-0.7787509902345098,-0.2967932509465434,rct_causal_forest,,64,paper:cornet_official_n_conf,,0.953125,0,61
+True,64,"[0.9439909106133634, 1.0]",0,,0,False,datafusionppi,0,512,5.421010862427522e-20,-1.6091806204828794,-0.6901861590008493,rct_causal_forest,,64,paper:cornet_official_n_conf,,1.0,0,64
+True,64,"[0.9439909106133634, 1.0]",0,,0,False,integrative_r_linear,0,512,5.421010862427522e-20,-2.0961982931802545,-1.0743683130483488,rct_causal_forest,,64,paper:cornet_official_n_conf,,1.0,0,64
+False,0,,64,,0,False,integrative_r_quadratic,0,512,,,,rct_causal_forest,,64,paper:cornet_official_n_conf,,,0,0
+True,64,"[0.9439909106133634, 1.0]",0,,0,False,causal_icm_fixed,0,512,5.421010862427522e-20,-2.1217076538912245,-1.1038795278425098,rct_causal_forest,,64,paper:cornet_official_n_conf,,1.0,0,64
+True,64,"[0.6603036881849927, 0.8749317262847537]",0,,14,False,causal_icm_fixed,0,512,3.5347437712728393e-06,-0.004048074838818913,-0.004916337318606167,causal_icm_rct_only,,64,paper:cornet_official_n_conf,,0.78125,0,50

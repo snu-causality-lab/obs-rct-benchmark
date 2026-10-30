@@ -29,6 +29,7 @@ jobs:
       - run: python scripts/check_release.py
       - run: python -m pytest
       - run: python scripts/verify_catalog_aggregates.py --config configs/catalog_study.toml --analysis results/catalog_study --delivery-manifest results/catalog_study/DELIVERY_MANIFEST.json --output outputs/catalog-arithmetic-check.json
+      - run: python scripts/verify_native_panel_delivery.py --config configs/native_panel.toml --analysis results/native_panel --expected-manifest-sha256 f2e9ec3c23cc686b48ff02a206088c92a9ec1e9ed2067923d81fc74d5749e879 --output outputs/native-panel-arithmetic-check.json
       - run: obs-rct-benchmark run --config configs/smoke.toml --output outputs/ci-smoke
       - run: obs-rct-benchmark run --config configs/gamma_smoke.toml --output outputs/ci-gamma
       - run: python examples/run_synthetic_file_smoke.py --output outputs/ci-file-fixtures

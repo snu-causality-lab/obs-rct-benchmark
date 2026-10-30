@@ -1,0 +1,130 @@
+#!/usr/bin/env python3
+"""Complete unstarted work in three interrupted shards, leaving three fits missing.
+
+This is orchestration, not a replacement producer or complete-union validator.
+Every permitted fit is delegated to the immutable driver with resume=True.
+"""
+from collections import Counter
+import importlib
+import os
+from pathlib import Path
+import stat
+import sys
+
+ROOT = Path('/shared/s2/lab05/sanghack/work/obsrct-native-panel-20261027-r01')
+CODE = ROOT / 'code-v5'
+OUTPUT = ROOT / 'campaign-frozen-v2'
+MANIFEST = '56003f39f113bbc84f673d0603f1fa2396030bdb64a809edde4d2473dd496c91'
+EMPTY = 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'
+DIAG = '6c0d2677629d87bb4004ae9112b764af608741e6fc41a2dde48455ae0de264b6'
+# Exact original interrupted attempt identities and readable artifact hashes.
+EXCLUSIONS = {
+    104: ('addendum__C08__trial_target_r512_s50040', 'ef8126059c4b4db48118d04b9cf46d6f', '.pending-qyqt5c3y',
+          '59bb2d9a4c9ea6199c35c5614614278cd8553269daf68d743d6602f637358df7', 'a6b1d7a82f95e6b7b839670d794685ff4c46954abbfd75e1ce84a23b87599865', 'ba14c74bec4d5d3e9bec4cf14c223a1bd73e527337f3031f580ce2351f5704d2', True),
+    106: ('addendum__C08__trial_target_r512_s50042', 'd5dda766b64048bd8e790f6c440d2df2', '.pending-4ipx76ho',
+          '7f846cae5c1ee7087892f64478b44257e06085d4f569beedfa98ece411f406ff', '3423cdf1400038b39e2d0766580b538781d03decf47409bff80e5c776de162c5', '691bdfa372482f5a7096041efbf183439d0cd0504dc970a359cfd89e18373147', True),
+    111: ('structural__M0_r512_s50047', '23d4b281759b4499a47f43b597723a65', '.pending-jrq22kl9',
+          '7710e99392d2126122a2efea03e149281e1611e008ce8a87ea70798980c1b7c8', 'c5385a75b62f9f92256939e0b0255811a2048e2efc7e9d65ecb2c50010320d77', '0e570d7208fb68f8506fa3a4c416f4f2f06021cc4d7a6f6fd1417548327e4ad8', False),
+}
+METHOD = 'rct_causal_forest'
+
+
+def validate_exclusions(driver, output, manifest, exclusions=EXCLUSIONS):
+    cases = {case['id']: case for case in manifest['cases']}
+    for shard, (case_id, attempt_id, pending_name, req, trace, observed, diag) in exclusions.items():
+        case = cases.get(case_id)
+        if case is None or METHOD not in manifest['methods']:
+            raise ValueError('excluded fit is absent from manifest')
+        indices = [i for i, c in enumerate(manifest['cases']) if c['id'] == case_id]
+        if len(indices) != 1 or indices[0] % manifest['shard_count'] != shard:
+            raise ValueError('excluded fit belongs to another shard')
+        terminal = driver.record_path(output, case, METHOD)
+        if terminal.exists() or terminal.is_symlink():
+            raise ValueError('excluded fit already has a terminal record')
+        parent = terminal.parent
+        attempts = parent / 'attempts'
+        if parent.is_symlink() or attempts.is_symlink() or not attempts.is_dir():
+            raise ValueError('excluded attempt path missing or symlinked')
+        if {p.name for p in attempts.iterdir()} != {attempt_id}:
+            raise ValueError('excluded attempt union changed')
+        attempt = attempts / attempt_id
+        if attempt.is_symlink() or not attempt.is_dir():
+            raise ValueError('excluded attempt missing or symlinked')
+        expected = {'request.json': req, 'traceback.log': trace, 'observed_inputs.npz': observed,
+                    'stdout.log': EMPTY, 'stderr.log': EMPTY}
+        if diag:
+            expected['native_diagnostics.json'] = DIAG
+        if {p.name for p in attempt.iterdir()} != set(expected) | {pending_name}:
+            raise ValueError('excluded attempt artifact union changed')
+        for name, digest in expected.items():
+            item = attempt / name
+            if item.is_symlink() or not item.is_file() or driver.file_hash(item) != digest:
+                raise ValueError('excluded readable evidence changed: ' + name)
+        pending = attempt / pending_name
+        info = pending.lstat()
+        if not stat.S_ISREG(info.st_mode) or stat.S_IMODE(info.st_mode) != 0 or info.st_size != 0:
+            raise ValueError('excluded unreadable pending-file evidence changed')
+        if (parent / 'running.lock').exists():
+            raise ValueError('excluded fit has an unresolved running lock')
+        request = driver.read_json(attempt / 'request.json')
+        if (request['manifest_sha256'] != manifest['manifest_sha256'] or request['case'] != case
+                or request['method'] != METHOD or request['timeout_seconds'] != 120):
+            raise ValueError('excluded request identity changed')
+
+
+def run(driver, output, shard, *, exclusions=EXCLUSIONS):
+    if shard not in exclusions:
+        raise ValueError('only three interrupted shards are authorized')
+    output = driver.guard_path(output)
+    manifest = driver.read_manifest(output)
+    driver.guard_allocation(manifest['config'])
+    if (manifest['manifest_sha256'] != MANIFEST or manifest['mode'] != 'campaign'
+            or manifest['shard_count'] != 128 or manifest['expected_records'] != 8448
+            or len(manifest['cases']) != 768 or len(manifest['methods']) != 11):
+        raise ValueError('unexpected frozen manifest')
+    validate_exclusions(driver, output, manifest, exclusions)
+    expected = {driver.record_path(output, case, method): (case, method)
+                for case in manifest['cases'] for method in manifest['methods']}
+    for path in (output / 'records').rglob('record.json'):
+        if path not in expected:
+            raise ValueError('unrequested terminal fit')
+        driver.verify_record(output, *expected[path], manifest)
+    selected = [(case, method) for index, case in enumerate(manifest['cases'])
+                if index % manifest['shard_count'] == shard for method in manifest['methods']]
+    if len(selected) != 66:
+        raise ValueError('unexpected shard rectangle')
+    excluded_case = exclusions[shard][0]
+    states = Counter()
+    with driver.exclusive_lock(output / f'shard-{shard}.lock'):
+        # Refuse any unplanned prior attempt instead of silently repeating it.
+        for case, method in selected:
+            if case['id'] == excluded_case and method == METHOD:
+                continue
+            terminal = driver.record_path(output, case, method)
+            if not terminal.exists() and terminal.parent.exists():
+                raise ValueError('unexpected nonterminal attempt: ' + str(terminal.parent))
+        validate_exclusions(driver, output, manifest, exclusions)
+        for case, method in selected:
+            if case['id'] == excluded_case and method == METHOD:
+                states['excluded_interrupted'] += 1
+                continue
+            row = driver.execute_fit(output, case, method, manifest, resume=True)
+            states[row['status']] += 1
+            print(driver.canonical({'case_id': case['id'], 'method': method, 'status': row['status']}), flush=True)
+    if states['excluded_interrupted'] != 1 or sum(states.values()) != 66:
+        raise ValueError('recovery shard coverage is incomplete')
+    print(driver.canonical({'shard': shard, 'states': dict(states)}), flush=True)
+    return 0 if set(states) <= {'success', 'excluded_interrupted'} else 1
+
+
+def main():
+    shard = int(os.environ['SLURM_ARRAY_TASK_ID'])
+    sys.path[:0] = [str(CODE / 'scripts'), str(CODE / 'src')]
+    driver = importlib.import_module('run_native_panel')
+    if Path(driver.__file__).resolve() != (CODE / 'scripts/run_native_panel.py').resolve():
+        raise ValueError('unexpected driver import')
+    return run(driver, OUTPUT, shard)
+
+
+if __name__ == '__main__':
+    sys.exit(main())

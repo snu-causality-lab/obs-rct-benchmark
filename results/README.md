@@ -4,6 +4,7 @@ The [AI-generated technical report](../docs/REPORT.md) gives one integrated read
 
 | Study | Coverage | Question and readout |
 | --- | ---: | --- |
+| [Native/default trial-CATE panel](native_panel/SCIENTIFIC_RESULT.md) | 8,350 successes / 8,448 requested; 64 failed, 31 timed out, three missing | Six inspected mechanisms × two trial budgets × eleven recipes × 64 seeds. Matched GP OBS access and complete-procedure comparisons with causal forest; all 72 joint decisions and simultaneous precision withheld. |
 | [Full catalog comparison](catalog_study/SCIENTIFIC_RESULT.md) | 79,083 successful / 79,104 applicable; 21 failed, 0 missing; 256 N/A | All 31 native presets × four budgets × ten recipes × 64 seeds; all 472 eligible Holm decisions withheld because four contrasts lack complete pairs |
 | [GP source-access experiment](gp_source_pilot/SCIENTIFIC_RESULT.md) | 576 / 576; 0 failed or missing | Three procedures × three OBS discrepancies × two trial budgets × 32 paired seeds. Fixed native GP: adding OBS helps mean risk at discrepancy 0/1 and hurts at 2 relative to its matched RCT-only fit at both budgets. Both contrasts and all six conditions are retained; intervals are pointwise and unadjusted. |
 | [Matched-M2 comparison](reference_study/SCIENTIFIC_RESULT.md) | 3,072 / 3,072 | Four matched M2 variants × four OBS/RCT budget pairs × six public recipes × 32 seeds; full official training, nonlinear RCT controls and all 64 primary contrasts with Holm adjustment |
@@ -15,9 +16,9 @@ These studies provide sampling replications conditional on development-inspected
 
 The [0.3.0a3 inference-policy checks](inference_policy_checks/README.md) separately record 428 passing tests, smoke/replay and tutorial execution. They check the shared reporting rules and preserve every scientific study above.
 
-The [0.3.0a4 causal-forest admission](causal_forest_admission/README.md) records direct-native and independent prediction-map checks, two bounded cost profiles and 475 passing tests. It adds a comparator candidate, with no new performance ranking or source-paper table reproduction.
+The [0.3.0a4 causal-forest admission](causal_forest_admission/README.md) records direct-native and independent prediction-map checks, two bounded cost profiles and 475 passing tests. Its implementation checks and the subsequent native-panel comparison are separate evidence; neither claims a source-paper table reproduction.
 
-The [native/default panel](native_panel/README.md) is running on GSDS with 8,448 requested fits and automatic eight-shard continuation. The [preflight](native_panel_preflight/README.md) records its correctness and unscored resource checks. Completed comparative evidence is pending; this campaign is not yet a fifth completed study in the integrated report.
+The [native/default panel](native_panel/README.md) completed its retained collection and separate incomplete-collection verification on 2026-10-28. Its three interrupted forest attempts remain missing, so the original complete-union verifier cannot pass. All 132 recipe-condition summaries and 72 prespecified comparison rows remain visible, with conditional means, incomplete-pair restrictions and withheld inference. The [preflight](native_panel_preflight/README.md) preserves the original correctness and unscored resource evidence.
 
 ## Original alpha execution examples
 

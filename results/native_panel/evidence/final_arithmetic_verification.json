@@ -1,0 +1,36 @@
+{
+  "all_joint_decisions_withheld": true,
+  "delivery_manifest_sha256": "f2e9ec3c23cc686b48ff02a206088c92a9ec1e9ed2067923d81fc74d5749e879",
+  "input_sha256": {
+    "config": "33d434a1e7fcfb2819ea3d6ed0723fbd99dd599351f50e27cb43ec1a844ecde6",
+    "evidence/producer_identity.json": "eb78b9c22f75951fdc1d1f5801d5eb9b1fd383abbce7e4b7697da90a9c1e3003",
+    "evidence/verification_receipt.json": "2713669c4785eb8a76ad792c230657b1b45a9654c6f1afa74d0ede0e6bfa217d",
+    "method_summaries.csv": "060c77b466b29630dadaf0dea580ba20252ff67b15ae23a4de3b39e01e63f3b5",
+    "non_successful_fits.csv": "85811d2ce3708ac4211b28f17111374ee7abef147907b65b9e199cf2a5e96ec6",
+    "paired_comparisons.csv": "5d0963459feefcb52d806f863cc63faebae9ea920e466c2bc963f419fc6df359",
+    "scalar_records.csv": "d12f4758570ecd697c317055dd534664dc170591d4df73920ddc45c4335b5e45",
+    "scalar_records/addendum_C08_trial_target.csv": "18168d73595c2f71a531fc8c23a90b3a0c3bd61c2846741016a54d69d7964ad6",
+    "scalar_records/paper_cornet_official_n_conf.csv": "cbe93d4062990bf815dd7e1994e84910bb3a5da63335db563716c8c380995cee",
+    "scalar_records/paper_integrative_r_learner_kps_code.csv": "27040891aea1f54a6fb7ee69c1796dfcf71c9ac5ebff05be2b119ab744b4e4fe",
+    "scalar_records/structural_M0.csv": "e01a4a1da45a433ae38074469d1327be3beb95fcb3d1200bad4a098653351f84",
+    "scalar_records/structural_M10.csv": "13322066358e908838953d978077b5806bfd00716d86b406856fbd18f4da8a70",
+    "scalar_records/structural_M2.csv": "68aff219ca2ed1847cc59b46b8a00d495b3bf0af1c259809d7f0964f21896e8e",
+    "summary.json": "e3377f07655a0163fa7c26fa159c05f5a5512cee8ddc2c7f02b1a9ec814b2b19"
+  },
+  "method_rows": 132,
+  "original_summary_sha256": "e3377f07655a0163fa7c26fa159c05f5a5512cee8ddc2c7f02b1a9ec814b2b19",
+  "paired_rows": 72,
+  "passed": true,
+  "requested_fits": 8448,
+  "schema_version": 1,
+  "scope": "public scalar arithmetic and identities; no estimator fit or raw prediction replay",
+  "simultaneous_precision_withheld": true,
+  "status_counts": {
+    "failure": 64,
+    "missing": 3,
+    "success": 8350,
+    "timeout": 31
+  },
+  "terminal_fits": 8445,
+  "terminal_inventory_sha256": "a1333de2c4bca08674c1e4135e69de9dc3c0021bd291747e0a117008e601a0e4"
+}
