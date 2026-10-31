@@ -13,6 +13,7 @@ import subprocess
 import sys
 import time
 from copy import deepcopy
+from contextlib import contextmanager
 from types import SimpleNamespace
 
 import numpy as np
@@ -312,6 +313,165 @@ def test_failure_and_timeout_are_terminal_resume_never_refits(tmp_path, monkeypa
     monkeypatch.setattr(panel.subprocess, "Popen", lambda *a, **k: pytest.fail("terminal fit retried"))
     assert panel.execute_fit(tmp_path, case, method, manifest, resume=True) == row
     assert original == path.read_bytes()
+
+
+@pytest.mark.skipif(os.name != "posix" or os.geteuid() == 0,
+                    reason="Requires actual POSIX permission denial as an unprivileged user")
+@pytest.mark.parametrize("outcome", ["success", "failure", "timeout"])
+def test_unreadable_artifact_preserves_terminal_outcome_but_blocks_acceptance_and_refit(
+        tmp_path, monkeypatch, fake_data, outcome):
+    """An interrupted atomic write must not erase the parent's observed outcome."""
+    mock_worker_process(monkeypatch, fail=outcome == "failure", timeout=outcome == "timeout")
+    (tmp_path / "cases").mkdir()
+    (tmp_path / "records").mkdir()
+    manifest = make_manifest()
+    case, method = manifest["cases"][0], manifest["methods"][0]
+    pending = None
+    payload = b"incomplete retained worker artifact\x00\xff"
+
+    def leave_unreadable_temporary_file(process):
+        nonlocal pending
+        request = next((tmp_path / "records").rglob("request.json"))
+        pending = request.parent / ".pending-permission-regression"
+        pending.write_bytes(payload)
+        pending.chmod(0)
+        # Establish the real filesystem failure. Do not fake file_hash().
+        with pytest.raises(PermissionError):
+            pending.read_bytes()
+        return True
+
+    monkeypatch.setattr(panel, "stop_process_group", leave_unreadable_temporary_file)
+    try:
+        with pytest.raises(ValueError, match="artifact capture"):
+            panel.execute_fit(tmp_path, case, method, manifest, resume=False)
+        terminal = panel.record_path(tmp_path, case, method)
+        original = terminal.read_bytes()
+        row = panel.read_json(terminal)
+        assert row["status"] == outcome
+        assert row["metrics"] == ({"cate_mse": 2 / 3, "root_pehe": np.sqrt(2 / 3)}
+                                  if outcome == "success" else None)
+        if outcome == "timeout":
+            assert row["error_type"] == "FitTimeLimitExceeded"
+        assert set(row["artifact_errors"]) == {pending.name}
+        assert row["artifact_errors"][pending.name]["error_type"] == "PermissionError"
+        assert pending.name not in row["artifact_sha256"]
+        assert {"request.json", "observed_inputs.npz", "stdout.log", "stderr.log"} <= set(
+            row["artifact_sha256"])
+        assert pending.stat().st_mode & 0o777 == 0
+        attempts = tuple((terminal.parent / "attempts").iterdir())
+
+        monkeypatch.setattr(panel.subprocess, "Popen", lambda *a, **k: pytest.fail("fit retried"))
+        monkeypatch.setattr(panel, "file_hash", lambda *a, **k: pytest.fail("unverifiable artifact accepted"))
+        monkeypatch.setattr(panel, "read_manifest", lambda *a, **k: manifest)
+        with pytest.raises(ValueError, match="artifact capture"):
+            panel.execute_fit(tmp_path, case, method, manifest, resume=True)
+        with pytest.raises(ValueError, match="artifact capture"):
+            panel.verified_records(tmp_path)
+        assert terminal.read_bytes() == original
+        assert tuple((terminal.parent / "attempts").iterdir()) == attempts
+        assert pending.stat().st_mode & 0o777 == 0
+    finally:
+        # Restore permissions only after checking retention, for pytest cleanup.
+        if pending is not None and pending.exists():
+            pending.chmod(0o600)
+            assert pending.read_bytes() == payload
+
+
+def test_artifact_directory_enumeration_error_is_explicit(tmp_path, monkeypatch):
+    attempt = tmp_path / "attempt"
+    attempt.mkdir()
+    original_iterdir = Path.iterdir
+
+    def unavailable_directory(path):
+        if path == attempt:
+            raise OSError("injected directory enumeration failure")
+        return original_iterdir(path)
+
+    monkeypatch.setattr(Path, "iterdir", unavailable_directory)
+    assert panel.capture_artifacts(attempt) == ({}, {".": {"error_type": "OSError"}})
+
+
+@pytest.mark.parametrize("interrupted_marker", [False, True])
+def test_resume_refuses_unfinished_attempt_without_starting_another_fit(
+        tmp_path, monkeypatch, fake_data, interrupted_marker):
+    (tmp_path / "cases").mkdir()
+    (tmp_path / "records").mkdir()
+    manifest = make_manifest()
+    case, method = manifest["cases"][0], manifest["methods"][0]
+    terminal = panel.record_path(tmp_path, case, method)
+    attempt = terminal.parent / "attempts" / "prior-unfinished-attempt"
+    attempt.mkdir(parents=True)
+    evidence = attempt / ("interrupted.json" if interrupted_marker else "request.json")
+    evidence.write_bytes(b'{"retained":"unfinished evidence"}')
+    original = evidence.read_bytes()
+    monkeypatch.setattr(panel.subprocess, "Popen", lambda *a, **k: pytest.fail("unfinished fit retried"))
+    with pytest.raises(ValueError, match="unfinished attempt"):
+        panel.execute_fit(tmp_path, case, method, manifest, resume=True)
+    assert not terminal.exists()
+    assert tuple((terminal.parent / "attempts").iterdir()) == (attempt,)
+    assert tuple(attempt.iterdir()) == (evidence,)
+    assert evidence.read_bytes() == original
+
+
+def test_keyboard_interrupt_retains_attempt_and_resume_cannot_refit(tmp_path, monkeypatch, fake_data):
+    process_type = mock_worker_process(monkeypatch, timeout=True)
+    (tmp_path / "cases").mkdir()
+    (tmp_path / "records").mkdir()
+    manifest = make_manifest()
+    case, method = manifest["cases"][0], manifest["methods"][0]
+
+    def interrupt_wait(process, timeout=None):
+        raise KeyboardInterrupt("injected launcher interruption")
+
+    monkeypatch.setattr(process_type, "wait", interrupt_wait)
+    with pytest.raises(KeyboardInterrupt, match="injected launcher interruption"):
+        panel.execute_fit(tmp_path, case, method, manifest, resume=False)
+    terminal = panel.record_path(tmp_path, case, method)
+    assert not terminal.exists()
+    attempts = tuple((terminal.parent / "attempts").iterdir())
+    assert len(attempts) == 1
+    interrupted = attempts[0] / "interrupted.json"
+    record = panel.read_json(interrupted)
+    assert record["error_type"] == "KeyboardInterrupt"
+    assert record["metrics"] is None and record["process_group_reaped"] is True
+    evidence = {path.name: path.read_bytes() for path in attempts[0].iterdir()}
+
+    monkeypatch.setattr(panel.subprocess, "Popen", lambda *a, **k: pytest.fail("interrupted fit retried"))
+    with pytest.raises(ValueError, match="unfinished attempt"):
+        panel.execute_fit(tmp_path, case, method, manifest, resume=True)
+    assert not terminal.exists()
+    assert tuple((terminal.parent / "attempts").iterdir()) == attempts
+    assert {path.name: path.read_bytes() for path in attempts[0].iterdir()} == evidence
+
+
+def test_terminal_published_before_lock_acquisition_is_rechecked(
+        tmp_path, monkeypatch, fake_data):
+    mock_worker_process(monkeypatch)
+    (tmp_path / "cases").mkdir()
+    (tmp_path / "records").mkdir()
+    manifest = make_manifest()
+    case, method = manifest["cases"][0], manifest["methods"][0]
+    row = panel.execute_fit(tmp_path, case, method, manifest, resume=False)
+    terminal = panel.record_path(tmp_path, case, method)
+    original = terminal.read_bytes()
+    attempts = tuple((terminal.parent / "attempts").iterdir())
+    terminal.unlink()
+    acquired = False
+
+    @contextmanager
+    def another_writer_finishes_before_lock_is_acquired(path):
+        nonlocal acquired
+        acquired = True
+        assert not terminal.exists()
+        terminal.write_bytes(original)
+        yield
+
+    monkeypatch.setattr(panel, "exclusive_lock", another_writer_finishes_before_lock_is_acquired)
+    monkeypatch.setattr(panel.subprocess, "Popen", lambda *a, **k: pytest.fail("completed fit retried"))
+    assert panel.execute_fit(tmp_path, case, method, manifest, resume=True) == row
+    assert acquired
+    assert terminal.read_bytes() == original
+    assert tuple((terminal.parent / "attempts").iterdir()) == attempts
 
 
 @pytest.mark.parametrize("mode", ["profile", "campaign"])

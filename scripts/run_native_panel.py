@@ -22,6 +22,7 @@ from pathlib import Path
 import platform
 import resource
 import signal
+import stat
 import subprocess
 import sys
 import tempfile
@@ -619,6 +620,28 @@ def authenticated_worker_metadata(worker, request):
     return {field: worker[field] for field in WORKER_METADATA_FIELDS if field in worker}
 
 
+def capture_artifacts(attempt):
+    """Retain hash failures as diagnostics so they cannot erase the outcome.
+
+    Partial captures are never accepted by verify_record. Keep the original
+    files and observed execution status rather than inventing missing hashes
+    or replacing a timeout with a storage error.
+    """
+    hashes, errors = {}, {}
+    try:
+        paths = sorted(attempt.iterdir())
+    except OSError as exc:
+        return hashes, {".": {"error_type": type(exc).__name__}}
+    for path in paths:
+        try:
+            if not stat.S_ISREG(path.lstat().st_mode):
+                raise ValueError("attempt artifact is not a regular file")
+            hashes[path.name] = file_hash(path)
+        except (OSError, ValueError) as exc:
+            errors[path.name] = {"error_type": type(exc).__name__}
+    return hashes, errors
+
+
 def execute_fit(output, case, method, manifest, *, resume):
     import numpy as np
     terminal = record_path(output, case, method)
@@ -631,6 +654,15 @@ def execute_fit(output, case, method, manifest, *, resume):
         raise ValueError("unfinished attempt exists; explicit resume required")
     parent.mkdir(parents=True, exist_ok=True)
     with exclusive_lock(parent / "running.lock"):
+        # Another writer may have finished between the initial lookup and
+        # acquiring this lock. Never create a second attempt for that fit.
+        if terminal.exists():
+            if not resume:
+                raise ValueError("terminal record exists; explicit resume required")
+            return verify_record(output, case, method, manifest)
+        attempts = parent / "attempts"
+        if attempts.exists() and any(attempts.iterdir()):
+            raise ValueError("unfinished attempt exists; preserve it for explicit recovery")
         case_path = prepare_case(output, case, manifest)
         all_observed = load_arrays(case_path / "observed.npz")
         observed = {key: all_observed[key] for key in projected_keys(method)}
@@ -702,7 +734,9 @@ def execute_fit(output, case, method, manifest, *, resume):
                 record.update(status="failure", error_type="UnreapedProcessGroup", metrics=None)
             record["launcher_seconds"] = time.perf_counter() - started
             record["cgroup_after"] = cgroup_memory()
-            record["artifact_sha256"] = {p.name: file_hash(p) for p in sorted(attempt.iterdir()) if p.is_file()}
+            record["artifact_sha256"], artifact_errors = capture_artifacts(attempt)
+            if artifact_errors:
+                record["artifact_errors"] = artifact_errors
             write_json(attempt / "interrupted.json" if interrupted is not None else terminal, record)
         if interrupted is not None:
             raise interrupted
@@ -717,6 +751,8 @@ def verify_record(output, case, method, manifest):
                 "case_id": case["id"], "case": case, "method": method, "mode": manifest["mode"]}
     if any(record.get(key) != value for key, value in expected.items()) or record.get("status") not in TERMINAL:
         raise ValueError("terminal record identity or status changed")
+    if record.get("artifact_errors"):
+        raise ValueError("artifact capture is incomplete; terminal outcome retained for inspection only")
     attempt = (output / record["attempt"]).resolve()
     required_parent = record_path(output, case, method).parent / "attempts"
     if attempt.parent != required_parent or (output / record["attempt"]).is_symlink():
