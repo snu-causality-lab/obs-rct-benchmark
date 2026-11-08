@@ -18,6 +18,8 @@ The target CATE is always the conditional contrast for the declared target popul
 
 **Evaluation truth.** The target CATE is the corrected head difference. Arm-specific confounding terms are zero; source shifts and total regression discrepancies come from the omitted corrections.
 
+**Replay.** At the Figure 3 settings, this translation with the `cornet_official` adapter and input standardization off agrees with the authors' released script at all 30 points, within the spread across ten network draws. The adapter's default standardization raises CorNet's error by about 0.25. The released script does not reproduce the published CorNet curve. See the [CorNet Figure 3 replay](../results/reported_values/replay_cornet_fig3/README.md).
+
 ## Experimental Grounding: `experimental_grounding_kps`
 
 **Primary source.** Nathan Kallus, Aahlad Manas Puli, and Uri Shalit (2018), [Removing Hidden Confounding by Experimental Grounding](https://arxiv.org/abs/1810.11646v1), NeurIPS 2018, simulation study. Equation reference: [`CausalML/RemovingHiddenConfounding` at `a25cf3d2524a01c8a8d821f25cdeeb312c34a9cd`](https://github.com/CausalML/RemovingHiddenConfounding/tree/a25cf3d2524a01c8a8d821f25cdeeb312c34a9cd), `simulation.ipynb` and `lin_eta_gaussianU.py`.
@@ -45,6 +47,8 @@ The target CATE is always the conditional contrast for the declared target popul
 **Translation caveats.** Both [the paper, §6.1.1, p. 10](https://proceedings.mlr.press/v177/wu22a/wu22a.pdf) and the pinned released code specify uniform test covariates on `[-1,1]`. The normal-target extension changes that evaluation law deliberately; it must not be described as a paper/code discrepancy or an original paper design. The released README reverses the paper's Simulation I/II labels; this package follows the paper. For the multivariate setting, the example code's `p0=1` would leave eight nonzero covariate modifiers, so the paper preset uses zero zeroed modifiers. Trial-participant covariates are drawn directly from the selected-population law to achieve requested fixed role sizes, rather than producing a random trial count from a finite population.
 
 **Evaluation truth.** Analytic quadratic or linear target CATE is scored under each variant's declared target law. The normal-target extension measures extrapolation beyond trial support; identification there requires additional modeling assumptions. Conditional hidden moments for the multivariate logistic assignment use deterministic Gaussian quadrature. These numerical truth quantities must be checked for quadrature stability when increasing confounding strength. Known trial randomization probabilities are provided per row; an adapter restricted to constant trial propensity cannot run the multivariate variant without changing its assumptions.
+
+**Replay.** At the settings of Tables 1 and 2, `integrative_r_learner_kps_code` and `integrative_r_learner_multivariate_paper` with the `integrative_r_quadratic` adapter agree with the released code in all seven integrative R-learner cells. With no zeroed modifiers, the released code gives higher RCT-only errors than the paper's J = 9 rows, and higher OBS-only and naive errors at b = 0; whether the paper used `p0=1` is untested. See the [Integrative R replay](../results/reported_values/replay_intr_tables/README.md).
 
 ## Elastic Integrative: `elastic_integrative_gen_data_overlap`
 

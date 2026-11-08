@@ -33,7 +33,7 @@ Quickstart uses two designs and two seeds; catalog smoke uses all 31 designs and
 
 ## Read the results
 
-Five [study packets](results/README.md) cover the 31-preset catalog, a controlled GP source-access experiment, a native/default trial-CATE comparison, matched-M2 conditions and charged recruitment. Each has its own frozen producer, target, budget and inference rules.
+Five [study packets](results/README.md) cover the 31-preset catalog, a controlled GP source-access experiment, a native/default trial-CATE comparison, matched-M2 conditions and charged recruitment. Each has its own frozen producer, target, budget and inference rules. A separate [reported-values packet](results/reported_values/README.md) compares published CorNet and Integrative R results with reruns of the authors' code and with the benchmark at the papers' settings.
 
 The studies distinguish improving an OBS starting prediction, benefiting from OBS within one learner, and outperforming another available procedure. In the [controlled GP experiment](results/gp_source_pilot/SCIENTIFIC_RESULT.md), OBS lowers mean trial-CATE MSE at discrepancy levels 0/1 and raises it at 2 relative to the matched RCT-only GP at both trial budgets. Its prior-shrunken OBS start is not an optimal OBS-only estimator. In the complete native-panel M2/RCT128 condition, adding OBS reduces the GP's mean MSE from 0.53675 to 0.35128, while RCT-only forest has mean MSE 0.18386. These are descriptive comparisons.
 

@@ -16,6 +16,15 @@ Package **0.3.0a4** registers 16 recipes, including variants and controls; not e
 
 Reproduce each study with its frozen source and environment. Source fingerprints prevent resuming a retained tree under different code. The native panel's three unresolved attempts stay missing; its [packet](native_panel/README.md) exposes all 132 method rows, 72 comparisons and requested per-seed identities without retrying or replacing outcomes.
 
+## Paper-reported values and author-code replays
+
+The [reported-values packet](reported_values/README.md) records the published simulation results of CorNet (Hatt et al., 2022) and the Integrative R-learner (Wu and Yang, 2022), with each setting and notes on unclear source descriptions. Two replays rerun each paper's released code and the benchmark at the paper's settings. Seeds differ from the papers', so agreement is judged against Monte Carlo spread.
+
+| Replay | Released code against the paper | Benchmark against the released code | Why the earlier benchmark value differs from the paper |
+| --- | --- | --- | --- |
+| [CorNet Figure 3](reported_values/replay_cornet_fig3/README.md) | Baselines reproduce. From OBS 236 upward, the published CorNet values are better than all ten network draws | Agrees at all 30 points with input standardization off | Mostly the default input standardization, which moves CorNet from 0.81 to 1.26 at the native panel's mechanism |
+| [Integrative R Tables 1 and 2](reported_values/replay_intr_tables/README.md) | 20 of 24 R-learner values agree, including all seven integrative ones; three of the other four are in the J = 9 rows | Agrees in all seven integrative R-learner cells | Sample size: at the paper's sizes the benchmark gives 0.234, 0.134 and 0.088 against the paper's 0.23, 0.11 and 0.09 |
+
 ## Original alpha execution examples
 
 These package `0.1.0a1` examples check small-sample execution. Each packet retains metrics/status, aggregate JSON and configuration/source/environment provenance. Raw arrays, trained models and machine-specific paths remain outside these compact examples.

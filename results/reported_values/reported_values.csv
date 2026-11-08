@@ -1,0 +1,846 @@
+experiment_id,panel,method_paper,benchmark_method,x_name,x_plotted,n_obs,n_rct,condition,metric,value,uncertainty,uncertainty_type,n_replications,value_source,row_notes
+hatt2022_fig3,nUnc=25,tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,25,25,25,nUnc=25,sqrt_pehe,1.8381,0.2397,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig3,nUnc=25,tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,77.7778,77,25,nUnc=25,sqrt_pehe,1.2589,0.1771,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig3,nUnc=25,tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,130.556,130,25,nUnc=25,sqrt_pehe,1.0811,0.1867,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig3,nUnc=25,tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,183.333,183,25,nUnc=25,sqrt_pehe,0.9330,0.1320,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig3,nUnc=25,tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,236.111,236,25,nUnc=25,sqrt_pehe,0.8972,0.1121,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig3,nUnc=25,tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,288.889,288,25,nUnc=25,sqrt_pehe,0.8756,0.1094,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig3,nUnc=25,tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,341.667,341,25,nUnc=25,sqrt_pehe,0.8521,0.1351,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig3,nUnc=25,tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,394.444,394,25,nUnc=25,sqrt_pehe,0.7973,0.1406,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig3,nUnc=25,tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,447.222,447,25,nUnc=25,sqrt_pehe,0.7642,0.0779,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig3,nUnc=25,tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,500,500,25,nUnc=25,sqrt_pehe,0.7454,0.1470,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig3,nUnc=25,tau_Conf,,nConf,25,25,,nUnc=25,sqrt_pehe,2.9142,0.4461,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig3,nUnc=25,tau_Conf,,nConf,77.7778,77,,nUnc=25,sqrt_pehe,2.2914,0.2965,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig3,nUnc=25,tau_Conf,,nConf,130.556,130,,nUnc=25,sqrt_pehe,2.1879,0.1427,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig3,nUnc=25,tau_Conf,,nConf,183.333,183,,nUnc=25,sqrt_pehe,2.1259,0.1107,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig3,nUnc=25,tau_Conf,,nConf,236.111,236,,nUnc=25,sqrt_pehe,2.1026,0.1121,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig3,nUnc=25,tau_Conf,,nConf,288.889,288,,nUnc=25,sqrt_pehe,2.0829,0.0971,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig3,nUnc=25,tau_Conf,,nConf,341.667,341,,nUnc=25,sqrt_pehe,2.0941,0.0929,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig3,nUnc=25,tau_Conf,,nConf,394.444,394,,nUnc=25,sqrt_pehe,2.0848,0.0721,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig3,nUnc=25,tau_Conf,,nConf,447.222,447,,nUnc=25,sqrt_pehe,2.0712,0.0748,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig3,nUnc=25,tau_Conf,,nConf,500,500,,nUnc=25,sqrt_pehe,2.0758,0.0671,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig3,nUnc=25,tau_Unc,,nConf,25,,25,nUnc=25,sqrt_pehe,2.1413,0.3768,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig3,nUnc=25,tau_Unc,,nConf,77.7778,,25,nUnc=25,sqrt_pehe,2.1413,0.3768,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig3,nUnc=25,tau_Unc,,nConf,130.556,,25,nUnc=25,sqrt_pehe,2.1413,0.3768,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig3,nUnc=25,tau_Unc,,nConf,183.333,,25,nUnc=25,sqrt_pehe,2.1413,0.3768,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig3,nUnc=25,tau_Unc,,nConf,236.111,,25,nUnc=25,sqrt_pehe,2.1413,0.3768,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig3,nUnc=25,tau_Unc,,nConf,288.889,,25,nUnc=25,sqrt_pehe,2.1413,0.3768,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig3,nUnc=25,tau_Unc,,nConf,341.667,,25,nUnc=25,sqrt_pehe,2.1413,0.3768,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig3,nUnc=25,tau_Unc,,nConf,394.444,,25,nUnc=25,sqrt_pehe,2.1413,0.3768,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig3,nUnc=25,tau_Unc,,nConf,447.222,,25,nUnc=25,sqrt_pehe,2.1413,0.3768,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig3,nUnc=25,tau_Unc,,nConf,500,,25,nUnc=25,sqrt_pehe,2.1413,0.3768,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig3,nUnc=50,tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,25,25,50,nUnc=50,sqrt_pehe,1.7475,0.0981,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig3,nUnc=50,tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,77.7778,77,50,nUnc=50,sqrt_pehe,1.1579,0.1099,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig3,nUnc=50,tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,130.556,130,50,nUnc=50,sqrt_pehe,0.9847,0.1047,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig3,nUnc=50,tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,183.333,183,50,nUnc=50,sqrt_pehe,0.8642,0.1244,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig3,nUnc=50,tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,236.111,236,50,nUnc=50,sqrt_pehe,0.7476,0.1040,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig3,nUnc=50,tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,288.889,288,50,nUnc=50,sqrt_pehe,0.7892,0.1226,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig3,nUnc=50,tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,341.667,341,50,nUnc=50,sqrt_pehe,0.7521,0.1141,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig3,nUnc=50,tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,394.444,394,50,nUnc=50,sqrt_pehe,0.6868,0.0966,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig3,nUnc=50,tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,447.222,447,50,nUnc=50,sqrt_pehe,0.6752,0.0702,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig3,nUnc=50,tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,500,500,50,nUnc=50,sqrt_pehe,0.6889,0.0940,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig3,nUnc=50,tau_Conf,,nConf,25,25,,nUnc=50,sqrt_pehe,3.0288,0.3138,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig3,nUnc=50,tau_Conf,,nConf,77.7778,77,,nUnc=50,sqrt_pehe,2.3094,0.2981,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig3,nUnc=50,tau_Conf,,nConf,130.556,130,,nUnc=50,sqrt_pehe,2.2047,0.1457,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig3,nUnc=50,tau_Conf,,nConf,183.333,183,,nUnc=50,sqrt_pehe,2.1100,0.0877,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig3,nUnc=50,tau_Conf,,nConf,236.111,236,,nUnc=50,sqrt_pehe,2.0909,0.0978,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig3,nUnc=50,tau_Conf,,nConf,288.889,288,,nUnc=50,sqrt_pehe,2.0776,0.0874,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig3,nUnc=50,tau_Conf,,nConf,341.667,341,,nUnc=50,sqrt_pehe,2.0803,0.0879,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig3,nUnc=50,tau_Conf,,nConf,394.444,394,,nUnc=50,sqrt_pehe,2.0741,0.0846,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig3,nUnc=50,tau_Conf,,nConf,447.222,447,,nUnc=50,sqrt_pehe,2.0670,0.0870,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig3,nUnc=50,tau_Conf,,nConf,500,500,,nUnc=50,sqrt_pehe,2.0789,0.0793,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig3,nUnc=50,tau_Unc,,nConf,25,,50,nUnc=50,sqrt_pehe,1.5590,0.2782,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig3,nUnc=50,tau_Unc,,nConf,77.7778,,50,nUnc=50,sqrt_pehe,1.5590,0.2782,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig3,nUnc=50,tau_Unc,,nConf,130.556,,50,nUnc=50,sqrt_pehe,1.5590,0.2782,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig3,nUnc=50,tau_Unc,,nConf,183.333,,50,nUnc=50,sqrt_pehe,1.5590,0.2782,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig3,nUnc=50,tau_Unc,,nConf,236.111,,50,nUnc=50,sqrt_pehe,1.5590,0.2782,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig3,nUnc=50,tau_Unc,,nConf,288.889,,50,nUnc=50,sqrt_pehe,1.5590,0.2782,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig3,nUnc=50,tau_Unc,,nConf,341.667,,50,nUnc=50,sqrt_pehe,1.5590,0.2782,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig3,nUnc=50,tau_Unc,,nConf,394.444,,50,nUnc=50,sqrt_pehe,1.5590,0.2782,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig3,nUnc=50,tau_Unc,,nConf,447.222,,50,nUnc=50,sqrt_pehe,1.5590,0.2782,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig3,nUnc=50,tau_Unc,,nConf,500,,50,nUnc=50,sqrt_pehe,1.5590,0.2782,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig3,nUnc=100,tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,25,25,100,nUnc=100,sqrt_pehe,1.7176,0.0905,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig3,nUnc=100,tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,77.7778,77,100,nUnc=100,sqrt_pehe,1.0542,0.1412,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig3,nUnc=100,tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,130.556,130,100,nUnc=100,sqrt_pehe,0.9209,0.1119,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig3,nUnc=100,tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,183.333,183,100,nUnc=100,sqrt_pehe,0.7860,0.1163,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig3,nUnc=100,tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,236.111,236,100,nUnc=100,sqrt_pehe,0.7542,0.0593,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig3,nUnc=100,tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,288.889,288,100,nUnc=100,sqrt_pehe,0.6860,0.0692,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig3,nUnc=100,tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,341.667,341,100,nUnc=100,sqrt_pehe,0.6921,0.1001,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig3,nUnc=100,tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,394.444,394,100,nUnc=100,sqrt_pehe,0.6731,0.0865,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig3,nUnc=100,tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,447.222,447,100,nUnc=100,sqrt_pehe,0.6330,0.0593,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig3,nUnc=100,tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,500,500,100,nUnc=100,sqrt_pehe,0.6459,0.0547,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig3,nUnc=100,tau_Conf,,nConf,25,25,,nUnc=100,sqrt_pehe,2.8482,0.3838,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig3,nUnc=100,tau_Conf,,nConf,77.7778,77,,nUnc=100,sqrt_pehe,2.2799,0.3005,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig3,nUnc=100,tau_Conf,,nConf,130.556,130,,nUnc=100,sqrt_pehe,2.1887,0.1609,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig3,nUnc=100,tau_Conf,,nConf,183.333,183,,nUnc=100,sqrt_pehe,2.1241,0.1257,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig3,nUnc=100,tau_Conf,,nConf,236.111,236,,nUnc=100,sqrt_pehe,2.1103,0.0877,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig3,nUnc=100,tau_Conf,,nConf,288.889,288,,nUnc=100,sqrt_pehe,2.0683,0.1039,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig3,nUnc=100,tau_Conf,,nConf,341.667,341,,nUnc=100,sqrt_pehe,2.0748,0.0811,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig3,nUnc=100,tau_Conf,,nConf,394.444,394,,nUnc=100,sqrt_pehe,2.0971,0.1071,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig3,nUnc=100,tau_Conf,,nConf,447.222,447,,nUnc=100,sqrt_pehe,2.0539,0.0769,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig3,nUnc=100,tau_Conf,,nConf,500,500,,nUnc=100,sqrt_pehe,2.0933,0.0777,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig3,nUnc=100,tau_Unc,,nConf,25,,100,nUnc=100,sqrt_pehe,1.0094,0.1793,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig3,nUnc=100,tau_Unc,,nConf,77.7778,,100,nUnc=100,sqrt_pehe,1.0094,0.1793,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig3,nUnc=100,tau_Unc,,nConf,130.556,,100,nUnc=100,sqrt_pehe,1.0094,0.1793,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig3,nUnc=100,tau_Unc,,nConf,183.333,,100,nUnc=100,sqrt_pehe,1.0094,0.1793,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig3,nUnc=100,tau_Unc,,nConf,236.111,,100,nUnc=100,sqrt_pehe,1.0094,0.1793,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig3,nUnc=100,tau_Unc,,nConf,288.889,,100,nUnc=100,sqrt_pehe,1.0094,0.1793,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig3,nUnc=100,tau_Unc,,nConf,341.667,,100,nUnc=100,sqrt_pehe,1.0094,0.1793,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig3,nUnc=100,tau_Unc,,nConf,394.444,,100,nUnc=100,sqrt_pehe,1.0094,0.1793,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig3,nUnc=100,tau_Unc,,nConf,447.222,,100,nUnc=100,sqrt_pehe,1.0094,0.1793,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig3,nUnc=100,tau_Unc,,nConf,500,,100,nUnc=100,sqrt_pehe,1.0094,0.1793,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig4,sigma_u=1 (d_inf=1),tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,25,25,50,sigma_u=1 (d_inf=1),sqrt_pehe,1.2312,0.1811,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig4,sigma_u=1 (d_inf=1),tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,77.7778,77,50,sigma_u=1 (d_inf=1),sqrt_pehe,0.8732,0.2507,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig4,sigma_u=1 (d_inf=1),tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,130.556,130,50,sigma_u=1 (d_inf=1),sqrt_pehe,0.7978,0.2144,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig4,sigma_u=1 (d_inf=1),tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,183.333,183,50,sigma_u=1 (d_inf=1),sqrt_pehe,0.6874,0.1383,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig4,sigma_u=1 (d_inf=1),tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,236.111,236,50,sigma_u=1 (d_inf=1),sqrt_pehe,0.7070,0.1037,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig4,sigma_u=1 (d_inf=1),tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,288.889,288,50,sigma_u=1 (d_inf=1),sqrt_pehe,0.6548,0.0894,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig4,sigma_u=1 (d_inf=1),tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,341.667,341,50,sigma_u=1 (d_inf=1),sqrt_pehe,0.6448,0.1147,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig4,sigma_u=1 (d_inf=1),tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,394.444,394,50,sigma_u=1 (d_inf=1),sqrt_pehe,0.7096,0.1315,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig4,sigma_u=1 (d_inf=1),tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,447.222,447,50,sigma_u=1 (d_inf=1),sqrt_pehe,0.6778,0.1031,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig4,sigma_u=1 (d_inf=1),tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,500,500,50,sigma_u=1 (d_inf=1),sqrt_pehe,0.6300,0.0794,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig4,sigma_u=1 (d_inf=1),tau_Conf,,nConf,25,25,,sigma_u=1 (d_inf=1),sqrt_pehe,2.2970,0.2253,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig4,sigma_u=1 (d_inf=1),tau_Conf,,nConf,77.7778,77,,sigma_u=1 (d_inf=1),sqrt_pehe,2.0469,0.1256,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig4,sigma_u=1 (d_inf=1),tau_Conf,,nConf,130.556,130,,sigma_u=1 (d_inf=1),sqrt_pehe,2.0439,0.1109,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig4,sigma_u=1 (d_inf=1),tau_Conf,,nConf,183.333,183,,sigma_u=1 (d_inf=1),sqrt_pehe,2.0459,0.0825,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig4,sigma_u=1 (d_inf=1),tau_Conf,,nConf,236.111,236,,sigma_u=1 (d_inf=1),sqrt_pehe,2.0196,0.0450,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig4,sigma_u=1 (d_inf=1),tau_Conf,,nConf,288.889,288,,sigma_u=1 (d_inf=1),sqrt_pehe,2.0080,0.0652,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig4,sigma_u=1 (d_inf=1),tau_Conf,,nConf,341.667,341,,sigma_u=1 (d_inf=1),sqrt_pehe,2.0162,0.0563,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig4,sigma_u=1 (d_inf=1),tau_Conf,,nConf,394.444,394,,sigma_u=1 (d_inf=1),sqrt_pehe,2.0534,0.0844,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig4,sigma_u=1 (d_inf=1),tau_Conf,,nConf,447.222,447,,sigma_u=1 (d_inf=1),sqrt_pehe,2.0102,0.0341,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig4,sigma_u=1 (d_inf=1),tau_Conf,,nConf,500,500,,sigma_u=1 (d_inf=1),sqrt_pehe,2.0037,0.0364,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig4,sigma_u=1 (d_inf=1),tau_Unc,,nConf,25,,50,sigma_u=1 (d_inf=1),sqrt_pehe,0.9106,0.2071,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig4,sigma_u=1 (d_inf=1),tau_Unc,,nConf,77.7778,,50,sigma_u=1 (d_inf=1),sqrt_pehe,0.9106,0.2071,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig4,sigma_u=1 (d_inf=1),tau_Unc,,nConf,130.556,,50,sigma_u=1 (d_inf=1),sqrt_pehe,0.9106,0.2071,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig4,sigma_u=1 (d_inf=1),tau_Unc,,nConf,183.333,,50,sigma_u=1 (d_inf=1),sqrt_pehe,0.9106,0.2071,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig4,sigma_u=1 (d_inf=1),tau_Unc,,nConf,236.111,,50,sigma_u=1 (d_inf=1),sqrt_pehe,0.9106,0.2071,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig4,sigma_u=1 (d_inf=1),tau_Unc,,nConf,288.889,,50,sigma_u=1 (d_inf=1),sqrt_pehe,0.9106,0.2071,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig4,sigma_u=1 (d_inf=1),tau_Unc,,nConf,341.667,,50,sigma_u=1 (d_inf=1),sqrt_pehe,0.9106,0.2071,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig4,sigma_u=1 (d_inf=1),tau_Unc,,nConf,394.444,,50,sigma_u=1 (d_inf=1),sqrt_pehe,0.9106,0.2071,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig4,sigma_u=1 (d_inf=1),tau_Unc,,nConf,447.222,,50,sigma_u=1 (d_inf=1),sqrt_pehe,0.9106,0.2071,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig4,sigma_u=1 (d_inf=1),tau_Unc,,nConf,500,,50,sigma_u=1 (d_inf=1),sqrt_pehe,0.9106,0.2071,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig4,sigma_u=0.1 (d_inf>1),tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,25,25,50,sigma_u=0.1 (d_inf>1),sqrt_pehe,1.3142,0.2316,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig4,sigma_u=0.1 (d_inf>1),tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,77.7778,77,50,sigma_u=0.1 (d_inf>1),sqrt_pehe,0.9725,0.2225,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig4,sigma_u=0.1 (d_inf>1),tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,130.556,130,50,sigma_u=0.1 (d_inf>1),sqrt_pehe,0.9018,0.1802,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig4,sigma_u=0.1 (d_inf>1),tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,183.333,183,50,sigma_u=0.1 (d_inf>1),sqrt_pehe,0.8285,0.1416,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig4,sigma_u=0.1 (d_inf>1),tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,236.111,236,50,sigma_u=0.1 (d_inf>1),sqrt_pehe,0.7784,0.1392,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig4,sigma_u=0.1 (d_inf>1),tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,288.889,288,50,sigma_u=0.1 (d_inf>1),sqrt_pehe,0.7391,0.1000,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig4,sigma_u=0.1 (d_inf>1),tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,341.667,341,50,sigma_u=0.1 (d_inf>1),sqrt_pehe,0.7587,0.1268,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig4,sigma_u=0.1 (d_inf>1),tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,394.444,394,50,sigma_u=0.1 (d_inf>1),sqrt_pehe,0.8319,0.1404,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig4,sigma_u=0.1 (d_inf>1),tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,447.222,447,50,sigma_u=0.1 (d_inf>1),sqrt_pehe,0.7409,0.0909,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig4,sigma_u=0.1 (d_inf>1),tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,500,500,50,sigma_u=0.1 (d_inf>1),sqrt_pehe,0.7120,0.1129,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig4,sigma_u=0.1 (d_inf>1),tau_Conf,,nConf,25,25,,sigma_u=0.1 (d_inf>1),sqrt_pehe,2.2970,0.2253,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig4,sigma_u=0.1 (d_inf>1),tau_Conf,,nConf,77.7778,77,,sigma_u=0.1 (d_inf>1),sqrt_pehe,2.0469,0.1256,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig4,sigma_u=0.1 (d_inf>1),tau_Conf,,nConf,130.556,130,,sigma_u=0.1 (d_inf>1),sqrt_pehe,2.0439,0.1109,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig4,sigma_u=0.1 (d_inf>1),tau_Conf,,nConf,183.333,183,,sigma_u=0.1 (d_inf>1),sqrt_pehe,2.0459,0.0825,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig4,sigma_u=0.1 (d_inf>1),tau_Conf,,nConf,236.111,236,,sigma_u=0.1 (d_inf>1),sqrt_pehe,2.0196,0.0450,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig4,sigma_u=0.1 (d_inf>1),tau_Conf,,nConf,288.889,288,,sigma_u=0.1 (d_inf>1),sqrt_pehe,2.0080,0.0652,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig4,sigma_u=0.1 (d_inf>1),tau_Conf,,nConf,341.667,341,,sigma_u=0.1 (d_inf>1),sqrt_pehe,2.0162,0.0563,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig4,sigma_u=0.1 (d_inf>1),tau_Conf,,nConf,394.444,394,,sigma_u=0.1 (d_inf>1),sqrt_pehe,2.0534,0.0844,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig4,sigma_u=0.1 (d_inf>1),tau_Conf,,nConf,447.222,447,,sigma_u=0.1 (d_inf>1),sqrt_pehe,2.0102,0.0341,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig4,sigma_u=0.1 (d_inf>1),tau_Conf,,nConf,500,500,,sigma_u=0.1 (d_inf>1),sqrt_pehe,2.0037,0.0364,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig4,sigma_u=0.1 (d_inf>1),tau_Unc,,nConf,25,,50,sigma_u=0.1 (d_inf>1),sqrt_pehe,1.4204,0.2536,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig4,sigma_u=0.1 (d_inf>1),tau_Unc,,nConf,77.7778,,50,sigma_u=0.1 (d_inf>1),sqrt_pehe,1.4204,0.2536,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig4,sigma_u=0.1 (d_inf>1),tau_Unc,,nConf,130.556,,50,sigma_u=0.1 (d_inf>1),sqrt_pehe,1.4204,0.2536,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig4,sigma_u=0.1 (d_inf>1),tau_Unc,,nConf,183.333,,50,sigma_u=0.1 (d_inf>1),sqrt_pehe,1.4204,0.2536,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig4,sigma_u=0.1 (d_inf>1),tau_Unc,,nConf,236.111,,50,sigma_u=0.1 (d_inf>1),sqrt_pehe,1.4204,0.2536,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig4,sigma_u=0.1 (d_inf>1),tau_Unc,,nConf,288.889,,50,sigma_u=0.1 (d_inf>1),sqrt_pehe,1.4204,0.2536,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig4,sigma_u=0.1 (d_inf>1),tau_Unc,,nConf,341.667,,50,sigma_u=0.1 (d_inf>1),sqrt_pehe,1.4204,0.2536,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig4,sigma_u=0.1 (d_inf>1),tau_Unc,,nConf,394.444,,50,sigma_u=0.1 (d_inf>1),sqrt_pehe,1.4204,0.2536,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig4,sigma_u=0.1 (d_inf>1),tau_Unc,,nConf,447.222,,50,sigma_u=0.1 (d_inf>1),sqrt_pehe,1.4204,0.2536,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig4,sigma_u=0.1 (d_inf>1),tau_Unc,,nConf,500,,50,sigma_u=0.1 (d_inf>1),sqrt_pehe,1.4204,0.2536,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig5,C_B small,tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,25,25,50,C_B small,sqrt_pehe,1.9272,0.1544,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig5,C_B small,tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,77.7778,77,50,C_B small,sqrt_pehe,1.2542,0.2569,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig5,C_B small,tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,130.556,130,50,C_B small,sqrt_pehe,1.0182,0.1802,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig5,C_B small,tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,183.333,183,50,C_B small,sqrt_pehe,0.9224,0.2768,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig5,C_B small,tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,236.111,236,50,C_B small,sqrt_pehe,0.8577,0.1345,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig5,C_B small,tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,288.889,288,50,C_B small,sqrt_pehe,0.8216,0.1747,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig5,C_B small,tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,341.667,341,50,C_B small,sqrt_pehe,0.8684,0.1541,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig5,C_B small,tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,394.444,394,50,C_B small,sqrt_pehe,0.7710,0.1039,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig5,C_B small,tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,447.222,447,50,C_B small,sqrt_pehe,0.7594,0.1003,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig5,C_B small,tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,500,500,50,C_B small,sqrt_pehe,0.8576,0.2049,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig5,C_B small,tau_Conf,,nConf,25,25,,C_B small,sqrt_pehe,2.2164,0.1298,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig5,C_B small,tau_Conf,,nConf,77.7778,77,,C_B small,sqrt_pehe,1.5109,0.2707,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig5,C_B small,tau_Conf,,nConf,130.556,130,,C_B small,sqrt_pehe,1.3300,0.2442,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig5,C_B small,tau_Conf,,nConf,183.333,183,,C_B small,sqrt_pehe,1.2716,0.2010,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig5,C_B small,tau_Conf,,nConf,236.111,236,,C_B small,sqrt_pehe,1.2558,0.1583,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig5,C_B small,tau_Conf,,nConf,288.889,288,,C_B small,sqrt_pehe,1.2181,0.1986,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig5,C_B small,tau_Conf,,nConf,341.667,341,,C_B small,sqrt_pehe,1.2379,0.2102,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig5,C_B small,tau_Conf,,nConf,394.444,394,,C_B small,sqrt_pehe,1.1518,0.1163,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig5,C_B small,tau_Conf,,nConf,447.222,447,,C_B small,sqrt_pehe,1.1583,0.0834,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig5,C_B small,tau_Conf,,nConf,500,500,,C_B small,sqrt_pehe,1.2177,0.1780,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig5,C_B small,tau_Unc,,nConf,25,,50,C_B small,sqrt_pehe,1.6294,0.1066,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig5,C_B small,tau_Unc,,nConf,77.7778,,50,C_B small,sqrt_pehe,1.6294,0.1066,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig5,C_B small,tau_Unc,,nConf,130.556,,50,C_B small,sqrt_pehe,1.6294,0.1066,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig5,C_B small,tau_Unc,,nConf,183.333,,50,C_B small,sqrt_pehe,1.6294,0.1066,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig5,C_B small,tau_Unc,,nConf,236.111,,50,C_B small,sqrt_pehe,1.6294,0.1066,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig5,C_B small,tau_Unc,,nConf,288.889,,50,C_B small,sqrt_pehe,1.6294,0.1066,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig5,C_B small,tau_Unc,,nConf,341.667,,50,C_B small,sqrt_pehe,1.6294,0.1066,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig5,C_B small,tau_Unc,,nConf,394.444,,50,C_B small,sqrt_pehe,1.6294,0.1066,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig5,C_B small,tau_Unc,,nConf,447.222,,50,C_B small,sqrt_pehe,1.6294,0.1066,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig5,C_B small,tau_Unc,,nConf,500,,50,C_B small,sqrt_pehe,1.6294,0.1066,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig5,C_B large,tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,25,25,50,C_B large,sqrt_pehe,1.8098,0.1093,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig5,C_B large,tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,77.7778,77,50,C_B large,sqrt_pehe,1.3781,0.2320,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig5,C_B large,tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,130.556,130,50,C_B large,sqrt_pehe,1.1753,0.1155,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig5,C_B large,tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,183.333,183,50,C_B large,sqrt_pehe,1.1955,0.1570,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig5,C_B large,tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,236.111,236,50,C_B large,sqrt_pehe,1.0774,0.0990,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig5,C_B large,tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,288.889,288,50,C_B large,sqrt_pehe,1.1213,0.1309,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig5,C_B large,tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,341.667,341,50,C_B large,sqrt_pehe,1.0388,0.0906,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig5,C_B large,tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,394.444,394,50,C_B large,sqrt_pehe,1.0214,0.1433,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig5,C_B large,tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,447.222,447,50,C_B large,sqrt_pehe,0.9798,0.0825,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig5,C_B large,tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,500,500,50,C_B large,sqrt_pehe,0.9751,0.0636,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig5,C_B large,tau_Conf,,nConf,25,25,,C_B large,sqrt_pehe,2.5882,0.4470,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig5,C_B large,tau_Conf,,nConf,77.7778,77,,C_B large,sqrt_pehe,2.3948,0.2637,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig5,C_B large,tau_Conf,,nConf,130.556,130,,C_B large,sqrt_pehe,2.2210,0.2130,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig5,C_B large,tau_Conf,,nConf,183.333,183,,C_B large,sqrt_pehe,2.1964,0.1319,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig5,C_B large,tau_Conf,,nConf,236.111,236,,C_B large,sqrt_pehe,2.1198,0.1044,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig5,C_B large,tau_Conf,,nConf,288.889,288,,C_B large,sqrt_pehe,2.1330,0.0987,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig5,C_B large,tau_Conf,,nConf,341.667,341,,C_B large,sqrt_pehe,2.0871,0.0688,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig5,C_B large,tau_Conf,,nConf,394.444,394,,C_B large,sqrt_pehe,2.0640,0.0528,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig5,C_B large,tau_Conf,,nConf,447.222,447,,C_B large,sqrt_pehe,2.0800,0.0632,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig5,C_B large,tau_Conf,,nConf,500,500,,C_B large,sqrt_pehe,2.0615,0.0368,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig5,C_B large,tau_Unc,,nConf,25,,50,C_B large,sqrt_pehe,1.6294,0.1066,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig5,C_B large,tau_Unc,,nConf,77.7778,,50,C_B large,sqrt_pehe,1.6294,0.1066,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig5,C_B large,tau_Unc,,nConf,130.556,,50,C_B large,sqrt_pehe,1.6294,0.1066,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig5,C_B large,tau_Unc,,nConf,183.333,,50,C_B large,sqrt_pehe,1.6294,0.1066,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig5,C_B large,tau_Unc,,nConf,236.111,,50,C_B large,sqrt_pehe,1.6294,0.1066,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig5,C_B large,tau_Unc,,nConf,288.889,,50,C_B large,sqrt_pehe,1.6294,0.1066,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig5,C_B large,tau_Unc,,nConf,341.667,,50,C_B large,sqrt_pehe,1.6294,0.1066,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig5,C_B large,tau_Unc,,nConf,394.444,,50,C_B large,sqrt_pehe,1.6294,0.1066,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig5,C_B large,tau_Unc,,nConf,447.222,,50,C_B large,sqrt_pehe,1.6294,0.1066,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig5,C_B large,tau_Unc,,nConf,500,,50,C_B large,sqrt_pehe,1.6294,0.1066,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig6,"d_inf=1, C_B small",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,sqrt(nConf/nUnc),0.447214,10,50,"d_inf=1, C_B small",sqrt_pehe,1.7023,0.1523,sd_over_replications_ddof0,unknown,vector_digitized,
+hatt2022_fig6,"d_inf=1, C_B small",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,sqrt(nConf/nUnc),0.565685,16,50,"d_inf=1, C_B small",sqrt_pehe,1.6611,0.1113,sd_over_replications_ddof0,unknown,vector_digitized,
+hatt2022_fig6,"d_inf=1, C_B small",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,sqrt(nConf/nUnc),0.678233,23,50,"d_inf=1, C_B small",sqrt_pehe,1.6452,0.0905,sd_over_replications_ddof0,unknown,vector_digitized,
+hatt2022_fig6,"d_inf=1, C_B small",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,sqrt(nConf/nUnc),0.8,32,50,"d_inf=1, C_B small",sqrt_pehe,1.4393,0.1494,sd_over_replications_ddof0,unknown,vector_digitized,
+hatt2022_fig6,"d_inf=1, C_B small",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,sqrt(nConf/nUnc),0.916515,42,50,"d_inf=1, C_B small",sqrt_pehe,1.3946,0.1190,sd_over_replications_ddof0,unknown,vector_digitized,
+hatt2022_fig6,"d_inf=1, C_B small",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,sqrt(nConf/nUnc),1.02956,53,50,"d_inf=1, C_B small",sqrt_pehe,1.2066,0.1489,sd_over_replications_ddof0,unknown,vector_digitized,
+hatt2022_fig6,"d_inf=1, C_B small",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,sqrt(nConf/nUnc),1.14891,66,50,"d_inf=1, C_B small",sqrt_pehe,1.1586,0.1780,sd_over_replications_ddof0,unknown,vector_digitized,
+hatt2022_fig6,"d_inf=1, C_B small",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,sqrt(nConf/nUnc),1.26491,80,50,"d_inf=1, C_B small",sqrt_pehe,1.0795,0.1643,sd_over_replications_ddof0,unknown,vector_digitized,
+hatt2022_fig6,"d_inf=1, C_B small",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,sqrt(nConf/nUnc),1.38564,96,50,"d_inf=1, C_B small",sqrt_pehe,0.9475,0.1050,sd_over_replications_ddof0,unknown,vector_digitized,
+hatt2022_fig6,"d_inf=1, C_B small",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,sqrt(nConf/nUnc),1.49666,112,50,"d_inf=1, C_B small",sqrt_pehe,0.9222,0.1337,sd_over_replications_ddof0,unknown,vector_digitized,
+hatt2022_fig6,"d_inf=1, C_B small",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,sqrt(nConf/nUnc),1.69115,143,50,"d_inf=1, C_B small",sqrt_pehe,0.8809,0.1069,sd_over_replications_ddof0,unknown,vector_digitized,
+hatt2022_fig6,"d_inf=1, C_B small",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,sqrt(nConf/nUnc),1.88149,177,50,"d_inf=1, C_B small",sqrt_pehe,0.7579,0.0676,sd_over_replications_ddof0,unknown,vector_digitized,
+hatt2022_fig6,"d_inf=1, C_B small",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,sqrt(nConf/nUnc),2.06882,214,50,"d_inf=1, C_B small",sqrt_pehe,0.7270,0.0943,sd_over_replications_ddof0,unknown,vector_digitized,
+hatt2022_fig6,"d_inf=1, C_B small",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,sqrt(nConf/nUnc),2.25832,255,50,"d_inf=1, C_B small",sqrt_pehe,0.7532,0.0929,sd_over_replications_ddof0,unknown,vector_digitized,
+hatt2022_fig6,"d_inf=1, C_B small",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,sqrt(nConf/nUnc),2.44949,300,50,"d_inf=1, C_B small",sqrt_pehe,0.7228,0.0787,sd_over_replications_ddof0,unknown,vector_digitized,
+hatt2022_fig6,"d_inf=1, C_B small",tau_Unc,,sqrt(nConf/nUnc),0.447214,,50,"d_inf=1, C_B small",sqrt_pehe,1.4298,0.2226,sd_over_replications_ddof0,unknown,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig6,"d_inf=1, C_B small",tau_Unc,,sqrt(nConf/nUnc),0.565685,,50,"d_inf=1, C_B small",sqrt_pehe,1.4298,0.2226,sd_over_replications_ddof0,unknown,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig6,"d_inf=1, C_B small",tau_Unc,,sqrt(nConf/nUnc),0.678233,,50,"d_inf=1, C_B small",sqrt_pehe,1.4298,0.2226,sd_over_replications_ddof0,unknown,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig6,"d_inf=1, C_B small",tau_Unc,,sqrt(nConf/nUnc),0.8,,50,"d_inf=1, C_B small",sqrt_pehe,1.4298,0.2226,sd_over_replications_ddof0,unknown,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig6,"d_inf=1, C_B small",tau_Unc,,sqrt(nConf/nUnc),0.916515,,50,"d_inf=1, C_B small",sqrt_pehe,1.4298,0.2226,sd_over_replications_ddof0,unknown,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig6,"d_inf=1, C_B small",tau_Unc,,sqrt(nConf/nUnc),1.02956,,50,"d_inf=1, C_B small",sqrt_pehe,1.4298,0.2226,sd_over_replications_ddof0,unknown,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig6,"d_inf=1, C_B small",tau_Unc,,sqrt(nConf/nUnc),1.14891,,50,"d_inf=1, C_B small",sqrt_pehe,1.4298,0.2226,sd_over_replications_ddof0,unknown,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig6,"d_inf=1, C_B small",tau_Unc,,sqrt(nConf/nUnc),1.26491,,50,"d_inf=1, C_B small",sqrt_pehe,1.4298,0.2226,sd_over_replications_ddof0,unknown,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig6,"d_inf=1, C_B small",tau_Unc,,sqrt(nConf/nUnc),1.38564,,50,"d_inf=1, C_B small",sqrt_pehe,1.4298,0.2226,sd_over_replications_ddof0,unknown,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig6,"d_inf=1, C_B small",tau_Unc,,sqrt(nConf/nUnc),1.49666,,50,"d_inf=1, C_B small",sqrt_pehe,1.4298,0.2226,sd_over_replications_ddof0,unknown,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig6,"d_inf=1, C_B small",tau_Unc,,sqrt(nConf/nUnc),1.69115,,50,"d_inf=1, C_B small",sqrt_pehe,1.4298,0.2226,sd_over_replications_ddof0,unknown,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig6,"d_inf=1, C_B small",tau_Unc,,sqrt(nConf/nUnc),1.88149,,50,"d_inf=1, C_B small",sqrt_pehe,1.4298,0.2226,sd_over_replications_ddof0,unknown,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig6,"d_inf=1, C_B small",tau_Unc,,sqrt(nConf/nUnc),2.06882,,50,"d_inf=1, C_B small",sqrt_pehe,1.4298,0.2226,sd_over_replications_ddof0,unknown,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig6,"d_inf=1, C_B small",tau_Unc,,sqrt(nConf/nUnc),2.25832,,50,"d_inf=1, C_B small",sqrt_pehe,1.4298,0.2226,sd_over_replications_ddof0,unknown,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig6,"d_inf=1, C_B small",tau_Unc,,sqrt(nConf/nUnc),2.44949,,50,"d_inf=1, C_B small",sqrt_pehe,1.4298,0.2226,sd_over_replications_ddof0,unknown,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig6,"d_inf>1, C_B small",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,sqrt(nConf/nUnc),0.447214,10,50,"d_inf>1, C_B small",sqrt_pehe,1.9463,0.1479,sd_over_replications_ddof0,unknown,vector_digitized,
+hatt2022_fig6,"d_inf>1, C_B small",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,sqrt(nConf/nUnc),0.565685,16,50,"d_inf>1, C_B small",sqrt_pehe,1.8651,0.1397,sd_over_replications_ddof0,unknown,vector_digitized,
+hatt2022_fig6,"d_inf>1, C_B small",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,sqrt(nConf/nUnc),0.678233,23,50,"d_inf>1, C_B small",sqrt_pehe,1.8845,0.0886,sd_over_replications_ddof0,unknown,vector_digitized,
+hatt2022_fig6,"d_inf>1, C_B small",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,sqrt(nConf/nUnc),0.8,32,50,"d_inf>1, C_B small",sqrt_pehe,1.7303,0.1069,sd_over_replications_ddof0,unknown,vector_digitized,
+hatt2022_fig6,"d_inf>1, C_B small",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,sqrt(nConf/nUnc),0.916515,42,50,"d_inf>1, C_B small",sqrt_pehe,1.6474,0.1099,sd_over_replications_ddof0,unknown,vector_digitized,
+hatt2022_fig6,"d_inf>1, C_B small",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,sqrt(nConf/nUnc),1.02956,53,50,"d_inf>1, C_B small",sqrt_pehe,1.5183,0.1390,sd_over_replications_ddof0,unknown,vector_digitized,
+hatt2022_fig6,"d_inf>1, C_B small",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,sqrt(nConf/nUnc),1.14891,66,50,"d_inf>1, C_B small",sqrt_pehe,1.4602,0.1137,sd_over_replications_ddof0,unknown,vector_digitized,
+hatt2022_fig6,"d_inf>1, C_B small",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,sqrt(nConf/nUnc),1.26491,80,50,"d_inf>1, C_B small",sqrt_pehe,1.4203,0.1286,sd_over_replications_ddof0,unknown,vector_digitized,
+hatt2022_fig6,"d_inf>1, C_B small",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,sqrt(nConf/nUnc),1.38564,96,50,"d_inf>1, C_B small",sqrt_pehe,1.3407,0.1096,sd_over_replications_ddof0,unknown,vector_digitized,
+hatt2022_fig6,"d_inf>1, C_B small",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,sqrt(nConf/nUnc),1.49666,112,50,"d_inf>1, C_B small",sqrt_pehe,1.3176,0.1118,sd_over_replications_ddof0,unknown,vector_digitized,
+hatt2022_fig6,"d_inf>1, C_B small",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,sqrt(nConf/nUnc),1.69115,143,50,"d_inf>1, C_B small",sqrt_pehe,1.2816,0.0633,sd_over_replications_ddof0,unknown,vector_digitized,
+hatt2022_fig6,"d_inf>1, C_B small",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,sqrt(nConf/nUnc),1.88149,177,50,"d_inf>1, C_B small",sqrt_pehe,1.1973,0.0723,sd_over_replications_ddof0,unknown,vector_digitized,
+hatt2022_fig6,"d_inf>1, C_B small",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,sqrt(nConf/nUnc),2.06882,214,50,"d_inf>1, C_B small",sqrt_pehe,1.1992,0.1222,sd_over_replications_ddof0,unknown,vector_digitized,
+hatt2022_fig6,"d_inf>1, C_B small",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,sqrt(nConf/nUnc),2.25832,255,50,"d_inf>1, C_B small",sqrt_pehe,1.2273,0.0982,sd_over_replications_ddof0,unknown,vector_digitized,
+hatt2022_fig6,"d_inf>1, C_B small",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,sqrt(nConf/nUnc),2.44949,300,50,"d_inf>1, C_B small",sqrt_pehe,1.1974,0.0696,sd_over_replications_ddof0,unknown,vector_digitized,
+hatt2022_fig6,"d_inf>1, C_B small",tau_Unc,,sqrt(nConf/nUnc),0.447214,,50,"d_inf>1, C_B small",sqrt_pehe,1.8697,0.1576,sd_over_replications_ddof0,unknown,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig6,"d_inf>1, C_B small",tau_Unc,,sqrt(nConf/nUnc),0.565685,,50,"d_inf>1, C_B small",sqrt_pehe,1.8697,0.1576,sd_over_replications_ddof0,unknown,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig6,"d_inf>1, C_B small",tau_Unc,,sqrt(nConf/nUnc),0.678233,,50,"d_inf>1, C_B small",sqrt_pehe,1.8697,0.1576,sd_over_replications_ddof0,unknown,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig6,"d_inf>1, C_B small",tau_Unc,,sqrt(nConf/nUnc),0.8,,50,"d_inf>1, C_B small",sqrt_pehe,1.8697,0.1576,sd_over_replications_ddof0,unknown,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig6,"d_inf>1, C_B small",tau_Unc,,sqrt(nConf/nUnc),0.916515,,50,"d_inf>1, C_B small",sqrt_pehe,1.8697,0.1576,sd_over_replications_ddof0,unknown,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig6,"d_inf>1, C_B small",tau_Unc,,sqrt(nConf/nUnc),1.02956,,50,"d_inf>1, C_B small",sqrt_pehe,1.8697,0.1576,sd_over_replications_ddof0,unknown,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig6,"d_inf>1, C_B small",tau_Unc,,sqrt(nConf/nUnc),1.14891,,50,"d_inf>1, C_B small",sqrt_pehe,1.8697,0.1576,sd_over_replications_ddof0,unknown,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig6,"d_inf>1, C_B small",tau_Unc,,sqrt(nConf/nUnc),1.26491,,50,"d_inf>1, C_B small",sqrt_pehe,1.8697,0.1576,sd_over_replications_ddof0,unknown,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig6,"d_inf>1, C_B small",tau_Unc,,sqrt(nConf/nUnc),1.38564,,50,"d_inf>1, C_B small",sqrt_pehe,1.8697,0.1576,sd_over_replications_ddof0,unknown,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig6,"d_inf>1, C_B small",tau_Unc,,sqrt(nConf/nUnc),1.49666,,50,"d_inf>1, C_B small",sqrt_pehe,1.8697,0.1576,sd_over_replications_ddof0,unknown,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig6,"d_inf>1, C_B small",tau_Unc,,sqrt(nConf/nUnc),1.69115,,50,"d_inf>1, C_B small",sqrt_pehe,1.8697,0.1576,sd_over_replications_ddof0,unknown,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig6,"d_inf>1, C_B small",tau_Unc,,sqrt(nConf/nUnc),1.88149,,50,"d_inf>1, C_B small",sqrt_pehe,1.8697,0.1576,sd_over_replications_ddof0,unknown,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig6,"d_inf>1, C_B small",tau_Unc,,sqrt(nConf/nUnc),2.06882,,50,"d_inf>1, C_B small",sqrt_pehe,1.8697,0.1576,sd_over_replications_ddof0,unknown,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig6,"d_inf>1, C_B small",tau_Unc,,sqrt(nConf/nUnc),2.25832,,50,"d_inf>1, C_B small",sqrt_pehe,1.8697,0.1576,sd_over_replications_ddof0,unknown,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig6,"d_inf>1, C_B small",tau_Unc,,sqrt(nConf/nUnc),2.44949,,50,"d_inf>1, C_B small",sqrt_pehe,1.8697,0.1576,sd_over_replications_ddof0,unknown,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig6,"d_inf=1, C_B large",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,sqrt(nConf/nUnc),0.447214,10,50,"d_inf=1, C_B large",sqrt_pehe,1.7912,0.1063,sd_over_replications_ddof0,unknown,vector_digitized,
+hatt2022_fig6,"d_inf=1, C_B large",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,sqrt(nConf/nUnc),0.565685,16,50,"d_inf=1, C_B large",sqrt_pehe,1.7128,0.0800,sd_over_replications_ddof0,unknown,vector_digitized,
+hatt2022_fig6,"d_inf=1, C_B large",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,sqrt(nConf/nUnc),0.678233,23,50,"d_inf=1, C_B large",sqrt_pehe,1.6588,0.1437,sd_over_replications_ddof0,unknown,vector_digitized,
+hatt2022_fig6,"d_inf=1, C_B large",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,sqrt(nConf/nUnc),0.8,32,50,"d_inf=1, C_B large",sqrt_pehe,1.5557,0.1084,sd_over_replications_ddof0,unknown,vector_digitized,
+hatt2022_fig6,"d_inf=1, C_B large",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,sqrt(nConf/nUnc),0.916515,42,50,"d_inf=1, C_B large",sqrt_pehe,1.4309,0.1288,sd_over_replications_ddof0,unknown,vector_digitized,
+hatt2022_fig6,"d_inf=1, C_B large",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,sqrt(nConf/nUnc),1.02956,53,50,"d_inf=1, C_B large",sqrt_pehe,1.3413,0.1541,sd_over_replications_ddof0,unknown,vector_digitized,
+hatt2022_fig6,"d_inf=1, C_B large",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,sqrt(nConf/nUnc),1.14891,66,50,"d_inf=1, C_B large",sqrt_pehe,1.2259,0.1205,sd_over_replications_ddof0,unknown,vector_digitized,
+hatt2022_fig6,"d_inf=1, C_B large",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,sqrt(nConf/nUnc),1.26491,80,50,"d_inf=1, C_B large",sqrt_pehe,1.1825,0.1687,sd_over_replications_ddof0,unknown,vector_digitized,
+hatt2022_fig6,"d_inf=1, C_B large",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,sqrt(nConf/nUnc),1.38564,96,50,"d_inf=1, C_B large",sqrt_pehe,1.0831,0.1464,sd_over_replications_ddof0,unknown,vector_digitized,
+hatt2022_fig6,"d_inf=1, C_B large",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,sqrt(nConf/nUnc),1.49666,112,50,"d_inf=1, C_B large",sqrt_pehe,1.0472,0.1459,sd_over_replications_ddof0,unknown,vector_digitized,
+hatt2022_fig6,"d_inf=1, C_B large",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,sqrt(nConf/nUnc),1.69115,143,50,"d_inf=1, C_B large",sqrt_pehe,0.9829,0.1007,sd_over_replications_ddof0,unknown,vector_digitized,
+hatt2022_fig6,"d_inf=1, C_B large",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,sqrt(nConf/nUnc),1.88149,177,50,"d_inf=1, C_B large",sqrt_pehe,0.9222,0.1458,sd_over_replications_ddof0,unknown,vector_digitized,
+hatt2022_fig6,"d_inf=1, C_B large",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,sqrt(nConf/nUnc),2.06882,214,50,"d_inf=1, C_B large",sqrt_pehe,0.9296,0.1176,sd_over_replications_ddof0,unknown,vector_digitized,
+hatt2022_fig6,"d_inf=1, C_B large",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,sqrt(nConf/nUnc),2.25832,255,50,"d_inf=1, C_B large",sqrt_pehe,0.9188,0.1452,sd_over_replications_ddof0,unknown,vector_digitized,
+hatt2022_fig6,"d_inf=1, C_B large",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,sqrt(nConf/nUnc),2.44949,300,50,"d_inf=1, C_B large",sqrt_pehe,0.8500,0.1064,sd_over_replications_ddof0,unknown,vector_digitized,
+hatt2022_fig6,"d_inf=1, C_B large",tau_Unc,,sqrt(nConf/nUnc),0.447214,,50,"d_inf=1, C_B large",sqrt_pehe,1.4298,0.2226,sd_over_replications_ddof0,unknown,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig6,"d_inf=1, C_B large",tau_Unc,,sqrt(nConf/nUnc),0.565685,,50,"d_inf=1, C_B large",sqrt_pehe,1.4298,0.2226,sd_over_replications_ddof0,unknown,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig6,"d_inf=1, C_B large",tau_Unc,,sqrt(nConf/nUnc),0.678233,,50,"d_inf=1, C_B large",sqrt_pehe,1.4298,0.2226,sd_over_replications_ddof0,unknown,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig6,"d_inf=1, C_B large",tau_Unc,,sqrt(nConf/nUnc),0.8,,50,"d_inf=1, C_B large",sqrt_pehe,1.4298,0.2226,sd_over_replications_ddof0,unknown,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig6,"d_inf=1, C_B large",tau_Unc,,sqrt(nConf/nUnc),0.916515,,50,"d_inf=1, C_B large",sqrt_pehe,1.4298,0.2226,sd_over_replications_ddof0,unknown,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig6,"d_inf=1, C_B large",tau_Unc,,sqrt(nConf/nUnc),1.02956,,50,"d_inf=1, C_B large",sqrt_pehe,1.4298,0.2226,sd_over_replications_ddof0,unknown,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig6,"d_inf=1, C_B large",tau_Unc,,sqrt(nConf/nUnc),1.14891,,50,"d_inf=1, C_B large",sqrt_pehe,1.4298,0.2226,sd_over_replications_ddof0,unknown,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig6,"d_inf=1, C_B large",tau_Unc,,sqrt(nConf/nUnc),1.26491,,50,"d_inf=1, C_B large",sqrt_pehe,1.4298,0.2226,sd_over_replications_ddof0,unknown,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig6,"d_inf=1, C_B large",tau_Unc,,sqrt(nConf/nUnc),1.38564,,50,"d_inf=1, C_B large",sqrt_pehe,1.4298,0.2226,sd_over_replications_ddof0,unknown,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig6,"d_inf=1, C_B large",tau_Unc,,sqrt(nConf/nUnc),1.49666,,50,"d_inf=1, C_B large",sqrt_pehe,1.4298,0.2226,sd_over_replications_ddof0,unknown,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig6,"d_inf=1, C_B large",tau_Unc,,sqrt(nConf/nUnc),1.69115,,50,"d_inf=1, C_B large",sqrt_pehe,1.4298,0.2226,sd_over_replications_ddof0,unknown,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig6,"d_inf=1, C_B large",tau_Unc,,sqrt(nConf/nUnc),1.88149,,50,"d_inf=1, C_B large",sqrt_pehe,1.4298,0.2226,sd_over_replications_ddof0,unknown,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig6,"d_inf=1, C_B large",tau_Unc,,sqrt(nConf/nUnc),2.06882,,50,"d_inf=1, C_B large",sqrt_pehe,1.4298,0.2226,sd_over_replications_ddof0,unknown,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig6,"d_inf=1, C_B large",tau_Unc,,sqrt(nConf/nUnc),2.25832,,50,"d_inf=1, C_B large",sqrt_pehe,1.4298,0.2226,sd_over_replications_ddof0,unknown,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig6,"d_inf=1, C_B large",tau_Unc,,sqrt(nConf/nUnc),2.44949,,50,"d_inf=1, C_B large",sqrt_pehe,1.4298,0.2226,sd_over_replications_ddof0,unknown,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig7,"d_inf=1, Delta=1",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nUnc,3,300,3,"d_inf=1, Delta=1",pehe,1.2335,0.5262,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig7,"d_inf=1, Delta=1",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nUnc,4.05556,300,4,"d_inf=1, Delta=1",pehe,1.1827,0.4651,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig7,"d_inf=1, Delta=1",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nUnc,5.11111,300,5,"d_inf=1, Delta=1",pehe,1.1437,0.4202,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig7,"d_inf=1, Delta=1",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nUnc,6.16667,300,6,"d_inf=1, Delta=1",pehe,1.0259,0.3986,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig7,"d_inf=1, Delta=1",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nUnc,7.22222,300,7,"d_inf=1, Delta=1",pehe,0.8693,0.1776,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig7,"d_inf=1, Delta=1",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nUnc,8.27778,300,8,"d_inf=1, Delta=1",pehe,0.8688,0.2277,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig7,"d_inf=1, Delta=1",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nUnc,9.33333,300,9,"d_inf=1, Delta=1",pehe,0.8423,0.2365,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig7,"d_inf=1, Delta=1",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nUnc,10.3889,300,10,"d_inf=1, Delta=1",pehe,0.8832,0.2673,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig7,"d_inf=1, Delta=1",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nUnc,11.4444,300,11,"d_inf=1, Delta=1",pehe,0.8642,0.2657,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig7,"d_inf=1, Delta=1",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nUnc,12.5,300,12,"d_inf=1, Delta=1",pehe,0.8667,0.2837,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig7,"d_inf=1, Delta=1",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nUnc,15,300,15,"d_inf=1, Delta=1",pehe,0.7535,0.0926,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig7,"d_inf=1, Delta=1",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nUnc,17.5,300,17,"d_inf=1, Delta=1",pehe,0.7593,0.1256,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig7,"d_inf=1, Delta=1",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nUnc,20,300,20,"d_inf=1, Delta=1",pehe,0.7016,0.0979,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig7,"d_inf=1, Delta=1",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nUnc,22.5,300,22,"d_inf=1, Delta=1",pehe,0.6980,0.0920,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig7,"d_inf=1, Delta=1",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nUnc,25,300,25,"d_inf=1, Delta=1",pehe,0.6972,0.1082,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig7,"d_inf=1, Delta=1",tau_Conf,,nUnc,3,300,,"d_inf=1, Delta=1",pehe,0.9358,0.0374,sd_over_replications_ddof0,10,vector_digitized,OBS-only fit; constant across nUnc within the panel
+hatt2022_fig7,"d_inf=1, Delta=1",tau_Conf,,nUnc,4.05556,300,,"d_inf=1, Delta=1",pehe,0.9358,0.0374,sd_over_replications_ddof0,10,vector_digitized,OBS-only fit; constant across nUnc within the panel
+hatt2022_fig7,"d_inf=1, Delta=1",tau_Conf,,nUnc,5.11111,300,,"d_inf=1, Delta=1",pehe,0.9358,0.0374,sd_over_replications_ddof0,10,vector_digitized,OBS-only fit; constant across nUnc within the panel
+hatt2022_fig7,"d_inf=1, Delta=1",tau_Conf,,nUnc,6.16667,300,,"d_inf=1, Delta=1",pehe,0.9358,0.0374,sd_over_replications_ddof0,10,vector_digitized,OBS-only fit; constant across nUnc within the panel
+hatt2022_fig7,"d_inf=1, Delta=1",tau_Conf,,nUnc,7.22222,300,,"d_inf=1, Delta=1",pehe,0.9358,0.0374,sd_over_replications_ddof0,10,vector_digitized,OBS-only fit; constant across nUnc within the panel
+hatt2022_fig7,"d_inf=1, Delta=1",tau_Conf,,nUnc,8.27778,300,,"d_inf=1, Delta=1",pehe,0.9358,0.0374,sd_over_replications_ddof0,10,vector_digitized,OBS-only fit; constant across nUnc within the panel
+hatt2022_fig7,"d_inf=1, Delta=1",tau_Conf,,nUnc,9.33333,300,,"d_inf=1, Delta=1",pehe,0.9358,0.0374,sd_over_replications_ddof0,10,vector_digitized,OBS-only fit; constant across nUnc within the panel
+hatt2022_fig7,"d_inf=1, Delta=1",tau_Conf,,nUnc,10.3889,300,,"d_inf=1, Delta=1",pehe,0.9358,0.0374,sd_over_replications_ddof0,10,vector_digitized,OBS-only fit; constant across nUnc within the panel
+hatt2022_fig7,"d_inf=1, Delta=1",tau_Conf,,nUnc,11.4444,300,,"d_inf=1, Delta=1",pehe,0.9358,0.0374,sd_over_replications_ddof0,10,vector_digitized,OBS-only fit; constant across nUnc within the panel
+hatt2022_fig7,"d_inf=1, Delta=1",tau_Conf,,nUnc,12.5,300,,"d_inf=1, Delta=1",pehe,0.9358,0.0374,sd_over_replications_ddof0,10,vector_digitized,OBS-only fit; constant across nUnc within the panel
+hatt2022_fig7,"d_inf=1, Delta=1",tau_Conf,,nUnc,15,300,,"d_inf=1, Delta=1",pehe,0.9358,0.0374,sd_over_replications_ddof0,10,vector_digitized,OBS-only fit; constant across nUnc within the panel
+hatt2022_fig7,"d_inf=1, Delta=1",tau_Conf,,nUnc,17.5,300,,"d_inf=1, Delta=1",pehe,0.9358,0.0374,sd_over_replications_ddof0,10,vector_digitized,OBS-only fit; constant across nUnc within the panel
+hatt2022_fig7,"d_inf=1, Delta=1",tau_Conf,,nUnc,20,300,,"d_inf=1, Delta=1",pehe,0.9358,0.0374,sd_over_replications_ddof0,10,vector_digitized,OBS-only fit; constant across nUnc within the panel
+hatt2022_fig7,"d_inf=1, Delta=1",tau_Conf,,nUnc,22.5,300,,"d_inf=1, Delta=1",pehe,0.9358,0.0374,sd_over_replications_ddof0,10,vector_digitized,OBS-only fit; constant across nUnc within the panel
+hatt2022_fig7,"d_inf=1, Delta=1",tau_Conf,,nUnc,25,300,,"d_inf=1, Delta=1",pehe,0.9358,0.0374,sd_over_replications_ddof0,10,vector_digitized,OBS-only fit; constant across nUnc within the panel
+hatt2022_fig7,"d_inf>1, Delta=1",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nUnc,3,300,3,"d_inf>1, Delta=1",pehe,1.4498,0.5280,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig7,"d_inf>1, Delta=1",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nUnc,4.05556,300,4,"d_inf>1, Delta=1",pehe,1.2358,0.5838,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig7,"d_inf>1, Delta=1",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nUnc,5.11111,300,5,"d_inf>1, Delta=1",pehe,0.9798,0.3000,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig7,"d_inf>1, Delta=1",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nUnc,6.16667,300,6,"d_inf>1, Delta=1",pehe,1.0159,0.4132,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig7,"d_inf>1, Delta=1",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nUnc,7.22222,300,7,"d_inf>1, Delta=1",pehe,0.8854,0.1849,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig7,"d_inf>1, Delta=1",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nUnc,8.27778,300,8,"d_inf>1, Delta=1",pehe,0.8522,0.1375,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig7,"d_inf>1, Delta=1",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nUnc,9.33333,300,9,"d_inf>1, Delta=1",pehe,0.8026,0.1257,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig7,"d_inf>1, Delta=1",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nUnc,10.3889,300,10,"d_inf>1, Delta=1",pehe,0.7838,0.0854,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig7,"d_inf>1, Delta=1",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nUnc,11.4444,300,11,"d_inf>1, Delta=1",pehe,0.7833,0.1300,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig7,"d_inf>1, Delta=1",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nUnc,12.5,300,12,"d_inf>1, Delta=1",pehe,0.7482,0.0605,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig7,"d_inf>1, Delta=1",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nUnc,15,300,15,"d_inf>1, Delta=1",pehe,0.7415,0.0764,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig7,"d_inf>1, Delta=1",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nUnc,17.5,300,17,"d_inf>1, Delta=1",pehe,0.7214,0.0702,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig7,"d_inf>1, Delta=1",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nUnc,20,300,20,"d_inf>1, Delta=1",pehe,0.6929,0.0551,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig7,"d_inf>1, Delta=1",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nUnc,22.5,300,22,"d_inf>1, Delta=1",pehe,0.6901,0.0633,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig7,"d_inf>1, Delta=1",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nUnc,25,300,25,"d_inf>1, Delta=1",pehe,0.7040,0.0737,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig7,"d_inf>1, Delta=1",tau_Conf,,nUnc,3,300,,"d_inf>1, Delta=1",pehe,0.9358,0.0374,sd_over_replications_ddof0,10,vector_digitized,OBS-only fit; constant across nUnc within the panel
+hatt2022_fig7,"d_inf>1, Delta=1",tau_Conf,,nUnc,4.05556,300,,"d_inf>1, Delta=1",pehe,0.9358,0.0374,sd_over_replications_ddof0,10,vector_digitized,OBS-only fit; constant across nUnc within the panel
+hatt2022_fig7,"d_inf>1, Delta=1",tau_Conf,,nUnc,5.11111,300,,"d_inf>1, Delta=1",pehe,0.9358,0.0374,sd_over_replications_ddof0,10,vector_digitized,OBS-only fit; constant across nUnc within the panel
+hatt2022_fig7,"d_inf>1, Delta=1",tau_Conf,,nUnc,6.16667,300,,"d_inf>1, Delta=1",pehe,0.9358,0.0374,sd_over_replications_ddof0,10,vector_digitized,OBS-only fit; constant across nUnc within the panel
+hatt2022_fig7,"d_inf>1, Delta=1",tau_Conf,,nUnc,7.22222,300,,"d_inf>1, Delta=1",pehe,0.9358,0.0374,sd_over_replications_ddof0,10,vector_digitized,OBS-only fit; constant across nUnc within the panel
+hatt2022_fig7,"d_inf>1, Delta=1",tau_Conf,,nUnc,8.27778,300,,"d_inf>1, Delta=1",pehe,0.9358,0.0374,sd_over_replications_ddof0,10,vector_digitized,OBS-only fit; constant across nUnc within the panel
+hatt2022_fig7,"d_inf>1, Delta=1",tau_Conf,,nUnc,9.33333,300,,"d_inf>1, Delta=1",pehe,0.9358,0.0374,sd_over_replications_ddof0,10,vector_digitized,OBS-only fit; constant across nUnc within the panel
+hatt2022_fig7,"d_inf>1, Delta=1",tau_Conf,,nUnc,10.3889,300,,"d_inf>1, Delta=1",pehe,0.9358,0.0374,sd_over_replications_ddof0,10,vector_digitized,OBS-only fit; constant across nUnc within the panel
+hatt2022_fig7,"d_inf>1, Delta=1",tau_Conf,,nUnc,11.4444,300,,"d_inf>1, Delta=1",pehe,0.9358,0.0374,sd_over_replications_ddof0,10,vector_digitized,OBS-only fit; constant across nUnc within the panel
+hatt2022_fig7,"d_inf>1, Delta=1",tau_Conf,,nUnc,12.5,300,,"d_inf>1, Delta=1",pehe,0.9358,0.0374,sd_over_replications_ddof0,10,vector_digitized,OBS-only fit; constant across nUnc within the panel
+hatt2022_fig7,"d_inf>1, Delta=1",tau_Conf,,nUnc,15,300,,"d_inf>1, Delta=1",pehe,0.9358,0.0374,sd_over_replications_ddof0,10,vector_digitized,OBS-only fit; constant across nUnc within the panel
+hatt2022_fig7,"d_inf>1, Delta=1",tau_Conf,,nUnc,17.5,300,,"d_inf>1, Delta=1",pehe,0.9358,0.0374,sd_over_replications_ddof0,10,vector_digitized,OBS-only fit; constant across nUnc within the panel
+hatt2022_fig7,"d_inf>1, Delta=1",tau_Conf,,nUnc,20,300,,"d_inf>1, Delta=1",pehe,0.9358,0.0374,sd_over_replications_ddof0,10,vector_digitized,OBS-only fit; constant across nUnc within the panel
+hatt2022_fig7,"d_inf>1, Delta=1",tau_Conf,,nUnc,22.5,300,,"d_inf>1, Delta=1",pehe,0.9358,0.0374,sd_over_replications_ddof0,10,vector_digitized,OBS-only fit; constant across nUnc within the panel
+hatt2022_fig7,"d_inf>1, Delta=1",tau_Conf,,nUnc,25,300,,"d_inf>1, Delta=1",pehe,0.9358,0.0374,sd_over_replications_ddof0,10,vector_digitized,OBS-only fit; constant across nUnc within the panel
+hatt2022_fig7,"d_inf=1, Delta=1.5",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nUnc,3,300,3,"d_inf=1, Delta=1.5",pehe,1.5487,0.7702,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig7,"d_inf=1, Delta=1.5",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nUnc,4.05556,300,4,"d_inf=1, Delta=1.5",pehe,1.4481,0.7115,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig7,"d_inf=1, Delta=1.5",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nUnc,5.11111,300,5,"d_inf=1, Delta=1.5",pehe,1.2763,0.5840,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig7,"d_inf=1, Delta=1.5",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nUnc,6.16667,300,6,"d_inf=1, Delta=1.5",pehe,0.9984,0.2179,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig7,"d_inf=1, Delta=1.5",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nUnc,7.22222,300,7,"d_inf=1, Delta=1.5",pehe,0.9591,0.1354,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig7,"d_inf=1, Delta=1.5",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nUnc,8.27778,300,8,"d_inf=1, Delta=1.5",pehe,1.0027,0.3059,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig7,"d_inf=1, Delta=1.5",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nUnc,9.33333,300,9,"d_inf=1, Delta=1.5",pehe,0.9561,0.3077,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig7,"d_inf=1, Delta=1.5",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nUnc,10.3889,300,10,"d_inf=1, Delta=1.5",pehe,1.0018,0.3221,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig7,"d_inf=1, Delta=1.5",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nUnc,11.4444,300,11,"d_inf=1, Delta=1.5",pehe,0.9432,0.3546,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig7,"d_inf=1, Delta=1.5",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nUnc,12.5,300,12,"d_inf=1, Delta=1.5",pehe,0.9310,0.3763,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig7,"d_inf=1, Delta=1.5",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nUnc,15,300,15,"d_inf=1, Delta=1.5",pehe,0.7521,0.0772,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig7,"d_inf=1, Delta=1.5",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nUnc,17.5,300,17,"d_inf=1, Delta=1.5",pehe,0.7332,0.0620,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig7,"d_inf=1, Delta=1.5",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nUnc,20,300,20,"d_inf=1, Delta=1.5",pehe,0.6880,0.0546,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig7,"d_inf=1, Delta=1.5",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nUnc,22.5,300,22,"d_inf=1, Delta=1.5",pehe,0.6934,0.0742,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig7,"d_inf=1, Delta=1.5",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nUnc,25,300,25,"d_inf=1, Delta=1.5",pehe,0.6694,0.0721,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig7,"d_inf=1, Delta=1.5",tau_Conf,,nUnc,3,300,,"d_inf=1, Delta=1.5",pehe,1.2370,0.0859,sd_over_replications_ddof0,10,vector_digitized,OBS-only fit; constant across nUnc within the panel
+hatt2022_fig7,"d_inf=1, Delta=1.5",tau_Conf,,nUnc,4.05556,300,,"d_inf=1, Delta=1.5",pehe,1.2370,0.0859,sd_over_replications_ddof0,10,vector_digitized,OBS-only fit; constant across nUnc within the panel
+hatt2022_fig7,"d_inf=1, Delta=1.5",tau_Conf,,nUnc,5.11111,300,,"d_inf=1, Delta=1.5",pehe,1.2370,0.0859,sd_over_replications_ddof0,10,vector_digitized,OBS-only fit; constant across nUnc within the panel
+hatt2022_fig7,"d_inf=1, Delta=1.5",tau_Conf,,nUnc,6.16667,300,,"d_inf=1, Delta=1.5",pehe,1.2370,0.0859,sd_over_replications_ddof0,10,vector_digitized,OBS-only fit; constant across nUnc within the panel
+hatt2022_fig7,"d_inf=1, Delta=1.5",tau_Conf,,nUnc,7.22222,300,,"d_inf=1, Delta=1.5",pehe,1.2370,0.0859,sd_over_replications_ddof0,10,vector_digitized,OBS-only fit; constant across nUnc within the panel
+hatt2022_fig7,"d_inf=1, Delta=1.5",tau_Conf,,nUnc,8.27778,300,,"d_inf=1, Delta=1.5",pehe,1.2370,0.0859,sd_over_replications_ddof0,10,vector_digitized,OBS-only fit; constant across nUnc within the panel
+hatt2022_fig7,"d_inf=1, Delta=1.5",tau_Conf,,nUnc,9.33333,300,,"d_inf=1, Delta=1.5",pehe,1.2370,0.0859,sd_over_replications_ddof0,10,vector_digitized,OBS-only fit; constant across nUnc within the panel
+hatt2022_fig7,"d_inf=1, Delta=1.5",tau_Conf,,nUnc,10.3889,300,,"d_inf=1, Delta=1.5",pehe,1.2370,0.0859,sd_over_replications_ddof0,10,vector_digitized,OBS-only fit; constant across nUnc within the panel
+hatt2022_fig7,"d_inf=1, Delta=1.5",tau_Conf,,nUnc,11.4444,300,,"d_inf=1, Delta=1.5",pehe,1.2370,0.0859,sd_over_replications_ddof0,10,vector_digitized,OBS-only fit; constant across nUnc within the panel
+hatt2022_fig7,"d_inf=1, Delta=1.5",tau_Conf,,nUnc,12.5,300,,"d_inf=1, Delta=1.5",pehe,1.2370,0.0859,sd_over_replications_ddof0,10,vector_digitized,OBS-only fit; constant across nUnc within the panel
+hatt2022_fig7,"d_inf=1, Delta=1.5",tau_Conf,,nUnc,15,300,,"d_inf=1, Delta=1.5",pehe,1.2370,0.0859,sd_over_replications_ddof0,10,vector_digitized,OBS-only fit; constant across nUnc within the panel
+hatt2022_fig7,"d_inf=1, Delta=1.5",tau_Conf,,nUnc,17.5,300,,"d_inf=1, Delta=1.5",pehe,1.2370,0.0859,sd_over_replications_ddof0,10,vector_digitized,OBS-only fit; constant across nUnc within the panel
+hatt2022_fig7,"d_inf=1, Delta=1.5",tau_Conf,,nUnc,20,300,,"d_inf=1, Delta=1.5",pehe,1.2370,0.0859,sd_over_replications_ddof0,10,vector_digitized,OBS-only fit; constant across nUnc within the panel
+hatt2022_fig7,"d_inf=1, Delta=1.5",tau_Conf,,nUnc,22.5,300,,"d_inf=1, Delta=1.5",pehe,1.2370,0.0859,sd_over_replications_ddof0,10,vector_digitized,OBS-only fit; constant across nUnc within the panel
+hatt2022_fig7,"d_inf=1, Delta=1.5",tau_Conf,,nUnc,25,300,,"d_inf=1, Delta=1.5",pehe,1.2370,0.0859,sd_over_replications_ddof0,10,vector_digitized,OBS-only fit; constant across nUnc within the panel
+hatt2022_fig8,beta_phi=0 (shared),tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,25,25,50,beta_phi=0 (shared),sqrt_pehe,2.2625,0.4008,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig8,beta_phi=0 (shared),tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,77.7778,77,50,beta_phi=0 (shared),sqrt_pehe,1.4834,0.3024,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig8,beta_phi=0 (shared),tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,130.556,130,50,beta_phi=0 (shared),sqrt_pehe,1.1974,0.1971,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig8,beta_phi=0 (shared),tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,183.333,183,50,beta_phi=0 (shared),sqrt_pehe,1.1431,0.2120,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig8,beta_phi=0 (shared),tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,236.111,236,50,beta_phi=0 (shared),sqrt_pehe,1.0011,0.1017,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig8,beta_phi=0 (shared),tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,288.889,288,50,beta_phi=0 (shared),sqrt_pehe,0.9884,0.0831,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig8,beta_phi=0 (shared),tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,341.667,341,50,beta_phi=0 (shared),sqrt_pehe,0.9956,0.0496,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig8,beta_phi=0 (shared),tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,394.444,394,50,beta_phi=0 (shared),sqrt_pehe,0.9362,0.0596,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig8,beta_phi=0 (shared),tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,447.222,447,50,beta_phi=0 (shared),sqrt_pehe,0.9233,0.0645,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig8,beta_phi=0 (shared),tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,500,500,50,beta_phi=0 (shared),sqrt_pehe,0.9366,0.0658,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig8,beta_phi=0 (shared),tau_Conf,,nConf,25,25,,beta_phi=0 (shared),sqrt_pehe,2.8945,0.4244,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig8,beta_phi=0 (shared),tau_Conf,,nConf,77.7778,77,,beta_phi=0 (shared),sqrt_pehe,2.4140,0.2755,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig8,beta_phi=0 (shared),tau_Conf,,nConf,130.556,130,,beta_phi=0 (shared),sqrt_pehe,2.3487,0.1429,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig8,beta_phi=0 (shared),tau_Conf,,nConf,183.333,183,,beta_phi=0 (shared),sqrt_pehe,2.2488,0.1689,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig8,beta_phi=0 (shared),tau_Conf,,nConf,236.111,236,,beta_phi=0 (shared),sqrt_pehe,2.1927,0.0918,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig8,beta_phi=0 (shared),tau_Conf,,nConf,288.889,288,,beta_phi=0 (shared),sqrt_pehe,2.1173,0.0474,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig8,beta_phi=0 (shared),tau_Conf,,nConf,341.667,341,,beta_phi=0 (shared),sqrt_pehe,2.1422,0.0648,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig8,beta_phi=0 (shared),tau_Conf,,nConf,394.444,394,,beta_phi=0 (shared),sqrt_pehe,2.1537,0.0450,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig8,beta_phi=0 (shared),tau_Conf,,nConf,447.222,447,,beta_phi=0 (shared),sqrt_pehe,2.1435,0.0416,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig8,beta_phi=0 (shared),tau_Conf,,nConf,500,500,,beta_phi=0 (shared),sqrt_pehe,2.1306,0.0426,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig8,beta_phi=0 (shared),tau_Unc,,nConf,25,,50,beta_phi=0 (shared),sqrt_pehe,1.6509,0.2469,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig8,beta_phi=0 (shared),tau_Unc,,nConf,77.7778,,50,beta_phi=0 (shared),sqrt_pehe,1.6509,0.2469,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig8,beta_phi=0 (shared),tau_Unc,,nConf,130.556,,50,beta_phi=0 (shared),sqrt_pehe,1.6509,0.2469,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig8,beta_phi=0 (shared),tau_Unc,,nConf,183.333,,50,beta_phi=0 (shared),sqrt_pehe,1.6509,0.2469,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig8,beta_phi=0 (shared),tau_Unc,,nConf,236.111,,50,beta_phi=0 (shared),sqrt_pehe,1.6509,0.2469,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig8,beta_phi=0 (shared),tau_Unc,,nConf,288.889,,50,beta_phi=0 (shared),sqrt_pehe,1.6509,0.2469,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig8,beta_phi=0 (shared),tau_Unc,,nConf,341.667,,50,beta_phi=0 (shared),sqrt_pehe,1.6509,0.2469,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig8,beta_phi=0 (shared),tau_Unc,,nConf,394.444,,50,beta_phi=0 (shared),sqrt_pehe,1.6509,0.2469,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig8,beta_phi=0 (shared),tau_Unc,,nConf,447.222,,50,beta_phi=0 (shared),sqrt_pehe,1.6509,0.2469,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig8,beta_phi=0 (shared),tau_Unc,,nConf,500,,50,beta_phi=0 (shared),sqrt_pehe,1.6509,0.2469,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig8,beta_phi small,tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,25,25,50,beta_phi small,sqrt_pehe,2.2456,0.4380,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig8,beta_phi small,tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,77.7778,77,50,beta_phi small,sqrt_pehe,1.2925,0.1223,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig8,beta_phi small,tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,130.556,130,50,beta_phi small,sqrt_pehe,1.0696,0.1141,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig8,beta_phi small,tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,183.333,183,50,beta_phi small,sqrt_pehe,0.9952,0.0593,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig8,beta_phi small,tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,236.111,236,50,beta_phi small,sqrt_pehe,0.9632,0.0717,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig8,beta_phi small,tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,288.889,288,50,beta_phi small,sqrt_pehe,0.9373,0.0683,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig8,beta_phi small,tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,341.667,341,50,beta_phi small,sqrt_pehe,0.9243,0.0569,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig8,beta_phi small,tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,394.444,394,50,beta_phi small,sqrt_pehe,0.9077,0.0388,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig8,beta_phi small,tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,447.222,447,50,beta_phi small,sqrt_pehe,0.9231,0.0569,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig8,beta_phi small,tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,500,500,50,beta_phi small,sqrt_pehe,0.9133,0.0360,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig8,beta_phi small,tau_Conf,,nConf,25,25,,beta_phi small,sqrt_pehe,3.2134,0.5914,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig8,beta_phi small,tau_Conf,,nConf,77.7778,77,,beta_phi small,sqrt_pehe,2.8399,0.2985,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig8,beta_phi small,tau_Conf,,nConf,130.556,130,,beta_phi small,sqrt_pehe,2.7392,0.2022,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig8,beta_phi small,tau_Conf,,nConf,183.333,183,,beta_phi small,sqrt_pehe,2.6979,0.1069,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig8,beta_phi small,tau_Conf,,nConf,236.111,236,,beta_phi small,sqrt_pehe,2.6719,0.0835,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig8,beta_phi small,tau_Conf,,nConf,288.889,288,,beta_phi small,sqrt_pehe,2.6783,0.0606,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig8,beta_phi small,tau_Conf,,nConf,341.667,341,,beta_phi small,sqrt_pehe,2.6665,0.0641,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig8,beta_phi small,tau_Conf,,nConf,394.444,394,,beta_phi small,sqrt_pehe,2.6832,0.0471,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig8,beta_phi small,tau_Conf,,nConf,447.222,447,,beta_phi small,sqrt_pehe,2.6841,0.0558,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig8,beta_phi small,tau_Conf,,nConf,500,500,,beta_phi small,sqrt_pehe,2.6548,0.0351,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig8,beta_phi small,tau_Unc,,nConf,25,,50,beta_phi small,sqrt_pehe,1.6509,0.2469,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig8,beta_phi small,tau_Unc,,nConf,77.7778,,50,beta_phi small,sqrt_pehe,1.6509,0.2469,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig8,beta_phi small,tau_Unc,,nConf,130.556,,50,beta_phi small,sqrt_pehe,1.6509,0.2469,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig8,beta_phi small,tau_Unc,,nConf,183.333,,50,beta_phi small,sqrt_pehe,1.6509,0.2469,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig8,beta_phi small,tau_Unc,,nConf,236.111,,50,beta_phi small,sqrt_pehe,1.6509,0.2469,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig8,beta_phi small,tau_Unc,,nConf,288.889,,50,beta_phi small,sqrt_pehe,1.6509,0.2469,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig8,beta_phi small,tau_Unc,,nConf,341.667,,50,beta_phi small,sqrt_pehe,1.6509,0.2469,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig8,beta_phi small,tau_Unc,,nConf,394.444,,50,beta_phi small,sqrt_pehe,1.6509,0.2469,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig8,beta_phi small,tau_Unc,,nConf,447.222,,50,beta_phi small,sqrt_pehe,1.6509,0.2469,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig8,beta_phi small,tau_Unc,,nConf,500,,50,beta_phi small,sqrt_pehe,1.6509,0.2469,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig8,beta_phi large,tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,25,25,50,beta_phi large,sqrt_pehe,2.3405,0.3347,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig8,beta_phi large,tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,77.7778,77,50,beta_phi large,sqrt_pehe,1.2642,0.1178,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig8,beta_phi large,tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,130.556,130,50,beta_phi large,sqrt_pehe,1.0517,0.0978,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig8,beta_phi large,tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,183.333,183,50,beta_phi large,sqrt_pehe,0.9988,0.0922,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig8,beta_phi large,tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,236.111,236,50,beta_phi large,sqrt_pehe,0.9998,0.0810,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig8,beta_phi large,tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,288.889,288,50,beta_phi large,sqrt_pehe,0.9362,0.0725,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig8,beta_phi large,tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,341.667,341,50,beta_phi large,sqrt_pehe,0.9382,0.0795,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig8,beta_phi large,tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,394.444,394,50,beta_phi large,sqrt_pehe,0.9129,0.0511,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig8,beta_phi large,tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,447.222,447,50,beta_phi large,sqrt_pehe,0.9205,0.0657,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig8,beta_phi large,tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,500,500,50,beta_phi large,sqrt_pehe,0.9343,0.0803,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig8,beta_phi large,tau_Conf,,nConf,25,25,,beta_phi large,sqrt_pehe,3.9972,0.4570,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig8,beta_phi large,tau_Conf,,nConf,77.7778,77,,beta_phi large,sqrt_pehe,3.7345,0.3798,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig8,beta_phi large,tau_Conf,,nConf,130.556,130,,beta_phi large,sqrt_pehe,3.8349,0.2048,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig8,beta_phi large,tau_Conf,,nConf,183.333,183,,beta_phi large,sqrt_pehe,3.7691,0.1648,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig8,beta_phi large,tau_Conf,,nConf,236.111,236,,beta_phi large,sqrt_pehe,3.7767,0.1242,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig8,beta_phi large,tau_Conf,,nConf,288.889,288,,beta_phi large,sqrt_pehe,3.7223,0.1051,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig8,beta_phi large,tau_Conf,,nConf,341.667,341,,beta_phi large,sqrt_pehe,3.7219,0.0696,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig8,beta_phi large,tau_Conf,,nConf,394.444,394,,beta_phi large,sqrt_pehe,3.7253,0.0504,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig8,beta_phi large,tau_Conf,,nConf,447.222,447,,beta_phi large,sqrt_pehe,3.7103,0.0441,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig8,beta_phi large,tau_Conf,,nConf,500,500,,beta_phi large,sqrt_pehe,3.6794,0.0543,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig8,beta_phi large,tau_Unc,,nConf,25,,50,beta_phi large,sqrt_pehe,1.6509,0.2469,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig8,beta_phi large,tau_Unc,,nConf,77.7778,,50,beta_phi large,sqrt_pehe,1.6509,0.2469,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig8,beta_phi large,tau_Unc,,nConf,130.556,,50,beta_phi large,sqrt_pehe,1.6509,0.2469,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig8,beta_phi large,tau_Unc,,nConf,183.333,,50,beta_phi large,sqrt_pehe,1.6509,0.2469,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig8,beta_phi large,tau_Unc,,nConf,236.111,,50,beta_phi large,sqrt_pehe,1.6509,0.2469,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig8,beta_phi large,tau_Unc,,nConf,288.889,,50,beta_phi large,sqrt_pehe,1.6509,0.2469,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig8,beta_phi large,tau_Unc,,nConf,341.667,,50,beta_phi large,sqrt_pehe,1.6509,0.2469,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig8,beta_phi large,tau_Unc,,nConf,394.444,,50,beta_phi large,sqrt_pehe,1.6509,0.2469,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig8,beta_phi large,tau_Unc,,nConf,447.222,,50,beta_phi large,sqrt_pehe,1.6509,0.2469,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig8,beta_phi large,tau_Unc,,nConf,500,,50,beta_phi large,sqrt_pehe,1.6509,0.2469,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig9,Delta=4,tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,25,25,50,Delta=4,sqrt_pehe,1.0835,0.1087,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig9,Delta=4,tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,77.7778,77,50,Delta=4,sqrt_pehe,0.8750,0.0913,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig9,Delta=4,tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,130.556,130,50,Delta=4,sqrt_pehe,0.9263,0.1190,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig9,Delta=4,tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,183.333,183,50,Delta=4,sqrt_pehe,0.8534,0.0615,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig9,Delta=4,tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,236.111,236,50,Delta=4,sqrt_pehe,0.8628,0.0671,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig9,Delta=4,tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,288.889,288,50,Delta=4,sqrt_pehe,0.8176,0.0790,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig9,Delta=4,tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,341.667,341,50,Delta=4,sqrt_pehe,0.7928,0.0711,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig9,Delta=4,tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,394.444,394,50,Delta=4,sqrt_pehe,0.8230,0.0771,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig9,Delta=4,tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,447.222,447,50,Delta=4,sqrt_pehe,0.8588,0.1249,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig9,Delta=4,tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,500,500,50,Delta=4,sqrt_pehe,0.8287,0.0924,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig9,Delta=4,tau_Conf,,nConf,25,25,,Delta=4,sqrt_pehe,2.2464,0.3577,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig9,Delta=4,tau_Conf,,nConf,77.7778,77,,Delta=4,sqrt_pehe,2.1981,0.1867,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig9,Delta=4,tau_Conf,,nConf,130.556,130,,Delta=4,sqrt_pehe,2.1908,0.1510,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig9,Delta=4,tau_Conf,,nConf,183.333,183,,Delta=4,sqrt_pehe,2.1778,0.1337,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig9,Delta=4,tau_Conf,,nConf,236.111,236,,Delta=4,sqrt_pehe,2.1648,0.1249,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig9,Delta=4,tau_Conf,,nConf,288.889,288,,Delta=4,sqrt_pehe,2.1283,0.1124,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig9,Delta=4,tau_Conf,,nConf,341.667,341,,Delta=4,sqrt_pehe,2.1039,0.0713,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig9,Delta=4,tau_Conf,,nConf,394.444,394,,Delta=4,sqrt_pehe,2.1178,0.0877,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig9,Delta=4,tau_Conf,,nConf,447.222,447,,Delta=4,sqrt_pehe,2.1397,0.0860,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig9,Delta=4,tau_Conf,,nConf,500,500,,Delta=4,sqrt_pehe,2.1275,0.0717,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig9,Delta=4,tau_Unc,,nConf,25,,50,Delta=4,sqrt_pehe,1.0797,0.1617,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig9,Delta=4,tau_Unc,,nConf,77.7778,,50,Delta=4,sqrt_pehe,1.0797,0.1617,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig9,Delta=4,tau_Unc,,nConf,130.556,,50,Delta=4,sqrt_pehe,1.0797,0.1617,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig9,Delta=4,tau_Unc,,nConf,183.333,,50,Delta=4,sqrt_pehe,1.0797,0.1617,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig9,Delta=4,tau_Unc,,nConf,236.111,,50,Delta=4,sqrt_pehe,1.0797,0.1617,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig9,Delta=4,tau_Unc,,nConf,288.889,,50,Delta=4,sqrt_pehe,1.0797,0.1617,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig9,Delta=4,tau_Unc,,nConf,341.667,,50,Delta=4,sqrt_pehe,1.0797,0.1617,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig9,Delta=4,tau_Unc,,nConf,394.444,,50,Delta=4,sqrt_pehe,1.0797,0.1617,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig9,Delta=4,tau_Unc,,nConf,447.222,,50,Delta=4,sqrt_pehe,1.0797,0.1617,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig9,Delta=4,tau_Unc,,nConf,500,,50,Delta=4,sqrt_pehe,1.0797,0.1617,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig9,Delta=1,tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,25,25,50,Delta=1,sqrt_pehe,1.2241,0.0933,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig9,Delta=1,tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,77.7778,77,50,Delta=1,sqrt_pehe,0.9543,0.1145,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig9,Delta=1,tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,130.556,130,50,Delta=1,sqrt_pehe,0.8491,0.0847,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig9,Delta=1,tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,183.333,183,50,Delta=1,sqrt_pehe,0.8390,0.1231,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig9,Delta=1,tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,236.111,236,50,Delta=1,sqrt_pehe,0.7883,0.1215,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig9,Delta=1,tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,288.889,288,50,Delta=1,sqrt_pehe,0.7468,0.1581,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig9,Delta=1,tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,341.667,341,50,Delta=1,sqrt_pehe,0.8031,0.1046,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig9,Delta=1,tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,394.444,394,50,Delta=1,sqrt_pehe,0.7897,0.1202,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig9,Delta=1,tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,447.222,447,50,Delta=1,sqrt_pehe,0.7464,0.1529,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig9,Delta=1,tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,500,500,50,Delta=1,sqrt_pehe,0.7552,0.0836,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig9,Delta=1,tau_Conf,,nConf,25,25,,Delta=1,sqrt_pehe,1.6236,0.2291,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig9,Delta=1,tau_Conf,,nConf,77.7778,77,,Delta=1,sqrt_pehe,1.3660,0.1635,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig9,Delta=1,tau_Conf,,nConf,130.556,130,,Delta=1,sqrt_pehe,1.3151,0.1331,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig9,Delta=1,tau_Conf,,nConf,183.333,183,,Delta=1,sqrt_pehe,1.3219,0.1469,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig9,Delta=1,tau_Conf,,nConf,236.111,236,,Delta=1,sqrt_pehe,1.2604,0.1420,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig9,Delta=1,tau_Conf,,nConf,288.889,288,,Delta=1,sqrt_pehe,1.2370,0.1640,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig9,Delta=1,tau_Conf,,nConf,341.667,341,,Delta=1,sqrt_pehe,1.2907,0.1173,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig9,Delta=1,tau_Conf,,nConf,394.444,394,,Delta=1,sqrt_pehe,1.2672,0.1305,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig9,Delta=1,tau_Conf,,nConf,447.222,447,,Delta=1,sqrt_pehe,1.2507,0.1298,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig9,Delta=1,tau_Conf,,nConf,500,500,,Delta=1,sqrt_pehe,1.2391,0.0850,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig9,Delta=1,tau_Unc,,nConf,25,,50,Delta=1,sqrt_pehe,1.0797,0.1617,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig9,Delta=1,tau_Unc,,nConf,77.7778,,50,Delta=1,sqrt_pehe,1.0797,0.1617,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig9,Delta=1,tau_Unc,,nConf,130.556,,50,Delta=1,sqrt_pehe,1.0797,0.1617,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig9,Delta=1,tau_Unc,,nConf,183.333,,50,Delta=1,sqrt_pehe,1.0797,0.1617,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig9,Delta=1,tau_Unc,,nConf,236.111,,50,Delta=1,sqrt_pehe,1.0797,0.1617,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig9,Delta=1,tau_Unc,,nConf,288.889,,50,Delta=1,sqrt_pehe,1.0797,0.1617,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig9,Delta=1,tau_Unc,,nConf,341.667,,50,Delta=1,sqrt_pehe,1.0797,0.1617,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig9,Delta=1,tau_Unc,,nConf,394.444,,50,Delta=1,sqrt_pehe,1.0797,0.1617,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig9,Delta=1,tau_Unc,,nConf,447.222,,50,Delta=1,sqrt_pehe,1.0797,0.1617,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig9,Delta=1,tau_Unc,,nConf,500,,50,Delta=1,sqrt_pehe,1.0797,0.1617,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig9,Delta=0,tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,25,25,50,Delta=0,sqrt_pehe,1.2241,0.0671,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig9,Delta=0,tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,77.7778,77,50,Delta=0,sqrt_pehe,0.9543,0.0845,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig9,Delta=0,tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,130.556,130,50,Delta=0,sqrt_pehe,0.8491,0.1108,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig9,Delta=0,tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,183.333,183,50,Delta=0,sqrt_pehe,0.8390,0.1272,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig9,Delta=0,tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,236.111,236,50,Delta=0,sqrt_pehe,0.7883,0.1078,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig9,Delta=0,tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,288.889,288,50,Delta=0,sqrt_pehe,0.7468,0.1371,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig9,Delta=0,tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,341.667,341,50,Delta=0,sqrt_pehe,0.8031,0.1217,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig9,Delta=0,tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,394.444,394,50,Delta=0,sqrt_pehe,0.7897,0.1205,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig9,Delta=0,tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,447.222,447,50,Delta=0,sqrt_pehe,0.7464,0.1114,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig9,Delta=0,tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,500,500,50,Delta=0,sqrt_pehe,0.7552,0.0645,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig9,Delta=0,tau_Conf,,nConf,25,25,,Delta=0,sqrt_pehe,1.4564,0.1830,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig9,Delta=0,tau_Conf,,nConf,77.7778,77,,Delta=0,sqrt_pehe,0.9498,0.0697,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig9,Delta=0,tau_Conf,,nConf,130.556,130,,Delta=0,sqrt_pehe,0.8493,0.0900,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig9,Delta=0,tau_Conf,,nConf,183.333,183,,Delta=0,sqrt_pehe,0.8610,0.1297,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig9,Delta=0,tau_Conf,,nConf,236.111,236,,Delta=0,sqrt_pehe,0.8619,0.1298,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig9,Delta=0,tau_Conf,,nConf,288.889,288,,Delta=0,sqrt_pehe,0.8191,0.1377,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig9,Delta=0,tau_Conf,,nConf,341.667,341,,Delta=0,sqrt_pehe,0.7532,0.1283,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig9,Delta=0,tau_Conf,,nConf,394.444,394,,Delta=0,sqrt_pehe,0.7539,0.1427,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig9,Delta=0,tau_Conf,,nConf,447.222,447,,Delta=0,sqrt_pehe,0.7564,0.1404,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig9,Delta=0,tau_Conf,,nConf,500,500,,Delta=0,sqrt_pehe,0.7049,0.0998,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig9,Delta=0,tau_Unc,,nConf,25,,50,Delta=0,sqrt_pehe,1.0797,0.1617,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig9,Delta=0,tau_Unc,,nConf,77.7778,,50,Delta=0,sqrt_pehe,1.0797,0.1617,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig9,Delta=0,tau_Unc,,nConf,130.556,,50,Delta=0,sqrt_pehe,1.0797,0.1617,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig9,Delta=0,tau_Unc,,nConf,183.333,,50,Delta=0,sqrt_pehe,1.0797,0.1617,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig9,Delta=0,tau_Unc,,nConf,236.111,,50,Delta=0,sqrt_pehe,1.0797,0.1617,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig9,Delta=0,tau_Unc,,nConf,288.889,,50,Delta=0,sqrt_pehe,1.0797,0.1617,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig9,Delta=0,tau_Unc,,nConf,341.667,,50,Delta=0,sqrt_pehe,1.0797,0.1617,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig9,Delta=0,tau_Unc,,nConf,394.444,,50,Delta=0,sqrt_pehe,1.0797,0.1617,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig9,Delta=0,tau_Unc,,nConf,447.222,,50,Delta=0,sqrt_pehe,1.0797,0.1617,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig9,Delta=0,tau_Unc,,nConf,500,,50,Delta=0,sqrt_pehe,1.0797,0.1617,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig10,"X_Unc~U[-3,3]^d",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,25,25,50,"X_Unc~U[-3,3]^d",sqrt_pehe,1.2312,0.1811,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig10,"X_Unc~U[-3,3]^d",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,77.7778,77,50,"X_Unc~U[-3,3]^d",sqrt_pehe,0.8732,0.2507,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig10,"X_Unc~U[-3,3]^d",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,130.556,130,50,"X_Unc~U[-3,3]^d",sqrt_pehe,0.7978,0.2144,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig10,"X_Unc~U[-3,3]^d",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,183.333,183,50,"X_Unc~U[-3,3]^d",sqrt_pehe,0.6874,0.1383,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig10,"X_Unc~U[-3,3]^d",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,236.111,236,50,"X_Unc~U[-3,3]^d",sqrt_pehe,0.7070,0.1037,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig10,"X_Unc~U[-3,3]^d",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,288.889,288,50,"X_Unc~U[-3,3]^d",sqrt_pehe,0.6548,0.0894,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig10,"X_Unc~U[-3,3]^d",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,341.667,341,50,"X_Unc~U[-3,3]^d",sqrt_pehe,0.6448,0.1147,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig10,"X_Unc~U[-3,3]^d",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,394.444,394,50,"X_Unc~U[-3,3]^d",sqrt_pehe,0.7096,0.1315,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig10,"X_Unc~U[-3,3]^d",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,447.222,447,50,"X_Unc~U[-3,3]^d",sqrt_pehe,0.6778,0.1031,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig10,"X_Unc~U[-3,3]^d",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,500,500,50,"X_Unc~U[-3,3]^d",sqrt_pehe,0.6300,0.0794,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig10,"X_Unc~U[-3,3]^d",tau_Conf,,nConf,25,25,,"X_Unc~U[-3,3]^d",sqrt_pehe,2.2970,0.2253,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig10,"X_Unc~U[-3,3]^d",tau_Conf,,nConf,77.7778,77,,"X_Unc~U[-3,3]^d",sqrt_pehe,2.0469,0.1256,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig10,"X_Unc~U[-3,3]^d",tau_Conf,,nConf,130.556,130,,"X_Unc~U[-3,3]^d",sqrt_pehe,2.0439,0.1109,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig10,"X_Unc~U[-3,3]^d",tau_Conf,,nConf,183.333,183,,"X_Unc~U[-3,3]^d",sqrt_pehe,2.0459,0.0825,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig10,"X_Unc~U[-3,3]^d",tau_Conf,,nConf,236.111,236,,"X_Unc~U[-3,3]^d",sqrt_pehe,2.0196,0.0450,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig10,"X_Unc~U[-3,3]^d",tau_Conf,,nConf,288.889,288,,"X_Unc~U[-3,3]^d",sqrt_pehe,2.0080,0.0652,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig10,"X_Unc~U[-3,3]^d",tau_Conf,,nConf,341.667,341,,"X_Unc~U[-3,3]^d",sqrt_pehe,2.0162,0.0563,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig10,"X_Unc~U[-3,3]^d",tau_Conf,,nConf,394.444,394,,"X_Unc~U[-3,3]^d",sqrt_pehe,2.0534,0.0844,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig10,"X_Unc~U[-3,3]^d",tau_Conf,,nConf,447.222,447,,"X_Unc~U[-3,3]^d",sqrt_pehe,2.0102,0.0341,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig10,"X_Unc~U[-3,3]^d",tau_Conf,,nConf,500,500,,"X_Unc~U[-3,3]^d",sqrt_pehe,2.0037,0.0364,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig10,"X_Unc~U[-3,3]^d",tau_Unc,,nConf,25,,50,"X_Unc~U[-3,3]^d",sqrt_pehe,0.9106,0.2071,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig10,"X_Unc~U[-3,3]^d",tau_Unc,,nConf,77.7778,,50,"X_Unc~U[-3,3]^d",sqrt_pehe,0.9106,0.2071,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig10,"X_Unc~U[-3,3]^d",tau_Unc,,nConf,130.556,,50,"X_Unc~U[-3,3]^d",sqrt_pehe,0.9106,0.2071,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig10,"X_Unc~U[-3,3]^d",tau_Unc,,nConf,183.333,,50,"X_Unc~U[-3,3]^d",sqrt_pehe,0.9106,0.2071,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig10,"X_Unc~U[-3,3]^d",tau_Unc,,nConf,236.111,,50,"X_Unc~U[-3,3]^d",sqrt_pehe,0.9106,0.2071,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig10,"X_Unc~U[-3,3]^d",tau_Unc,,nConf,288.889,,50,"X_Unc~U[-3,3]^d",sqrt_pehe,0.9106,0.2071,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig10,"X_Unc~U[-3,3]^d",tau_Unc,,nConf,341.667,,50,"X_Unc~U[-3,3]^d",sqrt_pehe,0.9106,0.2071,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig10,"X_Unc~U[-3,3]^d",tau_Unc,,nConf,394.444,,50,"X_Unc~U[-3,3]^d",sqrt_pehe,0.9106,0.2071,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig10,"X_Unc~U[-3,3]^d",tau_Unc,,nConf,447.222,,50,"X_Unc~U[-3,3]^d",sqrt_pehe,0.9106,0.2071,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig10,"X_Unc~U[-3,3]^d",tau_Unc,,nConf,500,,50,"X_Unc~U[-3,3]^d",sqrt_pehe,0.9106,0.2071,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig10,"X_Unc~U[-1,1]^d",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,25,25,50,"X_Unc~U[-1,1]^d",sqrt_pehe,1.3142,0.2316,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig10,"X_Unc~U[-1,1]^d",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,77.7778,77,50,"X_Unc~U[-1,1]^d",sqrt_pehe,0.9725,0.2225,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig10,"X_Unc~U[-1,1]^d",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,130.556,130,50,"X_Unc~U[-1,1]^d",sqrt_pehe,0.9018,0.1802,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig10,"X_Unc~U[-1,1]^d",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,183.333,183,50,"X_Unc~U[-1,1]^d",sqrt_pehe,0.8285,0.1416,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig10,"X_Unc~U[-1,1]^d",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,236.111,236,50,"X_Unc~U[-1,1]^d",sqrt_pehe,0.7784,0.1392,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig10,"X_Unc~U[-1,1]^d",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,288.889,288,50,"X_Unc~U[-1,1]^d",sqrt_pehe,0.7391,0.1000,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig10,"X_Unc~U[-1,1]^d",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,341.667,341,50,"X_Unc~U[-1,1]^d",sqrt_pehe,0.7587,0.1268,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig10,"X_Unc~U[-1,1]^d",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,394.444,394,50,"X_Unc~U[-1,1]^d",sqrt_pehe,0.8319,0.1404,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig10,"X_Unc~U[-1,1]^d",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,447.222,447,50,"X_Unc~U[-1,1]^d",sqrt_pehe,0.7409,0.0909,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig10,"X_Unc~U[-1,1]^d",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,500,500,50,"X_Unc~U[-1,1]^d",sqrt_pehe,0.7120,0.1129,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig10,"X_Unc~U[-1,1]^d",tau_Conf,,nConf,25,25,,"X_Unc~U[-1,1]^d",sqrt_pehe,2.2970,0.2253,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig10,"X_Unc~U[-1,1]^d",tau_Conf,,nConf,77.7778,77,,"X_Unc~U[-1,1]^d",sqrt_pehe,2.0469,0.1256,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig10,"X_Unc~U[-1,1]^d",tau_Conf,,nConf,130.556,130,,"X_Unc~U[-1,1]^d",sqrt_pehe,2.0439,0.1109,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig10,"X_Unc~U[-1,1]^d",tau_Conf,,nConf,183.333,183,,"X_Unc~U[-1,1]^d",sqrt_pehe,2.0459,0.0825,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig10,"X_Unc~U[-1,1]^d",tau_Conf,,nConf,236.111,236,,"X_Unc~U[-1,1]^d",sqrt_pehe,2.0196,0.0450,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig10,"X_Unc~U[-1,1]^d",tau_Conf,,nConf,288.889,288,,"X_Unc~U[-1,1]^d",sqrt_pehe,2.0080,0.0652,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig10,"X_Unc~U[-1,1]^d",tau_Conf,,nConf,341.667,341,,"X_Unc~U[-1,1]^d",sqrt_pehe,2.0162,0.0563,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig10,"X_Unc~U[-1,1]^d",tau_Conf,,nConf,394.444,394,,"X_Unc~U[-1,1]^d",sqrt_pehe,2.0534,0.0844,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig10,"X_Unc~U[-1,1]^d",tau_Conf,,nConf,447.222,447,,"X_Unc~U[-1,1]^d",sqrt_pehe,2.0102,0.0341,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig10,"X_Unc~U[-1,1]^d",tau_Conf,,nConf,500,500,,"X_Unc~U[-1,1]^d",sqrt_pehe,2.0037,0.0364,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig10,"X_Unc~U[-1,1]^d",tau_Unc,,nConf,25,,50,"X_Unc~U[-1,1]^d",sqrt_pehe,1.4204,0.2536,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig10,"X_Unc~U[-1,1]^d",tau_Unc,,nConf,77.7778,,50,"X_Unc~U[-1,1]^d",sqrt_pehe,1.4204,0.2536,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig10,"X_Unc~U[-1,1]^d",tau_Unc,,nConf,130.556,,50,"X_Unc~U[-1,1]^d",sqrt_pehe,1.4204,0.2536,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig10,"X_Unc~U[-1,1]^d",tau_Unc,,nConf,183.333,,50,"X_Unc~U[-1,1]^d",sqrt_pehe,1.4204,0.2536,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig10,"X_Unc~U[-1,1]^d",tau_Unc,,nConf,236.111,,50,"X_Unc~U[-1,1]^d",sqrt_pehe,1.4204,0.2536,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig10,"X_Unc~U[-1,1]^d",tau_Unc,,nConf,288.889,,50,"X_Unc~U[-1,1]^d",sqrt_pehe,1.4204,0.2536,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig10,"X_Unc~U[-1,1]^d",tau_Unc,,nConf,341.667,,50,"X_Unc~U[-1,1]^d",sqrt_pehe,1.4204,0.2536,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig10,"X_Unc~U[-1,1]^d",tau_Unc,,nConf,394.444,,50,"X_Unc~U[-1,1]^d",sqrt_pehe,1.4204,0.2536,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig10,"X_Unc~U[-1,1]^d",tau_Unc,,nConf,447.222,,50,"X_Unc~U[-1,1]^d",sqrt_pehe,1.4204,0.2536,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig10,"X_Unc~U[-1,1]^d",tau_Unc,,nConf,500,,50,"X_Unc~U[-1,1]^d",sqrt_pehe,1.4204,0.2536,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig10,"X_Unc~U[-1/2,1/2]^d",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,25,25,50,"X_Unc~U[-1/2,1/2]^d",sqrt_pehe,1.4358,0.1513,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig10,"X_Unc~U[-1/2,1/2]^d",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,77.7778,77,50,"X_Unc~U[-1/2,1/2]^d",sqrt_pehe,1.1906,0.2009,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig10,"X_Unc~U[-1/2,1/2]^d",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,130.556,130,50,"X_Unc~U[-1/2,1/2]^d",sqrt_pehe,1.1616,0.1565,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig10,"X_Unc~U[-1/2,1/2]^d",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,183.333,183,50,"X_Unc~U[-1/2,1/2]^d",sqrt_pehe,1.1003,0.1616,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig10,"X_Unc~U[-1/2,1/2]^d",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,236.111,236,50,"X_Unc~U[-1/2,1/2]^d",sqrt_pehe,0.9991,0.1712,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig10,"X_Unc~U[-1/2,1/2]^d",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,288.889,288,50,"X_Unc~U[-1/2,1/2]^d",sqrt_pehe,1.0103,0.1449,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig10,"X_Unc~U[-1/2,1/2]^d",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,341.667,341,50,"X_Unc~U[-1/2,1/2]^d",sqrt_pehe,1.0457,0.2008,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig10,"X_Unc~U[-1/2,1/2]^d",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,394.444,394,50,"X_Unc~U[-1/2,1/2]^d",sqrt_pehe,1.0707,0.1331,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig10,"X_Unc~U[-1/2,1/2]^d",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,447.222,447,50,"X_Unc~U[-1/2,1/2]^d",sqrt_pehe,0.9810,0.1247,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig10,"X_Unc~U[-1/2,1/2]^d",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,500,500,50,"X_Unc~U[-1/2,1/2]^d",sqrt_pehe,0.9583,0.1455,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig10,"X_Unc~U[-1/2,1/2]^d",tau_Conf,,nConf,25,25,,"X_Unc~U[-1/2,1/2]^d",sqrt_pehe,2.2970,0.2253,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig10,"X_Unc~U[-1/2,1/2]^d",tau_Conf,,nConf,77.7778,77,,"X_Unc~U[-1/2,1/2]^d",sqrt_pehe,2.0469,0.1256,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig10,"X_Unc~U[-1/2,1/2]^d",tau_Conf,,nConf,130.556,130,,"X_Unc~U[-1/2,1/2]^d",sqrt_pehe,2.0439,0.1109,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig10,"X_Unc~U[-1/2,1/2]^d",tau_Conf,,nConf,183.333,183,,"X_Unc~U[-1/2,1/2]^d",sqrt_pehe,2.0459,0.0825,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig10,"X_Unc~U[-1/2,1/2]^d",tau_Conf,,nConf,236.111,236,,"X_Unc~U[-1/2,1/2]^d",sqrt_pehe,2.0196,0.0450,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig10,"X_Unc~U[-1/2,1/2]^d",tau_Conf,,nConf,288.889,288,,"X_Unc~U[-1/2,1/2]^d",sqrt_pehe,2.0080,0.0652,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig10,"X_Unc~U[-1/2,1/2]^d",tau_Conf,,nConf,341.667,341,,"X_Unc~U[-1/2,1/2]^d",sqrt_pehe,2.0162,0.0563,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig10,"X_Unc~U[-1/2,1/2]^d",tau_Conf,,nConf,394.444,394,,"X_Unc~U[-1/2,1/2]^d",sqrt_pehe,2.0534,0.0844,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig10,"X_Unc~U[-1/2,1/2]^d",tau_Conf,,nConf,447.222,447,,"X_Unc~U[-1/2,1/2]^d",sqrt_pehe,2.0102,0.0341,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig10,"X_Unc~U[-1/2,1/2]^d",tau_Conf,,nConf,500,500,,"X_Unc~U[-1/2,1/2]^d",sqrt_pehe,2.0037,0.0364,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig10,"X_Unc~U[-1/2,1/2]^d",tau_Unc,,nConf,25,,50,"X_Unc~U[-1/2,1/2]^d",sqrt_pehe,1.9890,0.0417,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig10,"X_Unc~U[-1/2,1/2]^d",tau_Unc,,nConf,77.7778,,50,"X_Unc~U[-1/2,1/2]^d",sqrt_pehe,1.9890,0.0417,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig10,"X_Unc~U[-1/2,1/2]^d",tau_Unc,,nConf,130.556,,50,"X_Unc~U[-1/2,1/2]^d",sqrt_pehe,1.9890,0.0417,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig10,"X_Unc~U[-1/2,1/2]^d",tau_Unc,,nConf,183.333,,50,"X_Unc~U[-1/2,1/2]^d",sqrt_pehe,1.9890,0.0417,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig10,"X_Unc~U[-1/2,1/2]^d",tau_Unc,,nConf,236.111,,50,"X_Unc~U[-1/2,1/2]^d",sqrt_pehe,1.9890,0.0417,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig10,"X_Unc~U[-1/2,1/2]^d",tau_Unc,,nConf,288.889,,50,"X_Unc~U[-1/2,1/2]^d",sqrt_pehe,1.9890,0.0417,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig10,"X_Unc~U[-1/2,1/2]^d",tau_Unc,,nConf,341.667,,50,"X_Unc~U[-1/2,1/2]^d",sqrt_pehe,1.9890,0.0417,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig10,"X_Unc~U[-1/2,1/2]^d",tau_Unc,,nConf,394.444,,50,"X_Unc~U[-1/2,1/2]^d",sqrt_pehe,1.9890,0.0417,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig10,"X_Unc~U[-1/2,1/2]^d",tau_Unc,,nConf,447.222,,50,"X_Unc~U[-1/2,1/2]^d",sqrt_pehe,1.9890,0.0417,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig10,"X_Unc~U[-1/2,1/2]^d",tau_Unc,,nConf,500,,50,"X_Unc~U[-1/2,1/2]^d",sqrt_pehe,1.9890,0.0417,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig10,"X_Unc~N(0,1^2 I)",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,25,25,50,"X_Unc~N(0,1^2 I)",sqrt_pehe,1.2870,0.1947,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig10,"X_Unc~N(0,1^2 I)",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,77.7778,77,50,"X_Unc~N(0,1^2 I)",sqrt_pehe,0.9230,0.1737,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig10,"X_Unc~N(0,1^2 I)",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,130.556,130,50,"X_Unc~N(0,1^2 I)",sqrt_pehe,0.8347,0.1765,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig10,"X_Unc~N(0,1^2 I)",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,183.333,183,50,"X_Unc~N(0,1^2 I)",sqrt_pehe,0.7626,0.0932,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig10,"X_Unc~N(0,1^2 I)",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,236.111,236,50,"X_Unc~N(0,1^2 I)",sqrt_pehe,0.7160,0.0566,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig10,"X_Unc~N(0,1^2 I)",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,288.889,288,50,"X_Unc~N(0,1^2 I)",sqrt_pehe,0.6722,0.0831,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig10,"X_Unc~N(0,1^2 I)",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,341.667,341,50,"X_Unc~N(0,1^2 I)",sqrt_pehe,0.7193,0.1487,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig10,"X_Unc~N(0,1^2 I)",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,394.444,394,50,"X_Unc~N(0,1^2 I)",sqrt_pehe,0.7514,0.1575,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig10,"X_Unc~N(0,1^2 I)",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,447.222,447,50,"X_Unc~N(0,1^2 I)",sqrt_pehe,0.6940,0.0915,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig10,"X_Unc~N(0,1^2 I)",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,500,500,50,"X_Unc~N(0,1^2 I)",sqrt_pehe,0.6656,0.0910,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig10,"X_Unc~N(0,1^2 I)",tau_Conf,,nConf,25,25,,"X_Unc~N(0,1^2 I)",sqrt_pehe,2.2970,0.2253,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig10,"X_Unc~N(0,1^2 I)",tau_Conf,,nConf,77.7778,77,,"X_Unc~N(0,1^2 I)",sqrt_pehe,2.0469,0.1256,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig10,"X_Unc~N(0,1^2 I)",tau_Conf,,nConf,130.556,130,,"X_Unc~N(0,1^2 I)",sqrt_pehe,2.0439,0.1109,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig10,"X_Unc~N(0,1^2 I)",tau_Conf,,nConf,183.333,183,,"X_Unc~N(0,1^2 I)",sqrt_pehe,2.0459,0.0825,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig10,"X_Unc~N(0,1^2 I)",tau_Conf,,nConf,236.111,236,,"X_Unc~N(0,1^2 I)",sqrt_pehe,2.0196,0.0450,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig10,"X_Unc~N(0,1^2 I)",tau_Conf,,nConf,288.889,288,,"X_Unc~N(0,1^2 I)",sqrt_pehe,2.0080,0.0652,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig10,"X_Unc~N(0,1^2 I)",tau_Conf,,nConf,341.667,341,,"X_Unc~N(0,1^2 I)",sqrt_pehe,2.0162,0.0563,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig10,"X_Unc~N(0,1^2 I)",tau_Conf,,nConf,394.444,394,,"X_Unc~N(0,1^2 I)",sqrt_pehe,2.0534,0.0844,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig10,"X_Unc~N(0,1^2 I)",tau_Conf,,nConf,447.222,447,,"X_Unc~N(0,1^2 I)",sqrt_pehe,2.0102,0.0341,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig10,"X_Unc~N(0,1^2 I)",tau_Conf,,nConf,500,500,,"X_Unc~N(0,1^2 I)",sqrt_pehe,2.0037,0.0364,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig10,"X_Unc~N(0,1^2 I)",tau_Unc,,nConf,25,,50,"X_Unc~N(0,1^2 I)",sqrt_pehe,0.9710,0.3049,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig10,"X_Unc~N(0,1^2 I)",tau_Unc,,nConf,77.7778,,50,"X_Unc~N(0,1^2 I)",sqrt_pehe,0.9710,0.3049,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig10,"X_Unc~N(0,1^2 I)",tau_Unc,,nConf,130.556,,50,"X_Unc~N(0,1^2 I)",sqrt_pehe,0.9710,0.3049,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig10,"X_Unc~N(0,1^2 I)",tau_Unc,,nConf,183.333,,50,"X_Unc~N(0,1^2 I)",sqrt_pehe,0.9710,0.3049,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig10,"X_Unc~N(0,1^2 I)",tau_Unc,,nConf,236.111,,50,"X_Unc~N(0,1^2 I)",sqrt_pehe,0.9710,0.3049,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig10,"X_Unc~N(0,1^2 I)",tau_Unc,,nConf,288.889,,50,"X_Unc~N(0,1^2 I)",sqrt_pehe,0.9710,0.3049,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig10,"X_Unc~N(0,1^2 I)",tau_Unc,,nConf,341.667,,50,"X_Unc~N(0,1^2 I)",sqrt_pehe,0.9710,0.3049,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig10,"X_Unc~N(0,1^2 I)",tau_Unc,,nConf,394.444,,50,"X_Unc~N(0,1^2 I)",sqrt_pehe,0.9710,0.3049,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig10,"X_Unc~N(0,1^2 I)",tau_Unc,,nConf,447.222,,50,"X_Unc~N(0,1^2 I)",sqrt_pehe,0.9710,0.3049,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig10,"X_Unc~N(0,1^2 I)",tau_Unc,,nConf,500,,50,"X_Unc~N(0,1^2 I)",sqrt_pehe,0.9710,0.3049,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig10,"X_Unc~N(0,(1/3)^2 I)",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,25,25,50,"X_Unc~N(0,(1/3)^2 I)",sqrt_pehe,1.3555,0.1805,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig10,"X_Unc~N(0,(1/3)^2 I)",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,77.7778,77,50,"X_Unc~N(0,(1/3)^2 I)",sqrt_pehe,0.9907,0.1987,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig10,"X_Unc~N(0,(1/3)^2 I)",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,130.556,130,50,"X_Unc~N(0,(1/3)^2 I)",sqrt_pehe,0.9765,0.1423,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig10,"X_Unc~N(0,(1/3)^2 I)",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,183.333,183,50,"X_Unc~N(0,(1/3)^2 I)",sqrt_pehe,0.8512,0.1262,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig10,"X_Unc~N(0,(1/3)^2 I)",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,236.111,236,50,"X_Unc~N(0,(1/3)^2 I)",sqrt_pehe,0.7767,0.0760,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig10,"X_Unc~N(0,(1/3)^2 I)",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,288.889,288,50,"X_Unc~N(0,(1/3)^2 I)",sqrt_pehe,0.7883,0.1316,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig10,"X_Unc~N(0,(1/3)^2 I)",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,341.667,341,50,"X_Unc~N(0,(1/3)^2 I)",sqrt_pehe,0.7989,0.1481,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig10,"X_Unc~N(0,(1/3)^2 I)",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,394.444,394,50,"X_Unc~N(0,(1/3)^2 I)",sqrt_pehe,0.8144,0.1488,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig10,"X_Unc~N(0,(1/3)^2 I)",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,447.222,447,50,"X_Unc~N(0,(1/3)^2 I)",sqrt_pehe,0.7705,0.1234,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig10,"X_Unc~N(0,(1/3)^2 I)",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,500,500,50,"X_Unc~N(0,(1/3)^2 I)",sqrt_pehe,0.7516,0.1143,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig10,"X_Unc~N(0,(1/3)^2 I)",tau_Conf,,nConf,25,25,,"X_Unc~N(0,(1/3)^2 I)",sqrt_pehe,2.2970,0.2253,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig10,"X_Unc~N(0,(1/3)^2 I)",tau_Conf,,nConf,77.7778,77,,"X_Unc~N(0,(1/3)^2 I)",sqrt_pehe,2.0469,0.1256,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig10,"X_Unc~N(0,(1/3)^2 I)",tau_Conf,,nConf,130.556,130,,"X_Unc~N(0,(1/3)^2 I)",sqrt_pehe,2.0439,0.1109,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig10,"X_Unc~N(0,(1/3)^2 I)",tau_Conf,,nConf,183.333,183,,"X_Unc~N(0,(1/3)^2 I)",sqrt_pehe,2.0459,0.0825,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig10,"X_Unc~N(0,(1/3)^2 I)",tau_Conf,,nConf,236.111,236,,"X_Unc~N(0,(1/3)^2 I)",sqrt_pehe,2.0196,0.0450,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig10,"X_Unc~N(0,(1/3)^2 I)",tau_Conf,,nConf,288.889,288,,"X_Unc~N(0,(1/3)^2 I)",sqrt_pehe,2.0080,0.0652,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig10,"X_Unc~N(0,(1/3)^2 I)",tau_Conf,,nConf,341.667,341,,"X_Unc~N(0,(1/3)^2 I)",sqrt_pehe,2.0162,0.0563,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig10,"X_Unc~N(0,(1/3)^2 I)",tau_Conf,,nConf,394.444,394,,"X_Unc~N(0,(1/3)^2 I)",sqrt_pehe,2.0534,0.0844,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig10,"X_Unc~N(0,(1/3)^2 I)",tau_Conf,,nConf,447.222,447,,"X_Unc~N(0,(1/3)^2 I)",sqrt_pehe,2.0102,0.0341,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig10,"X_Unc~N(0,(1/3)^2 I)",tau_Conf,,nConf,500,500,,"X_Unc~N(0,(1/3)^2 I)",sqrt_pehe,2.0037,0.0364,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig10,"X_Unc~N(0,(1/3)^2 I)",tau_Unc,,nConf,25,,50,"X_Unc~N(0,(1/3)^2 I)",sqrt_pehe,1.7429,0.2027,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig10,"X_Unc~N(0,(1/3)^2 I)",tau_Unc,,nConf,77.7778,,50,"X_Unc~N(0,(1/3)^2 I)",sqrt_pehe,1.7429,0.2027,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig10,"X_Unc~N(0,(1/3)^2 I)",tau_Unc,,nConf,130.556,,50,"X_Unc~N(0,(1/3)^2 I)",sqrt_pehe,1.7429,0.2027,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig10,"X_Unc~N(0,(1/3)^2 I)",tau_Unc,,nConf,183.333,,50,"X_Unc~N(0,(1/3)^2 I)",sqrt_pehe,1.7429,0.2027,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig10,"X_Unc~N(0,(1/3)^2 I)",tau_Unc,,nConf,236.111,,50,"X_Unc~N(0,(1/3)^2 I)",sqrt_pehe,1.7429,0.2027,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig10,"X_Unc~N(0,(1/3)^2 I)",tau_Unc,,nConf,288.889,,50,"X_Unc~N(0,(1/3)^2 I)",sqrt_pehe,1.7429,0.2027,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig10,"X_Unc~N(0,(1/3)^2 I)",tau_Unc,,nConf,341.667,,50,"X_Unc~N(0,(1/3)^2 I)",sqrt_pehe,1.7429,0.2027,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig10,"X_Unc~N(0,(1/3)^2 I)",tau_Unc,,nConf,394.444,,50,"X_Unc~N(0,(1/3)^2 I)",sqrt_pehe,1.7429,0.2027,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig10,"X_Unc~N(0,(1/3)^2 I)",tau_Unc,,nConf,447.222,,50,"X_Unc~N(0,(1/3)^2 I)",sqrt_pehe,1.7429,0.2027,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig10,"X_Unc~N(0,(1/3)^2 I)",tau_Unc,,nConf,500,,50,"X_Unc~N(0,(1/3)^2 I)",sqrt_pehe,1.7429,0.2027,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig10,"X_Unc~N(0,(1/6)^2 I)",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,25,25,50,"X_Unc~N(0,(1/6)^2 I)",sqrt_pehe,1.5007,0.1737,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig10,"X_Unc~N(0,(1/6)^2 I)",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,77.7778,77,50,"X_Unc~N(0,(1/6)^2 I)",sqrt_pehe,1.2617,0.2112,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig10,"X_Unc~N(0,(1/6)^2 I)",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,130.556,130,50,"X_Unc~N(0,(1/6)^2 I)",sqrt_pehe,1.2585,0.1560,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig10,"X_Unc~N(0,(1/6)^2 I)",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,183.333,183,50,"X_Unc~N(0,(1/6)^2 I)",sqrt_pehe,1.1524,0.1929,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig10,"X_Unc~N(0,(1/6)^2 I)",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,236.111,236,50,"X_Unc~N(0,(1/6)^2 I)",sqrt_pehe,1.0541,0.1506,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig10,"X_Unc~N(0,(1/6)^2 I)",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,288.889,288,50,"X_Unc~N(0,(1/6)^2 I)",sqrt_pehe,1.0655,0.1336,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig10,"X_Unc~N(0,(1/6)^2 I)",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,341.667,341,50,"X_Unc~N(0,(1/6)^2 I)",sqrt_pehe,1.1307,0.1942,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig10,"X_Unc~N(0,(1/6)^2 I)",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,394.444,394,50,"X_Unc~N(0,(1/6)^2 I)",sqrt_pehe,1.1460,0.0647,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig10,"X_Unc~N(0,(1/6)^2 I)",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,447.222,447,50,"X_Unc~N(0,(1/6)^2 I)",sqrt_pehe,1.0655,0.1296,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig10,"X_Unc~N(0,(1/6)^2 I)",tau_CorNet,cornet_official twice: standardize=False and the default standardize=True,nConf,500,500,50,"X_Unc~N(0,(1/6)^2 I)",sqrt_pehe,1.0396,0.1748,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig10,"X_Unc~N(0,(1/6)^2 I)",tau_Conf,,nConf,25,25,,"X_Unc~N(0,(1/6)^2 I)",sqrt_pehe,2.2970,0.2253,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig10,"X_Unc~N(0,(1/6)^2 I)",tau_Conf,,nConf,77.7778,77,,"X_Unc~N(0,(1/6)^2 I)",sqrt_pehe,2.0469,0.1256,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig10,"X_Unc~N(0,(1/6)^2 I)",tau_Conf,,nConf,130.556,130,,"X_Unc~N(0,(1/6)^2 I)",sqrt_pehe,2.0439,0.1109,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig10,"X_Unc~N(0,(1/6)^2 I)",tau_Conf,,nConf,183.333,183,,"X_Unc~N(0,(1/6)^2 I)",sqrt_pehe,2.0459,0.0825,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig10,"X_Unc~N(0,(1/6)^2 I)",tau_Conf,,nConf,236.111,236,,"X_Unc~N(0,(1/6)^2 I)",sqrt_pehe,2.0196,0.0450,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig10,"X_Unc~N(0,(1/6)^2 I)",tau_Conf,,nConf,288.889,288,,"X_Unc~N(0,(1/6)^2 I)",sqrt_pehe,2.0080,0.0652,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig10,"X_Unc~N(0,(1/6)^2 I)",tau_Conf,,nConf,341.667,341,,"X_Unc~N(0,(1/6)^2 I)",sqrt_pehe,2.0162,0.0563,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig10,"X_Unc~N(0,(1/6)^2 I)",tau_Conf,,nConf,394.444,394,,"X_Unc~N(0,(1/6)^2 I)",sqrt_pehe,2.0534,0.0844,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig10,"X_Unc~N(0,(1/6)^2 I)",tau_Conf,,nConf,447.222,447,,"X_Unc~N(0,(1/6)^2 I)",sqrt_pehe,2.0102,0.0341,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig10,"X_Unc~N(0,(1/6)^2 I)",tau_Conf,,nConf,500,500,,"X_Unc~N(0,(1/6)^2 I)",sqrt_pehe,2.0037,0.0364,sd_over_replications_ddof0,10,vector_digitized,
+hatt2022_fig10,"X_Unc~N(0,(1/6)^2 I)",tau_Unc,,nConf,25,,50,"X_Unc~N(0,(1/6)^2 I)",sqrt_pehe,2.0138,0.0359,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig10,"X_Unc~N(0,(1/6)^2 I)",tau_Unc,,nConf,77.7778,,50,"X_Unc~N(0,(1/6)^2 I)",sqrt_pehe,2.0138,0.0359,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig10,"X_Unc~N(0,(1/6)^2 I)",tau_Unc,,nConf,130.556,,50,"X_Unc~N(0,(1/6)^2 I)",sqrt_pehe,2.0138,0.0359,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig10,"X_Unc~N(0,(1/6)^2 I)",tau_Unc,,nConf,183.333,,50,"X_Unc~N(0,(1/6)^2 I)",sqrt_pehe,2.0138,0.0359,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig10,"X_Unc~N(0,(1/6)^2 I)",tau_Unc,,nConf,236.111,,50,"X_Unc~N(0,(1/6)^2 I)",sqrt_pehe,2.0138,0.0359,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig10,"X_Unc~N(0,(1/6)^2 I)",tau_Unc,,nConf,288.889,,50,"X_Unc~N(0,(1/6)^2 I)",sqrt_pehe,2.0138,0.0359,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig10,"X_Unc~N(0,(1/6)^2 I)",tau_Unc,,nConf,341.667,,50,"X_Unc~N(0,(1/6)^2 I)",sqrt_pehe,2.0138,0.0359,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig10,"X_Unc~N(0,(1/6)^2 I)",tau_Unc,,nConf,394.444,,50,"X_Unc~N(0,(1/6)^2 I)",sqrt_pehe,2.0138,0.0359,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig10,"X_Unc~N(0,(1/6)^2 I)",tau_Unc,,nConf,447.222,,50,"X_Unc~N(0,(1/6)^2 I)",sqrt_pehe,2.0138,0.0359,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_fig10,"X_Unc~N(0,(1/6)^2 I)",tau_Unc,,nConf,500,,50,"X_Unc~N(0,(1/6)^2 I)",sqrt_pehe,2.0138,0.0359,sd_over_replications_ddof0,10,vector_digitized,RCT-only fit; constant across x within the panel
+hatt2022_table3,STAR,2-step ridge,,,,643,16,STAR,sqrt_pehe_vs_estimated_truth,3.01,0.01,sd_over_runs,10,table_transcribed,
+hatt2022_table3,ACTG,2-step ridge,,,,552,24,ACTG,sqrt_pehe_vs_estimated_truth,1.51,0.01,sd_over_runs,10,table_transcribed,
+hatt2022_table3,NSW,2-step ridge,,,,482,16,NSW,sqrt_pehe_vs_estimated_truth,2.82,0.02,sd_over_runs,10,table_transcribed,
+hatt2022_table3,STAR,2-step RF,,,,643,16,STAR,sqrt_pehe_vs_estimated_truth,3.14,0.03,sd_over_runs,10,table_transcribed,
+hatt2022_table3,ACTG,2-step RF,,,,552,24,ACTG,sqrt_pehe_vs_estimated_truth,1.58,0.07,sd_over_runs,10,table_transcribed,
+hatt2022_table3,NSW,2-step RF,,,,482,16,NSW,sqrt_pehe_vs_estimated_truth,3.10,0.12,sd_over_runs,10,table_transcribed,
+hatt2022_table3,STAR,2-step NN,,,,643,16,STAR,sqrt_pehe_vs_estimated_truth,3.03,0.02,sd_over_runs,10,table_transcribed,
+hatt2022_table3,ACTG,2-step NN,,,,552,24,ACTG,sqrt_pehe_vs_estimated_truth,1.60,0.02,sd_over_runs,10,table_transcribed,
+hatt2022_table3,NSW,2-step NN,,,,482,16,NSW,sqrt_pehe_vs_estimated_truth,2.82,0.02,sd_over_runs,10,table_transcribed,
+hatt2022_table3,STAR,tau_Conf,,,,643,16,STAR,sqrt_pehe_vs_estimated_truth,2.66,0.01,sd_over_runs,10,table_transcribed,
+hatt2022_table3,ACTG,tau_Conf,,,,552,24,ACTG,sqrt_pehe_vs_estimated_truth,1.08,0.04,sd_over_runs,10,table_transcribed,
+hatt2022_table3,NSW,tau_Conf,,,,482,16,NSW,sqrt_pehe_vs_estimated_truth,0.85,0.04,sd_over_runs,10,table_transcribed,
+hatt2022_table3,STAR,tau_Unc,,,,643,16,STAR,sqrt_pehe_vs_estimated_truth,1.33,0.22,sd_over_runs,10,table_transcribed,
+hatt2022_table3,ACTG,tau_Unc,,,,552,24,ACTG,sqrt_pehe_vs_estimated_truth,1.10,0.11,sd_over_runs,10,table_transcribed,
+hatt2022_table3,NSW,tau_Unc,,,,482,16,NSW,sqrt_pehe_vs_estimated_truth,0.52,0.15,sd_over_runs,10,table_transcribed,
+hatt2022_table3,STAR,tau_Avg,,,,643,16,STAR,sqrt_pehe_vs_estimated_truth,1.68,0.35,sd_over_runs,10,table_transcribed,
+hatt2022_table3,ACTG,tau_Avg,,,,552,24,ACTG,sqrt_pehe_vs_estimated_truth,0.91,0.29,sd_over_runs,10,table_transcribed,
+hatt2022_table3,NSW,tau_Avg,,,,482,16,NSW,sqrt_pehe_vs_estimated_truth,0.51,0.20,sd_over_runs,10,table_transcribed,
+hatt2022_table3,STAR,tau_Weight,,,,643,16,STAR,sqrt_pehe_vs_estimated_truth,2.26,0.09,sd_over_runs,10,table_transcribed,
+hatt2022_table3,ACTG,tau_Weight,,,,552,24,ACTG,sqrt_pehe_vs_estimated_truth,0.80,0.10,sd_over_runs,10,table_transcribed,
+hatt2022_table3,NSW,tau_Weight,,,,482,16,NSW,sqrt_pehe_vs_estimated_truth,0.76,0.07,sd_over_runs,10,table_transcribed,
+hatt2022_table3,STAR,tau_CorNet,,,,643,16,STAR,sqrt_pehe_vs_estimated_truth,0.59,0.01,sd_over_runs,10,table_transcribed,Table 4 row (i) reports 0.59 +/- 0.10 for the same configuration
+hatt2022_table3,ACTG,tau_CorNet,,,,552,24,ACTG,sqrt_pehe_vs_estimated_truth,0.42,0.06,sd_over_runs,10,table_transcribed,
+hatt2022_table3,NSW,tau_CorNet,,,,482,16,NSW,sqrt_pehe_vs_estimated_truth,0.14,0.07,sd_over_runs,10,table_transcribed,
+hatt2022_table3,STAR,tau_CorNet+,,,,643,16,STAR,sqrt_pehe_vs_estimated_truth,0.38,0.07,sd_over_runs,10,table_transcribed,
+hatt2022_table3,ACTG,tau_CorNet+,,,,552,24,ACTG,sqrt_pehe_vs_estimated_truth,0.27,0.03,sd_over_runs,10,table_transcribed,
+hatt2022_table3,NSW,tau_CorNet+,,,,482,16,NSW,sqrt_pehe_vs_estimated_truth,0.21,0.08,sd_over_runs,10,table_transcribed,
+wu2022_table1,n=200,rct oa,,n_rct,,,200,n=200,rmse,0.28,0.01,se_over_replicates,100,table_transcribed,
+wu2022_table1,n=200,int oa,,n_rct,,2000,200,n=200,rmse,0.29,0.02,se_over_replicates,100,table_transcribed,
+wu2022_table1,n=200,rct rlearner,,n_rct,,,200,n=200,rmse,0.26,0.01,se_over_replicates,100,table_transcribed,
+wu2022_table1,n=200,int rlearner,integrative_r_quadratic,n_rct,,2000,200,n=200,rmse,0.23,0.01,se_over_replicates,100,table_transcribed,
+wu2022_table1,n=200,rct rf,,n_rct,,,200,n=200,rmse,0.38,0.01,se_over_replicates,100,table_transcribed,
+wu2022_table1,n=200,KPS lasso,,n_rct,,2000,200,n=200,rmse,0.43,0.01,se_over_replicates,100,table_transcribed,
+wu2022_table1,n=200,KPS linear,,n_rct,,2000,200,n=200,rmse,0.32,0.01,se_over_replicates,100,table_transcribed,
+wu2022_table1,n=200,naive rlearner,,n_rct,,2000,200,n=200,rmse,0.56,0.00,se_over_replicates,100,table_transcribed,
+wu2022_table1,n=500,rct oa,,n_rct,,,500,n=500,rmse,0.16,0.01,se_over_replicates,100,table_transcribed,
+wu2022_table1,all n,os oa,,n_rct,,2000,,all n,rmse,0.57,0.00,se_over_replicates,100,table_transcribed,"printed once in the n=500 row; OS-only, applies to every n"
+wu2022_table1,n=500,int oa,,n_rct,,2000,500,n=500,rmse,0.13,0.01,se_over_replicates,100,table_transcribed,
+wu2022_table1,n=500,rct rlearner,,n_rct,,,500,n=500,rmse,0.15,0.01,se_over_replicates,100,table_transcribed,
+wu2022_table1,all n,os rlearner,,n_rct,,2000,,all n,rmse,0.58,0.00,se_over_replicates,100,table_transcribed,"printed once in the n=500 row; OS-only, applies to every n"
+wu2022_table1,n=500,int rlearner,integrative_r_quadratic,n_rct,,2000,500,n=500,rmse,0.11,0.01,se_over_replicates,100,table_transcribed,
+wu2022_table1,n=500,rct rf,,n_rct,,,500,n=500,rmse,0.25,0.01,se_over_replicates,100,table_transcribed,
+wu2022_table1,all n,os rf,,n_rct,,2000,,all n,rmse,0.62,0.01,se_over_replicates,100,table_transcribed,"printed once in the n=500 row; OS-only, applies to every n"
+wu2022_table1,n=500,KPS lasso,,n_rct,,2000,500,n=500,rmse,0.29,0.01,se_over_replicates,100,table_transcribed,
+wu2022_table1,n=500,KPS linear,,n_rct,,2000,500,n=500,rmse,0.25,0.01,se_over_replicates,100,table_transcribed,
+wu2022_table1,n=500,naive rlearner,,n_rct,,2000,500,n=500,rmse,0.53,0.00,se_over_replicates,100,table_transcribed,
+wu2022_table1,n=1000,rct oa,,n_rct,,,1000,n=1000,rmse,0.11,0.00,se_over_replicates,100,table_transcribed,
+wu2022_table1,n=1000,int oa,,n_rct,,2000,1000,n=1000,rmse,0.08,0.00,se_over_replicates,100,table_transcribed,
+wu2022_table1,n=1000,rct rlearner,,n_rct,,,1000,n=1000,rmse,0.11,0.00,se_over_replicates,100,table_transcribed,
+wu2022_table1,n=1000,int rlearner,integrative_r_quadratic,n_rct,,2000,1000,n=1000,rmse,0.09,0.01,se_over_replicates,100,table_transcribed,
+wu2022_table1,n=1000,rct rf,,n_rct,,,1000,n=1000,rmse,0.23,0.00,se_over_replicates,100,table_transcribed,
+wu2022_table1,n=1000,KPS lasso,,n_rct,,2000,1000,n=1000,rmse,0.25,0.01,se_over_replicates,100,table_transcribed,
+wu2022_table1,n=1000,KPS linear,,n_rct,,2000,1000,n=1000,rmse,0.22,0.00,se_over_replicates,100,table_transcribed,
+wu2022_table1,n=1000,naive rlearner,,n_rct,,2000,1000,n=1000,rmse,0.50,0.00,se_over_replicates,100,table_transcribed,
+wu2022_table2,"J=1, all b",rct oa,,,,,random (expected 243.7),"J=1, all b",rmse,1.12,0.14,se_over_replicates,100,table_transcribed,"printed once per J; RCT-only, applies to both b"
+wu2022_table2,"J=1, all b",rct rlearner,,,,,random (expected 243.7),"J=1, all b",rmse,0.88,0.04,se_over_replicates,100,table_transcribed,"printed once per J; RCT-only, applies to both b"
+wu2022_table2,"J=1, all b",rct rf,,,,,random (expected 243.7),"J=1, all b",rmse,1.19,0.02,se_over_replicates,100,table_transcribed,"printed once per J; RCT-only, applies to both b"
+wu2022_table2,"J=9, all b",rct oa,,,,,random (expected 243.7),"J=9, all b",rmse,1.87,0.13,se_over_replicates,100,table_transcribed,"printed once per J; RCT-only, applies to both b"
+wu2022_table2,"J=9, all b",rct rlearner,,,,,random (expected 243.7),"J=9, all b",rmse,1.64,0.03,se_over_replicates,100,table_transcribed,"printed once per J; RCT-only, applies to both b"
+wu2022_table2,"J=9, all b",rct rf,,,,,random (expected 243.7),"J=9, all b",rmse,2.54,0.01,se_over_replicates,100,table_transcribed,"printed once per J; RCT-only, applies to both b"
+wu2022_table2,"J=1, b=0",os oa,,,,500,,"J=1, b=0",rmse,0.55,0.02,se_over_replicates,100,table_transcribed,
+wu2022_table2,"J=1, b=0",int oa,,,,500,random (expected 243.7),"J=1, b=0",rmse,0.86,0.06,se_over_replicates,100,table_transcribed,
+wu2022_table2,"J=1, b=0",os rlearner,,,,500,,"J=1, b=0",rmse,0.49,0.02,se_over_replicates,100,table_transcribed,
+wu2022_table2,"J=1, b=0",int rlearner,integrative_r_quadratic,,,500,random (expected 243.7),"J=1, b=0",rmse,0.28,0.03,se_over_replicates,100,table_transcribed,
+wu2022_table2,"J=1, b=0",os rf,,,,500,,"J=1, b=0",rmse,0.75,0.01,se_over_replicates,100,table_transcribed,
+wu2022_table2,"J=1, b=0",KPS lasso,,,,500,random (expected 243.7),"J=1, b=0",rmse,0.99,0.03,se_over_replicates,100,table_transcribed,
+wu2022_table2,"J=1, b=0",KPS linear,,,,500,random (expected 243.7),"J=1, b=0",rmse,1.45,0.12,se_over_replicates,100,table_transcribed,
+wu2022_table2,"J=1, b=0",naive rlearner,,,,500,random (expected 243.7),"J=1, b=0",rmse,0.41,0.01,se_over_replicates,100,table_transcribed,
+wu2022_table2,"J=1, b=2.5",os oa,,,,500,,"J=1, b=2.5",rmse,1.40,0.01,se_over_replicates,100,table_transcribed,
+wu2022_table2,"J=1, b=2.5",int oa,,,,500,random (expected 243.7),"J=1, b=2.5",rmse,1.35,0.05,se_over_replicates,100,table_transcribed,
+wu2022_table2,"J=1, b=2.5",os rlearner,,,,500,,"J=1, b=2.5",rmse,1.33,0.01,se_over_replicates,100,table_transcribed,"SE line prints '1.33(0.01)', duplicating the value"
+wu2022_table2,"J=1, b=2.5",int rlearner,integrative_r_quadratic,,,500,random (expected 243.7),"J=1, b=2.5",rmse,0.48,0.04,se_over_replicates,100,table_transcribed,
+wu2022_table2,"J=1, b=2.5",os rf,,,,500,,"J=1, b=2.5",rmse,1.31,0.01,se_over_replicates,100,table_transcribed,
+wu2022_table2,"J=1, b=2.5",KPS lasso,,,,500,random (expected 243.7),"J=1, b=2.5",rmse,0.83,0.02,se_over_replicates,100,table_transcribed,
+wu2022_table2,"J=1, b=2.5",KPS linear,,,,500,random (expected 243.7),"J=1, b=2.5",rmse,1.44,0.11,se_over_replicates,100,table_transcribed,
+wu2022_table2,"J=1, b=2.5",naive rlearner,,,,500,random (expected 243.7),"J=1, b=2.5",rmse,1.01,0.01,se_over_replicates,100,table_transcribed,
+wu2022_table2,"J=9, b=0",os oa,,,,500,,"J=9, b=0",rmse,1.08,0.03,se_over_replicates,100,table_transcribed,
+wu2022_table2,"J=9, b=0",int oa,,,,500,random (expected 243.7),"J=9, b=0",rmse,1.45,0.08,se_over_replicates,100,table_transcribed,
+wu2022_table2,"J=9, b=0",os rlearner,,,,500,,"J=9, b=0",rmse,0.97,0.02,se_over_replicates,100,table_transcribed,
+wu2022_table2,"J=9, b=0",int rlearner,integrative_r_quadratic,,,500,random (expected 243.7),"J=9, b=0",rmse,0.55,0.03,se_over_replicates,100,table_transcribed,
+wu2022_table2,"J=9, b=0",os rf,,,,500,,"J=9, b=0",rmse,2.33,0.01,se_over_replicates,100,table_transcribed,
+wu2022_table2,"J=9, b=0",KPS lasso,,,,500,random (expected 243.7),"J=9, b=0",rmse,2.22,0.03,se_over_replicates,100,table_transcribed,
+wu2022_table2,"J=9, b=0",KPS linear,,,,500,random (expected 243.7),"J=9, b=0",rmse,1.75,0.13,se_over_replicates,100,table_transcribed,
+wu2022_table2,"J=9, b=0",naive rlearner,,,,500,random (expected 243.7),"J=9, b=0",rmse,0.77,0.01,se_over_replicates,100,table_transcribed,
+wu2022_table2,"J=9, b=2.5",os oa,,,,500,,"J=9, b=2.5",rmse,1.55,0.02,se_over_replicates,100,table_transcribed,
+wu2022_table2,"J=9, b=2.5",int oa,,,,500,random (expected 243.7),"J=9, b=2.5",rmse,1.95,0.08,se_over_replicates,100,table_transcribed,
+wu2022_table2,"J=9, b=2.5",os rlearner,,,,500,,"J=9, b=2.5",rmse,1.54,0.01,se_over_replicates,100,table_transcribed,
+wu2022_table2,"J=9, b=2.5",int rlearner,integrative_r_quadratic,,,500,random (expected 243.7),"J=9, b=2.5",rmse,1.12,0.05,se_over_replicates,100,table_transcribed,
+wu2022_table2,"J=9, b=2.5",os rf,,,,500,,"J=9, b=2.5",rmse,2.63,0.01,se_over_replicates,100,table_transcribed,
+wu2022_table2,"J=9, b=2.5",KPS lasso,,,,500,random (expected 243.7),"J=9, b=2.5",rmse,2.18,0.03,se_over_replicates,100,table_transcribed,
+wu2022_table2,"J=9, b=2.5",KPS linear,,,,500,random (expected 243.7),"J=9, b=2.5",rmse,1.70,0.12,se_over_replicates,100,table_transcribed,
+wu2022_table2,"J=9, b=2.5",naive rlearner,,,,500,random (expected 243.7),"J=9, b=2.5",rmse,1.31,0.01,se_over_replicates,100,table_transcribed,
+wu2022_star,STAR,int rlearner,,,,,,STAR,rmse_vs_pseudo_outcome,70,,none,not stated,text_approximate,paper: RMSE approximately 70 after 20 iterations (Figure 1)
+wu2022_star,STAR,KPS lasso,,,,,,STAR,rmse_vs_pseudo_outcome,71.01,,none,not stated,text,
+wu2022_star,STAR,RCT-only and OS-only estimators,,,,,,STAR,rmse_vs_pseudo_outcome,80,,none,not stated,text_approximate,"paper: around 80, not shown in Figure 1"

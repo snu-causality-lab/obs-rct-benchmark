@@ -1,0 +1,122 @@
+"""Arm A: execute the computational part of the released CorNet sim_n_conf.py for one seed.
+
+Runs lines 3-247 of simulation_studies/sim_n_conf.py verbatim, i.e. everything except the
+IPython reset (lines 1-2) and the plotting/file-loading tail that starts at the '#%%' marker
+(line 248). Deviations, all listed in PROTOCOL.md: seeds are set, PyTorch uses one thread,
+matplotlib uses the Agg backend, and placeholder modules stand in for the unused pandas and
+seaborn imports.
+
+Usage: python author_replay.py --cornet DIR --stubs DIR --seed S --out DIR
+"""
+import argparse
+import hashlib
+import json
+import os
+import platform
+import random
+import sys
+import time
+from pathlib import Path
+
+SCRIPT_SHA256 = "9d99f06ae92650114dc8ad314a93446703491b4d4502d4af8922eba993e581c3"
+RESULT_LISTS = {
+    25: ("cate_trans_l", "cate_conf_l", "cate_unc_l"),
+    50: ("cate_trans_m", "cate_conf_m", "cate_unc_m"),
+    100: ("cate_trans_m2", "cate_conf_m2", "cate_unc_m2"),
+}
+
+parser = argparse.ArgumentParser()
+parser.add_argument("--cornet", required=True)
+parser.add_argument("--stubs", required=True)
+parser.add_argument("--seed", type=int, required=True)
+parser.add_argument("--out", required=True)
+args = parser.parse_args()
+
+root = Path(args.cornet).resolve()
+script = root / "simulation_studies" / "sim_n_conf.py"
+raw = script.read_bytes()
+if hashlib.sha256(raw).hexdigest() != SCRIPT_SHA256:
+    raise SystemExit("sim_n_conf.py does not match the pinned file")
+lines = raw.decode("utf-8").splitlines(keepends=True)
+if not (lines[0].startswith("from IPython import get_ipython")
+        and lines[1].startswith("get_ipython().magic('reset -sf')")):
+    raise SystemExit("unexpected script header")
+end = next(i for i, line in enumerate(lines) if line.startswith("#%%"))
+if end != 247:
+    raise SystemExit(f"unexpected '#%%' position: line {end + 1}")
+body = "".join(lines[2:end])
+
+os.environ["MPLBACKEND"] = "Agg"
+sys.path.insert(0, str(root))
+
+# Load every library the executed lines import before the placeholders become importable.
+# Libraries with optional pandas support (scikit-learn) then see the real environment, which
+# has no pandas; only the script's own `import pandas` / `import seaborn` reach the placeholders.
+import numpy as np  # noqa: E402
+import torch  # noqa: E402
+import sklearn.model_selection  # noqa: E402,F401
+import sklearn.utils.fixes  # noqa: E402
+import matplotlib.pyplot  # noqa: E402,F401
+import matplotlib.lines  # noqa: E402,F401
+import scipy.sparse  # noqa: E402,F401
+import simulation_studies.simdata  # noqa: E402,F401
+import model.models  # noqa: E402,F401
+if "pandas" in sys.modules or "seaborn" in sys.modules:
+    raise SystemExit("pandas or seaborn was imported before the placeholders were enabled")
+STUBS = Path(args.stubs).resolve()
+sys.path.insert(0, str(STUBS))
+
+torch.set_num_threads(1)
+np.random.seed(args.seed)
+torch.manual_seed(args.seed)
+random.seed(args.seed)
+
+namespace = {"__name__": "cornet_sim_n_conf_replay"}
+start = time.time()
+exec(compile(body, str(script), "exec"), namespace)
+elapsed = time.time() - start
+
+out = Path(args.out)
+out.mkdir(parents=True, exist_ok=True)
+arrays = {}
+for m, names in RESULT_LISTS.items():
+    for label, name in zip(("cornet", "conf", "unc"), names):
+        values = np.asarray(namespace[name], dtype=np.float64)
+        if values.shape != (10, 10):
+            raise SystemExit(f"{name} has shape {values.shape}, expected (10, 10)")
+        arrays[f"mse_{label}_rct{m}"] = values
+n_conf_sizes = np.asarray(namespace["n_conf_sizes"], dtype=np.float64)
+net, x_test = namespace["net"], namespace["x_test"]
+with torch.no_grad():
+    gap_ms = float(((net.predict_delta(x_test) - net.predict_naive(x_test)) ** 2).mean())
+np.savez(out / "replay.npz", n_conf_sizes=n_conf_sizes, **arrays)
+
+import matplotlib  # noqa: E402
+import scipy  # noqa: E402
+import sklearn  # noqa: E402
+
+record = {
+    "arm": "A_released_code",
+    "seed": args.seed,
+    "script": str(script),
+    "script_sha256": SCRIPT_SHA256,
+    "executed_lines": "3-247",
+    "elapsed_seconds": elapsed,
+    "network_gap_mean_square_on_last_test_draw": gap_ms,
+    "n_conf_sizes_plotted": n_conf_sizes.tolist(),
+    "n_conf_sizes_used": [int(v) for v in n_conf_sizes],
+    "placeholder_modules": ["pandas", "seaborn"],
+    "modules_loaded_from_placeholders": sorted(
+        name for name, mod in list(sys.modules.items())
+        if getattr(mod, "__file__", None) and Path(mod.__file__).resolve().is_relative_to(STUBS)
+    ),
+    "sklearn_saw_pandas": sklearn.utils.fixes.pd is not None,
+    "torch_threads": torch.get_num_threads(),
+    "versions": {
+        "python": platform.python_version(), "numpy": np.__version__, "torch": torch.__version__,
+        "scipy": scipy.__version__, "sklearn": sklearn.__version__, "matplotlib": matplotlib.__version__,
+    },
+    "slurm": {k: os.environ.get(k) for k in ("SLURM_JOB_ID", "SLURM_ARRAY_JOB_ID", "SLURM_ARRAY_TASK_ID", "SLURMD_NODENAME")},
+}
+(out / "replay.json").write_text(json.dumps(record, indent=2))
+print(json.dumps({"seed": args.seed, "elapsed_seconds": round(elapsed, 1), "gap_ms": gap_ms}))

@@ -22,4 +22,6 @@ Python runtime dependencies are installed separately under their own licenses. I
 
 IHDP and ACIC adapters load separately obtained files without redistributing them. Their exact distributions and different license/redistribution evidence are documented in [DATASETS.md](docs/DATASETS.md). That table distinguishes access to IHDP data, linked semi-synthetic files and the GPL-licensed ACIC2016 package distribution.
 
+[`results/reported_values/`](results/reported_values/README.md) records numbers transcribed or digitized from the CorNet and Integrative R-learner papers, each with its source location; it contains no copy of either paper. Its replays ran separately obtained, unmodified upstream code; their drivers and job files are original to this repository.
+
 Any contribution that copies third-party code or bundles data must add its origin, exact version, applicable license, required notices, and distribution permission before inclusion. If permission cannot be established, retain a citation and write an equation translation or provide an external installation step.

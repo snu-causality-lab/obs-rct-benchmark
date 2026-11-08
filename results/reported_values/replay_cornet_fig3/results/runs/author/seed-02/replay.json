@@ -1,0 +1,57 @@
+{
+  "arm": "A_released_code",
+  "seed": 2,
+  "script": "/shared/s2/lab05/sanghack/work/obsrct-public-upgrade-20261025-r01/upstreams/CorNet-official-v1/simulation_studies/sim_n_conf.py",
+  "script_sha256": "9d99f06ae92650114dc8ad314a93446703491b4d4502d4af8922eba993e581c3",
+  "executed_lines": "3-247",
+  "elapsed_seconds": 204.36599254608154,
+  "network_gap_mean_square_on_last_test_draw": 4.079339504241943,
+  "n_conf_sizes_plotted": [
+    25.0,
+    77.77777777777777,
+    130.55555555555554,
+    183.33333333333334,
+    236.11111111111111,
+    288.8888888888889,
+    341.6666666666667,
+    394.44444444444446,
+    447.22222222222223,
+    500.0
+  ],
+  "n_conf_sizes_used": [
+    25,
+    77,
+    130,
+    183,
+    236,
+    288,
+    341,
+    394,
+    447,
+    500
+  ],
+  "placeholder_modules": [
+    "pandas",
+    "seaborn"
+  ],
+  "modules_loaded_from_placeholders": [
+    "pandas",
+    "seaborn"
+  ],
+  "sklearn_saw_pandas": false,
+  "torch_threads": 1,
+  "versions": {
+    "python": "3.12.3",
+    "numpy": "1.26.4",
+    "torch": "2.2.2+cpu",
+    "scipy": "1.15.3",
+    "sklearn": "1.5.2",
+    "matplotlib": "3.10.8"
+  },
+  "slurm": {
+    "SLURM_JOB_ID": "770299",
+    "SLURM_ARRAY_JOB_ID": "770294",
+    "SLURM_ARRAY_TASK_ID": "2",
+    "SLURMD_NODENAME": "b30"
+  }
+}

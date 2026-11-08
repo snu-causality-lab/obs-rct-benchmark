@@ -1,0 +1,2 @@
+cell,seed,status,n_rct,n_obs,rmse_int,rmse_rct,rmse_os,rmse_naive,int_sc_chosen,int_ga_chosen,seconds,n_warnings,message
+readme_J8_b25,0,success,250,500,0.86647782426484388,1.5589467375891133,1.4570437748128546,1.3032480048110553,0.5,6.5,66.018,0,

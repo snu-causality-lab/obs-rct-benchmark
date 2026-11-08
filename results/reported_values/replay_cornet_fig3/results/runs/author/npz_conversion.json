@@ -1,0 +1,66 @@
+{
+  "description": "Per-replication MSE arrays of each Arm A task, converted from the job's replay.npz to replay_mse.csv because the repository holds text files only. Values are float64 written with Python repr; reading the CSV back reproduces every array bit for bit.",
+  "array_layout": "mse_<series>_rct<m> has shape (10 replications, 10 OBS sizes); n_conf_sizes holds the plotted OBS sizes",
+  "tasks": {
+    "seed-00": {
+      "npz_sha256": "a0c94875fcf76a1035e81574611188057d9c087b93fed551da8b3cdd0d8d5226",
+      "csv_sha256": "659f7dadbb1f8994f19780084ce70c51cb4ef3028023a899eaac91ada176ac80",
+      "rows": 900,
+      "exact_round_trip": true
+    },
+    "seed-01": {
+      "npz_sha256": "75033b4d003affb66658d2acc6da93da0a2293c95bb8ed3f830401aca0374386",
+      "csv_sha256": "35ab06554a34322e265626e739801f02e5679a4ff13930197adbaea09c224710",
+      "rows": 900,
+      "exact_round_trip": true
+    },
+    "seed-02": {
+      "npz_sha256": "c52eab82a6984bd757c76e968647e772491b31be028b0e73e5d129474f880d85",
+      "csv_sha256": "a38040650cf222f2dda3029c96ccea689bd132ed1c89a429b794e71b8dccd3c1",
+      "rows": 900,
+      "exact_round_trip": true
+    },
+    "seed-03": {
+      "npz_sha256": "79086f1ace65c1bd5c5b3b7eaf47734e04daa38b637346b7f1c9a0621a1e23da",
+      "csv_sha256": "b13256d2ca988aeca16c3c28f68f4372b3707bfe24c5fd05c6bc43a3f6849460",
+      "rows": 900,
+      "exact_round_trip": true
+    },
+    "seed-04": {
+      "npz_sha256": "bab98111987aa0bc22d082e808462ea080c103035a3dd567ecae7fa2c34e4db1",
+      "csv_sha256": "9b487b1dad4e9febe01b753ec4f276aadc1ce3be9d38d87d60da375ff4d6aa36",
+      "rows": 900,
+      "exact_round_trip": true
+    },
+    "seed-05": {
+      "npz_sha256": "c19aff8802231e51ffd716b261f3035661538a7771fefc8c5f625230c52d3ac8",
+      "csv_sha256": "20a13780d95d57926b79f3aa52fb91c27cd26640145bdb8413ac4063fe68b137",
+      "rows": 900,
+      "exact_round_trip": true
+    },
+    "seed-06": {
+      "npz_sha256": "c62b05747286c5beece14ad0d830e56ff64c8e5a6f98d96fe131821ab6b23882",
+      "csv_sha256": "6ef2bfe87dc2a53c456234efa0ebea6779d1098b56907600dbfd37f2a157e343",
+      "rows": 900,
+      "exact_round_trip": true
+    },
+    "seed-07": {
+      "npz_sha256": "8e6a83a47cedb0536156a3855b0e666771fbb7ad5077b28c294197009016df43",
+      "csv_sha256": "c0320b60784abf5389b06053098bda811f9ee75afca5c31cb08ac19909646983",
+      "rows": 900,
+      "exact_round_trip": true
+    },
+    "seed-08": {
+      "npz_sha256": "ccb634af7f02c8021d683c0b7272b374c49acdf006be278eae48b8be65da79f0",
+      "csv_sha256": "7bc2d850b94e5e8e26fc3aa94194204be7f7d8e34e63e6d7baa59be9b8c63d8a",
+      "rows": 900,
+      "exact_round_trip": true
+    },
+    "seed-09": {
+      "npz_sha256": "387b310a5904209c8d9794145c59647b98b2d3ff18d0b4a2a5dccb5c431f7cc5",
+      "csv_sha256": "90e6bb905fd9fc9eece5fb63eaff64acacde2f23168d86ee3943f3759c6deb59",
+      "rows": 900,
+      "exact_round_trip": true
+    }
+  }
+}

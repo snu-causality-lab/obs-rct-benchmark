@@ -1,0 +1,2 @@
+cell,seed,status,n_rct,n_obs,rmse_int,rmse_rct,rmse_os,rmse_naive,int_sc_chosen,int_ga_chosen,seconds,n_warnings,message
+t1_n1000,100000,success,1000,2000,0.057681135966425802,0.15028871687210341,0.53640669855964429,0.45972429282459432,0,3.5,7.623,0,

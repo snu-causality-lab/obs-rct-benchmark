@@ -1,0 +1,35 @@
+{
+  "arm": "B_benchmark",
+  "mechanism_seed": 2030,
+  "mechanism_sha256": [
+    "cd9c590dcc996108b7e60005f39c57600913297f06184090f38dce4a367ecf50"
+  ],
+  "n_fits": 640,
+  "n_failures": 0,
+  "elapsed_seconds": 433.2277388572693,
+  "cornet_provenance": {
+    "expected_revision": "38b9c37d5a86bc87950945d6ddb1ceb5354a45ba",
+    "availability": "available",
+    "declared_git_revision": "38b9c37d5a86bc87950945d6ddb1ceb5354a45ba",
+    "package_file_sha256": {
+      "model/models.py": "31ff1086ca97fe729cff320338da3e3dd619bb879668e46de94c5bea4366826a",
+      "model/helper.py": "f18e6e7eed78cd25896e9344a470f8c35be888a14eb3831a3bbf6acb307000ac",
+      "model/functions.py": "5eda20f55c31c69968f6dc40a8ad2973482421c16b61ca0b1b47efcf49e5685e",
+      "simulation_studies/simdata.py": "07576aabc15e490fa60595b1cdf3c3631eb60dd5344c14a5d3cbde06a9fa4541"
+    },
+    "tracked_changes": false,
+    "extra_import_files": [],
+    "verified": true
+  },
+  "versions": {
+    "python": "3.12.3",
+    "numpy": "1.26.4",
+    "torch": "2.2.2+cpu"
+  },
+  "slurm": {
+    "SLURM_JOB_ID": "770311",
+    "SLURM_ARRAY_JOB_ID": "770295",
+    "SLURM_ARRAY_TASK_ID": "5",
+    "SLURMD_NODENAME": "b23"
+  }
+}

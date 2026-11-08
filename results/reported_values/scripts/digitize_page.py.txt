@@ -1,0 +1,114 @@
+"""Digitize all errorbar panels on one PDF page made by matplotlib.
+
+Usage: python -I digitize_page.py PDF PAGE(1-based) OUT_CSV
+Panels are rectangles spanned by grey dashed grid lines. Tick values come from the
+numeric tick-label words next to each grid line. Series are solid strokes coloured
+black/blue/red inside a panel: polylines give means, single vertical segments give
+error bars (half length = SD). Marker centres and error-bar centres cross-check means.
+"""
+import csv, re, sys
+import numpy as np
+import fitz
+
+pdf, page_no, out = sys.argv[1], int(sys.argv[2]), sys.argv[3]
+page = fitz.open(pdf)[page_no - 1]
+D = page.get_drawings()
+words = page.get_text("words")
+COLORS = {(0, 0, 0): "black", (0, 0, 1): "blue", (1, 0, 0): "red"}
+
+def colour(c):
+    if not c:
+        return None
+    return COLORS.get(tuple(int(round(v)) for v in c)) if all(abs(v - round(v)) < 1e-3 for v in c) else None
+
+def segs(d):
+    return [(it[1], it[2]) for it in d["items"] if it[0] == "l"]
+
+def solid(d):
+    return d.get("dashes") in (None, "[] 0", "[] 0.0")
+
+grid = [d for d in D if d["type"] == "s" and not solid(d) and d.get("color") and
+        max(d["color"]) - min(d["color"]) < 1e-3 and 0.3 < d["color"][0] < 0.95]
+V, H = [], []
+for d in grid:
+    for p, q in segs(d):
+        if abs(p.x - q.x) < 1e-4:
+            V.append((p.x, min(p.y, q.y), max(p.y, q.y)))
+        elif abs(p.y - q.y) < 1e-4:
+            H.append((p.y, min(p.x, q.x), max(p.x, q.x)))
+xspans = sorted({(round(a, 1), round(b, 1)) for _, a, b in H})
+yspans = sorted({(round(a, 1), round(b, 1)) for _, a, b in V})
+panels = []
+for (y0, y1) in yspans:
+    for (x0, x1) in xspans:
+        hv = sorted({round(y, 4) for y, a, b in H if (round(a, 1), round(b, 1)) == (x0, x1) and y0 - 0.5 <= y <= y1 + 0.5})
+        vv = sorted({round(x, 4) for x, a, b in V if (round(a, 1), round(b, 1)) == (y0, y1) and x0 - 0.5 <= x <= x1 + 0.5})
+        if hv and vv:
+            panels.append(dict(x0=x0, x1=x1, y0=y0, y1=y1, hy=hv, vx=vv))
+panels.sort(key=lambda p: (round(p["y0"]), p["x0"]))
+
+num = re.compile(r"^-?\d+(\.\d+)?$")
+def tick_values(p):
+    # y labels: numeric words left of the panel, vertically centred on a grid line
+    ys, xs = [], []
+    for y in p["hy"]:
+        cand = [w for w in words if num.match(w[4]) and w[2] <= p["x0"] + 0.5 and p["x0"] - w[2] < 14 and abs((w[1] + w[3]) / 2 - y) < 3]
+        ys.append(float(min(cand, key=lambda w: abs((w[1] + w[3]) / 2 - y))[4]) if cand else None)
+    for x in p["vx"]:
+        cand = [w for w in words if num.match(w[4]) and w[1] >= p["y1"] - 0.5 and w[1] - p["y1"] < 12 and abs((w[0] + w[2]) / 2 - x) < 6]
+        xs.append(float(min(cand, key=lambda w: abs((w[0] + w[2]) / 2 - x))[4]) if cand else None)
+    return ys, xs
+
+ticks = [tick_values(p) for p in panels]
+for k, p in enumerate(panels):  # shared axes: borrow labels from a panel with identical grid positions
+    ys, xs = ticks[k]
+    if None in xs:
+        donor = [ticks[j][1] for j, q in enumerate(panels) if j != k and q["vx"] == p["vx"] and None not in ticks[j][1]]
+        if donor: xs = donor[0]
+    if None in ys:
+        donor = [ticks[j][0] for j, q in enumerate(panels) if j != k and q["hy"] == p["hy"] and None not in ticks[j][0]]
+        if donor: ys = donor[0]
+    ticks[k] = (ys, xs)
+rows, report = [], []
+for k, p in enumerate(panels):
+    ys, xs = ticks[k]
+    if None in ys or None in xs:
+        report.append(f"panel {k}: missing tick labels y={ys} x={xs}; skipped")
+        continue
+    ay, by = np.polyfit(p["hy"], ys, 1); ax, bx = np.polyfit(p["vx"], xs, 1)
+    ry = float(np.max(np.abs(np.polyval([ay, by], p["hy"]) - ys)))
+    rx = float(np.max(np.abs(np.polyval([ax, bx], p["vx"]) - xs)))
+    report.append(f"panel {k}: rect x[{p['x0']},{p['x1']}] y[{p['y0']},{p['y1']}] yticks {ys} (resid {ry:.1e}) xticks {xs} (resid {rx:.1e})")
+    inside = lambda pt: p["x0"] - 1 <= pt.x <= p["x1"] + 1 and p["y0"] - 1 <= pt.y <= p["y1"] + 1
+    for col in ("black", "blue", "red"):
+        strokes = [d for d in D if d["type"] == "s" and solid(d) and colour(d.get("color")) == col]
+        polys = [d for d in strokes if len(segs(d)) >= 2 and inside(segs(d)[0][0])]
+        bars = [d for d in strokes if len(segs(d)) == 1 and abs(segs(d)[0][0].x - segs(d)[0][1].x) < 1e-3 and inside(segs(d)[0][0])]
+        marks = [d for d in D if d["type"] == "fs" and colour(d.get("color")) == col and inside(fitz.Point((d["rect"].x0 + d["rect"].x1) / 2, (d["rect"].y0 + d["rect"].y1) / 2))]
+        for poly in polys:
+            s = segs(poly); verts = [s[0][0]] + [q for _, q in s]
+            for v in verts:
+                xd, yd = ax * v.x + bx, ay * v.y + by
+                m = [b for b in bars if abs(segs(b)[0][0].x - v.x) < 0.05]
+                sd = lo = hi = None
+                if m:
+                    a_, b_ = segs(m[0])[0]
+                    hi, lo = ay * min(a_.y, b_.y) + by, ay * max(a_.y, b_.y) + by
+                    if hi < lo: hi, lo = lo, hi
+                    sd = (hi - lo) / 2
+                mk = [d for d in marks if abs((d["rect"].x0 + d["rect"].x1) / 2 - v.x) < 0.05 and abs(d["rect"].width - d["rect"].height) < 0.05 and d["rect"].height > 0.5]
+                mm = None
+                if mk:
+                    c = min(mk, key=lambda d: abs((d["rect"].y0 + d["rect"].y1) / 2 - v.y))
+                    mm = ay * (c["rect"].y0 + c["rect"].y1) / 2 + by
+                rows.append(dict(page=page_no, panel=k, series=col, x=xd, mean=yd, sd=sd, bar_lo=lo, bar_hi=hi,
+                                 marker_mean=mm, n_bars_at_x=len(m)))
+with open(out, "w", newline="") as fh:
+    w = csv.DictWriter(fh, fieldnames=["page", "panel", "series", "x", "mean", "sd", "bar_lo", "bar_hi", "marker_mean", "n_bars_at_x"])
+    w.writeheader(); w.writerows(rows)
+print("\n".join(report))
+print("rows", len(rows), "| per panel/series:", {(r['panel'], r['series']) for r in rows}.__len__(), "series groups")
+ok = [r for r in rows if r["marker_mean"] is not None]
+print("max |marker-mean|:", max((abs(r["marker_mean"] - r["mean"]) for r in ok), default=None))
+cen = [abs((r["bar_hi"] + r["bar_lo"]) / 2 - r["mean"]) for r in rows if r["sd"] is not None]
+print("max |bar centre-mean|:", max(cen, default=None), "| points without bar:", sum(r["sd"] is None for r in rows), "| points with >1 bar:", sum(r["n_bars_at_x"] > 1 for r in rows))
