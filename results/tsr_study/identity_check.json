@@ -1,0 +1,18 @@
+{
+  "tolerance": 1e-09,
+  "recipes": {
+    "rct_t_extra_trees": {
+      "compared": 7936,
+      "expected": 7936,
+      "max_abs_difference": 0.0,
+      "passed": true
+    },
+    "rct_t_ridge": {
+      "compared": 7936,
+      "expected": 7936,
+      "max_abs_difference": 0.0,
+      "passed": true
+    }
+  },
+  "passed": true
+}

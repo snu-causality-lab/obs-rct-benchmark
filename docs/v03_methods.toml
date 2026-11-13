@@ -424,12 +424,12 @@ support_assumptions = "Candidate/target coverage and residual-learning condition
 transport_assumptions = "Experimental response model must represent the declared target; OBS predictions are residual offsets."
 model_assumptions = "Probabilistic residual learner and acquisition approximation; complexity/rate claims depend on structural smoothness assumptions."
 source_status = "primary_paper_algorithm_verified_official_code_discovery_pending"
-code_status = "Official implementation not verified in this review; referenced backbone repositories are not R-Design code."
-license_status = "Pending implementation discovery and assessment."
-adapter_status = "not_implemented"
-reproduction_status = "not_executed_v03"
+code_status = "No official implementation found as of 2026-11-13. The estimator is reimplemented as static recipes (tsr_tabpfn_lmcgp with lmcgp_rct_only and tabpfn_obs_only controls); the acquisition rule is not implemented."
+license_status = "No author code used. Stage 1 calls the separately installed tabpfn 2.0.9 package (Prior Labs License 1.0); no code or weights are redistributed."
+adapter_status = "estimator_reimplemented_as_static_recipe_acquisition_not_implemented"
+reproduction_status = "estimator_static_study_prespecified_see_docs_TSR_STUDY"
 disposition = "extension"
-reason = "Native joint action does not fit the current subject-only/fixed-randomization contract. Holding arms fixed is a new labeled policy adaptation."
+reason = "Native joint subject-and-arm acquisition does not fit the current subject-only/fixed-randomization contract; holding arms fixed is a new labeled policy adaptation. The estimator alone is evaluated under the catalog's static sampling with matched controls (docs/TSR_STUDY.md). Deviations: TabPFN v2 instead of TabPFN-2.5, a reimplemented LMC GP instead of CMGP."
 
 [[method]]
 id = "budgeted_active_2026"

@@ -32,7 +32,7 @@ from .datasets import (
     load_acic2016, load_ihdp_csv, load_ihdp_npz,
 )
 
-__version__ = "0.3.0a4"
+__version__ = "0.3.0a5"
 
 __all__ = [
     "SimulationProblem",

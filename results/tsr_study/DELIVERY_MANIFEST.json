@@ -1,0 +1,14 @@
+{
+  "analysis.json": "0f11b3ebe1469a594ea268e6cfacd87de15d25f21014813f579a76657050db35",
+  "budget_counts.md": "f65e165a88ca826a7867ad255b3752d9a059321e46a1e7af1d062e50513bda43",
+  "condition_scores.csv": "20ec30c1a63f71caa16185acb650680403c5723cefea0e224873c44203927c66",
+  "descriptive_contrasts.csv": "20b7feb2b3c359d3a5f1357d438efaef9338c83f559f9fd727e47dbdc50ab2f0",
+  "evidence/JOBS.txt": "49fa11cd1c97e342fa69bcd76855a27ee584cdfa8c688b34b9f209c890a91a02",
+  "evidence/SHA256SUMS": "5a20651c4aeda2619c9724c564efe4394829420843190ba7adef29ad8c44416d",
+  "evidence/environment-v1-freeze-5d09194.txt": "473d6a018d5e131231f61a352f2c76b68b71e737416f20b98f449a70247d578d",
+  "evidence/gpy-check-5d09194.json": "890c45f8bf656baca253aea4222648c5bd3f9cdddcb79f9938daf6a4730b2d17",
+  "evidence/producer_identity.json": "c4d3762392441846cd09ad12c88c68eef8623f0fb0adff677591c0bd08a20287",
+  "identity_check.json": "6be6545cda61b66c8029ddd1f5a4bbeccd5d2e173da6979af8ce6f6cf4de28df",
+  "primary_contrasts.csv": "762aa55ff82903d1d360e271cb684613d1b037fb0489b875a293c3ffb58e5ffa",
+  "replicate_scores.csv": "705cab70ed1f9e88a2c346285804c13136532823ba3b42a1ccbc19be6a109c33"
+}

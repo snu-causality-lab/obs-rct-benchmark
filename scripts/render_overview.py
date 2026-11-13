@@ -23,6 +23,7 @@ from matplotlib.colors import LinearSegmentedColormap  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[1]
 SCORES = ROOT / "results" / "catalog_study" / "condition_scores.csv"
+TSR_SCORES = ROOT / "results" / "tsr_study" / "condition_scores.csv"  # same samples; identity checked in that study
 REFERENCE = "rct_t_extra_trees"
 BUDGETS = (("o512_r128", "OBS 512 · RCT 128"), ("o2048_r512", "OBS 2,048 · RCT 512"))
 GROUPS = (
@@ -30,9 +31,10 @@ GROUPS = (
     ("OBS only", (("obs_t_ridge", "T ridge"), ("obs_t_extra_trees", "T trees"))),
     ("Naive pooled", (("naive_pooled_t_ridge", "T ridge"), ("naive_pooled_t_extra_trees", "T trees"))),
     ("Fusion", (("cornet_official", "CorNet"), ("datafusionppi", "DataFusionPPI"))),
+    ("TSR study", (("lmcgp_rct_only", "RCT GP"), ("tsr_tabpfn_lmcgp", "TSR"))),
 )
 PAPER_LABELS = {
-    "cornet_official_n_conf": "CorNet",
+    "cornet_official_n_conf": "CorNet design",
     "cvci_official_linear_bias": "CVCI linear bias",
     "elastic_integrative_gen_data_overlap": "Elastic integrative",
     "experimental_grounding_kps": "Experimental grounding",
@@ -52,6 +54,10 @@ THEMES = {
                  cool=("#9ec5f4", "#6da7ec", "#3987e5", "#1f5aa3"),
                  warm=("#8f2a2b", "#c94546", "#e66767", "#f2a3a1")),
 }
+
+
+ROW_GROUPS = ((0, 12, "Structural\nmechanisms\nM0–M11"), (12, 22, "Paired\nvariants\nC01–C10"),
+              (22, 31, "Paper-based\ndesigns"))
 
 
 def row_key(scenario: str):
@@ -76,6 +82,13 @@ def load():
             mean=float(r["mean"]) if ok else None,
             partial=ok and int(r["successful"]) < int(r["expected"]),
         )
+    if TSR_SCORES.exists():
+        for r in csv.DictReader(TSR_SCORES.open()):
+            preset, budget = r["scenario"].split("@")
+            ok = r["mean_mse"] not in ("", None)
+            table[(preset, budget, r["method"])] = dict(
+                mean=float(r["mean_mse"]) if ok else None,
+                partial=ok and int(r["successful"]) < int(r["expected"]))
     presets = sorted({k[0] for k in table}, key=row_key)
     return table, presets
 
@@ -98,7 +111,7 @@ def render(theme: str, out: Path):
     plt.rcParams.update({"svg.fonttype": "none", "font.family": ["Helvetica", "Arial", "DejaVu Sans"],
                          "font.size": 8.5, "text.color": t["text"]})
     cell_w, cell_h = 0.34, 0.2
-    left, gap, right, top, bottom = 2.0, 0.35, 0.25, 1.45, 0.8
+    left, gap, right, top, bottom = 2.0, 0.35, 1.2, 1.45, 0.8
     panel_w = n_cols * cell_w
     fig_w = left + 2 * panel_w + gap + right
     fig_h = top + n_rows * cell_h + bottom
@@ -122,6 +135,10 @@ def render(theme: str, out: Path):
                     ax.text(j + 0.5, i + 0.5, "•", ha="center", va="center", color=t["text"], fontsize=7)
         for boundary in (12, 22):
             ax.axhline(boundary, color=t["muted"], lw=0.6)
+        if p == 1:  # name the row groups once, to the right of the second panel
+            for lo, hi, name in ROW_GROUPS:
+                ax.text(n_cols + 0.4, (lo + hi) / 2, name, ha="left", va="center", fontsize=7.5,
+                        color=t["text"], fontweight="bold", linespacing=1.3)
         start = 0
         for g, items in GROUPS:
             if start:
@@ -151,7 +168,7 @@ def render(theme: str, out: Path):
     for s in cax.spines.values():
         s.set_visible(False)
     fig.text((left + 0.2) / fig_w, 0.52 / fig_h,
-             "Mean CATE MSE relative to the RCT-only ExtraTrees T-learner (blue = lower error)   •  some seeds failed   –  not applicable",
+             "Mean CATE MSE relative to the RCT-only ExtraTrees T-learner (the reference, not shown; blue = lower error)   •  some seeds failed   –  not applicable",
              fontsize=7.5, color=t["muted"], va="bottom")
     out.parent.mkdir(parents=True, exist_ok=True)
     fig.savefig(out, facecolor=t["surface"], metadata={"Date": None})
@@ -159,7 +176,8 @@ def render(theme: str, out: Path):
 
 
 RCT_ONLY = ("rct_t_ridge", "rct_t_extra_trees", "rct_dr_ridge", "rct_dr_extra_trees")
-TABLE_ROWS = (("cornet_official", "CorNet"), ("datafusionppi", "DataFusionPPI"),
+TABLE_ROWS = (("tsr_tabpfn_lmcgp", "TSR (reimplemented)"), ("lmcgp_rct_only", "RCT-only GP (TSR control)"),
+              ("cornet_official", "CorNet"), ("datafusionppi", "DataFusionPPI"),
               ("naive_pooled_t_ridge", "Naive pooled T ridge"), ("naive_pooled_t_extra_trees", "Naive pooled T trees"),
               ("obs_t_ridge", "OBS-only T ridge"), ("obs_t_extra_trees", "OBS-only T trees"),
               ("rct_t_ridge", "RCT-only T ridge"), ("rct_dr_ridge", "RCT-only DR ridge"),

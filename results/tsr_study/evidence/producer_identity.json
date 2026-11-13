@@ -1,0 +1,78 @@
+{
+  "code_commit": "5d09194",
+  "outputs": "outputs-r02",
+  "source": {
+    "aggregate_sha256": "2cb2be9ad23129c24c96b55a347b949c50a554b20b3e48207c5d015fbf503199",
+    "distribution": "obs-rct-benchmark",
+    "package_file_sha256": {
+      "__init__.py": "6d569c6f44ff4225d577b5a6b3e3d9ad1141e2bea475d66481ab7bbd64eaf300",
+      "adaptive.py": "e1e961a45e508684f75c546ec1d3adf92e2aff424e008e7b0486aa7113959005",
+      "adaptive_runner.py": "c9e162868481c8f68cd375db53e5125b675ee669ef8c9831c60915be2b3e1afe",
+      "causal_forest.py": "ca9eb64643627d9fe54a0cdb737413053fdc9abe9ec96bb729fd0713df92da7f",
+      "causal_icm.py": "3ba5fc9311c9cf6b11fd1c09dc84c8e760d3282da9a1cbd586174183014a75a1",
+      "cli.py": "39f14951a56b3a752f87081ceaec5cbf93228d5cb6b80a65e94904c8296c22ef",
+      "cornet.py": "3ccd76509d2965ea8451da9e279a7f3c8780873c5c24625f380d3c9b719b83bf",
+      "data.py": "616958669558c6ed274709b17d683f06c18b0f0606d7fcbc8a5485919f744573",
+      "datasets.py": "c05090977b6513bfced49baafad77340c113f631af15ea062b4f7f035496825a",
+      "evaluation.py": "9eb81a3d901edd5c5d33cafb438aa4aab781d456471df59f575b4e6e65e5d7c0",
+      "inputs.py": "be3d6e327cc092c33f465c1e14baae74fc9d5e2077e2511a4b293af3f899c0db",
+      "integrative_r.py": "593a883eaf88002a5ce3746deb61dc70fff7b8985a62be6f7aa5bc551dacbc5f",
+      "methods.py": "ec297ffbce21b1888b6c22dcdc53756484e46ac769c0c153221ce0f646486827",
+      "paper_dgp.py": "77bb899367e6ce8d12ee127b4ff6deb833215e90a707bb0f35c9aacf55f6a3f2",
+      "runner.py": "11397b140b9e9611696a94e6c69d523c109107c98d336049080c10ced0b1018a",
+      "sensitivity.py": "f684b08c65a129d43df6a1acfba36e43d71ee072e92e2fcfdaaf27de8a6e134f",
+      "structural_dgp.py": "49c94e6e5c6725d942a15a122344b03a3bd8174a131cbee0304f3a5e5994bdf4",
+      "tsr.py": "0ca60229da2af9ba80dbc75e9ac1e88fa0ebb0ddfc286cd03f8fac1f390c188a"
+    },
+    "version": "0.3.0a4"
+  },
+  "environment": {
+    "implementation": "CPython",
+    "machine": "x86_64",
+    "packages": {
+      "GPy": "not-installed",
+      "dfppi": "not-installed",
+      "numpy": "1.26.4",
+      "obs-rct-benchmark": "0.3.0a4",
+      "paramz": "not-installed",
+      "scikit-learn": "1.5.2",
+      "scipy": "1.15.3",
+      "torch": "2.5.1+cu121"
+    },
+    "python": "3.12.3",
+    "system": "Linux"
+  },
+  "external_methods": {
+    "lmcgp_rct_only": {
+      "gp_maxiter_default": 1000,
+      "implementation": "obs_rct_benchmark.tsr (reimplementation; no public author code)",
+      "model_path_env_set": true,
+      "required_tabpfn": "2.0.9",
+      "scipy_version": "1.15.3",
+      "stage1_random_state": 0,
+      "tabpfn_version": "2.0.9",
+      "torch_version": "2.5.1+cu121"
+    },
+    "tabpfn_obs_only": {
+      "gp_maxiter_default": 1000,
+      "implementation": "obs_rct_benchmark.tsr (reimplementation; no public author code)",
+      "model_path_env_set": true,
+      "required_tabpfn": "2.0.9",
+      "scipy_version": "1.15.3",
+      "stage1_random_state": 0,
+      "tabpfn_version": "2.0.9",
+      "torch_version": "2.5.1+cu121"
+    },
+    "tsr_tabpfn_lmcgp": {
+      "gp_maxiter_default": 1000,
+      "implementation": "obs_rct_benchmark.tsr (reimplementation; no public author code)",
+      "model_path_env_set": true,
+      "required_tabpfn": "2.0.9",
+      "scipy_version": "1.15.3",
+      "stage1_random_state": 0,
+      "tabpfn_version": "2.0.9",
+      "torch_version": "2.5.1+cu121"
+    }
+  },
+  "config_hash_shard_00": "125bf22f5a78a6636753c20751142230159ef70c38f4159e94c2a5960ae4d83e"
+}

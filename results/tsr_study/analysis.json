@@ -1,0 +1,24 @@
+{
+  "protocol": "docs/TSR_STUDY.md",
+  "coverage": {
+    "ok": 39680
+  },
+  "failures": [],
+  "identity_passed": true,
+  "families": {
+    "A_obs_offset": {
+      "tests": 120,
+      "complete": true,
+      "lmcgp_rct_only: tsr_lower": 4,
+      "lmcgp_rct_only: tsr_higher": 49
+    },
+    "B_complete_procedure": {
+      "tests": 240,
+      "complete": true,
+      "rct_t_extra_trees: tsr_lower": 24,
+      "rct_t_extra_trees: tsr_higher": 65,
+      "rct_t_ridge: tsr_lower": 10,
+      "rct_t_ridge: tsr_higher": 95
+    }
+  }
+}

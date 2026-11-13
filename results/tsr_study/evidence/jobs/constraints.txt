@@ -1,0 +1,5 @@
+numpy==1.26.4
+scipy==1.15.3
+scikit-learn==1.5.2
+torch==2.5.1+cu121
+tabpfn==2.0.9

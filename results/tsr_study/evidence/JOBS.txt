@@ -1,0 +1,6 @@
+install=813322 main=813323 gpy=813324 analysis=813325
+packed=813348 analysis=813349 (813323_0 keeps shards 00-03)
+packed=813353 analysis=813354 (813323_0 keeps shards 00-03; 813323_1 cancelled after 22 s, empty starts preserved)
+packed=813357 analysis=813358 (resume-aware; 813348_0 and 813353_0 ran 13-15 s before cancellation)
+rerun shards 04-15=813362 analysis=813363 (813357_0 failed at resume: manifest without records)
+r01 (outputs-r01-gpu-oom): packed 12 processes/GPU caused CUDA OOM in Stage 1; stopped, retained, not analyzed. r02 full rerun main=813505 analysis=813506 at 4 processes/GPU
