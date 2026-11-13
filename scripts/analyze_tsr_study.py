@@ -73,7 +73,8 @@ def collect(config, runs: list[Path], expected_sha: str | None, *, check_source:
         shard = replace(config, seeds=seeds)
         if manifest.get("config") != shard.payload() or manifest.get("config_hash") != shard.config_hash:
             raise AnalysisError(f"{run}: shard settings differ from the declared configuration")
-        identities.add(json.dumps({"source": manifest["source"], "environment": manifest["environment"]}, sort_keys=True))
+        identities.add(json.dumps({"source": manifest["source"], "environment": manifest["environment"],
+                                   "external_methods": manifest.get("external_methods")}, sort_keys=True))
         if check_source and (manifest["source"] != source_provenance() or manifest["environment"] != environment_provenance()):
             raise AnalysisError(f"{run}: producer source or environment differs from the analysis package")
         for line in (run / "records.jsonl").read_text().splitlines():
@@ -92,7 +93,7 @@ def collect(config, runs: list[Path], expected_sha: str | None, *, check_source:
     if seen_seeds != set(config.seeds):
         raise AnalysisError("shards do not cover the declared seeds")
     if len(identities) != 1:
-        raise AnalysisError("shards differ in source or environment")
+        raise AnalysisError("shards differ in source, environment or external-method provenance")
     return records
 
 

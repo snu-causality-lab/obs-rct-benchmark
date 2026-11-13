@@ -22,7 +22,7 @@ The same day, still before any main-run result, an independent code review led t
 | `rct_t_ridge` | — | T-learner | Catalog settings: penalty 1, standardized |
 
 - **Stage 1.** A TabPFN v2 regressor (`tabpfn==2.0.9`, default settings, `random_state=0`) is fitted as an S-learner on raw OBS covariates and treatment, then frozen. The checkpoint is pinned by SHA-256 in the configuration; a file with another hash fails the cell.
-- **Stage 2.** A two-output GP over (covariates, arm) uses a linear model of coregionalization with two RBF components with ARD. Each component has an arm covariance `w w' + diag(kappa)`, and the noise is shared. Covariates are standardized with the fitted trial rows' means and scales, and outcomes within the fit. Hyperparameters maximize the marginal likelihood (L-BFGS-B, at most 200 iterations, one fixed start, fixed bounds).
+- **Stage 2.** A two-output GP over (covariates, arm) uses a linear model of coregionalization with two RBF components with ARD. Each component has an arm covariance `w w' + diag(kappa)`, and the noise is shared. Covariates are standardized with the fitted trial rows' means and scales, and outcomes within the fit. Hyperparameters maximize the marginal likelihood (L-BFGS-B, at most 1,000 iterations, one fixed start, fixed bounds). Each record stores the iteration count and convergence flag.
 - **Matched controls.** Each control differs from TSR in exactly one component. All recipes use the same Stage 1 (fixed random state, shared within a process) and the same GP code and settings. Predictions do not depend on the runner's method seed.
 - **Unused inputs.** RCT tuning rows and target-reference covariates are not used. Nothing is tuned on evaluation truth.
 
@@ -83,6 +83,7 @@ Made on 2026-11-13 after the independent pre-run review and before any main-run 
 3. Made the analysis check shard settings, seed partition, record identities and the Stage 1 device.
 4. Added the marginal-likelihood comparison to the GPy check.
 5. Moved development runs off catalog presets to the gamma smoke generator, and redacted metrics from the timing preflight.
+6. Raised the GP iteration cap from 200 to 1,000. In the timing preflight, 8 of 62 GP fits stopped at 200 iterations without converging; metrics had already been removed. GPy, on which the original CMGP code runs, defaults to 1,000.
 
 ## Execution
 
