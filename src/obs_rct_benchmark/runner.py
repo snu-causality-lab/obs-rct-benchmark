@@ -379,6 +379,9 @@ def run_benchmark(config: BenchmarkConfig, output: str | Path, *,
                         prediction = estimator.fit_predict(training, problem.eval_X,
                                                            seed=row["method_seed"])
                         row.update(status="ok", metrics=cate_metrics(prediction, problem.eval_tau))
+                        fit_info = getattr(estimator, "fit_info_", None)
+                        if isinstance(fit_info, dict) and fit_info:
+                            row["fit_info"] = json.loads(json.dumps(fit_info, allow_nan=False))
                     except Exception as exc:
                         row.update(status="failed", metrics=None, stage="method_or_metric",
                                    error_type=type(exc).__name__)

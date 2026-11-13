@@ -3,25 +3,31 @@ schema_version = 1
 [run]
 purpose = "reference"
 seeds = [20000, 20001, 20002, 20003, 20004, 20005, 20006, 20007, 20008, 20009, 20010, 20011, 20012, 20013, 20014, 20015, 20016, 20017, 20018, 20019, 20020, 20021, 20022, 20023, 20024, 20025, 20026, 20027, 20028, 20029, 20030, 20031, 20032, 20033, 20034, 20035, 20036, 20037, 20038, 20039, 20040, 20041, 20042, 20043, 20044, 20045, 20046, 20047, 20048, 20049, 20050, 20051, 20052, 20053, 20054, 20055, 20056, 20057, 20058, 20059, 20060, 20061, 20062, 20063]
-methods = ["tsr_tabpfn_lmcgp", "lmcgp_rct_only", "tabpfn_obs_only", "rct_t_extra_trees"]
+methods = ["tsr_tabpfn_lmcgp", "lmcgp_rct_only", "tabpfn_obs_only", "rct_t_extra_trees", "rct_t_ridge"]
 reference_method = "lmcgp_rct_only"
-scope = "prespecified TSR static study (docs/TSR_STUDY.md); catalog presets, budgets and seeds unchanged; TSR reimplementation with matched RCT-only GP and OBS-only controls plus the catalog ExtraTrees control"
+scope = "prespecified TSR static study (docs/TSR_STUDY.md); catalog presets, budgets and seeds unchanged; TSR reimplementation with matched RCT-only GP and OBS-only controls plus the catalog's RCT-only ExtraTrees and ridge T-learners"
 
 [method_options.tsr_tabpfn_lmcgp]
 device = "cuda"
 gp_maxiter = 200
+model_sha256 = "2ab5a07d5c41dfe6db9aa7ae106fc6de898326c2765be66505a07e2868c10736"
 
 [method_options.lmcgp_rct_only]
 device = "cuda"
 gp_maxiter = 200
+model_sha256 = "2ab5a07d5c41dfe6db9aa7ae106fc6de898326c2765be66505a07e2868c10736"
 
 [method_options.tabpfn_obs_only]
 device = "cuda"
 gp_maxiter = 200
+model_sha256 = "2ab5a07d5c41dfe6db9aa7ae106fc6de898326c2765be66505a07e2868c10736"
 
 [method_options.rct_t_extra_trees]
 n_estimators = 100
 min_samples_leaf = 5
+
+[method_options.rct_t_ridge]
+ridge_alpha = 1.0
 
 [[scenarios]]
 kind = "structural"

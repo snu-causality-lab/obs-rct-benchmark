@@ -22,12 +22,19 @@ of our own instead of the original CMGP code. Stage 1 uses ``random_state=0`` fo
 every recipe and seed, and the GP fit has no random restarts, so predictions do not
 depend on the runner's method seed. RCT tuning rows and target-reference covariates
 are not used.
+
+The TabPFN checkpoint can be pinned: pass ``model_sha256`` and set the environment
+variable ``OBS_RCT_TABPFN_MODEL_PATH`` to the checkpoint file. The recipe refuses a
+file with a different hash. Each fit records the Stage 1 device, GPU name and
+checkpoint hash in ``fit_info_``, which the runner stores with the record.
 """
 from __future__ import annotations
 
 from collections import OrderedDict
 import hashlib
 import importlib.metadata
+import os
+from pathlib import Path
 from typing import Any
 
 import numpy as np
@@ -37,6 +44,7 @@ from .data import SourceSample, TrainingView
 
 FloatArray = NDArray[np.float64]
 TABPFN_VERSION = "2.0.9"
+MODEL_PATH_ENV = "OBS_RCT_TABPFN_MODEL_PATH"
 STAGE1_RANDOM_STATE = 0
 GP_MAXITER = 200
 _Q = 2
@@ -171,6 +179,7 @@ class LMCGP:
         self.theta = np.asarray(result.x, dtype=float)
         self.nlml = float(result.fun)
         self.converged = bool(result.success)
+        self.iterations = int(result.nit)
         _, log_noise = _unpack(self.theta, d)
         K = lmc_kernel(self.theta, self.x, self.t, self.x, self.t)
         K[np.diag_indices(len(K))] += float(np.exp(log_noise)) + _JITTER
@@ -194,14 +203,44 @@ _STAGE1_CACHE: "OrderedDict[str, Any]" = OrderedDict()
 _STAGE1_CACHE_SIZE = 2
 
 
-def _sample_digest(sample: SourceSample, device: str) -> str:
+def _sample_digest(sample: SourceSample, device: str, model_sha256: str | None) -> str:
     h = hashlib.sha256()
     for arr in (sample.X, sample.T, sample.Y):
         a = np.ascontiguousarray(arr, dtype=np.float64)
         h.update(str(a.shape).encode())
         h.update(a.tobytes())
-    h.update(f"{device}|{STAGE1_RANDOM_STATE}|{TABPFN_VERSION}".encode())
+    h.update(f"{device}|{STAGE1_RANDOM_STATE}|{TABPFN_VERSION}|{model_sha256}".encode())
     return h.hexdigest()
+
+
+_FILE_SHA256: dict[str, str] = {}
+
+
+def _file_sha256(path: Path) -> str:
+    key = str(path.resolve())
+    if key not in _FILE_SHA256:
+        h = hashlib.sha256()
+        with path.open("rb") as fh:
+            for block in iter(lambda: fh.read(1 << 20), b""):
+                h.update(block)
+        _FILE_SHA256[key] = h.hexdigest()
+    return _FILE_SHA256[key]
+
+
+def _pinned_model_path(model_sha256: str | None) -> Path | None:
+    if model_sha256 is None:
+        return None
+    from .methods import MethodUnavailableError
+
+    raw = os.environ.get(MODEL_PATH_ENV)
+    if not raw:
+        raise MethodUnavailableError(f"model_sha256 is set; point {MODEL_PATH_ENV} to the TabPFN checkpoint")
+    path = Path(raw)
+    if not path.is_file():
+        raise MethodUnavailableError(f"{MODEL_PATH_ENV} does not name a file")
+    if _file_sha256(path) != model_sha256:
+        raise MethodUnavailableError("TabPFN checkpoint SHA-256 differs from model_sha256")
+    return path
 
 
 def _resolve_device(device: str) -> str:
@@ -212,7 +251,7 @@ def _resolve_device(device: str) -> str:
     return "cuda" if torch.cuda.is_available() else "cpu"
 
 
-def _tabpfn_regressor(device: str) -> Any:
+def _tabpfn_regressor(device: str, model_path: Path | None = None) -> Any:
     try:
         import tabpfn
         from tabpfn import TabPFNRegressor
@@ -225,14 +264,17 @@ def _tabpfn_regressor(device: str) -> Any:
         from .methods import MethodUnavailableError
 
         raise MethodUnavailableError(f"TSR recipes require tabpfn {TABPFN_VERSION}, found {version}")
-    return TabPFNRegressor(device=device, random_state=STAGE1_RANDOM_STATE)
+    kwargs: dict[str, Any] = {"device": device, "random_state": STAGE1_RANDOM_STATE}
+    if model_path is not None:
+        kwargs["model_path"] = str(model_path)
+    return TabPFNRegressor(**kwargs)
 
 
 class Stage1:
     """Frozen OBS S-learner. ``mu(X, t)`` and ``tau(X)`` use one forward pass each."""
 
-    def __init__(self, model: Any, device: str):
-        self.model, self.device = model, device
+    def __init__(self, model: Any, device: str, model_sha256: str | None):
+        self.model, self.device, self.model_sha256 = model, device, model_sha256
 
     def mu(self, X: FloatArray, T: FloatArray) -> FloatArray:
         return np.asarray(self.model.predict(np.column_stack([X, T])), dtype=float)
@@ -244,15 +286,16 @@ class Stage1:
         return p[:n] - p[n:]
 
 
-def fit_stage1(obs: SourceSample, *, device: str = "auto") -> Stage1:
+def fit_stage1(obs: SourceSample, *, device: str = "auto", model_sha256: str | None = None) -> Stage1:
     device = _resolve_device(device)
-    key = _sample_digest(obs, device)
+    model_path = _pinned_model_path(model_sha256)
+    key = _sample_digest(obs, device, model_sha256)
     if key in _STAGE1_CACHE:
         _STAGE1_CACHE.move_to_end(key)
         return _STAGE1_CACHE[key]
-    model = _tabpfn_regressor(device)
+    model = _tabpfn_regressor(device, model_path)
     model.fit(np.column_stack([obs.X, obs.T]), np.asarray(obs.Y, dtype=float))
-    fitted = Stage1(model, device)
+    fitted = Stage1(model, device, model_sha256)
     _STAGE1_CACHE[key] = fitted
     while len(_STAGE1_CACHE) > _STAGE1_CACHE_SIZE:
         _STAGE1_CACHE.popitem(last=False)
@@ -269,14 +312,18 @@ _COMPONENTS = {"tsr": (True, True), "rct_gp": (False, True), "obs": (True, False
 class TwoStageResidual:
     """Static recipe: ``component`` selects TSR or one of its matched controls."""
 
-    def __init__(self, component: str, device: str = "auto", gp_maxiter: int = GP_MAXITER):
+    def __init__(self, component: str, device: str = "auto", gp_maxiter: int = GP_MAXITER,
+                 model_sha256: str | None = None):
         if component not in _COMPONENTS:
             raise ValueError(f"unknown TSR component: {component}")
         if device not in {"auto", "cuda", "cpu"}:
             raise ValueError("device must be 'auto', 'cuda' or 'cpu'")
         if int(gp_maxiter) < 1:
             raise ValueError("gp_maxiter must be positive")
+        if model_sha256 is not None and (len(model_sha256) != 64 or any(c not in "0123456789abcdef" for c in model_sha256)):
+            raise ValueError("model_sha256 must be a lowercase hex SHA-256")
         self.component, self.device, self.gp_maxiter = component, device, int(gp_maxiter)
+        self.model_sha256 = model_sha256
         self.fit_info_: dict[str, Any] = {}
 
     def fit_predict(self, training: TrainingView, eval_X: FloatArray, *, seed: int) -> FloatArray:
@@ -290,14 +337,19 @@ class TwoStageResidual:
         rct = training.rct_train
         target = np.asarray(rct.Y, dtype=float)
         if use_obs:
-            stage1 = fit_stage1(training.obs_train, device=self.device)
+            stage1 = fit_stage1(training.obs_train, device=self.device, model_sha256=self.model_sha256)
             info["stage1_device"] = stage1.device
+            info["stage1_model_sha256"] = stage1.model_sha256
+            if stage1.device == "cuda":
+                import torch
+
+                info["stage1_gpu"] = torch.cuda.get_device_name(0)
             prediction = prediction + stage1.tau(eval_X)
             if use_rct:
                 target = target - stage1.mu(rct.X, rct.T)
         if use_rct:
             gp = LMCGP(maxiter=self.gp_maxiter).fit(rct.X, rct.T, target)
-            info.update(gp_converged=gp.converged, gp_nlml=gp.nlml)
+            info.update(gp_converged=gp.converged, gp_nlml=gp.nlml, gp_iterations=gp.iterations)
             prediction = prediction + gp.tau_mean(eval_X)
         self.fit_info_ = info
         return np.asarray(prediction, dtype=float)
@@ -307,7 +359,8 @@ def tsr_provenance() -> dict[str, Any]:
     """Installed versions for manifest/resume identity, without importing torch/tabpfn."""
     out: dict[str, Any] = {"implementation": "obs_rct_benchmark.tsr (reimplementation; no public author code)",
                            "required_tabpfn": TABPFN_VERSION, "stage1_random_state": STAGE1_RANDOM_STATE,
-                           "gp_maxiter_default": GP_MAXITER}
+                           "gp_maxiter_default": GP_MAXITER,
+                           "model_path_env_set": bool(os.environ.get(MODEL_PATH_ENV))}
     for package in ("tabpfn", "torch", "scipy"):
         try:
             out[f"{package}_version"] = importlib.metadata.version(package)

@@ -54,7 +54,7 @@ class _FakeRegressor:
 def fake_stage1(monkeypatch):
     tsr._STAGE1_CACHE.clear()
     _FakeRegressor.fits = 0
-    monkeypatch.setattr(tsr, "_tabpfn_regressor", lambda device: _FakeRegressor())
+    monkeypatch.setattr(tsr, "_tabpfn_regressor", lambda device, model_path=None: _FakeRegressor())
     monkeypatch.setattr(tsr, "_resolve_device", lambda device: "cpu")
     yield _FakeRegressor
     tsr._STAGE1_CACHE.clear()
@@ -143,6 +143,58 @@ def test_missing_or_wrong_tabpfn_fails_closed(monkeypatch):
     monkeypatch.setitem(sys.modules, "tabpfn", fake)
     with pytest.raises(methods.MethodUnavailableError, match="2.0.9"):
         tsr._tabpfn_regressor("cpu")
+
+
+def test_pinned_checkpoint_hash_is_enforced(tmp_path, monkeypatch, fake_stage1):
+    import hashlib
+
+    ckpt = tmp_path / "model.ckpt"
+    ckpt.write_bytes(b"weights")
+    good = hashlib.sha256(b"weights").hexdigest()
+    view, ev = _view(), np.zeros((3, 3))
+    monkeypatch.delenv(tsr.MODEL_PATH_ENV, raising=False)
+    with pytest.raises(methods.MethodUnavailableError, match=tsr.MODEL_PATH_ENV):
+        methods.make_method("tabpfn_obs_only", model_sha256=good).fit_predict(view, ev, seed=0)
+    monkeypatch.setenv(tsr.MODEL_PATH_ENV, str(ckpt))
+    with pytest.raises(methods.MethodUnavailableError, match="differs"):
+        methods.make_method("tabpfn_obs_only", model_sha256="0" * 64).fit_predict(view, ev, seed=0)
+    est = methods.make_method("tsr_tabpfn_lmcgp", model_sha256=good)
+    est.fit_predict(view, ev, seed=0)
+    assert est.fit_info_["stage1_model_sha256"] == good and est.fit_info_["stage1_device"] == "cpu"
+    with pytest.raises(ValueError, match="SHA-256"):
+        methods.make_method("tsr_tabpfn_lmcgp", model_sha256="ABC")
+
+
+def test_runner_stores_fit_info_with_the_record(tmp_path, fake_stage1):
+    import json
+    import tomllib
+
+    from obs_rct_benchmark.runner import load_config, run_benchmark
+
+    cfg = tmp_path / "c.toml"
+    cfg.write_text('''schema_version = 1
+[run]
+purpose = "smoke"
+seeds = [0]
+methods = ["tsr_tabpfn_lmcgp", "lmcgp_rct_only"]
+reference_method = "lmcgp_rct_only"
+scope = "test"
+[[scenarios]]
+kind = "structural"
+id = "M0"
+[scenarios.parameters]
+n_obs = 60
+n_rct_train = 30
+n_rct_tune = 6
+n_rct_test = 6
+n_eval = 20
+''')
+    tomllib.loads(cfg.read_text())
+    run_benchmark(load_config(cfg), tmp_path / "out")
+    rows = [json.loads(line) for line in (tmp_path / "out" / "records.jsonl").read_text().splitlines()]
+    assert {r["method"]: r["status"] for r in rows} == {"tsr_tabpfn_lmcgp": "ok", "lmcgp_rct_only": "ok"}
+    tsr_row = next(r for r in rows if r["method"] == "tsr_tabpfn_lmcgp")
+    assert tsr_row["fit_info"]["component"] == "tsr" and tsr_row["fit_info"]["stage1_device"] == "cpu"
 
 
 def test_real_tabpfn_small_fit_is_finite_and_shared():
