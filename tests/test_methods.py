@@ -102,7 +102,7 @@ def test_methods_reject_a_simulation_object_in_place_of_training_view():
             method.fit_predict(object(), np.zeros((2, 2)), seed=0)
 
 
-def test_builtin_registry_has_sixteen_recipes_and_preserves_original_names():
+def test_builtin_registry_has_nineteen_recipes_and_preserves_original_names():
     expected = {
         "rct_t_ridge", "obs_t_ridge", "naive_pooled_t_ridge",
         "rct_t_extra_trees", "obs_t_extra_trees", "naive_pooled_t_extra_trees",
@@ -110,9 +110,10 @@ def test_builtin_registry_has_sixteen_recipes_and_preserves_original_names():
         "integrative_r_linear", "integrative_r_quadratic", "causal_icm_fixed",
         "causal_icm_rct_only", "causal_icm_obs_start",
         "rct_causal_forest",
+        "tsr_tabpfn_lmcgp", "lmcgp_rct_only", "tabpfn_obs_only",
     }
     assert set(methods.method_names()) - set(methods.custom_provenance()) == expected
-    assert len(expected) == 16
+    assert len(expected) == 19
 
 
 @pytest.mark.parametrize("name,basis", [
@@ -157,7 +158,7 @@ def test_new_recipe_construction_in_fresh_process_imports_no_optional_dependenci
 import importlib.abc
 import subprocess
 import sys
-blocked = {"GPy", "paramz", "scipy", "sklearn", "torch", "rpy2", "dfppi"}
+blocked = {"GPy", "paramz", "scipy", "sklearn", "torch", "rpy2", "dfppi", "tabpfn"}
 class RejectOptional(importlib.abc.MetaPathFinder):
     def find_spec(self, fullname, path=None, target=None):
         if fullname.split(".")[0] in blocked:
@@ -167,7 +168,8 @@ def reject_probe(*args, **kwargs):
     raise AssertionError("external process during construction")
 subprocess.run = subprocess.check_output = reject_probe
 from obs_rct_benchmark.methods import make_method
-for name in ("integrative_r_linear", "integrative_r_quadratic", "causal_icm_fixed", "causal_icm_rct_only", "causal_icm_obs_start"):
+for name in ("integrative_r_linear", "integrative_r_quadratic", "causal_icm_fixed", "causal_icm_rct_only", "causal_icm_obs_start",
+             "tsr_tabpfn_lmcgp", "lmcgp_rct_only", "tabpfn_obs_only"):
     assert callable(make_method(name).fit_predict)
 assert not any(name.split(".")[0] in blocked for name in sys.modules)
 '''

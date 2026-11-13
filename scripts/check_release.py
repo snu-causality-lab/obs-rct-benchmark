@@ -28,7 +28,7 @@ PATH_PATTERNS = [
     re.compile(r"AKIA[0-9A-Z]{16}"),
     re.compile(r"-----BEGIN (?:[A-Z]+ )?PRIVATE KEY-----"),
 ]
-PUBLIC_EXTERNAL_IMPORTS = {"numpy", "scipy", "sklearn", "torch", "dfppi", "GPy", "pytest", "nbclient", "nbformat", "jupyter_client", "matplotlib"}
+PUBLIC_EXTERNAL_IMPORTS = {"numpy", "scipy", "sklearn", "torch", "dfppi", "GPy", "pytest", "nbclient", "nbformat", "jupyter_client", "matplotlib", "tabpfn"}
 PUBLIC_SCRIPT_MODULES = {"native_panel_data", "run_native_panel", "verify_native_panel",
                          "analyze_native_panel", "verify_native_panel_delivery"}
 
@@ -81,7 +81,7 @@ def check() -> list[str]:
                 for name in names:
                     if name not in PUBLIC_EXTERNAL_IMPORTS | PUBLIC_SCRIPT_MODULES | sys.stdlib_module_names | {"obs_rct_benchmark"}:
                         errors.append(f"Unlisted dependency {name!r}: {relative}")
-                if path.name in {"methods.py", "cornet.py", "causal_icm.py", "integrative_r.py", "causal_forest.py"} and isinstance(node, ast.Attribute):
+                if path.name in {"methods.py", "cornet.py", "causal_icm.py", "integrative_r.py", "causal_forest.py", "tsr.py"} and isinstance(node, ast.Attribute):
                     if node.attr in {"eval_tau", "rct_test", "truth"}:
                         errors.append(f"Evaluation-only attribute in a method: {relative}")
     return errors

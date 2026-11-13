@@ -516,6 +516,13 @@ def external_method_provenance(methods: tuple[str, ...]) -> dict[str, Any]:
         from .causal_forest import causal_forest_provenance
 
         result["rct_causal_forest"] = causal_forest_provenance()
+    tsr = {"tsr_tabpfn_lmcgp", "lmcgp_rct_only", "tabpfn_obs_only"}.intersection(methods)
+    if tsr:
+        from .tsr import tsr_provenance
+
+        snapshot = tsr_provenance()
+        for name in sorted(tsr):
+            result[name] = snapshot
     integrative = {"integrative_r_linear", "integrative_r_quadratic"}.intersection(methods)
     if integrative:
         from .integrative_r import integrative_r_provenance

@@ -305,6 +305,7 @@ def _verify_dfppi_install() -> Path:
     return package
 
 
+_TSR_COMPONENTS = {"tsr_tabpfn_lmcgp": "tsr", "lmcgp_rct_only": "rct_gp", "tabpfn_obs_only": "obs"}
 MethodFactory = Callable[..., CATEMethod]
 _FACTORIES: dict[str, MethodFactory] = {}
 _CUSTOM_PROVENANCE: dict[str, str] = {}
@@ -318,6 +319,7 @@ def method_names() -> tuple[str, ...]:
         "integrative_r_linear", "integrative_r_quadratic", "causal_icm_fixed",
         "causal_icm_rct_only", "causal_icm_obs_start",
         "rct_causal_forest",
+        "tsr_tabpfn_lmcgp", "lmcgp_rct_only", "tabpfn_obs_only",
         *sorted(_FACTORIES),
     )
 
@@ -373,6 +375,12 @@ def make_method(name: str, **options: Any) -> CATEMethod:
 
         source = "rct" if name == "causal_icm_rct_only" else "obs"
         return CausalICMSourceControl(source=source, **options)
+    if name in _TSR_COMPONENTS:
+        if "component" in options:
+            raise ValueError("TSR component is fixed by the method ID")
+        from .tsr import TwoStageResidual
+
+        return TwoStageResidual(component=_TSR_COMPONENTS[name], **options)
     if name.startswith("rct_dr_"):
         learner = name.removeprefix("rct_dr_")
         if name not in method_names():
