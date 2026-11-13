@@ -4,6 +4,37 @@ A research benchmark for estimating conditional average treatment effects (CATE)
 
 Start with the **[AI-generated technical report](docs/REPORT.md)** ([PDF](https://github.com/snu-causality-lab/obs-rct-benchmark/releases/download/report-2026-10-30-r2/obsrct_benchmark_icml.pdf)) for the scientific account, or the [results index](results/README.md) for complete study packets. The report is an AI-generated research draft, not peer reviewed. This package is a research alpha; its inspected synthetic mechanisms do not establish empirical or unseen-mechanism performance.
 
+## Results at a glance
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/figures/catalog_relative_mse_dark.svg">
+  <img alt="Heatmap of each recipe's mean CATE MSE relative to the RCT-only ExtraTrees T-learner, for all 31 catalog presets at two budgets" src="docs/figures/catalog_relative_mse_light.svg">
+</picture>
+
+Each cell divides a recipe's mean CATE MSE by that of the RCT-only ExtraTrees T-learner in the same preset and budget. That learner is one of the [catalog study's](results/catalog_study/SCIENTIFIC_RESULT.md) two prespecified nonlinear RCT-only controls; the other, the DR ExtraTrees learner, is weaker (last table row). The figure shows all 31 presets, 64 seeds each, at the smallest and largest of the four budgets. Outcome scales differ between presets, so compare cells along a row. The means are descriptive: the study withheld all Holm decisions.
+
+Which comparator a method must beat changes the conclusion. The table counts presets where a recipe's mean MSE is lower than the reference, and lower than all four RCT-only recipes.
+
+| Recipe | vs reference, OBS 512 · RCT 128 | vs reference, OBS 2,048 · RCT 512 | vs all RCT-only, OBS 512 · RCT 128 | vs all RCT-only, OBS 2,048 · RCT 512 |
+| --- | ---: | ---: | ---: | ---: |
+| CorNet | 30/31 | 29/31 | 24/31 | 13/31 |
+| DataFusionPPI | 7/30† | 26/30 | 3/30† | 3/30 |
+| Naive pooled T ridge | 13/31 | 11/31 | 10/31 | 7/31 |
+| Naive pooled T trees | 12/31 | 10/31 | 10/31 | 2/31 |
+| OBS-only T ridge | 13/31 | 11/31 | 9/31 | 7/31 |
+| OBS-only T trees | 11/31 | 9/31 | 8/31 | 2/31 |
+| RCT-only T ridge | 10/31 | 29/31 | — | — |
+| RCT-only DR ridge | 9/31 | 28/31 | — | — |
+| RCT-only DR trees | 4/31 | 4/31 | — | — |
+
+† Some seeds failed in one preset; that mean uses successful fits only. DataFusionPPI is not applicable to one preset.
+
+- **The reference is weak at RCT 512.** An RCT-only ridge T-learner also beats it in 29 of 31 presets. Beating the reference alone is therefore not evidence that OBS helped.
+- **Against every RCT-only recipe, fusion gains are smaller at the larger budget.** CorNet is lower in 24 of 31 presets at OBS 512 · RCT 128, and in 13 of 31 at OBS 2,048 · RCT 512. DataFusionPPI is lower in 3 of 30 at both.
+- **OBS-only and naive pooling help where OBS bias is small and hurt where hidden confounding is strong.** They are blue in several paired and paper presets. They are red in most structural mechanisms with hidden confounding, for example M2–M6 and M10.
+
+"Lower than all four RCT-only recipes" is a stricter descriptive bar, not a procedure: choosing the best RCT-only recipe requires evaluation truth. [`scripts/render_overview.py`](scripts/render_overview.py) regenerates the figure and table from the published scores. The other four studies are listed under [Read the results](#read-the-results).
+
 ## Quick start
 
 Python 3.11 or newer is required. The core uses NumPy; the baseline extra adds scikit-learn.
