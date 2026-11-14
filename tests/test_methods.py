@@ -102,7 +102,7 @@ def test_methods_reject_a_simulation_object_in_place_of_training_view():
             method.fit_predict(object(), np.zeros((2, 2)), seed=0)
 
 
-def test_builtin_registry_has_twenty_one_recipes_and_preserves_original_names():
+def test_builtin_registry_has_twenty_seven_recipes_and_preserves_original_names():
     expected = {
         "rct_t_ridge", "obs_t_ridge", "naive_pooled_t_ridge",
         "rct_t_extra_trees", "obs_t_extra_trees", "naive_pooled_t_extra_trees",
@@ -112,9 +112,11 @@ def test_builtin_registry_has_twenty_one_recipes_and_preserves_original_names():
         "rct_causal_forest",
         "tsr_tabpfn_lmcgp", "lmcgp_rct_only", "tabpfn_obs_only",
         "rct_selected", "cornet_raw",
+        "tsr_tabpfn_v2", "tsr_tabpfn_v25", "tsr_tabpfn_v3",
+        "tabpfn_v2_obs_only", "tabpfn_v25_obs_only", "tabpfn_v3_obs_only",
     }
     assert set(methods.method_names()) - set(methods.custom_provenance()) == expected
-    assert len(expected) == 21
+    assert len(expected) == 27
 
 
 @pytest.mark.parametrize("name,basis", [

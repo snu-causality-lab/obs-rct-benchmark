@@ -437,6 +437,12 @@ def _verify_dfppi_install() -> Path:
 
 
 _TSR_COMPONENTS = {"tsr_tabpfn_lmcgp": "tsr", "lmcgp_rct_only": "rct_gp", "tabpfn_obs_only": "obs"}
+# TSR and its OBS-only control under a named TabPFN release (tabpfn 10.0.0); see tsr.py.
+_TSR_RELEASES = {
+    "tsr_tabpfn_v2": ("tsr", "v2"), "tsr_tabpfn_v25": ("tsr", "v2.5"), "tsr_tabpfn_v3": ("tsr", "v3"),
+    "tabpfn_v2_obs_only": ("obs", "v2"), "tabpfn_v25_obs_only": ("obs", "v2.5"),
+    "tabpfn_v3_obs_only": ("obs", "v3"),
+}
 MethodFactory = Callable[..., CATEMethod]
 _FACTORIES: dict[str, MethodFactory] = {}
 _CUSTOM_PROVENANCE: dict[str, str] = {}
@@ -452,6 +458,7 @@ def method_names() -> tuple[str, ...]:
         "rct_causal_forest",
         "tsr_tabpfn_lmcgp", "lmcgp_rct_only", "tabpfn_obs_only",
         "rct_selected", "cornet_raw",
+        *_TSR_RELEASES,
         *sorted(_FACTORIES),
     )
 
@@ -515,6 +522,13 @@ def make_method(name: str, **options: Any) -> CATEMethod:
 
         source = "rct" if name == "causal_icm_rct_only" else "obs"
         return CausalICMSourceControl(source=source, **options)
+    if name in _TSR_RELEASES:
+        if "component" in options or "tabpfn_release" in options:
+            raise ValueError("TSR component and TabPFN release are fixed by the method ID")
+        from .tsr import TwoStageResidual
+
+        component, release = _TSR_RELEASES[name]
+        return TwoStageResidual(component=component, tabpfn_release=release, **options)
     if name in _TSR_COMPONENTS:
         if "component" in options:
             raise ValueError("TSR component is fixed by the method ID")

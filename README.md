@@ -10,13 +10,13 @@ It provides:
 
 **Main finding so far.** The [v1 core study](results/v1_core/SCIENTIFIC_RESULT.md) compares each method with an RCT-only learner chosen from trial data alone, as an analyst without the true CATE could do. CorNet with raw inputs has significantly lower error in 51 of 60 conditions with a 128-row trial and higher error in none; with a 512-row trial, 37 lower and 7 higher. DataFusionPPI is higher in 39 of 60 conditions with the smaller trial and mostly unresolved with the larger one. These results come from synthetic presets inspected during development. They do not show how the methods behave on real data.
 
-This is a research alpha, version 0.3.0a6. The [technical report](docs/REPORT.md) ([PDF](https://github.com/snu-causality-lab/obs-rct-benchmark/releases/download/report-2026-10-30-r2/obsrct_benchmark_icml.pdf)) is an AI-generated research draft from October 2026. It is not peer reviewed and predates the TSR study.
+This is a research alpha, version 0.3.0a7. The [technical report](docs/REPORT.md) ([PDF](https://github.com/snu-causality-lab/obs-rct-benchmark/releases/download/report-2026-10-30-r2/obsrct_benchmark_icml.pdf)) is an AI-generated research draft from October 2026. It is not peer reviewed and predates the TSR study.
 
 ## What is implemented
 
 ### Methods
 
-Each method is registered as one or more *recipes*, a method with fixed settings. There are 21 recipes, counting variants and controls; `obs-rct-benchmark list-methods` prints them.
+Each method is registered as one or more *recipes*, a method with fixed settings. There are 27 recipes, counting variants and controls; `obs-rct-benchmark list-methods` prints them.
 
 | Method | Paper | Data used | Code | Results |
 | --- | --- | --- | --- | --- |
@@ -27,7 +27,7 @@ Each method is registered as one or more *recipes*, a method with fixed settings
 | Integrative R-learner, linear and quadratic bases | Wu and Yang (2022) | OBS and RCT | Authors' R code at a pinned commit | [Native panel](results/native_panel/SCIENTIFIC_RESULT.md) |
 | Causal-ICM with borrowing fixed at ρ = 0.5, plus two source-restricted controls | Dimitriou et al. (2026) | OBS and RCT | Authors' code, hash-verified. The paper's selection of ρ is not implemented | [Native panel](results/native_panel/SCIENTIFIC_RESULT.md), [GP experiment](results/gp_source_pilot/SCIENTIFIC_RESULT.md) |
 | Honest causal forest | Athey, Tibshirani and Wager (2019) | RCT only | `grf` 2.6.1, pinned | [Native panel](results/native_panel/SCIENTIFIC_RESULT.md) |
-| Two-stage residual (TSR) estimator from R-Design, plus RCT-only GP and OBS-only controls | Gao et al. (2026) | OBS and RCT | **Reimplemented here.** A TabPFN v2 model fitted on OBS is the offset; a two-output Gaussian process (GP) corrects it on trial residuals. The paper's adaptive acquisition rule is not implemented | [TSR study](results/tsr_study/SCIENTIFIC_RESULT.md) |
+| Two-stage residual (TSR) estimator from R-Design, plus RCT-only GP and OBS-only controls | Gao et al. (2026) | OBS and RCT | **Reimplemented here.** A TabPFN v2 model fitted on OBS is the offset; a two-output Gaussian process (GP) corrects it on trial residuals. The paper's adaptive acquisition rule is not implemented. Variants run TabPFN releases v2, v2.5 (the paper's) and v3 under `tabpfn==10.0.0` | [TSR study](results/tsr_study/SCIENTIFIC_RESULT.md); releases in the planned [wave 2](docs/V1_CORE_WAVE2.md) |
 
 Optional recipes need more than the core install. Integrative R and the causal forest need R and the pinned upstream code. Causal-ICM needs the authors' code, and TSR needs the `tsr` extra and a TabPFN v2 checkpoint, with a GPU recommended. See [native settings](docs/V03_ADAPTERS.md), [installing upstream code](#public-upstream-methods) and the [TSR packet](results/tsr_study/README.md).
 

@@ -27,6 +27,14 @@ The TabPFN checkpoint can be pinned: pass ``model_sha256`` and set the environme
 variable ``OBS_RCT_TABPFN_MODEL_PATH`` to the checkpoint file. The recipe refuses a
 file with a different hash. Each fit records the Stage 1 device, GPU name and
 checkpoint hash in ``fit_info_``, which the runner stores with the record.
+
+Release variants (``tabpfn_release`` = ``"v2"``, ``"v2.5"`` or ``"v3"``) use the
+``tabpfn==10.0.0`` package instead, with that release's default regressor settings
+(``create_default_for_version``), ``random_state=0`` and a checkpoint read from the
+directory in ``OBS_RCT_TABPFN_WEIGHTS_DIR``. ``model_sha256`` is required for them.
+They are the recipes ``tsr_tabpfn_v2``, ``tsr_tabpfn_v25``, ``tsr_tabpfn_v3`` and the
+matching ``tabpfn_*_obs_only`` controls. TabPFN-2.5 and later weights carry a
+non-commercial license that the user must accept with Prior Labs.
 """
 from __future__ import annotations
 
@@ -45,6 +53,14 @@ from .data import SourceSample, TrainingView
 FloatArray = NDArray[np.float64]
 TABPFN_VERSION = "2.0.9"
 MODEL_PATH_ENV = "OBS_RCT_TABPFN_MODEL_PATH"
+RELEASE_TABPFN_VERSION = "10.0.0"
+WEIGHTS_DIR_ENV = "OBS_RCT_TABPFN_WEIGHTS_DIR"
+# release -> (tabpfn.constants.ModelVersion value, regressor checkpoint file name)
+TABPFN_RELEASES = {
+    "v2": ("v2", "tabpfn-v2-regressor.ckpt"),
+    "v2.5": ("v2.5", "tabpfn-v2.5-regressor-v2.5_default.ckpt"),
+    "v3": ("v3", "tabpfn-v3-regressor-v3_default.ckpt"),
+}
 STAGE1_RANDOM_STATE = 0
 GP_MAXITER = 1000
 _Q = 2
@@ -200,16 +216,19 @@ class LMCGP:
 # --------------------------------------------------------------------------------------
 
 _STAGE1_CACHE: "OrderedDict[str, Any]" = OrderedDict()
-_STAGE1_CACHE_SIZE = 2
+_STAGE1_CACHE_SIZE = 3  # one entry per TabPFN release run in a process
 
 
-def _sample_digest(sample: SourceSample, device: str, model_sha256: str | None) -> str:
+def _sample_digest(sample: SourceSample, device: str, model_sha256: str | None,
+                   release: str | None = None) -> str:
     h = hashlib.sha256()
     for arr in (sample.X, sample.T, sample.Y):
         a = np.ascontiguousarray(arr, dtype=np.float64)
         h.update(str(a.shape).encode())
         h.update(a.tobytes())
     h.update(f"{device}|{STAGE1_RANDOM_STATE}|{TABPFN_VERSION}|{model_sha256}".encode())
+    if release is not None:
+        h.update(f"|release:{release}|{RELEASE_TABPFN_VERSION}".encode())
     return h.hexdigest()
 
 
@@ -270,11 +289,41 @@ def _tabpfn_regressor(device: str, model_path: Path | None = None) -> Any:
     return TabPFNRegressor(**kwargs)
 
 
+def _release_regressor(release: str, device: str, model_sha256: str | None) -> Any:
+    """TabPFN ``release`` with its default regressor settings under tabpfn 10.0.0."""
+    from .methods import MethodUnavailableError
+
+    if release not in TABPFN_RELEASES:
+        raise ValueError(f"unknown TabPFN release: {release}")
+    if model_sha256 is None:
+        raise MethodUnavailableError("TabPFN release recipes require model_sha256")
+    try:
+        from tabpfn import TabPFNRegressor
+        from tabpfn.constants import ModelVersion
+    except ImportError as exc:  # pragma: no cover - depends on the environment
+        raise MethodUnavailableError(f"TabPFN release recipes need tabpfn=={RELEASE_TABPFN_VERSION}") from exc
+    version = importlib.metadata.version("tabpfn")
+    if version != RELEASE_TABPFN_VERSION:
+        raise MethodUnavailableError(f"TabPFN release recipes require tabpfn {RELEASE_TABPFN_VERSION}, found {version}")
+    raw = os.environ.get(WEIGHTS_DIR_ENV)
+    if not raw:
+        raise MethodUnavailableError(f"point {WEIGHTS_DIR_ENV} to the directory holding the TabPFN checkpoints")
+    value, filename = TABPFN_RELEASES[release]
+    path = Path(raw) / filename
+    if not path.is_file():
+        raise MethodUnavailableError(f"{filename} is not in {WEIGHTS_DIR_ENV}")
+    if _file_sha256(path) != model_sha256:
+        raise MethodUnavailableError("TabPFN checkpoint SHA-256 differs from model_sha256")
+    return TabPFNRegressor.create_default_for_version(
+        ModelVersion(value), model_path=str(path), device=device, random_state=STAGE1_RANDOM_STATE), path
+
+
 class Stage1:
     """Frozen OBS S-learner. ``mu(X, t)`` and ``tau(X)`` use one forward pass each."""
 
-    def __init__(self, model: Any, device: str, model_sha256: str | None):
-        self.model, self.device, self.model_sha256 = model, device, model_sha256
+    def __init__(self, model: Any, device: str, model_sha256: str | None, package: str | None = None):
+        # model_sha256 is the hash computed from the checkpoint file that was loaded, if pinned.
+        self.model, self.device, self.model_sha256, self.package = model, device, model_sha256, package
 
     def mu(self, X: FloatArray, T: FloatArray) -> FloatArray:
         return np.asarray(self.model.predict(np.column_stack([X, T])), dtype=float)
@@ -286,16 +335,25 @@ class Stage1:
         return p[:n] - p[n:]
 
 
-def fit_stage1(obs: SourceSample, *, device: str = "auto", model_sha256: str | None = None) -> Stage1:
+def fit_stage1(obs: SourceSample, *, device: str = "auto", model_sha256: str | None = None,
+               release: str | None = None) -> Stage1:
     device = _resolve_device(device)
-    model_path = _pinned_model_path(model_sha256)
-    key = _sample_digest(obs, device, model_sha256)
+    model_path = _pinned_model_path(model_sha256) if release is None else None
+    key = _sample_digest(obs, device, model_sha256, release)
     if key in _STAGE1_CACHE:
         _STAGE1_CACHE.move_to_end(key)
         return _STAGE1_CACHE[key]
-    model = _tabpfn_regressor(device, model_path)
+    if release is None:
+        model = _tabpfn_regressor(device, model_path)
+    else:
+        model, model_path = _release_regressor(release, device, model_sha256)
+    computed = _file_sha256(model_path) if model_path is not None else None
     model.fit(np.column_stack([obs.X, obs.T]), np.asarray(obs.Y, dtype=float))
-    fitted = Stage1(model, device, model_sha256)
+    try:
+        package = importlib.metadata.version("tabpfn")
+    except importlib.metadata.PackageNotFoundError:  # only test doubles reach here without tabpfn
+        package = None
+    fitted = Stage1(model, device, computed, package)
     _STAGE1_CACHE[key] = fitted
     while len(_STAGE1_CACHE) > _STAGE1_CACHE_SIZE:
         _STAGE1_CACHE.popitem(last=False)
@@ -313,9 +371,11 @@ class TwoStageResidual:
     """Static recipe: ``component`` selects TSR or one of its matched controls."""
 
     def __init__(self, component: str, device: str = "auto", gp_maxiter: int = GP_MAXITER,
-                 model_sha256: str | None = None):
+                 model_sha256: str | None = None, tabpfn_release: str | None = None):
         if component not in _COMPONENTS:
             raise ValueError(f"unknown TSR component: {component}")
+        if tabpfn_release is not None and tabpfn_release not in TABPFN_RELEASES:
+            raise ValueError(f"unknown TabPFN release: {tabpfn_release}")
         if device not in {"auto", "cuda", "cpu"}:
             raise ValueError("device must be 'auto', 'cuda' or 'cpu'")
         if int(gp_maxiter) < 1:
@@ -324,6 +384,7 @@ class TwoStageResidual:
             raise ValueError("model_sha256 must be a lowercase hex SHA-256")
         self.component, self.device, self.gp_maxiter = component, device, int(gp_maxiter)
         self.model_sha256 = model_sha256
+        self.tabpfn_release = tabpfn_release
         self.fit_info_: dict[str, Any] = {}
 
     def fit_predict(self, training: TrainingView, eval_X: FloatArray, *, seed: int) -> FloatArray:
@@ -337,9 +398,13 @@ class TwoStageResidual:
         rct = training.rct_train
         target = np.asarray(rct.Y, dtype=float)
         if use_obs:
-            stage1 = fit_stage1(training.obs_train, device=self.device, model_sha256=self.model_sha256)
+            stage1 = fit_stage1(training.obs_train, device=self.device, model_sha256=self.model_sha256,
+                                release=self.tabpfn_release)
             info["stage1_device"] = stage1.device
             info["stage1_model_sha256"] = stage1.model_sha256
+            info["stage1_tabpfn_package"] = stage1.package
+            if self.tabpfn_release is not None:
+                info["stage1_tabpfn_release"] = self.tabpfn_release
             if stage1.device == "cuda":
                 import torch
 
@@ -360,7 +425,9 @@ def tsr_provenance() -> dict[str, Any]:
     out: dict[str, Any] = {"implementation": "obs_rct_benchmark.tsr (reimplementation; no public author code)",
                            "required_tabpfn": TABPFN_VERSION, "stage1_random_state": STAGE1_RANDOM_STATE,
                            "gp_maxiter_default": GP_MAXITER,
-                           "model_path_env_set": bool(os.environ.get(MODEL_PATH_ENV))}
+                           "model_path_env_set": bool(os.environ.get(MODEL_PATH_ENV)),
+                           "release_tabpfn": RELEASE_TABPFN_VERSION,
+                           "weights_dir_env_set": bool(os.environ.get(WEIGHTS_DIR_ENV))}
     for package in ("tabpfn", "torch", "scipy"):
         try:
             out[f"{package}_version"] = importlib.metadata.version(package)

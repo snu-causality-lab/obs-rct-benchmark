@@ -47,8 +47,8 @@ class ScenarioConfig:
         return preset if self.label is None else f"{preset}@{self.label}"
 
     def __post_init__(self) -> None:
-        if self.kind not in {"structural", "addendum", "paper", "gamma", "empirical"}:
-            raise ValueError("scenario kind must be structural, addendum, paper, gamma, or empirical")
+        if self.kind not in {"structural", "addendum", "paper", "gamma", "empirical", "stress"}:
+            raise ValueError("scenario kind must be structural, addendum, paper, gamma, empirical, or stress")
         if not self.id or not self.id.replace("_", "").isalnum():
             raise ValueError("scenario id must contain letters, digits, or underscores")
         if self.label is not None and (
@@ -57,7 +57,7 @@ class ScenarioConfig:
             raise ValueError("scenario label must contain ASCII letters, digits, or underscores")
         if not isinstance(self.parameters, Mapping):
             raise ValueError("scenario parameters must be a mapping")
-        if {"name", "mechanism", "cell", "paper_id", "gamma_profile", "dataset_id"} & self.parameters.keys():
+        if {"name", "mechanism", "cell", "paper_id", "gamma_profile", "dataset_id", "dial"} & self.parameters.keys():
             raise ValueError("scenario identity must not be overridden in parameters")
         _validate_public_values(dict(self.parameters))
         validate_inference_policy(self.inference_policy)
@@ -182,6 +182,10 @@ def build_dgp_config(scenario: ScenarioConfig) -> Any:
         if scenario.id not in {"ihdp", "acic2016"}:
             raise ValueError("empirical scenario must be ihdp or acic2016")
         return EmpiricalDGPConfig(name=scenario.key, dataset_id=scenario.id, **parameters)
+    if scenario.kind == "stress":
+        from .stress_dgp import StressDGPConfig
+
+        return StressDGPConfig(name=scenario.key, dial=scenario.id, **parameters)
     if scenario.kind == "paper":
         return make_paper_config(name=scenario.key, paper_id=scenario.id, **parameters)
     if scenario.kind == "addendum":
@@ -257,6 +261,10 @@ def _generate(scenario: ScenarioConfig, seed: int) -> Any:
         from .inputs import load_empirical_from_environment
 
         return generate_empirical_problem(load_empirical_from_environment(cfg), cfg, seed)
+    if scenario.kind == "stress":
+        from .stress_dgp import generate_stress_problem
+
+        return generate_stress_problem(cfg, seed)
     if scenario.kind == "paper":
         return generate_paper_problem(cfg, seed)
     return generate_structural_problem(cfg, seed)
@@ -470,10 +478,11 @@ def resolved_scenarios(config: BenchmarkConfig) -> dict[str, Any]:
     """Record the complete generator controls, including default mechanism seeds."""
     from .datasets import EMPIRICAL_DGP_VERSION
     from .sensitivity import GAMMA_DGP_VERSION
+    from .stress_dgp import STRESS_DGP_VERSION
 
     versions = {"paper": PAPER_DGP_VERSION, "structural": STRUCTURAL_DGP_VERSION,
                 "addendum": STRUCTURAL_ADDENDUM_VERSION, "gamma": GAMMA_DGP_VERSION,
-                "empirical": EMPIRICAL_DGP_VERSION}
+                "empirical": EMPIRICAL_DGP_VERSION, "stress": STRESS_DGP_VERSION}
     return {
         scenario.key: {"generator_version": versions[scenario.kind],
                        "config": asdict(build_dgp_config(scenario))}
@@ -537,7 +546,8 @@ def external_method_provenance(methods: tuple[str, ...]) -> dict[str, Any]:
         from .causal_forest import causal_forest_provenance
 
         result["rct_causal_forest"] = causal_forest_provenance()
-    tsr = {"tsr_tabpfn_lmcgp", "lmcgp_rct_only", "tabpfn_obs_only"}.intersection(methods)
+    tsr = {"tsr_tabpfn_lmcgp", "lmcgp_rct_only", "tabpfn_obs_only", "tsr_tabpfn_v2", "tsr_tabpfn_v25",
+           "tsr_tabpfn_v3", "tabpfn_v2_obs_only", "tabpfn_v25_obs_only", "tabpfn_v3_obs_only"}.intersection(methods)
     if tsr:
         from .tsr import tsr_provenance
 

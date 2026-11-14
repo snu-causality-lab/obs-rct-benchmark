@@ -31,7 +31,9 @@ PATH_PATTERNS = [
 PUBLIC_EXTERNAL_IMPORTS = {"numpy", "scipy", "sklearn", "torch", "dfppi", "GPy", "pytest", "nbclient", "nbformat", "jupyter_client", "matplotlib", "tabpfn"}
 PUBLIC_SCRIPT_MODULES = {"native_panel_data", "run_native_panel", "verify_native_panel",
                          "analyze_native_panel", "verify_native_panel_delivery", "make_reference_configs",
-                         "make_v1_core_configs", "render_overview"}
+                         "make_v1_core_configs", "render_overview",
+                         "analyze_v1_core", "make_v1_wave2_configs",
+                         "make_stress_configs"}
 
 
 def candidate_files():
