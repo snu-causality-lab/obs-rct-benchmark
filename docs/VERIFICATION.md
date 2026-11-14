@@ -1,6 +1,6 @@
 # Verification
 
-Verification is specific to a producer, environment and check. Package **0.3.0a5** registers 19 recipes; each reported study retains its frozen source and analysis. The [technical report](REPORT.md) combines their scientific interpretation, while the records below define what was checked.
+Verification is specific to a producer, environment and check. Package **0.3.0a6** registers 21 recipes; each reported study retains its frozen source and analysis. The [technical report](REPORT.md) combines their scientific interpretation, while the records below define what was checked.
 
 Native-call agreement checks an adapter against an author implementation. Independent target/score arithmetic checks declared equations and reductions. Saved-prediction replay and fresh fitting have different scopes; neither implies empirical validity, unseen-mechanism performance or independent estimator correctness.
 

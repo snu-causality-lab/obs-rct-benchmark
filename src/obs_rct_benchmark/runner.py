@@ -262,12 +262,18 @@ def _generate(scenario: ScenarioConfig, seed: int) -> Any:
     return generate_structural_problem(cfg, seed)
 
 
+# Recipes that differ from another only in a declared input transformation share
+# its random stream, so a paired difference isolates that transformation.
+SHARED_SEED_LABELS = {"cornet_raw": "cornet_official"}
+
+
 def method_seed(scenario: str, seed: int, method: str) -> int:
     """Stable method RNG stream, separate from data and other method streams."""
     # A label distinguishes run cells, not their randomization. Matched budget
     # variants retain the same method stream as the unlabelled preset.
     preset = scenario.split("@", 1)[0]
-    return int(_hash(["method_seed_v1", preset, seed, method])[:8], 16)
+    label = SHARED_SEED_LABELS.get(method, method)
+    return int(_hash(["method_seed_v1", preset, seed, label])[:8], 16)
 
 
 def _run_interpretation(purpose: str) -> str:
@@ -374,6 +380,7 @@ def run_benchmark(config: BenchmarkConfig, output: str | Path, *,
                             "gamma_global_upper": problem.metadata.get("gamma_global_upper"),
                             "gamma_global_upper_is_bound": problem.metadata.get("gamma_global_upper_is_bound"),
                         }
+                    estimator = None
                     try:
                         estimator = make_method(method, **dict(config.method_options.get(method, {})))
                         prediction = estimator.fit_predict(training, problem.eval_X,
@@ -385,6 +392,14 @@ def run_benchmark(config: BenchmarkConfig, output: str | Path, *,
                     except Exception as exc:
                         row.update(status="failed", metrics=None, stage="method_or_metric",
                                    error_type=type(exc).__name__)
+                        # Keep diagnostics an estimator recorded before failing (estimators are
+                        # built per cell, so this cannot be another cell's state).
+                        fit_info = getattr(estimator, "fit_info_", None)
+                        if isinstance(fit_info, dict) and fit_info:
+                            try:
+                                row["fit_info"] = json.loads(json.dumps(fit_info, allow_nan=False))
+                            except (TypeError, ValueError):
+                                row["fit_info_unserializable"] = True
                     _append_record(records_path, row)
                     records.append(row)
         summary = summarize_records(
@@ -511,10 +526,13 @@ def external_method_provenance(methods: tuple[str, ...]) -> dict[str, Any]:
     result: dict[str, Any] = {}
     if "datafusionppi" in methods:
         result["datafusionppi"] = datafusionppi_provenance()
-    if "cornet_official" in methods:
+    cornet = {"cornet_official", "cornet_raw"}.intersection(methods)
+    if cornet:
         from .cornet import cornet_provenance
 
-        result["cornet_official"] = cornet_provenance()
+        snapshot = cornet_provenance()
+        for name in sorted(cornet):
+            result[name] = snapshot
     if "rct_causal_forest" in methods:
         from .causal_forest import causal_forest_provenance
 

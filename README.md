@@ -10,18 +10,19 @@ It provides:
 
 **Main finding so far.** The full catalog comparison covers the baselines, CorNet, DataFusionPPI and the reimplemented TSR estimator. Against a single RCT-only learner (the reference below), CorNet looks good at every budget and DataFusionPPI with the larger trial. Against all four RCT-only learners in the catalog, only CorNet has lower error in most presets, and only with the smaller trial: 24 of 31 presets with RCT 128 at either OBS size, but 13 of 31 with RCT 512. These results come from synthetic presets inspected during development. They do not show how the methods behave on real data.
 
-This is a research alpha, version 0.3.0a5. The [technical report](docs/REPORT.md) ([PDF](https://github.com/snu-causality-lab/obs-rct-benchmark/releases/download/report-2026-10-30-r2/obsrct_benchmark_icml.pdf)) is an AI-generated research draft from October 2026. It is not peer reviewed and predates the TSR study.
+This is a research alpha, version 0.3.0a6. The [technical report](docs/REPORT.md) ([PDF](https://github.com/snu-causality-lab/obs-rct-benchmark/releases/download/report-2026-10-30-r2/obsrct_benchmark_icml.pdf)) is an AI-generated research draft from October 2026. It is not peer reviewed and predates the TSR study.
 
 ## What is implemented
 
 ### Methods
 
-Each method is registered as one or more *recipes*, a method with fixed settings. There are 19 recipes, counting variants and controls; `obs-rct-benchmark list-methods` prints them.
+Each method is registered as one or more *recipes*, a method with fixed settings. There are 21 recipes, counting variants and controls; `obs-rct-benchmark list-methods` prints them.
 
 | Method | Paper | Data used | Code | Results |
 | --- | --- | --- | --- | --- |
 | T-learner and DR-learner, each with Ridge or ExtraTrees | Standard baselines | RCT only, OBS only, or both pooled naively (T-learner); RCT only (DR-learner) | This package | Figure below |
-| CorNet | Hatt et al. (2022) | OBS and RCT | Authors' code at a pinned commit, cloned separately | Figure below |
+| RCT-only learner chosen from the four RCT-only baselines by out-of-fold error on trial data (`rct_selected`) | R-loss of Nie and Wager (2021), divided by e(1 − e) so it targets unweighted CATE error | RCT only | This package | Reference of the planned [v1 core study](docs/V1_CORE_STUDY.md); not yet run |
+| CorNet, with standardized inputs and with raw inputs (`cornet_raw`) | Hatt et al. (2022) | OBS and RCT | Authors' code at a pinned commit, cloned separately | Figure below (standardized only) |
 | DataFusionPPI | Jung and Yang (2026) | OBS and RCT | Authors' package at a pinned revision | Figure below |
 | Integrative R-learner, linear and quadratic bases | Wu and Yang (2022) | OBS and RCT | Authors' R code at a pinned commit | [Native panel](results/native_panel/SCIENTIFIC_RESULT.md) |
 | Causal-ICM with borrowing fixed at ρ = 0.5, plus two source-restricted controls | Dimitriou et al. (2026) | OBS and RCT | Authors' code, hash-verified. The paper's selection of ρ is not implemented | [Native panel](results/native_panel/SCIENTIFIC_RESULT.md), [GP experiment](results/gp_source_pilot/SCIENTIFIC_RESULT.md) |
@@ -123,6 +124,8 @@ Each study has its own frozen code version, target, budgets and inference rules.
 | [Recruitment comparison](results/adaptive_reference/SCIENTIFIC_RESULT.md) | `results/adaptive_reference` | Does choosing which trial subjects to recruit help, when every acquired outcome is charged? |
 | [Paper-reported values](results/reported_values/README.md) | `results/reported_values` | Published CorNet and Integrative R results against reruns of the authors' code and the benchmark at the papers' settings |
 
+**Planned, not yet run:** the [v1 core study](docs/V1_CORE_STUDY.md) reruns the catalog methods on fresh seeds against an RCT-only reference chosen from trial data alone, with CorNet in both input forms. Its plan was fixed before any of its fits.
+
 The studies distinguish three claims: improving an OBS starting prediction, benefiting from OBS within one learner, and outperforming another available procedure. In the controlled GP experiment, which fixes one Causal-ICM GP and varies how biased the OBS sample is, OBS lowers mean trial-CATE MSE at discrepancy levels 0 and 1 and raises it at level 2, relative to the matched RCT-only GP, at both trial budgets. In the native panel's M2 condition at RCT 128, adding OBS lowers the GP's mean MSE from 0.53675 to 0.35128, while the RCT-only causal forest has 0.18386. These are descriptive comparisons; the native panel withheld all its joint decisions.
 
 The [comparison design](docs/V03_DESIGN.md) separates the remaining method, matched-control, target and observable-tuning questions. Its [method inventory](docs/V03_METHODS.md) has 22 method or method-group entries; the [scenario map](docs/V03_SCENARIOS.md) classifies all 31 presets by target, support and transport assumptions.
@@ -205,6 +208,7 @@ These research sources have different roles in the benchmark. A translated DGP d
 | Athey, Tibshirani and Wager (2019), [Generalized Random Forests](https://arxiv.org/abs/1610.01271) | Not included | Optional RCT-only honest `grf` recipe |
 | Gao et al. (2026), [Observationally Informed Adaptive Causal Experimental Design](https://arxiv.org/abs/2603.03785v1) (R-Design) | Not included | Reimplemented TSR estimator and matched controls; acquisition rule not included |
 | Hollmann et al. (2025), [Accurate predictions on small data with a tabular foundation model](https://doi.org/10.1038/s41586-024-08328-6) (TabPFN v2) | Not included | Used as the TSR OBS model; not a fusion method |
+| Nie and Wager (2021), [Quasi-oracle estimation of heterogeneous treatment effects](https://doi.org/10.1093/biomet/asaa076) | Not included | Basis of the selection score in `rct_selected`; not a fusion method |
 
 For empirical benchmark provenance, see Hill (2011), [Bayesian Nonparametric Modeling for Causal Inference](https://doi.org/10.1198/jcgs.2010.08162), and Dorie et al. (2019), [Automated versus Do-It-Yourself Methods for Causal Inference: Lessons Learned from a Data Analysis Competition](https://doi.org/10.1214/18-STS667). [Dataset sources and terms](docs/DATASETS.md) distinguish the original IHDP archive, semi-synthetic IHDP releases and the ACIC2016 package. No dataset is bundled with this repository.
 

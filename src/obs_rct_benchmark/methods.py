@@ -21,7 +21,7 @@ from typing import Any, Callable, Protocol
 import numpy as np
 from numpy.typing import NDArray
 
-from .data import TrainingView
+from .data import SourceSample, TrainingView
 
 FloatArray = NDArray[np.float64]
 DATAFUSIONPPI_COMMIT = "04c7f3447b02fa09f875e68e8c47100a7207d546"
@@ -192,6 +192,137 @@ class RCTDRLearner:
         return np.asarray(final.predict(eval_X), dtype=np.float64)
 
 
+SELECTOR_CANDIDATES = ("rct_dr_extra_trees", "rct_dr_ridge", "rct_t_extra_trees", "rct_t_ridge")
+SELECTOR_FOLDS = 5
+
+
+def known_propensity_loss(residual: FloatArray, T: FloatArray, propensity: FloatArray,
+                          tau: FloatArray) -> FloatArray:
+    """Per-row [(Y - m_hat(X)) - (T - e) tau(X)]^2 / [e (1 - e)].
+
+    ``residual`` is ``Y - m_hat(X)``, with ``m_hat`` and ``tau`` fitted without
+    the row. Under randomization with known ``e``, the tau-dependent part of the
+    expected loss is the trial-law squared CATE error (docs/V03_DESIGN.md).
+    """
+    return (residual - (T - propensity) * tau) ** 2 / (propensity * (1.0 - propensity))
+
+
+def treatment_stratified_folds(T: FloatArray, folds: int, seed: int) -> NDArray[np.int64]:
+    """Assign rows to folds separately within each treatment arm."""
+    rng = np.random.default_rng(seed)
+    assignment = np.empty(T.shape[0], dtype=np.int64)
+    for arm in (0, 1):
+        rows = np.flatnonzero(T == arm)
+        rng.shuffle(rows)
+        assignment[rows] = np.arange(rows.size) % folds
+    return assignment
+
+
+def _selection_view(training: TrainingView, rows: NDArray[np.bool_]) -> TrainingView:
+    """RCT training rows ``rows``; OBS and RCT tuning outcomes replaced by zeros."""
+    train, tune, obs = training.rct_train, training.rct_tune, training.obs_train
+    return TrainingView(
+        obs_train=SourceSample(obs.X, obs.T, np.zeros(obs.n), source="obs", role="obs_train"),
+        rct_train=SourceSample(train.X[rows], train.T[rows], train.Y[rows], source="rct",
+                               role="rct_train", known_propensity=train.known_propensity[rows]),
+        rct_tune=SourceSample(tune.X, tune.T, np.zeros(tune.n), source="rct", role="rct_tune",
+                              known_propensity=tune.known_propensity),
+        target_reference=training.target_reference,
+    )
+
+
+@dataclass
+class RCTSelected:
+    """RCT-only learner chosen from four by out-of-fold known-propensity loss.
+
+    The v1 core reference (docs/V1_CORE_STUDY.md). Uses the RCT training rows
+    only. Rows are split into five treatment-stratified folds by the method
+    seed. In each fold, the candidates in ``SELECTOR_CANDIDATES`` (fixed generic
+    options) and a common nuisance ``m_hat`` (ExtraTrees regression of Y on X,
+    random state seed + 11 + fold) are fitted on the other folds and predict the
+    held-out rows. Candidates see a view whose OBS and tuning outcomes are zero.
+    The lowest mean loss wins; an exact tie goes to the earlier candidate. A
+    candidate that errors or yields a nonfinite prediction or score is
+    unavailable; if all are, the fit fails. The chosen candidate is refitted on
+    all training rows with the method seed. Weights are not clipped.
+    ``fit_info_`` records the choice, every score and the largest weight.
+    """
+
+    ridge_alpha: float = 1.0
+    n_estimators: int = 100
+    min_samples_leaf: int = 5
+
+    def __post_init__(self) -> None:
+        _check_options("ridge", self.ridge_alpha, self.n_estimators, self.min_samples_leaf)
+        self.fit_info_: dict[str, Any] = {}
+
+    def candidate(self, name: str) -> CATEMethod:
+        if name not in SELECTOR_CANDIDATES:
+            raise ValueError(f"not a selector candidate: {name}")
+        options: dict[str, Any] = (
+            {"ridge_alpha": self.ridge_alpha} if name.endswith("ridge") else
+            {"n_estimators": self.n_estimators, "min_samples_leaf": self.min_samples_leaf})
+        if name.startswith("rct_dr_"):
+            return RCTDRLearner(learner=name.removeprefix("rct_dr_"), **options)
+        return TLearner(source="rct", learner=name.removeprefix("rct_t_"), **options)
+
+    def fit_predict(self, training: TrainingView, eval_X: FloatArray, *,
+                    seed: int) -> FloatArray:
+        if not isinstance(training, TrainingView):
+            raise TypeError("methods require a TrainingView")
+        self.fit_info_ = {}
+        train = training.rct_train
+        X, T, Y, e = train.X, train.T, train.Y, train.known_propensity
+        if e is None:
+            raise ValueError("RCT randomization probabilities are required")
+        fold = treatment_stratified_folds(T, SELECTOR_FOLDS, seed)
+        residual = np.empty(train.n, dtype=np.float64)
+        held_out = {name: np.empty(train.n, dtype=np.float64) for name in SELECTOR_CANDIDATES}
+        unavailable: dict[str, str] = {}
+        for k in range(SELECTOR_FOLDS):
+            fit_rows, rows = fold != k, fold == k
+            nuisance = _regressor("extra_trees", seed=(seed + 11 + k) % (2**32),
+                                  ridge_alpha=self.ridge_alpha,
+                                  n_estimators=self.n_estimators,
+                                  min_samples_leaf=self.min_samples_leaf)
+            nuisance.fit(X[fit_rows], Y[fit_rows])
+            residual[rows] = Y[rows] - nuisance.predict(X[rows])
+            view = _selection_view(training, fit_rows)
+            for name in SELECTOR_CANDIDATES:
+                if name in unavailable:
+                    continue
+                try:
+                    prediction = np.asarray(self.candidate(name).fit_predict(
+                        view, X[rows], seed=seed), dtype=np.float64)
+                    if prediction.shape != (int(rows.sum()),) or not np.all(np.isfinite(prediction)):
+                        raise FloatingPointError("nonfinite or misshaped candidate prediction")
+                except Exception as exc:  # recorded; the candidate becomes unavailable
+                    unavailable[name] = f"fold {k}: {type(exc).__name__}"
+                    continue
+                held_out[name][rows] = prediction
+        scores: dict[str, float | None] = {}
+        chosen: str | None = None
+        for name in SELECTOR_CANDIDATES:
+            score = None
+            if name not in unavailable:
+                score = float(np.mean(known_propensity_loss(residual, T, e, held_out[name])))
+                if not np.isfinite(score):
+                    unavailable[name], score = "nonfinite score", None
+            scores[name] = score
+            if score is not None and (chosen is None or score < scores[chosen]):
+                chosen = name
+        self.fit_info_ = {
+            "selector": "known_propensity_oof_v1", "folds": SELECTOR_FOLDS,
+            "scores": scores, "unavailable": unavailable, "selected": chosen,
+            "max_weight": float(np.max(1.0 / (e * (1.0 - e)))),
+        }
+        if chosen is None:
+            raise RuntimeError("every rct_selected candidate is unavailable")
+        everything = np.ones(train.n, dtype=bool)
+        return np.asarray(self.candidate(chosen).fit_predict(
+            _selection_view(training, everything), eval_X, seed=seed), dtype=np.float64)
+
+
 @dataclass(frozen=True)
 class DataFusionPPI:
     """Thin adapter to the pinned official dfppi.fuse_cate implementation.
@@ -320,6 +451,7 @@ def method_names() -> tuple[str, ...]:
         "causal_icm_rct_only", "causal_icm_obs_start",
         "rct_causal_forest",
         "tsr_tabpfn_lmcgp", "lmcgp_rct_only", "tabpfn_obs_only",
+        "rct_selected", "cornet_raw",
         *sorted(_FACTORIES),
     )
 
@@ -354,6 +486,14 @@ def make_method(name: str, **options: Any) -> CATEMethod:
         from .cornet import OfficialCorNet
 
         return OfficialCorNet(**options)
+    if name == "cornet_raw":
+        if "standardize" in options:
+            raise ValueError("cornet_raw fixes standardize=False by its method ID")
+        from .cornet import OfficialCorNet
+
+        return OfficialCorNet(standardize=False, **options)
+    if name == "rct_selected":
+        return RCTSelected(**options)
     if name == "rct_causal_forest":
         from .causal_forest import RCTCausalForest
 
