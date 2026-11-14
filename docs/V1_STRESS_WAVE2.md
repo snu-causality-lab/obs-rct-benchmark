@@ -20,9 +20,10 @@ The recipes, options, environments and groups are those of [wave 2](V1_CORE_WAVE
 
 Every shard also refits `rct_selected` and `rct_t_ridge`. Each contrast pairs two recipes fitted in the same shard and environment. The configurations are [`v1_stress_wave2_native_r.toml`](../configs/v1_stress_wave2_native_r.toml), [`v1_stress_wave2_gp.toml`](../configs/v1_stress_wave2_gp.toml), [`v1_stress_wave2_tabpfn.toml`](../configs/v1_stress_wave2_tabpfn.toml) and [`v1_stress_wave2_tsr_legacy.toml`](../configs/v1_stress_wave2_tsr_legacy.toml). The [shard writer](../scripts/make_stress_wave2_configs.py) validates them. It writes one shard per seed and dial, holding that dial's eight conditions: 512 shards per group.
 
-**Same data.** For each group, the analysis compares its `rct_selected` and `rct_t_ridge` scores with stress study 1's.
-- A group ran on the stress-study-1 data only if all of its `rct_t_ridge` scores reproduce stress study 1 within 1e-9. Otherwise no claim pairs its results with stress study 1.
-- Differences in `rct_selected` are reported separately; its ExtraTrees candidates can differ across library versions.
+**Same data.** `rct_t_ridge` uses only trial rows, and five of the eight dials act only on OBS, so its scores cannot show that OBS rows agree.
+- Before launch, the [data check](../scripts/check_data_identity.py) regenerates all 64 conditions at the first seed, 80000, in each group's environment. It compares every sample role with stress study 1's environment: OBS, trial training, tuning and test rows, evaluation covariates and effects.
+- A group ran on the stress-study-1 data only if every array agrees within 1e-12 there **and** all of its `rct_t_ridge` scores reproduce stress study 1 within 1e-9. Otherwise no claim pairs its results with stress study 1.
+- **Reference drift.** Each group's `rct_selected` is compared with stress study 1's, and the analyzer prints the exact count and largest difference next to the headline. Its ExtraTrees candidates can differ across library versions. Ratios set side by side across groups, or against stress study 1's recipes, therefore have different denominators and are descriptive unless that group's `rct_selected` reproduces.
 - Neither check blocks a verdict, since verdicts never cross environments.
 
 ## Contrasts
@@ -36,12 +37,12 @@ Every contrast is a paired t-test over 64 seeds. There are 20 families of 64 con
   - the legacy TSR and OBS-only TabPFN recipes.
 - **Matched: adding OBS to a fixed backbone.** Five families:
   - Causal-ICM against its RCT-only control;
-  - TSR under v2, v2.5 and v3, each against the RCT-only GP;
-  - legacy TSR against the RCT-only GP.
+  - TSR under v2, v2.5 and v3, each against the `tabpfn` group's RCT-only GP;
+  - legacy TSR against the `tsr_legacy` group's RCT-only GP.
 - **TabPFN release.** Four families: TSR and OBS-only TabPFN under v2.5 and v3, each against v2 of the same recipe.
 - **RCT-only recipes against `rct_selected` are descriptive**, as in the stress plan: the causal forest, the RCT-only Causal-ICM and the RCT-only GP.
 
-**Readout.** For every primary family, each dial and each trial size gets the stress plan's four states, from its verdicts at levels 0 and 3: no level-0 win, kept, stopped or broke.
+**Readout.** For every primary family, each dial and each trial size gets the stress plan's four states, from its verdicts at levels 0 and 3: no level-0 win, kept, stopped or broke. As in the stress plan, "untested" counts as not better. A state read from an untested level reflects failed fits, not a loss, so the readout flags the untested levels.
 
 **Counts.** Each family's verdicts are counted separately for the 16 extrapolation conditions and the other 48.
 
@@ -50,23 +51,26 @@ Every contrast is a paired t-test over 64 seeds. There are 20 families of 64 con
 ## Execution
 
 - **Before results are read.** No metric is read until every shard has finished and coverage is authenticated. Monitoring reads only status, runtime, memory and failure types.
-- **Driver and failures.** The wave-2 rules apply, with the same shard driver and environment check:
-  - the four kinds of infrastructure failure;
+- **Driver and failures.** The execution rules of [wave 2](V1_CORE_WAVE2.md#resources-and-execution), as frozen at the commit recorded below, apply with the same shard driver and environment check:
+  - four kinds of infrastructure failure: a job limit (time or memory), an interruption, a failed environment check, and a CUDA out-of-memory record;
   - reruns in fresh directories with the old output kept;
-  - GPU-memory reruns alone on a GPU;
-  - no deadline beyond the recipes' own.
+  - a job-limit rerun with double the limit that was reached, and a GPU-memory rerun alone on a GPU;
+  - one rerun only for a job limit: if the rerun also reaches a limit, its recorded cells stand and its unrecorded cells become `JobLimit` method failures, listed for the analyzer and checker;
+  - no deadline beyond the recipes' own. Causal-ICM and the GPs have none, so the final-attempt rule bounds them.
 - **Preflight.** One seed outside the grid, 79999, runs every group's eight shards before the freeze. Its job deletes all records after writing status files.
 - **Limits.** The wave-2 rule turns the preflight into limits: CPU time and memory per shard, and shards per GPU.
-- **Expected cost.** The `obs_size` shard at level 0 has 8,192 OBS rows, four times wave 2's largest. The GP recipes that fit OBS rows, Causal-ICM in particular, may be slow there; the preflight shows whether they finish.
+- **Expected cost.** The `obs_size` condition at level 0 has 8,192 OBS rows, four times wave 2's largest. Causal-ICM, which fits a GP to OBS rows, may be slow there; the preflight shows whether it finishes.
 
 ## Checks
 
 1. **Coverage.** Every declared shard and every requested cell has a terminal record. A group's shards share one source, environment and external-method provenance. Every successful TabPFN fit ran stage 1 on CUDA with the pinned checkpoint, package and release.
-2. **Same data.** The identity check above, recomputed by the independent checker.
+2. **Identities.**
+   - The data check before launch, and the `rct_t_ridge` and `rct_selected` comparisons above, recomputed by the independent checker.
+   - In the five dials that change only OBS (`hidden_modifier`, `bias_complexity`, `common_shift`, `obs_selection`, `obs_size`), trial rows, targets and method seeds are the same at every level. Every RCT-only recipe must therefore score identically across levels; mismatches are counted.
 3. **Reproducibility.** On the first seed at RCT 128, levels 0 and 3 of every dial, each recipe is refitted twice in its group's environment. CPU recipes must agree within 1e-12, TabPFN recipes on a GPU within a relative 1e-6.
-4. **Independent arithmetic.** A [separate script](../scripts/verify_stress_wave2.py) recomputes every contrast, Holm adjustment, count and readout state from the per-seed records and the declared families, without importing the [analyzer](../scripts/analyze_stress_wave2.py).
+4. **Independent arithmetic.** A [separate script](../scripts/verify_stress_wave2.py) recomputes every contrast, Holm adjustment, count, headline row, readout state and identity count from the per-seed records and the declared families, without importing the [analyzer](../scripts/analyze_stress_wave2.py).
 
-The stress plan's data check is not repeated: the generator and seeds are unchanged, and the identity check covers the data.
+The stress plan's check of the generator against its formulas is not repeated, since the generator and seeds are unchanged; the data check compares environments.
 
 ## What this addendum will not show
 
@@ -76,15 +80,33 @@ The stress plan's data check is not repeated: the generator and seeds are unchan
 
 ## Recorded before launch
 
-Preflight results (seed 79999, eight shards per group). Each group's limit follows from the wave-2 rule.
+Preflight results (seed 79999, eight shards per group). Each group's limit follows from the wave-2 rule: per shard for the CPU groups, per GPU job for the GPU groups.
 
-| Group | Longest shard | Median shard | Peak memory | Preflight failures | Main-run limit per shard |
+| Group | Longest shard | Median shard | Peak memory | Preflight failures | Main-run limit |
 | --- | ---: | ---: | ---: | --- | --- |
 | `native_r` | *pending* | | | | |
 | `gp` | *pending* | | | | |
 | `tabpfn` | *pending* | | | | |
 | `tsr_legacy` | *pending* | | | | |
 
+**Execution.** The shard driver and job scripts are published with the results; their hashes are fixed here.
+
+| Item | Value |
+| --- | --- |
+| Wave-2 freeze commit (execution rules) | *pending* |
+| Code | The freeze commit, run from a `git archive` snapshot |
+| Shard driver and job scripts | *pending* |
+| GPU jobs | *pending* |
+| Preflight runs | *pending* |
+| Data check (seed 80000, against stress study 1's environment) | Passed. In all 64 conditions, every array of every sample role is identical in the `gp`, `tabpfn` and `tsr_legacy` environments; the largest difference is 0. `native_r` runs in stress study 1's interpreter itself |
+
 ## Revisions and errata
 
-None yet.
+**2026-11-15, before the freeze.** A fresh-context AI review of the first draft led to these changes:
+- the execution rules cite the frozen wave-2 addendum and add a final attempt for job limits;
+- the same-data rule adds a data check of every sample role;
+- the launch record fixes the driver, job scripts and GPU settings;
+- the RCT-only identity across levels was added;
+- the readout flags untested levels;
+- cross-group ratios are stated as descriptive;
+- the checker also verifies the headline, identity counts and duplicate rows.

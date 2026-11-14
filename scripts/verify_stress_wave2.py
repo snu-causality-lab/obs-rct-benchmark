@@ -24,9 +24,13 @@ from pathlib import Path
 
 import numpy as np
 
+from verify_v1_wave2 import check_cells, check_headline, load_records
+
 DIALS = ("hidden_modifier", "bias_complexity", "common_shift", "obs_selection",
          "trial_shrink", "obs_size", "target_shift", "noise_shape")
 EXTRAPOLATION = {"trial_shrink", "target_shift"}
+OBS_ONLY = ("hidden_modifier", "bias_complexity", "common_shift", "obs_selection", "obs_size")
+RCT_ONLY = {"rct_selected", "rct_t_ridge", "rct_causal_forest", "causal_icm_rct_only", "lmcgp_rct_only"}
 GPU_RECIPES = {"tsr_tabpfn_v2", "tsr_tabpfn_v25", "tsr_tabpfn_v3", "tsr_tabpfn_lmcgp",
                "tabpfn_v2_obs_only", "tabpfn_v25_obs_only", "tabpfn_v3_obs_only", "tabpfn_obs_only"}
 GROUP_RECIPES = {
@@ -69,21 +73,7 @@ def split(scenario: str) -> tuple[str, int, int]:
     return head.split(":")[1], int(level[1:]), int(rct[1:])
 
 
-def load_records(runs: list[Path]) -> dict:
-    out = {}
-    for run in runs:
-        manifest = json.loads((run / "run_manifest.json").read_text())
-        methods = set(manifest["config"]["run"]["methods"])
-        group = next((g for g, ms in GROUP_RECIPES.items() if methods == {"rct_selected", "rct_t_ridge", *ms}), None)
-        if group is None:
-            raise SystemExit(f"{run}: not a stress wave-2 shard")
-        for line in (run / "records.jsonl").read_text().splitlines():
-            row = json.loads(line)
-            out[(group, row["scenario"], int(row["seed"]), row["method"])] = row
-    return out
-
-
-def arithmetic(analysis: Path, runs: list[Path], stress1: Path) -> dict:
+def arithmetic(analysis: Path, runs: list[Path], stress1: Path, job_limit: frozenset = frozenset()) -> dict:
     from scipy.special import stdtr
 
     mse, table, scenarios, seeds = {}, {}, set(), set()
@@ -98,21 +88,16 @@ def arithmetic(analysis: Path, runs: list[Path], stress1: Path) -> dict:
     seeds, scenarios = sorted(seeds), sorted(scenarios)
     mismatches = [] if seeds == list(range(80000, 80064)) and len(scenarios) == 64 else [
         {"reason": "expected seeds 80000-80063 and 64 conditions"}]
-    records = load_records(runs)
-    if set(records) != set(table):
-        mismatches.append({"reason": "replicate_scores.csv cells differ from the run records"})
-    for key, row in records.items():
-        got = table.get(key)
-        if got is not None and (got["status"] != row["status"] or as_float(got["cate_mse"]) !=
-                                (row["metrics"]["cate_mse"] if row["status"] == "ok" else None)):
-            mismatches.append({"cell": list(key), "reason": "replicate score differs from its record"})
+    records, unrecorded = load_records(runs, job_limit)
+    mismatches += check_cells(table, records, unrecorded)
 
     first = {}
     for path in sorted((stress1 / "replicate_scores").glob("*.csv")):
         for r in csv.DictReader(path.open(newline="")):
             if r["method"] in ("rct_selected", "rct_t_ridge") and r["status"] == "ok":
                 first[(r["scenario"], int(r["seed"]), r["method"])] = float(r["cate_mse"])
-    reported_identity = json.loads((analysis / "identity_check.json").read_text())["stress1_reproduction"]
+    identity_file = json.loads((analysis / "identity_check.json").read_text())
+    reported_identity = identity_file["stress1_reproduction"]
     same_data = {}
     for g in GROUP_RECIPES:
         for m in ("rct_selected", "rct_t_ridge"):
@@ -120,13 +105,29 @@ def arithmetic(analysis: Path, runs: list[Path], stress1: Path) -> dict:
                     if (g, sc, s, m) in mse and (sc, s, m) in first]
             worst = max((abs(a - b) for a, b in both), default=None)
             ok = len(both) == len(scenarios) * len(seeds) and worst is not None and worst <= SAME_DATA_TOL
-            same_data[f"{g}:{m}"] = {"compared": len(both), "max_abs_difference": worst, "within_1e-9": ok}
+            same_data[f"{g}:{m}"] = {"compared": len(both), "exact": sum(a == b for a, b in both),
+                                     "max_abs_difference": worst, "within_1e-9": ok}
             got = reported_identity.get(f"{g}:{m}", {})
-            if got.get("within_1e-9") != ok or not close(got.get("max_abs_difference"), worst):
+            if (got.get("within_1e-9") != ok or not close(got.get("max_abs_difference"), worst)
+                    or got.get("compared") != len(both) or got.get("exact") != same_data[f"{g}:{m}"]["exact"]):
                 mismatches.append({"identity": f"{g}:{m}", "recomputed": same_data[f"{g}:{m}"], "reported": got})
 
+    level = {}
+    for g, ms in GROUP_RECIPES.items():
+        for m in ("rct_selected", "rct_t_ridge", *(x for x in ms if x in RCT_ONLY)):
+            level[f"{g}:{m}"] = sum(
+                any(mse.get((g, f"stress:{d}@l{i}_r{r}", s, m)) != mse.get((g, f"stress:{d}@l0_r{r}", s, m))
+                    for i in (1, 2, 3))
+                for d in OBS_ONLY for r in (128, 512) for s in seeds)
+    if identity_file.get("rct_only_level_mismatches") != level:
+        mismatches.append({"identity": "rct_only_level_mismatches", "recomputed": level,
+                           "reported": identity_file.get("rct_only_level_mismatches")})
+
     with (analysis / "contrasts.csv").open(newline="") as fh:
-        reported = {(r["family"], r["scenario"]): r for r in csv.DictReader(fh)}
+        rows_in = list(csv.DictReader(fh))
+    reported = {(r["family"], r["scenario"]): r for r in rows_in}
+    if len(reported) != len(rows_in):
+        mismatches.append({"reason": "contrasts.csv has duplicate rows"})
     counts, verdicts = {}, {}
     for name, g, rec, ref, _ in FAMILIES:
         if (len(scenarios), sum(split(sc)[0] in EXTRAPOLATION for sc in scenarios)) != (64, 16):
@@ -167,8 +168,12 @@ def arithmetic(analysis: Path, runs: list[Path], stress1: Path) -> dict:
         if got != {k: v for k, v in c.items() if v}:
             mismatches.append({"family": name, "reason": "headline counts differ", "recomputed": c, "reported": got})
 
+    mismatches += check_headline(analysis / "headline.md", counts, "extrapolation")
     with (analysis / "readout.csv").open(newline="") as fh:
-        readout = {(r["family"], r["dial"], int(r["rct"])): r["state"] for r in csv.DictReader(fh)}
+        readout_rows = list(csv.DictReader(fh))
+    readout = {(r["family"], r["dial"], int(r["rct"])): (r["state"], r["untested_at"]) for r in readout_rows}
+    if len(readout) != len(readout_rows):
+        mismatches.append({"reason": "readout.csv has duplicate rows"})
     states = 0
     for name, *_, kind in FAMILIES:
         if kind != "primary":
@@ -176,16 +181,23 @@ def arithmetic(analysis: Path, runs: list[Path], stress1: Path) -> dict:
         for dial in DIALS:
             for rct in (128, 512):
                 seq = [verdicts[(name, f"stress:{dial}@l{level}_r{rct}")] for level in range(4)]
-                want = ("no_level0_win" if seq[0] != "better" else "broke" if seq[3] == "worse"
-                        else "stopped" if seq[3] != "better" else "kept")
+                if seq[0] != "better":
+                    want = "no_level0_win"
+                elif seq[3] == "worse":
+                    want = "broke"
+                elif seq[3] == "better":
+                    want = "kept"
+                else:
+                    want = "stopped"
+                want = (want, ",".join(str(i) for i in (0, 3) if seq[i] == "untested"))
                 states += 1
                 if readout.get((name, dial, rct)) != want:
                     mismatches.append({"readout": [name, dial, rct], "recomputed": want,
                                        "reported": readout.get((name, dial, rct))})
     if len(readout) != states:
         mismatches.append({"reason": "reported readout rows differ from the declared primary families"})
-    return {"check": "arithmetic", "families": counts, "same_data": same_data, "readout_states": states,
-            "mismatches": mismatches}
+    return {"check": "arithmetic", "families": counts, "same_data": same_data, "rct_only_level_mismatches": level,
+            "readout_states": states, "mismatches": mismatches}
 
 
 def reproduce(group: str, config, runs: list[Path]) -> dict:
@@ -194,7 +206,7 @@ def reproduce(group: str, config, runs: list[Path]) -> dict:
     from obs_rct_benchmark.methods import make_method
     from obs_rct_benchmark.runner import _generate, method_seed
 
-    records = load_records(runs)
+    records, _ = load_records(runs)
     seed = config.seeds[0]
     scenarios = [s for s in config.scenarios
                  if s.parameters["n_rct_train"] == 128 and s.parameters["level"] in (0, 3)]
@@ -238,11 +250,15 @@ def main() -> None:
     ap.add_argument("--config", type=Path)
     ap.add_argument("--runs", type=Path, nargs="+", required=True)
     ap.add_argument("--output", type=Path, required=True)
+    ap.add_argument("--job-limit-shards", type=Path,
+                    help="JSON list of {shard, config_hash} whose final attempt reached its job limit")
     a = ap.parse_args()
     if a.output.exists():
         raise SystemExit("output must be new")
     if a.check == "arithmetic":
-        result = arithmetic(a.analysis, a.runs, a.stress1)
+        limited = frozenset(e["config_hash"] for e in json.loads(a.job_limit_shards.read_text())) \
+            if a.job_limit_shards else frozenset()
+        result = arithmetic(a.analysis, a.runs, a.stress1, limited)
     else:
         from obs_rct_benchmark.runner import load_config
 

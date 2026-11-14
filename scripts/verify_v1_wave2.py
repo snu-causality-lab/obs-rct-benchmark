@@ -58,21 +58,65 @@ def close(a, b, rel=1e-9):
     return (a is None and b is None) or (a is not None and b is not None and math.isclose(a, b, rel_tol=rel, abs_tol=1e-12))
 
 
-def load_records(runs: list[Path]) -> dict:
-    out = {}
+def load_records(runs: list[Path], job_limit: frozenset = frozenset()) -> tuple[dict, set]:
+    """Records keyed (group, scenario, seed, method), and the requested cells left
+    unrecorded by runs whose config hash is in `job_limit` (declared as reaching their
+    job limit on the final attempt; a truncated last line is dropped there)."""
+    out, unrecorded, seen = {}, set(), set()
     for run in runs:
         manifest = json.loads((run / "run_manifest.json").read_text())
-        methods = set(manifest["config"]["run"]["methods"])
+        config = manifest["config"]
+        if manifest["config_hash"] in seen:
+            raise SystemExit(f"{run}: shard given twice")
+        seen.add(manifest["config_hash"])
+        methods = set(config["run"]["methods"])
         group = next((g for g, ms in GROUP_RECIPES.items() if methods == {"rct_selected", "rct_t_ridge", *ms}), None)
         if group is None:
             raise SystemExit(f"{run}: not a wave-2 shard")
-        for line in (run / "records.jsonl").read_text().splitlines():
+        path = run / "records.jsonl"
+        lines = path.read_text().splitlines() if path.exists() else []
+        limited = manifest["config_hash"] in job_limit
+        if limited and lines:
+            try:
+                json.loads(lines[-1])
+            except json.JSONDecodeError:
+                lines = lines[:-1]
+        got = set()
+        for line in lines:
             row = json.loads(line)
-            out[(group, row["scenario"], int(row["seed"]), row["method"])] = row
-    return out
+            key = (group, row["scenario"], int(row["seed"]), row["method"])
+            if key in out:
+                raise SystemExit(f"{run}: duplicate record {key}")
+            out[key] = row
+            got.add(key)
+        if limited:
+            unrecorded |= {(group, f"{sc['kind']}:{sc['id']}" + (f"@{sc['label']}" if sc.get("label") else ""), seed, m)
+                           for sc in config["scenarios"] for seed in config["run"]["seeds"]
+                           for m in config["run"]["methods"]} - got
+    if job_limit - seen:
+        raise SystemExit("declared job-limit shards were not given")
+    return out, unrecorded
 
 
-def arithmetic(analysis: Path, runs: list[Path]) -> dict:
+def check_cells(table: dict, records: dict, unrecorded: set) -> list[dict]:
+    """replicate_scores.csv must hold every record exactly, plus a JobLimit failure for
+    each cell a declared job-limit run left unrecorded, and nothing else."""
+    mismatches = []
+    if set(table) != set(records) | unrecorded:
+        mismatches.append({"reason": "replicate_scores.csv cells differ from the run records"})
+    for key, row in records.items():
+        got = table.get(key)
+        if got is not None and (got["status"] != row["status"] or as_float(got["cate_mse"]) !=
+                                (row["metrics"]["cate_mse"] if row["status"] == "ok" else None)):
+            mismatches.append({"cell": list(key), "reason": "replicate score differs from its record"})
+    for key in unrecorded:
+        got = table.get(key)
+        if got is not None and (got["status"], got["stage"], got["error_type"]) != ("failed", "job_limit", "JobLimit"):
+            mismatches.append({"cell": list(key), "reason": "unrecorded cell is not a JobLimit failure"})
+    return mismatches
+
+
+def arithmetic(analysis: Path, runs: list[Path], job_limit: frozenset = frozenset()) -> dict:
     from scipy.special import stdtr
 
     mse, table, scenarios, seeds = {}, {}, set(), set()
@@ -86,16 +130,13 @@ def arithmetic(analysis: Path, runs: list[Path]) -> dict:
                 mse[key] = float(r["cate_mse"])
     seeds = sorted(seeds)
     mismatches = [] if len(seeds) == 64 and len(scenarios) == 124 else [{"reason": "expected 64 seeds and 124 conditions"}]
-    records = load_records(runs)
-    if set(records) != set(table):
-        mismatches.append({"reason": "replicate_scores.csv cells differ from the run records"})
-    for key, row in records.items():
-        got = table.get(key)
-        if got is not None and (got["status"] != row["status"] or as_float(got["cate_mse"]) !=
-                                (row["metrics"]["cate_mse"] if row["status"] == "ok" else None)):
-            mismatches.append({"cell": list(key), "reason": "replicate score differs from its record"})
+    records, unrecorded = load_records(runs, job_limit)
+    mismatches += check_cells(table, records, unrecorded)
     with (analysis / "contrasts.csv").open(newline="") as fh:
-        reported = {(r["family"], r["scenario"]): r for r in csv.DictReader(fh)}
+        rows_in = list(csv.DictReader(fh))
+    reported = {(r["family"], r["scenario"]): r for r in rows_in}
+    if len(reported) != len(rows_in):
+        mismatches.append({"reason": "contrasts.csv has duplicate rows"})
     counts = {}
     for name, g, rec, ref in FAMILIES:
         fam = sorted(sc for sc in scenarios if not sc.startswith("structural:M11@")
@@ -138,7 +179,26 @@ def arithmetic(analysis: Path, runs: list[Path]) -> dict:
         got = {k: v for k, v in reported_families.get(name, {}).items() if k != "kind" and v}
         if got != {k: v for k, v in c.items() if v}:
             mismatches.append({"family": name, "reason": "headline counts differ", "recomputed": c, "reported": got})
+    mismatches += check_headline(analysis / "headline.md", counts, "transport")
     return {"check": "arithmetic", "families": counts, "mismatches": mismatches}
+
+
+def check_headline(path: Path, counts: dict, split: str) -> list[dict]:
+    """Every family's row in headline.md: size, verdict totals and the split counts."""
+    rows = {}
+    for line in path.read_text().splitlines()[2:]:
+        if not line.startswith("|"):
+            break  # the family table ends at the first non-table line
+        cells = [c.strip() for c in line.strip("|").split("|")]
+        rows[cells[0].strip("`")] = cells
+    out = [] if set(rows) == set(counts) else [{"reason": "headline.md families differ from the declared families"}]
+    for name, c in counts.items():
+        want = [str(c["size"]), *(str(sum(c.get(f"{g}_{v}", 0) for g in ("other", split)))
+                                  for v in ("better", "worse", "unresolved", "untested")),
+                f"{c.get(split + '_better', 0)} / {c.get(split + '_worse', 0)}"]
+        if name in rows and rows[name][2:] != want:
+            out.append({"family": name, "reason": "headline.md row differs", "recomputed": want, "reported": rows[name][2:]})
+    return out
 
 
 def reproduce(group: str, config, runs: list[Path]) -> dict:
@@ -146,7 +206,7 @@ def reproduce(group: str, config, runs: list[Path]) -> dict:
     from obs_rct_benchmark.methods import make_method
     from obs_rct_benchmark.runner import _generate, method_seed
 
-    records = load_records(runs)
+    records, _ = load_records(runs)
     seed = config.seeds[0]
     scenarios = [s for s in config.scenarios if s.parameters["n_obs"] == 512 and s.parameters["n_rct_train"] == 128]
     checks, mismatches = [], []
@@ -190,11 +250,15 @@ def main() -> None:
     ap.add_argument("--config", type=Path)
     ap.add_argument("--runs", type=Path, nargs="+", required=True)
     ap.add_argument("--output", type=Path, required=True)
+    ap.add_argument("--job-limit-shards", type=Path,
+                    help="JSON list of {shard, config_hash} whose final attempt reached its job limit")
     a = ap.parse_args()
     if a.output.exists():
         raise SystemExit("output must be new")
     if a.check == "arithmetic":
-        result = arithmetic(a.analysis, a.runs)
+        limited = frozenset(e["config_hash"] for e in json.loads(a.job_limit_shards.read_text())) \
+            if a.job_limit_shards else frozenset()
+        result = arithmetic(a.analysis, a.runs, limited)
     else:
         from obs_rct_benchmark.runner import load_config
 

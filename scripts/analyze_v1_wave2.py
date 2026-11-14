@@ -52,10 +52,32 @@ class AnalysisError(ValueError):
     """The inputs do not match the declared addendum; nothing is reported."""
 
 
-def collect(configs: dict, runs: list[Path], *, check_source: bool = True, declared=declared_shards) -> dict:
+JOB_LIMIT = {"status": "failed", "metrics": None, "stage": "job_limit", "error_type": "JobLimit"}
+
+
+def load_job_limit(path: Path | None) -> dict[str, str]:
+    """Declared job-limit shards: {shard file name: config hash}. A shard is listed only
+    after its rerun with a doubled limit also reached the limit."""
+    if path is None:
+        return {}
+    entries = json.loads(path.read_text())
+    out = {e["shard"]: e["config_hash"] for e in entries}
+    if len(out) != len(entries):
+        raise AnalysisError("a job-limit shard is listed twice")
+    return out
+
+
+def collect(configs: dict, runs: list[Path], *, check_source: bool = True, declared=declared_shards,
+            job_limit: dict[str, str] | None = None) -> dict:
     """Authenticated terminal records keyed (group, scenario, seed, method). `declared`
-    yields a group configuration's (name, shard) pairs; the stress addendum passes its own."""
+    yields a group configuration's (name, shard) pairs; the stress addendum passes its own.
+
+    `job_limit` lists shards whose final attempt reached its job limit. Their recorded
+    cells stand, a truncated last line is dropped, and every unrecorded cell becomes a
+    terminal JobLimit failure. Any other shard must be complete."""
     from obs_rct_benchmark.runner import method_seed, record_id, source_provenance
+
+    job_limit = dict(job_limit or {})
 
     expected = {}
     for group, config in configs.items():
@@ -79,10 +101,23 @@ def collect(configs: dict, runs: list[Path], *, check_source: bool = True, decla
         if check_source and manifest["source"] != source_provenance():
             raise AnalysisError(f"{run}: producer source differs from the analysis package")
         h = shard.config_hash
+        limited = name in job_limit
+        if limited and job_limit[name] != h:
+            raise AnalysisError(f"{name}: declared job-limit config hash differs from the shard")
         cells = {(s.key, seed, m) for s in shard.scenarios for seed in shard.seeds for m in shard.methods}
         got = set()
-        for line in (run / "records.jsonl").read_text().splitlines():
-            row = json.loads(line)
+        path = run / "records.jsonl"
+        lines = path.read_text().splitlines() if path.exists() else []
+        if limited and lines:
+            try:
+                json.loads(lines[-1])
+            except json.JSONDecodeError:
+                lines = lines[:-1]  # the job was killed while writing its last record
+        for line in lines:
+            try:
+                row = json.loads(line)
+            except json.JSONDecodeError as exc:
+                raise AnalysisError(f"{run}: unreadable record line") from exc
             cell = (row["scenario"], int(row["seed"]), row["method"])
             if cell not in cells or cell in got:
                 raise AnalysisError(f"{run}: unrequested or duplicate cell {cell}")
@@ -100,8 +135,15 @@ def collect(configs: dict, runs: list[Path], *, check_source: bool = True, decla
                     raise AnalysisError(f"{cell}: TabPFN stage lacks CUDA, the pinned checkpoint, package or release")
             got.add(cell)
             records[(group, *cell)] = row
-        if got != cells:
+        if limited:
+            if got == cells:
+                raise AnalysisError(f"{name}: declared as reaching its job limit, but complete")
+            for cell in sorted(cells - got):
+                records[(group, *cell)] = dict(JOB_LIMIT)
+        elif got != cells:
             raise AnalysisError(f"{run}: {len(cells - got)} requested cells lack a terminal record")
+    if set(job_limit) - seen:
+        raise AnalysisError("declared job-limit shards were not given")
     missing = {n for _, n, _ in expected.values()} - seen
     if missing:
         raise AnalysisError(f"{len(missing)} declared shards are missing, e.g. {sorted(missing)[:3]}")
@@ -237,6 +279,8 @@ def main() -> None:
     ap.add_argument("--runs", type=Path, nargs="+", required=True)
     ap.add_argument("--wave1", type=Path, required=True)
     ap.add_argument("--output", type=Path, required=True)
+    ap.add_argument("--job-limit-shards", type=Path,
+                    help="JSON list of {shard, config_hash} whose final attempt reached its job limit")
     a = ap.parse_args()
     configs = {}
     for path in a.configs:
@@ -244,7 +288,7 @@ def main() -> None:
         configs[validate(config)] = config
     if set(configs) != set(GROUPS):
         raise SystemExit("one configuration per declared group is required")
-    records = collect(configs, a.runs)
+    records = collect(configs, a.runs, job_limit=load_job_limit(a.job_limit_shards))
     result = analyze(configs, records, wave1_scores(a.wave1), a.output)
     print(json.dumps({k: result[k] for k in ("requested", "coverage", "families")}, indent=2)[:6000])
 

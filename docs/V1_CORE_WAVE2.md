@@ -16,8 +16,8 @@ The recipes need four different environments, so they run in four groups. Every 
 | --- | --- | --- | --- |
 | `native_r` | `integrative_r_linear`, `integrative_r_quadratic`, `rct_causal_forest` | As admitted ([V03_ADAPTERS](V03_ADAPTERS.md)): Integrative R with five folds, its native SCAD search and a 1,200-second deadline; grf with 2,000 honest trees, one thread and a 600-second deadline | The wave-1 Python environment, R from the GP pilot environment, pinned intRlearner and grf builds |
 | `gp` | `causal_icm_fixed`, `causal_icm_rct_only` | Fixed ρ = 0.5, all covariates, native optimizer defaults | The GPy environment of the GP pilot (Python 3.11, GPy 1.13.2) |
-| `tabpfn` | `lmcgp_rct_only`; `tsr_tabpfn_v2`, `tsr_tabpfn_v25`, `tsr_tabpfn_v3`; `tabpfn_v2_obs_only`, `tabpfn_v25_obs_only`, `tabpfn_v3_obs_only` | TSR's GP as in the [TSR study](TSR_STUDY.md). Stage 1 is the TabPFN regressor of each release with that release's default settings, `random_state=0`, and a checkpoint pinned by SHA-256 | `tabpfn==10.0.0`, torch 2.15, one RTX 3090 per four shards |
-| `tsr_legacy` | `tsr_tabpfn_lmcgp`, `lmcgp_rct_only`, `tabpfn_obs_only` | Exactly as in the [TSR study](TSR_STUDY.md): `tabpfn==2.0.9`, the pinned v2 checkpoint | The TSR study's environment, one RTX 3090 per four shards |
+| `tabpfn` | `lmcgp_rct_only`; `tsr_tabpfn_v2`, `tsr_tabpfn_v25`, `tsr_tabpfn_v3`; `tabpfn_v2_obs_only`, `tabpfn_v25_obs_only`, `tabpfn_v3_obs_only` | TSR's GP as in the [TSR study](TSR_STUDY.md). Stage 1 is the TabPFN regressor of each release with that release's default settings, `random_state=0`, and a checkpoint pinned by SHA-256 | `tabpfn==10.0.0`, torch 2.15, RTX 3090 GPUs shared by several shards |
+| `tsr_legacy` | `tsr_tabpfn_lmcgp`, `lmcgp_rct_only`, `tabpfn_obs_only` | Exactly as in the [TSR study](TSR_STUDY.md): `tabpfn==2.0.9`, the pinned v2 checkpoint | The TSR study's environment, RTX 3090 GPUs shared by several shards |
 
 The configurations are [`v1_wave2_native_r.toml`](../configs/v1_wave2_native_r.toml), [`v1_wave2_gp.toml`](../configs/v1_wave2_gp.toml), [`v1_wave2_tabpfn.toml`](../configs/v1_wave2_tabpfn.toml) and [`v1_wave2_tsr_legacy.toml`](../configs/v1_wave2_tsr_legacy.toml). The [shard writer](../scripts/make_v1_wave2_configs.py) validates them and writes one shard per seed and preset: four budget conditions each, 1,984 shards per group.
 
@@ -38,9 +38,8 @@ The configurations are [`v1_wave2_native_r.toml`](../configs/v1_wave2_native_r.t
 
 Each wave-2 recipe is paired with the `rct_selected` fit from **the same shard and environment**. The plan required every addendum shard to rerun `rct_t_ridge` and reproduce wave 1 exactly, because pairing with wave-1 records needs identical data. Wave 2 does not pair with wave-1 records, so that requirement becomes a reported diagnostic.
 
-For each group, the analysis reports how many of its `rct_selected` and `rct_t_ridge` scores equal the wave-1 scores exactly, and the largest difference.
-- **Same data.** A group ran on the wave-1 data only if all of its `rct_t_ridge` scores reproduce wave 1 within 1e-9, the TSR study's tolerance. Otherwise its results are not described as being on the same data, and no claim pairs them with wave 1.
-- **Reference drift.** Differences in `rct_selected` between environments are reported separately; its ExtraTrees candidates can differ across library versions.
+- **Same data.** `rct_t_ridge` uses only trial rows, so its scores cannot show that OBS rows agree. Before launch, a [data check](../scripts/check_data_identity.py) regenerates every condition at the first seed, 70000, in each group's environment. It compares every sample role with the wave-1 environment: OBS, trial training, tuning and test rows, evaluation covariates and effects. A group ran on the wave-1 data only if every array agrees within 1e-12 there **and** all of its `rct_t_ridge` scores reproduce wave 1 within 1e-9, the TSR study's tolerance. Otherwise its results are not described as being on the same data, and no claim pairs them with wave 1. The data check's result is recorded below.
+- **Reference drift.** For each group, the analysis reports how many of its `rct_selected` scores equal wave 1's and the largest difference. Its ExtraTrees candidates can differ across library versions, so ratios set side by side across groups have different denominators and are descriptive.
 - **Verdicts unaffected.** Neither check blocks wave-2 verdicts, which never cross environments.
 
 ## Contrasts
@@ -68,23 +67,39 @@ When a family's reference is RCT-only, its OBS 512 record serves both OBS sizes,
 
 ## Resources and execution
 
-**Preflight.** A preflight at seed 69999, outside the grid, ran every group's 31 shards before the freeze. Its job deleted all records after writing status files. Those files hold coverage counts, failure stages and types, runtime and peak memory, and no metric.
+**Preflight.** A preflight at seed 69999, outside the grid, ran every group's 31 shards before the freeze. Its jobs deleted all records after writing status files. Those files hold coverage counts, failure stages and types, runtime, peak memory and the GPU used, and no metric.
 - **CPU groups.** `native_r` and `gp` ran on the code before the review fixes. Those fixes do not touch their fitting code.
-- **GPU groups.** `tabpfn` and `tsr_legacy` ran on the fixed code. The fixes changed TabPFN's cache and provenance.
+- **GPU groups.** `tabpfn` and `tsr_legacy` ran on the fixed code, which changed TabPFN's cache and provenance. Their first attempts failed for infrastructure reasons:
+  - with four shards per GPU, TabPFN fits ran out of GPU memory;
+  - on one node, some jobs saw no GPU, and every TabPFN fit in them failed with "No CUDA GPUs are available". The same fit ran normally on another node;
+  - preempted jobs were requeued into their old, non-empty output directories and stopped.
+
+  Both groups were rerun with two shards per GPU, that node and the slow-storage nodes excluded, and a driver that checks the GPU before fitting and restarts an interrupted shard in a fresh directory. The values recorded below come from these reruns.
 
 **Environment check.** Every shard checks its environment before fitting:
 - external sources and runtimes report as available and verified;
-- for TabPFN groups, the required package version is installed and every pinned checkpoint file has its hash.
+- for TabPFN groups, the required package version is installed and every pinned checkpoint file has its hash;
+- for TabPFN groups, CUDA computes a test product correctly and at least 8 GiB of GPU memory is free.
 
 A failed check stops the shard before any record. It is an infrastructure failure, so a bad setup is never recorded as method failures. Each environment's package list is saved in the job record.
 
 **Limits.** The main run's limits follow from the preflight by this rule:
 - **CPU groups** get one CPU per shard. The time limit is the larger of 2 hours and 3 times the longest preflight shard, capped at 12 hours. Memory is the larger of 4 GiB and twice the largest preflight peak.
-- **The GPU groups** (`tabpfn`, `tsr_legacy`) run four shards per GPU job. The job's time limit is the larger of 2 hours and 3 times the longest preflight GPU job, capped at 12 hours.
+- **The GPU groups** (`tabpfn`, `tsr_legacy`) pack several shards onto one GPU. The number per GPU is the largest that produced no CUDA out-of-memory error in the preflight, at most four. The job's time limit is the larger of 2 hours and 3 times the longest preflight GPU job, capped at 12 hours.
 
 The values that result are recorded below before launch.
 
-No fit gets a deadline beyond the recipes' own deadlines (Integrative R 1,200 seconds, forest 600 seconds). A fit that reaches its own deadline is a method failure. A shard that reaches the job limit is an infrastructure failure. Before any metric is read, such a shard is rerun whole in a fresh output directory, with a doubled limit and the old output kept.
+No fit gets a deadline beyond the recipes' own deadlines (Integrative R 1,200 seconds, forest 600 seconds). A fit that reaches its own deadline is a method failure.
+
+Four kinds of event are infrastructure failures:
+- **Job limit.** A shard that reaches the job's time or memory limit.
+- **Interruption.** A shard stopped by preemption or a node fault before writing its status. A requeued job restarts it automatically.
+- **Failed check.** A shard that fails the environment check, which stops it before any record.
+- **GPU memory.** A shard with any CUDA out-of-memory record. Whether a fit runs out of GPU memory depends on how many processes share the GPU, not on the method.
+
+Before any metric is read, such a shard is rerun whole in a fresh output directory, with the old output kept. A job-limit rerun gets double the limit that was reached, beyond the 12-hour cap if needed; a GPU-memory rerun runs alone on its GPU. A CUDA out-of-memory error that recurs with the shard alone on a GPU is a method failure.
+
+**Final attempt.** A shard is rerun for a job limit only once. If the rerun also reaches a limit, its recorded cells stand, and every cell it did not record is a method failure with error type `JobLimit`. Such shards are listed, with their configuration hashes, in a file that the analyzer and the checker both read. The affected conditions are untested for the affected recipes, by the failure rule; if `rct_selected` is among them, those conditions are untested for every family of the group.
 
 **Expected failures.** In the native panel, quadratic Integrative R reached its deadline on the CorNet design at RCT 512 at all 64 seeds. The same is expected here. Those conditions are untested for that recipe, under the plan's failure rule.
 
@@ -95,12 +110,13 @@ No fit gets a deadline beyond the recipes' own deadlines (Integrative R 1,200 se
    - Every successful TabPFN fit ran its stage 1 on CUDA with the pinned checkpoint.
    - The analyzer refuses anything else.
 2. **Identities.**
+   - The data check before launch, above.
    - Wave-1 reproduction of `rct_selected` and `rct_t_ridge`, per group.
    - The OBS-size identity of RCT-only records.
 3. **Reproducibility.** On the first seed at OBS 512 · RCT 128, each recipe is refitted twice in its group's environment, and each refit's score is compared with the record. Each refit fits its own TabPFN stage.
    - CPU recipes must agree within 1e-12.
    - TabPFN recipes run on an RTX 3090, whose kernels need not be bit-reproducible, so they must agree within a relative 1e-6. A failure is reported and investigated; no recorded score is replaced.
-4. **Independent arithmetic.** A separate script recomputes every contrast, Holm adjustment and headline count from the per-seed records and the declared family sizes, without importing the analyzer.
+4. **Independent arithmetic.** A separate script recomputes every contrast, Holm adjustment and headline count, including the headline table, from the per-seed records and the declared family sizes, without importing the analyzer.
 
 ## What wave 2 will not show
 
@@ -111,9 +127,34 @@ No fit gets a deadline beyond the recipes' own deadlines (Integrative R 1,200 se
 
 ## Recorded before launch
 
-*Filled after the preflight and before the freeze.*
+Preflight results (seed 69999, 31 shards per group). Each group's limit follows from the rule above.
+
+| Group | Longest shard | Median shard | Peak memory | Preflight failures | Main-run limit per shard |
+| --- | ---: | ---: | ---: | --- | --- |
+| `native_r` | 4,077 s (CorNet design) | 549 s | 579 MiB | `integrative_r_quadratic`, 3 deadline errors in the CorNet design | 1 CPU, 4 GiB, 3 h 24 min |
+| `gp` | 102 s | 72 s | 740 MiB | none | 1 CPU, 4 GiB, 2 h |
+| `tabpfn` | *pending* | | | | |
+| `tsr_legacy` | *pending* | | | | |
+
+**Execution.** The shard driver and job scripts are published with the results; their hashes are fixed here.
+
+| Item | Value |
+| --- | --- |
+| Code | The freeze commit, run from a `git archive` snapshot |
+| Shard driver `run_shard.py` | *pending* |
+| Job scripts `common.sh`, `cpu_array.sbatch`, `gpu_array.sbatch` | *pending* |
+| GPU jobs | *pending* |
+| Preflight runs | *pending* |
+| Data check (seed 70000, against the wave-1 environment) | Passed. In all 124 conditions, every array of every sample role is identical in the `gp`, `tabpfn` and `tsr_legacy` environments; the largest difference is 0. `native_r` runs in the wave-1 interpreter itself |
 
 ## Revisions and errata
+
+**2026-11-15, before the freeze.** A fresh-context AI review of the [stress addendum](V1_STRESS_WAVE2.md) found gaps that apply here too:
+- the same-data rule now also requires a data check of every sample role, since `rct_t_ridge` never uses OBS rows;
+- a shard that reaches a job limit gets one rerun, and its unrecorded cells then become `JobLimit` failures;
+- a memory limit counts as a job limit;
+- the driver, job scripts and GPU settings are fixed in the launch record;
+- the checker also verifies the headline table.
 
 **2026-11-14, before the freeze.** A fresh-context AI review led to these changes:
 - the `tsr_legacy` group restores the promised TSR replication;

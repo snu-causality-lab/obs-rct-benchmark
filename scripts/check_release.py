@@ -34,7 +34,7 @@ PUBLIC_SCRIPT_MODULES = {"native_panel_data", "run_native_panel", "verify_native
                          "make_v1_core_configs", "render_overview",
                          "analyze_v1_core", "make_v1_wave2_configs",
                          "make_stress_configs", "analyze_stress", "analyze_v1_wave2",
-                         "make_stress_wave2_configs"}
+                         "make_stress_wave2_configs", "verify_v1_wave2"}
 
 
 def candidate_files():

@@ -88,7 +88,7 @@ def study(configs, tmp_path_factory):
         run = base / group
         run.mkdir()
         (run / "records.jsonl").write_text("\n".join(lines) + "\n")
-        (run / "run_manifest.json").write_text(json.dumps({"config": {"run": {"methods": list(config.methods)}}}))
+        (run / "run_manifest.json").write_text(json.dumps({"config_hash": config.config_hash, "config": config.payload()}))
     stress1 = base / "stress1"
     (stress1 / "replicate_scores").mkdir(parents=True)
     config = next(iter(configs.values()))
@@ -121,15 +121,95 @@ def test_analyzer_and_independent_arithmetic(configs, study, tmp_path):
     assert report["mismatches"] == [] and report["readout_states"] == 176
 
 
-def test_checker_catches_a_changed_readout_state(configs, study, tmp_path):
-    records, runs, stress1 = study
-    out = tmp_path / "analysis"
-    A.analyze(configs, records, A.stress1_scores(stress1), out)
-    path = out / "readout.csv"
+def _rewrite_csv(path, mutate):
     rows = list(csv.DictReader(path.open()))
-    rows[0]["state"] = "broke" if rows[0]["state"] != "broke" else "kept"
+    mutate(rows)
     with path.open("w", newline="") as fh:
         writer = csv.DictWriter(fh, fieldnames=list(rows[0]))
         writer.writeheader()
         writer.writerows(rows)
+
+
+def _flip(row, key, a, b):
+    row[key] = a if row[key] != a else b
+
+
+@pytest.mark.parametrize("target", ["verdict", "count", "identity", "headline", "readout", "untested_flag", "duplicate"])
+def test_checker_catches_each_altered_output(configs, study, tmp_path, target):
+    records, runs, stress1 = study
+    out = tmp_path / "analysis"
+    A.analyze(configs, records, A.stress1_scores(stress1), out)
+    if target == "verdict":
+        _rewrite_csv(out / "contrasts.csv", lambda rows: _flip(rows[5], "verdict", "better", "worse"))
+    elif target == "count":
+        data = json.loads((out / "analysis.json").read_text())
+        data["families"]["gp/causal_icm_fixed"]["other_worse"] = 1
+        (out / "analysis.json").write_text(json.dumps(data))
+    elif target == "identity":
+        data = json.loads((out / "identity_check.json").read_text())
+        data["stress1_reproduction"]["gp:rct_t_ridge"]["exact"] -= 1
+        (out / "identity_check.json").write_text(json.dumps(data))
+    elif target == "headline":
+        path = out / "headline.md"
+        lines = path.read_text().splitlines()
+        cells = lines[2].split("|")
+        cells[4] = f" {int(cells[4]) + 1} "
+        lines[2] = "|".join(cells)
+        path.write_text("\n".join(lines) + "\n")
+    elif target == "readout":
+        _rewrite_csv(out / "readout.csv", lambda rows: _flip(rows[0], "state", "broke", "kept"))
+    elif target == "untested_flag":
+        _rewrite_csv(out / "readout.csv", lambda rows: _flip(rows[0], "untested_at", "0", ""))
+    else:
+        _rewrite_csv(out / "readout.csv", lambda rows: rows.append(dict(rows[0])))
     assert V.arithmetic(out, runs, stress1)["mismatches"]
+
+
+def test_job_limit_cells_are_filled_and_checked(configs, tmp_path):
+    from obs_rct_benchmark.runner import environment_provenance, method_seed, record_id, source_provenance
+
+    W = _load("analyze_v1_wave2")
+    VW = _load("verify_v1_wave2")
+    config = configs["gp"]
+    name, shard = next(iter(M.shards(config)))
+    cells = [(s.key, seed, m) for s in shard.scenarios for seed in shard.seeds for m in shard.methods]
+    run = tmp_path / "run"
+    run.mkdir()
+    (run / "run_manifest.json").write_text(json.dumps({
+        "config_hash": shard.config_hash, "config": shard.payload(), "source": source_provenance(),
+        "environment": environment_provenance(), "external_methods": None}))
+    lines = [json.dumps({"scenario": sc, "seed": seed, "method": m, "status": "ok", "metrics": {"cate_mse": 1.0},
+                         "config_hash": shard.config_hash, "method_seed": method_seed(sc, seed, m),
+                         "record_id": record_id(shard, sc, seed, m)}) for sc, seed, m in cells[:5]]
+    (run / "records.jsonl").write_text("\n".join(lines) + "\n" + lines[0][:20])  # killed mid-write
+    one = lambda c: [(name, shard)]
+    with pytest.raises(W.AnalysisError, match="unreadable record line"):
+        W.collect({"gp": config}, [run], check_source=False, declared=one)
+    records = W.collect({"gp": config}, [run], check_source=False, declared=one,
+                        job_limit={name: shard.config_hash})
+    assert len(records) == len(cells)
+    filled = [k for k, r in records.items() if r.get("error_type") == "JobLimit"]
+    assert len(filled) == len(cells) - 5 and all(records[k]["stage"] == "job_limit" for k in filled)
+    got, unrecorded = VW.load_records([run], frozenset({shard.config_hash}))
+    assert len(got) == 5 and len(unrecorded) == len(cells) - 5
+    table = {("gp", *c): {"status": "ok", "cate_mse": "1.0", "stage": "", "error_type": ""} for c in cells[:5]}
+    table.update({k: {"status": "failed", "cate_mse": "", "stage": "job_limit", "error_type": "JobLimit"} for k in unrecorded})
+    assert VW.check_cells(table, got, unrecorded) == []
+    table[next(iter(unrecorded))]["error_type"] = "TimeoutError"
+    assert VW.check_cells(table, got, unrecorded)
+
+
+def test_data_identity_dump_and_compare(configs, tmp_path):
+    from dataclasses import replace
+
+    D = _load("check_data_identity")
+    config = replace(configs["gp"], scenarios=configs["gp"].scenarios[:2])
+    D.dump(config, 80000, tmp_path / "a.npz")
+    D.dump(config, 80000, tmp_path / "b.npz")
+    assert D.compare(tmp_path / "a.npz", [tmp_path / "b.npz"])["all_same"]
+    arrays = dict(np.load(tmp_path / "b.npz"))
+    key = next(k for k in arrays if k.endswith("|obs_train|Y"))
+    arrays[key] = arrays[key] + 1e-9
+    np.savez(tmp_path / "c.npz", **arrays)
+    report = D.compare(tmp_path / "a.npz", [tmp_path / "c.npz"])
+    assert not report["all_same"] and report["environments"]["c.npz"]["roles"]["obs_train"]["max_abs_difference"] > 1e-12

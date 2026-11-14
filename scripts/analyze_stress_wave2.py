@@ -20,11 +20,14 @@ from pathlib import Path
 
 from analyze_stress import parse
 from analyze_v1_core import ALPHA, holm, paired_t
-from analyze_v1_wave2 import IDENTITY_TOL, RCT_ONLY, collect, write_csv
+from analyze_v1_wave2 import IDENTITY_TOL, RCT_ONLY, collect, load_job_limit, write_csv
 from make_stress_wave2_configs import GROUPS, shards as declared_shards, validate
 from obs_rct_benchmark.stress_dgp import EXTRAPOLATION_DIALS
 
 REFERENCE = "rct_selected"
+# Dials that change only the OBS sample: trial rows, targets and method seeds are the same
+# at every level, so an RCT-only recipe must score identically across levels.
+OBS_ONLY_DIALS = ("hidden_modifier", "bias_complexity", "common_shift", "obs_selection", "obs_size")
 
 
 def families() -> list[dict]:
@@ -89,8 +92,18 @@ def analyze(configs: dict, records: dict, stress1: dict, output: Path) -> dict:
                 "compared": len(both), "expected": len(scenarios) * len(seeds),
                 "exact": sum(a == b for a, b in both), "max_abs_difference": worst,
                 "within_1e-9": len(both) == len(scenarios) * len(seeds) and worst is not None and worst <= IDENTITY_TOL}
+    level_mismatches = {}
+    for group, config in configs.items():
+        for m in (x for x in config.methods if x in RCT_ONLY):
+            bad = 0
+            for dial in OBS_ONLY_DIALS:
+                for rct in (128, 512):
+                    for s in seeds:
+                        vals = [mse.get((group, f"stress:{dial}@l{level}_r{rct}", s, m)) for level in range(4)]
+                        bad += any(v != vals[0] for v in vals[1:])
+            level_mismatches[f"{group}:{m}"] = bad
     (output / "identity_check.json").write_text(json.dumps(
-        {"stress1_reproduction": identity,
+        {"stress1_reproduction": identity, "rct_only_level_mismatches": level_mismatches,
          "rule": ("contrasts pair recipes fitted in the same shard. A group ran on the stress-study-1 data only if "
                   "its rct_t_ridge scores reproduce stress study 1 within 1e-9; rct_selected drift is reported "
                   "separately")}, indent=2) + "\n")
@@ -156,7 +169,9 @@ def analyze(configs: dict, records: dict, stress1: dict, output: Path) -> dict:
             for rct in (128, 512):
                 seq = [verdict[(fam["family"], dial, level, rct)] for level in range(4)]
                 readout.append({"family": fam["family"], "dial": dial, "rct": rct,
-                                **{f"level_{i}": v for i, v in enumerate(seq)}, "state": state(seq)})
+                                **{f"level_{i}": v for i, v in enumerate(seq)}, "state": state(seq),
+                                # A state read from an untested level reflects failed fits, not a loss.
+                                "untested_at": ",".join(str(i) for i in (0, 3) if seq[i] == "untested")})
     write_csv(output / "readout.csv", readout)
 
     lines = ["| Family | Kind | Conditions | Better | Worse | Unresolved | Untested | Extrapolation: better / worse |",
@@ -165,6 +180,15 @@ def analyze(configs: dict, records: dict, stress1: dict, output: Path) -> dict:
         tot = {v: f[f"other_{v}"] + f[f"extrapolation_{v}"] for v in ("better", "worse", "unresolved", "untested")}
         lines.append(f"| `{name}` | {f['kind']} | {f['size']} | {tot['better']} | {tot['worse']} | {tot['unresolved']} "
                      f"| {tot['untested']} | {f['extrapolation_better']} / {f['extrapolation_worse']} |")
+    lines += ["", "Each family pairs recipes fitted in one group's environment. Each group has its own `rct_selected`; "
+              "ratios set side by side across groups, or against stress study 1, are descriptive unless that "
+              "group's `rct_selected` reproduces stress study 1.", "",
+              "| Group | `rct_selected` equal to stress study 1 | Largest difference | `rct_t_ridge` within 1e-9 of stress study 1 |",
+              "| --- | ---: | ---: | --- |"]
+    for group in configs:
+        sel, ridge = identity[f"{group}:rct_selected"], identity[f"{group}:rct_t_ridge"]
+        lines.append(f"| `{group}` | {sel['exact']} of {sel['expected']} | {sel['max_abs_difference']} | "
+                     f"{'yes' if ridge['within_1e-9'] else 'no'} |")
     (output / "headline.md").write_text("\n".join(lines) + "\n")
 
     failures = Counter((k[0], k[3], r.get("stage"), r.get("error_type"))
@@ -186,6 +210,8 @@ def main() -> None:
     ap.add_argument("--runs", type=Path, nargs="+", required=True)
     ap.add_argument("--stress1", type=Path, required=True)
     ap.add_argument("--output", type=Path, required=True)
+    ap.add_argument("--job-limit-shards", type=Path,
+                    help="JSON list of {shard, config_hash} whose final attempt reached its job limit")
     a = ap.parse_args()
     configs = {}
     for path in a.configs:
@@ -193,7 +219,7 @@ def main() -> None:
         configs[validate(config)] = config
     if set(configs) != set(GROUPS):
         raise SystemExit("one configuration per declared group is required")
-    records = collect(configs, a.runs, declared=declared_shards)
+    records = collect(configs, a.runs, declared=declared_shards, job_limit=load_job_limit(a.job_limit_shards))
     result = analyze(configs, records, stress1_scores(a.stress1), a.output)
     print(json.dumps({k: result[k] for k in ("requested", "coverage", "families")}, indent=2)[:6000])
 

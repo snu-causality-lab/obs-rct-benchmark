@@ -103,7 +103,7 @@ def study(configs, tmp_path_factory):
         run = base / group
         run.mkdir()
         (run / "records.jsonl").write_text("\n".join(lines) + "\n")
-        (run / "run_manifest.json").write_text(json.dumps({"config": {"run": {"methods": list(config.methods)}}}))
+        (run / "run_manifest.json").write_text(json.dumps({"config_hash": config.config_hash, "config": config.payload()}))
     return records, [base / g for g in configs]
 
 
