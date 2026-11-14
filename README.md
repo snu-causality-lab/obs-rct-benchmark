@@ -8,7 +8,7 @@ It provides:
 - **One method interface and a set of methods.** Simple baselines are built in. Adapters run four published fusion methods and the `grf` causal forest from their authors' code, and one further fusion method is reimplemented here.
 - **Result packets.** They keep every fit, its seed and any failure, together with the code and environment that produced it.
 
-**Main finding so far.** The full catalog comparison covers the baselines, CorNet, DataFusionPPI and the reimplemented TSR estimator. Against a single RCT-only learner (the reference below), CorNet looks good at every budget and DataFusionPPI with the larger trial. Against all four RCT-only learners in the catalog, only CorNet has lower error in most presets, and only with the smaller trial: 24 of 31 presets with RCT 128 at either OBS size, but 13 of 31 with RCT 512. These results come from synthetic presets inspected during development. They do not show how the methods behave on real data.
+**Main finding so far.** The [v1 core study](results/v1_core/SCIENTIFIC_RESULT.md) compares each method with an RCT-only learner chosen from trial data alone, as an analyst without the true CATE could do. CorNet with raw inputs has significantly lower error in 51 of 60 conditions with a 128-row trial and higher error in none; with a 512-row trial, 37 lower and 7 higher. DataFusionPPI is higher in 39 of 60 conditions with the smaller trial and mostly unresolved with the larger one. These results come from synthetic presets inspected during development. They do not show how the methods behave on real data.
 
 This is a research alpha, version 0.3.0a6. The [technical report](docs/REPORT.md) ([PDF](https://github.com/snu-causality-lab/obs-rct-benchmark/releases/download/report-2026-10-30-r2/obsrct_benchmark_icml.pdf)) is an AI-generated research draft from October 2026. It is not peer reviewed and predates the TSR study.
 
@@ -20,14 +20,14 @@ Each method is registered as one or more *recipes*, a method with fixed settings
 
 | Method | Paper | Data used | Code | Results |
 | --- | --- | --- | --- | --- |
-| T-learner and DR-learner, each with Ridge or ExtraTrees | Standard baselines | RCT only, OBS only, or both pooled naively (T-learner); RCT only (DR-learner) | This package | Figure below |
-| RCT-only learner chosen from the four RCT-only baselines by out-of-fold error on trial data (`rct_selected`) | R-loss of Nie and Wager (2021), divided by e(1 − e) so it targets unweighted CATE error | RCT only | This package | Reference of the planned [v1 core study](docs/V1_CORE_STUDY.md); not yet run |
-| CorNet, with standardized inputs and with raw inputs (`cornet_raw`) | Hatt et al. (2022) | OBS and RCT | Authors' code at a pinned commit, cloned separately | Figure below (standardized only) |
-| DataFusionPPI | Jung and Yang (2026) | OBS and RCT | Authors' package at a pinned revision | Figure below |
+| T-learner and DR-learner, each with Ridge or ExtraTrees | Standard baselines | RCT only, OBS only, or both pooled naively (T-learner); RCT only (DR-learner) | This package | Figure below, [v1 core study](results/v1_core/SCIENTIFIC_RESULT.md) |
+| RCT-only learner chosen from the four RCT-only baselines by out-of-fold error on trial data (`rct_selected`) | R-loss of Nie and Wager (2021), divided by e(1 − e) so it targets unweighted CATE error | RCT only | This package | The reference in the figure below and the [v1 core study](results/v1_core/SCIENTIFIC_RESULT.md) |
+| CorNet, with standardized inputs and with raw inputs (`cornet_raw`) | Hatt et al. (2022) | OBS and RCT | Authors' code at a pinned commit, cloned separately | Figure below, [v1 core study](results/v1_core/SCIENTIFIC_RESULT.md) |
+| DataFusionPPI | Jung and Yang (2026) | OBS and RCT | Authors' package at a pinned revision | Figure below, [v1 core study](results/v1_core/SCIENTIFIC_RESULT.md) |
 | Integrative R-learner, linear and quadratic bases | Wu and Yang (2022) | OBS and RCT | Authors' R code at a pinned commit | [Native panel](results/native_panel/SCIENTIFIC_RESULT.md) |
 | Causal-ICM with borrowing fixed at ρ = 0.5, plus two source-restricted controls | Dimitriou et al. (2026) | OBS and RCT | Authors' code, hash-verified. The paper's selection of ρ is not implemented | [Native panel](results/native_panel/SCIENTIFIC_RESULT.md), [GP experiment](results/gp_source_pilot/SCIENTIFIC_RESULT.md) |
 | Honest causal forest | Athey, Tibshirani and Wager (2019) | RCT only | `grf` 2.6.1, pinned | [Native panel](results/native_panel/SCIENTIFIC_RESULT.md) |
-| Two-stage residual (TSR) estimator from R-Design, plus RCT-only GP and OBS-only controls | Gao et al. (2026) | OBS and RCT | **Reimplemented here.** A TabPFN v2 model fitted on OBS is the offset; a two-output Gaussian process (GP) corrects it on trial residuals. The paper's adaptive acquisition rule is not implemented | Figure below, [TSR study](results/tsr_study/SCIENTIFIC_RESULT.md) |
+| Two-stage residual (TSR) estimator from R-Design, plus RCT-only GP and OBS-only controls | Gao et al. (2026) | OBS and RCT | **Reimplemented here.** A TabPFN v2 model fitted on OBS is the offset; a two-output Gaussian process (GP) corrects it on trial residuals. The paper's adaptive acquisition rule is not implemented | [TSR study](results/tsr_study/SCIENTIFIC_RESULT.md) |
 
 Optional recipes need more than the core install. Integrative R and the causal forest need R and the pinned upstream code. Causal-ICM needs the authors' code, and TSR needs the `tsr` extra and a TabPFN v2 checkpoint, with a GPU recommended. See [native settings](docs/V03_ADAPTERS.md), [installing upstream code](#public-upstream-methods) and the [TSR packet](results/tsr_study/README.md).
 
@@ -48,38 +48,38 @@ The six papers are CorNet, Experimental Grounding, the Integrative R-learner, El
 ## Results at a glance
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="docs/figures/catalog_relative_mse_dark.svg">
-  <img alt="Heatmap of each recipe's mean CATE MSE relative to the RCT-only ExtraTrees T-learner, for all 31 catalog presets at two budgets" src="docs/figures/catalog_relative_mse_light.svg">
+  <source media="(prefers-color-scheme: dark)" srcset="docs/figures/v1_core_relative_mse_dark.svg">
+  <img alt="Heatmap of each recipe's mean CATE MSE relative to rct_selected, an RCT-only learner chosen from trial data, for all 31 presets at two budgets, with dots marking Holm-significant differences" src="docs/figures/v1_core_relative_mse_light.svg">
 </picture>
 
-The [catalog study](results/catalog_study/SCIENTIFIC_RESULT.md) ran each preset at four budgets: OBS 512 or 2,048 rows, crossed with RCT 128 or 512 training rows, 64 seeds each. Each fit is scored by CATE mean squared error (MSE) against the true CATE at 2,048 evaluation points. The figure shows the smallest and largest budgets.
+The [v1 core study](results/v1_core/SCIENTIFIC_RESULT.md) ran each preset at four budgets on fresh seeds: OBS 512 or 2,048 rows, crossed with RCT 128 or 512 training rows, 64 seeds each. Each fit is scored by CATE mean squared error (MSE) against the true CATE at 2,048 evaluation points. The figure shows the smallest and largest budgets. Its [plan](docs/V1_CORE_STUDY.md) was fixed before any of its fits.
 
 Rows M0–M11 are the structural mechanisms; M0 has no hidden confounding. Rows C01–C10 each change one component of a structural mechanism. The last nine rows are the paper designs. "Integrative R (KPS code)" is that paper's Simulation I, generated by its released code's option for Kallus, Puli and Shalit's data. DataFusionPPI is not applicable to Integrative R (multivariate), whose trial propensity depends on covariates. The [scenario descriptions](docs/COVERAGE.md) define every row.
 
-Each cell divides a recipe's mean MSE by that of the RCT-only ExtraTrees T-learner in the same preset and budget. That learner, the *reference*, has no column because its ratio is always 1. The catalog study chose it before seeing results, as one of two nonlinear RCT-only controls. It turned out to be weak at RCT 512, which makes every recipe look better in the right panel; the table therefore also counts against all four RCT-only recipes. The TSR and RCT GP columns come from the separate [TSR study](results/tsr_study/SCIENTIFIC_RESULT.md). Its reruns of the catalog's two RCT-only T-learners reproduced the catalog's published per-seed scores exactly, so both studies used the same samples.
+Each cell divides a recipe's mean MSE by that of `rct_selected` in the same preset and budget. That learner, the *reference*, chooses among the four RCT-only baselines using cross-validation on the trial's training rows only, with no OBS data and no true CATE. A dot marks a significant difference in a paired test over 64 seeds, Holm-corrected within each recipe. The table counts verdicts over all four budgets, outside the heavy-tailed M11. Transport conditions are the six presets whose evaluation population differs from the trial's.
 
-| Recipe | vs reference, OBS 512 · RCT 128 | vs reference, OBS 2,048 · RCT 512 | vs all RCT-only, OBS 512 · RCT 128 | vs all RCT-only, OBS 2,048 · RCT 512 |
-| --- | ---: | ---: | ---: | ---: |
-| TSR (reimplemented) | 7/31 | 11/31 | 2/31 | 3/31 |
-| RCT-only GP (TSR control) | 9/31 | 20/31 | 2/31 | 4/31 |
-| CorNet | 30/31 | 29/31 | 24/31 | 13/31 |
-| DataFusionPPI | 7/30† | 26/30 | 3/30† | 3/30 |
-| Naive pooled T ridge | 13/31 | 11/31 | 10/31 | 7/31 |
-| Naive pooled T trees | 12/31 | 10/31 | 10/31 | 2/31 |
-| OBS-only T ridge | 13/31 | 11/31 | 9/31 | 7/31 |
-| OBS-only T trees | 11/31 | 9/31 | 8/31 | 2/31 |
-| RCT-only T ridge | 10/31 | 29/31 | — | — |
-| RCT-only DR ridge | 9/31 | 28/31 | — | — |
-| RCT-only DR trees | 4/31 | 4/31 | — | — |
+| Recipe | Conditions | Better | Worse | Unresolved | Untested | Transport conditions: better / worse |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| CorNet, raw inputs | 120 | 88 | 7 | 25 | 0 | 17 / 0 of 24 |
+| CorNet, standardized inputs | 120 | 71 | 14 | 35 | 0 | 9 / 4 of 24 |
+| DataFusionPPI | 116 | 14 | 43 | 57 | 2 | 8 / 2 of 20 |
+| Naive pooled T ridge | 120 | 33 | 65 | 22 | 0 | 4 / 13 of 24 |
+| Naive pooled T trees | 120 | 21 | 79 | 20 | 0 | 8 / 9 of 24 |
+| OBS-only T ridge | 120 | 27 | 75 | 18 | 0 | 4 / 14 of 24 |
+| OBS-only T trees | 120 | 19 | 83 | 18 | 0 | 8 / 10 of 24 |
+| RCT-only T ridge | 60 | 26 | 6 | 28 | 0 | 7 / 1 of 12 |
+| RCT-only T trees (catalog reference) | 60 | 22 | 30 | 8 | 0 | 2 / 9 of 12 |
+| RCT-only DR ridge | 60 | 23 | 9 | 28 | 0 | 6 / 1 of 12 |
+| RCT-only DR trees | 60 | 0 | 60 | 0 | 0 | 0 / 12 of 12 |
 
-Each entry counts presets where the recipe's mean MSE is lower than the reference's, or lower than all four RCT-only recipes'. † Some seeds failed in one preset; that mean uses successful fits only. DataFusionPPI is not applicable to one preset.
+The reference is realistic rather than strong. Choosing on 128 rows is noisy, so `rct_selected` has about 1.3 times the error of the best of its four candidates in the median preset. A well-chosen fixed learner can beat it: the ExtraTrees T-learner with the smaller trial, ridge with the larger one. Against that best candidate, which needs the true CATE to pick, CorNet with raw inputs still has lower mean error in 51 of 60 conditions with the smaller trial, and 35 of 60 with the larger one. The [result](results/v1_core/SCIENTIFIC_RESULT.md) gives this comparison in full. The earlier [catalog study](results/catalog_study/SCIENTIFIC_RESULT.md) used a fixed ExtraTrees reference; its [overview figure](docs/figures/catalog_relative_mse_light.svg) and [counts](docs/figures/catalog_relative_mse_counts.md) remain available.
 
-- **The reference is weak at RCT 512.** An RCT-only ridge T-learner also beats it in 29 of 31 presets. Beating the reference alone is therefore not evidence that OBS helped.
-- **Against every RCT-only recipe, fusion gains are smaller at the larger budget.** CorNet is lower in 24 of 31 presets at OBS 512 · RCT 128, and in 13 of 31 at OBS 2,048 · RCT 512. DataFusionPPI is lower in 3 of 30 at both.
-- **R-Design's estimator alone did not help.** The TSR study tested TSR against its matched RCT-only GP in 120 conditions: 30 presets × 4 budgets, leaving out the heavy-tailed M11. TSR was significantly better in 4, all in the one preset whose target lies outside the trial's support, and significantly worse in 49.
-- **OBS-only and naive pooling help where OBS bias is small and hurt where hidden confounding is strong.** They are blue in several paired and paper presets. They are red in most structural mechanisms, for example M2–M6 and M10.
+- **CorNet does better without the benchmark's input standardization.** Its mean error is lower with raw inputs in 95 of 120 conditions. The catalog ran only the standardized form.
+- **CorNet falls behind in a few designs with the larger trial.** With raw inputs it is significantly worse than the reference in seven conditions, all at RCT 512: its own paper's design, M8 and power likelihood (paper text) at both OBS sizes, and C06 at OBS 512.
+- **OBS-only and naive pooling help where OBS bias is small and hurt where hidden confounding is strong.** They are blue in M0 and several paired and paper presets. They are red in most structural mechanisms, for example M2–M6 and M10.
+- **R-Design's estimator alone did not help.** The separate TSR study tested TSR against its matched RCT-only GP in 120 conditions: 30 presets × 4 budgets, leaving out the heavy-tailed M11. TSR was significantly better in 4, all in the one preset whose target lies outside the trial's support, and significantly worse in 49. TSR, Integrative R, Causal-ICM and the causal forest join the v1 core grid in later waves.
 
-The catalog means are descriptive. The catalog study prespecified Holm-adjusted tests but withheld every decision, because four contrasts lack complete pairs. "Lower than all four RCT-only recipes" is a stricter descriptive bar, not a procedure: choosing the best RCT-only recipe requires evaluation truth. [`scripts/render_overview.py`](scripts/render_overview.py) regenerates the figure and table from the published scores.
+Beating `rct_selected` is competitiveness at equal trial labels, not evidence that OBS data caused the gain. [`scripts/render_v1_core.py`](scripts/render_v1_core.py) regenerates the figure and table from the published packet.
 
 ## Quick start
 
@@ -116,15 +116,14 @@ Each study has its own frozen code version, target, budgets and inference rules.
 
 | Study | Folder | Question |
 | --- | --- | --- |
-| [Full catalog comparison](results/catalog_study/SCIENTIFIC_RESULT.md) | `results/catalog_study` | Ten recipes on all 31 presets at four budgets; the figure above |
+| [v1 core study](results/v1_core/SCIENTIFIC_RESULT.md) | `results/v1_core` | Every catalog method on fresh seeds against an RCT-only reference chosen from trial data; the figure above |
+| [Full catalog comparison](results/catalog_study/SCIENTIFIC_RESULT.md) | `results/catalog_study` | Ten recipes on all 31 presets at four budgets, against a fixed ExtraTrees reference |
 | [TSR static study](results/tsr_study/SCIENTIFIC_RESULT.md) | `results/tsr_study` | Does R-Design's estimator help without its acquisition rule? |
 | [Native panel](results/native_panel/SCIENTIFIC_RESULT.md) | `results/native_panel` | Authors' code at default settings, including Integrative R, Causal-ICM and the causal forest, on six mechanisms at two trial budgets |
 | [Controlled GP experiment](results/gp_source_pilot/SCIENTIFIC_RESULT.md) | `results/gp_source_pilot` | Does OBS help one fixed GP as OBS bias grows? |
 | [Matched-M2 comparison](results/reference_study/SCIENTIFIC_RESULT.md) | `results/reference_study` | CorNet and DataFusionPPI against nonlinear RCT-only controls on four matched variants of M2 |
 | [Recruitment comparison](results/adaptive_reference/SCIENTIFIC_RESULT.md) | `results/adaptive_reference` | Does choosing which trial subjects to recruit help, when every acquired outcome is charged? |
 | [Paper-reported values](results/reported_values/README.md) | `results/reported_values` | Published CorNet and Integrative R results against reruns of the authors' code and the benchmark at the papers' settings |
-
-**Planned, not yet run:** the [v1 core study](docs/V1_CORE_STUDY.md) reruns the catalog methods on fresh seeds against an RCT-only reference chosen from trial data alone, with CorNet in both input forms. Its plan was fixed before any of its fits.
 
 The studies distinguish three claims: improving an OBS starting prediction, benefiting from OBS within one learner, and outperforming another available procedure. In the controlled GP experiment, which fixes one Causal-ICM GP and varies how biased the OBS sample is, OBS lowers mean trial-CATE MSE at discrepancy levels 0 and 1 and raises it at level 2, relative to the matched RCT-only GP, at both trial budgets. In the native panel's M2 condition at RCT 128, adding OBS lowers the GP's mean MSE from 0.53675 to 0.35128, while the RCT-only causal forest has 0.18386. These are descriptive comparisons; the native panel withheld all its joint decisions.
 

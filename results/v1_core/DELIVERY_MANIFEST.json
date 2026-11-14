@@ -1,0 +1,29 @@
+{
+  "study": "docs/V1_CORE_STUDY.md",
+  "freeze_commit": "a10fe6db4abe3535f00b46da2e5d61566b18cbfc",
+  "code_archive": {
+    "file": "code/a10fe6d.tar",
+    "sha256": "9f2217fba67b1311f4ca333f2c7af19c08336c25f437ad3994b8ad5d07a6f278"
+  },
+  "gsds_run": "/shared/s2/lab05/sanghack/work/obsrct-v1-core-20261114-r01",
+  "jobs": {
+    "prepare": 819599,
+    "main_array": 819600,
+    "analysis": 819601,
+    "arithmetic_rerun": 819966
+  },
+  "environment": "obsrct-public-upgrade-20261025-r01/environment-v1 (reused read-only); freeze in evidence/environment-freeze-a10fe6d.txt",
+  "files_sha256_as_exported": {
+    "analysis.json": "704bf0983660c3a0367008f4621dc5a515d96373fe74ae25a64f00d4a574c135",
+    "condition_scores.csv": "9262ac197db2fe369a305dd40c6785408c7ae7c80cb85ddee90e3cedc2c62c3b",
+    "descriptive_contrasts.csv": "b750fe1c1eb0362d6cf5d788e047e98ebd0001148cd5685e1c45e1691f9f819d",
+    "headline.md": "0a855a31ebbb501a982937b9e3c27d296e46013880ff0287cb2875f09cc045fc",
+    "identity_check.json": "26beecb1ec67aa9b989680b91dfed41f45983d5b6e6c0974db7ce5dd40cea18d",
+    "primary_contrasts.csv": "968f573d14ea5bbe569603c7b08aa91759d3bed53d3a76c62d591931ed5a612a",
+    "replicate_scores.csv": "4733391f32de097a9ca75f2ba00a45484de7f7ed3c342b72afbc205f3d21a361",
+    "selection.csv": "245c0995605eca311c1bb198831fbcdc03e96fac241afd0ab0d61c0a457f8df5",
+    "checks/arithmetic.json": "08eeaf62f0870d6b2de3b5b549b2c924448465ef478136faeec358c91c3a9783",
+    "checks/reproduce.json": "503760c491cd4740b369797d81d7627bf0f04e506f076aa912db82f7cb179d14",
+    "checks/selector.json": "3cc00f90e17893a06e7c364042f3ec30b2a3322d8242e2726a6e5fa4910e4c47"
+  }
+}

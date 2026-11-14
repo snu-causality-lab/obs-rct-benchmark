@@ -1,0 +1,101 @@
+{
+  "check": "arithmetic",
+  "families": {
+    "cornet_official": {
+      "size": 120,
+      "other_better": 62,
+      "other_unresolved": 24,
+      "other_worse": 10,
+      "transport_better": 9,
+      "transport_unresolved": 11,
+      "transport_worse": 4
+    },
+    "cornet_raw": {
+      "size": 120,
+      "other_better": 71,
+      "other_unresolved": 18,
+      "other_worse": 7,
+      "transport_better": 17,
+      "transport_unresolved": 7
+    },
+    "datafusionppi": {
+      "size": 116,
+      "other_worse": 41,
+      "other_unresolved": 49,
+      "transport_worse": 2,
+      "transport_unresolved": 8,
+      "other_better": 6,
+      "transport_untested": 2,
+      "transport_better": 8
+    },
+    "naive_pooled_t_extra_trees": {
+      "size": 120,
+      "other_worse": 70,
+      "other_unresolved": 13,
+      "other_better": 13,
+      "transport_better": 8,
+      "transport_unresolved": 7,
+      "transport_worse": 9
+    },
+    "naive_pooled_t_ridge": {
+      "size": 120,
+      "other_worse": 52,
+      "other_unresolved": 15,
+      "other_better": 29,
+      "transport_better": 4,
+      "transport_unresolved": 7,
+      "transport_worse": 13
+    },
+    "obs_t_extra_trees": {
+      "size": 120,
+      "other_worse": 73,
+      "other_unresolved": 12,
+      "other_better": 11,
+      "transport_better": 8,
+      "transport_unresolved": 6,
+      "transport_worse": 10
+    },
+    "obs_t_ridge": {
+      "size": 120,
+      "other_worse": 61,
+      "other_unresolved": 12,
+      "other_better": 23,
+      "transport_better": 4,
+      "transport_unresolved": 6,
+      "transport_worse": 14
+    },
+    "rct_dr_extra_trees": {
+      "size": 60,
+      "other_worse": 48,
+      "transport_worse": 12
+    },
+    "rct_dr_ridge": {
+      "size": 60,
+      "other_unresolved": 23,
+      "other_better": 17,
+      "other_worse": 8,
+      "transport_unresolved": 5,
+      "transport_better": 6,
+      "transport_worse": 1
+    },
+    "rct_t_extra_trees": {
+      "size": 60,
+      "other_better": 20,
+      "other_worse": 21,
+      "other_unresolved": 7,
+      "transport_better": 2,
+      "transport_worse": 9,
+      "transport_unresolved": 1
+    },
+    "rct_t_ridge": {
+      "size": 60,
+      "other_unresolved": 24,
+      "other_better": 19,
+      "other_worse": 5,
+      "transport_unresolved": 4,
+      "transport_better": 7,
+      "transport_worse": 1
+    }
+  },
+  "mismatches": []
+}

@@ -1,0 +1,4 @@
+freeze commit a10fe6db4abe3535f00b46da2e5d61566b18cbfc (git archive -> code/a10fe6d.tar), recorded before the first fit
+prepare=819599 main=819600 analysis=819601 (CODE_ID=a10fe6d, outputs-r01, analysis-r01)
+analysis 819601: analyze/selector/reproduce exit 0; arithmetic exit 1 (job script omitted --config/--runs). arithmetic rerun=819966
+main 819600: 128/128 COMPLETED; 94,976 recorded, 94,962 ok, 14 DataFusionPPI failures (Elastic OBS512), 0 missing. arithmetic rerun 819966: 0 mismatches. selector 31/31, reproduce 371 cells x2, identity and ridge-refit checks pass.

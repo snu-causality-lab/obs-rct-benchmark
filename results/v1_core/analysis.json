@@ -1,0 +1,233 @@
+{
+  "protocol": "docs/V1_CORE_STUDY.md",
+  "requested": 94976,
+  "coverage": {
+    "ok": 94962,
+    "failed": 14
+  },
+  "failures": [
+    {
+      "scenario": "paper:elastic_integrative_gen_data_overlap@o512_r128",
+      "seed": 70006,
+      "method": "datafusionppi",
+      "stage": "method_or_metric",
+      "error_type": "RuntimeError"
+    },
+    {
+      "scenario": "paper:elastic_integrative_gen_data_overlap@o512_r128",
+      "seed": 70011,
+      "method": "datafusionppi",
+      "stage": "method_or_metric",
+      "error_type": "RuntimeError"
+    },
+    {
+      "scenario": "paper:elastic_integrative_gen_data_overlap@o512_r128",
+      "seed": 70023,
+      "method": "datafusionppi",
+      "stage": "method_or_metric",
+      "error_type": "RuntimeError"
+    },
+    {
+      "scenario": "paper:elastic_integrative_gen_data_overlap@o512_r128",
+      "seed": 70033,
+      "method": "datafusionppi",
+      "stage": "method_or_metric",
+      "error_type": "RuntimeError"
+    },
+    {
+      "scenario": "paper:elastic_integrative_gen_data_overlap@o512_r128",
+      "seed": 70044,
+      "method": "datafusionppi",
+      "stage": "method_or_metric",
+      "error_type": "RuntimeError"
+    },
+    {
+      "scenario": "paper:elastic_integrative_gen_data_overlap@o512_r512",
+      "seed": 70007,
+      "method": "datafusionppi",
+      "stage": "method_or_metric",
+      "error_type": "RuntimeError"
+    },
+    {
+      "scenario": "paper:elastic_integrative_gen_data_overlap@o512_r512",
+      "seed": 70009,
+      "method": "datafusionppi",
+      "stage": "method_or_metric",
+      "error_type": "RuntimeError"
+    },
+    {
+      "scenario": "paper:elastic_integrative_gen_data_overlap@o512_r512",
+      "seed": 70020,
+      "method": "datafusionppi",
+      "stage": "method_or_metric",
+      "error_type": "RuntimeError"
+    },
+    {
+      "scenario": "paper:elastic_integrative_gen_data_overlap@o512_r512",
+      "seed": 70033,
+      "method": "datafusionppi",
+      "stage": "method_or_metric",
+      "error_type": "RuntimeError"
+    },
+    {
+      "scenario": "paper:elastic_integrative_gen_data_overlap@o512_r512",
+      "seed": 70044,
+      "method": "datafusionppi",
+      "stage": "method_or_metric",
+      "error_type": "RuntimeError"
+    },
+    {
+      "scenario": "paper:elastic_integrative_gen_data_overlap@o512_r512",
+      "seed": 70046,
+      "method": "datafusionppi",
+      "stage": "method_or_metric",
+      "error_type": "RuntimeError"
+    },
+    {
+      "scenario": "paper:elastic_integrative_gen_data_overlap@o512_r512",
+      "seed": 70050,
+      "method": "datafusionppi",
+      "stage": "method_or_metric",
+      "error_type": "RuntimeError"
+    },
+    {
+      "scenario": "paper:elastic_integrative_gen_data_overlap@o512_r512",
+      "seed": 70053,
+      "method": "datafusionppi",
+      "stage": "method_or_metric",
+      "error_type": "RuntimeError"
+    },
+    {
+      "scenario": "paper:elastic_integrative_gen_data_overlap@o512_r512",
+      "seed": 70063,
+      "method": "datafusionppi",
+      "stage": "method_or_metric",
+      "error_type": "RuntimeError"
+    }
+  ],
+  "identity_passed": true,
+  "ridge_refit_mismatches": 0,
+  "families": {
+    "rct_t_ridge": {
+      "size": 60,
+      "other_better": 19,
+      "other_worse": 5,
+      "other_unresolved": 24,
+      "other_untested": 0,
+      "transport_better": 7,
+      "transport_worse": 1,
+      "transport_unresolved": 4,
+      "transport_untested": 0
+    },
+    "obs_t_ridge": {
+      "size": 120,
+      "other_better": 23,
+      "other_worse": 61,
+      "other_unresolved": 12,
+      "other_untested": 0,
+      "transport_better": 4,
+      "transport_worse": 14,
+      "transport_unresolved": 6,
+      "transport_untested": 0
+    },
+    "naive_pooled_t_ridge": {
+      "size": 120,
+      "other_better": 29,
+      "other_worse": 52,
+      "other_unresolved": 15,
+      "other_untested": 0,
+      "transport_better": 4,
+      "transport_worse": 13,
+      "transport_unresolved": 7,
+      "transport_untested": 0
+    },
+    "rct_t_extra_trees": {
+      "size": 60,
+      "other_better": 20,
+      "other_worse": 21,
+      "other_unresolved": 7,
+      "other_untested": 0,
+      "transport_better": 2,
+      "transport_worse": 9,
+      "transport_unresolved": 1,
+      "transport_untested": 0
+    },
+    "obs_t_extra_trees": {
+      "size": 120,
+      "other_better": 11,
+      "other_worse": 73,
+      "other_unresolved": 12,
+      "other_untested": 0,
+      "transport_better": 8,
+      "transport_worse": 10,
+      "transport_unresolved": 6,
+      "transport_untested": 0
+    },
+    "naive_pooled_t_extra_trees": {
+      "size": 120,
+      "other_better": 13,
+      "other_worse": 70,
+      "other_unresolved": 13,
+      "other_untested": 0,
+      "transport_better": 8,
+      "transport_worse": 9,
+      "transport_unresolved": 7,
+      "transport_untested": 0
+    },
+    "rct_dr_ridge": {
+      "size": 60,
+      "other_better": 17,
+      "other_worse": 8,
+      "other_unresolved": 23,
+      "other_untested": 0,
+      "transport_better": 6,
+      "transport_worse": 1,
+      "transport_unresolved": 5,
+      "transport_untested": 0
+    },
+    "rct_dr_extra_trees": {
+      "size": 60,
+      "other_better": 0,
+      "other_worse": 48,
+      "other_unresolved": 0,
+      "other_untested": 0,
+      "transport_better": 0,
+      "transport_worse": 12,
+      "transport_unresolved": 0,
+      "transport_untested": 0
+    },
+    "cornet_official": {
+      "size": 120,
+      "other_better": 62,
+      "other_worse": 10,
+      "other_unresolved": 24,
+      "other_untested": 0,
+      "transport_better": 9,
+      "transport_worse": 4,
+      "transport_unresolved": 11,
+      "transport_untested": 0
+    },
+    "cornet_raw": {
+      "size": 120,
+      "other_better": 71,
+      "other_worse": 7,
+      "other_unresolved": 18,
+      "other_untested": 0,
+      "transport_better": 17,
+      "transport_worse": 0,
+      "transport_unresolved": 7,
+      "transport_untested": 0
+    },
+    "datafusionppi": {
+      "size": 116,
+      "other_better": 6,
+      "other_worse": 41,
+      "other_unresolved": 49,
+      "other_untested": 0,
+      "transport_better": 8,
+      "transport_worse": 2,
+      "transport_unresolved": 8,
+      "transport_untested": 2
+    }
+  }
+}

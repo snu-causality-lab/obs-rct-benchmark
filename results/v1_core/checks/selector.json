@@ -1,0 +1,877 @@
+{
+  "check": "selector",
+  "seed": 70000,
+  "cases": 31,
+  "mismatches": [],
+  "tolerance": 1e-12,
+  "details": [
+    {
+      "scenario": "structural:M0@o512_r128",
+      "recorded": {
+        "folds": 5,
+        "max_weight": 4.0,
+        "scores": {
+          "rct_dr_extra_trees": 13.69650860290966,
+          "rct_dr_ridge": 14.988259224925988,
+          "rct_t_extra_trees": 12.987196358736169,
+          "rct_t_ridge": 14.445781557696119
+        },
+        "selected": "rct_t_extra_trees",
+        "selector": "known_propensity_oof_v1",
+        "unavailable": {}
+      },
+      "recomputed": {
+        "scores": {
+          "rct_dr_extra_trees": 13.69650860290966,
+          "rct_dr_ridge": 14.988259224925988,
+          "rct_t_extra_trees": 12.987196358736169,
+          "rct_t_ridge": 14.445781557696119
+        },
+        "selected": "rct_t_extra_trees",
+        "unavailable": [],
+        "max_weight": 4.0
+      },
+      "match": true
+    },
+    {
+      "scenario": "structural:M1@o512_r128",
+      "recorded": {
+        "folds": 5,
+        "max_weight": 4.0,
+        "scores": {
+          "rct_dr_extra_trees": 10.713502416803351,
+          "rct_dr_ridge": 10.991191683432163,
+          "rct_t_extra_trees": 10.613962292564207,
+          "rct_t_ridge": 11.108027461161235
+        },
+        "selected": "rct_t_extra_trees",
+        "selector": "known_propensity_oof_v1",
+        "unavailable": {}
+      },
+      "recomputed": {
+        "scores": {
+          "rct_dr_extra_trees": 10.713502416803351,
+          "rct_dr_ridge": 10.991191683432163,
+          "rct_t_extra_trees": 10.613962292564207,
+          "rct_t_ridge": 11.108027461161235
+        },
+        "selected": "rct_t_extra_trees",
+        "unavailable": [],
+        "max_weight": 4.0
+      },
+      "match": true
+    },
+    {
+      "scenario": "structural:M2@o512_r128",
+      "recorded": {
+        "folds": 5,
+        "max_weight": 4.0,
+        "scores": {
+          "rct_dr_extra_trees": 12.042477712075252,
+          "rct_dr_ridge": 11.75794034245574,
+          "rct_t_extra_trees": 11.998238420882583,
+          "rct_t_ridge": 11.77692959591482
+        },
+        "selected": "rct_dr_ridge",
+        "selector": "known_propensity_oof_v1",
+        "unavailable": {}
+      },
+      "recomputed": {
+        "scores": {
+          "rct_dr_extra_trees": 12.042477712075252,
+          "rct_dr_ridge": 11.75794034245574,
+          "rct_t_extra_trees": 11.998238420882583,
+          "rct_t_ridge": 11.77692959591482
+        },
+        "selected": "rct_dr_ridge",
+        "unavailable": [],
+        "max_weight": 4.0
+      },
+      "match": true
+    },
+    {
+      "scenario": "structural:M3@o512_r128",
+      "recorded": {
+        "folds": 5,
+        "max_weight": 4.0,
+        "scores": {
+          "rct_dr_extra_trees": 9.897415550791512,
+          "rct_dr_ridge": 9.973902688144884,
+          "rct_t_extra_trees": 9.537208249613318,
+          "rct_t_ridge": 10.003646495118357
+        },
+        "selected": "rct_t_extra_trees",
+        "selector": "known_propensity_oof_v1",
+        "unavailable": {}
+      },
+      "recomputed": {
+        "scores": {
+          "rct_dr_extra_trees": 9.897415550791512,
+          "rct_dr_ridge": 9.973902688144884,
+          "rct_t_extra_trees": 9.537208249613318,
+          "rct_t_ridge": 10.003646495118357
+        },
+        "selected": "rct_t_extra_trees",
+        "unavailable": [],
+        "max_weight": 4.0
+      },
+      "match": true
+    },
+    {
+      "scenario": "structural:M4@o512_r128",
+      "recorded": {
+        "folds": 5,
+        "max_weight": 4.0,
+        "scores": {
+          "rct_dr_extra_trees": 12.797540831537361,
+          "rct_dr_ridge": 13.131318750413241,
+          "rct_t_extra_trees": 12.55753796362073,
+          "rct_t_ridge": 12.97435842648241
+        },
+        "selected": "rct_t_extra_trees",
+        "selector": "known_propensity_oof_v1",
+        "unavailable": {}
+      },
+      "recomputed": {
+        "scores": {
+          "rct_dr_extra_trees": 12.797540831537361,
+          "rct_dr_ridge": 13.131318750413241,
+          "rct_t_extra_trees": 12.55753796362073,
+          "rct_t_ridge": 12.97435842648241
+        },
+        "selected": "rct_t_extra_trees",
+        "unavailable": [],
+        "max_weight": 4.0
+      },
+      "match": true
+    },
+    {
+      "scenario": "structural:M5@o512_r128",
+      "recorded": {
+        "folds": 5,
+        "max_weight": 4.0,
+        "scores": {
+          "rct_dr_extra_trees": 13.844267857002817,
+          "rct_dr_ridge": 14.458217212460813,
+          "rct_t_extra_trees": 13.114663909073489,
+          "rct_t_ridge": 14.346348982860704
+        },
+        "selected": "rct_t_extra_trees",
+        "selector": "known_propensity_oof_v1",
+        "unavailable": {}
+      },
+      "recomputed": {
+        "scores": {
+          "rct_dr_extra_trees": 13.844267857002817,
+          "rct_dr_ridge": 14.458217212460813,
+          "rct_t_extra_trees": 13.114663909073489,
+          "rct_t_ridge": 14.346348982860704
+        },
+        "selected": "rct_t_extra_trees",
+        "unavailable": [],
+        "max_weight": 4.0
+      },
+      "match": true
+    },
+    {
+      "scenario": "structural:M6@o512_r128",
+      "recorded": {
+        "folds": 5,
+        "max_weight": 4.0,
+        "scores": {
+          "rct_dr_extra_trees": 11.664884715012215,
+          "rct_dr_ridge": 11.41545021379076,
+          "rct_t_extra_trees": 11.272070456200463,
+          "rct_t_ridge": 11.44071990532136
+        },
+        "selected": "rct_t_extra_trees",
+        "selector": "known_propensity_oof_v1",
+        "unavailable": {}
+      },
+      "recomputed": {
+        "scores": {
+          "rct_dr_extra_trees": 11.664884715012215,
+          "rct_dr_ridge": 11.41545021379076,
+          "rct_t_extra_trees": 11.272070456200463,
+          "rct_t_ridge": 11.44071990532136
+        },
+        "selected": "rct_t_extra_trees",
+        "unavailable": [],
+        "max_weight": 4.0
+      },
+      "match": true
+    },
+    {
+      "scenario": "structural:M7@o512_r128",
+      "recorded": {
+        "folds": 5,
+        "max_weight": 4.0,
+        "scores": {
+          "rct_dr_extra_trees": 9.35478771285749,
+          "rct_dr_ridge": 9.061214532864671,
+          "rct_t_extra_trees": 9.016460284754643,
+          "rct_t_ridge": 8.941986402407093
+        },
+        "selected": "rct_t_ridge",
+        "selector": "known_propensity_oof_v1",
+        "unavailable": {}
+      },
+      "recomputed": {
+        "scores": {
+          "rct_dr_extra_trees": 9.35478771285749,
+          "rct_dr_ridge": 9.061214532864671,
+          "rct_t_extra_trees": 9.016460284754643,
+          "rct_t_ridge": 8.941986402407093
+        },
+        "selected": "rct_t_ridge",
+        "unavailable": [],
+        "max_weight": 4.0
+      },
+      "match": true
+    },
+    {
+      "scenario": "structural:M8@o512_r128",
+      "recorded": {
+        "folds": 5,
+        "max_weight": 4.0,
+        "scores": {
+          "rct_dr_extra_trees": 9.992772007084955,
+          "rct_dr_ridge": 10.240591156985484,
+          "rct_t_extra_trees": 9.504524882368244,
+          "rct_t_ridge": 10.172598555601505
+        },
+        "selected": "rct_t_extra_trees",
+        "selector": "known_propensity_oof_v1",
+        "unavailable": {}
+      },
+      "recomputed": {
+        "scores": {
+          "rct_dr_extra_trees": 9.992772007084955,
+          "rct_dr_ridge": 10.240591156985484,
+          "rct_t_extra_trees": 9.504524882368244,
+          "rct_t_ridge": 10.172598555601505
+        },
+        "selected": "rct_t_extra_trees",
+        "unavailable": [],
+        "max_weight": 4.0
+      },
+      "match": true
+    },
+    {
+      "scenario": "structural:M9@o512_r128",
+      "recorded": {
+        "folds": 5,
+        "max_weight": 4.0,
+        "scores": {
+          "rct_dr_extra_trees": 6.750407399132352,
+          "rct_dr_ridge": 7.035106571671708,
+          "rct_t_extra_trees": 6.524576767566851,
+          "rct_t_ridge": 7.196249118836103
+        },
+        "selected": "rct_t_extra_trees",
+        "selector": "known_propensity_oof_v1",
+        "unavailable": {}
+      },
+      "recomputed": {
+        "scores": {
+          "rct_dr_extra_trees": 6.750407399132352,
+          "rct_dr_ridge": 7.035106571671708,
+          "rct_t_extra_trees": 6.524576767566851,
+          "rct_t_ridge": 7.196249118836103
+        },
+        "selected": "rct_t_extra_trees",
+        "unavailable": [],
+        "max_weight": 4.0
+      },
+      "match": true
+    },
+    {
+      "scenario": "structural:M10@o512_r128",
+      "recorded": {
+        "folds": 5,
+        "max_weight": 4.0,
+        "scores": {
+          "rct_dr_extra_trees": 9.907762921927382,
+          "rct_dr_ridge": 9.872175947303782,
+          "rct_t_extra_trees": 9.636047993586594,
+          "rct_t_ridge": 9.82693086682539
+        },
+        "selected": "rct_t_extra_trees",
+        "selector": "known_propensity_oof_v1",
+        "unavailable": {}
+      },
+      "recomputed": {
+        "scores": {
+          "rct_dr_extra_trees": 9.907762921927382,
+          "rct_dr_ridge": 9.872175947303782,
+          "rct_t_extra_trees": 9.636047993586594,
+          "rct_t_ridge": 9.82693086682539
+        },
+        "selected": "rct_t_extra_trees",
+        "unavailable": [],
+        "max_weight": 4.0
+      },
+      "match": true
+    },
+    {
+      "scenario": "structural:M11@o512_r128",
+      "recorded": {
+        "folds": 5,
+        "max_weight": 4.0,
+        "scores": {
+          "rct_dr_extra_trees": 35.821472155696924,
+          "rct_dr_ridge": 38.22773621163961,
+          "rct_t_extra_trees": 35.48155292414918,
+          "rct_t_ridge": 37.51220971732243
+        },
+        "selected": "rct_t_extra_trees",
+        "selector": "known_propensity_oof_v1",
+        "unavailable": {}
+      },
+      "recomputed": {
+        "scores": {
+          "rct_dr_extra_trees": 35.821472155696924,
+          "rct_dr_ridge": 38.22773621163961,
+          "rct_t_extra_trees": 35.48155292414918,
+          "rct_t_ridge": 37.51220971732243
+        },
+        "selected": "rct_t_extra_trees",
+        "unavailable": [],
+        "max_weight": 4.0
+      },
+      "match": true
+    },
+    {
+      "scenario": "addendum:C01@o512_r128",
+      "recorded": {
+        "folds": 5,
+        "max_weight": 4.0,
+        "scores": {
+          "rct_dr_extra_trees": 14.94232737452828,
+          "rct_dr_ridge": 15.307415074429539,
+          "rct_t_extra_trees": 14.71222933586808,
+          "rct_t_ridge": 15.251932474108477
+        },
+        "selected": "rct_t_extra_trees",
+        "selector": "known_propensity_oof_v1",
+        "unavailable": {}
+      },
+      "recomputed": {
+        "scores": {
+          "rct_dr_extra_trees": 14.94232737452828,
+          "rct_dr_ridge": 15.307415074429539,
+          "rct_t_extra_trees": 14.71222933586808,
+          "rct_t_ridge": 15.251932474108477
+        },
+        "selected": "rct_t_extra_trees",
+        "unavailable": [],
+        "max_weight": 4.0
+      },
+      "match": true
+    },
+    {
+      "scenario": "addendum:C02@o512_r128",
+      "recorded": {
+        "folds": 5,
+        "max_weight": 4.0,
+        "scores": {
+          "rct_dr_extra_trees": 13.36719176834572,
+          "rct_dr_ridge": 13.59783121973597,
+          "rct_t_extra_trees": 13.03219058523552,
+          "rct_t_ridge": 13.189926359985279
+        },
+        "selected": "rct_t_extra_trees",
+        "selector": "known_propensity_oof_v1",
+        "unavailable": {}
+      },
+      "recomputed": {
+        "scores": {
+          "rct_dr_extra_trees": 13.36719176834572,
+          "rct_dr_ridge": 13.59783121973597,
+          "rct_t_extra_trees": 13.03219058523552,
+          "rct_t_ridge": 13.189926359985279
+        },
+        "selected": "rct_t_extra_trees",
+        "unavailable": [],
+        "max_weight": 4.0
+      },
+      "match": true
+    },
+    {
+      "scenario": "addendum:C03@o512_r128",
+      "recorded": {
+        "folds": 5,
+        "max_weight": 4.0,
+        "scores": {
+          "rct_dr_extra_trees": 18.175623327334172,
+          "rct_dr_ridge": 19.30489354060508,
+          "rct_t_extra_trees": 18.53333334625976,
+          "rct_t_ridge": 19.07237255839778
+        },
+        "selected": "rct_dr_extra_trees",
+        "selector": "known_propensity_oof_v1",
+        "unavailable": {}
+      },
+      "recomputed": {
+        "scores": {
+          "rct_dr_extra_trees": 18.175623327334172,
+          "rct_dr_ridge": 19.30489354060508,
+          "rct_t_extra_trees": 18.53333334625976,
+          "rct_t_ridge": 19.07237255839778
+        },
+        "selected": "rct_dr_extra_trees",
+        "unavailable": [],
+        "max_weight": 4.0
+      },
+      "match": true
+    },
+    {
+      "scenario": "addendum:C04@o512_r128",
+      "recorded": {
+        "folds": 5,
+        "max_weight": 4.0,
+        "scores": {
+          "rct_dr_extra_trees": 13.689451253975136,
+          "rct_dr_ridge": 14.050014003374768,
+          "rct_t_extra_trees": 13.644503154308248,
+          "rct_t_ridge": 13.752407913755048
+        },
+        "selected": "rct_t_extra_trees",
+        "selector": "known_propensity_oof_v1",
+        "unavailable": {}
+      },
+      "recomputed": {
+        "scores": {
+          "rct_dr_extra_trees": 13.689451253975136,
+          "rct_dr_ridge": 14.050014003374768,
+          "rct_t_extra_trees": 13.644503154308248,
+          "rct_t_ridge": 13.752407913755048
+        },
+        "selected": "rct_t_extra_trees",
+        "unavailable": [],
+        "max_weight": 4.0
+      },
+      "match": true
+    },
+    {
+      "scenario": "addendum:C05@o512_r128",
+      "recorded": {
+        "folds": 5,
+        "max_weight": 4.0,
+        "scores": {
+          "rct_dr_extra_trees": 13.149044193731246,
+          "rct_dr_ridge": 12.914039484665231,
+          "rct_t_extra_trees": 12.892563826883633,
+          "rct_t_ridge": 12.742262395242722
+        },
+        "selected": "rct_t_ridge",
+        "selector": "known_propensity_oof_v1",
+        "unavailable": {}
+      },
+      "recomputed": {
+        "scores": {
+          "rct_dr_extra_trees": 13.149044193731246,
+          "rct_dr_ridge": 12.914039484665231,
+          "rct_t_extra_trees": 12.892563826883633,
+          "rct_t_ridge": 12.742262395242722
+        },
+        "selected": "rct_t_ridge",
+        "unavailable": [],
+        "max_weight": 4.0
+      },
+      "match": true
+    },
+    {
+      "scenario": "addendum:C06@o512_r128",
+      "recorded": {
+        "folds": 5,
+        "max_weight": 4.0,
+        "scores": {
+          "rct_dr_extra_trees": 14.34597552403684,
+          "rct_dr_ridge": 14.12191829130783,
+          "rct_t_extra_trees": 14.05327611188888,
+          "rct_t_ridge": 14.173600984176211
+        },
+        "selected": "rct_t_extra_trees",
+        "selector": "known_propensity_oof_v1",
+        "unavailable": {}
+      },
+      "recomputed": {
+        "scores": {
+          "rct_dr_extra_trees": 14.34597552403684,
+          "rct_dr_ridge": 14.12191829130783,
+          "rct_t_extra_trees": 14.05327611188888,
+          "rct_t_ridge": 14.173600984176211
+        },
+        "selected": "rct_t_extra_trees",
+        "unavailable": [],
+        "max_weight": 4.0
+      },
+      "match": true
+    },
+    {
+      "scenario": "addendum:C07@o512_r128",
+      "recorded": {
+        "folds": 5,
+        "max_weight": 4.0,
+        "scores": {
+          "rct_dr_extra_trees": 8.385607759102568,
+          "rct_dr_ridge": 8.469210421592901,
+          "rct_t_extra_trees": 8.205939024084596,
+          "rct_t_ridge": 8.499334799361982
+        },
+        "selected": "rct_t_extra_trees",
+        "selector": "known_propensity_oof_v1",
+        "unavailable": {}
+      },
+      "recomputed": {
+        "scores": {
+          "rct_dr_extra_trees": 8.385607759102568,
+          "rct_dr_ridge": 8.469210421592901,
+          "rct_t_extra_trees": 8.205939024084596,
+          "rct_t_ridge": 8.499334799361982
+        },
+        "selected": "rct_t_extra_trees",
+        "unavailable": [],
+        "max_weight": 4.0
+      },
+      "match": true
+    },
+    {
+      "scenario": "addendum:C08@o512_r128",
+      "recorded": {
+        "folds": 5,
+        "max_weight": 4.0,
+        "scores": {
+          "rct_dr_extra_trees": 8.645539577453146,
+          "rct_dr_ridge": 8.851408550675934,
+          "rct_t_extra_trees": 8.314775578157596,
+          "rct_t_ridge": 8.67468007620864
+        },
+        "selected": "rct_t_extra_trees",
+        "selector": "known_propensity_oof_v1",
+        "unavailable": {}
+      },
+      "recomputed": {
+        "scores": {
+          "rct_dr_extra_trees": 8.645539577453146,
+          "rct_dr_ridge": 8.851408550675934,
+          "rct_t_extra_trees": 8.314775578157596,
+          "rct_t_ridge": 8.67468007620864
+        },
+        "selected": "rct_t_extra_trees",
+        "unavailable": [],
+        "max_weight": 4.0
+      },
+      "match": true
+    },
+    {
+      "scenario": "addendum:C09@o512_r128",
+      "recorded": {
+        "folds": 5,
+        "max_weight": 4.0,
+        "scores": {
+          "rct_dr_extra_trees": 9.191852608630922,
+          "rct_dr_ridge": 8.880705549032339,
+          "rct_t_extra_trees": 9.178497965679865,
+          "rct_t_ridge": 8.852600682956488
+        },
+        "selected": "rct_t_ridge",
+        "selector": "known_propensity_oof_v1",
+        "unavailable": {}
+      },
+      "recomputed": {
+        "scores": {
+          "rct_dr_extra_trees": 9.191852608630922,
+          "rct_dr_ridge": 8.880705549032339,
+          "rct_t_extra_trees": 9.178497965679865,
+          "rct_t_ridge": 8.852600682956488
+        },
+        "selected": "rct_t_ridge",
+        "unavailable": [],
+        "max_weight": 4.0
+      },
+      "match": true
+    },
+    {
+      "scenario": "addendum:C10@o512_r128",
+      "recorded": {
+        "folds": 5,
+        "max_weight": 4.0,
+        "scores": {
+          "rct_dr_extra_trees": 9.764496520371804,
+          "rct_dr_ridge": 9.279896252434948,
+          "rct_t_extra_trees": 9.3583818746824,
+          "rct_t_ridge": 8.89854128578629
+        },
+        "selected": "rct_t_ridge",
+        "selector": "known_propensity_oof_v1",
+        "unavailable": {}
+      },
+      "recomputed": {
+        "scores": {
+          "rct_dr_extra_trees": 9.764496520371804,
+          "rct_dr_ridge": 9.279896252434948,
+          "rct_t_extra_trees": 9.3583818746824,
+          "rct_t_ridge": 8.89854128578629
+        },
+        "selected": "rct_t_ridge",
+        "unavailable": [],
+        "max_weight": 4.0
+      },
+      "match": true
+    },
+    {
+      "scenario": "paper:cornet_official_n_conf@o512_r128",
+      "recorded": {
+        "folds": 5,
+        "max_weight": 4.0,
+        "scores": {
+          "rct_dr_extra_trees": 7.371785906585776,
+          "rct_dr_ridge": 6.881427191221364,
+          "rct_t_extra_trees": 7.159992752006858,
+          "rct_t_ridge": 7.065531215060613
+        },
+        "selected": "rct_dr_ridge",
+        "selector": "known_propensity_oof_v1",
+        "unavailable": {}
+      },
+      "recomputed": {
+        "scores": {
+          "rct_dr_extra_trees": 7.371785906585776,
+          "rct_dr_ridge": 6.881427191221364,
+          "rct_t_extra_trees": 7.159992752006858,
+          "rct_t_ridge": 7.065531215060613
+        },
+        "selected": "rct_dr_ridge",
+        "unavailable": [],
+        "max_weight": 4.0
+      },
+      "match": true
+    },
+    {
+      "scenario": "paper:experimental_grounding_kps@o512_r128",
+      "recorded": {
+        "folds": 5,
+        "max_weight": 4.0,
+        "scores": {
+          "rct_dr_extra_trees": 6.059503319980204,
+          "rct_dr_ridge": 5.916748487520924,
+          "rct_t_extra_trees": 5.917239857453373,
+          "rct_t_ridge": 5.874629330421419
+        },
+        "selected": "rct_t_ridge",
+        "selector": "known_propensity_oof_v1",
+        "unavailable": {}
+      },
+      "recomputed": {
+        "scores": {
+          "rct_dr_extra_trees": 6.059503319980204,
+          "rct_dr_ridge": 5.916748487520924,
+          "rct_t_extra_trees": 5.917239857453373,
+          "rct_t_ridge": 5.874629330421419
+        },
+        "selected": "rct_t_ridge",
+        "unavailable": [],
+        "max_weight": 4.0
+      },
+      "match": true
+    },
+    {
+      "scenario": "paper:integrative_r_learner_kps_normal_target_extension@o512_r128",
+      "recorded": {
+        "folds": 5,
+        "max_weight": 4.0,
+        "scores": {
+          "rct_dr_extra_trees": 6.2887188894212365,
+          "rct_dr_ridge": 6.015164381809392,
+          "rct_t_extra_trees": 6.003948212575878,
+          "rct_t_ridge": 6.014288027212371
+        },
+        "selected": "rct_t_extra_trees",
+        "selector": "known_propensity_oof_v1",
+        "unavailable": {}
+      },
+      "recomputed": {
+        "scores": {
+          "rct_dr_extra_trees": 6.2887188894212365,
+          "rct_dr_ridge": 6.015164381809392,
+          "rct_t_extra_trees": 6.003948212575878,
+          "rct_t_ridge": 6.014288027212371
+        },
+        "selected": "rct_t_extra_trees",
+        "unavailable": [],
+        "max_weight": 4.0
+      },
+      "match": true
+    },
+    {
+      "scenario": "paper:integrative_r_learner_kps_code@o512_r128",
+      "recorded": {
+        "folds": 5,
+        "max_weight": 4.0,
+        "scores": {
+          "rct_dr_extra_trees": 6.363767937098073,
+          "rct_dr_ridge": 6.262714531570736,
+          "rct_t_extra_trees": 6.181587786225525,
+          "rct_t_ridge": 6.3035903186708815
+        },
+        "selected": "rct_t_extra_trees",
+        "selector": "known_propensity_oof_v1",
+        "unavailable": {}
+      },
+      "recomputed": {
+        "scores": {
+          "rct_dr_extra_trees": 6.363767937098073,
+          "rct_dr_ridge": 6.262714531570736,
+          "rct_t_extra_trees": 6.181587786225525,
+          "rct_t_ridge": 6.3035903186708815
+        },
+        "selected": "rct_t_extra_trees",
+        "unavailable": [],
+        "max_weight": 4.0
+      },
+      "match": true
+    },
+    {
+      "scenario": "paper:integrative_r_learner_multivariate_paper@o512_r128",
+      "recorded": {
+        "folds": 5,
+        "max_weight": 140.8557310676074,
+        "scores": {
+          "rct_dr_extra_trees": 98.415676172628,
+          "rct_dr_ridge": 95.97163107463022,
+          "rct_t_extra_trees": 86.24029899761835,
+          "rct_t_ridge": 81.35722568570175
+        },
+        "selected": "rct_t_ridge",
+        "selector": "known_propensity_oof_v1",
+        "unavailable": {}
+      },
+      "recomputed": {
+        "scores": {
+          "rct_dr_extra_trees": 98.415676172628,
+          "rct_dr_ridge": 95.97163107463022,
+          "rct_t_extra_trees": 86.24029899761835,
+          "rct_t_ridge": 81.35722568570175
+        },
+        "selected": "rct_t_ridge",
+        "unavailable": [],
+        "max_weight": 140.8557310676074
+      },
+      "match": true
+    },
+    {
+      "scenario": "paper:elastic_integrative_gen_data_overlap@o512_r128",
+      "recorded": {
+        "folds": 5,
+        "max_weight": 4.0,
+        "scores": {
+          "rct_dr_extra_trees": 10.586261854187303,
+          "rct_dr_ridge": 10.1113782065705,
+          "rct_t_extra_trees": 10.60438940445081,
+          "rct_t_ridge": 10.190340169363058
+        },
+        "selected": "rct_dr_ridge",
+        "selector": "known_propensity_oof_v1",
+        "unavailable": {}
+      },
+      "recomputed": {
+        "scores": {
+          "rct_dr_extra_trees": 10.586261854187303,
+          "rct_dr_ridge": 10.1113782065705,
+          "rct_t_extra_trees": 10.60438940445081,
+          "rct_t_ridge": 10.190340169363058
+        },
+        "selected": "rct_dr_ridge",
+        "unavailable": [],
+        "max_weight": 4.0
+      },
+      "match": true
+    },
+    {
+      "scenario": "paper:power_likelihood_paper_text@o512_r128",
+      "recorded": {
+        "folds": 5,
+        "max_weight": 4.0,
+        "scores": {
+          "rct_dr_extra_trees": 2.5539351726756494,
+          "rct_dr_ridge": 2.4084393391556542,
+          "rct_t_extra_trees": 2.525419724343526,
+          "rct_t_ridge": 2.4194863546848713
+        },
+        "selected": "rct_dr_ridge",
+        "selector": "known_propensity_oof_v1",
+        "unavailable": {}
+      },
+      "recomputed": {
+        "scores": {
+          "rct_dr_extra_trees": 2.5539351726756494,
+          "rct_dr_ridge": 2.4084393391556542,
+          "rct_t_extra_trees": 2.525419724343526,
+          "rct_t_ridge": 2.4194863546848713
+        },
+        "selected": "rct_dr_ridge",
+        "unavailable": [],
+        "max_weight": 4.0
+      },
+      "match": true
+    },
+    {
+      "scenario": "paper:power_likelihood_supplement_code@o512_r128",
+      "recorded": {
+        "folds": 5,
+        "max_weight": 4.0,
+        "scores": {
+          "rct_dr_extra_trees": 2.7592780172994447,
+          "rct_dr_ridge": 2.7814892323336817,
+          "rct_t_extra_trees": 2.8056013017336943,
+          "rct_t_ridge": 2.7799200607490837
+        },
+        "selected": "rct_dr_extra_trees",
+        "selector": "known_propensity_oof_v1",
+        "unavailable": {}
+      },
+      "recomputed": {
+        "scores": {
+          "rct_dr_extra_trees": 2.7592780172994447,
+          "rct_dr_ridge": 2.7814892323336817,
+          "rct_t_extra_trees": 2.8056013017336943,
+          "rct_t_ridge": 2.7799200607490837
+        },
+        "selected": "rct_dr_extra_trees",
+        "unavailable": [],
+        "max_weight": 4.0
+      },
+      "match": true
+    },
+    {
+      "scenario": "paper:cvci_official_linear_bias@o512_r128",
+      "recorded": {
+        "folds": 5,
+        "max_weight": 4.0,
+        "scores": {
+          "rct_dr_extra_trees": 14.669952630782275,
+          "rct_dr_ridge": 13.737039898089233,
+          "rct_t_extra_trees": 15.123946675013034,
+          "rct_t_ridge": 13.735099305062171
+        },
+        "selected": "rct_t_ridge",
+        "selector": "known_propensity_oof_v1",
+        "unavailable": {}
+      },
+      "recomputed": {
+        "scores": {
+          "rct_dr_extra_trees": 14.669952630782275,
+          "rct_dr_ridge": 13.737039898089233,
+          "rct_t_extra_trees": 15.123946675013034,
+          "rct_t_ridge": 13.735099305062171
+        },
+        "selected": "rct_t_ridge",
+        "unavailable": [],
+        "max_weight": 4.0
+      },
+      "match": true
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 # v1 core study: every method against one RCT-only reference chosen from trial data
 
-**Status: analysis plan, not yet run.** This plan fixes the data grid, the reference, the recipes, the scores and the decision rule before any fit on the seeds below.
+**Status: analysis plan, fixed before its fits; results in [`results/v1_core`](../results/v1_core/SCIENTIFIC_RESULT.md).** This plan fixes the data grid, the reference, the recipes, the scores and the decision rule before any fit on the seeds below.
 
 The freeze is the commit that adds this plan together with the files it names: [configuration](../configs/v1_core_study.toml), [shard writer](../scripts/make_v1_core_configs.py), [analyzer](../scripts/analyze_v1_core.py), [independent checker](../scripts/verify_v1_core.py) and the `rct_selected` and `cornet_raw` recipes in [`methods.py`](../src/obs_rct_benchmark/methods.py). The job record holds that commit's hash before the first fit. Revisions and errata are governed by [the last section](#revisions-and-errata).
 
@@ -172,6 +172,8 @@ After those waves, each item gets its own protocol:
 3. **More methods with authors' code.** KPS, Elastic Integrative, CVCI and IntegrativeHTEcf, once they pass the admission rules in [V03_DESIGN](V03_DESIGN.md#method-inclusion-decisions).
 
 ## Revisions and errata
+
+**2026-11-14, after results.** No change to the analysis. Only the status line above now points to the results.
 
 - **Before results.** A change before any main-run metric is read is recorded here with its date and reason.
 - **After results.** Nothing in the plan changes. A bug found later gets a dated erratum that reports the original and the corrected analysis side by side; the original outputs stay published.

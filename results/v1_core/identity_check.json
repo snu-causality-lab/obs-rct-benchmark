@@ -1,0 +1,36 @@
+{
+  "rule": "RCT-only records must be identical at OBS 512 and 2048; OBS 512 records are used",
+  "recipes": {
+    "rct_selected": {
+      "compared": 3968,
+      "mismatched": 0,
+      "max_abs_difference": 0.0
+    },
+    "rct_dr_extra_trees": {
+      "compared": 3968,
+      "mismatched": 0,
+      "max_abs_difference": 0.0
+    },
+    "rct_dr_ridge": {
+      "compared": 3968,
+      "mismatched": 0,
+      "max_abs_difference": 0.0
+    },
+    "rct_t_extra_trees": {
+      "compared": 3968,
+      "mismatched": 0,
+      "max_abs_difference": 0.0
+    },
+    "rct_t_ridge": {
+      "compared": 3968,
+      "mismatched": 0,
+      "max_abs_difference": 0.0
+    }
+  },
+  "passed": true,
+  "ridge_refit": {
+    "rule": "rct_selected records that chose rct_t_ridge equal the standalone record",
+    "compared": 2444,
+    "mismatched": []
+  }
+}
