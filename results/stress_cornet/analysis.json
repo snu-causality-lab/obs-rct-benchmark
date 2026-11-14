@@ -1,0 +1,87 @@
+{
+  "protocol": "docs/V1_STRESS_CORNET.md",
+  "requested": 49152,
+  "coverage": {
+    "ok": 49152
+  },
+  "failures": {},
+  "families": {
+    "cornet_raw": {
+      "size": 64,
+      "other_better": 23,
+      "other_worse": 4,
+      "other_unresolved": 21,
+      "other_untested": 0,
+      "extrapolation_better": 10,
+      "extrapolation_worse": 0,
+      "extrapolation_unresolved": 6,
+      "extrapolation_untested": 0
+    },
+    "cornet_official": {
+      "size": 64,
+      "other_better": 22,
+      "other_worse": 7,
+      "other_unresolved": 19,
+      "other_untested": 0,
+      "extrapolation_better": 10,
+      "extrapolation_worse": 0,
+      "extrapolation_unresolved": 6,
+      "extrapolation_untested": 0
+    },
+    "datafusionppi": {
+      "size": 64,
+      "other_better": 0,
+      "other_worse": 1,
+      "other_unresolved": 47,
+      "other_untested": 0,
+      "extrapolation_better": 0,
+      "extrapolation_worse": 2,
+      "extrapolation_unresolved": 14,
+      "extrapolation_untested": 0
+    },
+    "obs_t_ridge": {
+      "size": 64,
+      "other_better": 22,
+      "other_worse": 16,
+      "other_unresolved": 10,
+      "other_untested": 0,
+      "extrapolation_better": 5,
+      "extrapolation_worse": 9,
+      "extrapolation_unresolved": 2,
+      "extrapolation_untested": 0
+    },
+    "obs_t_extra_trees": {
+      "size": 64,
+      "other_better": 9,
+      "other_worse": 28,
+      "other_unresolved": 11,
+      "other_untested": 0,
+      "extrapolation_better": 2,
+      "extrapolation_worse": 9,
+      "extrapolation_unresolved": 5,
+      "extrapolation_untested": 0
+    },
+    "naive_pooled_t_ridge": {
+      "size": 64,
+      "other_better": 30,
+      "other_worse": 13,
+      "other_unresolved": 5,
+      "other_untested": 0,
+      "extrapolation_better": 6,
+      "extrapolation_worse": 8,
+      "extrapolation_unresolved": 2,
+      "extrapolation_untested": 0
+    },
+    "naive_pooled_t_extra_trees": {
+      "size": 64,
+      "other_better": 10,
+      "other_worse": 20,
+      "other_unresolved": 18,
+      "other_untested": 0,
+      "extrapolation_better": 2,
+      "extrapolation_worse": 9,
+      "extrapolation_unresolved": 5,
+      "extrapolation_untested": 0
+    }
+  }
+}

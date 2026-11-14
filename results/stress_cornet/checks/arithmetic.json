@@ -1,0 +1,58 @@
+{
+  "check": "arithmetic",
+  "families": {
+    "cornet_raw": {
+      "other_better": 23,
+      "other_worse": 4,
+      "other_unresolved": 21,
+      "extrapolation_better": 10,
+      "extrapolation_unresolved": 6
+    },
+    "cornet_official": {
+      "other_better": 22,
+      "other_worse": 7,
+      "other_unresolved": 19,
+      "extrapolation_better": 10,
+      "extrapolation_unresolved": 6
+    },
+    "datafusionppi": {
+      "other_unresolved": 47,
+      "other_worse": 1,
+      "extrapolation_unresolved": 14,
+      "extrapolation_worse": 2
+    },
+    "obs_t_ridge": {
+      "other_worse": 16,
+      "other_unresolved": 10,
+      "other_better": 22,
+      "extrapolation_better": 5,
+      "extrapolation_worse": 9,
+      "extrapolation_unresolved": 2
+    },
+    "obs_t_extra_trees": {
+      "other_worse": 28,
+      "other_better": 9,
+      "other_unresolved": 11,
+      "extrapolation_unresolved": 5,
+      "extrapolation_worse": 9,
+      "extrapolation_better": 2
+    },
+    "naive_pooled_t_ridge": {
+      "other_worse": 13,
+      "other_better": 30,
+      "other_unresolved": 5,
+      "extrapolation_better": 6,
+      "extrapolation_worse": 8,
+      "extrapolation_unresolved": 2
+    },
+    "naive_pooled_t_extra_trees": {
+      "other_worse": 20,
+      "other_better": 10,
+      "other_unresolved": 18,
+      "extrapolation_unresolved": 5,
+      "extrapolation_worse": 9,
+      "extrapolation_better": 2
+    }
+  },
+  "mismatches": []
+}

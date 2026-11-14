@@ -1,0 +1,6 @@
+{
+  "check": "reproduce",
+  "seed": 80000,
+  "cases": 768,
+  "mismatches": []
+}

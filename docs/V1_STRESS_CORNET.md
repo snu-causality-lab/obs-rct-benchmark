@@ -1,6 +1,6 @@
 # Stress study 1: settings that violate CorNet's stated assumptions
 
-**Status: analysis plan, not yet run.** This plan fixes the generator dials, their levels, the recipes and the decision rule before any fit on its seeds. The freeze is the commit that adds it with the files it names. The job record holds that commit's hash before the first fit.
+**Status: analysis plan, fixed before its fits; results in [`results/stress_cornet`](../results/stress_cornet/SCIENTIFIC_RESULT.md).** This plan fixes the generator dials, their levels, the recipes and the decision rule before any fit on its seeds. The freeze is the commit that adds it with the files it names. The job record holds that commit's hash before the first fit.
 
 ## Why this study
 
@@ -102,6 +102,8 @@ In `trial_shrink`, levels 1–3 all have an unbounded density ratio, so that dia
 - **Same agent, no human check.** One AI agent designed the dials from an AI-extracted list of assumptions and will analyze the results. A fresh-context AI review shaped the dials before the freeze.
 
 ## Revisions and errata
+
+**2026-11-14, after results.** No change to the analysis. Only the status line above now points to the results.
 
 **2026-11-14, before the freeze.** A fresh-context AI review led to these changes from the first draft:
 - `hidden_modifier` and `bias_complexity` now hold the bias variance fixed across levels;

@@ -1,0 +1,26 @@
+{
+  "study": "docs/V1_STRESS_CORNET.md",
+  "freeze_commit": "c4bd9a12fd974773e005f2599cdcca45d330f564",
+  "code_archive": {
+    "file": "code/c4bd9a1.tar",
+    "sha256": "7c381f550b9ef19d0241b3accdcf51e117b2b3eb99db67819df06fa774a866b0"
+  },
+  "gsds_run": "/shared/s2/lab05/sanghack/work/obsrct-v1-stress-20261114-r01",
+  "jobs": {
+    "prepare": 820713,
+    "main_array": 820714,
+    "analysis": 820715
+  },
+  "environment": "obsrct-public-upgrade-20261025-r01/environment-v1 (reused read-only); freeze in evidence/",
+  "files_sha256_as_exported": {
+    "analysis.json": "f2421b940299f853e20ed0301d120cfe8dd70df745211ced0c93ff3f994f47c2",
+    "condition_scores.csv": "c8adb9d55fb1351ac2bba9168bb3bccedd971f212f7733cfee5d20dc0b8f5001",
+    "contrasts.csv": "8d2238167cb827fdf76094d87b1ebe68bf000af6de7a4bb25a7af51a819eb139",
+    "dose_response.csv": "fe5228eb6e1e27c80509bfefbb9f6ef5b485848129a2c249178bdd2ba8367381",
+    "readout.csv": "10728bce68f3984e1bbbaccef93f44753b07b3f1d90af95eb87724e71860bdbe",
+    "replicate_scores.csv": "470e984e4a393651585f1d34568d6d503b5ff81c5211bdd5c1d7a3bc293e2b31",
+    "checks/arithmetic.json": "8bab01a8ecb9a82a73424362cb2043cbb27a15e271e1edb855d1de736ef65001",
+    "checks/reproduce.json": "042d26078a7efd8a142d69ee1376561e808f3bb757285c24ec793eb234bec912",
+    "checks/targets.json": "faf3949cfccb01d3a1e3a45c2bf2f24b606a18ebf6d831ea5509ed26e76f1317"
+  }
+}

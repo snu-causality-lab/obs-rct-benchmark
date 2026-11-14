@@ -81,6 +81,20 @@ The reference is realistic rather than strong. Choosing on 128 rows is noisy, so
 
 Beating `rct_selected` is competitiveness at equal trial labels, not evidence that OBS data caused the gain. [`scripts/render_v1_core.py`](scripts/render_v1_core.py) regenerates the figure and table from the published packet.
 
+### Where the winner stops winning
+
+For a method that wins, the benchmark builds settings that violate the assumptions its own paper states, and runs every method on them. [Stress study 1](results/stress_cornet/SCIENTIFIC_RESULT.md) does this for CorNet. Its eight dials each move one stated assumption from "holds" (level 0) to "clearly violated" (level 3), holding the amount of OBS bias fixed where the bias form changes, and keep the target identified from the trial alone. The dials came from an assumption list extracted from the paper before any benchmark result was seen.
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/figures/stress_cornet_dark.svg">
+  <img alt="Small multiples: for eight assumption dials and two trial sizes, each recipe's mean CATE MSE relative to rct_selected across four levels" src="docs/figures/stress_cornet_light.svg">
+</picture>
+
+- **CorNet's weak point is its shared representation.** When the OBS outcomes hide an effect modifier, its error relative to the reference rises from 0.54 to 0.91 with a 128-row trial, so its advantage disappears. With a 512-row trial it rises from 0.99 to 2.10, significantly worse than the reference.
+- **Its other stated assumptions barely mattered here.** With a 128-row trial it stayed significantly better at the strongest level of seven of the eight dials. As its paper predicts, a narrower trial *helped* it relative to RCT-only learners.
+- **One dial did not test what it meant to.** A high-frequency bias of fixed size averages out under smoothing, so the bias-frequency dial made the bias easier for every smoothing learner.
+- **DataFusionPPI** stayed close to the reference throughout. It lost ground when the trial was narrow or the OBS sample small.
+
 ## Quick start
 
 Python 3.11 or newer is required. The core uses NumPy; the baseline extra adds scikit-learn.
@@ -117,6 +131,7 @@ Each study has its own frozen code version, target, budgets and inference rules.
 | Study | Folder | Question |
 | --- | --- | --- |
 | [v1 core study](results/v1_core/SCIENTIFIC_RESULT.md) | `results/v1_core` | Every catalog method on fresh seeds against an RCT-only reference chosen from trial data; the figure above |
+| [Stress study 1](results/stress_cornet/SCIENTIFIC_RESULT.md) | `results/stress_cornet` | Does CorNet keep winning when the assumptions its paper states are violated one at a time? |
 | [Full catalog comparison](results/catalog_study/SCIENTIFIC_RESULT.md) | `results/catalog_study` | Ten recipes on all 31 presets at four budgets, against a fixed ExtraTrees reference |
 | [TSR static study](results/tsr_study/SCIENTIFIC_RESULT.md) | `results/tsr_study` | Does R-Design's estimator help without its acquisition rule? |
 | [Native panel](results/native_panel/SCIENTIFIC_RESULT.md) | `results/native_panel` | Authors' code at default settings, including Integrative R, Causal-ICM and the causal forest, on six mechanisms at two trial budgets |

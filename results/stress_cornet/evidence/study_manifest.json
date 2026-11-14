@@ -1,0 +1,390 @@
+{
+  "study_config_sha256": "862026e5dd145beeb6533eafa2fcf9836f77e958d84ff7ceef2d119e6a108b57",
+  "shards": [
+    {
+      "file": "stress-seed-80000.toml",
+      "sha256": "42e06b3be3928c6a2a7a59feaeb12acf4be8482f7d763b160eccffbdd3202a78",
+      "config_hash": "d5c7deb9fad6020246c6c594b590060c04f1562ae195a1aadd39d91d61fe197d",
+      "cells": 768
+    },
+    {
+      "file": "stress-seed-80001.toml",
+      "sha256": "e4e04a47936df3f8ff17a0a75b5f431167ed2482c6165de7ba34a2433155f1c2",
+      "config_hash": "073124538285daf53a36b5f17377d5d0b7b8052ae87ca6a968c7cefd2b4b6791",
+      "cells": 768
+    },
+    {
+      "file": "stress-seed-80002.toml",
+      "sha256": "fcb528ba86c599711603a225a70af0e60d1a59717b595139032575159abe7f9c",
+      "config_hash": "cbe189fe80bcf24ec64094a49627b271cd273d1f3b5cc9c5a04fb22b1a87ab58",
+      "cells": 768
+    },
+    {
+      "file": "stress-seed-80003.toml",
+      "sha256": "645f7a9d641592657a4469756facb1ce92e4164f7d811619b61a210e99e13178",
+      "config_hash": "38f3385ff594a5abdd27c27fe2b98aa437ea23dde18557c0c72b777468b51fd6",
+      "cells": 768
+    },
+    {
+      "file": "stress-seed-80004.toml",
+      "sha256": "0d214b405265940412b6e27042d32543f291e2f7f6f0c8bfc4e9ed0bf78ad887",
+      "config_hash": "425069b8d19db65782b610a9e19a8491590d2e901cdd5a30149a1f68fdf99a1a",
+      "cells": 768
+    },
+    {
+      "file": "stress-seed-80005.toml",
+      "sha256": "64a2f81951ea0e73d1f86ff5d74f155b24283eece1f8dab0bd912a544148bdf3",
+      "config_hash": "5a041ae902e8b4535df07b9940042023e5fd5e1c297bd4f5a2a40ee7d65398d7",
+      "cells": 768
+    },
+    {
+      "file": "stress-seed-80006.toml",
+      "sha256": "b11f9b1768b45662eb13a42388e74e203e97a060937df99c1a3e0faa64c64606",
+      "config_hash": "2d2c5c39eca2a82652b106e7d76b45867c7999ae742e7266ad0fae78729456ab",
+      "cells": 768
+    },
+    {
+      "file": "stress-seed-80007.toml",
+      "sha256": "f8c3f05566d697eed5bc128da097cc77b5c0854fefb2cc4adcfb0ddc0d57d28c",
+      "config_hash": "a38a64b9d7f3da4856b7d05f52ee830ba61fdee46e0061871ccc4d487244db4d",
+      "cells": 768
+    },
+    {
+      "file": "stress-seed-80008.toml",
+      "sha256": "8089ec3328fbbaa57639e87ceaf60b35e061ec91e4a519ebf808c733f767aa53",
+      "config_hash": "a294ae3acf01c937c61afc0a60dda682590701d0a0b31dd8d58ddeab48d613ce",
+      "cells": 768
+    },
+    {
+      "file": "stress-seed-80009.toml",
+      "sha256": "7b8c79667d333622a9277a3be7e4a7017473f8e46d29d09671ba41876e0aa89d",
+      "config_hash": "82f58a518b8e4b9fece3ea73698828e8863443ae77ff9bbc3919bdba88b5be2c",
+      "cells": 768
+    },
+    {
+      "file": "stress-seed-80010.toml",
+      "sha256": "d579e94c43e4ec67943938e228532ececdf5a8ae9a4a5579ff61245694965035",
+      "config_hash": "f2102f96c60baadfc214455344127fe606aa897f2b7979551f55a6e040385cb0",
+      "cells": 768
+    },
+    {
+      "file": "stress-seed-80011.toml",
+      "sha256": "69aad167d6c4f30c4d7bb28ce14c086353f453aa88e5d64fb451f0167a9387e8",
+      "config_hash": "09caf14877dddf0fdc9c2a9b0996f2bdce8dcfd5dd8a10db507ef3cc61fd742d",
+      "cells": 768
+    },
+    {
+      "file": "stress-seed-80012.toml",
+      "sha256": "abb594b6193b086377140477e2267ba51a0bf1e30773b08e7fa0ead44ab66dc2",
+      "config_hash": "4676bc5828d47e0f74d957b68e212616f5a091b2e0bfc2eec5e5c563a1286989",
+      "cells": 768
+    },
+    {
+      "file": "stress-seed-80013.toml",
+      "sha256": "cabe41a9468741e567dde01dc0902a60360d7264b1ae445dc5acd3cdab988910",
+      "config_hash": "589052ac4dd5cf6142b22cbde4ec2afd1875a5da143c7e3946e8700c103ac89e",
+      "cells": 768
+    },
+    {
+      "file": "stress-seed-80014.toml",
+      "sha256": "b9eab276a775902d05a52fb0a2c3b57a59319315fa34401779ad119687d29b4f",
+      "config_hash": "5bcefb7267da3d155f80d0fcc8ed720153f43d86a4728ca291c53ba46d8d07ce",
+      "cells": 768
+    },
+    {
+      "file": "stress-seed-80015.toml",
+      "sha256": "b3683dc7f36c907893bbfe9438b27c28b8c6dc12b4b1ad4451e677ac2986a80d",
+      "config_hash": "1487ec67fd156501d00f9ffe3c0113b67e4e42435e61445bfff412196a8f7f74",
+      "cells": 768
+    },
+    {
+      "file": "stress-seed-80016.toml",
+      "sha256": "99482fc42d507b3355cabb81735cd95fe911f262e3c505fc9196f2e73bb96cba",
+      "config_hash": "b0e294c7ad003ddd097492810b1f58d96fc74d5c042a96230113f6b8a590212e",
+      "cells": 768
+    },
+    {
+      "file": "stress-seed-80017.toml",
+      "sha256": "8b9d13fcc0656afdeefd4af21c8ec112922fbcace463a01cf8b769ba2e0ac991",
+      "config_hash": "ff35b3cbab59716ff3641281cb201d68a9b3a0acefbd225edc173b5bb39e1b41",
+      "cells": 768
+    },
+    {
+      "file": "stress-seed-80018.toml",
+      "sha256": "643ced68dde97c2fd6a10a7cb7abd4303d0b381dab747bbf1a20a0cbbe5530b6",
+      "config_hash": "618193a46a5f5ef31d4da3c5d2bd83075636df2bf7da882b854ded40f527d8ef",
+      "cells": 768
+    },
+    {
+      "file": "stress-seed-80019.toml",
+      "sha256": "62e59d79420973a386b416b9131a1e1b8a0d3ad2211d9e9c3a770473652cf153",
+      "config_hash": "2702bc47733b2e46ab1ecc17f8d2bfa0d54acb397396d0ab9da4db03a0fcf4d0",
+      "cells": 768
+    },
+    {
+      "file": "stress-seed-80020.toml",
+      "sha256": "e564b42d3d4c5dae362289538beb4d89bbcb8dd6eecc5d512d63d8c09abcc6e5",
+      "config_hash": "9558d92754c6b912904d85fc18d0e71d89b7dded54fde66d057c07f9b1da74a2",
+      "cells": 768
+    },
+    {
+      "file": "stress-seed-80021.toml",
+      "sha256": "3c4252d3f0943824626d6ff3515ef324e2874f5d23a7c55b2762f62c968d9909",
+      "config_hash": "599b55b517c195dbd2e1e327dc154d6649c01acec3a455a29a16c5d0f722ba83",
+      "cells": 768
+    },
+    {
+      "file": "stress-seed-80022.toml",
+      "sha256": "6d34025437ccc0abfdc8b261d86c69e5574723608a0a9d85b450712d88ad3db2",
+      "config_hash": "61bf6b06bd9610fd13b1a639fe31dd3ea644a959679a0b0cc3c8b467496798b4",
+      "cells": 768
+    },
+    {
+      "file": "stress-seed-80023.toml",
+      "sha256": "915084869f90ab3aa389997965874dd0951a40599a0973558c743ebcf431cddc",
+      "config_hash": "ac3134e3452ff98d1063d96a5df4f69e2e58516fd99c9b013a9efb79623da022",
+      "cells": 768
+    },
+    {
+      "file": "stress-seed-80024.toml",
+      "sha256": "5c1d6236f5c8739cb1787e2c535b89dcc0b52a28ed05c49f7069b474e0ee2810",
+      "config_hash": "9bfd1200900fdbd9f8227d35c1e930774603c60522c9a002ec59f8baf531cc06",
+      "cells": 768
+    },
+    {
+      "file": "stress-seed-80025.toml",
+      "sha256": "8541fdd03e8bb46aa1dae78626fbff22d1df3a9d841f235ca566bd8f36fccd43",
+      "config_hash": "1e74808c189a580e362f5976a1cadef67e28773c3b0e644df3cd224793397e5f",
+      "cells": 768
+    },
+    {
+      "file": "stress-seed-80026.toml",
+      "sha256": "0ea81aa2dac661f80b0a240418aad7b5ad6abdcad27430cbc4acb96d0ca9bffe",
+      "config_hash": "35f51f21fa8cd9f081c4acf256a5379a68c5867afdcc0a36d9e8f6f7f0738b12",
+      "cells": 768
+    },
+    {
+      "file": "stress-seed-80027.toml",
+      "sha256": "27ee95dca15ccaa92598eb2e969f050055efe911ec789e4327f2e352f94f3341",
+      "config_hash": "298559f69887b6793add04e4a8cd644648cffa24812cb1cc3e5717295fc2cadc",
+      "cells": 768
+    },
+    {
+      "file": "stress-seed-80028.toml",
+      "sha256": "04a8b83298e2e4d22e97091c02559b9011344c7423ae280b49e66b0615e8ca30",
+      "config_hash": "087c2710241de11603f6f073f65351ff84225a29a091938315520f3abf249cb7",
+      "cells": 768
+    },
+    {
+      "file": "stress-seed-80029.toml",
+      "sha256": "2f06f8f9b4c42f505bdc4213548354b6c8deab5ff413795cbc6653f9737981f0",
+      "config_hash": "b75116d77ccc6306965cc1e564c82ba2e3a7b52004937dd4883f6083301e4618",
+      "cells": 768
+    },
+    {
+      "file": "stress-seed-80030.toml",
+      "sha256": "4abec8feb923258a1eee1d3a337ce7e44342178d0675600ea1bb3cea9cd7ecc5",
+      "config_hash": "c3aa915f145193c0238bcc7156be61ed455c8e86678d6dc6490782e712a9eafb",
+      "cells": 768
+    },
+    {
+      "file": "stress-seed-80031.toml",
+      "sha256": "9ab54bd793924818157f73abfcbb8fe7135d8b6b23487c1d505b06cf759f19fe",
+      "config_hash": "f50e195486a25d4f893e3ae9d6b64732f6f7c265ce8cb5aa863fff23e360d916",
+      "cells": 768
+    },
+    {
+      "file": "stress-seed-80032.toml",
+      "sha256": "d15e027608642fe01759f151d0da2b5bb25fb6a5b2a9bdfe831ebb1ab64bfdfc",
+      "config_hash": "678811f130aa24589ede41e7dc97b9eba92b6d1f1e771b05e850aad6c949f4cb",
+      "cells": 768
+    },
+    {
+      "file": "stress-seed-80033.toml",
+      "sha256": "07dfae6b85ec2ae2cb51cdc5ce597223bd155a35ac795f99428dab26c20a0b21",
+      "config_hash": "e9eff232ca2a8b477a969282146ea75128f3893c09145f920de9a73f13aaeb5a",
+      "cells": 768
+    },
+    {
+      "file": "stress-seed-80034.toml",
+      "sha256": "18e241ff757a3b345c31f8c4eab56f8bafc56dbaca3c1e18ea2f2bfa19c9cd51",
+      "config_hash": "2b23a15149c01fa7e4c2fe9d4f0bc957677d719741f5901b32cc87edd97f676c",
+      "cells": 768
+    },
+    {
+      "file": "stress-seed-80035.toml",
+      "sha256": "df77d8ee2a0d31590f19d873f110766b3a711e858e8ed0913d4acaaef9bb4a97",
+      "config_hash": "f3e31f8d04bfe1ad90580507dcdf30df114eaa8af05dfa2b390a97a19275506c",
+      "cells": 768
+    },
+    {
+      "file": "stress-seed-80036.toml",
+      "sha256": "45489542c4bd865a8e6857720e30c5c74c5af6c583bc9e646aa21bbae07e97e8",
+      "config_hash": "a1c1db3ee62f6c4cf7e67081c200470d9a0d01607658e65a32ba5d03e71f9033",
+      "cells": 768
+    },
+    {
+      "file": "stress-seed-80037.toml",
+      "sha256": "52e4104c0014f094dbcd8ed95450000a68812a872d408158fc88bc5c61b88bc9",
+      "config_hash": "da4f62c63334ada5aab40066eacd7ef54d65684fe040901c45365a85c0f99c29",
+      "cells": 768
+    },
+    {
+      "file": "stress-seed-80038.toml",
+      "sha256": "ee91a2df9878a01d288b0d6e2c61be689beff479f69e3be512024a3d4a3a1271",
+      "config_hash": "40a35b13cbce9df2a605fa5e5d6ee80753cebd333f2bb6abed156477f2b6edab",
+      "cells": 768
+    },
+    {
+      "file": "stress-seed-80039.toml",
+      "sha256": "373a8d33fa2401d7e1aa57d8821020532c6b37aaf892747dcf413d20643333be",
+      "config_hash": "80de80d76b243bfd3b591eda0c7ee469d949e615c819a515f403e7fb0acea32e",
+      "cells": 768
+    },
+    {
+      "file": "stress-seed-80040.toml",
+      "sha256": "5789525e02e970fd3827fb42c7045946bdea8d5099966771f60474bb8c1d14d0",
+      "config_hash": "305877562174610b1b76ebe1e8001d6bb5acffff5f1f029ecd2d1d7d8a40467d",
+      "cells": 768
+    },
+    {
+      "file": "stress-seed-80041.toml",
+      "sha256": "45e1fcec644452504ca3a6cbf7ad5cf3c5b29d47d1dfe4f5ef1fe02d65b41b80",
+      "config_hash": "f41a545e6543bf4f71ea9d43c6d6c7ecc14f8e31e7858b7e3135d20e0346f89b",
+      "cells": 768
+    },
+    {
+      "file": "stress-seed-80042.toml",
+      "sha256": "be04a97a1d315a978baf9690366969b064fb77f000dec9afdad1afbb8163c0c4",
+      "config_hash": "0cc507504e0d3b1302ed07345bf730842f30cdd2aa0ff3037ff37a1fe263701f",
+      "cells": 768
+    },
+    {
+      "file": "stress-seed-80043.toml",
+      "sha256": "f969d07106535e8290c706f273baf5818779891410ac7c6f2dfece5652c4f747",
+      "config_hash": "754429c5e3cb58ddac46ee5a79a6be06c5dda6e2a35fe9ee89c60fe706d259b9",
+      "cells": 768
+    },
+    {
+      "file": "stress-seed-80044.toml",
+      "sha256": "99895f2ae51ac8126529a8a5bc1b28fbf680f5e2ad3e6b0ec504a6fb806de7e4",
+      "config_hash": "d34e73c728e3ad2f2c7e8e292ede3b7a412929e89adfdecaaefd51e40c0a351a",
+      "cells": 768
+    },
+    {
+      "file": "stress-seed-80045.toml",
+      "sha256": "6f237b08b3b72d6acf145d1b7ecdafc8924fdf62dc4b1ffab3c7ee65112246e2",
+      "config_hash": "993974142c871521514efcea1b9d73b3b12ef06954f5c3b7abf997ba13b92892",
+      "cells": 768
+    },
+    {
+      "file": "stress-seed-80046.toml",
+      "sha256": "89476f5c94eab22c544e51ca737411ba58f0a144d5b7386b0b4c2a13a1f84e34",
+      "config_hash": "bfa83863ca53bdcfea8cc76099f4de49b934467509c399b1e11a0cc6c2391dbf",
+      "cells": 768
+    },
+    {
+      "file": "stress-seed-80047.toml",
+      "sha256": "fba20ad8302075e75c32431cbca5d883499cfcb3096b4af406b2220cb35bbeb3",
+      "config_hash": "4f09555c593761b607972e3c5927087e978fae7ace59992b103249daf4f696cd",
+      "cells": 768
+    },
+    {
+      "file": "stress-seed-80048.toml",
+      "sha256": "521116aba7f49d2c89bf08f58a4153da609325471eafa0b110f38f36332ffe4c",
+      "config_hash": "6074b117d9d5785a560b92e648b1e378f0f1b7a238dd0d7a83b2152274e39921",
+      "cells": 768
+    },
+    {
+      "file": "stress-seed-80049.toml",
+      "sha256": "f8f9ef856723f3035a780280fe0ab64a19291342e981586e1d80ee5977579273",
+      "config_hash": "ab832610e1237bdaf2229be0740d31c851cfee1be4acadbd65e0148a208da22a",
+      "cells": 768
+    },
+    {
+      "file": "stress-seed-80050.toml",
+      "sha256": "f273bb7060266bc3929d86fca08fad8360fc9b79015c50a8745b9fdb72336f59",
+      "config_hash": "98392ebd242b4287fac8f4d2e4c5a4549fc5d9f3e26a8fbcbd3c4a594d063123",
+      "cells": 768
+    },
+    {
+      "file": "stress-seed-80051.toml",
+      "sha256": "9564483d3679c45a6d73620ea668a33291c98a6318b87f06c2b823ae97f7916e",
+      "config_hash": "b01d77427144ed9652d7dcf6f9ff0f201903806c7decb332c0c4e51df87d4a00",
+      "cells": 768
+    },
+    {
+      "file": "stress-seed-80052.toml",
+      "sha256": "457bba4977b67eb6102f5e7a4b805d0195bd6dcc320360250e686f4d20f44f66",
+      "config_hash": "382255dc72df0f6aa1bea7ebbd88c4befb3061126a4b1640550a4c7b82cf8cc1",
+      "cells": 768
+    },
+    {
+      "file": "stress-seed-80053.toml",
+      "sha256": "e8645169a7b1d5c256bb3d1fb6e97126130cb277549e95cca1839d0fb2e519fc",
+      "config_hash": "3f931a0cb1a4539854be7dbd031d30954f919dea899fd3b71d75d51bfc4c8679",
+      "cells": 768
+    },
+    {
+      "file": "stress-seed-80054.toml",
+      "sha256": "beb3d6d461779c3e945829da8cd5883f3a8437a83f4f3c9e74f11e7293ae09f5",
+      "config_hash": "93f1af04a3db5037db1f243df60ff6c1316d809ae675bd672b462498fb69856d",
+      "cells": 768
+    },
+    {
+      "file": "stress-seed-80055.toml",
+      "sha256": "777487b94601077c9c60f6468908d489ee07ac5fc9a45da90d26cc731a0ce967",
+      "config_hash": "6fbcda8ba7e7de79cbff04bdd6efc8c925504980d13037987b8b5b9e178ee117",
+      "cells": 768
+    },
+    {
+      "file": "stress-seed-80056.toml",
+      "sha256": "8a3c50f58d63d92f63cc2be9fcaa7b4c5c21e3e33f04b47a71561492a3e14599",
+      "config_hash": "8eb1a0b11fb74a6945b19c8729bc270b2a1e20c2808eac6cc5f41ed0d9368242",
+      "cells": 768
+    },
+    {
+      "file": "stress-seed-80057.toml",
+      "sha256": "f8fcad1e376866b8c56d438cb8a5c782b0999e193770b06bda3827797d1f7bfc",
+      "config_hash": "9ed2f3b0b6b66b5135c67863589d8aae5998e6f38ae468af171c4c36db8547a8",
+      "cells": 768
+    },
+    {
+      "file": "stress-seed-80058.toml",
+      "sha256": "9465ac881806adc41570e69a26784fd9abef73d3404e5c8f29dc1e76915f4405",
+      "config_hash": "64890cc30d800e3b9dfdb93157b30c691f2da864b72197dbb93c67c329b9375f",
+      "cells": 768
+    },
+    {
+      "file": "stress-seed-80059.toml",
+      "sha256": "5c8c493858132459e6193d06c315381070a7304219d49411a7e9125ee1351858",
+      "config_hash": "5779a19cbef62c54b34fa6f77d082a6a79ee4e0d29036705cc51568f8a413621",
+      "cells": 768
+    },
+    {
+      "file": "stress-seed-80060.toml",
+      "sha256": "efed48027b159e49e7d1bb5741f8823090dc23d87f766ee2e060a43a1c8330d3",
+      "config_hash": "b9328395bf61e0dbeb5a97279b956abfe43a7e4b863d21f9ba51c7e57a43dcea",
+      "cells": 768
+    },
+    {
+      "file": "stress-seed-80061.toml",
+      "sha256": "e559fac6ffee7b265a2927435c03a0944f66d53a6709981c9cd5e83f81112399",
+      "config_hash": "04b88261cb10044f5659ddb3a7d520c36f2b50033a8f40ff046d23c30d4a0167",
+      "cells": 768
+    },
+    {
+      "file": "stress-seed-80062.toml",
+      "sha256": "de47a3c334f87c45d573d10a1b8a4026cdb5b8820d2d8c6e9fda2964a8595168",
+      "config_hash": "2204e1a702fa1fb92f7e83372432ecedbc847a6f2d36314f557c573ca53c1bd2",
+      "cells": 768
+    },
+    {
+      "file": "stress-seed-80063.toml",
+      "sha256": "0f442692eb3795c9b06c153083b80fd68f3e67f528e4dc39e80ca8f29151eb7e",
+      "config_hash": "ee0ded064fd91c00e0f35bcc45fc7a282f908dedd13550bc31a4d2b6e61d0a19",
+      "cells": 768
+    }
+  ],
+  "requested_cells": 49152
+}
