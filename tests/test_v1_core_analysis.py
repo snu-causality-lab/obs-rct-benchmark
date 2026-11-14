@@ -45,8 +45,29 @@ def _mse(scenario: str, seed: int, method: str) -> float:
     }.get(method, ref + own)                 # otherwise unresolved
 
 
+@pytest.fixture(scope="module", autouse=True)
+def cached_config_hash():
+    """BenchmarkConfig.config_hash reserializes the whole configuration on every call.
+    The fixture and collect() call it once per synthetic record (about 95,000 times),
+    which took many minutes. Memoize it per object for this module only; the hashes
+    themselves are unchanged."""
+    from obs_rct_benchmark import runner
+
+    original = runner.BenchmarkConfig.config_hash
+    cache = {}
+
+    def memoized(self):
+        if id(self) not in cache:
+            cache[id(self)] = (self, original.fget(self))  # keep self alive so its id is not reused
+        return cache[id(self)][1]
+
+    runner.BenchmarkConfig.config_hash = property(memoized)
+    yield
+    runner.BenchmarkConfig.config_hash = original
+
+
 @pytest.fixture(scope="module")
-def study(tmp_path_factory):
+def study(tmp_path_factory, cached_config_hash):
     """Synthetic records written as fake shard runs, the way the runner writes them."""
     from obs_rct_benchmark.runner import load_config, method_seed, record_id
 
