@@ -1,6 +1,6 @@
 # v1 core wave 2: native recipes and TabPFN releases
 
-**Status: addendum, not yet run.** This addendum to the [v1 core plan](V1_CORE_STUDY.md) fixes the recipes, environments, contrasts and resources of wave 2 before any wave-2 fit on seeds 70000–70063. The freeze is the commit that fills in [Recorded before launch](#recorded-before-launch); earlier commits carry drafts. The job record holds the freeze commit's hash before the first fit.
+**Status: addendum, fixed before its fits.** This addendum to the [v1 core plan](V1_CORE_STUDY.md) fixes the recipes, environments, contrasts and resources of wave 2 before any wave-2 fit on seeds 70000–70063. The freeze is the commit that fills in [Recorded before launch](#recorded-before-launch); earlier commits carry drafts. The job record holds the freeze commit's hash before the first fit.
 
 Wave 2 keeps everything from the plan that it does not change here:
 - the 124 conditions;
@@ -85,7 +85,7 @@ A failed check stops the shard before any record. It is an infrastructure failur
 
 **Limits.** The main run's limits follow from the preflight by this rule:
 - **CPU groups** get one CPU per shard. The time limit is the larger of 2 hours and 3 times the longest preflight shard, capped at 12 hours. Memory is the larger of 4 GiB and twice the largest preflight peak.
-- **The GPU groups** (`tabpfn`, `tsr_legacy`) pack several shards onto one GPU. The number per GPU is the largest that produced no CUDA out-of-memory error in the preflight, at most four. The job's time limit is the larger of 2 hours and 3 times the longest preflight GPU job, capped at 12 hours.
+- **The GPU groups** (`tabpfn`, `tsr_legacy`) pack several shards onto one GPU. The number per GPU is the largest tried that produced no CUDA out-of-memory error in the preflight, at most four. The job's time limit is the larger of 2 hours and 3 times the longest preflight GPU job, capped at 12 hours. Each GPU job gets 4 CPUs and host memory of at least twice its shards' summed preflight peaks.
 
 The values that result are recorded below before launch.
 
@@ -127,24 +127,24 @@ Before any metric is read, such a shard is rerun whole in a fresh output directo
 
 ## Recorded before launch
 
-Preflight results (seed 69999, 31 shards per group). Each group's limit follows from the rule above.
+Preflight results (seed 69999, 31 shards per group). Each group's limit follows from the rule above: per shard for the CPU groups, per GPU job for the GPU groups.
 
-| Group | Longest shard | Median shard | Peak memory | Preflight failures | Main-run limit per shard |
+| Group | Longest shard | Median shard | Peak memory | Preflight failures | Main-run limit |
 | --- | ---: | ---: | ---: | --- | --- |
 | `native_r` | 4,077 s (CorNet design) | 549 s | 579 MiB | `integrative_r_quadratic`, 3 deadline errors in the CorNet design | 1 CPU, 4 GiB, 3 h 24 min |
 | `gp` | 102 s | 72 s | 740 MiB | none | 1 CPU, 4 GiB, 2 h |
-| `tabpfn` | *pending* | | | | |
-| `tsr_legacy` | *pending* | | | | |
+| `tabpfn` | 339 s (CorNet design) | 84 s | 2,508 MiB | none | 2 shards per GPU, 4 CPUs, 16 GiB, 2 h (longest preflight GPU job 346 s) |
+| `tsr_legacy` | 181 s (CorNet design) | 47 s | 1,661 MiB | none | 2 shards per GPU, 4 CPUs, 16 GiB, 2 h (longest preflight GPU job 186 s) |
 
 **Execution.** The shard driver and job scripts are published with the results; their hashes are fixed here.
 
 | Item | Value |
 | --- | --- |
 | Code | The freeze commit, run from a `git archive` snapshot |
-| Shard driver `run_shard.py` | *pending* |
-| Job scripts `common.sh`, `cpu_array.sbatch`, `gpu_array.sbatch` | *pending* |
-| GPU jobs | *pending* |
-| Preflight runs | *pending* |
+| Shard driver `run_shard.py` | SHA-256 `1a299a69c5132804ad619df9300861df6fa44559b47a836bf27023e536c0a23b` |
+| Job scripts | `common.sh` `e19ad30219e8b26e474aa5bc7e8ab5143c1ea9b2c57900a51698fce88796dbf0`; `cpu_array.sbatch` `05cd6fda42accfc470c841e8bfb52115c30eb4a9769fa61a2d9b311a6f24182f`; `gpu_array.sbatch` `d6cb20f028180a0103548f21cd824be65643d96df3f0a0596f28d0e380a96a16` |
+| GPU jobs | Two shards per GPU: four caused out-of-memory errors, and three was not tried. One RTX 3090, 4 CPUs and 16 GiB of host memory per job. Nodes b03, b14, b15, b24–b28, b30 and b31 excluded |
+| Preflight runs | CPU groups: jobs 820474 (`native_r`) and 820475 (`gp`), on the code before the review fixes, drivers `432e8cf4…` and `fe6183f4…`. GPU groups: jobs 822028 (`tabpfn`) and 822029 (`tsr_legacy`), on the fixed code, driver `8bf51696…`, two shards per GPU, 16 GiB. The main-run driver differs from `8bf51696…` only in exiting cleanly when a requeued job finds a shard already finished |
 | Data check (seed 70000, against the wave-1 environment) | Passed. In all 124 conditions, every array of every sample role is identical in the `gp`, `tabpfn` and `tsr_legacy` environments; the largest difference is 0. `native_r` runs in the wave-1 interpreter itself |
 
 ## Revisions and errata
