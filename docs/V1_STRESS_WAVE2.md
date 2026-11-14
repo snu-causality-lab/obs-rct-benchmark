@@ -1,6 +1,6 @@
 # Stress study 1, addendum: the wave-2 recipes on the same seeds
 
-**Status: addendum, not yet run.** This addendum to [stress study 1](V1_STRESS_CORNET.md) fixes the recipes, contrasts and resources before any wave-2 fit on its seeds, 80000–80063. The freeze is the commit that fills in [Recorded before launch](#recorded-before-launch); earlier commits carry drafts. The job record holds the freeze commit's hash before the first fit.
+**Status: addendum, fixed before its fits.** This addendum to [stress study 1](V1_STRESS_CORNET.md) fixes the recipes, contrasts and resources before any wave-2 fit on its seeds, 80000–80063. The freeze is the commit that fills in [Recorded before launch](#recorded-before-launch); earlier commits carry drafts. The job record holds the freeze commit's hash before the first fit.
 
 The stress plan said the wave-2 recipes would join its block later, on the same seeds, paired within each shard as in [wave 2](V1_CORE_WAVE2.md). This addendum does that. It keeps from the stress plan:
 - the eight dials, four levels and two trial sizes: 64 conditions;
@@ -84,20 +84,20 @@ Preflight results (seed 79999, eight shards per group). Each group's limit follo
 
 | Group | Longest shard | Median shard | Peak memory | Preflight failures | Main-run limit |
 | --- | ---: | ---: | ---: | --- | --- |
-| `native_r` | *pending* | | | | |
-| `gp` | *pending* | | | | |
-| `tabpfn` | *pending* | | | | |
-| `tsr_legacy` | *pending* | | | | |
+| `native_r` | 1,228 s (`trial_shrink`) | 696 s | 466 MiB | none | 1 CPU, 4 GiB, 2 h |
+| `gp` | 700 s (`obs_size`) | 173 s | 5,052 MiB | none | 1 CPU, 10 GiB, 2 h |
+| `tabpfn` | 211 s (`obs_selection`) | 195 s | 2,614 MiB | none | 2 shards per GPU, 4 CPUs, 16 GiB, 2 h (longest preflight GPU job 218 s) |
+| `tsr_legacy` | 120 s (`target_shift`) | 103 s | 1,751 MiB | none | 2 shards per GPU, 4 CPUs, 16 GiB, 2 h (longest preflight GPU job 127 s) |
 
 **Execution.** The shard driver and job scripts are published with the results; their hashes are fixed here.
 
 | Item | Value |
 | --- | --- |
-| Wave-2 freeze commit (execution rules) | *pending* |
+| Wave-2 freeze commit (execution rules) | `80c9129d0d6046a9e6845c9f0a3580c67ca024d9` |
 | Code | The freeze commit, run from a `git archive` snapshot |
-| Shard driver and job scripts | *pending* |
-| GPU jobs | *pending* |
-| Preflight runs | *pending* |
+| Shard driver and job scripts | Those of the wave-2 main run: `run_shard.py` `1a299a69c5132804ad619df9300861df6fa44559b47a836bf27023e536c0a23b`; `common.sh` `e19ad30219e8b26e474aa5bc7e8ab5143c1ea9b2c57900a51698fce88796dbf0`; `cpu_array.sbatch` `05cd6fda42accfc470c841e8bfb52115c30eb4a9769fa61a2d9b311a6f24182f`; `gpu_array.sbatch` `d6cb20f028180a0103548f21cd824be65643d96df3f0a0596f28d0e380a96a16`. Shards are written by `write_stress_shards.sbatch` `28961c7979ee98a134224736ece68ed3f6c30f74402687583c4a3cea940f954b` |
+| GPU jobs | As in wave 2: two shards per GPU, one RTX 3090, 4 CPUs and 16 GiB of host memory per job; nodes b03, b14, b15, b24–b28, b30 and b31 excluded |
+| Preflight runs | Draft code whose fitting code, configurations and shard writer equal the freeze's. Jobs 822060 (`native_r`) and 822061 (`gp`), driver `8bf51696…`; jobs 822062 (`tabpfn`) and 822063 (`tsr_legacy`), driver `1a299a69…`, two shards per GPU |
 | Data check (seed 80000, against stress study 1's environment) | Passed. In all 64 conditions, every array of every sample role is identical in the `gp`, `tabpfn` and `tsr_legacy` environments; the largest difference is 0. `native_r` runs in stress study 1's interpreter itself |
 
 ## Revisions and errata
