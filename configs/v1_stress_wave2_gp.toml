@@ -1,0 +1,854 @@
+schema_version = 1
+
+[run]
+purpose = "reference"
+seeds = [80000, 80001, 80002, 80003, 80004, 80005, 80006, 80007, 80008, 80009, 80010, 80011, 80012, 80013, 80014, 80015, 80016, 80017, 80018, 80019, 80020, 80021, 80022, 80023, 80024, 80025, 80026, 80027, 80028, 80029, 80030, 80031, 80032, 80033, 80034, 80035, 80036, 80037, 80038, 80039, 80040, 80041, 80042, 80043, 80044, 80045, 80046, 80047, 80048, 80049, 80050, 80051, 80052, 80053, 80054, 80055, 80056, 80057, 80058, 80059, 80060, 80061, 80062, 80063]
+methods = ["rct_selected", "rct_t_ridge", "causal_icm_fixed", "causal_icm_rct_only"]
+reference_method = "rct_selected"
+scope = "stress study 1 wave-2 addendum (docs/V1_STRESS_WAVE2.md), group gp: the wave-2 recipes and options on the 64 stress conditions and seeds; each shard refits rct_selected and rct_t_ridge"
+
+[method_options.rct_selected]
+ridge_alpha = 1.0
+n_estimators = 100
+min_samples_leaf = 5
+
+[method_options.rct_t_ridge]
+ridge_alpha = 1.0
+
+[method_options.causal_icm_fixed]
+rho = 0.5
+
+[method_options.causal_icm_rct_only]
+rho = 0.5
+
+[[scenarios]]
+kind = "stress"
+id = "hidden_modifier"
+label = "l0_r128"
+[scenarios.parameters]
+level = 0
+n_obs = 2048
+n_rct_train = 128
+n_rct_tune = 32
+n_rct_test = 64
+n_eval = 2048
+n_target_reference = 0
+
+[[scenarios]]
+kind = "stress"
+id = "hidden_modifier"
+label = "l0_r512"
+[scenarios.parameters]
+level = 0
+n_obs = 2048
+n_rct_train = 512
+n_rct_tune = 32
+n_rct_test = 64
+n_eval = 2048
+n_target_reference = 0
+
+[[scenarios]]
+kind = "stress"
+id = "hidden_modifier"
+label = "l1_r128"
+[scenarios.parameters]
+level = 1
+n_obs = 2048
+n_rct_train = 128
+n_rct_tune = 32
+n_rct_test = 64
+n_eval = 2048
+n_target_reference = 0
+
+[[scenarios]]
+kind = "stress"
+id = "hidden_modifier"
+label = "l1_r512"
+[scenarios.parameters]
+level = 1
+n_obs = 2048
+n_rct_train = 512
+n_rct_tune = 32
+n_rct_test = 64
+n_eval = 2048
+n_target_reference = 0
+
+[[scenarios]]
+kind = "stress"
+id = "hidden_modifier"
+label = "l2_r128"
+[scenarios.parameters]
+level = 2
+n_obs = 2048
+n_rct_train = 128
+n_rct_tune = 32
+n_rct_test = 64
+n_eval = 2048
+n_target_reference = 0
+
+[[scenarios]]
+kind = "stress"
+id = "hidden_modifier"
+label = "l2_r512"
+[scenarios.parameters]
+level = 2
+n_obs = 2048
+n_rct_train = 512
+n_rct_tune = 32
+n_rct_test = 64
+n_eval = 2048
+n_target_reference = 0
+
+[[scenarios]]
+kind = "stress"
+id = "hidden_modifier"
+label = "l3_r128"
+[scenarios.parameters]
+level = 3
+n_obs = 2048
+n_rct_train = 128
+n_rct_tune = 32
+n_rct_test = 64
+n_eval = 2048
+n_target_reference = 0
+
+[[scenarios]]
+kind = "stress"
+id = "hidden_modifier"
+label = "l3_r512"
+[scenarios.parameters]
+level = 3
+n_obs = 2048
+n_rct_train = 512
+n_rct_tune = 32
+n_rct_test = 64
+n_eval = 2048
+n_target_reference = 0
+
+[[scenarios]]
+kind = "stress"
+id = "bias_complexity"
+label = "l0_r128"
+[scenarios.parameters]
+level = 0
+n_obs = 2048
+n_rct_train = 128
+n_rct_tune = 32
+n_rct_test = 64
+n_eval = 2048
+n_target_reference = 0
+
+[[scenarios]]
+kind = "stress"
+id = "bias_complexity"
+label = "l0_r512"
+[scenarios.parameters]
+level = 0
+n_obs = 2048
+n_rct_train = 512
+n_rct_tune = 32
+n_rct_test = 64
+n_eval = 2048
+n_target_reference = 0
+
+[[scenarios]]
+kind = "stress"
+id = "bias_complexity"
+label = "l1_r128"
+[scenarios.parameters]
+level = 1
+n_obs = 2048
+n_rct_train = 128
+n_rct_tune = 32
+n_rct_test = 64
+n_eval = 2048
+n_target_reference = 0
+
+[[scenarios]]
+kind = "stress"
+id = "bias_complexity"
+label = "l1_r512"
+[scenarios.parameters]
+level = 1
+n_obs = 2048
+n_rct_train = 512
+n_rct_tune = 32
+n_rct_test = 64
+n_eval = 2048
+n_target_reference = 0
+
+[[scenarios]]
+kind = "stress"
+id = "bias_complexity"
+label = "l2_r128"
+[scenarios.parameters]
+level = 2
+n_obs = 2048
+n_rct_train = 128
+n_rct_tune = 32
+n_rct_test = 64
+n_eval = 2048
+n_target_reference = 0
+
+[[scenarios]]
+kind = "stress"
+id = "bias_complexity"
+label = "l2_r512"
+[scenarios.parameters]
+level = 2
+n_obs = 2048
+n_rct_train = 512
+n_rct_tune = 32
+n_rct_test = 64
+n_eval = 2048
+n_target_reference = 0
+
+[[scenarios]]
+kind = "stress"
+id = "bias_complexity"
+label = "l3_r128"
+[scenarios.parameters]
+level = 3
+n_obs = 2048
+n_rct_train = 128
+n_rct_tune = 32
+n_rct_test = 64
+n_eval = 2048
+n_target_reference = 0
+
+[[scenarios]]
+kind = "stress"
+id = "bias_complexity"
+label = "l3_r512"
+[scenarios.parameters]
+level = 3
+n_obs = 2048
+n_rct_train = 512
+n_rct_tune = 32
+n_rct_test = 64
+n_eval = 2048
+n_target_reference = 0
+
+[[scenarios]]
+kind = "stress"
+id = "common_shift"
+label = "l0_r128"
+[scenarios.parameters]
+level = 0
+n_obs = 2048
+n_rct_train = 128
+n_rct_tune = 32
+n_rct_test = 64
+n_eval = 2048
+n_target_reference = 0
+
+[[scenarios]]
+kind = "stress"
+id = "common_shift"
+label = "l0_r512"
+[scenarios.parameters]
+level = 0
+n_obs = 2048
+n_rct_train = 512
+n_rct_tune = 32
+n_rct_test = 64
+n_eval = 2048
+n_target_reference = 0
+
+[[scenarios]]
+kind = "stress"
+id = "common_shift"
+label = "l1_r128"
+[scenarios.parameters]
+level = 1
+n_obs = 2048
+n_rct_train = 128
+n_rct_tune = 32
+n_rct_test = 64
+n_eval = 2048
+n_target_reference = 0
+
+[[scenarios]]
+kind = "stress"
+id = "common_shift"
+label = "l1_r512"
+[scenarios.parameters]
+level = 1
+n_obs = 2048
+n_rct_train = 512
+n_rct_tune = 32
+n_rct_test = 64
+n_eval = 2048
+n_target_reference = 0
+
+[[scenarios]]
+kind = "stress"
+id = "common_shift"
+label = "l2_r128"
+[scenarios.parameters]
+level = 2
+n_obs = 2048
+n_rct_train = 128
+n_rct_tune = 32
+n_rct_test = 64
+n_eval = 2048
+n_target_reference = 0
+
+[[scenarios]]
+kind = "stress"
+id = "common_shift"
+label = "l2_r512"
+[scenarios.parameters]
+level = 2
+n_obs = 2048
+n_rct_train = 512
+n_rct_tune = 32
+n_rct_test = 64
+n_eval = 2048
+n_target_reference = 0
+
+[[scenarios]]
+kind = "stress"
+id = "common_shift"
+label = "l3_r128"
+[scenarios.parameters]
+level = 3
+n_obs = 2048
+n_rct_train = 128
+n_rct_tune = 32
+n_rct_test = 64
+n_eval = 2048
+n_target_reference = 0
+
+[[scenarios]]
+kind = "stress"
+id = "common_shift"
+label = "l3_r512"
+[scenarios.parameters]
+level = 3
+n_obs = 2048
+n_rct_train = 512
+n_rct_tune = 32
+n_rct_test = 64
+n_eval = 2048
+n_target_reference = 0
+
+[[scenarios]]
+kind = "stress"
+id = "obs_selection"
+label = "l0_r128"
+[scenarios.parameters]
+level = 0
+n_obs = 2048
+n_rct_train = 128
+n_rct_tune = 32
+n_rct_test = 64
+n_eval = 2048
+n_target_reference = 0
+
+[[scenarios]]
+kind = "stress"
+id = "obs_selection"
+label = "l0_r512"
+[scenarios.parameters]
+level = 0
+n_obs = 2048
+n_rct_train = 512
+n_rct_tune = 32
+n_rct_test = 64
+n_eval = 2048
+n_target_reference = 0
+
+[[scenarios]]
+kind = "stress"
+id = "obs_selection"
+label = "l1_r128"
+[scenarios.parameters]
+level = 1
+n_obs = 2048
+n_rct_train = 128
+n_rct_tune = 32
+n_rct_test = 64
+n_eval = 2048
+n_target_reference = 0
+
+[[scenarios]]
+kind = "stress"
+id = "obs_selection"
+label = "l1_r512"
+[scenarios.parameters]
+level = 1
+n_obs = 2048
+n_rct_train = 512
+n_rct_tune = 32
+n_rct_test = 64
+n_eval = 2048
+n_target_reference = 0
+
+[[scenarios]]
+kind = "stress"
+id = "obs_selection"
+label = "l2_r128"
+[scenarios.parameters]
+level = 2
+n_obs = 2048
+n_rct_train = 128
+n_rct_tune = 32
+n_rct_test = 64
+n_eval = 2048
+n_target_reference = 0
+
+[[scenarios]]
+kind = "stress"
+id = "obs_selection"
+label = "l2_r512"
+[scenarios.parameters]
+level = 2
+n_obs = 2048
+n_rct_train = 512
+n_rct_tune = 32
+n_rct_test = 64
+n_eval = 2048
+n_target_reference = 0
+
+[[scenarios]]
+kind = "stress"
+id = "obs_selection"
+label = "l3_r128"
+[scenarios.parameters]
+level = 3
+n_obs = 2048
+n_rct_train = 128
+n_rct_tune = 32
+n_rct_test = 64
+n_eval = 2048
+n_target_reference = 0
+
+[[scenarios]]
+kind = "stress"
+id = "obs_selection"
+label = "l3_r512"
+[scenarios.parameters]
+level = 3
+n_obs = 2048
+n_rct_train = 512
+n_rct_tune = 32
+n_rct_test = 64
+n_eval = 2048
+n_target_reference = 0
+
+[[scenarios]]
+kind = "stress"
+id = "trial_shrink"
+label = "l0_r128"
+[scenarios.parameters]
+level = 0
+n_obs = 2048
+n_rct_train = 128
+n_rct_tune = 32
+n_rct_test = 64
+n_eval = 2048
+n_target_reference = 0
+
+[[scenarios]]
+kind = "stress"
+id = "trial_shrink"
+label = "l0_r512"
+[scenarios.parameters]
+level = 0
+n_obs = 2048
+n_rct_train = 512
+n_rct_tune = 32
+n_rct_test = 64
+n_eval = 2048
+n_target_reference = 0
+
+[[scenarios]]
+kind = "stress"
+id = "trial_shrink"
+label = "l1_r128"
+[scenarios.parameters]
+level = 1
+n_obs = 2048
+n_rct_train = 128
+n_rct_tune = 32
+n_rct_test = 64
+n_eval = 2048
+n_target_reference = 0
+
+[[scenarios]]
+kind = "stress"
+id = "trial_shrink"
+label = "l1_r512"
+[scenarios.parameters]
+level = 1
+n_obs = 2048
+n_rct_train = 512
+n_rct_tune = 32
+n_rct_test = 64
+n_eval = 2048
+n_target_reference = 0
+
+[[scenarios]]
+kind = "stress"
+id = "trial_shrink"
+label = "l2_r128"
+[scenarios.parameters]
+level = 2
+n_obs = 2048
+n_rct_train = 128
+n_rct_tune = 32
+n_rct_test = 64
+n_eval = 2048
+n_target_reference = 0
+
+[[scenarios]]
+kind = "stress"
+id = "trial_shrink"
+label = "l2_r512"
+[scenarios.parameters]
+level = 2
+n_obs = 2048
+n_rct_train = 512
+n_rct_tune = 32
+n_rct_test = 64
+n_eval = 2048
+n_target_reference = 0
+
+[[scenarios]]
+kind = "stress"
+id = "trial_shrink"
+label = "l3_r128"
+[scenarios.parameters]
+level = 3
+n_obs = 2048
+n_rct_train = 128
+n_rct_tune = 32
+n_rct_test = 64
+n_eval = 2048
+n_target_reference = 0
+
+[[scenarios]]
+kind = "stress"
+id = "trial_shrink"
+label = "l3_r512"
+[scenarios.parameters]
+level = 3
+n_obs = 2048
+n_rct_train = 512
+n_rct_tune = 32
+n_rct_test = 64
+n_eval = 2048
+n_target_reference = 0
+
+[[scenarios]]
+kind = "stress"
+id = "obs_size"
+label = "l0_r128"
+[scenarios.parameters]
+level = 0
+n_obs = 8192
+n_rct_train = 128
+n_rct_tune = 32
+n_rct_test = 64
+n_eval = 2048
+n_target_reference = 0
+
+[[scenarios]]
+kind = "stress"
+id = "obs_size"
+label = "l0_r512"
+[scenarios.parameters]
+level = 0
+n_obs = 8192
+n_rct_train = 512
+n_rct_tune = 32
+n_rct_test = 64
+n_eval = 2048
+n_target_reference = 0
+
+[[scenarios]]
+kind = "stress"
+id = "obs_size"
+label = "l1_r128"
+[scenarios.parameters]
+level = 1
+n_obs = 2048
+n_rct_train = 128
+n_rct_tune = 32
+n_rct_test = 64
+n_eval = 2048
+n_target_reference = 0
+
+[[scenarios]]
+kind = "stress"
+id = "obs_size"
+label = "l1_r512"
+[scenarios.parameters]
+level = 1
+n_obs = 2048
+n_rct_train = 512
+n_rct_tune = 32
+n_rct_test = 64
+n_eval = 2048
+n_target_reference = 0
+
+[[scenarios]]
+kind = "stress"
+id = "obs_size"
+label = "l2_r128"
+[scenarios.parameters]
+level = 2
+n_obs = 512
+n_rct_train = 128
+n_rct_tune = 32
+n_rct_test = 64
+n_eval = 2048
+n_target_reference = 0
+
+[[scenarios]]
+kind = "stress"
+id = "obs_size"
+label = "l2_r512"
+[scenarios.parameters]
+level = 2
+n_obs = 512
+n_rct_train = 512
+n_rct_tune = 32
+n_rct_test = 64
+n_eval = 2048
+n_target_reference = 0
+
+[[scenarios]]
+kind = "stress"
+id = "obs_size"
+label = "l3_r128"
+[scenarios.parameters]
+level = 3
+n_obs = 128
+n_rct_train = 128
+n_rct_tune = 32
+n_rct_test = 64
+n_eval = 2048
+n_target_reference = 0
+
+[[scenarios]]
+kind = "stress"
+id = "obs_size"
+label = "l3_r512"
+[scenarios.parameters]
+level = 3
+n_obs = 128
+n_rct_train = 512
+n_rct_tune = 32
+n_rct_test = 64
+n_eval = 2048
+n_target_reference = 0
+
+[[scenarios]]
+kind = "stress"
+id = "target_shift"
+label = "l0_r128"
+[scenarios.parameters]
+level = 0
+n_obs = 2048
+n_rct_train = 128
+n_rct_tune = 32
+n_rct_test = 64
+n_eval = 2048
+n_target_reference = 0
+
+[[scenarios]]
+kind = "stress"
+id = "target_shift"
+label = "l0_r512"
+[scenarios.parameters]
+level = 0
+n_obs = 2048
+n_rct_train = 512
+n_rct_tune = 32
+n_rct_test = 64
+n_eval = 2048
+n_target_reference = 0
+
+[[scenarios]]
+kind = "stress"
+id = "target_shift"
+label = "l1_r128"
+[scenarios.parameters]
+level = 1
+n_obs = 2048
+n_rct_train = 128
+n_rct_tune = 32
+n_rct_test = 64
+n_eval = 2048
+n_target_reference = 0
+
+[[scenarios]]
+kind = "stress"
+id = "target_shift"
+label = "l1_r512"
+[scenarios.parameters]
+level = 1
+n_obs = 2048
+n_rct_train = 512
+n_rct_tune = 32
+n_rct_test = 64
+n_eval = 2048
+n_target_reference = 0
+
+[[scenarios]]
+kind = "stress"
+id = "target_shift"
+label = "l2_r128"
+[scenarios.parameters]
+level = 2
+n_obs = 2048
+n_rct_train = 128
+n_rct_tune = 32
+n_rct_test = 64
+n_eval = 2048
+n_target_reference = 0
+
+[[scenarios]]
+kind = "stress"
+id = "target_shift"
+label = "l2_r512"
+[scenarios.parameters]
+level = 2
+n_obs = 2048
+n_rct_train = 512
+n_rct_tune = 32
+n_rct_test = 64
+n_eval = 2048
+n_target_reference = 0
+
+[[scenarios]]
+kind = "stress"
+id = "target_shift"
+label = "l3_r128"
+[scenarios.parameters]
+level = 3
+n_obs = 2048
+n_rct_train = 128
+n_rct_tune = 32
+n_rct_test = 64
+n_eval = 2048
+n_target_reference = 0
+
+[[scenarios]]
+kind = "stress"
+id = "target_shift"
+label = "l3_r512"
+[scenarios.parameters]
+level = 3
+n_obs = 2048
+n_rct_train = 512
+n_rct_tune = 32
+n_rct_test = 64
+n_eval = 2048
+n_target_reference = 0
+
+[[scenarios]]
+kind = "stress"
+id = "noise_shape"
+label = "l0_r128"
+[scenarios.parameters]
+level = 0
+n_obs = 2048
+n_rct_train = 128
+n_rct_tune = 32
+n_rct_test = 64
+n_eval = 2048
+n_target_reference = 0
+
+[[scenarios]]
+kind = "stress"
+id = "noise_shape"
+label = "l0_r512"
+[scenarios.parameters]
+level = 0
+n_obs = 2048
+n_rct_train = 512
+n_rct_tune = 32
+n_rct_test = 64
+n_eval = 2048
+n_target_reference = 0
+
+[[scenarios]]
+kind = "stress"
+id = "noise_shape"
+label = "l1_r128"
+[scenarios.parameters]
+level = 1
+n_obs = 2048
+n_rct_train = 128
+n_rct_tune = 32
+n_rct_test = 64
+n_eval = 2048
+n_target_reference = 0
+
+[[scenarios]]
+kind = "stress"
+id = "noise_shape"
+label = "l1_r512"
+[scenarios.parameters]
+level = 1
+n_obs = 2048
+n_rct_train = 512
+n_rct_tune = 32
+n_rct_test = 64
+n_eval = 2048
+n_target_reference = 0
+
+[[scenarios]]
+kind = "stress"
+id = "noise_shape"
+label = "l2_r128"
+[scenarios.parameters]
+level = 2
+n_obs = 2048
+n_rct_train = 128
+n_rct_tune = 32
+n_rct_test = 64
+n_eval = 2048
+n_target_reference = 0
+
+[[scenarios]]
+kind = "stress"
+id = "noise_shape"
+label = "l2_r512"
+[scenarios.parameters]
+level = 2
+n_obs = 2048
+n_rct_train = 512
+n_rct_tune = 32
+n_rct_test = 64
+n_eval = 2048
+n_target_reference = 0
+
+[[scenarios]]
+kind = "stress"
+id = "noise_shape"
+label = "l3_r128"
+[scenarios.parameters]
+level = 3
+n_obs = 2048
+n_rct_train = 128
+n_rct_tune = 32
+n_rct_test = 64
+n_eval = 2048
+n_target_reference = 0
+
+[[scenarios]]
+kind = "stress"
+id = "noise_shape"
+label = "l3_r512"
+[scenarios.parameters]
+level = 3
+n_obs = 2048
+n_rct_train = 512
+n_rct_tune = 32
+n_rct_test = 64
+n_eval = 2048
+n_target_reference = 0

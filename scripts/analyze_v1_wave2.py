@@ -52,12 +52,14 @@ class AnalysisError(ValueError):
     """The inputs do not match the declared addendum; nothing is reported."""
 
 
-def collect(configs: dict, runs: list[Path], *, check_source: bool = True) -> dict:
+def collect(configs: dict, runs: list[Path], *, check_source: bool = True, declared=declared_shards) -> dict:
+    """Authenticated terminal records keyed (group, scenario, seed, method). `declared`
+    yields a group configuration's (name, shard) pairs; the stress addendum passes its own."""
     from obs_rct_benchmark.runner import method_seed, record_id, source_provenance
 
     expected = {}
     for group, config in configs.items():
-        for name, shard in declared_shards(config):
+        for name, shard in declared(config):
             expected[shard.config_hash] = (group, name, shard)
     seen, records, identity, external = set(), {}, {}, {}
     for run in runs:
