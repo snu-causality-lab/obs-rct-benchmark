@@ -1,15 +1,18 @@
 """Independent checks for the selected-rho Causal-ICM addendum (docs/V1_ICM_SELECTED.md).
 
-  arithmetic  Check replicate_scores.csv against the run records, then recompute every
-              declared contrast, Holm adjustment, verdict, count, headline row, readout
-              state (stress), identity count and selected-rho count, without importing
-              the analyzer. Family definitions and sizes are written out here.
+  arithmetic  Rebuild the block's requested cells from its frozen configuration,
+              authenticate the run records (one record per cell, record and selection
+              identities, valid metrics), then recompute every published output of the
+              analyzer and compare: replicate_scores.csv, condition_scores.csv,
+              rho_selection.csv, contrasts.csv, identity_check.json, analysis.json and
+              headline.md (whole text); for the stress block also dose_response.csv and
+              readout.csv. It imports no analysis script.
   reproduce   Refit every recipe twice on the block's first seed (core: OBS 512 and RCT
               128; stress: RCT 128 at levels 0 and 3 of every dial) and compare with the
-              records within 1e-12.
+              records within 1e-12. Cells without a record are listed as unavailable.
 
-    python scripts/verify_icm_selected.py arithmetic --block core --analysis icmsel-core-analysis \
-        --runs out-core/*/ --wave2 results/v1_wave2 --output arith-core.json
+    python scripts/verify_icm_selected.py arithmetic --config configs/v1_icm_selected_core.toml \
+        --analysis icmsel-core-analysis --runs out-core/*/ --wave2 results/v1_wave2 --output arith-core.json
     python scripts/verify_icm_selected.py reproduce --config configs/v1_icm_selected_core.toml \
         --runs out-core/*/ --output reproduce-core.json
 """
@@ -17,28 +20,29 @@ from __future__ import annotations
 
 import argparse
 import csv
-from collections import defaultdict
+from collections import Counter, defaultdict
 import json
 import math
 from pathlib import Path
 
 import numpy as np
 
-from verify_v1_wave2 import as_float, check_cells, check_headline
-
 GROUP = "gp"
 METHODS = ("rct_selected", "rct_t_ridge", "causal_icm_fixed", "causal_icm_rct_only", "causal_icm_selected")
+OPTIONS = {"rct_selected": {"ridge_alpha": 1.0, "n_estimators": 100, "min_samples_leaf": 5},
+           "rct_t_ridge": {"ridge_alpha": 1.0}, "causal_icm_fixed": {"rho": 0.5}, "causal_icm_rct_only": {"rho": 0.5}}
 RCT_ONLY = {"rct_selected", "rct_t_ridge", "causal_icm_rct_only"}
 WAVE2 = ("rct_selected", "rct_t_ridge", "causal_icm_fixed", "causal_icm_rct_only")
 GRID = tuple(k / 10 for k in range(11))
+SELECTOR = "causal_icm_weighted_rct_cv_v1"
 # (family, recipe, reference, kind)
 FAMILIES = [("gp/causal_icm_selected", "causal_icm_selected", "rct_selected", "primary"),
             ("gp/causal_icm_selected vs causal_icm_rct_only", "causal_icm_selected", "causal_icm_rct_only", "matched_obs"),
             ("gp/causal_icm_selected vs causal_icm_fixed", "causal_icm_selected", "causal_icm_fixed", "selection")]
 BLOCK = {
-    "core": {"seeds": list(range(70000, 70064)), "conditions": 124, "family_size": 120, "split": "transport",
+    "core": {"seeds": tuple(range(70000, 70064)), "conditions": 124, "family_size": 120, "split": "transport",
              "split_size": 24},
-    "stress": {"seeds": list(range(80000, 80064)), "conditions": 64, "family_size": 64, "split": "extrapolation",
+    "stress": {"seeds": tuple(range(80000, 80064)), "conditions": 64, "family_size": 64, "split": "extrapolation",
                "split_size": 16},
 }
 HEAVY_TAIL = "structural:M11"
@@ -53,6 +57,15 @@ TOL = 1e-12
 SAME_TOL = 1e-9
 
 
+def cell_text(value) -> str:
+    """How csv.DictWriter writes a value."""
+    return "" if value is None else str(value)
+
+
+def as_float(text):
+    return None if text in ("", None) else float(text)
+
+
 def close(a, b, rel=1e-9):
     return (a is None and b is None) or (a is not None and b is not None and math.isclose(a, b, rel_tol=rel, abs_tol=1e-12))
 
@@ -61,22 +74,90 @@ def dial(scenario: str) -> str:
     return scenario.split("@")[0].split(":")[1]
 
 
+def level_rct(scenario: str) -> tuple[int, int]:
+    level, rct = scenario.split("@")[1].split("_")
+    return int(level[1:]), int(rct[1:])
+
+
 def in_split(block: str, scenario: str) -> bool:
     return dial(scenario) in EXTRAPOLATION if block == "stress" else scenario.split("@")[0] in TRANSPORT
 
 
-def load_records(runs: list[Path], job_limit: frozenset = frozenset()) -> tuple[dict, set]:
-    """Records keyed (group, scenario, seed, method), and the requested cells left
-    unrecorded by runs declared as reaching their job limit on the final attempt."""
-    out, unrecorded, seen = {}, set(), set()
+def read_csv(path: Path, key: tuple[str, ...], mismatches: list) -> dict:
+    """Rows keyed by `key`; a duplicate key is a mismatch."""
+    rows = {}
+    with path.open(newline="") as fh:
+        for r in csv.DictReader(fh):
+            k = tuple(r[f] for f in key)
+            if k in rows:
+                mismatches.append({"file": path.name, "reason": "duplicate row", "key": list(k)})
+            rows[k] = r
+    return rows
+
+
+def compare_rows(name: str, reported: dict, expected: dict, mismatches: list) -> None:
+    """Every expected row and field, and no other row. Numbers within a relative 1e-9;
+    everything else as written."""
+    if set(reported) != set(expected):
+        mismatches.append({"file": name, "reason": "row set differs", "missing": sorted(set(expected) - set(reported))[:5],
+                           "extra": sorted(set(reported) - set(expected))[:5]})
+    for k, want in expected.items():
+        got = reported.get(k)
+        if got is None:
+            continue
+        for field, value in want.items():
+            text = got.get(field)
+            if isinstance(value, float) and not isinstance(value, bool):
+                ok = text not in (None, "") and close(float(text), value)
+            else:
+                ok = text == cell_text(value)
+            if not ok:
+                mismatches.append({"file": name, "key": list(k), "field": field, "recomputed": value, "reported": text})
+
+
+def block_of(config) -> str:
+    for name, spec in BLOCK.items():
+        if config.seeds == spec["seeds"]:
+            if (config.methods != METHODS or {m: dict(o) for m, o in config.method_options.items()} != OPTIONS
+                    or len(config.scenarios) != spec["conditions"]):
+                raise SystemExit("configuration differs from the declared addendum")
+            return name
+    raise SystemExit("seeds match neither declared block")
+
+
+def valid_metrics(row: dict) -> bool:
+    m = row.get("metrics")
+    if row["status"] == "failed":
+        return m is None
+    if not isinstance(m, dict):
+        return False
+    mse, root = m.get("cate_mse"), m.get("root_pehe")
+    if any(isinstance(v, bool) or not isinstance(v, (int, float)) or not math.isfinite(v) or v < 0 for v in (mse, root)):
+        return False
+    return math.isclose(root * root, mse, rel_tol=1e-10, abs_tol=1e-12)
+
+
+def load_records(config, runs: list[Path], job_limit: frozenset = frozenset()) -> tuple[dict, set, list]:
+    """Records keyed (group, scenario, seed, method) for exactly the configuration's
+    requested cells; the cells a declared job-limit run left unrecorded; and problems."""
+    from obs_rct_benchmark.runner import method_seed
+
+    declared = {s.key: dict(s.parameters) for s in config.scenarios}
+    wanted = {(GROUP, sc, seed, m) for sc in declared for seed in config.seeds for m in METHODS}
+    out, unrecorded, seen, problems = {}, set(), set(), []
     for run in runs:
         manifest = json.loads((run / "run_manifest.json").read_text())
-        config = manifest["config"]
+        payload = manifest["config"]
         if manifest["config_hash"] in seen:
-            raise SystemExit(f"{run}: shard given twice")
+            problems.append({"run": run.name, "reason": "shard given twice"})
         seen.add(manifest["config_hash"])
-        if tuple(config["run"]["methods"]) != METHODS:
-            raise SystemExit(f"{run}: not a shard of this addendum")
+        scen = {f"{s['kind']}:{s['id']}" + (f"@{s['label']}" if s.get("label") else ""): s["parameters"]
+                for s in payload["scenarios"]}
+        if (tuple(payload["run"]["methods"]) != METHODS or payload.get("method_options", {}) != OPTIONS
+                or any(declared.get(k) != v for k, v in scen.items())
+                or not set(payload["run"]["seeds"]) <= set(config.seeds)):
+            problems.append({"run": run.name, "reason": "not a shard of the declared configuration"})
+        requested = {(GROUP, sc, seed, m) for sc in scen for seed in payload["run"]["seeds"] for m in METHODS}
         path = run / "records.jsonl"
         lines = path.read_text().splitlines() if path.exists() else []
         limited = manifest["config_hash"] in job_limit
@@ -89,15 +170,31 @@ def load_records(runs: list[Path], job_limit: frozenset = frozenset()) -> tuple[
         for line in lines:
             row = json.loads(line)
             key = (GROUP, row["scenario"], int(row["seed"]), row["method"])
-            if key in out:
-                raise SystemExit(f"{run}: duplicate record {key}")
+            if key in out or key not in requested:
+                problems.append({"run": run.name, "cell": list(key), "reason": "duplicate or unrequested record"})
+            if (row["config_hash"] != manifest["config_hash"] or row["method_seed"] != method_seed(*key[1:])
+                    or row["status"] not in ("ok", "failed") or not valid_metrics(row)):
+                problems.append({"run": run.name, "cell": list(key), "reason": "record identity, status or metrics"})
             out[key] = row
             got.add(key)
         if limited:
-            unrecorded |= {(GROUP, f"{sc['kind']}:{sc['id']}" + (f"@{sc['label']}" if sc.get("label") else ""), seed, m)
-                           for sc in config["scenarios"] for seed in config["run"]["seeds"]
-                           for m in config["run"]["methods"]} - got
-    return out, unrecorded
+            unrecorded |= requested - got
+        elif got != requested:
+            problems.append({"run": run.name, "reason": f"{len(requested - got)} requested cells lack a record"})
+    if set(out) | unrecorded != wanted or set(out) & unrecorded:
+        problems.append({"reason": "recorded cells differ from the declared cells",
+                         "missing": len(wanted - set(out) - unrecorded), "extra": len(set(out) - wanted)})
+    for key, row in out.items():
+        if key[3] != "causal_icm_selected":
+            continue
+        twin = out.get((*key[:3], "causal_icm_fixed"))
+        if twin is not None and twin["method_seed"] != row["method_seed"]:
+            problems.append({"cell": list(key), "reason": "selected and fixed method seeds differ"})
+        info = row.get("fit_info") or {}
+        if row["status"] == "ok" and (info.get("selector") != SELECTOR or info.get("status") != "completed"
+                                      or info.get("selected_rho") not in GRID or info.get("fold_seed") != row["method_seed"]):
+            problems.append({"cell": list(key), "reason": "successful selected fit without a completed selection"})
+    return out, unrecorded, problems
 
 
 def wave2_scores(packet: Path) -> dict:
@@ -109,40 +206,44 @@ def wave2_scores(packet: Path) -> dict:
     return out
 
 
-def arithmetic(block: str, analysis: Path, runs: list[Path], wave2: Path, job_limit: frozenset = frozenset()) -> dict:
-    from scipy.special import stdtr
+def paired(d: np.ndarray) -> dict:
+    """Two-sided paired t; identical differences give p = 1 (declared rule)."""
+    from scipy.special import stdtr, stdtrit
 
+    n, mean = len(d), float(np.mean(d))
+    if np.all(d == d[0]):
+        return {"mean": float(d[0]), "mcse": 0.0, "lo": float(d[0]), "hi": float(d[0]), "p": 1.0, "zero": True}
+    se = float(np.std(d, ddof=1)) / math.sqrt(n)
+    q = float(stdtrit(n - 1, 0.975))
+    return {"mean": mean, "mcse": se, "lo": mean - q * se, "hi": mean + q * se,
+            "p": float(2 * stdtr(n - 1, -abs(mean / se))), "zero": False}
+
+
+def arithmetic(config, analysis: Path, runs: list[Path], wave2: Path, job_limit: frozenset = frozenset()) -> dict:
+    from scipy.special import stdtrit
+
+    block = block_of(config)
     spec = BLOCK[block]
     split = spec["split"]
-    mse, table, scenarios, seeds = {}, {}, set(), set()
-    with (analysis / "replicate_scores.csv").open(newline="") as fh:
-        for r in csv.DictReader(fh):
-            key = (r["group"], r["scenario"], int(r["seed"]), r["method"])
-            table[key] = r
-            scenarios.add(r["scenario"])
-            seeds.add(int(r["seed"]))
-            if r["status"] == "ok":
-                mse[key] = float(r["cate_mse"])
-    seeds, scenarios = sorted(seeds), sorted(scenarios)
-    mismatches = [] if seeds == spec["seeds"] and len(scenarios) == spec["conditions"] else [
-        {"reason": f"expected the {block} block's seeds and {spec['conditions']} conditions"}]
-    records, unrecorded = load_records(runs, job_limit)
-    mismatches += check_cells(table, records, unrecorded)
+    seeds = list(config.seeds)
+    scenarios = [s.key for s in config.scenarios]
+    records, unrecorded, mismatches = load_records(config, runs, job_limit)
+    for key in unrecorded:
+        records[key] = {"status": "failed", "metrics": None, "stage": "job_limit", "error_type": "JobLimit"}
+    mse = {k: float(r["metrics"]["cate_mse"]) for k, r in records.items() if r["status"] == "ok"}
+    rho = {k: r["fit_info"]["selected_rho"] for k, r in records.items()
+           if k[3] == "causal_icm_selected" and r["status"] == "ok" and (r.get("fit_info") or {}).get("selected_rho") in GRID}
 
-    rho = {}
-    for key, row in records.items():
-        if key[3] != "causal_icm_selected" or row["status"] != "ok":
-            continue
-        info = row.get("fit_info") or {}
-        value = info.get("selected_rho")
-        if info.get("status") != "completed" or value not in GRID:
-            mismatches.append({"cell": list(key), "reason": "successful selected fit without a completed selection"})
-            continue
-        rho[key] = value
-        if as_float(table.get(key, {}).get("selected_rho")) != value:
-            mismatches.append({"cell": list(key), "reason": "selected_rho differs from the record"})
+    compare_rows("replicate_scores.csv", read_csv(analysis / "replicate_scores.csv", ("group", "scenario", "seed", "method"),
+                                                  mismatches),
+                 {(k[0], k[1], str(k[2]), k[3]): {
+                     "status": r["status"], "cate_mse": r["metrics"]["cate_mse"] if r["status"] == "ok" else None,
+                     "root_pehe": r["metrics"]["root_pehe"] if r["status"] == "ok" else None,
+                     "error_type": r.get("error_type") or None, "stage": r.get("stage") or None,
+                     "selected": ((r.get("fit_info") or {}).get("selected") or None) if k[3] == "rct_selected" else None,
+                     "selected_rho": rho.get(k)} for k, r in records.items()}, mismatches)
 
-    identity_file = json.loads((analysis / "identity_check.json").read_text())
+    # Identities.
     first = wave2_scores(wave2)
     reproduction = {}
     for m in WAVE2:
@@ -152,49 +253,79 @@ def arithmetic(block: str, analysis: Path, runs: list[Path], wave2: Path, job_li
         differs = sum((sc, s, m) not in first or ((GROUP, sc, s, m) in mse) != (first[(sc, s, m)] is not None)
                       for sc, s in keys)
         worst = max((abs(a - b) for a, b in both), default=None)
-        reproduction[m] = {"compared": len(both), "status_differs": differs, "exact": sum(a == b for a, b in both),
-                           "max_abs_difference": worst,
+        reproduction[m] = {"compared": len(both), "expected": len(keys), "status_differs": differs,
+                           "exact": sum(a == b for a, b in both), "max_abs_difference": worst,
                            "within_1e-9": differs == 0 and worst is not None and worst <= SAME_TOL}
-        got = identity_file["wave2_reproduction"].get(m, {})
-        if (got.get("within_1e-9") != reproduction[m]["within_1e-9"] or got.get("compared") != len(both)
-                or got.get("exact") != reproduction[m]["exact"] or got.get("status_differs") != differs
-                or not close(got.get("max_abs_difference"), worst)):
-            mismatches.append({"identity": f"wave2:{m}", "recomputed": reproduction[m], "reported": got})
-    half = [k for k, v in rho.items() if v == 0.5 and (*k[:3], "causal_icm_fixed") in mse]
-    at_half = {"cells": len(half), "differ": sum(mse[k] != mse[(*k[:3], "causal_icm_fixed")] for k in half)}
-    if identity_file.get("selected_at_0.5_vs_fixed") != at_half:
-        mismatches.append({"identity": "selected_at_0.5_vs_fixed", "recomputed": at_half,
-                           "reported": identity_file.get("selected_at_0.5_vs_fixed")})
+    half = [k for k, v in rho.items() if v == 0.5]
+    at_half = {"cells": len(half),
+               "fixed_not_successful": sum((*k[:3], "causal_icm_fixed") not in mse for k in half),
+               "differ": sum(mse.get((*k[:3], "causal_icm_fixed")) != mse[k] for k in half)}
     rct_only = {}
     for m in sorted(RCT_ONLY):
         if block == "core":
-            rct_only[m] = sum(
-                mse.get((GROUP, sc, s, m)) != mse.get((GROUP, sc.replace("@o512_", "@o2048_"), s, m))
-                for sc in scenarios if "@o512_" in sc for s in seeds)
+            rct_only[m] = sum(mse.get((GROUP, sc, s, m)) != mse.get((GROUP, sc.replace("@o512_", "@o2048_"), s, m))
+                              for sc in scenarios if "@o512_" in sc for s in seeds)
         else:
             rct_only[m] = sum(
-                any(mse.get((GROUP, f"stress:{d}@l{i}_r{r}", s, m)) != mse.get((GROUP, f"stress:{d}@l0_r{r}", s, m))
-                    for i in (1, 2, 3))
+                len({mse.get((GROUP, f"stress:{d}@l{i}_r{r}", s, m)) for i in range(4)}) > 1
                 for d in OBS_ONLY for r in (128, 512) for s in seeds)
-    name = "rct_only_obs_size_mismatches" if block == "core" else "rct_only_level_mismatches"
-    if identity_file.get(name) != rct_only:
-        mismatches.append({"identity": name, "recomputed": rct_only, "reported": identity_file.get(name)})
+    identity_name = "rct_only_obs_size_mismatches" if block == "core" else "rct_only_level_mismatches"
+    reported_identity = json.loads((analysis / "identity_check.json").read_text())
+    for m, want in reproduction.items():
+        got = reported_identity.get("wave2_reproduction", {}).get(m, {})
+        if (any(got.get(f) != want[f] for f in ("compared", "expected", "status_differs", "exact", "within_1e-9"))
+                or not close(got.get("max_abs_difference"), want["max_abs_difference"])):
+            mismatches.append({"identity": f"wave2:{m}", "recomputed": want, "reported": got})
+    for name, want in (("selected_at_0.5_vs_fixed", at_half), (identity_name, rct_only)):
+        if reported_identity.get(name) != want:
+            mismatches.append({"identity": name, "recomputed": want, "reported": reported_identity.get(name)})
 
-    with (analysis / "rho_selection.csv").open(newline="") as fh:
-        rho_rows = {r["scenario"]: r for r in csv.DictReader(fh)}
+    # Condition scores, selection diagnostics and (stress) dose-response.
+    cond, rho_rows, dose = {}, {}, {}
     for sc in scenarios:
+        extra = {"dial": dial(sc), "level": level_rct(sc)[0], "rct": level_rct(sc)[1]} if block == "stress" else {}
+        for m in METHODS:
+            vals = [mse[(GROUP, sc, s, m)] for s in seeds if (GROUP, sc, s, m) in mse]
+            cond[(sc, m)] = {**extra, split: in_split(block, sc), "successful": len(vals),
+                             "failed": len(seeds) - len(vals), "mean_mse": float(np.mean(vals)) if vals else None}
+            pairs = np.array([(mse[(GROUP, sc, s, m)], mse[(GROUP, sc, s, "rct_selected")]) for s in seeds
+                              if (GROUP, sc, s, m) in mse and (GROUP, sc, s, "rct_selected") in mse]).reshape(-1, 2)
+            if block == "stress" and m != "rct_selected" and len(pairs) >= 2:
+                row = {"pairs": len(pairs),
+                       "ratio_of_means": float(pairs[:, 0].sum() / pairs[:, 1].sum()) if (pairs[:, 1] > 0).any() else None,
+                       "geometric_mean_ratio": None, "gmr_ci95_lower": None, "gmr_ci95_upper": None}
+                if (pairs > 0).all():
+                    logs = np.log(pairs[:, 0]) - np.log(pairs[:, 1])
+                    se = float(np.std(logs, ddof=1)) / math.sqrt(len(logs))
+                    q = float(stdtrit(len(logs) - 1, 0.975))
+                    row.update(geometric_mean_ratio=math.exp(float(np.mean(logs))),
+                               gmr_ci95_lower=math.exp(float(np.mean(logs)) - q * se),
+                               gmr_ci95_upper=math.exp(float(np.mean(logs)) + q * se))
+                dose[(str(extra["dial"]), str(extra["level"]), str(extra["rct"]), m)] = row
+        attempts = [records[(GROUP, sc, s, "causal_icm_selected")] for s in seeds]
         chosen = [rho[(GROUP, sc, s, "causal_icm_selected")] for s in seeds if (GROUP, sc, s, "causal_icm_selected") in rho]
-        got = rho_rows.get(sc, {})
-        if any(int(got.get(f"rho_{r:.1f}", -1)) != chosen.count(r) for r in GRID) or int(got.get("successful", -1)) != len(chosen):
-            mismatches.append({"rho_selection": sc, "recomputed": [chosen.count(r) for r in GRID]})
+        infos = [(r["status"], r.get("fit_info") or {}) for r in attempts]
+        weights = [i["participation_weights"] for _, i in infos if isinstance(i.get("participation_weights"), dict)]
+        failed = [i.get("status") for st, i in infos if st != "ok"]
+        rho_rows[(sc,)] = {**extra, "attempts": len(attempts), "successful": len(chosen),
+                           **{f"rho_{r:.1f}": chosen.count(r) for r in GRID},
+                           "mean_rho": float(np.mean(chosen)) if chosen else None,
+                           "successful_fewer_than_5_folds": sum(i.get("folds_used") != 5 for st, i in infos if st == "ok"),
+                           "failed_selecting": failed.count("selecting"), "failed_final_fit": failed.count("final_fit"),
+                           "failed_other": sum(f not in ("selecting", "final_fit") for f in failed),
+                           "weights_recorded": len(weights),
+                           "weights_not_converged": sum(w.get("converged") is not True for w in weights)}
+    compare_rows("condition_scores.csv", read_csv(analysis / "condition_scores.csv", ("scenario", "method"), mismatches),
+                 cond, mismatches)
+    compare_rows("rho_selection.csv", read_csv(analysis / "rho_selection.csv", ("scenario",), mismatches),
+                 rho_rows, mismatches)
+    if block == "stress":
+        compare_rows("dose_response.csv", read_csv(analysis / "dose_response.csv", ("dial", "level", "rct", "method"),
+                                                   mismatches), dose, mismatches)
 
-    with (analysis / "contrasts.csv").open(newline="") as fh:
-        rows_in = list(csv.DictReader(fh))
-    reported = {(r["family"], r["scenario"]): r for r in rows_in}
-    if len(reported) != len(rows_in):
-        mismatches.append({"reason": "contrasts.csv has duplicate rows"})
-    counts, verdicts = {}, {}
-    for fam, rec, ref, _ in FAMILIES:
+    # Contrasts, Holm and verdicts.
+    expected, counts, verdicts = {}, {}, {}
+    for fam, rec, ref, kind in FAMILIES:
         pairs = [(sc, sc) for sc in scenarios] if block == "stress" else [
             (sc, sc.replace("@o2048_", "@o512_") if ref in RCT_ONLY else sc)
             for sc in scenarios if not sc.startswith(HEAVY_TAIL + "@")]
@@ -204,12 +335,12 @@ def arithmetic(block: str, analysis: Path, runs: list[Path], wave2: Path, job_li
         for sc, rk in pairs:
             both = [s for s in seeds if (GROUP, sc, s, rec) in mse and (GROUP, rk, s, ref) in mse]
             d = np.array([mse[(GROUP, sc, s, rec)] - mse[(GROUP, rk, s, ref)] for s in both])
-            p = 1.0
-            if len(both) == len(seeds) and float(np.std(d, ddof=1)) > 0:
-                t = float(np.mean(d)) / (float(np.std(d, ddof=1)) / math.sqrt(len(d)))
-                p = float(2 * stdtr(len(d) - 1, -abs(t)))
-            rows.append({"sc": sc, "complete": len(both) == len(seeds), "p": p,
-                         "mean": float(np.mean(d)) if len(d) else None})
+            complete = len(both) == len(seeds)
+            stats = paired(d) if complete else {"mean": float(np.mean(d)) if len(d) else None, "mcse": None,
+                                                "lo": None, "hi": None, "p": 1.0, "zero": None}
+            rows.append({"sc": sc, "rk": rk, "complete": complete, "pairs": len(both),
+                         "rf": sum((GROUP, sc, s, rec) not in mse for s in seeds),
+                         "ff": sum((GROUP, rk, s, ref) not in mse for s in seeds), **stats})
         order = sorted(range(len(rows)), key=lambda i: rows[i]["p"])
         running = 0.0
         for rank, i in enumerate(order):
@@ -221,66 +352,88 @@ def arithmetic(block: str, analysis: Path, runs: list[Path], wave2: Path, job_li
                  else "worse" if r["holm"] <= 0.05 and r["mean"] > 0 else "unresolved")
             verdicts[(fam, r["sc"])] = v
             tally[f"{split if in_split(block, r['sc']) else 'other'}_{v}"] += 1
-            got = reported.get((fam, r["sc"]))
-            if (got is None or got["verdict"] != v or not close(r["mean"], as_float(got["mean_difference"]))
-                    or not close(r["p"], float(got["p_two_sided"])) or not close(r["holm"], float(got["holm_p"]))):
-                mismatches.append({"family": fam, "scenario": r["sc"], "recomputed": r, "reported": got})
-        counts[fam] = {"size": len(rows), **tally}
-    if len(reported) != sum(c["size"] for c in counts.values()):
-        mismatches.append({"reason": "reported contrast rows differ from the declared families"})
-    result = json.loads((analysis / "analysis.json").read_text())
-    if set(result["families"]) != set(counts):
-        mismatches.append({"reason": "reported family names differ from the declared families"})
-    for fam, c in counts.items():
-        got = {k: v for k, v in result["families"].get(fam, {}).items() if k != "kind" and v}
-        if got != {k: v for k, v in c.items() if v}:
-            mismatches.append({"family": fam, "reason": "headline counts differ", "recomputed": c, "reported": got})
-    totals = {f"{r:.1f}": list(rho.values()).count(r) for r in GRID}
-    if result.get("selected_rho") != totals:
-        mismatches.append({"reason": "selected-rho totals differ", "recomputed": totals})
-    mismatches += check_headline(analysis / "headline.md", counts, split)
+            expected[(fam, r["sc"])] = {
+                "kind": kind, "recipe": rec, "reference": ref, "reference_scenario": r["rk"],
+                split: in_split(block, r["sc"]), "pairs": r["pairs"], "recipe_failures": r["rf"],
+                "reference_failures": r["ff"], "complete": r["complete"], "mean_difference": r["mean"],
+                "mcse": r["mcse"], "ci95_lower": r["lo"], "ci95_upper": r["hi"], "p_two_sided": r["p"],
+                "zero_variance": r["zero"], "holm_p": r["holm"], "verdict": v}
+        counts[fam] = {"kind": kind, "size": len(rows), **{
+            f"{g}_{v}": tally[f"{g}_{v}"] for g in ("other", split) for v in ("better", "worse", "unresolved", "untested")}}
+    compare_rows("contrasts.csv", read_csv(analysis / "contrasts.csv", ("family", "scenario"), mismatches),
+                 expected, mismatches)
 
-    states = 0
+    states = {}
     if block == "stress":
-        with (analysis / "readout.csv").open(newline="") as fh:
-            readout_rows = list(csv.DictReader(fh))
-        readout = {(r["family"], r["dial"], int(r["rct"])): (r["state"], r["untested_at"]) for r in readout_rows}
-        if len(readout) != len(readout_rows):
-            mismatches.append({"reason": "readout.csv has duplicate rows"})
         fam = FAMILIES[0][0]
         for d in DIALS:
             for rct in (128, 512):
                 seq = [verdicts[(fam, f"stress:{d}@l{level}_r{rct}")] for level in range(4)]
-                want = ("no_level0_win" if seq[0] != "better" else "broke" if seq[3] == "worse"
-                        else "kept" if seq[3] == "better" else "stopped")
-                want = (want, ",".join(str(i) for i in (0, 3) if seq[i] == "untested"))
-                states += 1
-                if readout.get((fam, d, rct)) != want:
-                    mismatches.append({"readout": [fam, d, rct], "recomputed": want, "reported": readout.get((fam, d, rct))})
-        if len(readout) != states:
-            mismatches.append({"reason": "readout rows differ from the primary family's 16 states"})
+                st = ("no_level0_win" if seq[0] != "better" else "broke" if seq[3] == "worse"
+                      else "kept" if seq[3] == "better" else "stopped")
+                states[(fam, d, str(rct))] = {**{f"level_{i}": v for i, v in enumerate(seq)}, "state": st,
+                                              "untested_at": ",".join(str(i) for i in range(4) if seq[i] == "untested")}
+        compare_rows("readout.csv", read_csv(analysis / "readout.csv", ("family", "dial", "rct"), mismatches),
+                     states, mismatches)
+
+    totals = {f"{r:.1f}": list(rho.values()).count(r) for r in GRID}
+    failures = Counter((k[3], r.get("stage"), r.get("error_type")) for k, r in records.items() if r["status"] != "ok")
+    want_analysis = {"protocol": "docs/V1_ICM_SELECTED.md", "block": block, "requested": len(records),
+                     "coverage": dict(Counter(r["status"] for r in records.values())),
+                     "failures": sorted(([m, st, e, n] for (m, st, e), n in failures.items()), key=str),
+                     "families": counts, "selected_rho": totals}
+    got_analysis = json.loads((analysis / "analysis.json").read_text())
+    got_analysis["failures"] = sorted(([f["method"], f["stage"], f["error_type"], f["count"]]
+                                       for f in got_analysis.get("failures", [])), key=str)
+    for field, want in want_analysis.items():
+        if got_analysis.get(field) != want:
+            mismatches.append({"file": "analysis.json", "field": field, "recomputed": want,
+                               "reported": got_analysis.get(field)})
+
+    label = split.capitalize()
+    lines = [f"| Family | Kind | Conditions | Better | Worse | Unresolved | Untested | {label}: better / worse |",
+             "| --- | --- | ---: | ---: | ---: | ---: | ---: | ---: |"]
+    for fam, c in counts.items():
+        tot = [c[f"other_{v}"] + c[f"{split}_{v}"] for v in ("better", "worse", "unresolved", "untested")]
+        lines.append(f"| `{fam}` | {c['kind']} | {c['size']} | " + " | ".join(map(str, tot))
+                     + f" | {c[split + '_better']} / {c[split + '_worse']} |")
+    lines += ["", "| Recipe refitted from wave 2 | Equal to wave 2 | Largest difference | Within 1e-9, same statuses |",
+              "| --- | ---: | ---: | --- |"]
+    for m, r in reproduction.items():
+        lines.append(f"| `{m}` | {r['exact']} of {r['expected']} | {r['max_abs_difference']} | "
+                     f"{'yes' if r['within_1e-9'] else 'no'} |")
+    lines += ["", f"Successful selected fits that chose 0.5: {at_half['cells']}; differing from `causal_icm_fixed` "
+              f"or without a successful `causal_icm_fixed` twin: {at_half['differ']}.", "",
+              "| Selected rho | " + " | ".join(f"{r:.1f}" for r in GRID) + " |",
+              "| --- | " + " | ".join("---:" for _ in GRID) + " |",
+              "| Successful fits | " + " | ".join(str(totals[f"{r:.1f}"]) for r in GRID) + " |"]
+    if (analysis / "headline.md").read_text() != "\n".join(lines) + "\n":
+        mismatches.append({"file": "headline.md", "reason": "text differs from the recomputed headline"})
     return {"check": "arithmetic", "block": block, "families": counts, "wave2_reproduction": reproduction,
-            "selected_at_0.5_vs_fixed": at_half, name: rct_only, "selected_rho": totals,
-            "readout_states": states, "mismatches": mismatches}
+            "selected_at_0.5_vs_fixed": at_half, identity_name: rct_only, "selected_rho": totals,
+            "readout_states": len(states), "mismatches": mismatches}
 
 
-def reproduce(config, runs: list[Path]) -> dict:
+def reproduce(config, runs: list[Path], job_limit: frozenset = frozenset()) -> dict:
     from obs_rct_benchmark.evaluation import cate_metrics
     from obs_rct_benchmark.methods import make_method
     from obs_rct_benchmark.runner import _generate, method_seed
 
-    records, _ = load_records(runs)
+    records, _, problems = load_records(config, runs, job_limit)
     seed = config.seeds[0]
     stress = config.scenarios[0].kind == "stress"
     scenarios = [s for s in config.scenarios if s.parameters["n_rct_train"] == 128
                  and (s.parameters["level"] in (0, 3) if stress else s.parameters["n_obs"] == 512)]
-    checks, mismatches = [], []
+    checks, mismatches, unavailable = [], [], []
     for s in scenarios:
-        problems = [_generate(s, seed), _generate(s, seed)]
+        problems_ = [_generate(s, seed), _generate(s, seed)]
         for method in config.methods:
-            row = records[(GROUP, s.key, seed, method)]
+            row = records.get((GROUP, s.key, seed, method))
+            if row is None:
+                unavailable.append([s.key, method])
+                continue
             outcomes = []
-            for problem in problems:
+            for problem in problems_:
                 try:
                     p = np.asarray(make_method(method, **dict(config.method_options.get(method, {}))).fit_predict(
                         problem.training_view(), problem.eval_X, seed=method_seed(s.key, seed, method)), dtype=float)
@@ -300,16 +453,18 @@ def reproduce(config, runs: list[Path]) -> dict:
             if not ok:
                 mismatches.append([s.key, method])
     return {"check": "reproduce", "seed": seed, "cases": len(checks), "refits": 2 * len(checks),
-            "mismatches": mismatches, "details": checks}
+            "unavailable": unavailable, "record_problems": problems, "mismatches": mismatches + problems,
+            "details": checks}
 
 
 def main() -> None:
+    from obs_rct_benchmark.runner import load_config
+
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("check", choices=("arithmetic", "reproduce"))
-    ap.add_argument("--block", choices=tuple(BLOCK))
+    ap.add_argument("--config", type=Path, required=True)
     ap.add_argument("--analysis", type=Path)
     ap.add_argument("--wave2", type=Path)
-    ap.add_argument("--config", type=Path)
     ap.add_argument("--runs", type=Path, nargs="+", required=True)
     ap.add_argument("--output", type=Path, required=True)
     ap.add_argument("--job-limit-shards", type=Path,
@@ -317,18 +472,15 @@ def main() -> None:
     a = ap.parse_args()
     if a.output.exists():
         raise SystemExit("output must be new")
+    limited = frozenset(e["config_hash"] for e in json.loads(a.job_limit_shards.read_text())) \
+        if a.job_limit_shards else frozenset()
+    config = load_config(a.config)
     if a.check == "arithmetic":
-        if not (a.block and a.analysis and a.wave2):
-            ap.error("arithmetic needs --block, --analysis and --wave2")
-        limited = frozenset(e["config_hash"] for e in json.loads(a.job_limit_shards.read_text())) \
-            if a.job_limit_shards else frozenset()
-        result = arithmetic(a.block, a.analysis, a.runs, a.wave2, limited)
+        if not (a.analysis and a.wave2):
+            ap.error("arithmetic needs --analysis and --wave2")
+        result = arithmetic(config, a.analysis, a.runs, a.wave2, limited)
     else:
-        from obs_rct_benchmark.runner import load_config
-
-        if a.config is None:
-            ap.error("reproduce needs --config")
-        result = reproduce(load_config(a.config), a.runs)
+        result = reproduce(config, a.runs, limited)
     a.output.write_text(json.dumps(result, indent=2, default=str) + "\n")
     print(json.dumps({k: v for k, v in result.items() if k != "details"}, indent=2, default=str)[:4000])
     raise SystemExit(int(bool(result["mismatches"])))

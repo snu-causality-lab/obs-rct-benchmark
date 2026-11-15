@@ -5,13 +5,14 @@
     python scripts/analyze_icm_selected.py --config configs/v1_icm_selected_stress.toml \
         --runs out-stress/*/ --wave2 results/stress_wave2 --output icmsel-stress-analysis
 
-One block per call. Every declared shard must be present once with a terminal record
-for every requested cell, all shards sharing one source, environment and external-method
-provenance (the wave-2 collector checks this). Every successful selected fit must record
-a completed selection with a rho on the grid. Each contrast pairs two recipes fitted in
-the same shard. Outputs: replicate_scores.csv, condition_scores.csv, rho_selection.csv,
-contrasts.csv, identity_check.json, headline.md and analysis.json; for the stress block
-also dose_response.csv and readout.csv.
+One block per call. `collect` authenticates the runs: every declared shard once, one
+source, environment and external-method provenance, every requested cell with one
+terminal record of the right identity, valid metrics on every successful record, and a
+completed selection on the grid with its own fold seed on every successful selected
+fit. Each contrast pairs two recipes fitted in the same shard. Outputs:
+replicate_scores.csv, condition_scores.csv, rho_selection.csv, contrasts.csv,
+identity_check.json, headline.md and analysis.json; for the stress block also
+dose_response.csv and readout.csv.
 """
 from __future__ import annotations
 
@@ -24,7 +25,7 @@ from pathlib import Path
 
 from analyze_stress import parse
 from analyze_v1_core import ALPHA, HEAVY_TAIL, TRANSPORT, holm, paired_t, preset
-from analyze_v1_wave2 import IDENTITY_TOL, collect, load_job_limit, write_csv
+from analyze_v1_wave2 import IDENTITY_TOL, load_job_limit, write_csv
 from make_icm_selected_configs import GROUP, METHODS, shards as declared_shards, validate
 from obs_rct_benchmark.causal_icm import CAUSAL_ICM_RHO_GRID
 from obs_rct_benchmark.stress_dgp import EXTRAPOLATION_DIALS
@@ -37,6 +38,7 @@ RCT_ONLY = frozenset({"rct_selected", "rct_t_ridge", "causal_icm_rct_only"})
 WAVE2 = ("rct_selected", "rct_t_ridge", "causal_icm_fixed", "causal_icm_rct_only")
 SELECTOR = "causal_icm_weighted_rct_cv_v1"
 OBS_ONLY_DIALS = ("hidden_modifier", "bias_complexity", "common_shift", "obs_selection", "obs_size")
+JOB_LIMIT = {"status": "failed", "metrics": None, "stage": "job_limit", "error_type": "JobLimit"}
 
 
 class AnalysisError(ValueError):
@@ -51,15 +53,92 @@ def families() -> list[dict]:
     return [fam("primary", REFERENCE), fam("matched_obs", "causal_icm_rct_only"), fam("selection", FIXED)]
 
 
-def selected_rho(key: tuple, row: dict) -> float:
-    """The rho a successful selected fit recorded; anything else is refused."""
-    info = row.get("fit_info") or {}
-    rho = info.get("selected_rho")
-    if (info.get("selector") != SELECTOR or info.get("status") != "completed"
-            or rho not in CAUSAL_ICM_RHO_GRID or info.get("fold_seed") != row["method_seed"]):
-        raise AnalysisError(f"{key[1]} seed {key[2]}: a successful selected fit lacks a completed "
-                            "selection on the grid with its own fold seed")
-    return float(rho)
+def check_record(cell: tuple, row: dict) -> None:
+    """A terminal record's metrics and, for a successful selected fit, its selection."""
+    if row["status"] == "failed":
+        if row.get("metrics") is not None:
+            raise AnalysisError(f"{cell}: a failed record carries metrics")
+        return
+    metrics = row.get("metrics")
+    values = [metrics.get("cate_mse"), metrics.get("root_pehe")] if isinstance(metrics, dict) else [None, None]
+    if (any(isinstance(v, bool) or not isinstance(v, (int, float)) or not math.isfinite(v) or v < 0 for v in values)
+            or not math.isclose(values[1] ** 2, values[0], rel_tol=1e-10, abs_tol=1e-12)):
+        raise AnalysisError(f"{cell}: successful metrics are not a finite nonnegative MSE and its root")
+    if cell[2] == SELECTED:
+        info = row.get("fit_info") or {}
+        if (info.get("selector") != SELECTOR or info.get("status") != "completed"
+                or info.get("selected_rho") not in CAUSAL_ICM_RHO_GRID or info.get("fold_seed") != row["method_seed"]):
+            raise AnalysisError(f"{cell}: a successful selected fit lacks a completed selection on the grid "
+                                "with its own fold seed")
+
+
+def collect(config, runs: list[Path], *, check_source: bool = True, job_limit: dict[str, str] | None = None) -> dict:
+    """Authenticated terminal records keyed (group, scenario, seed, method).
+
+    `job_limit` maps shard file names to config hashes of shards whose final attempt
+    reached its job limit. Their recorded cells stand, a truncated last line is dropped,
+    and every unrecorded cell becomes a JobLimit failure; a listed shard may be complete,
+    since a job can stop after its last record. Every other shard must be complete."""
+    from obs_rct_benchmark.runner import method_seed, record_id, source_provenance
+
+    job_limit = dict(job_limit or {})
+    expected = {shard.config_hash: (name, shard) for name, shard in declared_shards(config)}
+    seen, records, identity, external = set(), {}, None, None
+    for run in runs:
+        manifest = json.loads((run / "run_manifest.json").read_text())
+        name, shard = expected.get(manifest.get("config_hash"), (None, None))
+        if shard is None or manifest.get("config") != shard.payload():
+            raise AnalysisError(f"{run}: not a declared shard of this block")
+        if name in seen:
+            raise AnalysisError(f"{run}: shard {name} given twice")
+        seen.add(name)
+        ident = json.dumps({"source": manifest["source"], "environment": manifest["environment"]}, sort_keys=True)
+        if (identity := identity or ident) != ident:
+            raise AnalysisError(f"{run}: source or environment differs between shards")
+        ext = json.dumps(manifest.get("external_methods"), sort_keys=True)
+        if (external := external or ext) != ext:
+            raise AnalysisError(f"{run}: external-method provenance differs between shards")
+        if check_source and manifest["source"] != source_provenance():
+            raise AnalysisError(f"{run}: producer source differs from the analysis package")
+        limited = name in job_limit
+        if limited and job_limit[name] != shard.config_hash:
+            raise AnalysisError(f"{name}: declared job-limit config hash differs from the shard")
+        cells = {(s.key, seed, m) for s in shard.scenarios for seed in shard.seeds for m in shard.methods}
+        path = run / "records.jsonl"
+        lines = path.read_text().splitlines() if path.exists() else []
+        if limited and lines:
+            try:
+                json.loads(lines[-1])
+            except json.JSONDecodeError:
+                lines = lines[:-1]  # the job was killed while writing its last record
+        got = set()
+        for line in lines:
+            try:
+                row = json.loads(line)
+            except json.JSONDecodeError as exc:
+                raise AnalysisError(f"{run}: unreadable record line") from exc
+            cell = (row["scenario"], int(row["seed"]), row["method"])
+            if cell not in cells or cell in got:
+                raise AnalysisError(f"{run}: unrequested or duplicate cell {cell}")
+            if (row["config_hash"] != shard.config_hash or row["method_seed"] != method_seed(*cell)
+                    or row["record_id"] != record_id(shard, *cell)):
+                raise AnalysisError(f"{run}: record identity mismatch for {cell}")
+            if row["status"] not in {"ok", "failed"}:
+                raise AnalysisError(f"{cell}: status {row['status']!r} is not terminal")
+            check_record(cell, row)
+            got.add(cell)
+            records[(GROUP, *cell)] = row
+        if limited:
+            for cell in sorted(cells - got):
+                records[(GROUP, *cell)] = dict(JOB_LIMIT)
+        elif got != cells:
+            raise AnalysisError(f"{run}: {len(cells - got)} requested cells lack a terminal record")
+    if set(job_limit) - seen:
+        raise AnalysisError("declared job-limit shards were not given")
+    missing = {n for n, _ in expected.values()} - seen
+    if missing:
+        raise AnalysisError(f"{len(missing)} declared shards are missing, e.g. {sorted(missing)[:3]}")
+    return records
 
 
 def wave2_scores(packet: Path) -> dict:
@@ -100,7 +179,7 @@ def analyze(block: str, config, records: dict, wave2: dict, output: Path) -> dic
     scenarios = [s.key for s in config.scenarios]
     split = "extrapolation" if block == "stress" else "transport"
     mse = {k: float(r["metrics"]["cate_mse"]) for k, r in records.items() if r["status"] == "ok"}
-    rho = {k: selected_rho(k, r) for k, r in records.items() if k[3] == SELECTED and r["status"] == "ok"}
+    rho = {k: float(r["fit_info"]["selected_rho"]) for k, r in records.items() if k[3] == SELECTED and r["status"] == "ok"}
 
     write_csv(output / "replicate_scores.csv", [
         {"group": k[0], "scenario": k[1], "seed": k[2], "method": k[3], "status": r["status"],
@@ -117,15 +196,17 @@ def analyze(block: str, config, records: dict, wave2: dict, output: Path) -> dic
         keys = [(sc, s) for sc in scenarios for s in seeds]
         both = [(mse[(GROUP, sc, s, m)], wave2[(sc, s, m)]) for sc, s in keys
                 if (GROUP, sc, s, m) in mse and wave2.get((sc, s, m)) is not None]
-        status_differs = sum(((GROUP, sc, s, m) in mse) != (wave2.get((sc, s, m)) is not None)
-                             or (sc, s, m) not in wave2 for sc, s in keys)
+        status_differs = sum((sc, s, m) not in wave2 or ((GROUP, sc, s, m) in mse) != (wave2[(sc, s, m)] is not None)
+                             for sc, s in keys)
         worst = max((abs(a - b) for a, b in both), default=None)
         reproduction[m] = {"compared": len(both), "expected": len(keys), "status_differs": status_differs,
                            "exact": sum(a == b for a, b in both), "max_abs_difference": worst,
                            "within_1e-9": status_differs == 0 and worst is not None and worst <= IDENTITY_TOL}
-    at_half = [k for k, v in rho.items() if v == 0.5 and (*k[:3], FIXED) in mse]
-    selected_at_fixed = {"cells": len(at_half),
-                         "differ": sum(mse[k] != mse[(*k[:3], FIXED)] for k in at_half)}
+    # Every successful selected fit that chose 0.5; a failed fixed twin counts as a difference.
+    at_half = [k for k, v in rho.items() if v == 0.5]
+    twin = [(*k[:3], FIXED) for k in at_half]
+    selected_at_fixed = {"cells": len(at_half), "fixed_not_successful": sum(t not in mse for t in twin),
+                         "differ": sum(t not in mse or mse[k] != mse[t] for k, t in zip(at_half, twin))}
     rct_only = {}
     for m in sorted(RCT_ONLY):
         bad = 0
@@ -133,7 +214,7 @@ def analyze(block: str, config, records: dict, wave2: dict, output: Path) -> dic
             for sc in (x for x in scenarios if "@o512_" in x):
                 for s in seeds:
                     a, b = mse.get((GROUP, sc, s, m)), mse.get((GROUP, sc.replace("@o512_", "@o2048_"), s, m))
-                    bad += (a is None) != (b is None) or (a is not None and a != b)
+                    bad += a != b
         else:
             for dial in OBS_ONLY_DIALS:
                 for rct in (128, 512):
@@ -144,8 +225,9 @@ def analyze(block: str, config, records: dict, wave2: dict, output: Path) -> dic
     identity = {"wave2_reproduction": reproduction, "selected_at_0.5_vs_fixed": selected_at_fixed,
                 ("rct_only_obs_size_mismatches" if block == "core" else "rct_only_level_mismatches"): rct_only,
                 "rule": ("contrasts pair recipes fitted in the same shard. The block ran on wave 2's data and fits "
-                         "only if all four refitted recipes reproduce wave 2's gp scores within 1e-9 with the same "
-                         "statuses. A selected fit that chose 0.5 must equal causal_icm_fixed exactly")}
+                         "only if the data check passed and all four refitted recipes reproduce wave 2's gp scores "
+                         "within 1e-9 with the same statuses. A selected fit that chose 0.5 must equal "
+                         "causal_icm_fixed exactly")}
     (output / "identity_check.json").write_text(json.dumps(identity, indent=2) + "\n")
 
     conditions, rho_rows, dose = [], [], []
@@ -159,23 +241,33 @@ def analyze(block: str, config, records: dict, wave2: dict, output: Path) -> dic
             pairs = [(mse[(GROUP, sc, s, m)], mse[(GROUP, sc, s, REFERENCE)]) for s in seeds
                      if (GROUP, sc, s, m) in mse and (GROUP, sc, s, REFERENCE) in mse]
             if block == "stress" and m != REFERENCE and len(pairs) >= 2:
-                logs = [math.log(a / b) for a, b in pairs]
-                mean = math.fsum(logs) / len(logs)
-                se = math.sqrt(math.fsum((x - mean) ** 2 for x in logs) / (len(logs) - 1) / len(logs))
-                q = float(stats.t.ppf(0.975, len(logs) - 1))
-                dose.append({**extra, "method": m, "pairs": len(pairs),
-                             "ratio_of_means": math.fsum(a for a, _ in pairs) / math.fsum(b for _, b in pairs),
-                             "geometric_mean_ratio": math.exp(mean),
-                             "gmr_ci95_lower": math.exp(mean - q * se), "gmr_ci95_upper": math.exp(mean + q * se)})
+                row = {**extra, "method": m, "pairs": len(pairs),
+                       "ratio_of_means": (math.fsum(a for a, _ in pairs) / math.fsum(b for _, b in pairs)
+                                          if any(b > 0 for _, b in pairs) else None),
+                       "geometric_mean_ratio": None, "gmr_ci95_lower": None, "gmr_ci95_upper": None}
+                if all(a > 0 and b > 0 for a, b in pairs):  # a zero error leaves the log-ratio undefined
+                    logs = [math.log(a / b) for a, b in pairs]
+                    mean = math.fsum(logs) / len(logs)
+                    se = math.sqrt(math.fsum((x - mean) ** 2 for x in logs) / (len(logs) - 1) / len(logs))
+                    q = float(stats.t.ppf(0.975, len(logs) - 1))
+                    row.update(geometric_mean_ratio=math.exp(mean), gmr_ci95_lower=math.exp(mean - q * se),
+                               gmr_ci95_upper=math.exp(mean + q * se))
+                dose.append(row)
+        attempts = [records[(GROUP, sc, s, SELECTED)] for s in seeds]
+        infos = [r.get("fit_info") or {} for r in attempts]
+        weights = [i["participation_weights"] for i in infos if isinstance(i.get("participation_weights"), dict)]
         chosen = [rho[(GROUP, sc, s, SELECTED)] for s in seeds if (GROUP, sc, s, SELECTED) in rho]
-        infos = [records[(GROUP, sc, s, SELECTED)].get("fit_info") or {} for s in seeds
-                 if (GROUP, sc, s, SELECTED) in rho]
-        rho_rows.append({"scenario": sc, **extra, "successful": len(chosen),
+        failed = [i for r, i in zip(attempts, infos) if r["status"] != "ok"]
+        rho_rows.append({"scenario": sc, **extra, "attempts": len(attempts), "successful": len(chosen),
                          **{f"rho_{r:.1f}": chosen.count(r) for r in CAUSAL_ICM_RHO_GRID},
                          "mean_rho": math.fsum(chosen) / len(chosen) if chosen else None,
-                         "fewer_than_5_folds": sum(i.get("folds_used") != 5 for i in infos),
-                         "weights_not_converged": sum(
-                             (i.get("participation_weights") or {}).get("converged") is not True for i in infos)})
+                         "successful_fewer_than_5_folds": sum(i.get("folds_used") != 5 for r, i in zip(attempts, infos)
+                                                              if r["status"] == "ok"),
+                         "failed_selecting": sum(i.get("status") == "selecting" for i in failed),
+                         "failed_final_fit": sum(i.get("status") == "final_fit" for i in failed),
+                         "failed_other": sum(i.get("status") not in ("selecting", "final_fit") for i in failed),
+                         "weights_recorded": len(weights),
+                         "weights_not_converged": sum(w.get("converged") is not True for w in weights)})
     write_csv(output / "condition_scores.csv", conditions)
     write_csv(output / "rho_selection.csv", rho_rows)
     if block == "stress":
@@ -217,7 +309,8 @@ def analyze(block: str, config, records: dict, wave2: dict, output: Path) -> dic
                 seq = [verdict[(primary, f"stress:{dial}@l{level}_r{rct}")] for level in range(4)]
                 readout.append({"family": primary, "dial": dial, "rct": rct,
                                 **{f"level_{i}": v for i, v in enumerate(seq)}, "state": state(seq),
-                                "untested_at": ",".join(str(i) for i in (0, 3) if seq[i] == "untested")})
+                                # A state read next to an untested level reflects failed fits, not a loss.
+                                "untested_at": ",".join(str(i) for i in range(4) if seq[i] == "untested")})
         write_csv(output / "readout.csv", readout)
 
     label = split.capitalize()
@@ -233,8 +326,8 @@ def analyze(block: str, config, records: dict, wave2: dict, output: Path) -> dic
     for m, r in reproduction.items():
         lines.append(f"| `{m}` | {r['exact']} of {r['expected']} | {r['max_abs_difference']} | "
                      f"{'yes' if r['within_1e-9'] else 'no'} |")
-    lines += ["", f"Selected fits that chose 0.5 and differ from `{FIXED}`: {selected_at_fixed['differ']} of "
-              f"{selected_at_fixed['cells']}.", "",
+    lines += ["", f"Successful selected fits that chose 0.5: {selected_at_fixed['cells']}; differing from `{FIXED}` "
+              f"or without a successful `{FIXED}` twin: {selected_at_fixed['differ']}.", "",
               "| Selected rho | " + " | ".join(f"{r:.1f}" for r in CAUSAL_ICM_RHO_GRID) + " |",
               "| --- | " + " | ".join("---:" for _ in CAUSAL_ICM_RHO_GRID) + " |",
               "| Successful fits | " + " | ".join(str(all_rho.count(r)) for r in CAUSAL_ICM_RHO_GRID) + " |"]
@@ -264,7 +357,7 @@ def main() -> None:
     a = ap.parse_args()
     config = load_config(a.config)
     block = validate(config)
-    records = collect({GROUP: config}, a.runs, declared=declared_shards, job_limit=load_job_limit(a.job_limit_shards))
+    records = collect(config, a.runs, job_limit=load_job_limit(a.job_limit_shards))
     result = analyze(block, config, records, wave2_scores(a.wave2), a.output)
     print(json.dumps({k: result[k] for k in ("block", "requested", "coverage", "families", "selected_rho")}, indent=2))
 

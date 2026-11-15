@@ -37,7 +37,11 @@ The configurations are [`v1_icm_selected_core.toml`](../configs/v1_icm_selected_
 
 Every contrast pairs two recipes fitted in the same shard.
 
-- **Same data and fits as wave 2.** The four recipes refitted from wave 2 run in the same environment on the same seeds and method seeds. `causal_icm_fixed` uses OBS rows, so its agreement covers every sample role, which `rct_t_ridge` alone could not. A block ran on wave 2's data and fits only if all four reproduce wave 2's `gp` scores within 1e-9, with the same success or failure in every cell. Only then are wave 2's `gp` verdicts and this addendum's described as being on the same data. Either way, verdicts here never cross shards.
+- **Same data and fits as wave 2.** Two checks, both required:
+  - **Data check, before launch.** The [data check](../scripts/check_data_identity.py) regenerates every condition at each block's first seed (70000, 80000) with this addendum's code in the `gp` environment. It compares every sample role with wave 2's `gp` dump: OBS, trial training, tuning and test rows, evaluation covariates and effects. Every array must agree within 1e-12.
+  - **Score reproduction, after the fits.** The four recipes refitted from wave 2 run with the same seeds and method seeds. Their scores must reproduce wave 2's `gp` scores within 1e-9, with the same success or failure in every cell. Equal scores do not prove equal predictions, so this is a reproduction diagnostic on top of the data check.
+
+  Only if both pass are wave 2's `gp` verdicts and this addendum's described as being on the same data. Either way, verdicts here never cross shards.
 - **Selection at 0.5.** Every successful selected fit that chose 0.5 must equal `causal_icm_fixed` exactly. A difference is a defect, reported and investigated; no recorded score is replaced.
 - **RCT-only recipes.**
   - Core block: their OBS 512 and OBS 2048 records must be equal.
@@ -61,12 +65,12 @@ Every contrast is a paired t-test over 64 seeds. Each block has three families, 
 - stopped;
 - broke.
 
-"Untested" counts as not better, and the readout flags untested levels.
+"Untested" counts as not better, and the readout lists every untested level among the four.
 
 **Descriptive.**
-- **Selected ρ.** For each condition, how often each grid value was selected, the mean selected ρ, and the counts of fits with fewer than five usable folds or an unconverged participation model.
+- **Selected ρ.** For each condition, how often each grid value was selected and the mean selected ρ, over successful fits. Diagnostics count every attempt, failed ones included: successful fits with fewer than five usable folds, failures during selection or the final fit, and unconverged participation models among the attempts that recorded one.
 - **Condition means.** The mean error of every recipe in every condition.
-- **Dose-response (stress block).** Every recipe's error relative to `rct_selected` by dial and level, as in the stress addendum.
+- **Dose-response (stress block).** Every recipe's error relative to `rct_selected` by dial and level, as in the stress addendum. Where a pair has zero error, the log ratio is undefined and only the ratio of means is reported.
 
 ## Execution
 
@@ -79,31 +83,31 @@ Every contrast is a paired t-test over 64 seeds. Each block has three families, 
 - **Limits.** The preflight sets one limit per block:
   - time: the larger of 2 hours and 3 times the longest preflight shard, capped at 12 hours;
   - memory: the larger of 4 GiB and twice the largest preflight peak.
-
-  The partition allows at most 12 hours, so a job-limit rerun cannot double a 12-hour limit. Such a rerun runs once more at 12 hours. If it also reaches the limit, its recorded cells stand and its unrecorded cells become `JobLimit` method failures, listed for the analyzer and checker.
+- **Job-limit reruns.** The partition allows at most 12 hours. A shard that reaches its time limit is rerun once with the smaller of twice that limit and 12 hours. A shard that reaches its memory limit is rerun once with twice that memory. If the rerun also reaches a limit, its recorded cells stand and its unrecorded cells become `JobLimit` method failures, listed for the analyzer and checker. A listed shard may hold every record, since a job can stop after its last record.
 - **Deadlines.** No fit has a deadline; the final-attempt rule bounds them.
-- **Preflight.** Before the freeze, one seed outside each grid runs every shard of its block: seed 69999 for the core block (31 shards) and seed 79999 for the stress block (16 shards). The jobs delete all records after writing status files.
+- **Preflight.** Before the freeze, one seed outside each grid runs every shard of its block: seed 69999 for the core block (31 shards, 8 GiB and 6 hours each) and seed 79999 for the stress block (16 shards, 16 GiB and 12 hours each). The jobs delete all records after writing status files. If any preflight shard stops before writing its status, its time is unknown and the rule above cannot be applied. The block is then not frozen until its sharding or limits are revised and its preflight is rerun.
 - **Expected cost.** In a check at one seed, a selected fit took 20 to 27 times as long as a fixed fit: about 19 seconds at OBS 512 · RCT 128 and 350 seconds at OBS 2048 · RCT 512. The preflight times the 8,192-row stress conditions.
 
 ## Checks
 
-1. **Coverage.** Every declared shard and every requested cell has a terminal record. All shards of a block share one source, environment and external-method provenance. Every successful selected fit records a completed selection with a ρ on the grid and its own fold seed. The analyzer refuses anything else.
+1. **Coverage.** Every declared shard and every requested cell has one terminal record with its configuration hash, record ID and method seed. All shards of a block share one source, environment and external-method provenance. Every successful record has a finite, nonnegative error and its square root. Every successful selected fit records a completed selection with a ρ on the grid and its own fold seed. The analyzer refuses anything else.
 2. **Identities.** The wave-2 reproduction, the selection at 0.5, and the RCT-only identities above.
 3. **Reproducibility.** On each block's first seed, every recipe is refitted twice in the `gp` environment and compared with the record within 1e-12:
    - core block: OBS 512 · RCT 128 in all 31 presets;
    - stress block: RCT 128 at levels 0 and 3 of every dial.
 
    A failure is reported and investigated; no recorded score is replaced.
-4. **Independent arithmetic.** A [separate script](../scripts/verify_icm_selected.py) recomputes everything the [analyzer](../scripts/analyze_icm_selected.py) reports from the per-seed records and the declared families, without importing the analyzer:
-   - every contrast, Holm adjustment, verdict and count;
-   - the headline rows and the readout states;
-   - the identity counts and the selected-ρ counts.
+4. **Independent arithmetic.** A [separate script](../scripts/verify_icm_selected.py) imports no analysis script. It rebuilds each block's requested cells from the frozen configuration and authenticates the records itself. It then recomputes every field of every file the [analyzer](../scripts/analyze_icm_selected.py) writes and compares them:
+   - per-seed scores, condition means, selection diagnostics and dose-response;
+   - every contrast with its pairing, interval, p-value, Holm adjustment and verdict;
+   - the readout, the identities, the counts, and the whole headline text.
 
 ## What this addendum will not show
 
 - **Selection per dataset, not per setting.** The authors tuned ρ once per simulation setting and reused it across replications. Here every fit selects its own ρ from its own data, as an analyst with one dataset would. This costs more and makes the result depend on the selection's own noise.
 - **Against ρ = 0.5, not the best fixed ρ.** The selection family compares the paper's procedure with the default that wave 2 ran. It does not compare it with the best ρ in hindsight.
-- **Inspected designs.** All presets and dials were inspected during development, and wave 2's fixed-ρ results have been read. Fresh seeds replicate sampling within these designs, not new mechanisms or real data.
+- **Not a fresh replication.** The addendum reuses the seeds of wave 2 and the stress addendum so that it can pair with their records. Their fixed-ρ results, including Causal-ICM's, were read before this plan was written. A check of the new recipe on the cluster also read its errors and the fixed recipe's at seed 70000 in four core conditions: M0 and M2 at OBS 512 · RCT 128 and OBS 2048 · RCT 512. The selection follows the paper and the authors' notebooks; its code has not changed since that check. Still, verdicts on reused, already-read seeds carry less weight than a confirmation on untouched seeds would.
+- **Inspected designs.** All presets and dials were inspected during development. The seeds replicate sampling within these designs, not new mechanisms or real data.
 - **AI verification only.** One AI agent designed, implemented and will analyze this addendum. A second AI model reviewed the selection code. No person has reproduced it.
 
 ## Recorded before launch
