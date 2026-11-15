@@ -1,0 +1,273 @@
+{
+  "protocol": "docs/V1_STRESS_WAVE2.md",
+  "requested": 94208,
+  "coverage": {
+    "ok": 94193,
+    "failed": 15
+  },
+  "failures": [
+    {
+      "group": "native_r",
+      "method": "integrative_r_linear",
+      "stage": "method_or_metric",
+      "error_type": "RuntimeError",
+      "count": 7
+    },
+    {
+      "group": "native_r",
+      "method": "integrative_r_quadratic",
+      "stage": "method_or_metric",
+      "error_type": "RuntimeError",
+      "count": 5
+    },
+    {
+      "group": "native_r",
+      "method": "rct_causal_forest",
+      "stage": "method_or_metric",
+      "error_type": "TimeoutExpired",
+      "count": 3
+    }
+  ],
+  "families": {
+    "native_r/integrative_r_linear": {
+      "kind": "primary",
+      "size": 64,
+      "other_better": 33,
+      "other_worse": 0,
+      "other_unresolved": 10,
+      "other_untested": 5,
+      "extrapolation_better": 9,
+      "extrapolation_worse": 0,
+      "extrapolation_unresolved": 5,
+      "extrapolation_untested": 2
+    },
+    "native_r/integrative_r_quadratic": {
+      "kind": "primary",
+      "size": 64,
+      "other_better": 22,
+      "other_worse": 2,
+      "other_unresolved": 20,
+      "other_untested": 4,
+      "extrapolation_better": 6,
+      "extrapolation_worse": 1,
+      "extrapolation_unresolved": 8,
+      "extrapolation_untested": 1
+    },
+    "gp/causal_icm_fixed": {
+      "kind": "primary",
+      "size": 64,
+      "other_better": 19,
+      "other_worse": 8,
+      "other_unresolved": 21,
+      "other_untested": 0,
+      "extrapolation_better": 8,
+      "extrapolation_worse": 2,
+      "extrapolation_unresolved": 6,
+      "extrapolation_untested": 0
+    },
+    "tabpfn/tsr_tabpfn_v2": {
+      "kind": "primary",
+      "size": 64,
+      "other_better": 0,
+      "other_worse": 33,
+      "other_unresolved": 15,
+      "other_untested": 0,
+      "extrapolation_better": 3,
+      "extrapolation_worse": 9,
+      "extrapolation_unresolved": 4,
+      "extrapolation_untested": 0
+    },
+    "tabpfn/tsr_tabpfn_v25": {
+      "kind": "primary",
+      "size": 64,
+      "other_better": 0,
+      "other_worse": 33,
+      "other_unresolved": 15,
+      "other_untested": 0,
+      "extrapolation_better": 3,
+      "extrapolation_worse": 10,
+      "extrapolation_unresolved": 3,
+      "extrapolation_untested": 0
+    },
+    "tabpfn/tsr_tabpfn_v3": {
+      "kind": "primary",
+      "size": 64,
+      "other_better": 0,
+      "other_worse": 32,
+      "other_unresolved": 16,
+      "other_untested": 0,
+      "extrapolation_better": 3,
+      "extrapolation_worse": 10,
+      "extrapolation_unresolved": 3,
+      "extrapolation_untested": 0
+    },
+    "tabpfn/tabpfn_v2_obs_only": {
+      "kind": "primary",
+      "size": 64,
+      "other_better": 24,
+      "other_worse": 17,
+      "other_unresolved": 7,
+      "other_untested": 0,
+      "extrapolation_better": 5,
+      "extrapolation_worse": 9,
+      "extrapolation_unresolved": 2,
+      "extrapolation_untested": 0
+    },
+    "tabpfn/tabpfn_v25_obs_only": {
+      "kind": "primary",
+      "size": 64,
+      "other_better": 24,
+      "other_worse": 17,
+      "other_unresolved": 7,
+      "other_untested": 0,
+      "extrapolation_better": 6,
+      "extrapolation_worse": 7,
+      "extrapolation_unresolved": 3,
+      "extrapolation_untested": 0
+    },
+    "tabpfn/tabpfn_v3_obs_only": {
+      "kind": "primary",
+      "size": 64,
+      "other_better": 23,
+      "other_worse": 20,
+      "other_unresolved": 5,
+      "other_untested": 0,
+      "extrapolation_better": 6,
+      "extrapolation_worse": 8,
+      "extrapolation_unresolved": 2,
+      "extrapolation_untested": 0
+    },
+    "tsr_legacy/tsr_tabpfn_lmcgp": {
+      "kind": "primary",
+      "size": 64,
+      "other_better": 0,
+      "other_worse": 31,
+      "other_unresolved": 17,
+      "other_untested": 0,
+      "extrapolation_better": 3,
+      "extrapolation_worse": 10,
+      "extrapolation_unresolved": 3,
+      "extrapolation_untested": 0
+    },
+    "tsr_legacy/tabpfn_obs_only": {
+      "kind": "primary",
+      "size": 64,
+      "other_better": 24,
+      "other_worse": 17,
+      "other_unresolved": 7,
+      "other_untested": 0,
+      "extrapolation_better": 5,
+      "extrapolation_worse": 9,
+      "extrapolation_unresolved": 2,
+      "extrapolation_untested": 0
+    },
+    "gp/causal_icm_fixed vs causal_icm_rct_only": {
+      "kind": "matched_obs",
+      "size": 64,
+      "other_better": 43,
+      "other_worse": 0,
+      "other_unresolved": 5,
+      "other_untested": 0,
+      "extrapolation_better": 14,
+      "extrapolation_worse": 0,
+      "extrapolation_unresolved": 2,
+      "extrapolation_untested": 0
+    },
+    "tabpfn/tsr_tabpfn_v2 vs lmcgp_rct_only": {
+      "kind": "matched_obs",
+      "size": 64,
+      "other_better": 1,
+      "other_worse": 11,
+      "other_unresolved": 36,
+      "other_untested": 0,
+      "extrapolation_better": 2,
+      "extrapolation_worse": 1,
+      "extrapolation_unresolved": 13,
+      "extrapolation_untested": 0
+    },
+    "tabpfn/tsr_tabpfn_v25 vs lmcgp_rct_only": {
+      "kind": "matched_obs",
+      "size": 64,
+      "other_better": 0,
+      "other_worse": 11,
+      "other_unresolved": 37,
+      "other_untested": 0,
+      "extrapolation_better": 3,
+      "extrapolation_worse": 0,
+      "extrapolation_unresolved": 13,
+      "extrapolation_untested": 0
+    },
+    "tabpfn/tsr_tabpfn_v3 vs lmcgp_rct_only": {
+      "kind": "matched_obs",
+      "size": 64,
+      "other_better": 0,
+      "other_worse": 11,
+      "other_unresolved": 37,
+      "other_untested": 0,
+      "extrapolation_better": 3,
+      "extrapolation_worse": 1,
+      "extrapolation_unresolved": 12,
+      "extrapolation_untested": 0
+    },
+    "tsr_legacy/tsr_tabpfn_lmcgp vs lmcgp_rct_only": {
+      "kind": "matched_obs",
+      "size": 64,
+      "other_better": 1,
+      "other_worse": 9,
+      "other_unresolved": 38,
+      "other_untested": 0,
+      "extrapolation_better": 2,
+      "extrapolation_worse": 1,
+      "extrapolation_unresolved": 13,
+      "extrapolation_untested": 0
+    },
+    "tabpfn/tsr_tabpfn_v25 vs tsr_tabpfn_v2": {
+      "kind": "tabpfn_release",
+      "size": 64,
+      "other_better": 0,
+      "other_worse": 0,
+      "other_unresolved": 48,
+      "other_untested": 0,
+      "extrapolation_better": 4,
+      "extrapolation_worse": 0,
+      "extrapolation_unresolved": 12,
+      "extrapolation_untested": 0
+    },
+    "tabpfn/tsr_tabpfn_v3 vs tsr_tabpfn_v2": {
+      "kind": "tabpfn_release",
+      "size": 64,
+      "other_better": 1,
+      "other_worse": 2,
+      "other_unresolved": 45,
+      "other_untested": 0,
+      "extrapolation_better": 2,
+      "extrapolation_worse": 0,
+      "extrapolation_unresolved": 14,
+      "extrapolation_untested": 0
+    },
+    "tabpfn/tabpfn_v25_obs_only vs tabpfn_v2_obs_only": {
+      "kind": "tabpfn_release",
+      "size": 64,
+      "other_better": 22,
+      "other_worse": 4,
+      "other_unresolved": 22,
+      "other_untested": 0,
+      "extrapolation_better": 16,
+      "extrapolation_worse": 0,
+      "extrapolation_unresolved": 0,
+      "extrapolation_untested": 0
+    },
+    "tabpfn/tabpfn_v3_obs_only vs tabpfn_v2_obs_only": {
+      "kind": "tabpfn_release",
+      "size": 64,
+      "other_better": 28,
+      "other_worse": 10,
+      "other_unresolved": 10,
+      "other_untested": 0,
+      "extrapolation_better": 16,
+      "extrapolation_worse": 0,
+      "extrapolation_unresolved": 0,
+      "extrapolation_untested": 0
+    }
+  }
+}

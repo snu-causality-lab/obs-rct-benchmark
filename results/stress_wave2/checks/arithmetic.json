@@ -1,0 +1,233 @@
+{
+  "check": "arithmetic",
+  "families": {
+    "native_r/integrative_r_linear": {
+      "size": 64,
+      "other_unresolved": 11,
+      "other_better": 37,
+      "extrapolation_better": 9,
+      "extrapolation_unresolved": 6,
+      "extrapolation_worse": 1
+    },
+    "native_r/integrative_r_quadratic": {
+      "size": 64,
+      "other_unresolved": 20,
+      "other_better": 26,
+      "other_worse": 2,
+      "extrapolation_better": 6,
+      "extrapolation_unresolved": 8,
+      "extrapolation_worse": 2
+    },
+    "gp/causal_icm_fixed": {
+      "size": 64,
+      "other_better": 19,
+      "other_unresolved": 21,
+      "other_worse": 8,
+      "extrapolation_better": 8,
+      "extrapolation_unresolved": 6,
+      "extrapolation_worse": 2
+    },
+    "tabpfn/tsr_tabpfn_v2": {
+      "size": 64,
+      "other_worse": 33,
+      "other_unresolved": 15,
+      "extrapolation_unresolved": 4,
+      "extrapolation_worse": 9,
+      "extrapolation_better": 3
+    },
+    "tabpfn/tsr_tabpfn_v25": {
+      "size": 64,
+      "other_worse": 33,
+      "other_unresolved": 15,
+      "extrapolation_worse": 10,
+      "extrapolation_unresolved": 3,
+      "extrapolation_better": 3
+    },
+    "tabpfn/tsr_tabpfn_v3": {
+      "size": 64,
+      "other_worse": 32,
+      "other_unresolved": 16,
+      "extrapolation_worse": 10,
+      "extrapolation_unresolved": 3,
+      "extrapolation_better": 3
+    },
+    "tabpfn/tabpfn_v2_obs_only": {
+      "size": 64,
+      "other_worse": 17,
+      "other_unresolved": 7,
+      "other_better": 24,
+      "extrapolation_better": 5,
+      "extrapolation_worse": 9,
+      "extrapolation_unresolved": 2
+    },
+    "tabpfn/tabpfn_v25_obs_only": {
+      "size": 64,
+      "other_worse": 17,
+      "other_unresolved": 7,
+      "other_better": 24,
+      "extrapolation_better": 6,
+      "extrapolation_worse": 7,
+      "extrapolation_unresolved": 3
+    },
+    "tabpfn/tabpfn_v3_obs_only": {
+      "size": 64,
+      "other_worse": 20,
+      "other_better": 23,
+      "other_unresolved": 5,
+      "extrapolation_better": 6,
+      "extrapolation_worse": 8,
+      "extrapolation_unresolved": 2
+    },
+    "tsr_legacy/tsr_tabpfn_lmcgp": {
+      "size": 64,
+      "other_worse": 31,
+      "other_unresolved": 17,
+      "extrapolation_worse": 10,
+      "extrapolation_unresolved": 3,
+      "extrapolation_better": 3
+    },
+    "tsr_legacy/tabpfn_obs_only": {
+      "size": 64,
+      "other_worse": 17,
+      "other_unresolved": 7,
+      "other_better": 24,
+      "extrapolation_better": 5,
+      "extrapolation_worse": 9,
+      "extrapolation_unresolved": 2
+    },
+    "gp/causal_icm_fixed vs causal_icm_rct_only": {
+      "size": 64,
+      "other_better": 43,
+      "other_unresolved": 5,
+      "extrapolation_better": 14,
+      "extrapolation_unresolved": 2
+    },
+    "tabpfn/tsr_tabpfn_v2 vs lmcgp_rct_only": {
+      "size": 64,
+      "other_worse": 11,
+      "other_unresolved": 36,
+      "other_better": 1,
+      "extrapolation_unresolved": 13,
+      "extrapolation_worse": 1,
+      "extrapolation_better": 2
+    },
+    "tabpfn/tsr_tabpfn_v25 vs lmcgp_rct_only": {
+      "size": 64,
+      "other_worse": 11,
+      "other_unresolved": 37,
+      "extrapolation_unresolved": 13,
+      "extrapolation_better": 3
+    },
+    "tabpfn/tsr_tabpfn_v3 vs lmcgp_rct_only": {
+      "size": 64,
+      "other_worse": 11,
+      "other_unresolved": 37,
+      "extrapolation_unresolved": 12,
+      "extrapolation_worse": 1,
+      "extrapolation_better": 3
+    },
+    "tsr_legacy/tsr_tabpfn_lmcgp vs lmcgp_rct_only": {
+      "size": 64,
+      "other_worse": 9,
+      "other_unresolved": 38,
+      "other_better": 1,
+      "extrapolation_unresolved": 13,
+      "extrapolation_worse": 1,
+      "extrapolation_better": 2
+    },
+    "tabpfn/tsr_tabpfn_v25 vs tsr_tabpfn_v2": {
+      "size": 64,
+      "other_unresolved": 48,
+      "extrapolation_unresolved": 12,
+      "extrapolation_better": 4
+    },
+    "tabpfn/tsr_tabpfn_v3 vs tsr_tabpfn_v2": {
+      "size": 64,
+      "other_unresolved": 45,
+      "other_worse": 2,
+      "other_better": 1,
+      "extrapolation_unresolved": 14,
+      "extrapolation_better": 2
+    },
+    "tabpfn/tabpfn_v25_obs_only vs tabpfn_v2_obs_only": {
+      "size": 64,
+      "other_better": 22,
+      "other_unresolved": 22,
+      "other_worse": 4,
+      "extrapolation_better": 16
+    },
+    "tabpfn/tabpfn_v3_obs_only vs tabpfn_v2_obs_only": {
+      "size": 64,
+      "other_better": 28,
+      "other_worse": 10,
+      "other_unresolved": 10,
+      "extrapolation_better": 16
+    }
+  },
+  "same_data": {
+    "native_r:rct_selected": {
+      "compared": 4096,
+      "exact": 4096,
+      "max_abs_difference": 0.0,
+      "within_1e-9": true
+    },
+    "native_r:rct_t_ridge": {
+      "compared": 4096,
+      "exact": 4096,
+      "max_abs_difference": 0.0,
+      "within_1e-9": true
+    },
+    "gp:rct_selected": {
+      "compared": 4096,
+      "exact": 4096,
+      "max_abs_difference": 0.0,
+      "within_1e-9": true
+    },
+    "gp:rct_t_ridge": {
+      "compared": 4096,
+      "exact": 4096,
+      "max_abs_difference": 0.0,
+      "within_1e-9": true
+    },
+    "tabpfn:rct_selected": {
+      "compared": 4096,
+      "exact": 4096,
+      "max_abs_difference": 0.0,
+      "within_1e-9": true
+    },
+    "tabpfn:rct_t_ridge": {
+      "compared": 4096,
+      "exact": 4096,
+      "max_abs_difference": 0.0,
+      "within_1e-9": true
+    },
+    "tsr_legacy:rct_selected": {
+      "compared": 4096,
+      "exact": 4096,
+      "max_abs_difference": 0.0,
+      "within_1e-9": true
+    },
+    "tsr_legacy:rct_t_ridge": {
+      "compared": 4096,
+      "exact": 4096,
+      "max_abs_difference": 0.0,
+      "within_1e-9": true
+    }
+  },
+  "rct_only_level_mismatches": {
+    "native_r:rct_selected": 0,
+    "native_r:rct_t_ridge": 0,
+    "native_r:rct_causal_forest": 0,
+    "gp:rct_selected": 0,
+    "gp:rct_t_ridge": 0,
+    "gp:causal_icm_rct_only": 0,
+    "tabpfn:rct_selected": 0,
+    "tabpfn:rct_t_ridge": 0,
+    "tabpfn:lmcgp_rct_only": 0,
+    "tsr_legacy:rct_selected": 0,
+    "tsr_legacy:rct_t_ridge": 0,
+    "tsr_legacy:lmcgp_rct_only": 0
+  },
+  "readout_states": 176,
+  "mismatches": []
+}

@@ -1,0 +1,9 @@
+{
+  "seed": 70000,
+  "config_hash": "8293206714fa6716488b9a0b60b332bf05c3ab7fc5901645e4cb1be7754facd1",
+  "scenarios": 124,
+  "arrays": 2108,
+  "numpy": "1.26.4",
+  "python": "3.11.17",
+  "executable": "/shared/s2/lab05/sanghack/work/obsrct-gp-source-pilot-20261026-r01/environment-v1/bin/python"
+}

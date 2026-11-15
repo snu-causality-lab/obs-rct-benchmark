@@ -1,0 +1,9 @@
+{
+  "seed": 70000,
+  "config_hash": "17347360863f26d34c691674bfea40006d5e73334b1df65ce9ba1d23cbc51097",
+  "scenarios": 124,
+  "arrays": 2108,
+  "numpy": "2.5.4",
+  "python": "3.12.3",
+  "executable": "/shared/s2/lab05/sanghack/work/tabpfn-env-20261114/.venv/bin/python"
+}

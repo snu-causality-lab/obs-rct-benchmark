@@ -1,0 +1,70 @@
+prepre=820435
+write preflight shards=820469 (820435 held: env retrieval; cancelled)
+preflight (code pre1, seed 69999): native_r=820474 gp=820475 tabpfn=820476
+tests pre2=820553
+tests pre3=820578
+tests pre3 (stress_dgp fix)=820584
+pre4: cancelled tabpfn preflight 820476 (code changed before it started); write tsr_legacy preflight shards=820692; tests=820693
+pre4 env checks and GPU preflights: native_r=820703 gp=820704 pre-tabpfn=820705 pre-tsr_legacy=820706
+tabpfn preflight 820476 (pre1 code, 4/GPU) had in fact run: v3 CUDA OOM in 18+17 cells; 820705 cancelled; pre2 tabpfn preflight (pre4, 2/GPU)=821025
+pre3 tabpfn preflight (pre4 code, fixed driver 8bf51696, 2/GPU, exclude list)=822028; pre2 tsr_legacy preflight (same)=822029; diag: b26 RuntimeError is "No CUDA GPUs are available" (node fault), b09 fits fine
+stress wave-2 addendum (docs/V1_STRESS_WAVE2.md draft): code sw2a (working tree; 24 tests pass, job 822056); write preflight shards (seed 79999)=822059; preflights native_r=822060 gp=822061 tabpfn=822062 tsr_legacy=822063 (driver 8bf51696, 2/GPU)
+lowered memory of pending GPU preflights: 822028/822029 to 16G, 822062/822063 to 24G (peak RSS ~2.5 GiB per shard)
+lowered memory of pending GPU preflights: 822028/822029 to 16G, 822062/822063 to 24G (peak RSS ~2.5 GiB per shard)
+code sw2b (working tree after review fixes); tests=822328; data checks wave2 (seed 70000)=822329 stress (seed 80000)=822330
+code sw2c = sw2b + unreadable-line fix; tests=822362; data checks 822329/822330: all roles identical in all environments (npz byte-identical)
+lowered stress preflight time limits: 822061 (gp) 4h, 822060 (native_r) 8h, to let backfill start them
+main-run driver and job scripts uploaded (run_shard exits 0 when a status exists; INDEX_FILE support; GPU jobs 16G; per-shard logs appended). Stress GPU preflights 822062/822063 (still pending) will run with this driver.
+WAVE-2 MAIN RUN: freeze commit 80c9129d0d6046a9e6845c9f0a3580c67ca024d9 (docs/V1_CORE_WAVE2.md), snapshot code/80c9129 (git archive sha256 d87554e114369f29298bed899efff8727bacd2d5057b38821217f52c3af319e8); driver run_shard.py 1a299a69…, common.sh e19ad302…, cpu_array.sbatch 05cd6fda…, gpu_array.sbatch d6cb20f0…
+write main shards=822651; native_r=822652 (shards 0-991) 822653 (992-1983), 1 CPU 4G 3h24m; gp=822654 822655, 1 CPU 4G 2h; tabpfn=822656, tsr_legacy=822657: 2 shards per GPU, 4 CPU 16G 2h, throttle 24 GPUs each
+STRESS ADDENDUM MAIN RUN: freeze commit 61cb584c839ee6ab536ae1a5fcfbc9db5ebef9e7 (docs/V1_STRESS_WAVE2.md), snapshot code/61cb584 (git archive sha256 ca6d47578bfaece232f8ac67899d096b97becbf07b05d89d256da8cdac767352); same driver and job scripts as the wave-2 main run
+write stress main shards=823395; native_r=823396 (1 CPU 4G 2h); gp=823397 (1 CPU 10G 2h); tabpfn=823398, tsr_legacy=823399 (2 shards per GPU, 4 CPU 16G 2h, throttle 8 GPUs each)
+native_r: 173 shards failed the environment check on b26/b30 (R runtime availability timed out after ~12 min; no output, no status; infrastructure failure, failed check). Excluded b26,b30 from pending tasks of 822652/822653/823396. Rerun whole (fresh directories; nothing to keep) as 826182 with INDEX_FILE rerun-native_r-envcheck-1.txt (sha256 fd7e497925b177ad…), same limits, --exclude=b26,b30
+native_r shard 448 (native_r-seed-70014-addendum__C03) failed the environment check on b28 (R runtime availability timeout; no output, no status); rerun whole as 827399 (rerun-native_r-envcheck-2.txt)
+native_r on slow-storage nodes: the R runtime probe inside run_benchmark timed out, so run manifests record integrative_r runtime availability unavailable (inconsistent provenance), and where it happened only at the resume check the driver stopped with "resume config or source provenance does not match" before writing status. Treated as failed environment checks / interruptions: rerun whole. Wave 2: 70 shards (62 without status, renamed .interrupted-N by the driver on rerun; 8 with status moved aside as .provenance-unavailable-1 with their status files, kept) = 828230; stress: 22 shards without status = 828231. Reruns exclude all slow-storage nodes b03,b14,b15,b24,b25,b26,b27,b28,b30,b31. jobs/plan_reruns.py lists reruns from manifests and status only.
+second rerun pass (same causes on slow-storage nodes b15/b26/b27/b28/b30): wave 2 4 shards without status = 828432; stress 30 shards without status = 828433; all slow-storage nodes excluded
+2026-11-15 07:10 KST: native_r complete in both runs (wave 2 1984/1984 after 828432; stress 512/512 after 828433); plan_reruns pass-3 dry run (tag provenance-unavailable-3) lists no shard without status and none with unavailable runtime, so no rerun5 was submitted. The 8 directories counted as in progress in out-native_r are the moved-aside .provenance-unavailable-1 runs.
+2026-11-15 07:45 KST: pushed main to GitHub (ed53314..61cb584), making both freezes (80c9129, 61cb584) public before any metric was read; GPU groups then at out-tabpfn: 605/1984 out-tsr_legacy: 0/1984 sout-tabpfn: 0/512 sout-tsr_legacy: 0/512 
+2026-11-15 12:30 KST: wave 2 complete in all four groups (1984 shards each, no GPU failure). Analysis and checks submitted with afterok on stress GPU arrays 823398/823399, so nothing runs before every shard of both studies is done: jobs/analyze.sbatch sha256 2d9ef071, jobs/reproduce.sbatch sha256 1fc22004; runs = active shard directories only (moved-aside attempts excluded):
+analyze-w2 831628
+analyze-sw2 831629
+repro-w2-native_r 831630
+repro-w2-gp 831631
+repro-w2-tabpfn 831632
+repro-w2-tsr_legacy 831633
+repro-sw2-native_r 831634
+repro-sw2-gp 831635
+repro-sw2-tabpfn 831636
+repro-sw2-tsr_legacy 831637
+
+2026-11-15 14:20 KST  All shards done (wave 2 1984x4, stress 512x4; no GPU failure, no rerun).
+  831628 analyze-w2 and 831629 analyze-sw2 FAILED before writing any output: the analyzer refused
+  ("producer source differs from the analysis package"). Cause: the recorded source block includes
+  `version`, read from each environment's stale installed distribution (native_r 0.2.0a1, gp 0.3.0a2,
+  tabpfn not-installed, tsr_legacy 0.3.0a4); every job imported code/<snapshot>/src via PYTHONPATH.
+  Every run's package_file_sha256 and aggregate (3362338a1e1c...) equal the analysis package's, in both
+  studies (9984 runs). No metric read. Logs kept: logs/analyze-*-83162[89].out, logs/analysis-*-r01.stdout.
+  Reproduce 831630-831633, 831635-831637 COMPLETED with 0 mismatches; 831634 running.
+  Erratum runner drafted (jobs/analyze_erratum.py), awaiting the project lead's approval before submission.
+
+2026-11-15 14:24 KST  Project lead approved the erratum. Uploaded:
+  f1bf52e7ce53e8f75d4c474b85123c211449ae5bab9bcb13fd4c44a542b6dafd  jobs/analyze_erratum.py
+  d2b3a37b06fa4419ffa5e43ed03d920974170d94312696ff034f9038384e14f2  jobs/analyze_erratum.sbatch
+  Submitted 832360 analyze-w2 and 832361 analyze-sw2 (tag r02) via jobs/analyze_erratum.sbatch; r01 logs kept.
+
+2026-11-15 14:30 KST  r02 analyses COMPLETED: 832360 w2 (182528 requested, 182336 ok, 192 failed; arithmetic 0 mismatches; wave-1 identity within 1e-9; OBS-size identity 0), 832361 sw2 (94208 requested, 94193 ok, 15 failed; arithmetic 0 mismatches; stress-1 identity exact; RCT-only level identity: native_r:rct_causal_forest 2, both TimeoutExpired at level 3, seed 80022). Reproduce: all 8 groups 0 mismatches.
+  Stress: all 15 failures are in 4 native_r shards (indices 177,179,55,70) that ran on slow-storage node b28 (array 823396 lacked the slow-node exclusion); 0 failures in shards on other nodes. Wave 2: all 192 failures are integrative_r_quadratic RuntimeError in paper:cornet_official_n_conf at o2048_r128/o512_r512/o2048_r512, 64/64 seeds, spread over 13 nodes.
+  Diagnostics (no recorded score changes; frozen classification stands): 832379 reruns the 4 b28 shards whole into diag-b28-sout-native_r on normal nodes; 832380 traces integrative_r at seed 70000 on the CorNet design (diag/intr_trace.py).
+
+2026-11-15 15:34 KST  Diagnostics: 832379 reran the 4 b28 stress shards on b07: 0 failures (b28 originals 15), 145/145 cells successful in both are exactly equal, manifests (config, source, environment, external methods) equal; ~11 min at 92% CPU vs 1:43-1:58 at 7% CPU on b28. 832380: integrative_r_quadratic on the CorNet design (d=25, 350 basis terms) reaches its 1200 s deadline in parameter search at o512_r512 and o2048_r128 on b07 (o512_r128 ok in 170 s): a method failure on any node.
+  Erratum, approved by the project lead: a shard whose final attempt ran on an excluded slow-storage node (b03,b14,b15,b24-b28,b30,b31) and recorded any method failure is an infrastructure failure: rerun whole on a normal node, old output kept; failures that recur there are method failures. Applies to 4 stress shards (b28) and 7 wave-2 CorNet-design shards (b15,b25,b26,b27); gp has none.
+  Stress: moved the 4 b28 runs aside as sout-native_r/*.slow-node-1; 832379 outputs (same driver, code, environment; whole shard; fresh directory; b07) moved in as the active runs.
+  Wave 2: moved 7 runs aside as out-native_r/*.slow-node-1; rerun 832628 (rerun-native_r-slow-node-1.txt, same limits 4G 3h24m, slow nodes excluded).
+  Analyses: 832629 analyze-sw2 r03; 832630 analyze-w2 r03 (afterok 832628). r02 outputs kept as the as-frozen classification.
+
+2026-11-15 15:36 KST  832628 did nothing: run_shard.py found the old status files in status-out-native_r and exited ("already has a status file"); no output written. 832630 analyze-w2 r03 refused (1977 active, expected 1984); no output. Fix: status files moved aside the same way (status-out-native_r/*.json.slow-node-1 for the 7 wave-2 shards; status-sout-native_r/*.json.slow-node-1 for the 4 stress shards, with 832379 statuses moved in from status-diag-b28-sout-native_r). 832629 analyze-sw2 r03 COMPLETED (reads run directories only, unaffected): 94208 ok, 0 failed; arithmetic 0 mismatches; RCT-only level identity 0; stress-1 identity exact.
+  Resubmitted rerun 832671 (rerun-native_r-slow-node-1.txt) and analyze-w2 r03 832672 (afterok).
+
+2026-11-15 15:38 KST  Node probes (read-only; diag/nodeprobe.sbatch 832651-832655, diag/mountprobe.sbatch 832680-832703): the slow-storage nodes b03,b14,b15,b24,b25,b26,b27,b28,b30 reach the shared storage over a slower network path than the other 15 checked nodes; CPU-only timing equal across nodes. [Public copy: network addresses and an internal note removed from this entry.]
+
+2026-11-15 16:46 KST  832671 COMPLETED on b07: each of the 7 rerun CorNet-design shards recorded the same 3 integrative_r_quadratic RuntimeError failures (21 in all). 832672 analyze-w2 r03 COMPLETED: coverage 182336 ok / 192 failed; analysis outputs byte-identical to r02 (headline, contrasts, condition_scores, replicate_scores, identity); arithmetic 0 mismatches. Result packets results/v1_wave2 (from r03) and results/stress_wave2 (from r03) assembled, with r02 as as_frozen/.

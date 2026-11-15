@@ -1,0 +1,71 @@
+{
+  "wave1_reproduction": {
+    "native_r:rct_selected": {
+      "compared": 7936,
+      "expected": 7936,
+      "exact": 7936,
+      "max_abs_difference": 0.0,
+      "within_1e-9": true
+    },
+    "native_r:rct_t_ridge": {
+      "compared": 7936,
+      "expected": 7936,
+      "exact": 7936,
+      "max_abs_difference": 0.0,
+      "within_1e-9": true
+    },
+    "gp:rct_selected": {
+      "compared": 7936,
+      "expected": 7936,
+      "exact": 7936,
+      "max_abs_difference": 0.0,
+      "within_1e-9": true
+    },
+    "gp:rct_t_ridge": {
+      "compared": 7936,
+      "expected": 7936,
+      "exact": 7936,
+      "max_abs_difference": 0.0,
+      "within_1e-9": true
+    },
+    "tabpfn:rct_selected": {
+      "compared": 7936,
+      "expected": 7936,
+      "exact": 7614,
+      "max_abs_difference": 8.881784197001252e-16,
+      "within_1e-9": true
+    },
+    "tabpfn:rct_t_ridge": {
+      "compared": 7936,
+      "expected": 7936,
+      "exact": 7402,
+      "max_abs_difference": 8.881784197001252e-16,
+      "within_1e-9": true
+    },
+    "tsr_legacy:rct_selected": {
+      "compared": 7936,
+      "expected": 7936,
+      "exact": 7936,
+      "max_abs_difference": 0.0,
+      "within_1e-9": true
+    },
+    "tsr_legacy:rct_t_ridge": {
+      "compared": 7936,
+      "expected": 7936,
+      "exact": 7936,
+      "max_abs_difference": 0.0,
+      "within_1e-9": true
+    }
+  },
+  "rct_only_obs_size_mismatches": {
+    "native_r:rct_causal_forest": 0,
+    "native_r:rct_selected": 0,
+    "gp:causal_icm_rct_only": 0,
+    "gp:rct_selected": 0,
+    "tabpfn:lmcgp_rct_only": 0,
+    "tabpfn:rct_selected": 0,
+    "tsr_legacy:lmcgp_rct_only": 0,
+    "tsr_legacy:rct_selected": 0
+  },
+  "rule": "contrasts pair recipes fitted in the same shard. A group ran on the wave-1 data only if its rct_t_ridge scores reproduce wave 1 within 1e-9; rct_selected drift is reported separately"
+}

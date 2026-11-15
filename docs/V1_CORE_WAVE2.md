@@ -1,6 +1,6 @@
 # v1 core wave 2: native recipes and TabPFN releases
 
-**Status: addendum, fixed before its fits.** This addendum to the [v1 core plan](V1_CORE_STUDY.md) fixes the recipes, environments, contrasts and resources of wave 2 before any wave-2 fit on seeds 70000–70063. The freeze is the commit that fills in [Recorded before launch](#recorded-before-launch); earlier commits carry drafts. The job record holds the freeze commit's hash before the first fit.
+**Status: addendum, fixed before its fits; results in [`results/v1_wave2`](../results/v1_wave2/SCIENTIFIC_RESULT.md).** This addendum to the [v1 core plan](V1_CORE_STUDY.md) fixes the recipes, environments, contrasts and resources of wave 2 before any wave-2 fit on seeds 70000–70063. The freeze is the commit that fills in [Recorded before launch](#recorded-before-launch); earlier commits carry drafts. The job record holds the freeze commit's hash before the first fit.
 
 Wave 2 keeps everything from the plan that it does not change here:
 - the 124 conditions;
@@ -148,6 +148,17 @@ Preflight results (seed 69999, 31 shards per group). Each group's limit follows 
 | Data check (seed 70000, against the wave-1 environment) | Passed. In all 124 conditions, every array of every sample role is identical in the `gp`, `tabpfn` and `tsr_legacy` environments; the largest difference is 0. `native_r` runs in the wave-1 interpreter itself |
 
 ## Revisions and errata
+
+**2026-11-15, after the first analysis was read: slow-storage nodes.** All 15 failures of the [stress addendum](V1_STRESS_WAVE2.md) came from the four shards that ran on node b28. That node is one of the slow-storage nodes excluded from the GPU reruns and from later jobs. The CPU arrays of both studies were submitted without that exclusion. Those shards ran at 7% CPU, and some fits reached their own wall-clock deadlines. A later probe found that these nodes reach the shared storage over a slower network path than the 15 other nodes checked; their CPU speed is the same. A whole rerun of the four shards on a normal node had no failures. The 145 cells that succeeded in both attempts scored exactly the same, under the same configuration, source and environment.
+- **Rule.** A shard whose final attempt ran on an excluded slow-storage node (b03, b14, b15, b24–b28, b30, b31) and recorded any method failure is an infrastructure failure. It is rerun whole on a normal node, and the old output is kept. A failure that recurs there is a method failure.
+- **Scope.** The rule covers four stress shards and seven wave-2 shards. The seven wave-2 shards are all on the CorNet paper design, where `integrative_r_quadratic` also reaches its 1,200-second deadline on normal nodes. The `gp` group has no such shard.
+- **Disclosure.** The rule was set after the first analysis had been read. That analysis, which counts these failures as method failures as the frozen rules do, is kept and published next to the corrected one.
+
+**2026-11-15, after all fits, before any metric was read: source check.** The analyzer's first run refused both wave 2 and the [stress addendum](V1_STRESS_WAVE2.md) with "producer source differs from the analysis package". It wrote no output.
+- **Cause.** The analyzer compared each run's whole recorded source with the analysis process's, including `version`. That field came from the distribution installed in each environment, if any, not from the code that ran. Every job imported the frozen code snapshot from `PYTHONPATH`, and the four environments hold different old installs: `native_r` 0.2.0a1, `gp` 0.3.0a2, `tabpfn` none, `tsr_legacy` 0.3.0a4. No single analysis environment could pass all four groups.
+- **Evidence.** In every run of both studies, 9,984 in all, the SHA-256 of each package file and the aggregate equal the analysis package's. Each group shares one source and environment, as Checks 1 requires.
+- **Change.** The analysis runs the frozen analyzer unchanged, through a runner that first checks every field of the recorded source except `version` and stops on any difference. It then turns off only the whole-block comparison, through the analyzer's existing `check_source=False` switch. The runner and its job script are published with the results; the refused run's logs are kept on the cluster.
+- **Code.** From the next version, the recorded source version is the imported package's `__version__`. The installed distribution stays in the environment record.
 
 **2026-11-15, before the freeze.** A fresh-context AI review of the [stress addendum](V1_STRESS_WAVE2.md) found gaps that apply here too:
 - the same-data rule now also requires a data check of every sample role, since `rct_t_ridge` never uses OBS rows;

@@ -1,0 +1,100 @@
+{
+  "reference": "data-native_r.npz",
+  "tolerance": 1e-12,
+  "environments": {
+    "data-gp.npz": {
+      "same_data": true,
+      "roles": {
+        "eval": {
+          "arrays": 128,
+          "exact": 128,
+          "max_abs_difference": 0.0
+        },
+        "obs_train": {
+          "arrays": 192,
+          "exact": 192,
+          "max_abs_difference": 0.0
+        },
+        "rct_test": {
+          "arrays": 256,
+          "exact": 256,
+          "max_abs_difference": 0.0
+        },
+        "rct_train": {
+          "arrays": 256,
+          "exact": 256,
+          "max_abs_difference": 0.0
+        },
+        "rct_tune": {
+          "arrays": 256,
+          "exact": 256,
+          "max_abs_difference": 0.0
+        }
+      },
+      "problems": []
+    },
+    "data-tabpfn.npz": {
+      "same_data": true,
+      "roles": {
+        "eval": {
+          "arrays": 128,
+          "exact": 128,
+          "max_abs_difference": 0.0
+        },
+        "obs_train": {
+          "arrays": 192,
+          "exact": 192,
+          "max_abs_difference": 0.0
+        },
+        "rct_test": {
+          "arrays": 256,
+          "exact": 256,
+          "max_abs_difference": 0.0
+        },
+        "rct_train": {
+          "arrays": 256,
+          "exact": 256,
+          "max_abs_difference": 0.0
+        },
+        "rct_tune": {
+          "arrays": 256,
+          "exact": 256,
+          "max_abs_difference": 0.0
+        }
+      },
+      "problems": []
+    },
+    "data-tsr_legacy.npz": {
+      "same_data": true,
+      "roles": {
+        "eval": {
+          "arrays": 128,
+          "exact": 128,
+          "max_abs_difference": 0.0
+        },
+        "obs_train": {
+          "arrays": 192,
+          "exact": 192,
+          "max_abs_difference": 0.0
+        },
+        "rct_test": {
+          "arrays": 256,
+          "exact": 256,
+          "max_abs_difference": 0.0
+        },
+        "rct_train": {
+          "arrays": 256,
+          "exact": 256,
+          "max_abs_difference": 0.0
+        },
+        "rct_tune": {
+          "arrays": 256,
+          "exact": 256,
+          "max_abs_difference": 0.0
+        }
+      },
+      "problems": []
+    }
+  },
+  "all_same": true
+}

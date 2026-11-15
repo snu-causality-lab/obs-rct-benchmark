@@ -1,0 +1,24 @@
+/shared/s2/lab05/sanghack/work/obsrct-v1-wave2-20261114-r01/code/80c9129/src/obs_rct_benchmark/__init__.py
+integrative_r_quadratic paper:cornet_official_n_conf@o512_r128: ok in 170s (n_rct=128 n_obs=512 d=25 n_eval=2048)
+integrative_r_quadratic paper:cornet_official_n_conf@o512_r512: FAILED after 1200s (n_rct=512 n_obs=512 d=25 n_eval=2048)
+  chain: RuntimeError: Integrative R-learner exceeded timeout_seconds <- TimeoutExpired: Command '['/shared/s2/lab05/sanghack/work/obsrct-gp-source-pilot-20261026-r01/environment-v1/bin/Rscript', '--vanilla', '/shared/s2/lab05/sanghack/work/.tmp/integrative-r-bda5pbbo/bridge.R', '/shared/s2/lab05/sanghack/work/obsrct-v03-adapters-20261026-r01/upstreams/intRlearner', '/shared/s2/lab05/sanghack/work/.tmp/integrative-r-bda5pbbo', '644437957', 'quadratic', '5', '512', '512', '2048', '25', '350', 'a46ce2c1cc814865898b863d6a8e130bbc2c802b']' timed out after 1199.9999942499562 seconds
+  status=timeout returncode=None
+  stdout tail:
+    [1] "Parameter searching ..."
+  RuntimeError: Integrative R-learner exceeded timeout_seconds
+integrative_r_quadratic paper:cornet_official_n_conf@o2048_r128: FAILED after 1200s (n_rct=128 n_obs=2048 d=25 n_eval=2048)
+  chain: RuntimeError: Integrative R-learner exceeded timeout_seconds <- TimeoutExpired: Command '['/shared/s2/lab05/sanghack/work/obsrct-gp-source-pilot-20261026-r01/environment-v1/bin/Rscript', '--vanilla', '/shared/s2/lab05/sanghack/work/.tmp/integrative-r-yn03a71_/bridge.R', '/shared/s2/lab05/sanghack/work/obsrct-v03-adapters-20261026-r01/upstreams/intRlearner', '/shared/s2/lab05/sanghack/work/.tmp/integrative-r-yn03a71_', '644437957', 'quadratic', '5', '128', '2048', '2048', '25', '350', 'a46ce2c1cc814865898b863d6a8e130bbc2c802b']' timed out after 1199.9999946799944 seconds
+  status=timeout returncode=None
+  stdout tail:
+    [1] "Parameter searching ..."
+  RuntimeError: Integrative R-learner exceeded timeout_seconds
+integrative_r_quadratic paper:cornet_official_n_conf@o2048_r512: FAILED after 1200s (n_rct=512 n_obs=2048 d=25 n_eval=2048)
+  chain: RuntimeError: Integrative R-learner exceeded timeout_seconds <- TimeoutExpired: Command '['/shared/s2/lab05/sanghack/work/obsrct-gp-source-pilot-20261026-r01/environment-v1/bin/Rscript', '--vanilla', '/shared/s2/lab05/sanghack/work/.tmp/integrative-r-qaokhhza/bridge.R', '/shared/s2/lab05/sanghack/work/obsrct-v03-adapters-20261026-r01/upstreams/intRlearner', '/shared/s2/lab05/sanghack/work/.tmp/integrative-r-qaokhhza', '644437957', 'quadratic', '5', '512', '2048', '2048', '25', '350', 'a46ce2c1cc814865898b863d6a8e130bbc2c802b']' timed out after 1199.9999944199808 seconds
+  status=timeout returncode=None
+  stdout tail:
+    [1] "Parameter searching ..."
+  RuntimeError: Integrative R-learner exceeded timeout_seconds
+integrative_r_linear paper:cornet_official_n_conf@o512_r128: ok in 23s (n_rct=128 n_obs=512 d=25 n_eval=2048)
+integrative_r_linear paper:cornet_official_n_conf@o512_r512: ok in 16s (n_rct=512 n_obs=512 d=25 n_eval=2048)
+integrative_r_linear paper:cornet_official_n_conf@o2048_r128: ok in 57s (n_rct=128 n_obs=2048 d=25 n_eval=2048)
+integrative_r_linear paper:cornet_official_n_conf@o2048_r512: ok in 53s (n_rct=512 n_obs=2048 d=25 n_eval=2048)

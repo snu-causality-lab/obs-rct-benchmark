@@ -1,6 +1,6 @@
 # Stress study 1, addendum: the wave-2 recipes on the same seeds
 
-**Status: addendum, fixed before its fits.** This addendum to [stress study 1](V1_STRESS_CORNET.md) fixes the recipes, contrasts and resources before any wave-2 fit on its seeds, 80000–80063. The freeze is the commit that fills in [Recorded before launch](#recorded-before-launch); earlier commits carry drafts. The job record holds the freeze commit's hash before the first fit.
+**Status: addendum, fixed before its fits; results in [`results/stress_wave2`](../results/stress_wave2/SCIENTIFIC_RESULT.md).** This addendum to [stress study 1](V1_STRESS_CORNET.md) fixes the recipes, contrasts and resources before any wave-2 fit on its seeds, 80000–80063. The freeze is the commit that fills in [Recorded before launch](#recorded-before-launch); earlier commits carry drafts. The job record holds the freeze commit's hash before the first fit.
 
 The stress plan said the wave-2 recipes would join its block later, on the same seeds, paired within each shard as in [wave 2](V1_CORE_WAVE2.md). This addendum does that. It keeps from the stress plan:
 - the eight dials, four levels and two trial sizes: 64 conditions;
@@ -101,6 +101,10 @@ Preflight results (seed 79999, eight shards per group). Each group's limit follo
 | Data check (seed 80000, against stress study 1's environment) | Passed. In all 64 conditions, every array of every sample role is identical in the `gp`, `tabpfn` and `tsr_legacy` environments; the largest difference is 0. `native_r` runs in stress study 1's interpreter itself |
 
 ## Revisions and errata
+
+**2026-11-15, after the first analysis was read: slow-storage nodes.** All 15 failures in this addendum came from four shards that ran on the slow-storage node b28. The CPU arrays had been submitted without excluding slow-storage nodes. Rerun whole on a normal node, the four shards had no failures, and the cells that succeeded in both attempts scored exactly the same. Such shards are now infrastructure failures, rerun whole with the old output kept. The first analysis, which counts the 15 as method failures, is published next to the corrected one. The rule, its scope and the evidence are in [wave 2's erratum](V1_CORE_WAVE2.md#revisions-and-errata).
+
+**2026-11-15, after all fits, before any metric was read: source check.** The analyzer's first run refused this addendum, and wave 2, because the recorded source included the version string of each environment's installed distribution, if any, not the code that ran. Every run's package files are identical to the analysis package's. The analysis runs the frozen analyzer unchanged, through a runner that checks every field except that version. The cause, evidence and change are in [wave 2's erratum](V1_CORE_WAVE2.md#revisions-and-errata).
 
 **2026-11-15, before the freeze.** A fresh-context AI review of the first draft led to these changes:
 - the execution rules cite the frozen wave-2 addendum and add a final attempt for job limits;

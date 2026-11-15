@@ -78,5 +78,5 @@ Holm's correction runs within each recipe's family of 64 conditions. The 16 extr
 - **Synthetic constructions.** These are synthetic constructions built to test stated assumptions, not real data. CorNet's loss under a hidden effect modifier shows one way its central assumption can fail. It does not estimate how often that happens in practice.
 - **One construction per assumption.** Each dial is one violation of its assumption, and the bias-frequency dial turned out not to stress what it was meant to.
 - **The reference.** `rct_selected` is an observable reference with about 1.3 times the error of the best RCT-only candidate in the v1 study; ratios against it are not ratios against the best possible RCT-only learner.
-- **Recipes not yet included.** The wave-2 recipes join this block later, on the same seeds.
+- **Recipes not included.** The wave-2 recipes ran later on the same seeds, in the [stress addendum](../stress_wave2/SCIENTIFIC_RESULT.md).
 - **No human check.** One AI agent designed, ran and analyzed this study. A fresh-context AI review shaped its dials before the freeze.

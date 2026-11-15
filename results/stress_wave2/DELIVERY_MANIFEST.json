@@ -1,0 +1,60 @@
+{
+  "jobs": {
+    "write_shards": 823395,
+    "main_arrays": {
+      "native_r": 823396,
+      "gp": 823397,
+      "tabpfn": 823398,
+      "tsr_legacy": 823399
+    },
+    "native_r_reruns": {
+      "provenance_unavailable_or_failed_check": [
+        828231,
+        828433
+      ],
+      "slow_node_erratum": 832379
+    },
+    "analysis": {
+      "r01_refused_source_check": 831629,
+      "r02_as_frozen": 832361,
+      "r03_final": 832629
+    },
+    "reproduce": {
+      "native_r": 831634,
+      "gp": 831635,
+      "tabpfn": 831636,
+      "tsr_legacy": 831637
+    }
+  },
+  "environment": "Four environments, one per group, reused read-only (package lists in evidence/environments/): native_r obsrct-public-upgrade-20261025-r01/environment-v1 with R from obsrct-gp-source-pilot-20261026-r01; gp obsrct-gp-source-pilot-20261026-r01/environment-v1; tabpfn tabpfn-env-20261114 (tabpfn 10.0.0); tsr_legacy obsrct-tsr-study-20261113-r01/environment-v1 (tabpfn 2.0.9). Code ran from the freeze snapshot on PYTHONPATH.",
+  "errata": [
+    "2026-11-15 source check: analyses run through evidence/jobs/analyze_erratum.py (version field excluded from the code-identity comparison)",
+    "2026-11-15 slow-storage nodes: shards whose final attempt ran on an excluded slow-storage node and recorded a method failure were rerun whole on a normal node; as_frozen/ keeps the analysis before this change"
+  ],
+  "study": "docs/V1_STRESS_WAVE2.md",
+  "freeze_commit": "61cb584c839ee6ab536ae1a5fcfbc9db5ebef9e7",
+  "code_archive": {
+    "file": "code/61cb584.tar (git archive of the freeze commit)",
+    "sha256": "ca6d47578bfaece232f8ac67899d096b97becbf07b05d89d256da8cdac767352"
+  },
+  "gsds_run": "/shared/s2/lab05/sanghack/work/obsrct-v1-wave2-20261114-r01",
+  "files_sha256_as_exported": {
+    "analysis.json": "42e519b372d701b7034df4bfcfe3e180f755135b72dbe07a009587b75365b6c8",
+    "condition_scores.csv": "ccb7420fa7e2b0f906751158a0d8abb91ca909fedd68036101984f9523b19e78",
+    "contrasts.csv": "709539a91b9ee0b423721743d0439e8aeaae3fd26599c966747946ecd493a5c1",
+    "dose_response.csv": "87c21c35fabae9b563dc247ad37d850bbbfc85b4276a5736311ab950fdc9864c",
+    "headline.md": "b6ef09873e207879b5b69a0be1b592079f163812dc00c2564cd065f49da54f3d",
+    "identity_check.json": "1883e9005fb9b57aaac33c25eaddc6d7ac9276eef43559339c76de67951468b6",
+    "readout.csv": "b11547f31206b1a25162e3e898fac8cabf14e711ece94ab45bddc8a45defae03",
+    "replicate_scores.csv": "c04d7a5e341420edfab8bfc9452c8534719a36a3bbe94a7c63df1b319e01d0a5"
+  },
+  "as_frozen_files_sha256_as_exported": {
+    "headline.md": "7bd3ac7d4a530b47bf59b469abd54c46c2ddc2e27113ff8e6b57ecd447469ccf",
+    "contrasts.csv": "492040d697d2967345ec98a6b128ec648aeaa54423ee62fcde87f1535212525f",
+    "readout.csv": "eec6f18267a6a1df88f56233b732ebc4abae84f91fd40cf33c61858fd9e7f0b2",
+    "analysis.json": "eab3f65ed1a6fdf96d43487253c05e1a15383b23c1a1944deb892c54a4a7b116",
+    "identity_check.json": "e772f43e6555159651e9d28f2e200fc533a56e2f95cd6dcd1e988f9c9e357f25",
+    "replicate_scores.csv": "bcbbb8e9bf4d97f087e8baf17d735aabcad477878bb2ff1cd6e7d04cfad34b5a"
+  },
+  "changed_cells": 15
+}

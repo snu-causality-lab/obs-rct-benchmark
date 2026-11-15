@@ -1,0 +1,1370 @@
+{
+  "check": "reproduce",
+  "group": "tsr_legacy",
+  "seed": 80000,
+  "cases": 80,
+  "refits": 160,
+  "mismatches": [],
+  "details": [
+    {
+      "scenario": "stress:hidden_modifier@l0_r128",
+      "method": "rct_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.17255916219598547
+        },
+        {
+          "status": "ok",
+          "mse": 0.17255916219598547
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:hidden_modifier@l0_r128",
+      "method": "rct_t_ridge",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.18491474913760525
+        },
+        {
+          "status": "ok",
+          "mse": 0.18491474913760525
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:hidden_modifier@l0_r128",
+      "method": "tsr_tabpfn_lmcgp",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.5017069955042822
+        },
+        {
+          "status": "ok",
+          "mse": 0.5017069955042822
+        }
+      ],
+      "tolerance": 1e-06,
+      "match": true
+    },
+    {
+      "scenario": "stress:hidden_modifier@l0_r128",
+      "method": "lmcgp_rct_only",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.18313802494658238
+        },
+        {
+          "status": "ok",
+          "mse": 0.18313802494658238
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:hidden_modifier@l0_r128",
+      "method": "tabpfn_obs_only",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.1899009073550602
+        },
+        {
+          "status": "ok",
+          "mse": 0.1899009073550602
+        }
+      ],
+      "tolerance": 1e-06,
+      "match": true
+    },
+    {
+      "scenario": "stress:hidden_modifier@l3_r128",
+      "method": "rct_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.17255916219598547
+        },
+        {
+          "status": "ok",
+          "mse": 0.17255916219598547
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:hidden_modifier@l3_r128",
+      "method": "rct_t_ridge",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.18491474913760525
+        },
+        {
+          "status": "ok",
+          "mse": 0.18491474913760525
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:hidden_modifier@l3_r128",
+      "method": "tsr_tabpfn_lmcgp",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.498267797418132
+        },
+        {
+          "status": "ok",
+          "mse": 0.498267797418132
+        }
+      ],
+      "tolerance": 1e-06,
+      "match": true
+    },
+    {
+      "scenario": "stress:hidden_modifier@l3_r128",
+      "method": "lmcgp_rct_only",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.18313802494658238
+        },
+        {
+          "status": "ok",
+          "mse": 0.18313802494658238
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:hidden_modifier@l3_r128",
+      "method": "tabpfn_obs_only",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.2621539024642461
+        },
+        {
+          "status": "ok",
+          "mse": 0.2621539024642461
+        }
+      ],
+      "tolerance": 1e-06,
+      "match": true
+    },
+    {
+      "scenario": "stress:bias_complexity@l0_r128",
+      "method": "rct_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.18491474913760525
+        },
+        {
+          "status": "ok",
+          "mse": 0.18491474913760525
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:bias_complexity@l0_r128",
+      "method": "rct_t_ridge",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.18491474913760525
+        },
+        {
+          "status": "ok",
+          "mse": 0.18491474913760525
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:bias_complexity@l0_r128",
+      "method": "tsr_tabpfn_lmcgp",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.8218547896624528
+        },
+        {
+          "status": "ok",
+          "mse": 0.8218547896624528
+        }
+      ],
+      "tolerance": 1e-06,
+      "match": true
+    },
+    {
+      "scenario": "stress:bias_complexity@l0_r128",
+      "method": "lmcgp_rct_only",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.18313802494658238
+        },
+        {
+          "status": "ok",
+          "mse": 0.18313802494658238
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:bias_complexity@l0_r128",
+      "method": "tabpfn_obs_only",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.5276034245626194
+        },
+        {
+          "status": "ok",
+          "mse": 0.5276034245626194
+        }
+      ],
+      "tolerance": 1e-06,
+      "match": true
+    },
+    {
+      "scenario": "stress:bias_complexity@l3_r128",
+      "method": "rct_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.18491474913760525
+        },
+        {
+          "status": "ok",
+          "mse": 0.18491474913760525
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:bias_complexity@l3_r128",
+      "method": "rct_t_ridge",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.18491474913760525
+        },
+        {
+          "status": "ok",
+          "mse": 0.18491474913760525
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:bias_complexity@l3_r128",
+      "method": "tsr_tabpfn_lmcgp",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.31768438588669196
+        },
+        {
+          "status": "ok",
+          "mse": 0.31768438588669196
+        }
+      ],
+      "tolerance": 1e-06,
+      "match": true
+    },
+    {
+      "scenario": "stress:bias_complexity@l3_r128",
+      "method": "lmcgp_rct_only",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.18313802494658238
+        },
+        {
+          "status": "ok",
+          "mse": 0.18313802494658238
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:bias_complexity@l3_r128",
+      "method": "tabpfn_obs_only",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.028035071266462992
+        },
+        {
+          "status": "ok",
+          "mse": 0.028035071266462992
+        }
+      ],
+      "tolerance": 1e-06,
+      "match": true
+    },
+    {
+      "scenario": "stress:common_shift@l0_r128",
+      "method": "rct_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.18491474913760525
+        },
+        {
+          "status": "ok",
+          "mse": 0.18491474913760525
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:common_shift@l0_r128",
+      "method": "rct_t_ridge",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.18491474913760525
+        },
+        {
+          "status": "ok",
+          "mse": 0.18491474913760525
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:common_shift@l0_r128",
+      "method": "tsr_tabpfn_lmcgp",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.42265206393808064
+        },
+        {
+          "status": "ok",
+          "mse": 0.42265206393808064
+        }
+      ],
+      "tolerance": 1e-06,
+      "match": true
+    },
+    {
+      "scenario": "stress:common_shift@l0_r128",
+      "method": "lmcgp_rct_only",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.18313802494658238
+        },
+        {
+          "status": "ok",
+          "mse": 0.18313802494658238
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:common_shift@l0_r128",
+      "method": "tabpfn_obs_only",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.029658757092315045
+        },
+        {
+          "status": "ok",
+          "mse": 0.029658757092315045
+        }
+      ],
+      "tolerance": 1e-06,
+      "match": true
+    },
+    {
+      "scenario": "stress:common_shift@l3_r128",
+      "method": "rct_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.18491474913760525
+        },
+        {
+          "status": "ok",
+          "mse": 0.18491474913760525
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:common_shift@l3_r128",
+      "method": "rct_t_ridge",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.18491474913760525
+        },
+        {
+          "status": "ok",
+          "mse": 0.18491474913760525
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:common_shift@l3_r128",
+      "method": "tsr_tabpfn_lmcgp",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.3362334165637434
+        },
+        {
+          "status": "ok",
+          "mse": 0.3362334165637434
+        }
+      ],
+      "tolerance": 1e-06,
+      "match": true
+    },
+    {
+      "scenario": "stress:common_shift@l3_r128",
+      "method": "lmcgp_rct_only",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.18313802494658238
+        },
+        {
+          "status": "ok",
+          "mse": 0.18313802494658238
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:common_shift@l3_r128",
+      "method": "tabpfn_obs_only",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.029113755937730426
+        },
+        {
+          "status": "ok",
+          "mse": 0.029113755937730426
+        }
+      ],
+      "tolerance": 1e-06,
+      "match": true
+    },
+    {
+      "scenario": "stress:obs_selection@l0_r128",
+      "method": "rct_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.18462624004981992
+        },
+        {
+          "status": "ok",
+          "mse": 0.18462624004981992
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:obs_selection@l0_r128",
+      "method": "rct_t_ridge",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.18491474913760525
+        },
+        {
+          "status": "ok",
+          "mse": 0.18491474913760525
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:obs_selection@l0_r128",
+      "method": "tsr_tabpfn_lmcgp",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.33045129212602453
+        },
+        {
+          "status": "ok",
+          "mse": 0.33045129212602453
+        }
+      ],
+      "tolerance": 1e-06,
+      "match": true
+    },
+    {
+      "scenario": "stress:obs_selection@l0_r128",
+      "method": "lmcgp_rct_only",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.18313802494658238
+        },
+        {
+          "status": "ok",
+          "mse": 0.18313802494658238
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:obs_selection@l0_r128",
+      "method": "tabpfn_obs_only",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.027435864470734223
+        },
+        {
+          "status": "ok",
+          "mse": 0.027435864470734223
+        }
+      ],
+      "tolerance": 1e-06,
+      "match": true
+    },
+    {
+      "scenario": "stress:obs_selection@l3_r128",
+      "method": "rct_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.18462624004981992
+        },
+        {
+          "status": "ok",
+          "mse": 0.18462624004981992
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:obs_selection@l3_r128",
+      "method": "rct_t_ridge",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.18491474913760525
+        },
+        {
+          "status": "ok",
+          "mse": 0.18491474913760525
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:obs_selection@l3_r128",
+      "method": "tsr_tabpfn_lmcgp",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.35208061558513265
+        },
+        {
+          "status": "ok",
+          "mse": 0.35208061558513265
+        }
+      ],
+      "tolerance": 1e-06,
+      "match": true
+    },
+    {
+      "scenario": "stress:obs_selection@l3_r128",
+      "method": "lmcgp_rct_only",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.18313802494658238
+        },
+        {
+          "status": "ok",
+          "mse": 0.18313802494658238
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:obs_selection@l3_r128",
+      "method": "tabpfn_obs_only",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.04917872716450135
+        },
+        {
+          "status": "ok",
+          "mse": 0.04917872716450135
+        }
+      ],
+      "tolerance": 1e-06,
+      "match": true
+    },
+    {
+      "scenario": "stress:trial_shrink@l0_r128",
+      "method": "rct_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.18491474913760525
+        },
+        {
+          "status": "ok",
+          "mse": 0.18491474913760525
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:trial_shrink@l0_r128",
+      "method": "rct_t_ridge",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.18491474913760525
+        },
+        {
+          "status": "ok",
+          "mse": 0.18491474913760525
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:trial_shrink@l0_r128",
+      "method": "tsr_tabpfn_lmcgp",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.7088869579719548
+        },
+        {
+          "status": "ok",
+          "mse": 0.7088869579719548
+        }
+      ],
+      "tolerance": 1e-06,
+      "match": true
+    },
+    {
+      "scenario": "stress:trial_shrink@l0_r128",
+      "method": "lmcgp_rct_only",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.18313802494658238
+        },
+        {
+          "status": "ok",
+          "mse": 0.18313802494658238
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:trial_shrink@l0_r128",
+      "method": "tabpfn_obs_only",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.3338895773133045
+        },
+        {
+          "status": "ok",
+          "mse": 0.3338895773133045
+        }
+      ],
+      "tolerance": 1e-06,
+      "match": true
+    },
+    {
+      "scenario": "stress:trial_shrink@l3_r128",
+      "method": "rct_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.15449251085302895
+        },
+        {
+          "status": "ok",
+          "mse": 0.15449251085302895
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:trial_shrink@l3_r128",
+      "method": "rct_t_ridge",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 1.0022900735324378
+        },
+        {
+          "status": "ok",
+          "mse": 1.0022900735324378
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:trial_shrink@l3_r128",
+      "method": "tsr_tabpfn_lmcgp",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.35355999932258575
+        },
+        {
+          "status": "ok",
+          "mse": 0.35355999932258575
+        }
+      ],
+      "tolerance": 1e-06,
+      "match": true
+    },
+    {
+      "scenario": "stress:trial_shrink@l3_r128",
+      "method": "lmcgp_rct_only",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.9005798710148465
+        },
+        {
+          "status": "ok",
+          "mse": 0.9005798710148465
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:trial_shrink@l3_r128",
+      "method": "tabpfn_obs_only",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.3338895773133045
+        },
+        {
+          "status": "ok",
+          "mse": 0.3338895773133045
+        }
+      ],
+      "tolerance": 1e-06,
+      "match": true
+    },
+    {
+      "scenario": "stress:obs_size@l0_r128",
+      "method": "rct_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.18734113359697135
+        },
+        {
+          "status": "ok",
+          "mse": 0.18734113359697135
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:obs_size@l0_r128",
+      "method": "rct_t_ridge",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.18491474913760525
+        },
+        {
+          "status": "ok",
+          "mse": 0.18491474913760525
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:obs_size@l0_r128",
+      "method": "tsr_tabpfn_lmcgp",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.624182621905508
+        },
+        {
+          "status": "ok",
+          "mse": 0.624182621905508
+        }
+      ],
+      "tolerance": 1e-06,
+      "match": true
+    },
+    {
+      "scenario": "stress:obs_size@l0_r128",
+      "method": "lmcgp_rct_only",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.18313802494658238
+        },
+        {
+          "status": "ok",
+          "mse": 0.18313802494658238
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:obs_size@l0_r128",
+      "method": "tabpfn_obs_only",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.41871315637741335
+        },
+        {
+          "status": "ok",
+          "mse": 0.41871315637741335
+        }
+      ],
+      "tolerance": 1e-06,
+      "match": true
+    },
+    {
+      "scenario": "stress:obs_size@l3_r128",
+      "method": "rct_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.18734113359697135
+        },
+        {
+          "status": "ok",
+          "mse": 0.18734113359697135
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:obs_size@l3_r128",
+      "method": "rct_t_ridge",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.18491474913760525
+        },
+        {
+          "status": "ok",
+          "mse": 0.18491474913760525
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:obs_size@l3_r128",
+      "method": "tsr_tabpfn_lmcgp",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.67613128895992
+        },
+        {
+          "status": "ok",
+          "mse": 0.67613128895992
+        }
+      ],
+      "tolerance": 1e-06,
+      "match": true
+    },
+    {
+      "scenario": "stress:obs_size@l3_r128",
+      "method": "lmcgp_rct_only",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.18313802494658238
+        },
+        {
+          "status": "ok",
+          "mse": 0.18313802494658238
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:obs_size@l3_r128",
+      "method": "tabpfn_obs_only",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.10178279744889289
+        },
+        {
+          "status": "ok",
+          "mse": 0.10178279744889289
+        }
+      ],
+      "tolerance": 1e-06,
+      "match": true
+    },
+    {
+      "scenario": "stress:target_shift@l0_r128",
+      "method": "rct_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.18491474913760525
+        },
+        {
+          "status": "ok",
+          "mse": 0.18491474913760525
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:target_shift@l0_r128",
+      "method": "rct_t_ridge",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.18491474913760525
+        },
+        {
+          "status": "ok",
+          "mse": 0.18491474913760525
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:target_shift@l0_r128",
+      "method": "tsr_tabpfn_lmcgp",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.7088869579719548
+        },
+        {
+          "status": "ok",
+          "mse": 0.7088869579719548
+        }
+      ],
+      "tolerance": 1e-06,
+      "match": true
+    },
+    {
+      "scenario": "stress:target_shift@l0_r128",
+      "method": "lmcgp_rct_only",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.18313802494658238
+        },
+        {
+          "status": "ok",
+          "mse": 0.18313802494658238
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:target_shift@l0_r128",
+      "method": "tabpfn_obs_only",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.3338895773133045
+        },
+        {
+          "status": "ok",
+          "mse": 0.3338895773133045
+        }
+      ],
+      "tolerance": 1e-06,
+      "match": true
+    },
+    {
+      "scenario": "stress:target_shift@l3_r128",
+      "method": "rct_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.6411995912150676
+        },
+        {
+          "status": "ok",
+          "mse": 0.6411995912150676
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:target_shift@l3_r128",
+      "method": "rct_t_ridge",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.6411995912150676
+        },
+        {
+          "status": "ok",
+          "mse": 0.6411995912150676
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:target_shift@l3_r128",
+      "method": "tsr_tabpfn_lmcgp",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 1.9114360594591853
+        },
+        {
+          "status": "ok",
+          "mse": 1.9114360594591853
+        }
+      ],
+      "tolerance": 1e-06,
+      "match": true
+    },
+    {
+      "scenario": "stress:target_shift@l3_r128",
+      "method": "lmcgp_rct_only",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.22545469398151347
+        },
+        {
+          "status": "ok",
+          "mse": 0.22545469398151347
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:target_shift@l3_r128",
+      "method": "tabpfn_obs_only",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 1.5074335673822925
+        },
+        {
+          "status": "ok",
+          "mse": 1.5074335673822925
+        }
+      ],
+      "tolerance": 1e-06,
+      "match": true
+    },
+    {
+      "scenario": "stress:noise_shape@l0_r128",
+      "method": "rct_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.18491474913760525
+        },
+        {
+          "status": "ok",
+          "mse": 0.18491474913760525
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:noise_shape@l0_r128",
+      "method": "rct_t_ridge",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.18491474913760525
+        },
+        {
+          "status": "ok",
+          "mse": 0.18491474913760525
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:noise_shape@l0_r128",
+      "method": "tsr_tabpfn_lmcgp",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.7088869579719548
+        },
+        {
+          "status": "ok",
+          "mse": 0.7088869579719548
+        }
+      ],
+      "tolerance": 1e-06,
+      "match": true
+    },
+    {
+      "scenario": "stress:noise_shape@l0_r128",
+      "method": "lmcgp_rct_only",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.18313802494658238
+        },
+        {
+          "status": "ok",
+          "mse": 0.18313802494658238
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:noise_shape@l0_r128",
+      "method": "tabpfn_obs_only",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.3338895773133045
+        },
+        {
+          "status": "ok",
+          "mse": 0.3338895773133045
+        }
+      ],
+      "tolerance": 1e-06,
+      "match": true
+    },
+    {
+      "scenario": "stress:noise_shape@l3_r128",
+      "method": "rct_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.2019913582698235
+        },
+        {
+          "status": "ok",
+          "mse": 0.2019913582698235
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:noise_shape@l3_r128",
+      "method": "rct_t_ridge",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.2019913582698235
+        },
+        {
+          "status": "ok",
+          "mse": 0.2019913582698235
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:noise_shape@l3_r128",
+      "method": "tsr_tabpfn_lmcgp",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.7138613141802713
+        },
+        {
+          "status": "ok",
+          "mse": 0.7138613141802713
+        }
+      ],
+      "tolerance": 1e-06,
+      "match": true
+    },
+    {
+      "scenario": "stress:noise_shape@l3_r128",
+      "method": "lmcgp_rct_only",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.4183517438759278
+        },
+        {
+          "status": "ok",
+          "mse": 0.4183517438759278
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:noise_shape@l3_r128",
+      "method": "tabpfn_obs_only",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.28312278396420393
+        },
+        {
+          "status": "ok",
+          "mse": 0.28312278396420393
+        }
+      ],
+      "tolerance": 1e-06,
+      "match": true
+    }
+  ]
+}

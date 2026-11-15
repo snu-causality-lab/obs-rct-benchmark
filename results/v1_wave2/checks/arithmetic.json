@@ -1,0 +1,215 @@
+{
+  "check": "arithmetic",
+  "families": {
+    "native_r/integrative_r_linear": {
+      "size": 120,
+      "other_better": 57,
+      "other_unresolved": 33,
+      "transport_better": 5,
+      "transport_unresolved": 17,
+      "other_worse": 6,
+      "transport_worse": 2
+    },
+    "native_r/integrative_r_quadratic": {
+      "size": 120,
+      "other_unresolved": 48,
+      "other_better": 38,
+      "transport_better": 5,
+      "transport_unresolved": 17,
+      "other_worse": 7,
+      "other_untested": 3,
+      "transport_worse": 2
+    },
+    "native_r/rct_causal_forest": {
+      "size": 60,
+      "other_better": 36,
+      "other_worse": 8,
+      "transport_better": 2,
+      "other_unresolved": 4,
+      "transport_worse": 9,
+      "transport_unresolved": 1
+    },
+    "gp/causal_icm_fixed": {
+      "size": 120,
+      "other_better": 25,
+      "other_unresolved": 63,
+      "transport_better": 13,
+      "transport_unresolved": 11,
+      "other_worse": 8
+    },
+    "gp/causal_icm_rct_only": {
+      "size": 60,
+      "other_worse": 30,
+      "other_unresolved": 17,
+      "transport_unresolved": 8,
+      "transport_worse": 2,
+      "other_better": 1,
+      "transport_better": 2
+    },
+    "tabpfn/lmcgp_rct_only": {
+      "size": 60,
+      "other_worse": 29,
+      "other_unresolved": 15,
+      "transport_unresolved": 9,
+      "transport_better": 2,
+      "other_better": 4,
+      "transport_worse": 1
+    },
+    "tabpfn/tsr_tabpfn_v2": {
+      "size": 120,
+      "other_worse": 79,
+      "other_unresolved": 13,
+      "transport_unresolved": 17,
+      "other_better": 4,
+      "transport_better": 6,
+      "transport_worse": 1
+    },
+    "tabpfn/tsr_tabpfn_v25": {
+      "size": 120,
+      "other_worse": 79,
+      "other_unresolved": 13,
+      "transport_unresolved": 13,
+      "other_better": 4,
+      "transport_better": 6,
+      "transport_worse": 5
+    },
+    "tabpfn/tsr_tabpfn_v3": {
+      "size": 120,
+      "other_worse": 81,
+      "other_unresolved": 11,
+      "transport_unresolved": 13,
+      "other_better": 4,
+      "transport_better": 6,
+      "transport_worse": 5
+    },
+    "tabpfn/tabpfn_v2_obs_only": {
+      "size": 120,
+      "other_worse": 62,
+      "other_better": 25,
+      "other_unresolved": 9,
+      "transport_better": 8,
+      "transport_unresolved": 6,
+      "transport_worse": 10
+    },
+    "tabpfn/tabpfn_v25_obs_only": {
+      "size": 120,
+      "other_worse": 61,
+      "other_better": 25,
+      "other_unresolved": 10,
+      "transport_better": 8,
+      "transport_unresolved": 6,
+      "transport_worse": 10
+    },
+    "tabpfn/tabpfn_v3_obs_only": {
+      "size": 120,
+      "other_worse": 61,
+      "other_better": 26,
+      "other_unresolved": 9,
+      "transport_better": 8,
+      "transport_unresolved": 6,
+      "transport_worse": 10
+    },
+    "tsr_legacy/tsr_tabpfn_lmcgp": {
+      "size": 120,
+      "other_worse": 79,
+      "other_unresolved": 13,
+      "transport_unresolved": 17,
+      "other_better": 4,
+      "transport_better": 6,
+      "transport_worse": 1
+    },
+    "tsr_legacy/lmcgp_rct_only": {
+      "size": 60,
+      "other_worse": 29,
+      "other_unresolved": 15,
+      "transport_unresolved": 9,
+      "transport_better": 2,
+      "other_better": 4,
+      "transport_worse": 1
+    },
+    "tsr_legacy/tabpfn_obs_only": {
+      "size": 120,
+      "other_worse": 62,
+      "other_better": 25,
+      "other_unresolved": 9,
+      "transport_better": 8,
+      "transport_unresolved": 6,
+      "transport_worse": 10
+    },
+    "gp/causal_icm_fixed vs causal_icm_rct_only": {
+      "size": 120,
+      "other_better": 87,
+      "other_unresolved": 9,
+      "transport_better": 22,
+      "transport_unresolved": 2
+    },
+    "tabpfn/tsr_tabpfn_v2 vs lmcgp_rct_only": {
+      "size": 120,
+      "other_unresolved": 51,
+      "other_worse": 45,
+      "transport_unresolved": 16,
+      "transport_worse": 3,
+      "transport_better": 5
+    },
+    "tabpfn/tsr_tabpfn_v25 vs lmcgp_rct_only": {
+      "size": 120,
+      "other_unresolved": 50,
+      "other_worse": 45,
+      "other_better": 1,
+      "transport_unresolved": 16,
+      "transport_worse": 3,
+      "transport_better": 5
+    },
+    "tabpfn/tsr_tabpfn_v3 vs lmcgp_rct_only": {
+      "size": 120,
+      "other_unresolved": 53,
+      "other_worse": 42,
+      "other_better": 1,
+      "transport_unresolved": 17,
+      "transport_worse": 2,
+      "transport_better": 5
+    },
+    "tsr_legacy/tsr_tabpfn_lmcgp vs lmcgp_rct_only": {
+      "size": 120,
+      "other_unresolved": 50,
+      "other_worse": 45,
+      "other_better": 1,
+      "transport_unresolved": 16,
+      "transport_worse": 3,
+      "transport_better": 5
+    },
+    "tabpfn/tsr_tabpfn_v25 vs tsr_tabpfn_v2": {
+      "size": 120,
+      "other_unresolved": 95,
+      "transport_unresolved": 20,
+      "transport_worse": 4,
+      "other_better": 1
+    },
+    "tabpfn/tsr_tabpfn_v3 vs tsr_tabpfn_v2": {
+      "size": 120,
+      "other_unresolved": 96,
+      "transport_unresolved": 18,
+      "transport_better": 2,
+      "transport_worse": 4
+    },
+    "tabpfn/tabpfn_v25_obs_only vs tabpfn_v2_obs_only": {
+      "size": 120,
+      "other_better": 60,
+      "other_unresolved": 22,
+      "other_worse": 14,
+      "transport_unresolved": 6,
+      "transport_better": 8,
+      "transport_worse": 10
+    },
+    "tabpfn/tabpfn_v3_obs_only vs tabpfn_v2_obs_only": {
+      "size": 120,
+      "other_better": 52,
+      "other_unresolved": 32,
+      "other_worse": 12,
+      "transport_unresolved": 12,
+      "transport_better": 4,
+      "transport_worse": 8
+    }
+  },
+  "mismatches": []
+}

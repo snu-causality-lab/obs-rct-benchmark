@@ -1,0 +1,1370 @@
+{
+  "check": "reproduce",
+  "group": "native_r",
+  "seed": 80000,
+  "cases": 80,
+  "refits": 160,
+  "mismatches": [],
+  "details": [
+    {
+      "scenario": "stress:hidden_modifier@l0_r128",
+      "method": "rct_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.17255916219598547
+        },
+        {
+          "status": "ok",
+          "mse": 0.17255916219598547
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:hidden_modifier@l0_r128",
+      "method": "rct_t_ridge",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.18491474913760525
+        },
+        {
+          "status": "ok",
+          "mse": 0.18491474913760525
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:hidden_modifier@l0_r128",
+      "method": "integrative_r_linear",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.12956682924961535
+        },
+        {
+          "status": "ok",
+          "mse": 0.12956682924961535
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:hidden_modifier@l0_r128",
+      "method": "integrative_r_quadratic",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.09733700499931214
+        },
+        {
+          "status": "ok",
+          "mse": 0.09733700499931214
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:hidden_modifier@l0_r128",
+      "method": "rct_causal_forest",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.21004365876282322
+        },
+        {
+          "status": "ok",
+          "mse": 0.21004365876282322
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:hidden_modifier@l3_r128",
+      "method": "rct_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.17255916219598547
+        },
+        {
+          "status": "ok",
+          "mse": 0.17255916219598547
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:hidden_modifier@l3_r128",
+      "method": "rct_t_ridge",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.18491474913760525
+        },
+        {
+          "status": "ok",
+          "mse": 0.18491474913760525
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:hidden_modifier@l3_r128",
+      "method": "integrative_r_linear",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.08324365251130644
+        },
+        {
+          "status": "ok",
+          "mse": 0.08324365251130644
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:hidden_modifier@l3_r128",
+      "method": "integrative_r_quadratic",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.2507502272879335
+        },
+        {
+          "status": "ok",
+          "mse": 0.2507502272879335
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:hidden_modifier@l3_r128",
+      "method": "rct_causal_forest",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.21004365876282322
+        },
+        {
+          "status": "ok",
+          "mse": 0.21004365876282322
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:bias_complexity@l0_r128",
+      "method": "rct_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.18491474913760525
+        },
+        {
+          "status": "ok",
+          "mse": 0.18491474913760525
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:bias_complexity@l0_r128",
+      "method": "rct_t_ridge",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.18491474913760525
+        },
+        {
+          "status": "ok",
+          "mse": 0.18491474913760525
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:bias_complexity@l0_r128",
+      "method": "integrative_r_linear",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.30648881341585443
+        },
+        {
+          "status": "ok",
+          "mse": 0.30648881341585443
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:bias_complexity@l0_r128",
+      "method": "integrative_r_quadratic",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.48721952269723157
+        },
+        {
+          "status": "ok",
+          "mse": 0.48721952269723157
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:bias_complexity@l0_r128",
+      "method": "rct_causal_forest",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.21280135343787687
+        },
+        {
+          "status": "ok",
+          "mse": 0.21280135343787687
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:bias_complexity@l3_r128",
+      "method": "rct_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.18491474913760525
+        },
+        {
+          "status": "ok",
+          "mse": 0.18491474913760525
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:bias_complexity@l3_r128",
+      "method": "rct_t_ridge",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.18491474913760525
+        },
+        {
+          "status": "ok",
+          "mse": 0.18491474913760525
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:bias_complexity@l3_r128",
+      "method": "integrative_r_linear",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.015722859840243752
+        },
+        {
+          "status": "ok",
+          "mse": 0.015722859840243752
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:bias_complexity@l3_r128",
+      "method": "integrative_r_quadratic",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.013504388784758329
+        },
+        {
+          "status": "ok",
+          "mse": 0.013504388784758329
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:bias_complexity@l3_r128",
+      "method": "rct_causal_forest",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.21280135343787687
+        },
+        {
+          "status": "ok",
+          "mse": 0.21280135343787687
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:common_shift@l0_r128",
+      "method": "rct_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.18491474913760525
+        },
+        {
+          "status": "ok",
+          "mse": 0.18491474913760525
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:common_shift@l0_r128",
+      "method": "rct_t_ridge",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.18491474913760525
+        },
+        {
+          "status": "ok",
+          "mse": 0.18491474913760525
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:common_shift@l0_r128",
+      "method": "integrative_r_linear",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.018407986711827848
+        },
+        {
+          "status": "ok",
+          "mse": 0.018407986711827848
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:common_shift@l0_r128",
+      "method": "integrative_r_quadratic",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.014012580067409578
+        },
+        {
+          "status": "ok",
+          "mse": 0.014012580067409578
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:common_shift@l0_r128",
+      "method": "rct_causal_forest",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.2130904800233711
+        },
+        {
+          "status": "ok",
+          "mse": 0.2130904800233711
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:common_shift@l3_r128",
+      "method": "rct_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.18491474913760525
+        },
+        {
+          "status": "ok",
+          "mse": 0.18491474913760525
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:common_shift@l3_r128",
+      "method": "rct_t_ridge",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.18491474913760525
+        },
+        {
+          "status": "ok",
+          "mse": 0.18491474913760525
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:common_shift@l3_r128",
+      "method": "integrative_r_linear",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.020261211746994086
+        },
+        {
+          "status": "ok",
+          "mse": 0.020261211746994086
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:common_shift@l3_r128",
+      "method": "integrative_r_quadratic",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.015418385290783276
+        },
+        {
+          "status": "ok",
+          "mse": 0.015418385290783276
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:common_shift@l3_r128",
+      "method": "rct_causal_forest",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.2130904800233711
+        },
+        {
+          "status": "ok",
+          "mse": 0.2130904800233711
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:obs_selection@l0_r128",
+      "method": "rct_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.18462624004981992
+        },
+        {
+          "status": "ok",
+          "mse": 0.18462624004981992
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:obs_selection@l0_r128",
+      "method": "rct_t_ridge",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.18491474913760525
+        },
+        {
+          "status": "ok",
+          "mse": 0.18491474913760525
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:obs_selection@l0_r128",
+      "method": "integrative_r_linear",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.020743060362505505
+        },
+        {
+          "status": "ok",
+          "mse": 0.020743060362505505
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:obs_selection@l0_r128",
+      "method": "integrative_r_quadratic",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.013606750494540475
+        },
+        {
+          "status": "ok",
+          "mse": 0.013606750494540475
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:obs_selection@l0_r128",
+      "method": "rct_causal_forest",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.20568640563066212
+        },
+        {
+          "status": "ok",
+          "mse": 0.20568640563066212
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:obs_selection@l3_r128",
+      "method": "rct_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.18462624004981992
+        },
+        {
+          "status": "ok",
+          "mse": 0.18462624004981992
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:obs_selection@l3_r128",
+      "method": "rct_t_ridge",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.18491474913760525
+        },
+        {
+          "status": "ok",
+          "mse": 0.18491474913760525
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:obs_selection@l3_r128",
+      "method": "integrative_r_linear",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.09143861433630021
+        },
+        {
+          "status": "ok",
+          "mse": 0.09143861433630021
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:obs_selection@l3_r128",
+      "method": "integrative_r_quadratic",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.036404565867841465
+        },
+        {
+          "status": "ok",
+          "mse": 0.036404565867841465
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:obs_selection@l3_r128",
+      "method": "rct_causal_forest",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.20568640563066212
+        },
+        {
+          "status": "ok",
+          "mse": 0.20568640563066212
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:trial_shrink@l0_r128",
+      "method": "rct_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.18491474913760525
+        },
+        {
+          "status": "ok",
+          "mse": 0.18491474913760525
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:trial_shrink@l0_r128",
+      "method": "rct_t_ridge",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.18491474913760525
+        },
+        {
+          "status": "ok",
+          "mse": 0.18491474913760525
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:trial_shrink@l0_r128",
+      "method": "integrative_r_linear",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.31974475607131314
+        },
+        {
+          "status": "ok",
+          "mse": 0.31974475607131314
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:trial_shrink@l0_r128",
+      "method": "integrative_r_quadratic",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.3024623977187361
+        },
+        {
+          "status": "ok",
+          "mse": 0.3024623977187361
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:trial_shrink@l0_r128",
+      "method": "rct_causal_forest",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.21334706296740263
+        },
+        {
+          "status": "ok",
+          "mse": 0.21334706296740263
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:trial_shrink@l3_r128",
+      "method": "rct_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.15449251085302895
+        },
+        {
+          "status": "ok",
+          "mse": 0.15449251085302895
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:trial_shrink@l3_r128",
+      "method": "rct_t_ridge",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 1.0022900735324378
+        },
+        {
+          "status": "ok",
+          "mse": 1.0022900735324378
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:trial_shrink@l3_r128",
+      "method": "integrative_r_linear",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.3373997949664669
+        },
+        {
+          "status": "ok",
+          "mse": 0.3373997949664669
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:trial_shrink@l3_r128",
+      "method": "integrative_r_quadratic",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.31744531266116804
+        },
+        {
+          "status": "ok",
+          "mse": 0.31744531266116804
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:trial_shrink@l3_r128",
+      "method": "rct_causal_forest",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.29298311787428155
+        },
+        {
+          "status": "ok",
+          "mse": 0.29298311787428155
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:obs_size@l0_r128",
+      "method": "rct_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.18734113359697135
+        },
+        {
+          "status": "ok",
+          "mse": 0.18734113359697135
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:obs_size@l0_r128",
+      "method": "rct_t_ridge",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.18491474913760525
+        },
+        {
+          "status": "ok",
+          "mse": 0.18491474913760525
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:obs_size@l0_r128",
+      "method": "integrative_r_linear",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.30047727627424914
+        },
+        {
+          "status": "ok",
+          "mse": 0.30047727627424914
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:obs_size@l0_r128",
+      "method": "integrative_r_quadratic",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.41783471675921496
+        },
+        {
+          "status": "ok",
+          "mse": 0.41783471675921496
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:obs_size@l0_r128",
+      "method": "rct_causal_forest",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.20929642439473586
+        },
+        {
+          "status": "ok",
+          "mse": 0.20929642439473586
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:obs_size@l3_r128",
+      "method": "rct_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.18734113359697135
+        },
+        {
+          "status": "ok",
+          "mse": 0.18734113359697135
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:obs_size@l3_r128",
+      "method": "rct_t_ridge",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.18491474913760525
+        },
+        {
+          "status": "ok",
+          "mse": 0.18491474913760525
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:obs_size@l3_r128",
+      "method": "integrative_r_linear",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.2143087685726652
+        },
+        {
+          "status": "ok",
+          "mse": 0.2143087685726652
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:obs_size@l3_r128",
+      "method": "integrative_r_quadratic",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.2865010587304401
+        },
+        {
+          "status": "ok",
+          "mse": 0.2865010587304401
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:obs_size@l3_r128",
+      "method": "rct_causal_forest",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.20929642439473586
+        },
+        {
+          "status": "ok",
+          "mse": 0.20929642439473586
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:target_shift@l0_r128",
+      "method": "rct_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.18491474913760525
+        },
+        {
+          "status": "ok",
+          "mse": 0.18491474913760525
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:target_shift@l0_r128",
+      "method": "rct_t_ridge",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.18491474913760525
+        },
+        {
+          "status": "ok",
+          "mse": 0.18491474913760525
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:target_shift@l0_r128",
+      "method": "integrative_r_linear",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.3092561981695078
+        },
+        {
+          "status": "ok",
+          "mse": 0.3092561981695078
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:target_shift@l0_r128",
+      "method": "integrative_r_quadratic",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.29819406262036946
+        },
+        {
+          "status": "ok",
+          "mse": 0.29819406262036946
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:target_shift@l0_r128",
+      "method": "rct_causal_forest",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.20982080404670828
+        },
+        {
+          "status": "ok",
+          "mse": 0.20982080404670828
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:target_shift@l3_r128",
+      "method": "rct_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.6411995912150676
+        },
+        {
+          "status": "ok",
+          "mse": 0.6411995912150676
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:target_shift@l3_r128",
+      "method": "rct_t_ridge",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.6411995912150676
+        },
+        {
+          "status": "ok",
+          "mse": 0.6411995912150676
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:target_shift@l3_r128",
+      "method": "integrative_r_linear",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 1.3120775929939072
+        },
+        {
+          "status": "ok",
+          "mse": 1.3120775929939072
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:target_shift@l3_r128",
+      "method": "integrative_r_quadratic",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 1.2885366663713929
+        },
+        {
+          "status": "ok",
+          "mse": 1.2885366663713929
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:target_shift@l3_r128",
+      "method": "rct_causal_forest",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.21543843131695656
+        },
+        {
+          "status": "ok",
+          "mse": 0.21543843131695656
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:noise_shape@l0_r128",
+      "method": "rct_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.18491474913760525
+        },
+        {
+          "status": "ok",
+          "mse": 0.18491474913760525
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:noise_shape@l0_r128",
+      "method": "rct_t_ridge",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.18491474913760525
+        },
+        {
+          "status": "ok",
+          "mse": 0.18491474913760525
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:noise_shape@l0_r128",
+      "method": "integrative_r_linear",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.31698692007900203
+        },
+        {
+          "status": "ok",
+          "mse": 0.31698692007900203
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:noise_shape@l0_r128",
+      "method": "integrative_r_quadratic",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.30608437221269835
+        },
+        {
+          "status": "ok",
+          "mse": 0.30608437221269835
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:noise_shape@l0_r128",
+      "method": "rct_causal_forest",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.20531433701893653
+        },
+        {
+          "status": "ok",
+          "mse": 0.20531433701893653
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:noise_shape@l3_r128",
+      "method": "rct_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.2019913582698235
+        },
+        {
+          "status": "ok",
+          "mse": 0.2019913582698235
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:noise_shape@l3_r128",
+      "method": "rct_t_ridge",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.2019913582698235
+        },
+        {
+          "status": "ok",
+          "mse": 0.2019913582698235
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:noise_shape@l3_r128",
+      "method": "integrative_r_linear",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.34500476853970785
+        },
+        {
+          "status": "ok",
+          "mse": 0.34500476853970785
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:noise_shape@l3_r128",
+      "method": "integrative_r_quadratic",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.3340173829338562
+        },
+        {
+          "status": "ok",
+          "mse": 0.3340173829338562
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:noise_shape@l3_r128",
+      "method": "rct_causal_forest",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.1506187919761469
+        },
+        {
+          "status": "ok",
+          "mse": 0.1506187919761469
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    }
+  ]
+}

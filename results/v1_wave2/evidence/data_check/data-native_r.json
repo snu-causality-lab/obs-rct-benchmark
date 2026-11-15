@@ -1,0 +1,9 @@
+{
+  "seed": 70000,
+  "config_hash": "52b63b083c7dca1574bd26e56b789cc81395dff93cfeb8028caa8ba83bf8f8a3",
+  "scenarios": 124,
+  "arrays": 2108,
+  "numpy": "1.26.4",
+  "python": "3.12.3",
+  "executable": "/shared/s2/lab05/sanghack/work/obsrct-public-upgrade-20261025-r01/environment-v1/bin/python"
+}

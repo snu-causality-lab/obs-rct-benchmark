@@ -1,0 +1,9 @@
+{
+  "seed": 80000,
+  "config_hash": "04507dc04975c01a0f1f50ccde350d2eac2d83284bc299d83c9864877bc304af",
+  "scenarios": 64,
+  "arrays": 1088,
+  "numpy": "1.26.4",
+  "python": "3.12.3",
+  "executable": "/shared/s2/lab05/sanghack/work/obsrct-tsr-study-20261113-r01/environment-v1/bin/python"
+}

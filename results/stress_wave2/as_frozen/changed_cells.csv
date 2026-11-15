@@ -1,0 +1,16 @@
+group,scenario,seed,method,as_frozen_status,as_frozen_error_type,final_status,final_error_type,cate_mse_equal
+native_r,stress:bias_complexity@l3_r128,80022,integrative_r_linear,failed,RuntimeError,ok,,False
+native_r,stress:bias_complexity@l3_r128,80022,integrative_r_quadratic,failed,RuntimeError,ok,,False
+native_r,stress:bias_complexity@l3_r128,80022,rct_causal_forest,failed,TimeoutExpired,ok,,False
+native_r,stress:bias_complexity@l3_r512,80022,integrative_r_linear,failed,RuntimeError,ok,,False
+native_r,stress:bias_complexity@l3_r512,80022,integrative_r_quadratic,failed,RuntimeError,ok,,False
+native_r,stress:noise_shape@l3_r128,80006,integrative_r_linear,failed,RuntimeError,ok,,False
+native_r,stress:obs_selection@l3_r128,80022,integrative_r_linear,failed,RuntimeError,ok,,False
+native_r,stress:obs_selection@l3_r128,80022,integrative_r_quadratic,failed,RuntimeError,ok,,False
+native_r,stress:obs_selection@l3_r128,80022,rct_causal_forest,failed,TimeoutExpired,ok,,False
+native_r,stress:obs_selection@l3_r512,80022,integrative_r_linear,failed,RuntimeError,ok,,False
+native_r,stress:obs_selection@l3_r512,80022,integrative_r_quadratic,failed,RuntimeError,ok,,False
+native_r,stress:target_shift@l3_r128,80008,integrative_r_linear,failed,RuntimeError,ok,,False
+native_r,stress:target_shift@l3_r128,80008,integrative_r_quadratic,failed,RuntimeError,ok,,False
+native_r,stress:target_shift@l3_r128,80008,rct_causal_forest,failed,TimeoutExpired,ok,,False
+native_r,stress:target_shift@l3_r512,80008,integrative_r_linear,failed,RuntimeError,ok,,False

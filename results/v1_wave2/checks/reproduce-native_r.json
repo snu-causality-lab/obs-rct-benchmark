@@ -1,0 +1,2645 @@
+{
+  "check": "reproduce",
+  "group": "native_r",
+  "seed": 70000,
+  "cases": 155,
+  "refits": 310,
+  "mismatches": [],
+  "details": [
+    {
+      "scenario": "structural:M0@o512_r128",
+      "method": "rct_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.5834206735801787
+        },
+        {
+          "status": "ok",
+          "mse": 0.5834206735801787
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "structural:M0@o512_r128",
+      "method": "rct_t_ridge",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.9511416270658293
+        },
+        {
+          "status": "ok",
+          "mse": 0.9511416270658293
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "structural:M0@o512_r128",
+      "method": "integrative_r_linear",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.17439034782503662
+        },
+        {
+          "status": "ok",
+          "mse": 0.17439034782503662
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "structural:M0@o512_r128",
+      "method": "integrative_r_quadratic",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.15101483966015877
+        },
+        {
+          "status": "ok",
+          "mse": 0.15101483966015877
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "structural:M0@o512_r128",
+      "method": "rct_causal_forest",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.3320263046525765
+        },
+        {
+          "status": "ok",
+          "mse": 0.3320263046525765
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "structural:M1@o512_r128",
+      "method": "rct_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.5262850401662955
+        },
+        {
+          "status": "ok",
+          "mse": 0.5262850401662955
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "structural:M1@o512_r128",
+      "method": "rct_t_ridge",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.9526006049247298
+        },
+        {
+          "status": "ok",
+          "mse": 0.9526006049247298
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "structural:M1@o512_r128",
+      "method": "integrative_r_linear",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.378820120499268
+        },
+        {
+          "status": "ok",
+          "mse": 0.378820120499268
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "structural:M1@o512_r128",
+      "method": "integrative_r_quadratic",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.6342605813695072
+        },
+        {
+          "status": "ok",
+          "mse": 0.6342605813695072
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "structural:M1@o512_r128",
+      "method": "rct_causal_forest",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.3992416903969773
+        },
+        {
+          "status": "ok",
+          "mse": 0.3992416903969773
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "structural:M2@o512_r128",
+      "method": "rct_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.8875585395063244
+        },
+        {
+          "status": "ok",
+          "mse": 0.8875585395063244
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "structural:M2@o512_r128",
+      "method": "rct_t_ridge",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.9161999572845696
+        },
+        {
+          "status": "ok",
+          "mse": 0.9161999572845696
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "structural:M2@o512_r128",
+      "method": "integrative_r_linear",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.8235377505082739
+        },
+        {
+          "status": "ok",
+          "mse": 0.8235377505082739
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "structural:M2@o512_r128",
+      "method": "integrative_r_quadratic",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 1.0325525238524813
+        },
+        {
+          "status": "ok",
+          "mse": 1.0325525238524813
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "structural:M2@o512_r128",
+      "method": "rct_causal_forest",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.2453904943128207
+        },
+        {
+          "status": "ok",
+          "mse": 0.2453904943128207
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "structural:M3@o512_r128",
+      "method": "rct_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.5755963790588232
+        },
+        {
+          "status": "ok",
+          "mse": 0.5755963790588232
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "structural:M3@o512_r128",
+      "method": "rct_t_ridge",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 1.1931960530721657
+        },
+        {
+          "status": "ok",
+          "mse": 1.1931960530721657
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "structural:M3@o512_r128",
+      "method": "integrative_r_linear",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 1.2466678919599055
+        },
+        {
+          "status": "ok",
+          "mse": 1.2466678919599055
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "structural:M3@o512_r128",
+      "method": "integrative_r_quadratic",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 1.5407153458825895
+        },
+        {
+          "status": "ok",
+          "mse": 1.5407153458825895
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "structural:M3@o512_r128",
+      "method": "rct_causal_forest",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.24139458292519633
+        },
+        {
+          "status": "ok",
+          "mse": 0.24139458292519633
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "structural:M4@o512_r128",
+      "method": "rct_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.7486304349075148
+        },
+        {
+          "status": "ok",
+          "mse": 0.7486304349075148
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "structural:M4@o512_r128",
+      "method": "rct_t_ridge",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 1.289399223129061
+        },
+        {
+          "status": "ok",
+          "mse": 1.289399223129061
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "structural:M4@o512_r128",
+      "method": "integrative_r_linear",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 1.2840805625515763
+        },
+        {
+          "status": "ok",
+          "mse": 1.2840805625515763
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "structural:M4@o512_r128",
+      "method": "integrative_r_quadratic",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.5686889940179385
+        },
+        {
+          "status": "ok",
+          "mse": 0.5686889940179385
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "structural:M4@o512_r128",
+      "method": "rct_causal_forest",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.2937253628584103
+        },
+        {
+          "status": "ok",
+          "mse": 0.2937253628584103
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "structural:M5@o512_r128",
+      "method": "rct_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.3981545511442257
+        },
+        {
+          "status": "ok",
+          "mse": 0.3981545511442257
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "structural:M5@o512_r128",
+      "method": "rct_t_ridge",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.5060303901132521
+        },
+        {
+          "status": "ok",
+          "mse": 0.5060303901132521
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "structural:M5@o512_r128",
+      "method": "integrative_r_linear",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.5624078007157327
+        },
+        {
+          "status": "ok",
+          "mse": 0.5624078007157327
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "structural:M5@o512_r128",
+      "method": "integrative_r_quadratic",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.6345632708783032
+        },
+        {
+          "status": "ok",
+          "mse": 0.6345632708783032
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "structural:M5@o512_r128",
+      "method": "rct_causal_forest",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.17692652001300355
+        },
+        {
+          "status": "ok",
+          "mse": 0.17692652001300355
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "structural:M6@o512_r128",
+      "method": "rct_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.585736062402235
+        },
+        {
+          "status": "ok",
+          "mse": 0.585736062402235
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "structural:M6@o512_r128",
+      "method": "rct_t_ridge",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.9371251468856611
+        },
+        {
+          "status": "ok",
+          "mse": 0.9371251468856611
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "structural:M6@o512_r128",
+      "method": "integrative_r_linear",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.7833732148623087
+        },
+        {
+          "status": "ok",
+          "mse": 0.7833732148623087
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "structural:M6@o512_r128",
+      "method": "integrative_r_quadratic",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.975492330496303
+        },
+        {
+          "status": "ok",
+          "mse": 0.975492330496303
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "structural:M6@o512_r128",
+      "method": "rct_causal_forest",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.16555607452948531
+        },
+        {
+          "status": "ok",
+          "mse": 0.16555607452948531
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "structural:M7@o512_r128",
+      "method": "rct_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 1.0630830094389867
+        },
+        {
+          "status": "ok",
+          "mse": 1.0630830094389867
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "structural:M7@o512_r128",
+      "method": "rct_t_ridge",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 1.0630830094389867
+        },
+        {
+          "status": "ok",
+          "mse": 1.0630830094389867
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "structural:M7@o512_r128",
+      "method": "integrative_r_linear",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.2975904195672405
+        },
+        {
+          "status": "ok",
+          "mse": 0.2975904195672405
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "structural:M7@o512_r128",
+      "method": "integrative_r_quadratic",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.31752339491784876
+        },
+        {
+          "status": "ok",
+          "mse": 0.31752339491784876
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "structural:M7@o512_r128",
+      "method": "rct_causal_forest",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.3538347720335832
+        },
+        {
+          "status": "ok",
+          "mse": 0.3538347720335832
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "structural:M8@o512_r128",
+      "method": "rct_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.9125531530214523
+        },
+        {
+          "status": "ok",
+          "mse": 0.9125531530214523
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "structural:M8@o512_r128",
+      "method": "rct_t_ridge",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 1.9068170803148017
+        },
+        {
+          "status": "ok",
+          "mse": 1.9068170803148017
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "structural:M8@o512_r128",
+      "method": "integrative_r_linear",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 1.4726724397176363
+        },
+        {
+          "status": "ok",
+          "mse": 1.4726724397176363
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "structural:M8@o512_r128",
+      "method": "integrative_r_quadratic",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 1.1579115482832456
+        },
+        {
+          "status": "ok",
+          "mse": 1.1579115482832456
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "structural:M8@o512_r128",
+      "method": "rct_causal_forest",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.7445191862214435
+        },
+        {
+          "status": "ok",
+          "mse": 0.7445191862214435
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "structural:M9@o512_r128",
+      "method": "rct_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.43201934540770953
+        },
+        {
+          "status": "ok",
+          "mse": 0.43201934540770953
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "structural:M9@o512_r128",
+      "method": "rct_t_ridge",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.5663141872311782
+        },
+        {
+          "status": "ok",
+          "mse": 0.5663141872311782
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "structural:M9@o512_r128",
+      "method": "integrative_r_linear",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.8058312552094377
+        },
+        {
+          "status": "ok",
+          "mse": 0.8058312552094377
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "structural:M9@o512_r128",
+      "method": "integrative_r_quadratic",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.737033813242683
+        },
+        {
+          "status": "ok",
+          "mse": 0.737033813242683
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "structural:M9@o512_r128",
+      "method": "rct_causal_forest",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.8970576125204008
+        },
+        {
+          "status": "ok",
+          "mse": 0.8970576125204008
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "structural:M10@o512_r128",
+      "method": "rct_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.4717770121628681
+        },
+        {
+          "status": "ok",
+          "mse": 0.4717770121628681
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "structural:M10@o512_r128",
+      "method": "rct_t_ridge",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.6601217744372998
+        },
+        {
+          "status": "ok",
+          "mse": 0.6601217744372998
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "structural:M10@o512_r128",
+      "method": "integrative_r_linear",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.2035688086782036
+        },
+        {
+          "status": "ok",
+          "mse": 0.2035688086782036
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "structural:M10@o512_r128",
+      "method": "integrative_r_quadratic",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.8706279384450097
+        },
+        {
+          "status": "ok",
+          "mse": 0.8706279384450097
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "structural:M10@o512_r128",
+      "method": "rct_causal_forest",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.20088371593893226
+        },
+        {
+          "status": "ok",
+          "mse": 0.20088371593893226
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "structural:M11@o512_r128",
+      "method": "rct_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 1.117338057071155
+        },
+        {
+          "status": "ok",
+          "mse": 1.117338057071155
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "structural:M11@o512_r128",
+      "method": "rct_t_ridge",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 1.7469582414225093
+        },
+        {
+          "status": "ok",
+          "mse": 1.7469582414225093
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "structural:M11@o512_r128",
+      "method": "integrative_r_linear",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 1.157726005552579
+        },
+        {
+          "status": "ok",
+          "mse": 1.157726005552579
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "structural:M11@o512_r128",
+      "method": "integrative_r_quadratic",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 1.0455360870815524
+        },
+        {
+          "status": "ok",
+          "mse": 1.0455360870815524
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "structural:M11@o512_r128",
+      "method": "rct_causal_forest",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.5283103577285532
+        },
+        {
+          "status": "ok",
+          "mse": 0.5283103577285532
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "addendum:C01@o512_r128",
+      "method": "rct_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.734303478865366
+        },
+        {
+          "status": "ok",
+          "mse": 0.734303478865366
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "addendum:C01@o512_r128",
+      "method": "rct_t_ridge",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 1.2109118628890432
+        },
+        {
+          "status": "ok",
+          "mse": 1.2109118628890432
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "addendum:C01@o512_r128",
+      "method": "integrative_r_linear",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.8961771527719788
+        },
+        {
+          "status": "ok",
+          "mse": 0.8961771527719788
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "addendum:C01@o512_r128",
+      "method": "integrative_r_quadratic",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.9857800041790514
+        },
+        {
+          "status": "ok",
+          "mse": 0.9857800041790514
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "addendum:C01@o512_r128",
+      "method": "rct_causal_forest",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.39726403094744805
+        },
+        {
+          "status": "ok",
+          "mse": 0.39726403094744805
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "addendum:C02@o512_r128",
+      "method": "rct_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.5243466314422731
+        },
+        {
+          "status": "ok",
+          "mse": 0.5243466314422731
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "addendum:C02@o512_r128",
+      "method": "rct_t_ridge",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.8853363955428472
+        },
+        {
+          "status": "ok",
+          "mse": 0.8853363955428472
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "addendum:C02@o512_r128",
+      "method": "integrative_r_linear",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.4262072090125011
+        },
+        {
+          "status": "ok",
+          "mse": 0.4262072090125011
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "addendum:C02@o512_r128",
+      "method": "integrative_r_quadratic",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.43112274953202556
+        },
+        {
+          "status": "ok",
+          "mse": 0.43112274953202556
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "addendum:C02@o512_r128",
+      "method": "rct_causal_forest",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.3028602628984387
+        },
+        {
+          "status": "ok",
+          "mse": 0.3028602628984387
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "addendum:C03@o512_r128",
+      "method": "rct_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 1.7618792500878526
+        },
+        {
+          "status": "ok",
+          "mse": 1.7618792500878526
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "addendum:C03@o512_r128",
+      "method": "rct_t_ridge",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 2.02709900179149
+        },
+        {
+          "status": "ok",
+          "mse": 2.02709900179149
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "addendum:C03@o512_r128",
+      "method": "integrative_r_linear",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.9479461540207077
+        },
+        {
+          "status": "ok",
+          "mse": 0.9479461540207077
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "addendum:C03@o512_r128",
+      "method": "integrative_r_quadratic",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.8524222574337843
+        },
+        {
+          "status": "ok",
+          "mse": 0.8524222574337843
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "addendum:C03@o512_r128",
+      "method": "rct_causal_forest",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.6656075344593939
+        },
+        {
+          "status": "ok",
+          "mse": 0.6656075344593939
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "addendum:C04@o512_r128",
+      "method": "rct_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.5761144095333761
+        },
+        {
+          "status": "ok",
+          "mse": 0.5761144095333761
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "addendum:C04@o512_r128",
+      "method": "rct_t_ridge",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.9511416270658293
+        },
+        {
+          "status": "ok",
+          "mse": 0.9511416270658293
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "addendum:C04@o512_r128",
+      "method": "integrative_r_linear",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.1695498445187403
+        },
+        {
+          "status": "ok",
+          "mse": 0.1695498445187403
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "addendum:C04@o512_r128",
+      "method": "integrative_r_quadratic",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.1579402463116918
+        },
+        {
+          "status": "ok",
+          "mse": 0.1579402463116918
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "addendum:C04@o512_r128",
+      "method": "rct_causal_forest",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.32320805275124154
+        },
+        {
+          "status": "ok",
+          "mse": 0.32320805275124154
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "addendum:C05@o512_r128",
+      "method": "rct_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.9552020423736555
+        },
+        {
+          "status": "ok",
+          "mse": 0.9552020423736555
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "addendum:C05@o512_r128",
+      "method": "rct_t_ridge",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.9552020423736555
+        },
+        {
+          "status": "ok",
+          "mse": 0.9552020423736555
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "addendum:C05@o512_r128",
+      "method": "integrative_r_linear",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.03823010380332869
+        },
+        {
+          "status": "ok",
+          "mse": 0.03823010380332869
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "addendum:C05@o512_r128",
+      "method": "integrative_r_quadratic",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.02399296337516569
+        },
+        {
+          "status": "ok",
+          "mse": 0.02399296337516569
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "addendum:C05@o512_r128",
+      "method": "rct_causal_forest",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.21864871429510335
+        },
+        {
+          "status": "ok",
+          "mse": 0.21864871429510335
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "addendum:C06@o512_r128",
+      "method": "rct_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.5678787700817194
+        },
+        {
+          "status": "ok",
+          "mse": 0.5678787700817194
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "addendum:C06@o512_r128",
+      "method": "rct_t_ridge",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.9585588636187059
+        },
+        {
+          "status": "ok",
+          "mse": 0.9585588636187059
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "addendum:C06@o512_r128",
+      "method": "integrative_r_linear",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.0652781770473141
+        },
+        {
+          "status": "ok",
+          "mse": 0.0652781770473141
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "addendum:C06@o512_r128",
+      "method": "integrative_r_quadratic",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.042099333428083786
+        },
+        {
+          "status": "ok",
+          "mse": 0.042099333428083786
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "addendum:C06@o512_r128",
+      "method": "rct_causal_forest",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.782291754939975
+        },
+        {
+          "status": "ok",
+          "mse": 0.782291754939975
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "addendum:C07@o512_r128",
+      "method": "rct_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.19041749111517428
+        },
+        {
+          "status": "ok",
+          "mse": 0.19041749111517428
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "addendum:C07@o512_r128",
+      "method": "rct_t_ridge",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.33047136982325975
+        },
+        {
+          "status": "ok",
+          "mse": 0.33047136982325975
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "addendum:C07@o512_r128",
+      "method": "integrative_r_linear",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.1400855410911656
+        },
+        {
+          "status": "ok",
+          "mse": 0.1400855410911656
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "addendum:C07@o512_r128",
+      "method": "integrative_r_quadratic",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.15053054687123368
+        },
+        {
+          "status": "ok",
+          "mse": 0.15053054687123368
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "addendum:C07@o512_r128",
+      "method": "rct_causal_forest",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.17886104325449806
+        },
+        {
+          "status": "ok",
+          "mse": 0.17886104325449806
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "addendum:C08@o512_r128",
+      "method": "rct_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.7028333081748526
+        },
+        {
+          "status": "ok",
+          "mse": 0.7028333081748526
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "addendum:C08@o512_r128",
+      "method": "rct_t_ridge",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.663191014759251
+        },
+        {
+          "status": "ok",
+          "mse": 0.663191014759251
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "addendum:C08@o512_r128",
+      "method": "integrative_r_linear",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.6699230353864648
+        },
+        {
+          "status": "ok",
+          "mse": 0.6699230353864648
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "addendum:C08@o512_r128",
+      "method": "integrative_r_quadratic",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.11248597406941607
+        },
+        {
+          "status": "ok",
+          "mse": 0.11248597406941607
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "addendum:C08@o512_r128",
+      "method": "rct_causal_forest",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.7254239163245474
+        },
+        {
+          "status": "ok",
+          "mse": 0.7254239163245474
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "addendum:C09@o512_r128",
+      "method": "rct_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 1.3661493427968114
+        },
+        {
+          "status": "ok",
+          "mse": 1.3661493427968114
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "addendum:C09@o512_r128",
+      "method": "rct_t_ridge",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 1.3661493427968114
+        },
+        {
+          "status": "ok",
+          "mse": 1.3661493427968114
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "addendum:C09@o512_r128",
+      "method": "integrative_r_linear",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 1.5080625426963352
+        },
+        {
+          "status": "ok",
+          "mse": 1.5080625426963352
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "addendum:C09@o512_r128",
+      "method": "integrative_r_quadratic",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.6851053119559172
+        },
+        {
+          "status": "ok",
+          "mse": 0.6851053119559172
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "addendum:C09@o512_r128",
+      "method": "rct_causal_forest",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.4499375979988478
+        },
+        {
+          "status": "ok",
+          "mse": 0.4499375979988478
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "addendum:C10@o512_r128",
+      "method": "rct_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 1.2247490860763321
+        },
+        {
+          "status": "ok",
+          "mse": 1.2247490860763321
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "addendum:C10@o512_r128",
+      "method": "rct_t_ridge",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 1.2247490860763321
+        },
+        {
+          "status": "ok",
+          "mse": 1.2247490860763321
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "addendum:C10@o512_r128",
+      "method": "integrative_r_linear",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 1.2775638439410333
+        },
+        {
+          "status": "ok",
+          "mse": 1.2775638439410333
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "addendum:C10@o512_r128",
+      "method": "integrative_r_quadratic",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.5670007852742412
+        },
+        {
+          "status": "ok",
+          "mse": 0.5670007852742412
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "addendum:C10@o512_r128",
+      "method": "rct_causal_forest",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.4131765126238835
+        },
+        {
+          "status": "ok",
+          "mse": 0.4131765126238835
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "paper:cornet_official_n_conf@o512_r128",
+      "method": "rct_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.7336661357392349
+        },
+        {
+          "status": "ok",
+          "mse": 0.7336661357392349
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "paper:cornet_official_n_conf@o512_r128",
+      "method": "rct_t_ridge",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.6785857763374141
+        },
+        {
+          "status": "ok",
+          "mse": 0.6785857763374141
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "paper:cornet_official_n_conf@o512_r128",
+      "method": "integrative_r_linear",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.4690663743033985
+        },
+        {
+          "status": "ok",
+          "mse": 0.4690663743033985
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "paper:cornet_official_n_conf@o512_r128",
+      "method": "integrative_r_quadratic",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.6984117170738406
+        },
+        {
+          "status": "ok",
+          "mse": 0.6984117170738406
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "paper:cornet_official_n_conf@o512_r128",
+      "method": "rct_causal_forest",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 3.0562854434361633
+        },
+        {
+          "status": "ok",
+          "mse": 3.0562854434361633
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "paper:experimental_grounding_kps@o512_r128",
+      "method": "rct_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.3253708924009074
+        },
+        {
+          "status": "ok",
+          "mse": 0.3253708924009074
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "paper:experimental_grounding_kps@o512_r128",
+      "method": "rct_t_ridge",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.3253708924009074
+        },
+        {
+          "status": "ok",
+          "mse": 0.3253708924009074
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "paper:experimental_grounding_kps@o512_r128",
+      "method": "integrative_r_linear",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.2978532073192184
+        },
+        {
+          "status": "ok",
+          "mse": 0.2978532073192184
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "paper:experimental_grounding_kps@o512_r128",
+      "method": "integrative_r_quadratic",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.12128216395236013
+        },
+        {
+          "status": "ok",
+          "mse": 0.12128216395236013
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "paper:experimental_grounding_kps@o512_r128",
+      "method": "rct_causal_forest",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.6526900163218962
+        },
+        {
+          "status": "ok",
+          "mse": 0.6526900163218962
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "paper:integrative_r_learner_kps_normal_target_extension@o512_r128",
+      "method": "rct_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 2.5236445918706476
+        },
+        {
+          "status": "ok",
+          "mse": 2.5236445918706476
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "paper:integrative_r_learner_kps_normal_target_extension@o512_r128",
+      "method": "rct_t_ridge",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 1.633732907173341
+        },
+        {
+          "status": "ok",
+          "mse": 1.633732907173341
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "paper:integrative_r_learner_kps_normal_target_extension@o512_r128",
+      "method": "integrative_r_linear",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 1.6441518689972532
+        },
+        {
+          "status": "ok",
+          "mse": 1.6441518689972532
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "paper:integrative_r_learner_kps_normal_target_extension@o512_r128",
+      "method": "integrative_r_quadratic",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.08317691473792979
+        },
+        {
+          "status": "ok",
+          "mse": 0.08317691473792979
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "paper:integrative_r_learner_kps_normal_target_extension@o512_r128",
+      "method": "rct_causal_forest",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 2.8091463339952916
+        },
+        {
+          "status": "ok",
+          "mse": 2.8091463339952916
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "paper:integrative_r_learner_kps_code@o512_r128",
+      "method": "rct_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.11613874843460792
+        },
+        {
+          "status": "ok",
+          "mse": 0.11613874843460792
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "paper:integrative_r_learner_kps_code@o512_r128",
+      "method": "rct_t_ridge",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.09299441939146227
+        },
+        {
+          "status": "ok",
+          "mse": 0.09299441939146227
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "paper:integrative_r_learner_kps_code@o512_r128",
+      "method": "integrative_r_linear",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.09468222731418112
+        },
+        {
+          "status": "ok",
+          "mse": 0.09468222731418112
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "paper:integrative_r_learner_kps_code@o512_r128",
+      "method": "integrative_r_quadratic",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.05218027715122742
+        },
+        {
+          "status": "ok",
+          "mse": 0.05218027715122742
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "paper:integrative_r_learner_kps_code@o512_r128",
+      "method": "rct_causal_forest",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.16022868315204308
+        },
+        {
+          "status": "ok",
+          "mse": 0.16022868315204308
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "paper:integrative_r_learner_multivariate_paper@o512_r128",
+      "method": "rct_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.942049605762747
+        },
+        {
+          "status": "ok",
+          "mse": 0.942049605762747
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "paper:integrative_r_learner_multivariate_paper@o512_r128",
+      "method": "rct_t_ridge",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.942049605762747
+        },
+        {
+          "status": "ok",
+          "mse": 0.942049605762747
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "paper:integrative_r_learner_multivariate_paper@o512_r128",
+      "method": "integrative_r_linear",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 1.7066366520607692
+        },
+        {
+          "status": "ok",
+          "mse": 1.7066366520607692
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "paper:integrative_r_learner_multivariate_paper@o512_r128",
+      "method": "integrative_r_quadratic",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 1.6869637198999268
+        },
+        {
+          "status": "ok",
+          "mse": 1.6869637198999268
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "paper:integrative_r_learner_multivariate_paper@o512_r128",
+      "method": "rct_causal_forest",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 8.094519600875927
+        },
+        {
+          "status": "ok",
+          "mse": 8.094519600875927
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "paper:elastic_integrative_gen_data_overlap@o512_r128",
+      "method": "rct_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 1.6574307564515398
+        },
+        {
+          "status": "ok",
+          "mse": 1.6574307564515398
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "paper:elastic_integrative_gen_data_overlap@o512_r128",
+      "method": "rct_t_ridge",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 1.0602648263694536
+        },
+        {
+          "status": "ok",
+          "mse": 1.0602648263694536
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "paper:elastic_integrative_gen_data_overlap@o512_r128",
+      "method": "integrative_r_linear",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 1.1761807791944134
+        },
+        {
+          "status": "ok",
+          "mse": 1.1761807791944134
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "paper:elastic_integrative_gen_data_overlap@o512_r128",
+      "method": "integrative_r_quadratic",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 1.2333551540460328
+        },
+        {
+          "status": "ok",
+          "mse": 1.2333551540460328
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "paper:elastic_integrative_gen_data_overlap@o512_r128",
+      "method": "rct_causal_forest",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 13.768922689902151
+        },
+        {
+          "status": "ok",
+          "mse": 13.768922689902151
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "paper:power_likelihood_paper_text@o512_r128",
+      "method": "rct_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.011440896867282424
+        },
+        {
+          "status": "ok",
+          "mse": 0.011440896867282424
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "paper:power_likelihood_paper_text@o512_r128",
+      "method": "rct_t_ridge",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.01557512019383785
+        },
+        {
+          "status": "ok",
+          "mse": 0.01557512019383785
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "paper:power_likelihood_paper_text@o512_r128",
+      "method": "integrative_r_linear",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.034390751130627915
+        },
+        {
+          "status": "ok",
+          "mse": 0.034390751130627915
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "paper:power_likelihood_paper_text@o512_r128",
+      "method": "integrative_r_quadratic",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.01972098361230243
+        },
+        {
+          "status": "ok",
+          "mse": 0.01972098361230243
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "paper:power_likelihood_paper_text@o512_r128",
+      "method": "rct_causal_forest",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.09206703773292452
+        },
+        {
+          "status": "ok",
+          "mse": 0.09206703773292452
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "paper:power_likelihood_supplement_code@o512_r128",
+      "method": "rct_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.06765142431819707
+        },
+        {
+          "status": "ok",
+          "mse": 0.06765142431819707
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "paper:power_likelihood_supplement_code@o512_r128",
+      "method": "rct_t_ridge",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.008060587182191777
+        },
+        {
+          "status": "ok",
+          "mse": 0.008060587182191777
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "paper:power_likelihood_supplement_code@o512_r128",
+      "method": "integrative_r_linear",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.042910031434893456
+        },
+        {
+          "status": "ok",
+          "mse": 0.042910031434893456
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "paper:power_likelihood_supplement_code@o512_r128",
+      "method": "integrative_r_quadratic",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.035577668486432505
+        },
+        {
+          "status": "ok",
+          "mse": 0.035577668486432505
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "paper:power_likelihood_supplement_code@o512_r128",
+      "method": "rct_causal_forest",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.03442211829041303
+        },
+        {
+          "status": "ok",
+          "mse": 0.03442211829041303
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "paper:cvci_official_linear_bias@o512_r128",
+      "method": "rct_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.1498086299706263
+        },
+        {
+          "status": "ok",
+          "mse": 0.1498086299706263
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "paper:cvci_official_linear_bias@o512_r128",
+      "method": "rct_t_ridge",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.1498086299706263
+        },
+        {
+          "status": "ok",
+          "mse": 0.1498086299706263
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "paper:cvci_official_linear_bias@o512_r128",
+      "method": "integrative_r_linear",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.02196024699562971
+        },
+        {
+          "status": "ok",
+          "mse": 0.02196024699562971
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "paper:cvci_official_linear_bias@o512_r128",
+      "method": "integrative_r_quadratic",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.025853485837065367
+        },
+        {
+          "status": "ok",
+          "mse": 0.025853485837065367
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "paper:cvci_official_linear_bias@o512_r128",
+      "method": "rct_causal_forest",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.1301257214033675
+        },
+        {
+          "status": "ok",
+          "mse": 0.1301257214033675
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    }
+  ]
+}
