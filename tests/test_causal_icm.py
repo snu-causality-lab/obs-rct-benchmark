@@ -613,3 +613,188 @@ def test_source_control_single_sample_rejects_wrong_type_source_and_role(monkeyp
     for role in ("rct_tune", "rct_test", "eval", "target_reference", "unknown"):
         with pytest.raises(ValueError, match="fitting role"):
             method.fit_predict_sample(replace(included, role=role), query, seed=1)
+
+
+def _selection_training(n_rct=20, n_obs=30, d=2, rct_y=None):
+    rng = np.random.default_rng(5)
+    arm_r = np.tile([0., 1.], n_rct // 2)
+    arm_o = np.tile([0., 1.], n_obs // 2)
+    y_r = rng.normal(size=n_rct) if rct_y is None else np.asarray(rct_y, dtype=float)
+    obs = SourceSample(rng.normal(size=(n_obs, d)) + 1, arm_o, rng.normal(size=n_obs) + 5, "obs", "obs_train")
+    rct = SourceSample(rng.normal(size=(n_rct, d)), arm_r, y_r, "rct", "rct_train")
+    tune = SourceSample(rng.normal(size=(4, d)), np.array([0., 1., 0., 1.]), np.full(4, 99.), "rct", "rct_tune")
+    return TrainingView(obs, rct, tune, TargetCovariateSample(rng.normal(size=(3, d))))
+
+
+class _RhoModel:
+    """Predicts a constant set by rho and arm; the source column must be zero."""
+
+    def __init__(self, value, queries):
+        self.value, self.queries = value, queries
+
+    def predict_noiseless(self, query):
+        self.queries.append(query.copy())
+        mean = np.full((query.shape[0], 1), self.value) + 100 * query[:, -1:]
+        return mean, np.ones_like(mean)
+
+
+def _rho_native(calls, queries, control=lambda rho: rho, treated=lambda rho: rho):
+    def native(**kwargs):
+        calls.append({**kwargs, "rng": np.random.random()})
+        rho = kwargs["rho"]
+        return _RhoModel(control(rho), queries), _RhoModel(treated(rho), queries)
+    return native
+
+
+def test_selection_picks_the_rho_minimizing_weighted_held_out_error(monkeypatch):
+    calls, queries = [], []
+    monkeypatch.setattr(adapter, "_official_icm", lambda: _rho_native(calls, queries))
+    training = _selection_training(rct_y=np.full(20, .3))
+    method = adapter.SelectedRhoCausalICM()
+    result = method.fit_predict(training, np.zeros((3, 2)), seed=7)
+    info = method.fit_info_
+    assert info["selected_rho"] == .3 and info["status"] == "completed"
+    assert info["grid"] == [0.0, .1, .2, .3, .4, .5, .6, .7, .8, .9, 1.0]
+    assert info["folds_used"] == 5
+    # 11 rho values x 5 folds, then one final fit on all rows at the chosen rho.
+    assert len(calls) == 56
+    final = calls[-1]
+    assert final["rho"] == .3
+    np.testing.assert_array_equal(final["X_E"], training.rct_train.X)
+    np.testing.assert_array_equal(final["Y_O"], training.obs_train.Y)
+    np.testing.assert_array_equal(result, np.zeros(3))
+    assert all(np.all(q[:, -1] == 0) for q in queries)
+
+
+def test_selection_scores_match_a_direct_computation(monkeypatch):
+    from sklearn.model_selection import KFold
+
+    calls, queries = [], []
+    monkeypatch.setattr(adapter, "_official_icm", lambda: _rho_native(
+        calls, queries, control=lambda rho: rho, treated=lambda rho: 2 - rho))
+    weights = np.linspace(1, 3, 20)
+    monkeypatch.setattr(adapter, "_participation_weights", lambda r, o: (weights, {"stub": True}))
+    training = _selection_training()
+    rct = training.rct_train
+    method = adapter.SelectedRhoCausalICM()
+    method.fit_predict(training, np.zeros((3, 2)), seed=11)
+    splits = list(KFold(5, shuffle=True, random_state=11).split(np.zeros((50, 1))))
+    for rho in adapter.CAUSAL_ICM_RHO_GRID:
+        per_fold = []
+        for _, held in splits:
+            rows = held[held < 20]
+            if rows.size == 0:
+                continue
+            fitted = np.where(rct.T[rows] == 1, 2 - rho, rho)
+            per_fold.append(np.mean(weights[rows] * (rct.Y[rows] - fitted) ** 2))
+        assert method.fit_info_["scores"][str(rho)] == pytest.approx(np.mean(per_fold), rel=1e-12)
+    best = min(adapter.CAUSAL_ICM_RHO_GRID, key=lambda r: method.fit_info_["scores"][str(r)])
+    assert method.fit_info_["selected_rho"] == best
+
+
+def test_folds_train_on_remaining_pooled_rows_and_score_only_held_out_rct(monkeypatch):
+    from sklearn.model_selection import KFold
+
+    calls, queries = [], []
+    monkeypatch.setattr(adapter, "_official_icm", lambda: _rho_native(calls, queries))
+    training = _selection_training()
+    rct, obs = training.rct_train, training.obs_train
+    adapter.SelectedRhoCausalICM().fit_predict(training, np.zeros((3, 2)), seed=3)
+    splits = list(KFold(5, shuffle=True, random_state=3).split(np.zeros((50, 1))))
+    selection = calls[:-1]
+    for k, (train, held) in enumerate(splits):
+        for j in range(11):
+            call = selection[11 * k + j]
+            np.testing.assert_array_equal(call["X_E"], rct.X[train[train < 20]])
+            np.testing.assert_array_equal(call["X_O"], obs.X[train[train >= 20] - 20])
+            np.testing.assert_array_equal(call["Y_E"], rct.Y[train[train < 20]])
+            np.testing.assert_array_equal(call["T_O"], obs.T[train[train >= 20] - 20])
+        held_rct = held[held < 20]
+        # Two arm models per fit, each queried at the held-out RCT rows only.
+        np.testing.assert_array_equal(queries[22 * k][:, :-1], rct.X[held_rct])
+
+
+def test_every_native_fit_starts_from_the_same_seeded_state_and_rng_is_restored(monkeypatch):
+    calls, queries = [], []
+    monkeypatch.setattr(adapter, "_official_icm", lambda: _rho_native(calls, queries))
+    np.random.seed(123)
+    before = np.random.get_state()[1].copy()
+    python_before = random.getstate()
+    adapter.SelectedRhoCausalICM().fit_predict(_selection_training(), np.zeros((3, 2)), seed=9)
+    draws = {call["rng"] for call in calls}
+    np.random.seed(9)
+    assert draws == {np.random.random()}
+    np.random.seed(123)
+    np.testing.assert_array_equal(np.random.get_state()[1], before)
+    assert random.getstate() == python_before
+
+
+def test_ties_choose_the_smaller_rho(monkeypatch):
+    calls, queries = [], []
+    monkeypatch.setattr(adapter, "_official_icm", lambda: _rho_native(
+        calls, queries, control=lambda rho: 0.0, treated=lambda rho: 0.0))
+    method = adapter.SelectedRhoCausalICM()
+    method.fit_predict(_selection_training(), np.zeros((3, 2)), seed=2)
+    assert method.fit_info_["selected_rho"] == 0.0
+
+
+def test_selected_rho_final_fit_is_the_fixed_recipe(monkeypatch):
+    calls, queries = [], []
+    monkeypatch.setattr(adapter, "_official_icm", lambda: _rho_native(
+        calls, queries, control=lambda rho: 0.0, treated=lambda rho: 10 * rho))
+    training = _selection_training(rct_y=np.tile([0., 5.], 10))
+    selected = adapter.SelectedRhoCausalICM()
+    result = selected.fit_predict(training, np.ones((3, 2)), seed=4)
+    assert selected.fit_info_["selected_rho"] == .5
+    fixed_calls = []
+    monkeypatch.setattr(adapter, "_official_icm", lambda: _rho_native(
+        fixed_calls, [], control=lambda rho: 0.0, treated=lambda rho: 10 * rho))
+    fixed = adapter.OfficialCausalICM(rho=.5).fit_predict(training, np.ones((3, 2)), seed=4)
+    np.testing.assert_array_equal(result, fixed)
+    assert calls[-1]["rng"] == fixed_calls[0]["rng"]
+
+
+def test_selection_failures_keep_the_partial_record(monkeypatch):
+    calls, queries = [], []
+    monkeypatch.setattr(adapter, "_official_icm", lambda: _rho_native(
+        calls, queries, control=lambda rho: np.nan if rho == .4 else rho))
+    method = adapter.SelectedRhoCausalICM()
+    with pytest.raises(FloatingPointError):
+        method.fit_predict(_selection_training(), np.zeros((3, 2)), seed=1)
+    assert method.fit_info_["status"] == "selecting"
+    assert method.fit_info_["fold_scores"]["0.3"]
+
+
+def test_a_training_fold_without_an_arm_is_rejected(monkeypatch):
+    calls, queries = [], []
+    monkeypatch.setattr(adapter, "_official_icm", lambda: _rho_native(calls, queries))
+    training = _selection_training(n_rct=6, n_obs=30)
+    rct = replace(training.rct_train, T=np.array([0., 0., 0., 0., 0., 1.]))
+    with pytest.raises(ValueError, match="lacks a treatment arm"):
+        adapter.SelectedRhoCausalICM().fit_predict(
+            replace(training, rct_train=rct), np.zeros((3, 2)), seed=0)
+
+
+def test_selected_recipe_rejects_bad_inputs_before_native_loading(monkeypatch):
+    monkeypatch.setattr(adapter, "_official_icm", lambda: pytest.fail("native code loaded"))
+    training = _selection_training()
+    with pytest.raises(ValueError, match="seed"):
+        adapter.SelectedRhoCausalICM().fit_predict(training, np.zeros((3, 2)), seed=-1)
+    with pytest.raises(ValueError, match="eval_X"):
+        adapter.SelectedRhoCausalICM().fit_predict(training, np.zeros((3, 3)), seed=0)
+    one_arm = replace(training.obs_train, T=np.zeros(30))
+    with pytest.raises(ValueError, match="both treatment arms"):
+        adapter.SelectedRhoCausalICM().fit_predict(
+            replace(training, obs_train=one_arm), np.zeros((3, 2)), seed=0)
+
+
+def test_participation_weights_are_inverse_default_logistic_probabilities():
+    from sklearn.linear_model import LogisticRegression
+
+    rng = np.random.default_rng(0)
+    rct_X, obs_X = rng.normal(size=(15, 2)), rng.normal(size=(40, 2)) + .5
+    weights, info = adapter._participation_weights(rct_X, obs_X)
+    model = LogisticRegression().fit(np.vstack((rct_X, obs_X)), np.r_[np.ones(15), np.zeros(40)])
+    np.testing.assert_allclose(weights, 1 / model.predict_proba(rct_X)[:, 1], rtol=1e-12)
+    assert info["converged"] is True and info["covariates"] == "all_observed"
+    assert weights.min() > 1

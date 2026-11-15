@@ -16,7 +16,7 @@ This is a research alpha, version 0.3.0a7. The [technical report](docs/REPORT.md
 
 ### Methods
 
-Each method is registered as one or more *recipes*, a method with fixed settings. There are 27 recipes, counting variants and controls; `obs-rct-benchmark list-methods` prints them.
+Each method is registered as one or more *recipes*, a method with fixed settings. There are 28 recipes, counting variants and controls; `obs-rct-benchmark list-methods` prints them.
 
 | Method | Paper | Data used | Code | Results |
 | --- | --- | --- | --- | --- |
@@ -25,7 +25,7 @@ Each method is registered as one or more *recipes*, a method with fixed settings
 | CorNet, with standardized inputs and with raw inputs (`cornet_raw`) | Hatt et al. (2022) | OBS and RCT | Authors' code at a pinned commit, cloned separately | [v1 core](results/v1_core/SCIENTIFIC_RESULT.md), figure below |
 | DataFusionPPI | Jung and Yang (2026) | OBS and RCT | Authors' package at a pinned revision | [v1 core](results/v1_core/SCIENTIFIC_RESULT.md), figure below |
 | Integrative R-learner, linear and quadratic bases | Wu and Yang (2022) | OBS and RCT | Authors' R code at a pinned commit | [Wave 2](results/v1_wave2/SCIENTIFIC_RESULT.md), [native panel](results/native_panel/SCIENTIFIC_RESULT.md) |
-| Causal-ICM with borrowing fixed at ρ = 0.5, plus two source-restricted controls | Dimitriou et al. (2026) | OBS and RCT | Authors' code, hash-verified. The paper's selection of ρ is not implemented | [Wave 2](results/v1_wave2/SCIENTIFIC_RESULT.md), [native panel](results/native_panel/SCIENTIFIC_RESULT.md), [GP experiment](results/gp_source_pilot/SCIENTIFIC_RESULT.md) |
+| Causal-ICM with borrowing fixed at ρ = 0.5 or selected by the paper's cross-validation, plus two source-restricted controls | Dimitriou et al. (2026) | OBS and RCT | Authors' code, hash-verified. The selected-ρ recipe follows the paper and the authors' tuning notebooks and has not yet run in a study | [Wave 2](results/v1_wave2/SCIENTIFIC_RESULT.md), [native panel](results/native_panel/SCIENTIFIC_RESULT.md), [GP experiment](results/gp_source_pilot/SCIENTIFIC_RESULT.md) |
 | Honest causal forest | Athey, Tibshirani and Wager (2019) | RCT only | `grf` 2.6.1, pinned | [Wave 2](results/v1_wave2/SCIENTIFIC_RESULT.md), [native panel](results/native_panel/SCIENTIFIC_RESULT.md) |
 | Two-stage residual (TSR) estimator from R-Design, plus RCT-only GP and OBS-only controls | Gao et al. (2026) | OBS and RCT | **Reimplemented here**: a TabPFN offset fitted on OBS plus a two-output Gaussian process (GP) on trial residuals; no acquisition rule. TabPFN v2, or releases v2, v2.5 (the paper's) and v3 under `tabpfn==10.0.0` | [TSR study](results/tsr_study/SCIENTIFIC_RESULT.md); releases in [wave 2](results/v1_wave2/SCIENTIFIC_RESULT.md) |
 
@@ -222,7 +222,7 @@ These research sources have different roles in the benchmark. A translated DGP d
 | Lin, Tarp and Evans (2025), [Combining experimental and observational data through a power likelihood](https://academic.oup.com/biometrics/article/81/1/ujaf008/8016472) | Paper and supplement variants | Not included |
 | Yang et al. (2025), [Cross-Validated Causal Inference: a Modern Method to Combine Experimental and Observational Data](https://arxiv.org/abs/2511.00727v1) | CVCI linear simulation | Not included |
 | Jung and Yang (2026), [Prediction-Powered Data Fusion for Treatment Effect Estimation](https://arxiv.org/abs/2610.12332v2) | Not included | Optional official DataFusionPPI |
-| Dimitriou et al. (2026), [Causal-ICM](https://proceedings.mlr.press/v323/dimitriou26a.html) | No source-paper DGP translation; a separate [controlled GP experiment](results/gp_source_pilot/README.md) is available | Optional fixed-rho native GP recipe and source controls |
+| Dimitriou et al. (2026), [Causal-ICM](https://proceedings.mlr.press/v323/dimitriou26a.html) | No source-paper DGP translation; a separate [controlled GP experiment](results/gp_source_pilot/README.md) is available | Optional native GP recipes with fixed or selected rho, and source controls |
 | Athey, Tibshirani and Wager (2019), [Generalized Random Forests](https://arxiv.org/abs/1610.01271) | Not included | Optional RCT-only honest `grf` recipe |
 | Gao et al. (2026), [Observationally Informed Adaptive Causal Experimental Design](https://arxiv.org/abs/2603.03785v1) (R-Design) | Not included | Reimplemented TSR estimator and matched controls; acquisition rule not included |
 | Hollmann et al. (2025), [Accurate predictions on small data with a tabular foundation model](https://doi.org/10.1038/s41586-024-08328-6) (TabPFN v2) | Not included | Used as the TSR OBS model; not a fusion method |

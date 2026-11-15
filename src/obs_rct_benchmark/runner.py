@@ -568,7 +568,8 @@ def external_method_provenance(methods: tuple[str, ...]) -> dict[str, Any]:
         snapshot = integrative_r_provenance()
         for name in sorted(integrative):
             result[name] = {**snapshot, "basis": name.removeprefix("integrative_r_")}
-    causal = {"causal_icm_fixed", "causal_icm_rct_only", "causal_icm_obs_start"}.intersection(methods)
+    causal = {"causal_icm_fixed", "causal_icm_selected", "causal_icm_rct_only",
+              "causal_icm_obs_start"}.intersection(methods)
     if causal:
         from .causal_icm import causal_icm_provenance
 
@@ -576,6 +577,8 @@ def external_method_provenance(methods: tuple[str, ...]) -> dict[str, Any]:
         for name in sorted(causal):
             if name == "causal_icm_fixed":
                 result[name] = snapshot
+            elif name == "causal_icm_selected":
+                result[name] = {**snapshot, "rho_selection": "weighted_rct_cross_validation"}
             else:
                 result[name] = {**snapshot, "fitting_source": "rct" if name == "causal_icm_rct_only" else "obs",
                                 "prediction_source": "rct_task0"}

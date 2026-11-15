@@ -439,3 +439,167 @@ class CausalICMSourceControl:
         finally:
             np.random.set_state(numpy_state)
             random.setstate(python_state)
+
+
+# Borrowing selection from the paper (Section 3.4.2-3.4.3) and the authors'
+# tuning notebooks at CAUSAL_ICM_REVISION, e.g. multivariate/Simulation2/tune_rho.ipynb.
+CAUSAL_ICM_RHO_GRID = tuple(round(k / 10, 1) for k in range(11))
+CAUSAL_ICM_SELECTION_FOLDS = 5
+
+
+def _participation_weights(rct_X, obs_X) -> tuple[np.ndarray, dict[str, Any]]:
+    """Weights 1/P(S=rct | x) for RCT rows, from sklearn's default logistic regression.
+
+    The authors fit ``LogisticRegression()`` with default settings on the pooled
+    rows, S=1 for trial participants, and weight each RCT row by the inverse of
+    its fitted participation probability, which is 1/(1 - p(S=o|x)) in the
+    paper. Their simulations use their designs' selection variables; here every
+    observed covariate enters, because the benchmark declares no selection set.
+    """
+    import warnings
+
+    from sklearn.exceptions import ConvergenceWarning
+    from sklearn.linear_model import LogisticRegression
+
+    X = np.vstack((rct_X, obs_X))
+    S = np.r_[np.ones(len(rct_X)), np.zeros(len(obs_X))]
+    with warnings.catch_warnings(record=True) as caught:
+        warnings.simplefilter("always", ConvergenceWarning)
+        model = LogisticRegression().fit(X, S)
+    column = list(model.classes_).index(1.0)
+    probability = model.predict_proba(rct_X)[:, column]
+    if not np.isfinite(probability).all() or np.any(probability <= 0):
+        raise FloatingPointError("trial participation probabilities must be positive and finite")
+    weights = 1.0 / probability
+    info = {
+        "model": "sklearn_LogisticRegression_defaults", "covariates": "all_observed",
+        "converged": not any(issubclass(w.category, ConvergenceWarning) for w in caught),
+        "rct_weight_min": float(weights.min()), "rct_weight_mean": float(weights.mean()),
+        "rct_weight_max": float(weights.max()),
+    }
+    return weights, info
+
+
+def _arm_means(m0, m1, native_query) -> tuple[np.ndarray, np.ndarray]:
+    means = []
+    for model in (m0, m1):
+        mean = np.asarray(model.predict_noiseless(native_query.copy())[0], dtype=np.float64)
+        if mean.shape != (native_query.shape[0], 1):
+            raise ValueError("Causal-ICM native means must have shape (n_query, 1)")
+        if not np.isfinite(mean).all():
+            raise FloatingPointError("Causal-ICM produced nonfinite native means")
+        means.append(mean[:, 0])
+    return means[0], means[1]
+
+
+def _select_rho(native, rct: SourceSample, obs: SourceSample, columns: tuple[int, ...],
+                weights: np.ndarray, splits, seed: int, grid=CAUSAL_ICM_RHO_GRID,
+                record: dict[str, Any] | None = None) -> float:
+    """Choose rho by weighted squared error on held-out RCT rows.
+
+    ``splits`` partition the pooled rows, RCT first and then OBS, as in the
+    authors' notebooks. Each fold trains on the remaining RCT and OBS rows and
+    scores only its held-out RCT rows: the arm's own trial-task mean (source 0)
+    against the observed outcome, weighted by ``weights``, averaged over rows
+    and then over folds. A fold without held-out RCT rows is skipped, as there.
+    The same folds serve every rho; ties go to the smaller rho. Every native fit
+    starts from the same seeded RNG state, so the order of fits cannot matter.
+    """
+    n_e = rct.n
+    record = {} if record is None else record
+    fold_scores: dict[str, list[float]] = {str(rho): [] for rho in grid}
+    record.update(fold_scores=fold_scores, folds_used=0)
+    for train, held in splits:
+        train, held = np.asarray(train), np.asarray(held)
+        held_rct = held[held < n_e]
+        if held_rct.size == 0:
+            continue
+        train_rct, train_obs = train[train < n_e], train[train >= n_e] - n_e
+        for arms in (rct.T[train_rct], obs.T[train_obs]):
+            if set(np.unique(arms)) != {0.0, 1.0}:
+                raise ValueError("a cross-validation training fold lacks a treatment arm")
+        held_X = rct.X[np.ix_(held_rct, columns)]
+        native_query = np.column_stack((held_X, np.zeros(held_rct.size)))
+        held_T, held_Y = rct.T[held_rct], rct.Y[held_rct]
+        for rho in grid:
+            np.random.seed(int(seed))
+            random.seed(int(seed))
+            m0, m1 = native(
+                X_E=np.array(rct.X[np.ix_(train_rct, columns)]),
+                X_O=np.array(obs.X[np.ix_(train_obs, columns)]),
+                T_E=np.array(rct.T[train_rct]), T_O=np.array(obs.T[train_obs]),
+                Y_E=np.array(rct.Y[train_rct]), Y_O=np.array(obs.Y[train_obs]),
+                r=2, ID=len(columns), AD=list(range(len(columns))), rho=float(rho),
+            )
+            mean0, mean1 = _arm_means(m0, m1, native_query)
+            fitted = np.where(held_T == 1.0, mean1, mean0)
+            score = float(np.mean(weights[held_rct] * (held_Y - fitted) ** 2))
+            if not np.isfinite(score):
+                raise FloatingPointError("nonfinite weighted held-out error")
+            fold_scores[str(rho)].append(score)
+        record["folds_used"] += 1
+    if record["folds_used"] == 0:
+        raise ValueError("no fold holds out an RCT row")
+    scores = {key: float(np.mean(values)) for key, values in fold_scores.items()}
+    best = None
+    for rho in grid:
+        if best is None or scores[str(rho)] < scores[str(best)]:
+            best = rho
+    record.update(scores=scores, selected_rho=float(best))
+    return float(best)
+
+
+@dataclass(frozen=True)
+class SelectedRhoCausalICM:
+    """Causal-ICM with the paper's data-adaptive borrowing selection.
+
+    Before the final fit, rho is chosen from 0, 0.1, ..., 1 by five-fold
+    cross-validation over the pooled RCT and OBS rows, scoring each fold's
+    held-out RCT rows by inverse-participation-weighted squared error of the
+    arm's trial-task mean (see ``_select_rho`` and ``_participation_weights``).
+    One rho serves both arms. Folds come from ``KFold(5, shuffle=True)`` seeded
+    by the fit's seed. The final fit is ``OfficialCausalICM`` at the selected
+    rho on all rows with the same seed, so a fit that selects 0.5 reproduces
+    ``causal_icm_fixed`` exactly. Every observed covariate enters both the
+    model and the participation weights; tuning and reference rows are ignored.
+    """
+
+    def fit_predict(self, training: TrainingView, eval_X, *, seed: int):
+        object.__setattr__(self, "fit_info_", None)
+        if not isinstance(training, TrainingView):
+            raise TypeError("methods require a TrainingView")
+        if (isinstance(seed, bool) or not isinstance(seed, (int, np.integer))
+                or not 0 <= seed < 2**32):
+            raise ValueError("seed must be an integer in [0, 2**32)")
+        query = np.asarray(eval_X, dtype=np.float64)
+        if (query.ndim != 2 or query.shape[0] == 0
+                or query.shape[1] != training.obs_train.d or not np.isfinite(query).all()):
+            raise ValueError("eval_X must be a nonempty finite matrix matching the training covariates")
+        obs, rct = training.obs_train, training.rct_train
+        for sample in (obs, rct):
+            if set(np.unique(sample.T)) != {0.0, 1.0}:
+                raise ValueError("Causal-ICM requires both treatment arms in each fitting source")
+        from sklearn.model_selection import KFold
+
+        columns = tuple(range(obs.d))
+        info: dict[str, Any] = {
+            "selector": "causal_icm_weighted_rct_cv_v1", "grid": list(CAUSAL_ICM_RHO_GRID),
+            "folds": CAUSAL_ICM_SELECTION_FOLDS, "fold_seed": int(seed),
+            "fold_rows": "pooled_rct_then_obs", "scored_rows": "held_out_rct",
+            "prediction_source": 0, "status": "selecting",
+        }
+        object.__setattr__(self, "fit_info_", info)
+        native = _official_icm()
+        weights, info["participation_weights"] = _participation_weights(rct.X, obs.X)
+        splits = list(KFold(n_splits=CAUSAL_ICM_SELECTION_FOLDS, shuffle=True,
+                            random_state=int(seed)).split(np.zeros((rct.n + obs.n, 1))))
+        numpy_state, python_state = np.random.get_state(), random.getstate()
+        try:
+            rho = _select_rho(native, rct, obs, columns, weights, splits, int(seed), record=info)
+        finally:
+            np.random.set_state(numpy_state)
+            random.setstate(python_state)
+        info["status"] = "final_fit"
+        prediction = OfficialCausalICM(rho=rho).fit_predict(training, query, seed=seed)
+        info["status"] = "completed"
+        return prediction

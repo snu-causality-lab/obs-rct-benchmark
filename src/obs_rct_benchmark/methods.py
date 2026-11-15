@@ -459,6 +459,7 @@ def method_names() -> tuple[str, ...]:
         "tsr_tabpfn_lmcgp", "lmcgp_rct_only", "tabpfn_obs_only",
         "rct_selected", "cornet_raw",
         *_TSR_RELEASES,
+        "causal_icm_selected",
         *sorted(_FACTORIES),
     )
 
@@ -515,6 +516,12 @@ def make_method(name: str, **options: Any) -> CATEMethod:
         from .causal_icm import OfficialCausalICM
 
         return OfficialCausalICM(**options)
+    if name == "causal_icm_selected":
+        if options:
+            raise ValueError("causal_icm_selected fixes its rho grid, folds and covariates by its method ID")
+        from .causal_icm import SelectedRhoCausalICM
+
+        return SelectedRhoCausalICM()
     if name in {"causal_icm_rct_only", "causal_icm_obs_start"}:
         if "source" in options:
             raise ValueError("Causal-ICM fitting source is fixed by the method ID")

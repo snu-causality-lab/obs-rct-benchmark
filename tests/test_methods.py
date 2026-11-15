@@ -102,7 +102,7 @@ def test_methods_reject_a_simulation_object_in_place_of_training_view():
             method.fit_predict(object(), np.zeros((2, 2)), seed=0)
 
 
-def test_builtin_registry_has_twenty_seven_recipes_and_preserves_original_names():
+def test_builtin_registry_has_twenty_eight_recipes_and_preserves_original_names():
     expected = {
         "rct_t_ridge", "obs_t_ridge", "naive_pooled_t_ridge",
         "rct_t_extra_trees", "obs_t_extra_trees", "naive_pooled_t_extra_trees",
@@ -114,9 +114,10 @@ def test_builtin_registry_has_twenty_seven_recipes_and_preserves_original_names(
         "rct_selected", "cornet_raw",
         "tsr_tabpfn_v2", "tsr_tabpfn_v25", "tsr_tabpfn_v3",
         "tabpfn_v2_obs_only", "tabpfn_v25_obs_only", "tabpfn_v3_obs_only",
+        "causal_icm_selected",
     }
     assert set(methods.method_names()) - set(methods.custom_provenance()) == expected
-    assert len(expected) == 27
+    assert len(expected) == 28
 
 
 @pytest.mark.parametrize("name,basis", [
@@ -139,6 +140,14 @@ def test_causal_icm_recipe_forwards_native_rho_and_declared_columns():
     estimator = methods.make_method("causal_icm_fixed", rho=.3, effect_modifier_columns=[2, 0])
     assert isinstance(estimator, OfficialCausalICM)
     assert estimator.rho == .3 and estimator.effect_modifier_columns == (2, 0)
+
+
+def test_causal_icm_selected_takes_no_options():
+    from obs_rct_benchmark.causal_icm import SelectedRhoCausalICM
+
+    assert isinstance(methods.make_method("causal_icm_selected"), SelectedRhoCausalICM)
+    with pytest.raises(ValueError, match="fixes its rho grid"):
+        methods.make_method("causal_icm_selected", rho=.5)
 
 
 @pytest.mark.parametrize("name,source", [
@@ -171,7 +180,7 @@ def reject_probe(*args, **kwargs):
     raise AssertionError("external process during construction")
 subprocess.run = subprocess.check_output = reject_probe
 from obs_rct_benchmark.methods import make_method
-for name in ("integrative_r_linear", "integrative_r_quadratic", "causal_icm_fixed", "causal_icm_rct_only", "causal_icm_obs_start",
+for name in ("integrative_r_linear", "integrative_r_quadratic", "causal_icm_fixed", "causal_icm_selected", "causal_icm_rct_only", "causal_icm_obs_start",
              "tsr_tabpfn_lmcgp", "lmcgp_rct_only", "tabpfn_obs_only"):
     assert callable(make_method(name).fit_predict)
 assert not any(name.split(".")[0] in blocked for name in sys.modules)

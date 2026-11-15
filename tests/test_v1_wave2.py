@@ -49,8 +49,8 @@ def test_release_regressor_requires_a_pinned_checkpoint(monkeypatch, tmp_path):
         tsr.TwoStageResidual("tsr", tabpfn_release="v9")
 
 
-def test_registry_has_twenty_seven_recipes():
-    assert len(set(methods.method_names()) - set(methods.custom_provenance())) == 27
+def test_registry_has_twenty_eight_recipes():
+    assert len(set(methods.method_names()) - set(methods.custom_provenance())) == 28
 
 
 @pytest.fixture(scope="module")
