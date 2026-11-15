@@ -10,7 +10,7 @@ It provides:
 
 **Main finding so far.** The [v1 core study](results/v1_core/SCIENTIFIC_RESULT.md) compares each method with an RCT-only learner chosen from trial data alone, as an analyst without the true CATE could do. CorNet with raw inputs has significantly lower error in 51 of 60 conditions with a 128-row trial and higher error in none; with a 512-row trial, 37 lower and 7 higher. DataFusionPPI is higher in 39 of its 58 applicable conditions with the smaller trial and mostly unresolved with the larger one. In [wave 2](results/v1_wave2/SCIENTIFIC_RESULT.md), the linear Integrative R-learner is better in 62 of 120 conditions and worse in 8, and TSR is worse in 80 or more under every TabPFN release. These results come from synthetic presets inspected during development. They do not show how the methods behave on real data.
 
-This is a research alpha, version 0.3.0a7. The [technical report](docs/REPORT.md) ([PDF](https://github.com/snu-causality-lab/obs-rct-benchmark/releases/download/report-2026-10-30-r2/obsrct_benchmark_icml.pdf)) is an AI-generated research draft from October 2026. It is not peer reviewed and predates the TSR study.
+This is a research alpha, version 0.3.0a8. The [technical report](docs/REPORT.md) ([PDF](https://github.com/snu-causality-lab/obs-rct-benchmark/releases/download/report-2026-10-30-r2/obsrct_benchmark_icml.pdf)) is an AI-generated research draft from October 2026. It is not peer reviewed and predates the TSR study.
 
 ## What is implemented
 

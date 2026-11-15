@@ -500,10 +500,15 @@ def _select_rho(native, rct: SourceSample, obs: SourceSample, columns: tuple[int
     ``splits`` partition the pooled rows, RCT first and then OBS, as in the
     authors' notebooks. Each fold trains on the remaining RCT and OBS rows and
     scores only its held-out RCT rows: the arm's own trial-task mean (source 0)
-    against the observed outcome, weighted by ``weights``, averaged over rows
-    and then over folds. A fold without held-out RCT rows is skipped, as there.
-    The same folds serve every rho; ties go to the smaller rho. Every native fit
-    starts from the same seeded RNG state, so the order of fits cannot matter.
+    against the observed outcome, weighted by ``weights``. The criterion is the
+    notebooks': the weighted mean squared error within each fold, then the plain
+    mean over folds. The paper's displayed loss sums over held-out patients,
+    which weights folds by their RCT counts; the two can choose different rho
+    when folds hold different numbers of RCT rows. A fold without held-out RCT
+    rows is skipped and the mean taken over the folds used, as in the
+    Simulation 1 notebook. The same folds serve every rho; ties go to the
+    smaller rho. Every native fit starts from the same seeded RNG state, so the
+    order of fits cannot matter.
     """
     n_e = rct.n
     record = {} if record is None else record
@@ -515,9 +520,10 @@ def _select_rho(native, rct: SourceSample, obs: SourceSample, columns: tuple[int
         if held_rct.size == 0:
             continue
         train_rct, train_obs = train[train < n_e], train[train >= n_e] - n_e
-        for arms in (rct.T[train_rct], obs.T[train_obs]):
-            if set(np.unique(arms)) != {0.0, 1.0}:
-                raise ValueError("a cross-validation training fold lacks a treatment arm")
+        # The native function fits each arm on its RCT and OBS rows together,
+        # so one source may lack an arm in a fold; the arm itself may not.
+        if set(np.unique(np.r_[rct.T[train_rct], obs.T[train_obs]])) != {0.0, 1.0}:
+            raise ValueError("a cross-validation training fold lacks a treatment arm")
         held_X = rct.X[np.ix_(held_rct, columns)]
         native_query = np.column_stack((held_X, np.zeros(held_rct.size)))
         held_T, held_Y = rct.T[held_rct], rct.Y[held_rct]

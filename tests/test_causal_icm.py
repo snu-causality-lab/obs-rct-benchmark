@@ -666,26 +666,35 @@ def test_selection_picks_the_rho_minimizing_weighted_held_out_error(monkeypatch)
     assert all(np.all(q[:, -1] == 0) for q in queries)
 
 
+def _label_native(**kwargs):
+    """Arm means that depend on every training array the native call receives."""
+    rho = kwargs["rho"]
+    control = rho * np.mean(kwargs["Y_O"][kwargs["T_O"] == 0])
+    treated = np.mean(kwargs["Y_E"][kwargs["T_E"] == 1]) + rho
+    return _RhoModel(control, []), _RhoModel(treated, [])
+
+
 def test_selection_scores_match_a_direct_computation(monkeypatch):
     from sklearn.model_selection import KFold
 
-    calls, queries = [], []
-    monkeypatch.setattr(adapter, "_official_icm", lambda: _rho_native(
-        calls, queries, control=lambda rho: rho, treated=lambda rho: 2 - rho))
+    monkeypatch.setattr(adapter, "_official_icm", lambda: _label_native)
     weights = np.linspace(1, 3, 20)
     monkeypatch.setattr(adapter, "_participation_weights", lambda r, o: (weights, {"stub": True}))
     training = _selection_training()
-    rct = training.rct_train
+    rct, obs = training.rct_train, training.obs_train
     method = adapter.SelectedRhoCausalICM()
     method.fit_predict(training, np.zeros((3, 2)), seed=11)
     splits = list(KFold(5, shuffle=True, random_state=11).split(np.zeros((50, 1))))
     for rho in adapter.CAUSAL_ICM_RHO_GRID:
         per_fold = []
-        for _, held in splits:
+        for train, held in splits:
             rows = held[held < 20]
             if rows.size == 0:
                 continue
-            fitted = np.where(rct.T[rows] == 1, 2 - rho, rho)
+            tr, to = train[train < 20], train[train >= 20] - 20
+            control = rho * np.mean(obs.Y[to][obs.T[to] == 0])
+            treated = np.mean(rct.Y[tr][rct.T[tr] == 1]) + rho
+            fitted = np.where(rct.T[rows] == 1, treated, control)
             per_fold.append(np.mean(weights[rows] * (rct.Y[rows] - fitted) ** 2))
         assert method.fit_info_["scores"][str(rho)] == pytest.approx(np.mean(per_fold), rel=1e-12)
     best = min(adapter.CAUSAL_ICM_RHO_GRID, key=lambda r: method.fit_info_["scores"][str(r)])
@@ -705,28 +714,47 @@ def test_folds_train_on_remaining_pooled_rows_and_score_only_held_out_rct(monkey
     for k, (train, held) in enumerate(splits):
         for j in range(11):
             call = selection[11 * k + j]
-            np.testing.assert_array_equal(call["X_E"], rct.X[train[train < 20]])
-            np.testing.assert_array_equal(call["X_O"], obs.X[train[train >= 20] - 20])
-            np.testing.assert_array_equal(call["Y_E"], rct.Y[train[train < 20]])
-            np.testing.assert_array_equal(call["T_O"], obs.T[train[train >= 20] - 20])
+            tr, to = train[train < 20], train[train >= 20] - 20
+            for key, expected in [("X_E", rct.X[tr]), ("T_E", rct.T[tr]), ("Y_E", rct.Y[tr]),
+                                  ("X_O", obs.X[to]), ("T_O", obs.T[to]), ("Y_O", obs.Y[to])]:
+                np.testing.assert_array_equal(call[key], expected)
         held_rct = held[held < 20]
         # Two arm models per fit, each queried at the held-out RCT rows only.
         np.testing.assert_array_equal(queries[22 * k][:, :-1], rct.X[held_rct])
 
 
-def test_every_native_fit_starts_from_the_same_seeded_state_and_rng_is_restored(monkeypatch):
+def _same_numpy_state(left, right):
+    return (left[0] == right[0] and np.array_equal(left[1], right[1])
+            and left[2:] == right[2:])
+
+
+@pytest.mark.parametrize("fail_at", [None, "selection", "final"])
+def test_every_native_fit_starts_from_the_same_seeded_state_and_rng_is_restored(monkeypatch, fail_at):
     calls, queries = [], []
-    monkeypatch.setattr(adapter, "_official_icm", lambda: _rho_native(calls, queries))
+    inner = _rho_native(calls, queries)
+
+    def native(**kwargs):
+        models = inner(**kwargs)
+        if (fail_at == "selection" and len(calls) == 7) or (fail_at == "final" and len(calls) == 56):
+            raise RuntimeError("native failure")
+        return models
+
+    monkeypatch.setattr(adapter, "_official_icm", lambda: native)
     np.random.seed(123)
-    before = np.random.get_state()[1].copy()
-    python_before = random.getstate()
-    adapter.SelectedRhoCausalICM().fit_predict(_selection_training(), np.zeros((3, 2)), seed=9)
-    draws = {call["rng"] for call in calls}
-    np.random.seed(9)
-    assert draws == {np.random.random()}
-    np.random.seed(123)
-    np.testing.assert_array_equal(np.random.get_state()[1], before)
+    np.random.standard_normal()  # leaves a cached Gaussian in the state
+    random.seed(5)
+    before, python_before = np.random.get_state(), random.getstate()
+    method = adapter.SelectedRhoCausalICM()
+    if fail_at is None:
+        method.fit_predict(_selection_training(), np.zeros((3, 2)), seed=9)
+    else:
+        with pytest.raises(RuntimeError, match="native failure"):
+            method.fit_predict(_selection_training(), np.zeros((3, 2)), seed=9)
+    assert _same_numpy_state(np.random.get_state(), before)
     assert random.getstate() == python_before
+    assert {call["rng"] for call in calls} == {np.random.RandomState(9).random_sample()}
+    if fail_at == "final":
+        assert method.fit_info_["status"] == "final_fit"
 
 
 def test_ties_choose_the_smaller_rho(monkeypatch):
@@ -765,14 +793,48 @@ def test_selection_failures_keep_the_partial_record(monkeypatch):
     assert method.fit_info_["fold_scores"]["0.3"]
 
 
-def test_a_training_fold_without_an_arm_is_rejected(monkeypatch):
+def _fold_seed(n_rct, n_obs, lacks):
+    """A seed whose folds put every row of `lacks` (pooled indices) in one held-out fold."""
+    from sklearn.model_selection import KFold
+
+    for seed in range(10_000):
+        splits = KFold(5, shuffle=True, random_state=seed).split(np.zeros((n_rct + n_obs, 1)))
+        if any(set(lacks) <= set(held) for _, held in splits):
+            return seed
+    raise AssertionError("no such seed")
+
+
+def test_a_source_may_lack_an_arm_in_a_fold_but_the_pooled_arm_may_not(monkeypatch):
     calls, queries = [], []
     monkeypatch.setattr(adapter, "_official_icm", lambda: _rho_native(calls, queries))
     training = _selection_training(n_rct=6, n_obs=30)
     rct = replace(training.rct_train, T=np.array([0., 0., 0., 0., 0., 1.]))
+    seed = _fold_seed(6, 30, [5])
+    method = adapter.SelectedRhoCausalICM()
+    method.fit_predict(replace(training, rct_train=rct), np.zeros((3, 2)), seed=seed)
+    assert any(not np.any(call["T_E"] == 1) for call in calls[:-1])
+    obs = replace(training.obs_train, X=training.obs_train.X[:4], Y=training.obs_train.Y[:4],
+                  T=np.array([0., 0., 0., 1.]))
+    seed = _fold_seed(6, 4, [5, 9])
     with pytest.raises(ValueError, match="lacks a treatment arm"):
         adapter.SelectedRhoCausalICM().fit_predict(
-            replace(training, rct_train=rct), np.zeros((3, 2)), seed=0)
+            replace(training, rct_train=rct, obs_train=obs), np.zeros((3, 2)), seed=seed)
+
+
+def test_folds_without_held_out_rct_rows_are_skipped(monkeypatch):
+    from sklearn.model_selection import KFold
+
+    calls, queries = [], []
+    monkeypatch.setattr(adapter, "_official_icm", lambda: _rho_native(calls, queries))
+    training = _selection_training(n_rct=4, n_obs=30)
+    seed = next(s for s in range(10_000) if sum(
+        np.any(held < 4) for _, held in KFold(5, shuffle=True, random_state=s).split(np.zeros((34, 1)))) < 5)
+    used = sum(np.any(held < 4) for _, held in KFold(5, shuffle=True, random_state=seed).split(np.zeros((34, 1))))
+    method = adapter.SelectedRhoCausalICM()
+    method.fit_predict(training, np.zeros((3, 2)), seed=seed)
+    assert method.fit_info_["folds_used"] == used < 5
+    assert len(calls) == 11 * used + 1
+    assert all(len(v) == used for v in method.fit_info_["fold_scores"].values())
 
 
 def test_selected_recipe_rejects_bad_inputs_before_native_loading(monkeypatch):
