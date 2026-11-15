@@ -3,8 +3,9 @@
 Two blocks, each one configuration in the `gp` environment:
 - `core`: the 124 v1 core conditions on seeds 70000-70063, one shard per seed and
   preset (four budget conditions), as in wave 2;
-- `stress`: the 64 stress conditions on seeds 80000-80063, one shard per seed and dial
-  (eight conditions), as in the stress addendum.
+- `stress`: the 64 stress conditions on seeds 80000-80063, one shard per seed, dial and
+  trial size (four levels). The stress addendum held both trial sizes in one shard; the
+  split halves the longest shard, whose 8,192 OBS rows make each selection slow.
 
 Every shard fits `rct_selected`, `rct_t_ridge`, `causal_icm_fixed`,
 `causal_icm_rct_only` and `causal_icm_selected`, so every contrast pairs within one
@@ -101,9 +102,11 @@ def shards(config: BenchmarkConfig, *, preflight: bool = False):
     else:
         for seed in ((STRESS_PREFLIGHT,) if preflight else config.seeds):
             for dial in STRESS_DIALS:
-                scenarios = tuple(s for s in config.scenarios if s.id == dial)
-                yield (f"icmsel-stress-seed-{seed:05d}-{dial}.toml",
-                       replace(config, scenarios=scenarios, seeds=(seed,)))
+                for rct in (128, 512):
+                    scenarios = tuple(s for s in config.scenarios
+                                      if s.id == dial and dict(s.parameters)["n_rct_train"] == rct)
+                    yield (f"icmsel-stress-seed-{seed:05d}-{dial}-r{rct}.toml",
+                           replace(config, scenarios=scenarios, seeds=(seed,)))
 
 
 def main() -> None:
