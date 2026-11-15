@@ -1,6 +1,6 @@
 # Addendum: Causal-ICM with the paper's borrowing selection
 
-**Status: core block fixed before its main run; stress block a draft.** This addendum to the [v1 core plan](V1_CORE_STUDY.md) and [stress study 1](V1_STRESS_CORNET.md) fixes the recipe, contrasts and resources for `causal_icm_selected` before its main run. One development check already fitted the recipe at seed 70000 in four core conditions; it is disclosed [below](#what-this-addendum-will-not-show). Each block is fixed by the commit that fills in its part of [Recorded before launch](#recorded-before-launch). The stress block's freeze may come later. It may change the stress block's record, sharding and limits, and this status line, but no fitting code and nothing the core block uses. Each block's job record holds its freeze commit's hash before that block's first main-run fit, and each block is analyzed with the code of its own freeze.
+**Status: both blocks fixed before their main runs; the core block's run has finished.** This addendum to the [v1 core plan](V1_CORE_STUDY.md) and [stress study 1](V1_STRESS_CORNET.md) fixes the recipe, contrasts and resources for `causal_icm_selected` before its main run. One development check already fitted the recipe at seed 70000 in four core conditions; it is disclosed [below](#what-this-addendum-will-not-show). Each block is fixed by the commit that fills in its part of [Recorded before launch](#recorded-before-launch). The stress block's freeze may come later. It may change the stress block's record, sharding and limits, and this status line, but no fitting code and nothing the core block uses. Each block's job record holds its freeze commit's hash before that block's first main-run fit, and each block is analyzed with the code of its own freeze.
 
 [Wave 2](V1_CORE_WAVE2.md) and the [stress addendum](V1_STRESS_WAVE2.md) ran Causal-ICM with ρ fixed at 0.5. The paper chooses ρ from data (Dimitriou et al., CLeaR 2026, Section 3.4.2). Version 0.3.0a8 adds that procedure as `causal_icm_selected` ([V03_ADAPTERS](V03_ADAPTERS.md)). This addendum runs it wherever `causal_icm_fixed` ran.
 
@@ -138,7 +138,25 @@ All 31 preflight shards shared one node with other jobs, so these times are slow
 
 ### Stress block
 
-To be filled in from its preflight (job 834236, seed 79999, 16 shards on `effea13`) before its freeze. Its data check at seed 80000 has passed: every array of every sample role in all 64 conditions is identical to wave 2's `gp` dump, byte for byte (job 834151).
+**Preflight.** Job 834236 ran all 16 stress shards on `effea13` at seed 79999, 14 on a node that was also running core main-run shards. None failed or stopped. The two `obs_size` shards took 4.5 and 4.9 hours. Almost all of that was one selection fit at level 0, with 8,192 OBS rows: about 4.2 and 4.5 hours. Levels 1–3 together took minutes.
+
+| Block | Longest shard | Median shard | Peak memory | Preflight failures | Main-run limit |
+| --- | ---: | ---: | ---: | --- | --- |
+| stress | 17,519 s (`obs_size`, RCT 512) | 3,844 s | 5,053 MiB | none | 1 CPU, 10 GiB, 12 h |
+
+Three times the longest shard is 14.6 hours, so the 12-hour cap sets the time limit; a job-limit rerun keeps 12 hours. Twice the peak is 9.9 GiB, rounded up to 10 GiB.
+
+**Load.** In the core main run, completed shards on fully loaded nodes took up to four times the median time of the same preset. 14 of 1,984 reached their 3 h 20 min limit, and all finished within an hour on rerun. An `obs_size` shard could reach 12 hours twice. Its unrecorded cells would then become `JobLimit` failures, as the rule above states. To lower that risk, the 128 `obs_size` shards are submitted as their own array before the other 896.
+
+**Execution.**
+
+| Item | Value |
+| --- | --- |
+| Code | The stress freeze commit, run from a `git archive` snapshot. It differs from the core freeze only in this document, so both blocks fit and analyze with the same code |
+| Shard driver, CPU job script, rules and nodes | As for the core block |
+| This addendum's job scripts | `write_shards.sbatch` `4ab035d1c2c09ce52004366e30e1e12c9439e804a5d9eeb8bb0ed4f64c00b659`; `analyze.sbatch` `acc4903d23aa2196ef170c987474408e30a37ed08c3d2f9871a9f27cf0bf6c2b` and `reproduce.sbatch` `0022c70fe82055dfca325609931824a4ecf7fd99bca3e25b45bc791ba0f5fad3` (see [Revisions and errata](#revisions-and-errata)); `joblimit_reruns.py` `9683cc73cff2a08be272ce72bdb3dfeed85947d4fc3b78588b45cc293525e4fd`, which lists job-limit reruns from scheduler states and status files and submits them |
+| Arrays | Two, each mapping its tasks to shards through an index file: the 128 `obs_size` shards, then the other 896 |
+| Data check (seed 80000, against wave 2's `gp` dump) | Passed (job 834151). Every array of every sample role in all 64 conditions is identical; the two files are byte-identical |
 
 ## Revisions and errata
 
