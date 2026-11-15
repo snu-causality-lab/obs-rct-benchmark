@@ -1,6 +1,6 @@
 # Addendum: Causal-ICM with the paper's borrowing selection
 
-**Status: draft, not yet fixed; the main run has not started.** This addendum to the [v1 core plan](V1_CORE_STUDY.md) and [stress study 1](V1_STRESS_CORNET.md) fixes the recipe, contrasts and resources for `causal_icm_selected` before its main run. One development check already fitted the recipe at seed 70000 in four core conditions; it is disclosed [below](#what-this-addendum-will-not-show). The freeze is the commit that fills in [Recorded before launch](#recorded-before-launch); earlier commits carry drafts. The job record holds the freeze commit's hash before the main run's first fit.
+**Status: core block fixed before its main run; stress block a draft.** This addendum to the [v1 core plan](V1_CORE_STUDY.md) and [stress study 1](V1_STRESS_CORNET.md) fixes the recipe, contrasts and resources for `causal_icm_selected` before its main run. One development check already fitted the recipe at seed 70000 in four core conditions; it is disclosed [below](#what-this-addendum-will-not-show). Each block is fixed by the commit that fills in its part of [Recorded before launch](#recorded-before-launch). The stress block's freeze may come later. It may change the stress block's record, sharding and limits, and this status line, but no fitting code and nothing the core block uses. Each block's job record holds its freeze commit's hash before that block's first main-run fit, and each block is analyzed with the code of its own freeze.
 
 [Wave 2](V1_CORE_WAVE2.md) and the [stress addendum](V1_STRESS_WAVE2.md) ran Causal-ICM with ρ fixed at 0.5. The paper chooses ρ from data (Dimitriou et al., CLeaR 2026, Section 3.4.2). Version 0.3.0a8 adds that procedure as `causal_icm_selected` ([V03_ADAPTERS](V03_ADAPTERS.md)). This addendum runs it wherever `causal_icm_fixed` ran.
 
@@ -85,7 +85,7 @@ Every contrast is a paired t-test over 64 seeds. Each block has three families, 
   - memory: the larger of 4 GiB and twice the largest preflight peak.
 - **Job-limit reruns.** The partition allows at most 12 hours. A shard that reaches its time limit is rerun once with the smaller of twice that limit and 12 hours. A shard that reaches its memory limit is rerun once with twice that memory. If the rerun also reaches a limit, its recorded cells stand and its unrecorded cells become `JobLimit` method failures, listed for the analyzer and checker. A listed shard may hold every record, since a job can stop after its last record.
 - **Deadlines.** No fit has a deadline; the final-attempt rule bounds them.
-- **Preflight.** Before the freeze, one seed outside each grid runs every shard of its block: seed 69999 for the core block (31 shards, 8 GiB and 6 hours each) and seed 79999 for the stress block (16 shards, 16 GiB and 12 hours each). The jobs delete all records after writing status files. If any preflight shard stops before writing its status, its time is unknown and the rule above cannot be applied. The block is then not frozen until its sharding or limits are revised and its preflight is rerun.
+- **Preflight.** Before a block's freeze, one seed outside its grid runs every shard of the block: seed 69999 for the core block (31 shards, 8 GiB and 6 hours each) and seed 79999 for the stress block (16 shards, 16 GiB and 12 hours each). The jobs delete all records after writing status files. If any preflight shard stops before writing its status, its time is unknown and the rule above cannot be applied. The block is then not frozen until its sharding or limits are revised and its preflight is rerun.
 - **Expected cost.** In a check at one seed, a selected fit took 20 to 27 times as long as a fixed fit: about 19 seconds at OBS 512 · RCT 128 and 350 seconds at OBS 2048 · RCT 512. The preflight times the 8,192-row stress conditions.
 
 ## Checks
@@ -112,7 +112,33 @@ Every contrast is a paired t-test over 64 seeds. Each block has three families, 
 
 ## Recorded before launch
 
-To be filled in from the preflight before the freeze.
+### Core block
+
+**Preflight history.** The first preflight (draft `1e864f1`, job 834000) stopped one core shard, `paper:cvci_official_linear_bias`, when it ran out of its 8 GiB. The block was therefore not frozen.
+- **Cause.** Memory probes found that the GPy models of each selection fit stay in reference cycles. Over one selection's 56 native fits, resident memory grew to 4.2 GB at 2,560 rows. With a collection after every fit it stayed near 1.2 GB, at the same speed.
+- **Change.** Draft `effea13` collects after every selection fit. A rerun of the development check at seed 70000 gave exactly the same selected ρ, fold scores, participation weights and errors in all four cases, so the change leaves results unchanged.
+- **Second preflight.** Job 834235 ran all 31 core shards on `effea13`. The values below come from it. The freeze commit differs from `effea13` only in this document.
+
+| Block | Longest shard | Median shard | Peak memory | Preflight failures | Main-run limit |
+| --- | ---: | ---: | ---: | --- | --- |
+| core | 3,997 s (CorNet design) | 3,164 s | 984 MiB | none | 1 CPU, 4 GiB, 3 h 20 min |
+
+All 31 preflight shards shared one node with other jobs, so these times are slower than on a quiet node.
+
+**Execution.**
+
+| Item | Value |
+| --- | --- |
+| Wave-2 freeze commit (execution rules) | `80c9129d0d6046a9e6845c9f0a3580c67ca024d9` |
+| Code | The core freeze commit, run from a `git archive` snapshot |
+| Shard driver and CPU job script | Those of the wave-2 main run, unchanged: `run_shard.py` `1a299a69c5132804ad619df9300861df6fa44559b47a836bf27023e536c0a23b`; `common.sh` `e19ad30219e8b26e474aa5bc7e8ab5143c1ea9b2c57900a51698fce88796dbf0`; `cpu_array.sbatch` `05cd6fda42accfc470c841e8bfb52115c30eb4a9769fa61a2d9b311a6f24182f`, submitted with this addendum's run folder |
+| This addendum's job scripts | `write_shards.sbatch` `4ab035d1c2c09ce52004366e30e1e12c9439e804a5d9eeb8bb0ed4f64c00b659`; `data_check.sbatch` `358d0026892d6578d72385ceddc1797f6001f859b76eb4a0f0c98fca5052e07e`; `analyze.sbatch` `207f13930706eeb3a188cfcd72a5e331eba911ae47563edb9208bd6f230ac512`; `reproduce.sbatch` `c56640a0b0e811aba5f65afab50b5fce49901980f4a38f17a063a8e699a0cd16` |
+| Nodes | b03, b14, b15, b24–b28, b30 and b31 excluded from every job |
+| Data check (seed 70000, against wave 2's `gp` dump) | Passed (job 834151). Every array of every sample role in all 124 conditions is identical; the two files are byte-identical |
+
+### Stress block
+
+To be filled in from its preflight (job 834236, seed 79999, 16 shards on `effea13`) before its freeze. Its data check at seed 80000 has passed: every array of every sample role in all 64 conditions is identical to wave 2's `gp` dump, byte for byte (job 834151).
 
 ## Revisions and errata
 
