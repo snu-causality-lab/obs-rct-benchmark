@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import ast
 from dataclasses import dataclass
+import gc
 import hashlib
 import importlib
 import importlib.metadata
@@ -538,6 +539,10 @@ def _select_rho(native, rct: SourceSample, obs: SourceSample, columns: tuple[int
                 r=2, ID=len(columns), AD=list(range(len(columns))), rho=float(rho),
             )
             mean0, mean1 = _arm_means(m0, m1, native_query)
+            # GPy models hold reference cycles; without a collection, 55 fits of one
+            # selection accumulate them (4.2 GB at 2,560 rows instead of 1.2 GB).
+            del m0, m1
+            gc.collect()
             fitted = np.where(held_T == 1.0, mean1, mean0)
             score = float(np.mean(weights[held_rct] * (held_Y - fitted) ** 2))
             if not np.isfinite(score):

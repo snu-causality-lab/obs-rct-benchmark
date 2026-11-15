@@ -382,3 +382,77 @@ def test_reproduction_flags_a_changed_wave2_score(configs, tmp_path):
     assert not identity["wave2_reproduction"]["causal_icm_fixed"]["within_1e-9"]
     assert identity["wave2_reproduction"]["rct_selected"]["within_1e-9"]
     assert V.arithmetic(config, tmp_path / "analysis", runs, wave2)["mismatches"]
+
+
+# ---------------------------------------------------------------- second review
+
+def test_checker_authenticates_shards_record_ids_and_provenance(configs, stress, tmp_path):
+    records, _, out, _, wave2, _, _ = stress
+    config = configs["stress"]
+    runs = _write(config, records, tmp_path / "a")
+    path = runs[7] / "records.jsonl"
+    rows = [json.loads(x) for x in path.read_text().splitlines()]
+    rows[0]["record_id"] = "0" * 64
+    path.write_text("\n".join(json.dumps(r) for r in rows) + "\n")
+    manifest = runs[9] / "run_manifest.json"
+    m = json.loads(manifest.read_text())
+    manifest.write_text(json.dumps({**m, "environment": {"python": "other"}}))
+    reasons = " ".join(str(p.get("reason")) for p in V.arithmetic(config, out, runs, wave2)["mismatches"])
+    assert "record identity" in reasons and "provenance differs" in reasons
+    # The whole block as one run is not a declared shard.
+    one = tmp_path / "b" / "run"
+    one.mkdir(parents=True)
+    lines = [json.dumps({**r, "scenario": k[1], "seed": k[2], "method": k[3], "config_hash": config.config_hash})
+             for k, r in records.items()]
+    (one / "records.jsonl").write_text("\n".join(lines) + "\n")
+    (one / "run_manifest.json").write_text(json.dumps({"config_hash": config.config_hash, "config": config.payload()}))
+    reasons = " ".join(str(p.get("reason")) for p in V.arithmetic(config, out, [one], wave2)["mismatches"])
+    assert "not a declared shard" in reasons and "declared shards are missing" in reasons
+
+
+def test_integer_rho_is_accepted_and_boolean_rho_refused(configs, tmp_path):
+    config = configs["stress"]
+
+    def integer(key, row, records):
+        if key[3] == "causal_icm_selected" and key[2] % 4 == 1:
+            return {**row, "fit_info": {**row["fit_info"], "selected_rho": 0}}
+        return None
+
+    records = _records(config, integer)
+    result, out, runs, wave2, _, _ = _run("stress", config, records, tmp_path / "int")
+    assert result["selected_rho"]["0.0"] == 16 * 64
+    assert V.arithmetic(config, out, runs, wave2)["mismatches"] == []
+    key = next(k for k in records if k[3] == "causal_icm_selected")
+    records[key] = {**records[key], "fit_info": {**records[key]["fit_info"], "selected_rho": True}}
+    with pytest.raises(A.AnalysisError):
+        A.collect(config, _write(config, records, tmp_path / "bool"), check_source=False)
+
+
+def test_a_failure_only_reference_still_yields_untested_verdicts(configs, tmp_path):
+    config = configs["stress"]
+    records = _records(config, lambda key, row, records: _failed(method_seed=row["method_seed"])
+                       if key[3] == "rct_selected" else None)
+    result, out, runs, wave2, _, _ = _run("stress", config, records, tmp_path)
+    assert result["families"]["gp/causal_icm_selected"]["other_untested"] == 48
+    assert (out / "dose_response.csv").read_text().startswith("dial,level,rct,method,pairs")
+    assert V.arithmetic(config, out, runs, wave2)["mismatches"] == []
+
+
+def test_checker_compares_the_identity_rule_and_handles_underflow(configs, tmp_path):
+    config = configs["stress"]
+
+    def tiny(key, row, records):  # differences whose computed variance underflows to zero
+        sc, seed, m = key[1:]
+        if sc == "stress:noise_shape@l1_r128" and m in ("rct_selected", "causal_icm_selected"):
+            base = 1.0 if m == "rct_selected" else 1.0 + (1e-200 if seed % 2 else 2e-200)
+            return _ok(base, method_seed=row["method_seed"],
+                       **({"fit_info": _info(row["method_seed"], 0.9)} if m == "causal_icm_selected" else {}))
+        return None
+
+    records = _records(config, tiny)
+    _, out, runs, wave2, _, _ = _run("stress", config, records, tmp_path)
+    assert V.arithmetic(config, out, runs, wave2)["mismatches"] == []
+    path = out / "identity_check.json"
+    data = json.loads(path.read_text())
+    path.write_text(json.dumps({**data, "rule": "the block ran on wave 2's data"}))
+    assert V.arithmetic(config, out, runs, wave2)["mismatches"]

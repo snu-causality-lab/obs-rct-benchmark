@@ -55,6 +55,9 @@ EXTRAPOLATION = {"trial_shrink", "target_shift"}
 OBS_ONLY = ("hidden_modifier", "bias_complexity", "common_shift", "obs_selection", "obs_size")
 TOL = 1e-12
 SAME_TOL = 1e-9
+IDENTITY_RULE = ("contrasts pair recipes fitted in the same shard. The block ran on wave 2's data and fits only if "
+                 "the data check passed and all four refitted recipes reproduce wave 2's gp scores within 1e-9 with "
+                 "the same statuses. A selected fit that chose 0.5 must equal causal_icm_fixed exactly")
 
 
 def cell_text(value) -> str:
@@ -125,6 +128,10 @@ def block_of(config) -> str:
     raise SystemExit("seeds match neither declared block")
 
 
+def on_grid(value) -> bool:
+    return not isinstance(value, bool) and isinstance(value, (int, float)) and value in GRID
+
+
 def valid_metrics(row: dict) -> bool:
     m = row.get("metrics")
     if row["status"] == "failed":
@@ -137,30 +144,48 @@ def valid_metrics(row: dict) -> bool:
     return math.isclose(root * root, mse, rel_tol=1e-10, abs_tol=1e-12)
 
 
-def load_records(config, runs: list[Path], job_limit: frozenset = frozenset()) -> tuple[dict, set, list]:
-    """Records keyed (group, scenario, seed, method) for exactly the configuration's
-    requested cells; the cells a declared job-limit run left unrecorded; and problems."""
-    from obs_rct_benchmark.runner import method_seed
+def partition(config) -> dict:
+    """{config hash: shard} for the block's declared shards, rebuilt here from the frozen
+    configuration: core, one shard per seed and preset; stress, one per seed, dial and
+    trial size; scenarios in configuration order."""
+    from dataclasses import replace
 
-    declared = {s.key: dict(s.parameters) for s in config.scenarios}
-    wanted = {(GROUP, sc, seed, m) for sc in declared for seed in config.seeds for m in METHODS}
-    out, unrecorded, seen, problems = {}, set(), set(), []
+    stress = block_of(config) == "stress"
+    groups = defaultdict(list)
+    for s in config.scenarios:
+        groups[(s.id, s.parameters["n_rct_train"]) if stress else (s.kind, s.id)].append(s)
+    out = {}
+    for seed in config.seeds:
+        for scenarios in groups.values():
+            shard = replace(config, scenarios=tuple(scenarios), seeds=(seed,))
+            out[shard.config_hash] = shard
+    return out
+
+
+def load_records(config, runs: list[Path], job_limit: frozenset = frozenset()) -> tuple[dict, set, list]:
+    """Records keyed (group, scenario, seed, method) for exactly the block's declared shards;
+    the cells a declared job-limit run left unrecorded; and problems found."""
+    from obs_rct_benchmark.runner import method_seed, record_id
+
+    shards = partition(config)
+    out, unrecorded, seen, problems, provenance = {}, set(), set(), [], set()
+    if not job_limit <= set(shards):
+        problems.append({"reason": "a declared job-limit shard is not a declared shard"})
     for run in runs:
         manifest = json.loads((run / "run_manifest.json").read_text())
-        payload = manifest["config"]
-        if manifest["config_hash"] in seen:
+        shard = shards.get(manifest.get("config_hash"))
+        if shard is None or manifest.get("config") != shard.payload():
+            problems.append({"run": run.name, "reason": "not a declared shard of the block"})
+            continue
+        if shard.config_hash in seen:
             problems.append({"run": run.name, "reason": "shard given twice"})
-        seen.add(manifest["config_hash"])
-        scen = {f"{s['kind']}:{s['id']}" + (f"@{s['label']}" if s.get("label") else ""): s["parameters"]
-                for s in payload["scenarios"]}
-        if (tuple(payload["run"]["methods"]) != METHODS or payload.get("method_options", {}) != OPTIONS
-                or any(declared.get(k) != v for k, v in scen.items())
-                or not set(payload["run"]["seeds"]) <= set(config.seeds)):
-            problems.append({"run": run.name, "reason": "not a shard of the declared configuration"})
-        requested = {(GROUP, sc, seed, m) for sc in scen for seed in payload["run"]["seeds"] for m in METHODS}
+        seen.add(shard.config_hash)
+        provenance.add(json.dumps({k: manifest.get(k) for k in ("source", "environment", "external_methods")},
+                                  sort_keys=True))
+        requested = {(GROUP, sc.key, seed, m) for sc in shard.scenarios for seed in shard.seeds for m in METHODS}
         path = run / "records.jsonl"
         lines = path.read_text().splitlines() if path.exists() else []
-        limited = manifest["config_hash"] in job_limit
+        limited = shard.config_hash in job_limit
         if limited and lines:
             try:
                 json.loads(lines[-1])
@@ -172,7 +197,8 @@ def load_records(config, runs: list[Path], job_limit: frozenset = frozenset()) -
             key = (GROUP, row["scenario"], int(row["seed"]), row["method"])
             if key in out or key not in requested:
                 problems.append({"run": run.name, "cell": list(key), "reason": "duplicate or unrequested record"})
-            if (row["config_hash"] != manifest["config_hash"] or row["method_seed"] != method_seed(*key[1:])
+            if (row["config_hash"] != shard.config_hash or row["method_seed"] != method_seed(*key[1:])
+                    or row["record_id"] != record_id(shard, *key[1:])
                     or row["status"] not in ("ok", "failed") or not valid_metrics(row)):
                 problems.append({"run": run.name, "cell": list(key), "reason": "record identity, status or metrics"})
             out[key] = row
@@ -181,9 +207,12 @@ def load_records(config, runs: list[Path], job_limit: frozenset = frozenset()) -
             unrecorded |= requested - got
         elif got != requested:
             problems.append({"run": run.name, "reason": f"{len(requested - got)} requested cells lack a record"})
-    if set(out) | unrecorded != wanted or set(out) & unrecorded:
-        problems.append({"reason": "recorded cells differ from the declared cells",
-                         "missing": len(wanted - set(out) - unrecorded), "extra": len(set(out) - wanted)})
+    if seen != set(shards):
+        problems.append({"reason": f"{len(set(shards) - seen)} declared shards are missing"})
+    if not job_limit <= seen:
+        problems.append({"reason": "a declared job-limit shard was not given"})
+    if len(provenance) > 1:
+        problems.append({"reason": "source, environment or external-method provenance differs between shards"})
     for key, row in out.items():
         if key[3] != "causal_icm_selected":
             continue
@@ -192,7 +221,7 @@ def load_records(config, runs: list[Path], job_limit: frozenset = frozenset()) -
             problems.append({"cell": list(key), "reason": "selected and fixed method seeds differ"})
         info = row.get("fit_info") or {}
         if row["status"] == "ok" and (info.get("selector") != SELECTOR or info.get("status") != "completed"
-                                      or info.get("selected_rho") not in GRID or info.get("fold_seed") != row["method_seed"]):
+                                      or not on_grid(info.get("selected_rho")) or info.get("fold_seed") != row["method_seed"]):
             problems.append({"cell": list(key), "reason": "successful selected fit without a completed selection"})
     return out, unrecorded, problems
 
@@ -211,9 +240,9 @@ def paired(d: np.ndarray) -> dict:
     from scipy.special import stdtr, stdtrit
 
     n, mean = len(d), float(np.mean(d))
-    if np.all(d == d[0]):
-        return {"mean": float(d[0]), "mcse": 0.0, "lo": float(d[0]), "hi": float(d[0]), "p": 1.0, "zero": True}
     se = float(np.std(d, ddof=1)) / math.sqrt(n)
+    if np.all(d == d[0]) or se == 0.0:
+        return {"mean": mean, "mcse": 0.0, "lo": mean, "hi": mean, "p": 1.0, "zero": True}
     q = float(stdtrit(n - 1, 0.975))
     return {"mean": mean, "mcse": se, "lo": mean - q * se, "hi": mean + q * se,
             "p": float(2 * stdtr(n - 1, -abs(mean / se))), "zero": False}
@@ -230,9 +259,12 @@ def arithmetic(config, analysis: Path, runs: list[Path], wave2: Path, job_limit:
     records, unrecorded, mismatches = load_records(config, runs, job_limit)
     for key in unrecorded:
         records[key] = {"status": "failed", "metrics": None, "stage": "job_limit", "error_type": "JobLimit"}
+    if set(records) != {(GROUP, sc, seed, m) for sc in scenarios for seed in seeds for m in METHODS}:
+        return {"check": "arithmetic", "block": block, "mismatches": mismatches + [
+            {"reason": "the records do not cover the declared cells; nothing else was recomputed"}]}
     mse = {k: float(r["metrics"]["cate_mse"]) for k, r in records.items() if r["status"] == "ok"}
-    rho = {k: r["fit_info"]["selected_rho"] for k, r in records.items()
-           if k[3] == "causal_icm_selected" and r["status"] == "ok" and (r.get("fit_info") or {}).get("selected_rho") in GRID}
+    rho = {k: float(r["fit_info"]["selected_rho"]) for k, r in records.items()
+           if k[3] == "causal_icm_selected" and r["status"] == "ok" and on_grid((r.get("fit_info") or {}).get("selected_rho"))}
 
     compare_rows("replicate_scores.csv", read_csv(analysis / "replicate_scores.csv", ("group", "scenario", "seed", "method"),
                                                   mismatches),
@@ -276,9 +308,11 @@ def arithmetic(config, analysis: Path, runs: list[Path], wave2: Path, job_limit:
         if (any(got.get(f) != want[f] for f in ("compared", "expected", "status_differs", "exact", "within_1e-9"))
                 or not close(got.get("max_abs_difference"), want["max_abs_difference"])):
             mismatches.append({"identity": f"wave2:{m}", "recomputed": want, "reported": got})
-    for name, want in (("selected_at_0.5_vs_fixed", at_half), (identity_name, rct_only)):
+    for name, want in (("selected_at_0.5_vs_fixed", at_half), (identity_name, rct_only), ("rule", IDENTITY_RULE)):
         if reported_identity.get(name) != want:
             mismatches.append({"identity": name, "recomputed": want, "reported": reported_identity.get(name)})
+    if set(reported_identity) != {"wave2_reproduction", "selected_at_0.5_vs_fixed", identity_name, "rule"}:
+        mismatches.append({"identity": "keys", "reported": sorted(reported_identity)})
 
     # Condition scores, selection diagnostics and (stress) dose-response.
     cond, rho_rows, dose = {}, {}, {}
@@ -452,9 +486,10 @@ def reproduce(config, runs: list[Path], job_limit: frozenset = frozenset()) -> d
                            "repeats": outcomes, "tolerance": TOL, "match": ok})
             if not ok:
                 mismatches.append([s.key, method])
+    # A cell without a record cannot be replayed: the check is then incomplete, which fails it.
     return {"check": "reproduce", "seed": seed, "cases": len(checks), "refits": 2 * len(checks),
-            "unavailable": unavailable, "record_problems": problems, "mismatches": mismatches + problems,
-            "details": checks}
+            "unavailable": unavailable, "record_problems": problems,
+            "mismatches": mismatches + problems + [{"unavailable": u} for u in unavailable], "details": checks}
 
 
 def main() -> None:

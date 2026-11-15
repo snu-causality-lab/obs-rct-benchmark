@@ -25,7 +25,7 @@ from pathlib import Path
 
 from analyze_stress import parse
 from analyze_v1_core import ALPHA, HEAVY_TAIL, TRANSPORT, holm, paired_t, preset
-from analyze_v1_wave2 import IDENTITY_TOL, load_job_limit, write_csv
+from analyze_v1_wave2 import IDENTITY_TOL, load_job_limit
 from make_icm_selected_configs import GROUP, METHODS, shards as declared_shards, validate
 from obs_rct_benchmark.causal_icm import CAUSAL_ICM_RHO_GRID
 from obs_rct_benchmark.stress_dgp import EXTRAPOLATION_DIALS
@@ -41,8 +41,23 @@ OBS_ONLY_DIALS = ("hidden_modifier", "bias_complexity", "common_shift", "obs_sel
 JOB_LIMIT = {"status": "failed", "metrics": None, "stage": "job_limit", "error_type": "JobLimit"}
 
 
+DOSE_FIELDS = ("dial", "level", "rct", "method", "pairs", "ratio_of_means", "geometric_mean_ratio",
+               "gmr_ci95_lower", "gmr_ci95_upper")
+IDENTITY_RULE = ("contrasts pair recipes fitted in the same shard. The block ran on wave 2's data and fits only if "
+                 "the data check passed and all four refitted recipes reproduce wave 2's gp scores within 1e-9 with "
+                 "the same statuses. A selected fit that chose 0.5 must equal causal_icm_fixed exactly")
+
+
 class AnalysisError(ValueError):
     """The inputs do not match the declared addendum; nothing is reported."""
+
+
+def write_csv(path: Path, rows: list[dict], fields: tuple[str, ...] | None = None) -> None:
+    """Rows under their own keys, or under `fields`, which also heads an empty file."""
+    with path.open("w", newline="") as fh:
+        writer = csv.DictWriter(fh, fieldnames=list(fields or rows[0]))
+        writer.writeheader()
+        writer.writerows(rows)
 
 
 def families() -> list[dict]:
@@ -66,8 +81,9 @@ def check_record(cell: tuple, row: dict) -> None:
         raise AnalysisError(f"{cell}: successful metrics are not a finite nonnegative MSE and its root")
     if cell[2] == SELECTED:
         info = row.get("fit_info") or {}
-        if (info.get("selector") != SELECTOR or info.get("status") != "completed"
-                or info.get("selected_rho") not in CAUSAL_ICM_RHO_GRID or info.get("fold_seed") != row["method_seed"]):
+        rho = info.get("selected_rho")
+        if (info.get("selector") != SELECTOR or info.get("status") != "completed" or isinstance(rho, bool)
+                or rho not in CAUSAL_ICM_RHO_GRID or info.get("fold_seed") != row["method_seed"]):
             raise AnalysisError(f"{cell}: a successful selected fit lacks a completed selection on the grid "
                                 "with its own fold seed")
 
@@ -224,10 +240,7 @@ def analyze(block: str, config, records: dict, wave2: dict, output: Path) -> dic
         rct_only[m] = bad
     identity = {"wave2_reproduction": reproduction, "selected_at_0.5_vs_fixed": selected_at_fixed,
                 ("rct_only_obs_size_mismatches" if block == "core" else "rct_only_level_mismatches"): rct_only,
-                "rule": ("contrasts pair recipes fitted in the same shard. The block ran on wave 2's data and fits "
-                         "only if the data check passed and all four refitted recipes reproduce wave 2's gp scores "
-                         "within 1e-9 with the same statuses. A selected fit that chose 0.5 must equal "
-                         "causal_icm_fixed exactly")}
+                "rule": IDENTITY_RULE}
     (output / "identity_check.json").write_text(json.dumps(identity, indent=2) + "\n")
 
     conditions, rho_rows, dose = [], [], []
@@ -271,7 +284,7 @@ def analyze(block: str, config, records: dict, wave2: dict, output: Path) -> dic
     write_csv(output / "condition_scores.csv", conditions)
     write_csv(output / "rho_selection.csv", rho_rows)
     if block == "stress":
-        write_csv(output / "dose_response.csv", dose)
+        write_csv(output / "dose_response.csv", dose, DOSE_FIELDS)
 
     rows_all, summary = [], {}
     for fam in families():

@@ -666,6 +666,15 @@ def test_selection_picks_the_rho_minimizing_weighted_held_out_error(monkeypatch)
     assert all(np.all(q[:, -1] == 0) for q in queries)
 
 
+def test_selection_collects_model_cycles_after_each_native_fit(monkeypatch):
+    calls, queries, collected = [], [], []
+    monkeypatch.setattr(adapter, "_official_icm", lambda: _rho_native(calls, queries))
+    monkeypatch.setattr(adapter.gc, "collect", lambda: collected.append(len(calls)) or 0)
+    adapter.SelectedRhoCausalICM().fit_predict(_selection_training(rct_y=np.full(20, .3)), np.zeros((3, 2)), seed=7)
+    # One collection after each of the 55 selection fits, before the next one starts.
+    assert collected == list(range(1, 56))
+
+
 def _label_native(**kwargs):
     """Arm means that depend on every training array the native call receives."""
     rho = kwargs["rho"]

@@ -1,6 +1,6 @@
 # Addendum: Causal-ICM with the paper's borrowing selection
 
-**Status: draft, not yet fixed; no fit on the study seeds has run.** This addendum to the [v1 core plan](V1_CORE_STUDY.md) and [stress study 1](V1_STRESS_CORNET.md) fixes the recipe, contrasts and resources for `causal_icm_selected` before any of its fits on the study seeds. The freeze is the commit that fills in [Recorded before launch](#recorded-before-launch); earlier commits carry drafts. The job record holds the freeze commit's hash before the first fit.
+**Status: draft, not yet fixed; the main run has not started.** This addendum to the [v1 core plan](V1_CORE_STUDY.md) and [stress study 1](V1_STRESS_CORNET.md) fixes the recipe, contrasts and resources for `causal_icm_selected` before its main run. One development check already fitted the recipe at seed 70000 in four core conditions; it is disclosed [below](#what-this-addendum-will-not-show). The freeze is the commit that fills in [Recorded before launch](#recorded-before-launch); earlier commits carry drafts. The job record holds the freeze commit's hash before the main run's first fit.
 
 [Wave 2](V1_CORE_WAVE2.md) and the [stress addendum](V1_STRESS_WAVE2.md) ran Causal-ICM with ρ fixed at 0.5. The paper chooses ρ from data (Dimitriou et al., CLeaR 2026, Section 3.4.2). Version 0.3.0a8 adds that procedure as `causal_icm_selected` ([V03_ADAPTERS](V03_ADAPTERS.md)). This addendum runs it wherever `causal_icm_fixed` ran.
 
@@ -96,8 +96,8 @@ Every contrast is a paired t-test over 64 seeds. Each block has three families, 
    - core block: OBS 512 · RCT 128 in all 31 presets;
    - stress block: RCT 128 at levels 0 and 3 of every dial.
 
-   A failure is reported and investigated; no recorded score is replaced.
-4. **Independent arithmetic.** A [separate script](../scripts/verify_icm_selected.py) imports no analysis script. It rebuilds each block's requested cells from the frozen configuration and authenticates the records itself. It then recomputes every field of every file the [analyzer](../scripts/analyze_icm_selected.py) writes and compares them:
+   A cell without a record, such as an unrecorded `JobLimit` cell, cannot be refitted against it; the check then fails as incomplete. A failure is reported and investigated; no recorded score is replaced.
+4. **Independent arithmetic.** A [separate script](../scripts/verify_icm_selected.py) imports no analysis script. It rebuilds each block's shards from the frozen configuration and authenticates the runs itself: shard hashes, record IDs, method seeds, metrics, selections and shared provenance. It then recomputes every field of every file the [analyzer](../scripts/analyze_icm_selected.py) writes and compares them:
    - per-seed scores, condition means, selection diagnostics and dose-response;
    - every contrast with its pairing, interval, p-value, Holm adjustment and verdict;
    - the readout, the identities, the counts, and the whole headline text.
