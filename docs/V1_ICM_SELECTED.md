@@ -142,4 +142,4 @@ To be filled in from its preflight (job 834236, seed 79999, 16 shards on `effea1
 
 ## Revisions and errata
 
-None yet.
+- **Analysis job scripts (2026-11-16, during the core main run, before any analysis).** The recorded `analyze.sbatch` passed `--block` to the checker's arithmetic step, which the frozen checker does not accept; it would have stopped there with a usage error. It now passes `--config`, as the checker requires (`analyze.sbatch` `6d024c224c621c197f57b82b3c5d2b46d5e3e767b7d23c0caafc70ddfdf59c4e`). `reproduce.sbatch` now also passes a block's job-limit list when one exists, as `analyze.sbatch` already did (`0022c70fe82055dfca325609931824a4ecf7fd99bca3e25b45bc791ba0f5fad3`). The recorded versions are kept beside them. No analysis or checking code changed.
