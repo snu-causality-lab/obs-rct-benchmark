@@ -850,6 +850,16 @@ def test_selected_recipe_rejects_bad_inputs_before_native_loading(monkeypatch):
             replace(training, obs_train=one_arm), np.zeros((3, 2)), seed=0)
 
 
+def test_selected_recipe_shares_the_fixed_recipe_seed():
+    from obs_rct_benchmark.runner import method_seed
+
+    for seed in (70000, 70063):
+        assert (method_seed("structural:M0@o512_r128", seed, "causal_icm_selected")
+                == method_seed("structural:M0@o512_r128", seed, "causal_icm_fixed"))
+    assert (method_seed("structural:M0", 70000, "causal_icm_selected")
+            != method_seed("structural:M0", 70000, "causal_icm_rct_only"))
+
+
 def test_participation_weights_are_inverse_default_logistic_probabilities():
     from sklearn.linear_model import LogisticRegression
 

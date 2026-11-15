@@ -565,8 +565,8 @@ class SelectedRhoCausalICM:
     arm's trial-task mean (see ``_select_rho`` and ``_participation_weights``).
     One rho serves both arms. Folds come from ``KFold(5, shuffle=True)`` seeded
     by the fit's seed. The final fit is ``OfficialCausalICM`` at the selected
-    rho on all rows with the same seed, so a fit that selects 0.5 reproduces
-    ``causal_icm_fixed`` exactly. Every observed covariate enters both the
+    rho on all rows with the same seed. The runner gives both recipes the same
+    method seed, so a fit that selects 0.5 reproduces ``causal_icm_fixed`` exactly. Every observed covariate enters both the
     model and the participation weights; tuning and reference rows are ignored.
     """
 

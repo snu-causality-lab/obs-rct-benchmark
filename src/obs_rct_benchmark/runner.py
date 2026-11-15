@@ -270,9 +270,10 @@ def _generate(scenario: ScenarioConfig, seed: int) -> Any:
     return generate_structural_problem(cfg, seed)
 
 
-# Recipes that differ from another only in a declared input transformation share
-# its random stream, so a paired difference isolates that transformation.
-SHARED_SEED_LABELS = {"cornet_raw": "cornet_official"}
+# Recipes that differ from another only in a declared input transformation, or
+# only in choosing a parameter the other fixes, share its random stream, so a
+# paired difference isolates that one change.
+SHARED_SEED_LABELS = {"cornet_raw": "cornet_official", "causal_icm_selected": "causal_icm_fixed"}
 
 
 def method_seed(scenario: str, seed: int, method: str) -> int:
