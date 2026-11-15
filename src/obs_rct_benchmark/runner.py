@@ -467,10 +467,17 @@ def _validate_resume_records(config: BenchmarkConfig, records: list[dict[str, An
 
 
 def source_provenance() -> dict[str, Any]:
+    """Identity of the imported package: its own version and the hash of each file.
+
+    The version comes from the imported code, not from installed distribution metadata,
+    which can belong to a different install when the code is loaded from PYTHONPATH.
+    `environment_provenance` records what is installed."""
+    from . import __version__
+
     package = Path(__file__).parent
     files = {path.name: hashlib.sha256(path.read_bytes()).hexdigest()
              for path in sorted(package.glob("*.py"))}
-    return {"distribution": "obs-rct-benchmark", "version": _version("obs-rct-benchmark"),
+    return {"distribution": "obs-rct-benchmark", "version": __version__,
             "package_file_sha256": files, "aggregate_sha256": _hash(files)}
 
 

@@ -128,6 +128,16 @@ def test_resume_rejects_duplicate_partial_records_changed_config_and_source(tmp_
         run_benchmark(config(), output, resume=True)
 
 
+def test_source_version_is_the_imported_code_version(monkeypatch):
+    import obs_rct_benchmark
+
+    # Installed metadata from another install must not leak into the source identity.
+    monkeypatch.setattr(runner, "_version", lambda name: "0.0.0-stale-install")
+    source = runner.source_provenance()
+    assert source["version"] == obs_rct_benchmark.__version__
+    assert source["aggregate_sha256"] == runner._hash(source["package_file_sha256"])
+
+
 def test_external_source_change_is_bound_to_resume_identity(tmp_path, monkeypatch):
     monkeypatch.setattr(runner, "make_method", lambda *a, **kw: SpyMethod())
     snapshot = {"datafusionppi": {"availability": "installed",
