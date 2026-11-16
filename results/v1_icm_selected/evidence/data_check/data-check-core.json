@@ -1,0 +1,38 @@
+{
+  "reference": "data-gp.npz",
+  "tolerance": 1e-12,
+  "environments": {
+    "data-core.npz": {
+      "same_data": true,
+      "roles": {
+        "eval": {
+          "arrays": 248,
+          "exact": 248,
+          "max_abs_difference": 0.0
+        },
+        "obs_train": {
+          "arrays": 372,
+          "exact": 372,
+          "max_abs_difference": 0.0
+        },
+        "rct_test": {
+          "arrays": 496,
+          "exact": 496,
+          "max_abs_difference": 0.0
+        },
+        "rct_train": {
+          "arrays": 496,
+          "exact": 496,
+          "max_abs_difference": 0.0
+        },
+        "rct_tune": {
+          "arrays": 496,
+          "exact": 496,
+          "max_abs_difference": 0.0
+        }
+      },
+      "problems": []
+    }
+  },
+  "all_same": true
+}

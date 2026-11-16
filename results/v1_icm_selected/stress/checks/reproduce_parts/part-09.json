@@ -1,0 +1,99 @@
+{
+  "scenario": "stress:trial_shrink@l3_r128",
+  "result": {
+    "check": "reproduce",
+    "seed": 80000,
+    "cases": 5,
+    "refits": 10,
+    "unavailable": [],
+    "record_problems": [],
+    "mismatches": [],
+    "details": [
+      {
+        "scenario": "stress:trial_shrink@l3_r128",
+        "method": "rct_selected",
+        "recorded_status": "ok",
+        "repeats": [
+          {
+            "status": "ok",
+            "mse": 0.15449251085302895
+          },
+          {
+            "status": "ok",
+            "mse": 0.15449251085302895
+          }
+        ],
+        "tolerance": 1e-12,
+        "match": true
+      },
+      {
+        "scenario": "stress:trial_shrink@l3_r128",
+        "method": "rct_t_ridge",
+        "recorded_status": "ok",
+        "repeats": [
+          {
+            "status": "ok",
+            "mse": 1.0022900735324378
+          },
+          {
+            "status": "ok",
+            "mse": 1.0022900735324378
+          }
+        ],
+        "tolerance": 1e-12,
+        "match": true
+      },
+      {
+        "scenario": "stress:trial_shrink@l3_r128",
+        "method": "causal_icm_fixed",
+        "recorded_status": "ok",
+        "repeats": [
+          {
+            "status": "ok",
+            "mse": 0.3111038087333169
+          },
+          {
+            "status": "ok",
+            "mse": 0.3111038087333169
+          }
+        ],
+        "tolerance": 1e-12,
+        "match": true
+      },
+      {
+        "scenario": "stress:trial_shrink@l3_r128",
+        "method": "causal_icm_rct_only",
+        "recorded_status": "ok",
+        "repeats": [
+          {
+            "status": "ok",
+            "mse": 0.4849199718898526
+          },
+          {
+            "status": "ok",
+            "mse": 0.4849199718898526
+          }
+        ],
+        "tolerance": 1e-12,
+        "match": true
+      },
+      {
+        "scenario": "stress:trial_shrink@l3_r128",
+        "method": "causal_icm_selected",
+        "recorded_status": "ok",
+        "repeats": [
+          {
+            "status": "ok",
+            "mse": 0.37383811813489964
+          },
+          {
+            "status": "ok",
+            "mse": 0.37383811813489964
+          }
+        ],
+        "tolerance": 1e-12,
+        "match": true
+      }
+    ]
+  }
+}

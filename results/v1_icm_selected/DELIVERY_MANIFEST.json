@@ -1,0 +1,89 @@
+{
+  "study": "docs/V1_ICM_SELECTED.md",
+  "gsds_run": "/shared/s2/lab05/sanghack/work/obsrct-causal-icm-selected-20261115-r01",
+  "environment": "Wave 2's gp environment, reused read-only (Python 3.11, GPy 1.13.2, scikit-learn 1.5.2, numpy 1.26.4, the authors' Causal-ICM code at 0f0c6ca; package list in evidence/environments/gp-python.txt, copied from the wave-2 packet). Code ran from each block's freeze snapshot on PYTHONPATH.",
+  "jobs": {
+    "data_check": 834151,
+    "core": {
+      "write_shards": 834496,
+      "main_arrays": [
+        834497,
+        834498
+      ],
+      "job_limit_rerun": 837388,
+      "analysis": {
+        "r01_void": 838098,
+        "r02_final": 838129
+      },
+      "reproduce": 838099
+    },
+    "stress": {
+      "write_shards": 838184,
+      "main_arrays": {
+        "obs_size": 838185,
+        "other": 838186
+      },
+      "job_limit_rerun": 842196,
+      "analysis": 845339,
+      "reproduce_parts": 845340,
+      "reproduce_merge": 845341
+    },
+    "reproduce_part_smoke_core": 838197
+  },
+  "errata": [
+    "2026-11-16 analysis job scripts: analyze.sbatch passes --config to the checker's arithmetic step; reproduce.sbatch passes a block's job-limit list (recorded versions kept as *.frozen-<hash>)",
+    "2026-11-16 wave-2 path: the first core analysis (838098) read no wave-2 scores and is void (core/void_r01/); analyze.sbatch acc4903d fixes the variable",
+    "2026-11-16 stress reproducibility check in parts: evidence/jobs/reproduce_part.py runs the frozen check one condition per job and merges",
+    "2026-11-17 two stress shards past the time limit: shards 923 and 938 wrote every record and their status file before the scheduler ended them, so they stand under the frozen rerun rule"
+  ],
+  "notes": [
+    "Stress main run: 16 obs_size tasks of array 838185, all on node b07, ended in the scheduler state TIMEOUT. Fourteen had no status file and were rerun once (842196, 12 h). Two (shards 923 and 938, tasks 115 and 116) wrote every record and their status file at 12 h 1 min and 12 h 4 min of driver time, before the scheduler ended the job at 12 h 22 min; the frozen rerun script (joblimit_reruns.py 9683cc73) counts a shard with a status file as finished, so they were not rerun and their records stand."
+  ],
+  "blocks": {
+    "core": {
+      "freeze_commit": "7758408a53ce3161be2c2c130f773243e15d4a7c",
+      "code_archive": {
+        "file": "code/7758408.tar (git archive of the freeze commit)",
+        "sha256": "71c60c7f40557a87001fdefc1b67ffab97ac1712d086bb8c8308771cf15e967c"
+      },
+      "analysis_tag": "r02",
+      "files_sha256_as_exported": {
+        "analysis.json": "85ecc81df45f9574ab6fb86e937a1279a79fb87366757a50cb4555bbf88d8cbf",
+        "condition_scores.csv": "a8215c253ba9dc10e4e02b962f13289de7f7c82bf77f42d0cf477a791ecca9f3",
+        "contrasts.csv": "3593357f049ffd6936e52f48dedf5133d49640df2e0b6b186a9dcd57819023c4",
+        "headline.md": "e0e45366c5e4a2767f5ab7d6ef47c5e281a5bb4a81c2b69c651ef94f10f9819f",
+        "identity_check.json": "4450e8a017000974ae24d83787beab85d8971bdccb0ba7e50542dbc0e4fa5756",
+        "rho_selection.csv": "bd989eea2d79a0d2471a1dbdda18503f1fb7b86901343c458aea14c4d65be5b6",
+        "replicate_scores.csv": "7817db3dac4315db34be5f14ba4534a29f5e12b0b5d4b54030f70d43383be988"
+      },
+      "void_r01_files_sha256_as_exported": {
+        "analysis.json": "85ecc81df45f9574ab6fb86e937a1279a79fb87366757a50cb4555bbf88d8cbf",
+        "condition_scores.csv": "a8215c253ba9dc10e4e02b962f13289de7f7c82bf77f42d0cf477a791ecca9f3",
+        "contrasts.csv": "3593357f049ffd6936e52f48dedf5133d49640df2e0b6b186a9dcd57819023c4",
+        "headline.md": "86004bca8327e09fa0c37dc878f96b87007c05b523f4646ec7f233d39e78282b",
+        "identity_check.json": "ec19c18fe36aaba2914ff6442d6b2d229128d4ccecd39b192fba3494ef8b668b",
+        "replicate_scores.csv": "7817db3dac4315db34be5f14ba4534a29f5e12b0b5d4b54030f70d43383be988",
+        "rho_selection.csv": "bd989eea2d79a0d2471a1dbdda18503f1fb7b86901343c458aea14c4d65be5b6"
+      }
+    },
+    "stress": {
+      "freeze_commit": "5e488665ab1bff79a781a22d088d7793629c77de",
+      "code_archive": {
+        "file": "code/5e48866.tar (git archive of the freeze commit)",
+        "sha256": "2a5893d02cc670ac454876aff8094853dfa5c28278a33f4b07f20b05d05d73cd"
+      },
+      "analysis_tag": "r01",
+      "files_sha256_as_exported": {
+        "analysis.json": "06ba76aed84c32f5724f701814150bc6a647d59387c37f88b69cbcbfa9999f90",
+        "condition_scores.csv": "e2b1186a257f6ce6d5d0a1e499b1af2b908d42cddf8cbafa795aee121c3e1c0f",
+        "contrasts.csv": "2c66fb9b1ce75fba0364c4ea63e6898cc258899a9b38d300c58331e16ddef5e2",
+        "dose_response.csv": "52a1df51e63c2b94513429dad5da22800356b5cc476bfa8e0ddf77707b9908ab",
+        "headline.md": "4f766ff232d33f284e126e9ea088da526cd4061555a444e3d983a57744039f1a",
+        "identity_check.json": "1d37a6330779a08529d3a9d307d902c5c61801dad6284c6cbd63c7d1f123e6df",
+        "readout.csv": "d0c2064a4201234e0149c58fc7770e21ff9e0c86530f3c9cc73bb5f811332202",
+        "rho_selection.csv": "ba19b9fbc75c515400099cc33ea1b742102938068eea9ae201fbbeec11b23235",
+        "replicate_scores.csv": "af54a0fde6f8c2bc120aecb1adb3278bf75d1fa2de1fab8b451e1eb4b8c86f0e"
+      }
+    }
+  }
+}

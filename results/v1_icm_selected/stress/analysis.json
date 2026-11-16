@@ -1,0 +1,60 @@
+{
+  "protocol": "docs/V1_ICM_SELECTED.md",
+  "block": "stress",
+  "requested": 20480,
+  "coverage": {
+    "ok": 20480
+  },
+  "failures": [],
+  "families": {
+    "gp/causal_icm_selected": {
+      "kind": "primary",
+      "size": 64,
+      "other_better": 25,
+      "other_worse": 4,
+      "other_unresolved": 19,
+      "other_untested": 0,
+      "extrapolation_better": 7,
+      "extrapolation_worse": 0,
+      "extrapolation_unresolved": 9,
+      "extrapolation_untested": 0
+    },
+    "gp/causal_icm_selected vs causal_icm_rct_only": {
+      "kind": "matched_obs",
+      "size": 64,
+      "other_better": 43,
+      "other_worse": 0,
+      "other_unresolved": 5,
+      "other_untested": 0,
+      "extrapolation_better": 14,
+      "extrapolation_worse": 0,
+      "extrapolation_unresolved": 2,
+      "extrapolation_untested": 0
+    },
+    "gp/causal_icm_selected vs causal_icm_fixed": {
+      "kind": "selection",
+      "size": 64,
+      "other_better": 30,
+      "other_worse": 1,
+      "other_unresolved": 17,
+      "other_untested": 0,
+      "extrapolation_better": 5,
+      "extrapolation_worse": 1,
+      "extrapolation_unresolved": 10,
+      "extrapolation_untested": 0
+    }
+  },
+  "selected_rho": {
+    "0.0": 11,
+    "0.1": 1,
+    "0.2": 3,
+    "0.3": 9,
+    "0.4": 9,
+    "0.5": 17,
+    "0.6": 38,
+    "0.7": 70,
+    "0.8": 161,
+    "0.9": 2162,
+    "1.0": 1615
+  }
+}

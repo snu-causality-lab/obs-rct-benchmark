@@ -1,0 +1,1372 @@
+{
+  "check": "reproduce",
+  "seed": 80000,
+  "cases": 80,
+  "refits": 160,
+  "unavailable": [],
+  "record_problems": [],
+  "mismatches": [],
+  "details": [
+    {
+      "scenario": "stress:hidden_modifier@l0_r128",
+      "method": "rct_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.17255916219598547
+        },
+        {
+          "status": "ok",
+          "mse": 0.17255916219598547
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:hidden_modifier@l0_r128",
+      "method": "rct_t_ridge",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.18491474913760525
+        },
+        {
+          "status": "ok",
+          "mse": 0.18491474913760525
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:hidden_modifier@l0_r128",
+      "method": "causal_icm_fixed",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.10908767438632441
+        },
+        {
+          "status": "ok",
+          "mse": 0.10908767438632441
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:hidden_modifier@l0_r128",
+      "method": "causal_icm_rct_only",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.4205567890710392
+        },
+        {
+          "status": "ok",
+          "mse": 0.4205567890710392
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:hidden_modifier@l0_r128",
+      "method": "causal_icm_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.059660054413212545
+        },
+        {
+          "status": "ok",
+          "mse": 0.059660054413212545
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:hidden_modifier@l3_r128",
+      "method": "rct_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.17255916219598547
+        },
+        {
+          "status": "ok",
+          "mse": 0.17255916219598547
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:hidden_modifier@l3_r128",
+      "method": "rct_t_ridge",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.18491474913760525
+        },
+        {
+          "status": "ok",
+          "mse": 0.18491474913760525
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:hidden_modifier@l3_r128",
+      "method": "causal_icm_fixed",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.12883635830431972
+        },
+        {
+          "status": "ok",
+          "mse": 0.12883635830431972
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:hidden_modifier@l3_r128",
+      "method": "causal_icm_rct_only",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.4205567890710392
+        },
+        {
+          "status": "ok",
+          "mse": 0.4205567890710392
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:hidden_modifier@l3_r128",
+      "method": "causal_icm_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.1201037036451697
+        },
+        {
+          "status": "ok",
+          "mse": 0.1201037036451697
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:bias_complexity@l0_r128",
+      "method": "rct_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.18491474913760525
+        },
+        {
+          "status": "ok",
+          "mse": 0.18491474913760525
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:bias_complexity@l0_r128",
+      "method": "rct_t_ridge",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.18491474913760525
+        },
+        {
+          "status": "ok",
+          "mse": 0.18491474913760525
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:bias_complexity@l0_r128",
+      "method": "causal_icm_fixed",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.1808262535949896
+        },
+        {
+          "status": "ok",
+          "mse": 0.1808262535949896
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:bias_complexity@l0_r128",
+      "method": "causal_icm_rct_only",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.4205567890710392
+        },
+        {
+          "status": "ok",
+          "mse": 0.4205567890710392
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:bias_complexity@l0_r128",
+      "method": "causal_icm_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.5114596073730908
+        },
+        {
+          "status": "ok",
+          "mse": 0.5114596073730908
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:bias_complexity@l3_r128",
+      "method": "rct_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.18491474913760525
+        },
+        {
+          "status": "ok",
+          "mse": 0.18491474913760525
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:bias_complexity@l3_r128",
+      "method": "rct_t_ridge",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.18491474913760525
+        },
+        {
+          "status": "ok",
+          "mse": 0.18491474913760525
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:bias_complexity@l3_r128",
+      "method": "causal_icm_fixed",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.1233516801199468
+        },
+        {
+          "status": "ok",
+          "mse": 0.1233516801199468
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:bias_complexity@l3_r128",
+      "method": "causal_icm_rct_only",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.4205567890710392
+        },
+        {
+          "status": "ok",
+          "mse": 0.4205567890710392
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:bias_complexity@l3_r128",
+      "method": "causal_icm_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.06628392070141706
+        },
+        {
+          "status": "ok",
+          "mse": 0.06628392070141706
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:common_shift@l0_r128",
+      "method": "rct_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.18491474913760525
+        },
+        {
+          "status": "ok",
+          "mse": 0.18491474913760525
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:common_shift@l0_r128",
+      "method": "rct_t_ridge",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.18491474913760525
+        },
+        {
+          "status": "ok",
+          "mse": 0.18491474913760525
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:common_shift@l0_r128",
+      "method": "causal_icm_fixed",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.12429686088021354
+        },
+        {
+          "status": "ok",
+          "mse": 0.12429686088021354
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:common_shift@l0_r128",
+      "method": "causal_icm_rct_only",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.4205567890710392
+        },
+        {
+          "status": "ok",
+          "mse": 0.4205567890710392
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:common_shift@l0_r128",
+      "method": "causal_icm_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.08545465309052132
+        },
+        {
+          "status": "ok",
+          "mse": 0.08545465309052132
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:common_shift@l3_r128",
+      "method": "rct_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.18491474913760525
+        },
+        {
+          "status": "ok",
+          "mse": 0.18491474913760525
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:common_shift@l3_r128",
+      "method": "rct_t_ridge",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.18491474913760525
+        },
+        {
+          "status": "ok",
+          "mse": 0.18491474913760525
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:common_shift@l3_r128",
+      "method": "causal_icm_fixed",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.12017697525516961
+        },
+        {
+          "status": "ok",
+          "mse": 0.12017697525516961
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:common_shift@l3_r128",
+      "method": "causal_icm_rct_only",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.4205567890710392
+        },
+        {
+          "status": "ok",
+          "mse": 0.4205567890710392
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:common_shift@l3_r128",
+      "method": "causal_icm_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.06938299392276964
+        },
+        {
+          "status": "ok",
+          "mse": 0.06938299392276964
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:obs_selection@l0_r128",
+      "method": "rct_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.18462624004981992
+        },
+        {
+          "status": "ok",
+          "mse": 0.18462624004981992
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:obs_selection@l0_r128",
+      "method": "rct_t_ridge",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.18491474913760525
+        },
+        {
+          "status": "ok",
+          "mse": 0.18491474913760525
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:obs_selection@l0_r128",
+      "method": "causal_icm_fixed",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.12763423756136988
+        },
+        {
+          "status": "ok",
+          "mse": 0.12763423756136988
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:obs_selection@l0_r128",
+      "method": "causal_icm_rct_only",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.4205567890710392
+        },
+        {
+          "status": "ok",
+          "mse": 0.4205567890710392
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:obs_selection@l0_r128",
+      "method": "causal_icm_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.06794874433515667
+        },
+        {
+          "status": "ok",
+          "mse": 0.06794874433515667
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:obs_selection@l3_r128",
+      "method": "rct_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.18462624004981992
+        },
+        {
+          "status": "ok",
+          "mse": 0.18462624004981992
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:obs_selection@l3_r128",
+      "method": "rct_t_ridge",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.18491474913760525
+        },
+        {
+          "status": "ok",
+          "mse": 0.18491474913760525
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:obs_selection@l3_r128",
+      "method": "causal_icm_fixed",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.13828323117834096
+        },
+        {
+          "status": "ok",
+          "mse": 0.13828323117834096
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:obs_selection@l3_r128",
+      "method": "causal_icm_rct_only",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.4205567890710392
+        },
+        {
+          "status": "ok",
+          "mse": 0.4205567890710392
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:obs_selection@l3_r128",
+      "method": "causal_icm_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.07729188454110561
+        },
+        {
+          "status": "ok",
+          "mse": 0.07729188454110561
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:trial_shrink@l0_r128",
+      "method": "rct_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.18491474913760525
+        },
+        {
+          "status": "ok",
+          "mse": 0.18491474913760525
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:trial_shrink@l0_r128",
+      "method": "rct_t_ridge",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.18491474913760525
+        },
+        {
+          "status": "ok",
+          "mse": 0.18491474913760525
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:trial_shrink@l0_r128",
+      "method": "causal_icm_fixed",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.14894726006392872
+        },
+        {
+          "status": "ok",
+          "mse": 0.14894726006392872
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:trial_shrink@l0_r128",
+      "method": "causal_icm_rct_only",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.4205567890710392
+        },
+        {
+          "status": "ok",
+          "mse": 0.4205567890710392
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:trial_shrink@l0_r128",
+      "method": "causal_icm_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.1513089894891382
+        },
+        {
+          "status": "ok",
+          "mse": 0.1513089894891382
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:trial_shrink@l3_r128",
+      "method": "rct_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.15449251085302895
+        },
+        {
+          "status": "ok",
+          "mse": 0.15449251085302895
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:trial_shrink@l3_r128",
+      "method": "rct_t_ridge",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 1.0022900735324378
+        },
+        {
+          "status": "ok",
+          "mse": 1.0022900735324378
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:trial_shrink@l3_r128",
+      "method": "causal_icm_fixed",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.3111038087333169
+        },
+        {
+          "status": "ok",
+          "mse": 0.3111038087333169
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:trial_shrink@l3_r128",
+      "method": "causal_icm_rct_only",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.4849199718898526
+        },
+        {
+          "status": "ok",
+          "mse": 0.4849199718898526
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:trial_shrink@l3_r128",
+      "method": "causal_icm_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.37383811813489964
+        },
+        {
+          "status": "ok",
+          "mse": 0.37383811813489964
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:obs_size@l0_r128",
+      "method": "rct_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.18734113359697135
+        },
+        {
+          "status": "ok",
+          "mse": 0.18734113359697135
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:obs_size@l0_r128",
+      "method": "rct_t_ridge",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.18491474913760525
+        },
+        {
+          "status": "ok",
+          "mse": 0.18491474913760525
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:obs_size@l0_r128",
+      "method": "causal_icm_fixed",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.18067908701464605
+        },
+        {
+          "status": "ok",
+          "mse": 0.18067908701464605
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:obs_size@l0_r128",
+      "method": "causal_icm_rct_only",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.4205567890710392
+        },
+        {
+          "status": "ok",
+          "mse": 0.4205567890710392
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:obs_size@l0_r128",
+      "method": "causal_icm_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.21121152052519437
+        },
+        {
+          "status": "ok",
+          "mse": 0.21121152052519437
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:obs_size@l3_r128",
+      "method": "rct_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.18734113359697135
+        },
+        {
+          "status": "ok",
+          "mse": 0.18734113359697135
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:obs_size@l3_r128",
+      "method": "rct_t_ridge",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.18491474913760525
+        },
+        {
+          "status": "ok",
+          "mse": 0.18491474913760525
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:obs_size@l3_r128",
+      "method": "causal_icm_fixed",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.1871636923977792
+        },
+        {
+          "status": "ok",
+          "mse": 0.1871636923977792
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:obs_size@l3_r128",
+      "method": "causal_icm_rct_only",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.4205567890710392
+        },
+        {
+          "status": "ok",
+          "mse": 0.4205567890710392
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:obs_size@l3_r128",
+      "method": "causal_icm_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.16800107538175785
+        },
+        {
+          "status": "ok",
+          "mse": 0.16800107538175785
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:target_shift@l0_r128",
+      "method": "rct_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.18491474913760525
+        },
+        {
+          "status": "ok",
+          "mse": 0.18491474913760525
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:target_shift@l0_r128",
+      "method": "rct_t_ridge",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.18491474913760525
+        },
+        {
+          "status": "ok",
+          "mse": 0.18491474913760525
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:target_shift@l0_r128",
+      "method": "causal_icm_fixed",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.14894726006392872
+        },
+        {
+          "status": "ok",
+          "mse": 0.14894726006392872
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:target_shift@l0_r128",
+      "method": "causal_icm_rct_only",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.4205567890710392
+        },
+        {
+          "status": "ok",
+          "mse": 0.4205567890710392
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:target_shift@l0_r128",
+      "method": "causal_icm_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.34789500227149817
+        },
+        {
+          "status": "ok",
+          "mse": 0.34789500227149817
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:target_shift@l3_r128",
+      "method": "rct_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.6411995912150676
+        },
+        {
+          "status": "ok",
+          "mse": 0.6411995912150676
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:target_shift@l3_r128",
+      "method": "rct_t_ridge",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.6411995912150676
+        },
+        {
+          "status": "ok",
+          "mse": 0.6411995912150676
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:target_shift@l3_r128",
+      "method": "causal_icm_fixed",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.5855461323938951
+        },
+        {
+          "status": "ok",
+          "mse": 0.5855461323938951
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:target_shift@l3_r128",
+      "method": "causal_icm_rct_only",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 1.4230172573485371
+        },
+        {
+          "status": "ok",
+          "mse": 1.4230172573485371
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:target_shift@l3_r128",
+      "method": "causal_icm_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 1.710418308029249
+        },
+        {
+          "status": "ok",
+          "mse": 1.710418308029249
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:noise_shape@l0_r128",
+      "method": "rct_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.18491474913760525
+        },
+        {
+          "status": "ok",
+          "mse": 0.18491474913760525
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:noise_shape@l0_r128",
+      "method": "rct_t_ridge",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.18491474913760525
+        },
+        {
+          "status": "ok",
+          "mse": 0.18491474913760525
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:noise_shape@l0_r128",
+      "method": "causal_icm_fixed",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.14894726006392872
+        },
+        {
+          "status": "ok",
+          "mse": 0.14894726006392872
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:noise_shape@l0_r128",
+      "method": "causal_icm_rct_only",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.4205567890710392
+        },
+        {
+          "status": "ok",
+          "mse": 0.4205567890710392
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:noise_shape@l0_r128",
+      "method": "causal_icm_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.1513089894891382
+        },
+        {
+          "status": "ok",
+          "mse": 0.1513089894891382
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:noise_shape@l3_r128",
+      "method": "rct_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.2019913582698235
+        },
+        {
+          "status": "ok",
+          "mse": 0.2019913582698235
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:noise_shape@l3_r128",
+      "method": "rct_t_ridge",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.2019913582698235
+        },
+        {
+          "status": "ok",
+          "mse": 0.2019913582698235
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:noise_shape@l3_r128",
+      "method": "causal_icm_fixed",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.1930419066628512
+        },
+        {
+          "status": "ok",
+          "mse": 0.1930419066628512
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:noise_shape@l3_r128",
+      "method": "causal_icm_rct_only",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.46938390913495776
+        },
+        {
+          "status": "ok",
+          "mse": 0.46938390913495776
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "stress:noise_shape@l3_r128",
+      "method": "causal_icm_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.21278012518335998
+        },
+        {
+          "status": "ok",
+          "mse": 0.21278012518335998
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    }
+  ],
+  "parts": 16
+}

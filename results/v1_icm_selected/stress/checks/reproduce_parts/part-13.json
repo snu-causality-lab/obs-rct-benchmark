@@ -1,0 +1,99 @@
+{
+  "scenario": "stress:target_shift@l3_r128",
+  "result": {
+    "check": "reproduce",
+    "seed": 80000,
+    "cases": 5,
+    "refits": 10,
+    "unavailable": [],
+    "record_problems": [],
+    "mismatches": [],
+    "details": [
+      {
+        "scenario": "stress:target_shift@l3_r128",
+        "method": "rct_selected",
+        "recorded_status": "ok",
+        "repeats": [
+          {
+            "status": "ok",
+            "mse": 0.6411995912150676
+          },
+          {
+            "status": "ok",
+            "mse": 0.6411995912150676
+          }
+        ],
+        "tolerance": 1e-12,
+        "match": true
+      },
+      {
+        "scenario": "stress:target_shift@l3_r128",
+        "method": "rct_t_ridge",
+        "recorded_status": "ok",
+        "repeats": [
+          {
+            "status": "ok",
+            "mse": 0.6411995912150676
+          },
+          {
+            "status": "ok",
+            "mse": 0.6411995912150676
+          }
+        ],
+        "tolerance": 1e-12,
+        "match": true
+      },
+      {
+        "scenario": "stress:target_shift@l3_r128",
+        "method": "causal_icm_fixed",
+        "recorded_status": "ok",
+        "repeats": [
+          {
+            "status": "ok",
+            "mse": 0.5855461323938951
+          },
+          {
+            "status": "ok",
+            "mse": 0.5855461323938951
+          }
+        ],
+        "tolerance": 1e-12,
+        "match": true
+      },
+      {
+        "scenario": "stress:target_shift@l3_r128",
+        "method": "causal_icm_rct_only",
+        "recorded_status": "ok",
+        "repeats": [
+          {
+            "status": "ok",
+            "mse": 1.4230172573485371
+          },
+          {
+            "status": "ok",
+            "mse": 1.4230172573485371
+          }
+        ],
+        "tolerance": 1e-12,
+        "match": true
+      },
+      {
+        "scenario": "stress:target_shift@l3_r128",
+        "method": "causal_icm_selected",
+        "recorded_status": "ok",
+        "repeats": [
+          {
+            "status": "ok",
+            "mse": 1.710418308029249
+          },
+          {
+            "status": "ok",
+            "mse": 1.710418308029249
+          }
+        ],
+        "tolerance": 1e-12,
+        "match": true
+      }
+    ]
+  }
+}

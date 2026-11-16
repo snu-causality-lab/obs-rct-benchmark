@@ -1,0 +1,60 @@
+{
+  "protocol": "docs/V1_ICM_SELECTED.md",
+  "block": "core",
+  "requested": 39680,
+  "coverage": {
+    "ok": 39680
+  },
+  "failures": [],
+  "families": {
+    "gp/causal_icm_selected": {
+      "kind": "primary",
+      "size": 120,
+      "other_better": 27,
+      "other_worse": 13,
+      "other_unresolved": 56,
+      "other_untested": 0,
+      "transport_better": 12,
+      "transport_worse": 1,
+      "transport_unresolved": 11,
+      "transport_untested": 0
+    },
+    "gp/causal_icm_selected vs causal_icm_rct_only": {
+      "kind": "matched_obs",
+      "size": 120,
+      "other_better": 57,
+      "other_worse": 0,
+      "other_unresolved": 39,
+      "other_untested": 0,
+      "transport_better": 15,
+      "transport_worse": 0,
+      "transport_unresolved": 9,
+      "transport_untested": 0
+    },
+    "gp/causal_icm_selected vs causal_icm_fixed": {
+      "kind": "selection",
+      "size": 120,
+      "other_better": 28,
+      "other_worse": 12,
+      "other_unresolved": 56,
+      "other_untested": 0,
+      "transport_better": 4,
+      "transport_worse": 5,
+      "transport_unresolved": 15,
+      "transport_untested": 0
+    }
+  },
+  "selected_rho": {
+    "0.0": 291,
+    "0.1": 40,
+    "0.2": 38,
+    "0.3": 37,
+    "0.4": 92,
+    "0.5": 78,
+    "0.6": 119,
+    "0.7": 227,
+    "0.8": 492,
+    "0.9": 4315,
+    "1.0": 2207
+  }
+}

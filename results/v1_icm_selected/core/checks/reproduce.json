@@ -1,0 +1,2646 @@
+{
+  "check": "reproduce",
+  "seed": 70000,
+  "cases": 155,
+  "refits": 310,
+  "unavailable": [],
+  "record_problems": [],
+  "mismatches": [],
+  "details": [
+    {
+      "scenario": "structural:M0@o512_r128",
+      "method": "rct_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.5834206735801787
+        },
+        {
+          "status": "ok",
+          "mse": 0.5834206735801787
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "structural:M0@o512_r128",
+      "method": "rct_t_ridge",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.9511416270658293
+        },
+        {
+          "status": "ok",
+          "mse": 0.9511416270658293
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "structural:M0@o512_r128",
+      "method": "causal_icm_fixed",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.5662641179318723
+        },
+        {
+          "status": "ok",
+          "mse": 0.5662641179318723
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "structural:M0@o512_r128",
+      "method": "causal_icm_rct_only",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 1.1717195567812304
+        },
+        {
+          "status": "ok",
+          "mse": 1.1717195567812304
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "structural:M0@o512_r128",
+      "method": "causal_icm_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.12022315506445308
+        },
+        {
+          "status": "ok",
+          "mse": 0.12022315506445308
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "structural:M1@o512_r128",
+      "method": "rct_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.5262850401662955
+        },
+        {
+          "status": "ok",
+          "mse": 0.5262850401662955
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "structural:M1@o512_r128",
+      "method": "rct_t_ridge",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.9526006049247298
+        },
+        {
+          "status": "ok",
+          "mse": 0.9526006049247298
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "structural:M1@o512_r128",
+      "method": "causal_icm_fixed",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.5964434366898997
+        },
+        {
+          "status": "ok",
+          "mse": 0.5964434366898997
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "structural:M1@o512_r128",
+      "method": "causal_icm_rct_only",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 1.2065728169490555
+        },
+        {
+          "status": "ok",
+          "mse": 1.2065728169490555
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "structural:M1@o512_r128",
+      "method": "causal_icm_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.44378467105783115
+        },
+        {
+          "status": "ok",
+          "mse": 0.44378467105783115
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "structural:M2@o512_r128",
+      "method": "rct_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.8875585395063244
+        },
+        {
+          "status": "ok",
+          "mse": 0.8875585395063244
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "structural:M2@o512_r128",
+      "method": "rct_t_ridge",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.9161999572845696
+        },
+        {
+          "status": "ok",
+          "mse": 0.9161999572845696
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "structural:M2@o512_r128",
+      "method": "causal_icm_fixed",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.7336716518125247
+        },
+        {
+          "status": "ok",
+          "mse": 0.7336716518125247
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "structural:M2@o512_r128",
+      "method": "causal_icm_rct_only",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 1.4218360151482607
+        },
+        {
+          "status": "ok",
+          "mse": 1.4218360151482607
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "structural:M2@o512_r128",
+      "method": "causal_icm_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.6477106172393482
+        },
+        {
+          "status": "ok",
+          "mse": 0.6477106172393482
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "structural:M3@o512_r128",
+      "method": "rct_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.5755963790588232
+        },
+        {
+          "status": "ok",
+          "mse": 0.5755963790588232
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "structural:M3@o512_r128",
+      "method": "rct_t_ridge",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 1.1931960530721657
+        },
+        {
+          "status": "ok",
+          "mse": 1.1931960530721657
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "structural:M3@o512_r128",
+      "method": "causal_icm_fixed",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 1.0943696859358354
+        },
+        {
+          "status": "ok",
+          "mse": 1.0943696859358354
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "structural:M3@o512_r128",
+      "method": "causal_icm_rct_only",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 1.9761931899484817
+        },
+        {
+          "status": "ok",
+          "mse": 1.9761931899484817
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "structural:M3@o512_r128",
+      "method": "causal_icm_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 1.070722686447346
+        },
+        {
+          "status": "ok",
+          "mse": 1.070722686447346
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "structural:M4@o512_r128",
+      "method": "rct_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.7486304349075148
+        },
+        {
+          "status": "ok",
+          "mse": 0.7486304349075148
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "structural:M4@o512_r128",
+      "method": "rct_t_ridge",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 1.289399223129061
+        },
+        {
+          "status": "ok",
+          "mse": 1.289399223129061
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "structural:M4@o512_r128",
+      "method": "causal_icm_fixed",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 1.043711885411574
+        },
+        {
+          "status": "ok",
+          "mse": 1.043711885411574
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "structural:M4@o512_r128",
+      "method": "causal_icm_rct_only",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 1.8215939249011137
+        },
+        {
+          "status": "ok",
+          "mse": 1.8215939249011137
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "structural:M4@o512_r128",
+      "method": "causal_icm_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 1.0064955036659238
+        },
+        {
+          "status": "ok",
+          "mse": 1.0064955036659238
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "structural:M5@o512_r128",
+      "method": "rct_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.3981545511442257
+        },
+        {
+          "status": "ok",
+          "mse": 0.3981545511442257
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "structural:M5@o512_r128",
+      "method": "rct_t_ridge",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.5060303901132521
+        },
+        {
+          "status": "ok",
+          "mse": 0.5060303901132521
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "structural:M5@o512_r128",
+      "method": "causal_icm_fixed",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.3672830919679437
+        },
+        {
+          "status": "ok",
+          "mse": 0.3672830919679437
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "structural:M5@o512_r128",
+      "method": "causal_icm_rct_only",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.6897431577206123
+        },
+        {
+          "status": "ok",
+          "mse": 0.6897431577206123
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "structural:M5@o512_r128",
+      "method": "causal_icm_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.5966171809399914
+        },
+        {
+          "status": "ok",
+          "mse": 0.5966171809399914
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "structural:M6@o512_r128",
+      "method": "rct_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.585736062402235
+        },
+        {
+          "status": "ok",
+          "mse": 0.585736062402235
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "structural:M6@o512_r128",
+      "method": "rct_t_ridge",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.9371251468856611
+        },
+        {
+          "status": "ok",
+          "mse": 0.9371251468856611
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "structural:M6@o512_r128",
+      "method": "causal_icm_fixed",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.890729852271194
+        },
+        {
+          "status": "ok",
+          "mse": 0.890729852271194
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "structural:M6@o512_r128",
+      "method": "causal_icm_rct_only",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 1.2051568645664568
+        },
+        {
+          "status": "ok",
+          "mse": 1.2051568645664568
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "structural:M6@o512_r128",
+      "method": "causal_icm_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.8994169463421834
+        },
+        {
+          "status": "ok",
+          "mse": 0.8994169463421834
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "structural:M7@o512_r128",
+      "method": "rct_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 1.0630830094389867
+        },
+        {
+          "status": "ok",
+          "mse": 1.0630830094389867
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "structural:M7@o512_r128",
+      "method": "rct_t_ridge",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 1.0630830094389867
+        },
+        {
+          "status": "ok",
+          "mse": 1.0630830094389867
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "structural:M7@o512_r128",
+      "method": "causal_icm_fixed",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.6022561692702153
+        },
+        {
+          "status": "ok",
+          "mse": 0.6022561692702153
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "structural:M7@o512_r128",
+      "method": "causal_icm_rct_only",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.6205983637205057
+        },
+        {
+          "status": "ok",
+          "mse": 0.6205983637205057
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "structural:M7@o512_r128",
+      "method": "causal_icm_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.26756444520700484
+        },
+        {
+          "status": "ok",
+          "mse": 0.26756444520700484
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "structural:M8@o512_r128",
+      "method": "rct_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.9125531530214523
+        },
+        {
+          "status": "ok",
+          "mse": 0.9125531530214523
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "structural:M8@o512_r128",
+      "method": "rct_t_ridge",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 1.9068170803148017
+        },
+        {
+          "status": "ok",
+          "mse": 1.9068170803148017
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "structural:M8@o512_r128",
+      "method": "causal_icm_fixed",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 1.595134868301781
+        },
+        {
+          "status": "ok",
+          "mse": 1.595134868301781
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "structural:M8@o512_r128",
+      "method": "causal_icm_rct_only",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 3.062166167902755
+        },
+        {
+          "status": "ok",
+          "mse": 3.062166167902755
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "structural:M8@o512_r128",
+      "method": "causal_icm_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 1.5443194629552126
+        },
+        {
+          "status": "ok",
+          "mse": 1.5443194629552126
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "structural:M9@o512_r128",
+      "method": "rct_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.43201934540770953
+        },
+        {
+          "status": "ok",
+          "mse": 0.43201934540770953
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "structural:M9@o512_r128",
+      "method": "rct_t_ridge",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.5663141872311782
+        },
+        {
+          "status": "ok",
+          "mse": 0.5663141872311782
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "structural:M9@o512_r128",
+      "method": "causal_icm_fixed",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.3218109408488691
+        },
+        {
+          "status": "ok",
+          "mse": 0.3218109408488691
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "structural:M9@o512_r128",
+      "method": "causal_icm_rct_only",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.6630616595247572
+        },
+        {
+          "status": "ok",
+          "mse": 0.6630616595247572
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "structural:M9@o512_r128",
+      "method": "causal_icm_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.8787930860767768
+        },
+        {
+          "status": "ok",
+          "mse": 0.8787930860767768
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "structural:M10@o512_r128",
+      "method": "rct_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.4717770121628681
+        },
+        {
+          "status": "ok",
+          "mse": 0.4717770121628681
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "structural:M10@o512_r128",
+      "method": "rct_t_ridge",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.6601217744372998
+        },
+        {
+          "status": "ok",
+          "mse": 0.6601217744372998
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "structural:M10@o512_r128",
+      "method": "causal_icm_fixed",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.5882459638539441
+        },
+        {
+          "status": "ok",
+          "mse": 0.5882459638539441
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "structural:M10@o512_r128",
+      "method": "causal_icm_rct_only",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 1.2077107991061042
+        },
+        {
+          "status": "ok",
+          "mse": 1.2077107991061042
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "structural:M10@o512_r128",
+      "method": "causal_icm_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 1.0496780794260827
+        },
+        {
+          "status": "ok",
+          "mse": 1.0496780794260827
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "structural:M11@o512_r128",
+      "method": "rct_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 1.117338057071155
+        },
+        {
+          "status": "ok",
+          "mse": 1.117338057071155
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "structural:M11@o512_r128",
+      "method": "rct_t_ridge",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 1.7469582414225093
+        },
+        {
+          "status": "ok",
+          "mse": 1.7469582414225093
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "structural:M11@o512_r128",
+      "method": "causal_icm_fixed",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 1.2490906024097042
+        },
+        {
+          "status": "ok",
+          "mse": 1.2490906024097042
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "structural:M11@o512_r128",
+      "method": "causal_icm_rct_only",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 2.964780639184579
+        },
+        {
+          "status": "ok",
+          "mse": 2.964780639184579
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "structural:M11@o512_r128",
+      "method": "causal_icm_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 1.001653411027771
+        },
+        {
+          "status": "ok",
+          "mse": 1.001653411027771
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "addendum:C01@o512_r128",
+      "method": "rct_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.734303478865366
+        },
+        {
+          "status": "ok",
+          "mse": 0.734303478865366
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "addendum:C01@o512_r128",
+      "method": "rct_t_ridge",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 1.2109118628890432
+        },
+        {
+          "status": "ok",
+          "mse": 1.2109118628890432
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "addendum:C01@o512_r128",
+      "method": "causal_icm_fixed",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.7437349812928136
+        },
+        {
+          "status": "ok",
+          "mse": 0.7437349812928136
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "addendum:C01@o512_r128",
+      "method": "causal_icm_rct_only",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 1.3928593525514015
+        },
+        {
+          "status": "ok",
+          "mse": 1.3928593525514015
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "addendum:C01@o512_r128",
+      "method": "causal_icm_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.8585969227317257
+        },
+        {
+          "status": "ok",
+          "mse": 0.8585969227317257
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "addendum:C02@o512_r128",
+      "method": "rct_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.5243466314422731
+        },
+        {
+          "status": "ok",
+          "mse": 0.5243466314422731
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "addendum:C02@o512_r128",
+      "method": "rct_t_ridge",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.8853363955428472
+        },
+        {
+          "status": "ok",
+          "mse": 0.8853363955428472
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "addendum:C02@o512_r128",
+      "method": "causal_icm_fixed",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.5171685004429736
+        },
+        {
+          "status": "ok",
+          "mse": 0.5171685004429736
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "addendum:C02@o512_r128",
+      "method": "causal_icm_rct_only",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.8740070218551543
+        },
+        {
+          "status": "ok",
+          "mse": 0.8740070218551543
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "addendum:C02@o512_r128",
+      "method": "causal_icm_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.4181674041792463
+        },
+        {
+          "status": "ok",
+          "mse": 0.4181674041792463
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "addendum:C03@o512_r128",
+      "method": "rct_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 1.7618792500878526
+        },
+        {
+          "status": "ok",
+          "mse": 1.7618792500878526
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "addendum:C03@o512_r128",
+      "method": "rct_t_ridge",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 2.02709900179149
+        },
+        {
+          "status": "ok",
+          "mse": 2.02709900179149
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "addendum:C03@o512_r128",
+      "method": "causal_icm_fixed",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 1.4993017531927095
+        },
+        {
+          "status": "ok",
+          "mse": 1.4993017531927095
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "addendum:C03@o512_r128",
+      "method": "causal_icm_rct_only",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 1.860378022834021
+        },
+        {
+          "status": "ok",
+          "mse": 1.860378022834021
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "addendum:C03@o512_r128",
+      "method": "causal_icm_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.9401388070643034
+        },
+        {
+          "status": "ok",
+          "mse": 0.9401388070643034
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "addendum:C04@o512_r128",
+      "method": "rct_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.5761144095333761
+        },
+        {
+          "status": "ok",
+          "mse": 0.5761144095333761
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "addendum:C04@o512_r128",
+      "method": "rct_t_ridge",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.9511416270658293
+        },
+        {
+          "status": "ok",
+          "mse": 0.9511416270658293
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "addendum:C04@o512_r128",
+      "method": "causal_icm_fixed",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.6062615738604555
+        },
+        {
+          "status": "ok",
+          "mse": 0.6062615738604555
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "addendum:C04@o512_r128",
+      "method": "causal_icm_rct_only",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 1.1717195567812304
+        },
+        {
+          "status": "ok",
+          "mse": 1.1717195567812304
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "addendum:C04@o512_r128",
+      "method": "causal_icm_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.47268222508458435
+        },
+        {
+          "status": "ok",
+          "mse": 0.47268222508458435
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "addendum:C05@o512_r128",
+      "method": "rct_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.9552020423736555
+        },
+        {
+          "status": "ok",
+          "mse": 0.9552020423736555
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "addendum:C05@o512_r128",
+      "method": "rct_t_ridge",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.9552020423736555
+        },
+        {
+          "status": "ok",
+          "mse": 0.9552020423736555
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "addendum:C05@o512_r128",
+      "method": "causal_icm_fixed",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.4224717045615722
+        },
+        {
+          "status": "ok",
+          "mse": 0.4224717045615722
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "addendum:C05@o512_r128",
+      "method": "causal_icm_rct_only",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.985412428409501
+        },
+        {
+          "status": "ok",
+          "mse": 0.985412428409501
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "addendum:C05@o512_r128",
+      "method": "causal_icm_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.10225247935456078
+        },
+        {
+          "status": "ok",
+          "mse": 0.10225247935456078
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "addendum:C06@o512_r128",
+      "method": "rct_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.5678787700817194
+        },
+        {
+          "status": "ok",
+          "mse": 0.5678787700817194
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "addendum:C06@o512_r128",
+      "method": "rct_t_ridge",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.9585588636187059
+        },
+        {
+          "status": "ok",
+          "mse": 0.9585588636187059
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "addendum:C06@o512_r128",
+      "method": "causal_icm_fixed",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.6432741259322734
+        },
+        {
+          "status": "ok",
+          "mse": 0.6432741259322734
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "addendum:C06@o512_r128",
+      "method": "causal_icm_rct_only",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 1.3458170026206941
+        },
+        {
+          "status": "ok",
+          "mse": 1.3458170026206941
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "addendum:C06@o512_r128",
+      "method": "causal_icm_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.3987138562932329
+        },
+        {
+          "status": "ok",
+          "mse": 0.3987138562932329
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "addendum:C07@o512_r128",
+      "method": "rct_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.19041749111517428
+        },
+        {
+          "status": "ok",
+          "mse": 0.19041749111517428
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "addendum:C07@o512_r128",
+      "method": "rct_t_ridge",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.33047136982325975
+        },
+        {
+          "status": "ok",
+          "mse": 0.33047136982325975
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "addendum:C07@o512_r128",
+      "method": "causal_icm_fixed",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.28325535503046917
+        },
+        {
+          "status": "ok",
+          "mse": 0.28325535503046917
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "addendum:C07@o512_r128",
+      "method": "causal_icm_rct_only",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.5557732132529298
+        },
+        {
+          "status": "ok",
+          "mse": 0.5557732132529298
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "addendum:C07@o512_r128",
+      "method": "causal_icm_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.2907494780448429
+        },
+        {
+          "status": "ok",
+          "mse": 0.2907494780448429
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "addendum:C08@o512_r128",
+      "method": "rct_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.7028333081748526
+        },
+        {
+          "status": "ok",
+          "mse": 0.7028333081748526
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "addendum:C08@o512_r128",
+      "method": "rct_t_ridge",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.663191014759251
+        },
+        {
+          "status": "ok",
+          "mse": 0.663191014759251
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "addendum:C08@o512_r128",
+      "method": "causal_icm_fixed",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.6377820301043626
+        },
+        {
+          "status": "ok",
+          "mse": 0.6377820301043626
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "addendum:C08@o512_r128",
+      "method": "causal_icm_rct_only",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 1.0038487858671925
+        },
+        {
+          "status": "ok",
+          "mse": 1.0038487858671925
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "addendum:C08@o512_r128",
+      "method": "causal_icm_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.5692550253401503
+        },
+        {
+          "status": "ok",
+          "mse": 0.5692550253401503
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "addendum:C09@o512_r128",
+      "method": "rct_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 1.3661493427968114
+        },
+        {
+          "status": "ok",
+          "mse": 1.3661493427968114
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "addendum:C09@o512_r128",
+      "method": "rct_t_ridge",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 1.3661493427968114
+        },
+        {
+          "status": "ok",
+          "mse": 1.3661493427968114
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "addendum:C09@o512_r128",
+      "method": "causal_icm_fixed",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.8439588320811144
+        },
+        {
+          "status": "ok",
+          "mse": 0.8439588320811144
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "addendum:C09@o512_r128",
+      "method": "causal_icm_rct_only",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.8575955143353345
+        },
+        {
+          "status": "ok",
+          "mse": 0.8575955143353345
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "addendum:C09@o512_r128",
+      "method": "causal_icm_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 1.0897511472121448
+        },
+        {
+          "status": "ok",
+          "mse": 1.0897511472121448
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "addendum:C10@o512_r128",
+      "method": "rct_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 1.2247490860763321
+        },
+        {
+          "status": "ok",
+          "mse": 1.2247490860763321
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "addendum:C10@o512_r128",
+      "method": "rct_t_ridge",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 1.2247490860763321
+        },
+        {
+          "status": "ok",
+          "mse": 1.2247490860763321
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "addendum:C10@o512_r128",
+      "method": "causal_icm_fixed",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.7158474962468141
+        },
+        {
+          "status": "ok",
+          "mse": 0.7158474962468141
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "addendum:C10@o512_r128",
+      "method": "causal_icm_rct_only",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.8076593892881994
+        },
+        {
+          "status": "ok",
+          "mse": 0.8076593892881994
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "addendum:C10@o512_r128",
+      "method": "causal_icm_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.6461053399327132
+        },
+        {
+          "status": "ok",
+          "mse": 0.6461053399327132
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "paper:cornet_official_n_conf@o512_r128",
+      "method": "rct_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.7336661357392349
+        },
+        {
+          "status": "ok",
+          "mse": 0.7336661357392349
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "paper:cornet_official_n_conf@o512_r128",
+      "method": "rct_t_ridge",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.6785857763374141
+        },
+        {
+          "status": "ok",
+          "mse": 0.6785857763374141
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "paper:cornet_official_n_conf@o512_r128",
+      "method": "causal_icm_fixed",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.36277539511998036
+        },
+        {
+          "status": "ok",
+          "mse": 0.36277539511998036
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "paper:cornet_official_n_conf@o512_r128",
+      "method": "causal_icm_rct_only",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.45356320939915223
+        },
+        {
+          "status": "ok",
+          "mse": 0.45356320939915223
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "paper:cornet_official_n_conf@o512_r128",
+      "method": "causal_icm_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.29377174053306837
+        },
+        {
+          "status": "ok",
+          "mse": 0.29377174053306837
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "paper:experimental_grounding_kps@o512_r128",
+      "method": "rct_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.3253708924009074
+        },
+        {
+          "status": "ok",
+          "mse": 0.3253708924009074
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "paper:experimental_grounding_kps@o512_r128",
+      "method": "rct_t_ridge",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.3253708924009074
+        },
+        {
+          "status": "ok",
+          "mse": 0.3253708924009074
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "paper:experimental_grounding_kps@o512_r128",
+      "method": "causal_icm_fixed",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.1530532280088132
+        },
+        {
+          "status": "ok",
+          "mse": 0.1530532280088132
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "paper:experimental_grounding_kps@o512_r128",
+      "method": "causal_icm_rct_only",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.2861916128312415
+        },
+        {
+          "status": "ok",
+          "mse": 0.2861916128312415
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "paper:experimental_grounding_kps@o512_r128",
+      "method": "causal_icm_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.20371996183622088
+        },
+        {
+          "status": "ok",
+          "mse": 0.20371996183622088
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "paper:integrative_r_learner_kps_normal_target_extension@o512_r128",
+      "method": "rct_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 2.5236445918706476
+        },
+        {
+          "status": "ok",
+          "mse": 2.5236445918706476
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "paper:integrative_r_learner_kps_normal_target_extension@o512_r128",
+      "method": "rct_t_ridge",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 1.633732907173341
+        },
+        {
+          "status": "ok",
+          "mse": 1.633732907173341
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "paper:integrative_r_learner_kps_normal_target_extension@o512_r128",
+      "method": "causal_icm_fixed",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.21498817094915307
+        },
+        {
+          "status": "ok",
+          "mse": 0.21498817094915307
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "paper:integrative_r_learner_kps_normal_target_extension@o512_r128",
+      "method": "causal_icm_rct_only",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 1.3004182119244607
+        },
+        {
+          "status": "ok",
+          "mse": 1.3004182119244607
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "paper:integrative_r_learner_kps_normal_target_extension@o512_r128",
+      "method": "causal_icm_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.22584741018777277
+        },
+        {
+          "status": "ok",
+          "mse": 0.22584741018777277
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "paper:integrative_r_learner_kps_code@o512_r128",
+      "method": "rct_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.11613874843460792
+        },
+        {
+          "status": "ok",
+          "mse": 0.11613874843460792
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "paper:integrative_r_learner_kps_code@o512_r128",
+      "method": "rct_t_ridge",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.09299441939146227
+        },
+        {
+          "status": "ok",
+          "mse": 0.09299441939146227
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "paper:integrative_r_learner_kps_code@o512_r128",
+      "method": "causal_icm_fixed",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.07213408899229083
+        },
+        {
+          "status": "ok",
+          "mse": 0.07213408899229083
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "paper:integrative_r_learner_kps_code@o512_r128",
+      "method": "causal_icm_rct_only",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.061037263044097144
+        },
+        {
+          "status": "ok",
+          "mse": 0.061037263044097144
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "paper:integrative_r_learner_kps_code@o512_r128",
+      "method": "causal_icm_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.08199079503247651
+        },
+        {
+          "status": "ok",
+          "mse": 0.08199079503247651
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "paper:integrative_r_learner_multivariate_paper@o512_r128",
+      "method": "rct_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.942049605762747
+        },
+        {
+          "status": "ok",
+          "mse": 0.942049605762747
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "paper:integrative_r_learner_multivariate_paper@o512_r128",
+      "method": "rct_t_ridge",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.942049605762747
+        },
+        {
+          "status": "ok",
+          "mse": 0.942049605762747
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "paper:integrative_r_learner_multivariate_paper@o512_r128",
+      "method": "causal_icm_fixed",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.6662305579355656
+        },
+        {
+          "status": "ok",
+          "mse": 0.6662305579355656
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "paper:integrative_r_learner_multivariate_paper@o512_r128",
+      "method": "causal_icm_rct_only",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 1.3298584827293616
+        },
+        {
+          "status": "ok",
+          "mse": 1.3298584827293616
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "paper:integrative_r_learner_multivariate_paper@o512_r128",
+      "method": "causal_icm_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 1.6923986089667018
+        },
+        {
+          "status": "ok",
+          "mse": 1.6923986089667018
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "paper:elastic_integrative_gen_data_overlap@o512_r128",
+      "method": "rct_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 1.6574307564515398
+        },
+        {
+          "status": "ok",
+          "mse": 1.6574307564515398
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "paper:elastic_integrative_gen_data_overlap@o512_r128",
+      "method": "rct_t_ridge",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 1.0602648263694536
+        },
+        {
+          "status": "ok",
+          "mse": 1.0602648263694536
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "paper:elastic_integrative_gen_data_overlap@o512_r128",
+      "method": "causal_icm_fixed",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.512428086102778
+        },
+        {
+          "status": "ok",
+          "mse": 0.512428086102778
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "paper:elastic_integrative_gen_data_overlap@o512_r128",
+      "method": "causal_icm_rct_only",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.7969660043118914
+        },
+        {
+          "status": "ok",
+          "mse": 0.7969660043118914
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "paper:elastic_integrative_gen_data_overlap@o512_r128",
+      "method": "causal_icm_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 1.1861133897577387
+        },
+        {
+          "status": "ok",
+          "mse": 1.1861133897577387
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "paper:power_likelihood_paper_text@o512_r128",
+      "method": "rct_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.011440896867282424
+        },
+        {
+          "status": "ok",
+          "mse": 0.011440896867282424
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "paper:power_likelihood_paper_text@o512_r128",
+      "method": "rct_t_ridge",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.01557512019383785
+        },
+        {
+          "status": "ok",
+          "mse": 0.01557512019383785
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "paper:power_likelihood_paper_text@o512_r128",
+      "method": "causal_icm_fixed",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.01030514206695032
+        },
+        {
+          "status": "ok",
+          "mse": 0.01030514206695032
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "paper:power_likelihood_paper_text@o512_r128",
+      "method": "causal_icm_rct_only",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.009539232235971265
+        },
+        {
+          "status": "ok",
+          "mse": 0.009539232235971265
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "paper:power_likelihood_paper_text@o512_r128",
+      "method": "causal_icm_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.014535003045423623
+        },
+        {
+          "status": "ok",
+          "mse": 0.014535003045423623
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "paper:power_likelihood_supplement_code@o512_r128",
+      "method": "rct_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.06765142431819707
+        },
+        {
+          "status": "ok",
+          "mse": 0.06765142431819707
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "paper:power_likelihood_supplement_code@o512_r128",
+      "method": "rct_t_ridge",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.008060587182191777
+        },
+        {
+          "status": "ok",
+          "mse": 0.008060587182191777
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "paper:power_likelihood_supplement_code@o512_r128",
+      "method": "causal_icm_fixed",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.026376351576857686
+        },
+        {
+          "status": "ok",
+          "mse": 0.026376351576857686
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "paper:power_likelihood_supplement_code@o512_r128",
+      "method": "causal_icm_rct_only",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.04204126943994499
+        },
+        {
+          "status": "ok",
+          "mse": 0.04204126943994499
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "paper:power_likelihood_supplement_code@o512_r128",
+      "method": "causal_icm_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.06871412471488304
+        },
+        {
+          "status": "ok",
+          "mse": 0.06871412471488304
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "paper:cvci_official_linear_bias@o512_r128",
+      "method": "rct_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.1498086299706263
+        },
+        {
+          "status": "ok",
+          "mse": 0.1498086299706263
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "paper:cvci_official_linear_bias@o512_r128",
+      "method": "rct_t_ridge",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.1498086299706263
+        },
+        {
+          "status": "ok",
+          "mse": 0.1498086299706263
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "paper:cvci_official_linear_bias@o512_r128",
+      "method": "causal_icm_fixed",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.1737396795523341
+        },
+        {
+          "status": "ok",
+          "mse": 0.1737396795523341
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "paper:cvci_official_linear_bias@o512_r128",
+      "method": "causal_icm_rct_only",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.17887124868328186
+        },
+        {
+          "status": "ok",
+          "mse": 0.17887124868328186
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    },
+    {
+      "scenario": "paper:cvci_official_linear_bias@o512_r128",
+      "method": "causal_icm_selected",
+      "recorded_status": "ok",
+      "repeats": [
+        {
+          "status": "ok",
+          "mse": 0.18424023288052457
+        },
+        {
+          "status": "ok",
+          "mse": 0.18424023288052457
+        }
+      ],
+      "tolerance": 1e-12,
+      "match": true
+    }
+  ]
+}

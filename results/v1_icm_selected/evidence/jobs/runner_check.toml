@@ -1,0 +1,29 @@
+schema_version = 1
+
+[run]
+purpose = "smoke"
+seeds = [70000]
+methods = ["rct_selected", "causal_icm_fixed", "causal_icm_selected"]
+reference_method = "rct_selected"
+scope = "causal_icm_selected runner record check (not a study)"
+
+[method_options.rct_selected]
+ridge_alpha = 1.0
+n_estimators = 100
+min_samples_leaf = 5
+
+[method_options.causal_icm_fixed]
+rho = 0.5
+
+[[scenarios]]
+kind = "structural"
+id = "M0"
+label = "o512_r128"
+[scenarios.parameters]
+n_obs = 512
+n_rct_train = 128
+n_rct_tune = 32
+n_rct_test = 64
+n_eval = 2048
+n_target_reference = 0
+

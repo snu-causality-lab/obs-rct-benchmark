@@ -1,0 +1,19 @@
+#!/bin/bash
+#SBATCH --partition=P2
+#SBATCH --cpus-per-task=1
+#SBATCH --mem=16G
+#SBATCH --exclude=b03,b14,b15,b24,b25,b26,b27,b28,b30,b31
+# Reproducibility check for one block of the selected-rho addendum, with its frozen code.
+# Usage: CODE_ID=<freeze> RUN_DIR=<run> sbatch --export=ALL --chdir=<run> --output=<run>/logs/%x-%j.out \
+#   --time=.. -J icmsel-repro-<block> jobs/reproduce.sbatch core|stress <tag>
+set -uo pipefail
+BLOCK=${1:?core|stress}; TAG=${2:?tag}
+case "$BLOCK" in core) P=out-core ;; stress) P=out-stress ;; *) echo "unknown block $BLOCK"; exit 2 ;; esac
+GROUP=gp source jobs/common.sh
+mapfile -t RUNS < <(find "$P" -mindepth 1 -maxdepth 1 -type d ! -name '*.*' | sort)
+echo "$P: ${#RUNS[@]} active shard directories"
+OUT=checks-$BLOCK-$TAG-reproduce
+"$PY" "$CODE/scripts/verify_icm_selected.py" reproduce --config "$CODE/configs/v1_icm_selected_$BLOCK.toml" \
+  --runs "${RUNS[@]}" --output "$OUT.json" > "logs/$OUT.stdout" 2>&1
+rc=$?; echo "reproduce exit $rc"
+exit $rc

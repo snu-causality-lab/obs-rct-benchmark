@@ -1,0 +1,47 @@
+{
+  "wave2_reproduction": {
+    "rct_selected": {
+      "compared": 4096,
+      "expected": 4096,
+      "status_differs": 0,
+      "exact": 4096,
+      "max_abs_difference": 0.0,
+      "within_1e-9": true
+    },
+    "rct_t_ridge": {
+      "compared": 4096,
+      "expected": 4096,
+      "status_differs": 0,
+      "exact": 4096,
+      "max_abs_difference": 0.0,
+      "within_1e-9": true
+    },
+    "causal_icm_fixed": {
+      "compared": 4096,
+      "expected": 4096,
+      "status_differs": 0,
+      "exact": 4096,
+      "max_abs_difference": 0.0,
+      "within_1e-9": true
+    },
+    "causal_icm_rct_only": {
+      "compared": 4096,
+      "expected": 4096,
+      "status_differs": 0,
+      "exact": 4096,
+      "max_abs_difference": 0.0,
+      "within_1e-9": true
+    }
+  },
+  "selected_at_0.5_vs_fixed": {
+    "cells": 17,
+    "fixed_not_successful": 0,
+    "differ": 0
+  },
+  "rct_only_level_mismatches": {
+    "causal_icm_rct_only": 0,
+    "rct_selected": 0,
+    "rct_t_ridge": 0
+  },
+  "rule": "contrasts pair recipes fitted in the same shard. The block ran on wave 2's data and fits only if the data check passed and all four refitted recipes reproduce wave 2's gp scores within 1e-9 with the same statuses. A selected fit that chose 0.5 must equal causal_icm_fixed exactly"
+}

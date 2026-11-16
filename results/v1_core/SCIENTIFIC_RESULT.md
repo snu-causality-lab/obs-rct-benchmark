@@ -35,7 +35,7 @@ Each recipe is compared with `rct_selected` in each condition by a paired t-test
 By trial size:
 - **CorNet with raw inputs** is better in 51 of 60 conditions at RCT 128 and worse in none. At RCT 512 it is better in 37 and worse in 7.
 - **CorNet with standardized inputs** is better in 47 and worse in 4 at RCT 128, and better in 24 and worse in 10 at RCT 512.
-- **DataFusionPPI** is worse in 39 of 60 conditions at RCT 128. At RCT 512 it is mostly unresolved: 45 unresolved, 8 better, 4 worse.
+- **DataFusionPPI** is worse in 39 of its 58 conditions at RCT 128 (one untested). At RCT 512 it is mostly unresolved: 45 unresolved, 8 better, 4 worse.
 
 ## The reference is weaker than a well-chosen fixed learner
 
@@ -81,3 +81,7 @@ With standardized inputs it is also worse in its own design and in M8 at RCT 128
 - **One AI agent, no human check.** One AI agent designed, implemented and analyzed this study. Fresh-context AI reviewers checked the plan and the code before the freeze. No independent human has reproduced it.
 
 Integrative R, Causal-ICM, the causal forest and TSR join in later waves under separately frozen addenda, on the same seeds and with the same reference and decision rule.
+
+## Corrections
+
+- **2026-11-16.** The DataFusionPPI line under [Headline](#headline) first said "worse in 39 of 60 conditions at RCT 128". DataFusionPPI is not applicable to multivariate Integrative R, so it has 58 conditions at each trial size; one of them, Elastic at OBS 512, is untested. The count of 39 and every published file are unchanged.
