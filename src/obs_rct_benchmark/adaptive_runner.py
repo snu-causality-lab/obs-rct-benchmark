@@ -11,7 +11,7 @@ import tomllib
 from typing import Any, Mapping
 
 from .adaptive import (
-    POLICY_NAMES, _indices, _positive_integer, replay_adaptive_records,
+    EVALUATION_REGIONS, POLICY_NAMES, _indices, _positive_integer, replay_adaptive_records,
     run_adaptive_problem,
 )
 from .evaluation import summarize_records
@@ -37,6 +37,8 @@ class AdaptiveConfig:
     method_options: Mapping[str, Mapping[str, Any]] = field(default_factory=dict)
     purpose: str = "smoke"
     scope: str = "two-stage recruitment; development-inspected mechanisms"
+    # Optional evaluator-only region per scenario key; absent keys add nothing.
+    evaluation_regions: Mapping[str, str] = field(default_factory=dict)
 
     def __post_init__(self) -> None:
         if not self.scenarios or len({x.key for x in self.scenarios}) != len(self.scenarios):
@@ -68,6 +70,12 @@ class AdaptiveConfig:
             raise ValueError("purpose must be smoke/reference and scope must be nonempty")
         if set(self.method_options) - set(self.estimators):
             raise ValueError("method options contain an unrequested estimator")
+        if not isinstance(self.evaluation_regions, Mapping):
+            raise ValueError("evaluation regions must be a mapping")
+        if set(self.evaluation_regions) - {x.key for x in self.scenarios}:
+            raise ValueError("evaluation regions name an unrequested scenario")
+        if any(x not in EVALUATION_REGIONS for x in self.evaluation_regions.values()):
+            raise ValueError(f"evaluation region must be one of {sorted(EVALUATION_REGIONS)}")
         _validate_public_values(self.payload())
         for name in self.estimators:
             make_method(name, **dict(self.method_options.get(name, {})))
@@ -96,7 +104,9 @@ class AdaptiveConfig:
                 "scenarios": [dict(kind=x.kind, id=x.id, parameters=dict(x.parameters),
                                    **({"label": x.label} if x.label is not None else {}),
                                    **({"inference_policy": dict(x.inference_policy)}
-                                      if x.inference_policy else {}))
+                                      if x.inference_policy else {}),
+                                   **({"evaluation_region": self.evaluation_regions[x.key]}
+                                      if x.key in self.evaluation_regions else {}))
                               for x in self.scenarios],
                 "method_options": {k: dict(v) for k, v in self.method_options.items()}}
 
@@ -118,12 +128,18 @@ def load_adaptive_config(path: str | Path) -> AdaptiveConfig:
     for name in ("seeds", "policies", "estimators", "budgets"):
         if name in run:
             run[name] = tuple(run[name])
-    scenarios = []
+    scenarios, regions = [], {}
     for item in raw.get("scenarios", []):
-        if set(item)-{"kind", "id", "parameters", "label", "inference_policy"}:
+        if set(item)-{"kind", "id", "parameters", "label", "inference_policy", "evaluation_region"}:
             raise ValueError("unknown adaptive scenario field")
-        scenarios.append(ScenarioConfig(**item))
-    return AdaptiveConfig(tuple(scenarios), method_options=raw.get("method_options", {}), **run)
+        item = dict(item)
+        region = item.pop("evaluation_region", None)
+        scenario = ScenarioConfig(**item)
+        if region is not None:
+            regions[scenario.key] = region
+        scenarios.append(scenario)
+    return AdaptiveConfig(tuple(scenarios), method_options=raw.get("method_options", {}),
+                          evaluation_regions=regions, **run)
 
 
 def adaptive_inference_policy(config: AdaptiveConfig) -> dict[str, Any]:
@@ -185,6 +201,14 @@ def _validate_records(config: AdaptiveConfig, records: list[dict[str, Any]]) -> 
                 raise ValueError("simulation failure cannot contain acquired outcomes")
         elif row.get("stage") != "recruitment" and spent != row["budget"]:
             raise ValueError("completed acquisition must spend its budget")
+        region = config.evaluation_regions.get(row["scenario"].rsplit("/budget_", 1)[0])
+        if row["status"] == "ok" and region is not None:
+            scored = row.get("region_metrics")
+            if (not isinstance(scored, Mapping) or scored.get("region") != region
+                    or any(not isinstance(scored.get(side), Mapping) for side in ("inside", "outside"))):
+                raise ValueError("adaptive record lacks its declared region metrics")
+        elif "region_metrics" in row and row["region_metrics"] is not None:
+            raise ValueError("adaptive record has undeclared region metrics")
         seen.add(key)
     summarize_records(records, scenarios=config.scenario_keys, seeds=config.seeds,
                       methods=config.methods, reference_method="uniform__"+config.estimators[0],
@@ -250,7 +274,8 @@ def run_adaptive_benchmark(config: AdaptiveConfig, output: str | Path, *, resume
                     generated = run_adaptive_problem(problem, budgets=config.budgets,
                         pilot_size=config.pilot_size, tune_size=config.tune_size,
                         policies=config.policies, estimators=config.estimators, seed=seed,
-                        method_options=config.method_options, scenario=scenario.key, requested_cells=pending)
+                        method_options=config.method_options, scenario=scenario.key, requested_cells=pending,
+                        evaluation_region=config.evaluation_regions.get(scenario.key))
                 for row in generated:
                     base = _identity(config, scenario.key, seed, row["policy"], row["budget"], row["estimator"])
                     row = dict(row, **base)
@@ -284,6 +309,8 @@ def run_adaptive_benchmark(config: AdaptiveConfig, output: str | Path, *, resume
                                      "n_target_reference": 0, "n_eval": pool["n_eval"]},
                     "pool_size": config.pool_size,
                 }
+        if config.evaluation_regions:
+            summary["region_metrics"] = _region_summary(config, records)
         _write_json(output/"summary.json", summary)
         report = _result_readme(summary)
         report += ("\nRecruitment uses one common uniform pilot and fixed policy prefixes. "
@@ -292,8 +319,55 @@ def run_adaptive_benchmark(config: AdaptiveConfig, output: str | Path, *, resume
                    "The JSON also gives policy-versus-uniform contrasts separately for each final estimator. "
                    "Pooling is naive; no acquisition-optimality claim is made.\n")
         report += _policy_report(summary)
+        report += _region_report(summary)
         _write_text(output/"README.md", report)
         return summary
+
+
+def _region_summary(config: AdaptiveConfig, records: list[dict[str, Any]]) -> dict[str, Any]:
+    """Descriptive region-restricted means over successful seeds; no intervals."""
+    out: dict[str, Any] = {"definitions": {k: EVALUATION_REGIONS[k] for k in sorted(set(config.evaluation_regions.values()))},
+                           "mean_scope": "successful cells only; descriptive, no uncertainty interval",
+                           "scenarios": {}}
+    for scenario in config.scenarios:
+        region = config.evaluation_regions.get(scenario.key)
+        if region is None:
+            continue
+        for budget in config.budgets:
+            full = scenario.key+f"/budget_{budget}"
+            entry: dict[str, Any] = {"region": region, "methods": {}}
+            for method in config.methods:
+                rows = [r for r in records if r["scenario"] == full and r["method"] == method and r["status"] == "ok"]
+                sides = {}
+                for side in ("inside", "outside"):
+                    scored = [r["region_metrics"][side] for r in rows if r["region_metrics"][side]["n_eval"] > 0]
+                    mse = [x["cate_mse"] for x in scored]
+                    sides[side] = {
+                        "successful_with_rows": len(scored),
+                        "mean_n_eval": sum(x["n_eval"] for x in scored)/len(scored) if scored else None,
+                        "mean_cate_mse": sum(mse)/len(mse) if mse else None,
+                        "mean_root_pehe": sum(x["root_pehe"] for x in scored)/len(scored) if scored else None,
+                    }
+                entry["methods"][method] = sides
+            out["scenarios"][full] = entry
+    return out
+
+
+def _region_report(summary: Mapping[str, Any]) -> str:
+    regions = summary.get("region_metrics")
+    if not regions:
+        return ""
+    lines = ["\n## Region-restricted error (descriptive)\n",
+             "Mean root-PEHE over successful seeds inside and outside each declared evaluator-only region. "
+             "Headline comparisons above remain whole-target.\n",
+             "| Scenario | Region | Method | Inside root-PEHE | Outside root-PEHE | Mean inside rows |",
+             "| --- | --- | --- | ---: | ---: | ---: |"]
+    fmt = lambda v: "NA" if v is None else f"{v:.4f}"
+    for scenario, entry in regions["scenarios"].items():
+        for method, sides in entry["methods"].items():
+            lines.append(f"| `{scenario}` | `{entry['region']}` | `{method}` | {fmt(sides['inside']['mean_root_pehe'])} "
+                         f"| {fmt(sides['outside']['mean_root_pehe'])} | {fmt(sides['inside']['mean_n_eval'])} |")
+    return "\n".join(lines)+"\n"
 
 
 def _policy_report(summary: Mapping[str, Any]) -> str:
@@ -336,7 +410,8 @@ def verify_adaptive_run(config: AdaptiveConfig, output: str | Path) -> dict[str,
             selected = [row for row in records if row["seed"] == seed and row["scenario"].startswith(prefix)]
             problem = _generate(config.pool_scenario(scenario), seed)
             replay_adaptive_records(problem, selected, pilot_size=config.pilot_size,
-                                    tune_size=config.tune_size, method_options=config.method_options)
+                                    tune_size=config.tune_size, method_options=config.method_options,
+                                    evaluation_region=config.evaluation_regions.get(scenario.key))
     return {"records": len(records), "successful_replayed": sum(row["status"] == "ok" for row in records),
             "terminal_failures": sum(row["status"] != "ok" for row in records)}
 

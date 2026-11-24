@@ -20,8 +20,10 @@ The [scenario annotations](V03_SCENARIOS.md) distinguish trial/OBS effect transp
 | M9 | M8-like effects with weaker trial coverage in the effect region | Observed trial overlap limits correction |
 | M10 | Hidden treatment-selection confounding and source CATE shift | Two sources of regression discrepancy coexist |
 | M11 | Multiple confounding regions, Gaussian-mixture hidden variable, discontinuous CATE | Several modeling stresses coexist |
+| M12 | M0 with an unclipped, 10x observed treatment logit | Deficient OBS treatment support: OBS sees one arm in about 30% of the target |
+| M13 | M0 with OBS sampling suppressed in a 30% target region | Target region absent from OBS; only the trial covers it |
 
-M mechanisms span several stresses at once. Differences between arbitrary M IDs therefore do not isolate a single causal design choice.
+M12 and M13 were added after the frozen 31-preset catalog; they are not part of the catalog studies and are used by the [adaptive support configuration](../configs/adaptive_support.toml). M mechanisms span several stresses at once. Differences between arbitrary M IDs therefore do not isolate a single causal design choice.
 
 ## Paired structural variants
 

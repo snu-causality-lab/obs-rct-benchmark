@@ -103,7 +103,7 @@ def test_all_paper_presets_generate_reproducibly(paper_id):
 
 
 def test_public_catalogs_have_only_supported_presets():
-    assert tuple(MECHANISM_CARDS) == tuple(f"M{i}" for i in range(12))
+    assert tuple(MECHANISM_CARDS) == tuple(f"M{i}" for i in range(14))
     assert tuple(STRUCTURAL_ADDENDUM_CARDS) == tuple(f"C{i:02d}" for i in range(1, 11))
     assert set(PAPER_DGPS) == set(PAPER_DGP_CARDS) == {
         "cornet_official_n_conf", "experimental_grounding_kps",

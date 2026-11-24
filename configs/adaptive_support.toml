@@ -1,0 +1,36 @@
+schema_version = 1
+
+# Two support stresses for the fixed-pool recruitment track. Run settings match
+# adaptive_reference.toml except for the seeds and purpose. Each scenario
+# declares an evaluator-only region whose root-PEHE is reported separately.
+
+[run]
+purpose = "smoke"
+scope = "Support-stress mechanisms M12 (deficient OBS treatment support) and M13 (target region absent from OBS); no method-ranking claim"
+seeds = [0, 1]
+policies = ["uniform", "geometry", "outcome_residual"]
+estimators = ["rct_t_extra_trees", "naive_pooled_t_extra_trees"]
+budgets = [128, 512]
+pilot_size = 32
+tune_size = 16
+pool_size = 2048
+
+# Deficient support: about 30% of the target has true OBS treatment probability
+# below 0.01 or above 0.99, so OBS sees essentially one arm there.
+[[scenarios]]
+kind = "structural"
+id = "M12"
+evaluation_region = "deficient_support"
+[scenarios.parameters]
+n_obs = 2000
+n_eval = 2048
+
+# Absent from OBS: OBS sampling avoids a region holding 30% of the target
+# (about 0.3 of 2,000 OBS rows fall there); the trial pool still covers it.
+[[scenarios]]
+kind = "structural"
+id = "M13"
+evaluation_region = "obs_absent"
+[scenarios.parameters]
+n_obs = 2000
+n_eval = 2048

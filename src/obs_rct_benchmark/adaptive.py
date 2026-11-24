@@ -20,6 +20,15 @@ from .runner import method_seed
 
 IntArray = NDArray[np.int64]
 POLICY_NAMES = ("uniform", "geometry", "outcome_residual")
+# Evaluator-only target subsets for region-restricted error. Both read existing
+# structural truth; neither is exposed to a recruitment policy or estimator.
+ONE_SIDED_PROPENSITY = 0.01
+EVALUATION_REGIONS = {
+    "deficient_support": "evaluation rows whose true OBS treatment probability is "
+                         f"below {ONE_SIDED_PROPENSITY} or above {1 - ONE_SIDED_PROPENSITY} (M12)",
+    "obs_absent": "evaluation rows with structural truth region_score == 1; in M13 this is "
+                  "the localized region that OBS sampling avoids",
+}
 
 
 def _positive_integer(value: int, name: str) -> None:
@@ -219,6 +228,44 @@ def recruit(problem: SimulationProblem, policy: RecruitmentPolicy, *, budget: in
     return session.view().revealed_indices
 
 
+def evaluation_region_mask(problem: SimulationProblem, region: str) -> NDArray[np.bool_]:
+    """Boolean mask over evaluation rows for a declared evaluator-only region."""
+    if region not in EVALUATION_REGIONS:
+        raise ValueError(f"unknown evaluation region: {region}")
+    if problem.truth is None:
+        raise ValueError("evaluation regions require structural evaluation truth")
+    truth = problem.truth.eval
+    if region == "obs_absent":
+        if "region_score" not in truth:
+            raise ValueError("obs_absent requires region_score in evaluation truth")
+        score = np.asarray(truth["region_score"], dtype=np.float64)
+        if not np.all((score == 0.0) | (score == 1.0)):
+            raise ValueError("obs_absent requires a binary (localized) region_score")
+        return score == 1.0
+    if "obs_propensity" not in truth:
+        raise ValueError("deficient_support requires obs_propensity in evaluation truth")
+    e = np.asarray(truth["obs_propensity"], dtype=np.float64)
+    return (e < ONE_SIDED_PROPENSITY) | (e > 1.0 - ONE_SIDED_PROPENSITY)
+
+
+def region_metrics(prediction: Any, problem: SimulationProblem, region: str) -> dict[str, Any]:
+    """CATE MSE/root-PEHE inside and outside a declared region of the target sample.
+
+    An empty side reports ``n_eval = 0`` and null metrics rather than failing.
+    """
+    estimate = np.asarray(prediction, dtype=np.float64)
+    mask = evaluation_region_mask(problem, region)
+    if estimate.shape != mask.shape:
+        raise ValueError("prediction and evaluation region must have matching rows")
+    result: dict[str, Any] = {"region": region}
+    for side, rows in (("inside", mask), ("outside", ~mask)):
+        n = int(rows.sum())
+        scored = cate_metrics(estimate[rows], problem.eval_tau[rows]) if n else {
+            "cate_mse": None, "root_pehe": None}
+        result[side] = {"n_eval": n, **scored}
+    return result
+
+
 def acquired_training(problem: SimulationProblem, indices: Any, *, tune_size: int) -> TrainingView:
     ids = _indices(indices, size=problem.rct_train.n)
     _positive_integer(tune_size, "tune_size")
@@ -235,8 +282,13 @@ def run_adaptive_problem(problem: SimulationProblem, *, budgets: Sequence[int],
                          policies: Sequence[str], estimators: Sequence[str],
                          seed: int, method_options: Mapping[str, Mapping[str, Any]] | None = None,
                          scenario: str | None = None,
-                         requested_cells: set[tuple[str, int, str]] | None = None) -> list[dict[str, Any]]:
-    """Evaluate fixed policy prefixes; return every success or terminal failure."""
+                         requested_cells: set[tuple[str, int, str]] | None = None,
+                         evaluation_region: str | None = None) -> list[dict[str, Any]]:
+    """Evaluate fixed policy prefixes; return every success or terminal failure.
+
+    With ``evaluation_region``, successful rows also carry ``region_metrics``;
+    the headline ``metrics`` remain whole-target scores.
+    """
     if not budgets or len(set(budgets)) != len(budgets):
         raise ValueError("budgets must be nonempty and unique")
     for budget in budgets:
@@ -250,6 +302,8 @@ def run_adaptive_problem(problem: SimulationProblem, *, budgets: Sequence[int],
     if not estimators or len(set(estimators)) != len(estimators):
         raise ValueError("estimators must be nonempty and unique")
     options = method_options or {}
+    if evaluation_region is not None and evaluation_region not in EVALUATION_REGIONS:
+        raise ValueError(f"unknown evaluation region: {evaluation_region}")
     scenario = problem.name if scenario is None else scenario
     rows = []
     for policy in policies:
@@ -289,7 +343,10 @@ def run_adaptive_problem(problem: SimulationProblem, *, budgets: Sequence[int],
                         training = acquired_training(problem, indices, tune_size=tune_size)
                         model = make_method(estimator, **dict(options.get(estimator, {})))
                         prediction = model.fit_predict(training, problem.eval_X, seed=fit_seed)
-                        row.update(status="ok", metrics=cate_metrics(prediction, problem.eval_tau))
+                        scored = {"metrics": cate_metrics(prediction, problem.eval_tau)}
+                        if evaluation_region is not None:
+                            scored["region_metrics"] = region_metrics(prediction, problem, evaluation_region)
+                        row.update(status="ok", **scored)
                     except Exception as exc:
                         row.update(status="failed", stage="method_or_metric", error_type=type(exc).__name__, metrics=None)
                 rows.append(row)
@@ -298,7 +355,8 @@ def run_adaptive_problem(problem: SimulationProblem, *, budgets: Sequence[int],
 
 def replay_adaptive_records(problem: SimulationProblem, records: Sequence[Mapping[str, Any]], *,
                              pilot_size: int, tune_size: int,
-                             method_options: Mapping[str, Mapping[str, Any]] | None = None) -> None:
+                             method_options: Mapping[str, Mapping[str, Any]] | None = None,
+                             evaluation_region: str | None = None) -> None:
     """Reconstruct policy decisions, budgets, fits and scores from saved queries.
 
     This is deterministic replay, not an independent empirical replication.
@@ -335,6 +393,10 @@ def replay_adaptive_records(problem: SimulationProblem, records: Sequence[Mappin
         metrics = cate_metrics(prediction, problem.eval_tau)
         if metrics != row["metrics"]:
             raise ValueError("replayed predictions do not reproduce recorded metrics")
+        expected_region = (None if evaluation_region is None
+                           else region_metrics(prediction, problem, evaluation_region))
+        if row.get("region_metrics") != expected_region:
+            raise ValueError("replayed predictions do not reproduce recorded region metrics")
     # Compare all stored prefixes to the longest recorded successful order for
     # each policy. A caller regenerates problems from the bound seed/config.
     for policy in {row["policy"] for row in records if row.get("stage") != "simulation"}:
