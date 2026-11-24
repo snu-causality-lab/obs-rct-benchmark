@@ -56,6 +56,9 @@ CovariateMarginals = Literal[
 
 STRUCTURAL_DGP_VERSION = "2.0.0"
 STRUCTURAL_MECHANISMS = tuple(f"M{i}" for i in range(12))
+# Support-stress mechanisms added after the frozen M0-M11 catalog. Kept out of
+# STRUCTURAL_MECHANISMS so that existing study-config generators are unchanged.
+SUPPORT_MECHANISMS = ("M12", "M13")
 STRUCTURAL_ADDENDUM_VERSION = "2.0.0"
 STRUCTURAL_ADDENDUM_CELLS = tuple(f"C{i:02d}" for i in range(1, 11))
 _MARGINAL_TRANSFORM_SCALE = 0.5
@@ -165,7 +168,7 @@ class StructuralDGPConfig:
         if not -0.95 < self.covariate_rho < 0.95:
             raise ValueError("covariate_rho must lie strictly between -0.95 and 0.95")
         if self.mechanism != "custom" and self.mechanism not in (
-            STRUCTURAL_MECHANISMS + STRUCTURAL_ADDENDUM_CELLS
+            STRUCTURAL_MECHANISMS + SUPPORT_MECHANISMS + STRUCTURAL_ADDENDUM_CELLS
         ):
             raise ValueError(f"unknown structural mechanism: {self.mechanism}")
         if self.bias_geometry not in {
@@ -442,6 +445,41 @@ MECHANISM_CARDS: Mapping[str, Mapping[str, Any]] = {
             "noise_distribution": "student_t",
             "noise_heteroskedasticity": 0.5,
             "cate_geometry": "discontinuous",
+        },
+    },
+    "M12": {
+        "title": "Deficient OBS treatment support",
+        "purpose": "OBS observes only one arm in part of the target; only the trial fills it",
+        "assumptions_varied": ["OBS treatment positivity"],
+        "preset": {
+            # M0 with an unclipped, 10x observed treatment logit: about 30% of
+            # the target has true OBS treatment probability <0.01 or >0.99.
+            "bias_geometry": "constant",
+            "bias_min": 1.0,
+            "confounding_treatment": 0.0,
+            "confounding_outcome_0": 1.0,
+            "confounding_outcome_1": 1.0,
+            "cate_geometry": "smooth",
+            "treatment_linear_scale": 10.0,
+            "propensity_floor": 0.0,
+        },
+    },
+    "M13": {
+        "title": "Target region absent from OBS",
+        "purpose": "OBS covariates avoid part of the target; only the trial covers it",
+        "assumptions_varied": ["OBS covariate support"],
+        "preset": {
+            # M0 outcomes and treatment; the localized region (30% of the
+            # target) only labels where OBS sampling is suppressed. With
+            # bias_min = 1 and no hidden selection, it changes no outcome.
+            "bias_geometry": "localized",
+            "clean_fraction": 0.7,
+            "bias_min": 1.0,
+            "confounding_treatment": 0.0,
+            "confounding_outcome_0": 1.0,
+            "confounding_outcome_1": 1.0,
+            "cate_geometry": "smooth",
+            "obs_selection_strength": -8.0,
         },
     },
 }
@@ -834,6 +872,30 @@ MECHANISM_AXIS_LEVELS: Mapping[str, Mapping[str, str]] = {
         "rct_support": "common",
         "transportability": "holds",
         "hidden_distribution": "gaussian_mixture",
+    },
+    "M12": {
+        "discrepancy_origin": "none",
+        "confounding_geometry": "none",
+        "clean_region": "all",
+        "reliability_resolution": "not_applicable",
+        "arm_structure": "symmetric",
+        "cate_geometry": "smooth",
+        "bias_cate_alignment": "not_applicable",
+        "rct_support": "common",
+        "transportability": "holds",
+        "hidden_distribution": "gaussian",
+    },
+    "M13": {
+        "discrepancy_origin": "none",
+        "confounding_geometry": "none",
+        "clean_region": "all",
+        "reliability_resolution": "not_applicable",
+        "arm_structure": "symmetric",
+        "cate_geometry": "smooth",
+        "bias_cate_alignment": "not_applicable",
+        "rct_support": "common",
+        "transportability": "holds",
+        "hidden_distribution": "gaussian",
     },
 }
 

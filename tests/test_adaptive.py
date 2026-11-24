@@ -217,3 +217,101 @@ def test_reference_configuration_and_invalid_contracts():
                    {"policies": ("geometry",)}, {"purpose": "scientific_winner"}):
         with pytest.raises(ValueError):
             replace(config(), **kwargs)
+
+
+def test_support_configuration_declares_regions_without_changing_reference_hash():
+    from pathlib import Path
+    root = Path(__file__).parents[1]/"configs"
+    c = load_adaptive_config(root/"adaptive_support.toml")
+    assert c.evaluation_regions == {"structural:M12": "deficient_support", "structural:M13": "obs_absent"}
+    assert [x.get("evaluation_region") for x in c.payload()["scenarios"]] == ["deficient_support", "obs_absent"]
+    reference = load_adaptive_config(root/"adaptive_reference.toml")
+    assert reference.evaluation_regions == {}
+    assert all("evaluation_region" not in x for x in reference.payload()["scenarios"])
+    assert reference.config_hash == "e0cc99e44cd26d1ba39198aa2ca98e297c67a66bb008af2bf4c0a14a921c0fe7"
+    with pytest.raises(ValueError):
+        replace(config(), evaluation_regions={"structural:M0": "elsewhere"})
+    with pytest.raises(ValueError):
+        replace(config(), evaluation_regions={"structural:M3": "obs_absent"})
+
+
+def _support_problem(mechanism, seed=3, n_obs=400, n_eval=400):
+    return generate_structural_problem(make_structural_config(
+        name=mechanism, mechanism=mechanism, n_obs=n_obs, n_rct_train=400,
+        n_rct_tune=4, n_rct_test=4, n_eval=n_eval), seed)
+
+
+def test_m12_obs_sees_one_arm_in_its_deficient_support_region():
+    from obs_rct_benchmark.structural_dgp import structural_truth_at
+    p = _support_problem("M12")
+    e = p.truth.eval["obs_propensity"]
+    mask = adaptive.evaluation_region_mask(p, "deficient_support")
+    np.testing.assert_array_equal(mask, (e < 0.01) | (e > 0.99))
+    assert 0.2 < mask.mean() < 0.4
+    cfg = make_structural_config(name="M12", mechanism="M12")
+    e_obs = structural_truth_at(p.obs_train.X, cfg)["obs_propensity"]
+    T = p.obs_train.T
+    assert T[e_obs < 0.01].mean() < 0.05 and T[e_obs > 0.99].mean() > 0.95
+    # No hidden confounding; the target effect equals M0's.
+    m0 = make_structural_config(name="M0", mechanism="M0")
+    np.testing.assert_allclose(p.eval_tau, structural_truth_at(p.eval_X, m0)["tau_target"])
+    # The canonical floor clips every OBS probability into [0.01, 0.99].
+    assert not adaptive.evaluation_region_mask(problem(), "deficient_support").any()
+
+
+def test_m13_obs_avoids_a_target_region_that_the_trial_covers():
+    from obs_rct_benchmark.structural_dgp import structural_truth_at
+    p = _support_problem("M13", n_obs=2000)
+    cfg = make_structural_config(name="M13", mechanism="M13")
+    inside = adaptive.evaluation_region_mask(p, "obs_absent")
+    assert 0.2 < inside.mean() < 0.4
+    assert structural_truth_at(p.obs_train.X, cfg)["region_score"].sum() <= 3
+    assert structural_truth_at(p.rct_train.X, cfg)["region_score"].mean() > 0.2
+    m0 = make_structural_config(name="M0", mechanism="M0")
+    a, b = structural_truth_at(p.eval_X, m0), structural_truth_at(p.eval_X, cfg)
+    for key in ("mu0_target", "mu1_target", "tau_target", "obs_propensity", "confounding_cate_bias"):
+        np.testing.assert_allclose(a[key], b[key])
+    # Constant geometry marks every row; the outside side is then empty, not an error.
+    assert adaptive.evaluation_region_mask(problem(), "obs_absent").all()
+    empty = adaptive.region_metrics(problem().eval_tau, problem(), "obs_absent")["outside"]
+    assert empty == {"n_eval": 0, "cate_mse": None, "root_pehe": None}
+    with pytest.raises(ValueError):
+        adaptive.evaluation_region_mask(problem(), "elsewhere")
+
+
+def test_region_metrics_partition_whole_target_error():
+    p = problem()
+    prediction = np.linspace(-1.0, 1.0, len(p.eval_tau))
+    mask = np.zeros(len(p.eval_tau), dtype=bool)
+    mask[:3] = True
+    original = adaptive.evaluation_region_mask
+    try:
+        adaptive.evaluation_region_mask = lambda problem, region: mask
+        got = adaptive.region_metrics(prediction, p, "obs_absent")
+    finally:
+        adaptive.evaluation_region_mask = original
+    squared = (prediction - p.eval_tau)**2
+    assert got["inside"]["n_eval"] == 3 and got["outside"]["n_eval"] == len(mask)-3
+    assert np.isclose(got["inside"]["cate_mse"], squared[:3].mean())
+    assert np.isclose(got["outside"]["cate_mse"], squared[3:].mean())
+    whole = (3*got["inside"]["cate_mse"]+(len(mask)-3)*got["outside"]["cate_mse"])/len(mask)
+    assert np.isclose(whole, squared.mean())
+
+
+def test_region_run_records_summarizes_and_replays(tmp_path):
+    scenario = ScenarioConfig("structural", "M12", {"n_obs": 24, "n_eval": 16})
+    c = replace(config(), scenarios=(scenario,), evaluation_regions={scenario.key: "deficient_support"})
+    output = tmp_path/"region"
+    summary = run_adaptive_benchmark(c, output)
+    assert summary["status"] == "complete"
+    records = [json.loads(x) for x in (output/"records.jsonl").read_text().splitlines()]
+    assert all(r["region_metrics"]["region"] == "deficient_support" for r in records)
+    assert set(summary["region_metrics"]["scenarios"]) == set(c.scenario_keys)
+    assert "Region-restricted error" in (output/"README.md").read_text()
+    assert verify_adaptive_run(c, output)["successful_replayed"] == len(records)
+    tampered = dict(records[0], region_metrics=dict(records[0]["region_metrics"], region="obs_absent"))
+    p = generate_structural_problem(make_structural_config(
+        name="M12", mechanism="M12", n_obs=24, n_rct_train=48, n_rct_tune=4, n_rct_test=4, n_eval=16), 5)
+    with pytest.raises(ValueError, match="region metrics"):
+        replay_adaptive_records(p, [tampered], pilot_size=8, tune_size=4,
+                                evaluation_region="deficient_support")

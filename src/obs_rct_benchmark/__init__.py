@@ -17,6 +17,7 @@ from .paper_dgp import (
 from .structural_dgp import (
     STRUCTURAL_ADDENDUM_CELLS,
     STRUCTURAL_MECHANISMS,
+    SUPPORT_MECHANISMS,
     StructuralDGPConfig,
     generate_structural_problem,
     make_structural_addendum_config,
@@ -46,6 +47,7 @@ __all__ = [
     "generate_paper_problem",
     "paper_truth_at",
     "STRUCTURAL_MECHANISMS",
+    "SUPPORT_MECHANISMS",
     "STRUCTURAL_ADDENDUM_CELLS",
     "StructuralDGPConfig",
     "make_structural_config",
